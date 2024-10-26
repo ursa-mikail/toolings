@@ -1,0 +1,38 @@
+# Test vectors as a string
+# T1 1.0
+# Test vector parser test information
+# Generated on 2013-01-25_1721hr_03sec
+
+[key.length = 16 bytes]
+[param_00.length = 12 bytes]
+[param_01.length = 2]
+[param_02.length = 5]
+[tag.length = 10]
+[result_expected.length = 2]
+
+Count = 0
+Key = 11754cd72aec309bf52f7687212e8957
+param_00 = 3c819d9a9bed087615030b65
+param_01 = 3c81
+param_02 = 3c813c8181
+Tag = 250327c674aaf477aef2675748cf6971
+result_expected = 3c813cbe02
+
+Count = 1
+Key = ca47248ac0b6f8372a97ac43508308ed
+param_00 = ffd2b598feabc9019262d2be
+param_01 = ffd2
+param_02 = ffd2ffd2d2
+Tag = 60d20404af527d248d893ae495707d1a
+result_expected = 0011
+
+Count = 2
+Key = ca47248ac0b6f8372a97ac43508308ed
+param_00 = ffd2b598feabc9019262d2be
+param_01 = ffd2
+param_02 = ffd2ffd2d2
+Tag = 60d20404af527d248d893ae495707d1a
+result_expected = ffd300d2a4
+
+=================== EOF
+
