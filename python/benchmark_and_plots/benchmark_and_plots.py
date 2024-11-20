@@ -257,7 +257,7 @@ benchmarks = [
     ("secp256k1", benchmark_secp256k1),
     ("secp384r1", benchmark_secp384r1),
     ("RSA-PSS", benchmark_rsa_pss),
-    ("RSA-ASSA", benchmark_rsa_PKCS1v15),
+    ("RSA-PKCS1v15", benchmark_rsa_PKCS1v15),
     ("RSA-OAEP", benchmark_rsa_oaep),
     ("AES-GCM-128", benchmark_aes_gcm_128),
     ("AES-GCM-256", benchmark_aes_gcm_256),
@@ -324,7 +324,7 @@ name, elapsed_time, cpu_usage, mem_usage: [secp256r1]: 0.0005204677581787109, 0.
 name, elapsed_time, cpu_usage, mem_usage: [secp256k1]: 0.002115488052368164, 0.0, 683
 name, elapsed_time, cpu_usage, mem_usage: [secp384r1]: 0.0014262199401855469, 0.0, 720
 name, elapsed_time, cpu_usage, mem_usage: [RSA-PSS]: 0.09598159790039062, 104.1, 1042
-name, elapsed_time, cpu_usage, mem_usage: [RSA-ASSA]: 0.033583641052246094, 89.2, 866
+name, elapsed_time, cpu_usage, mem_usage: [RSA-PKCS1v15]: 0.033583641052246094, 89.2, 866
 Original Data: b'Benchmarking RSA-OAEP'
 Ciphertext: 42230bf8221b7912d4adafd6724c95b97c35b39d7244e715d82c386950fd4b670d556e2c378906c23493c9770afd098aa1c207bab32de9ce184dbebeeec83062ea012139b45a511b600e8146160da36607a27e48ecad767f36104875d6b65e659dacc73aca34c61ec09a1c18c48797ec54cf50407aad63c5d75fc71e45783ee25f40d835403ba240ecc9f24a7cb4bf8be3e21233d32ffe72a8deec13a2347e1886d4d46eeb65f59f0edbebeee58fd52b8716efa1a1c60ee1f4121bf37138b83e992edebfd4a1c9bdc16ac53d26a4d33a26d2713bb4f818004e97d971db6f71dde7c312a1b203a865d26e292fa6a64363a87ccb3a902162a4f26b4a5118115557
 Decrypted Data: b'Benchmarking RSA-OAEP'
