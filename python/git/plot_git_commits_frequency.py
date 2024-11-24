@@ -21,8 +21,14 @@ plt.figure(figsize=(10, 5))
 plt.plot(df_grouped['date'], df_grouped['commits'], marker='o', linestyle='-')
 plt.xlabel('Date (YYYY-MM.DD)')
 plt.ylabel('Number of Commits')
-plt.title('Number of Git Commits Over Time')
+plt.title('Number of Git Commits Over Time (Accumulative)')
 plt.grid(True)
 plt.gca().xaxis.set_major_formatter(plt.matplotlib.dates.DateFormatter('%Y-%m.%d'))
 plt.gcf().autofmt_xdate()  # Rotate date labels for better readability
+
+# Annotate the points with the number of commits
+for i, row in df_grouped.iterrows():
+    plt.annotate(row['commits'], (row['date'], row['commits']), textcoords="offset points", xytext=(0,5), ha='center')
+
+    
 plt.show()

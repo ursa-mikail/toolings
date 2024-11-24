@@ -25,7 +25,18 @@ for repo in repos_data:
     page = 1
     while True:
         response = requests.get(commits_url, params={'per_page': 100, 'page': page})
+        
+        # Check if the response status code indicates an error
+        if response.status_code != 200:
+            print(f"Error fetching commits for repository: {repo_name}, page: {page}, status code: {response.status_code}")
+            break
+        
         response_data = response.json()
+        
+        # Check if the response contains an error message
+        if isinstance(response_data, dict) and 'message' in response_data:
+            print(f"Error message: {response_data['message']}")
+            break
         
         # Break the loop if no more commits are returned
         if len(response_data) == 0:
@@ -33,9 +44,11 @@ for repo in repos_data:
         
         # Process the response data
         for commit in response_data:
-            commit_date = commit['commit']['author']['date'][:10]  # Get the date (YYYY-MM-DD)
-            #commit_date = commit_date.replace("-", ".")  # Replace '-' with '.'
-            all_commits_data.append({'date': commit_date, 'repo': repo_name})
+            try:
+                commit_date = commit['commit']['author']['date'][:10]  # Get the date (YYYY-MM-DD)
+                all_commits_data.append({'date': commit_date, 'repo': repo_name})
+            except KeyError as e:
+                print(f"KeyError: {e} in repo: {repo_name}, commit: {commit}")
         
         # Go to the next page
         page += 1
@@ -51,19 +64,3 @@ file_git_commits_csv = './sample_data/git_commits.csv'
 commit_counts.to_csv(file_git_commits_csv, index=False)
 
 print("CSV file 'git_commits.csv' created successfully.")
-
-"""
-Fetching commits for repository: chrome-ext-moon-phase
-Fetching commits for repository: chrome-ext-utilities-timestamp-and-random-hex
-Fetching commits for repository: cipher_js
-Fetching commits for repository: flask-for-server_curl_simple
-Fetching commits for repository: golang-gaia-basic-structure
-Fetching commits for repository: jwt_rsa_ecc
-Fetching commits for repository: mikail-eliyah.github.io
-Fetching commits for repository: reference_codes
-Fetching commits for repository: scrambler
-Fetching commits for repository: shell_script_utility
-Fetching commits for repository: templates
-Fetching commits for repository: x509_js
-CSV file 'git_commits.csv' created successfully.
-"""
