@@ -1,0 +1,27 @@
+{
+    "pools": [
+        {
+            "pool": {
+                "node": "v-b1",
+                "namespace": "j-site",
+                "name": "node-prod"
+            },
+            "weight": 1,
+            "priority": 1,
+            "endpoint_subsets": {
+                "part": 55
+            }
+        },
+        {
+            "pool": {
+                "node": "v-b2",
+                "namespace": "x-site",
+                "name": "v0-QA"
+            },
+            "weight": 1,
+            "priority": 0,
+            "endpoint_subsets": {}
+        }
+    ]
+}
+
