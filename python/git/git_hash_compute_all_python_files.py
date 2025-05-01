@@ -6,7 +6,7 @@ from git import Repo
 # --- Setup ---
 username = "ursa-mikail"
 token = "YOUR_TOKEN_HERE"  # Replace with your GitHub token (ciphered: U2FsdGVkX1+7TtLL8EZXcO+sDvRQ830mnmRH+1bPozCC3DDFIc4hyk/kAlvk6OBrlMhC6s/DVrAJypjnA/6zdQ==)
-
+# set tokens at: https://github.com/settings/tokens
 repo_owner = "ursa-mikail"
 repo_name = "toolings"
 branch = "main"
