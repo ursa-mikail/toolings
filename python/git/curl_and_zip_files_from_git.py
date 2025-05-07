@@ -2,6 +2,7 @@ import os
 import requests
 import hashlib
 import zipfile
+import certifi
 
 # Constants
 REPO_API = "https://api.github.com/repos/ursa-mikail/mechanisms/contents/resource_profiling/go"
@@ -61,7 +62,7 @@ def download_and_hash_files(filenames):
         except requests.exceptions.RequestException as e:
             print(f"[ERROR] Could not download {filename}: {e}")
     return hashes
-    
+
 # Step 3: Zip files and hash zip
 def zip_and_hash(directory, zip_name):
     with zipfile.ZipFile(zip_name, "w") as zf:
