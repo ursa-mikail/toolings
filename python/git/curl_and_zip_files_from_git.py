@@ -12,12 +12,23 @@ ZIP_FILE = "go_files.zip"
 os.makedirs(DOWNLOAD_DIR, exist_ok=True)
 
 # Step 1: Get filenames via GitHub API
+"""
 def get_filenames_from_api():
     resp = requests.get(REPO_API)
     resp.raise_for_status()
     return [item['name'] for item in resp.json() if item['type'] == 'file']
+"""
+def get_filenames_from_api():
+    try:
+        response = requests.get(REPO_API, verify=certifi.where())
+        response.raise_for_status()
+        return [item['name'] for item in response.json() if item['type'] == 'file']
+    except requests.exceptions.RequestException as e:
+        print(f"[ERROR] Failed to retrieve file list: {e}")
+        return []
 
 # Step 2: Download and hash each file
+"""
 def download_and_hash_files(filenames):
     sha256s = {}
     for filename in filenames:
@@ -33,7 +44,24 @@ def download_and_hash_files(filenames):
         else:
             print(f"Failed to download {filename}")
     return sha256s
-
+"""
+def download_and_hash_files(filenames):
+    hashes = {}
+    for filename in filenames:
+        url = f"{RAW_BASE}/{filename}"
+        dest_path = os.path.join(DOWNLOAD_DIR, filename)
+        try:
+            resp = requests.get(url, verify=certifi.where())
+            resp.raise_for_status()
+            with open(dest_path, "wb") as f:
+                f.write(resp.content)
+            file_hash = hashlib.sha256(resp.content).hexdigest()
+            hashes[filename] = file_hash
+            print(f"Downloaded {filename}, SHA-256: {file_hash}")
+        except requests.exceptions.RequestException as e:
+            print(f"[ERROR] Could not download {filename}: {e}")
+    return hashes
+    
 # Step 3: Zip files and hash zip
 def zip_and_hash(directory, zip_name):
     with zipfile.ZipFile(zip_name, "w") as zf:
