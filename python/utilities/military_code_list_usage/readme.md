@@ -27,6 +27,8 @@ Displays:
 
 ![password_cli](password_cli.py.txt.png)
 
+# Random Select and Exclude Version
+
 - Starts at line LINE_NUMBER (1-based indexing).
 - Will error out if:
 	- The password at that line has already been used
