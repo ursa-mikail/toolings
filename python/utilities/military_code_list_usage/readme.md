@@ -3,6 +3,14 @@
 ![passcode_generator_and_usage_attrition](passcode_generator_and_usage_attrition.py.png)
 
 1. Stores passwords in a file
+
+```
+🧪 Setup: Passwords File
+Create a file named passwords.txt manually or with a generator (passcode_generator_and_usage_attrition.py):
+
+echo -e "pass1\npass2\npass3\n..." > passwords.txt
+```
+
 2. Tracks used passwords in a separate inventory
 3. Allows resuming across runs (you can quit and come back)
 
