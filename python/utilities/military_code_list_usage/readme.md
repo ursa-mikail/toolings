@@ -26,3 +26,22 @@ Displays:
 | `python password_cli.py reset` | Reset inventory (used list)     |
 
 ![password_cli](password_cli.py.txt.png)
+
+- Starts at line LINE_NUMBER (1-based indexing).
+- Will error out if:
+	- The password at that line has already been used
+	- The line number is invalid (less than 1 or exceeds file length)
+
+```bash
+python password_cli_random_chose.py use [LINE_NUMBER]
+
+python password_cli_random_chose.py reset
+```
+
+✅ Behavior
+- Passwords are never removed from passwords.txt
+- Each password can only be used once
+- Clear progress messages are shown
+- Errors are printed if a password is reused
+
+![password_cli_random_chose](password_cli_random_chose.py.txt.png)
