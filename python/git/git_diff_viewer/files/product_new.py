@@ -135,14 +135,17 @@ if __name__ == "__main__":
 
 """
 # Basic diff
-git diff ./files/product_old.py ./files/product_new.py
+git diff --no-index ./files/product_old.py ./files/product_new.py
 
 # Side-by-side diff
-git diff --word-diff ./files/product_old.py ./files/product_new.py
+git diff --word-diff --no-index ./files/product_old.py ./files/product_new.py
 
 # Colored diff with context
 git diff --color --unified=10 ./files/product_old.py ./files/product_new.py
 
 # See only the method signatures that changed
-git diff -G "def " ./files/product_old.py ./files/product_new.py
+git diff --no-index -G  "def " ./files/product_old.py ./files/product_new.py
+
+# to quit
+[esc] wq 
 """
