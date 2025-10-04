@@ -1,0 +1,1632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Side-by-Side Diff: product_old.py vs product_new.py</title>
+    <style>
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        background: #ffffff;
+        margin: 20px;
+        padding: 0;
+    }
+    .side-by-side-container { 
+        font-family: 'Courier New', monospace; 
+        background: #f8f9fa; 
+        padding: 20px; 
+        border-radius: 8px;
+        margin: 20px auto;
+        max-width: 1400px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .side-by-side-header { 
+        background: #f1f8ff; 
+        padding: 15px; 
+        margin-bottom: 15px; 
+        border-radius: 5px;
+        font-weight: bold;
+        font-size: 18px;
+        color: #0366d6;
+        border-left: 4px solid #0366d6;
+    }
+    .side-by-side-table {
+        width: 100%;
+        border-collapse: collapse;
+        background: white;
+        border-radius: 5px;
+        overflow: hidden;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .side-by-side-table th {
+        background: #24292e;
+        color: white;
+        padding: 12px;
+        text-align: left;
+        font-weight: bold;
+        font-size: 14px;
+    }
+    .side-by-side-table td {
+        padding: 8px 12px;
+        border-bottom: 1px solid #e1e4e8;
+        vertical-align: top;
+        font-size: 13px;
+        line-height: 1.5;
+    }
+    .side-by-side-table tr:hover {
+        background: #f6f8fa;
+    }
+    .old-column { 
+        background: #ffeef0; 
+        color: #24292e;
+        width: 48%;
+    }
+    .new-column { 
+        background: #e6ffed; 
+        color: #24292e;
+        width: 48%;
+    }
+    .separator { 
+        width: 4%;
+        text-align: center;
+        color: #0366d6;
+        font-weight: bold;
+        background: #f6f8fa;
+    }
+    .line-changed-old { background: #ffeef0; }
+    .line-changed-new { background: #e6ffed; }
+    .line-unchanged { background: white; }
+    .line-number {
+        color: #6a737d;
+        font-weight: bold;
+        padding-right: 8px;
+        display: inline-block;
+        min-width: 40px;
+    }
+    .change-marker {
+        color: #f39c12;
+        font-weight: bold;
+        padding-left: 10px;
+    }
+    .footer {
+        text-align: center;
+        padding: 20px;
+        color: #6a737d;
+        font-size: 12px;
+    }
+    </style>
+</head>
+<body>
+    <div class="side-by-side-container">
+        <div class="side-by-side-header">
+            📑 Side-by-Side Comparison: product_old.py vs product_new.py
+        </div>
+        <table class="side-by-side-table">
+            <thead>
+                <tr>
+                    <th class="old-column">OLD (product_old.py)</th>
+                    <th class="separator">|</th>
+                    <th class="new-column">NEW (product_new.py)</th>
+                </tr>
+            </thead>
+            <tbody>
+    
+            <tr>
+                <td class="line-unchanged">
+                    <span class="line-number">  1</span>#!/usr/bin/env python3
+                </td>
+                <td class="separator">|</td>
+                <td class="line-unchanged">
+                    <span class="line-number">  1</span>#!/usr/bin/env python3
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-unchanged">
+                    <span class="line-number">  2</span>"""
+                </td>
+                <td class="separator">|</td>
+                <td class="line-unchanged">
+                    <span class="line-number">  2</span>"""
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number">  3</span>Product Management System - Old Version
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number">  3</span>Product Management System - Enhanced Version<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number">  4</span>Handles basic product operations
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number">  4</span>Handles product operations with additional features and validation<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-unchanged">
+                    <span class="line-number">  5</span>"""
+                </td>
+                <td class="separator">|</td>
+                <td class="line-unchanged">
+                    <span class="line-number">  5</span>"""
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-unchanged">
+                    <span class="line-number">  6</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-unchanged">
+                    <span class="line-number">  6</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-unchanged">
+                    <span class="line-number">  7</span>class Product:
+                </td>
+                <td class="separator">|</td>
+                <td class="line-unchanged">
+                    <span class="line-number">  7</span>class Product:
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number">  8</span>    def __init__(self, name, price, quantity):
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number">  8</span>    def __init__(self, name, price, quantity, category="General", sku=None):<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-unchanged">
+                    <span class="line-number">  9</span>        self.name = name
+                </td>
+                <td class="separator">|</td>
+                <td class="line-unchanged">
+                    <span class="line-number">  9</span>        self.name = name
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-unchanged">
+                    <span class="line-number"> 10</span>        self.price = price
+                </td>
+                <td class="separator">|</td>
+                <td class="line-unchanged">
+                    <span class="line-number"> 10</span>        self.price = price
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-unchanged">
+                    <span class="line-number"> 11</span>        self.quantity = quantity
+                </td>
+                <td class="separator">|</td>
+                <td class="line-unchanged">
+                    <span class="line-number"> 11</span>        self.quantity = quantity
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number"> 12</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number"> 12</span>        self.category = category<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number"> 13</span>    def calculate_total_value(self):
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number"> 13</span>        self.sku = sku or f"SKU-{name.upper().replace(' ', '-')}"<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number"> 14</span>        """Calculate total value of product inventory"""
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number"> 14</span>        self._validate_attributes()<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number"> 15</span>        return self.price * self.quantity
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number"> 15</span><span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number"> 16</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number"> 16</span>    def _validate_attributes(self):<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number"> 17</span>    def display_info(self):
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number"> 17</span>        """Validate product attributes"""<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number"> 18</span>        """Display product information"""
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number"> 18</span>        if self.price &lt; 0:<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number"> 19</span>        print(f"Product: {self.name}")
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number"> 19</span>            raise ValueError("Price cannot be negative")<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number"> 20</span>        print(f"Price: ${self.price:.2f}")
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number"> 20</span>        if self.quantity &lt; 0:<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number"> 21</span>        print(f"Quantity: {self.quantity}")
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number"> 21</span>            raise ValueError("Quantity cannot be negative")<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number"> 22</span>        print(f"Total Value: ${self.calculate_total_value():.2f}")
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number"> 22</span>        if not self.name.strip():<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number"> 23</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number"> 23</span>            raise ValueError("Product name cannot be empty")<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number"> 24</span>    def apply_discount(self, percentage):
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number"> 24</span><span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number"> 25</span>        """Apply discount to product price"""
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number"> 25</span>    def calculate_total_value(self):<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number"> 26</span>        if 0 &lt;= percentage &lt;= 100:
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number"> 26</span>        """Calculate total value of product inventory with tax consideration"""<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number"> 27</span>            self.price = self.price * (1 - percentage/100)
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number"> 27</span>        BASE_TAX_RATE = 1.08  # 8% tax<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number"> 28</span>            return True
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number"> 28</span>        return self.price * self.quantity * BASE_TAX_RATE<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number"> 29</span>        return False
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number"> 29</span><span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number"> 30</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number"> 30</span>    def display_info(self, include_tax=False):<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number"> 31</span>def load_products_from_file(filename):
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number"> 31</span>        """Display product information with optional tax details"""<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number"> 32</span>    """Load products from text file"""
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number"> 32</span>        print(f"Product: {self.name}")<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number"> 33</span>    products = []
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number"> 33</span>        print(f"SKU: {self.sku}")<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number"> 34</span>    try:
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number"> 34</span>        print(f"Category: {self.category}")<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number"> 35</span>        with open(filename, 'r') as file:
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number"> 35</span>        print(f"Price: ${self.price:.2f}")<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number"> 36</span>            for line in file:
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number"> 36</span>        print(f"Quantity: {self.quantity}")<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number"> 37</span>                data = line.strip().split(',')
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number"> 37</span><span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number"> 38</span>                if len(data) == 3:
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number"> 38</span>        if include_tax:<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number"> 39</span>                    name = data[0]
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number"> 39</span>            total_with_tax = self.calculate_total_value()<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number"> 40</span>                    price = float(data[1])
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number"> 40</span>            total_without_tax = self.price * self.quantity<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number"> 41</span>                    quantity = int(data[2])
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number"> 41</span>            print(f"Subtotal: ${total_without_tax:.2f}")<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number"> 42</span>                    products.append(Product(name, price, quantity))
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number"> 42</span>            print(f"Total with Tax (8%): ${total_with_tax:.2f}")<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number"> 43</span>    except FileNotFoundError:
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number"> 43</span>        else:<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number"> 44</span>        print(f"Error: File {filename} not found")
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number"> 44</span>            print(f"Total Value: ${self.calculate_total_value():.2f}")<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number"> 45</span>    return products
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number"> 45</span><span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number"> 46</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number"> 46</span>    def apply_discount(self, percentage, discount_type="percentage"):<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number"> 47</span># Main execution
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number"> 47</span>        """Apply discount to product price with different discount types"""<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number"> 48</span>if __name__ == "__main__":
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number"> 48</span>        if discount_type == "percentage":<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number"> 49</span>    # Sample products
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number"> 49</span>            if 0 &lt;= percentage &lt;= 100:<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number"> 50</span>    products = [
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number"> 50</span>                self.price = self.price * (1 - percentage/100)<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number"> 51</span>        Product("Laptop", 999.99, 5),
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number"> 51</span>                return True<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number"> 52</span>        Product("Mouse", 25.50, 10),
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number"> 52</span>        elif discount_type == "fixed":<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number"> 53</span>        Product("Keyboard", 75.00, 8)
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number"> 53</span>            if 0 &lt;= percentage &lt;= self.price:<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number"> 54</span>    ]
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number"> 54</span>                self.price -= percentage<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number"> 55</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number"> 55</span>                return True<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number"> 56</span>    print("=== PRODUCT INVENTORY ===")
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number"> 56</span>        return False<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number"> 57</span>    for product in products:
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number"> 57</span><span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number"> 58</span>        product.display_info()
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number"> 58</span>    def restock(self, additional_quantity):<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number"> 59</span>        print("-" * 20)
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number"> 59</span>        """Add more quantity to existing product"""<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number"> 60</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number"> 60</span>        if additional_quantity &gt; 0:<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number"> 61</span>"""
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number"> 61</span>            self.quantity += additional_quantity<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number"> 62</span>2025-10-04_1355hr_46sec
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number"> 62</span>            return True<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number"> 63</span>"""
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number"> 63</span>        return False<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-unchanged">
+                    <span class="line-number"> 64</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-unchanged">
+                    <span class="line-number"> 64</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number"> 65</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number"> 65</span>    def is_low_stock(self, threshold=5):<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number"> 66</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number"> 66</span>        """Check if product is running low on stock"""<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number"> 67</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number"> 67</span>        return self.quantity &lt; threshold<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-unchanged">
+                    <span class="line-number"> 68</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-unchanged">
+                    <span class="line-number"> 68</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number"> 69</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number"> 69</span>def load_products_from_file(filename):<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number"> 70</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number"> 70</span>    """Load products from CSV file with enhanced error handling"""<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number"> 71</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number"> 71</span>    products = []<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number"> 72</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number"> 72</span>    try:<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number"> 73</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number"> 73</span>        with open(filename, 'r') as file:<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number"> 74</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number"> 74</span>            headers = file.readline().strip().split(',')<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number"> 75</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number"> 75</span>            for line_num, line in enumerate(file, 2):<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number"> 76</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number"> 76</span>                data = line.strip().split(',')<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number"> 77</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number"> 77</span>                if len(data) &gt;= 3:<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number"> 78</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number"> 78</span>                    name = data[0].strip()<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number"> 79</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number"> 79</span>                    price = float(data[1])<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number"> 80</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number"> 80</span>                    quantity = int(data[2])<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number"> 81</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number"> 81</span>                    category = data[3].strip() if len(data) &gt; 3 else "General"<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number"> 82</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number"> 82</span>                    sku = data[4].strip() if len(data) &gt; 4 else None<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-unchanged">
+                    <span class="line-number"> 83</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-unchanged">
+                    <span class="line-number"> 83</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number"> 84</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number"> 84</span>                    products.append(Product(name, price, quantity, category, sku))<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number"> 85</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number"> 85</span>                else:<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number"> 86</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number"> 86</span>                    print(f"Warning: Invalid data on line {line_num}")<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-unchanged">
+                    <span class="line-number"> 87</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-unchanged">
+                    <span class="line-number"> 87</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number"> 88</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number"> 88</span>    except FileNotFoundError:<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number"> 89</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number"> 89</span>        print(f"Error: File {filename} not found")<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number"> 90</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number"> 90</span>    except ValueError as e:<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number"> 91</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number"> 91</span>        print(f"Error: Invalid data format - {e}")<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number"> 92</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number"> 92</span>    except Exception as e:<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number"> 93</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number"> 93</span>        print(f"Unexpected error: {e}")<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-unchanged">
+                    <span class="line-number"> 94</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-unchanged">
+                    <span class="line-number"> 94</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number"> 95</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number"> 95</span>    return products<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-unchanged">
+                    <span class="line-number"> 96</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-unchanged">
+                    <span class="line-number"> 96</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number"> 97</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number"> 97</span>def generate_inventory_report(products):<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number"> 98</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number"> 98</span>    """Generate a comprehensive inventory report"""<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number"> 99</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number"> 99</span>    total_value = sum(p.calculate_total_value() for p in products)<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number">100</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number">100</span>    low_stock_items = [p for p in products if p.is_low_stock()]<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-unchanged">
+                    <span class="line-number">101</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-unchanged">
+                    <span class="line-number">101</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number">102</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number">102</span>    print("=== ENHANCED PRODUCT INVENTORY REPORT ===")<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number">103</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number">103</span>    print(f"Total Products: {len(products)}")<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number">104</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number">104</span>    print(f"Total Inventory Value: ${total_value:.2f}")<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number">105</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number">105</span>    print(f"Low Stock Items: {len(low_stock_items)}")<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number">106</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number">106</span>    print("\n" + "=" * 50)<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-unchanged">
+                    <span class="line-number">107</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-unchanged">
+                    <span class="line-number">107</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number">108</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number">108</span>    for product in products:<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number">109</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number">109</span>        low_stock_indicator = " [LOW STOCK]" if product.is_low_stock() else ""<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number">110</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number">110</span>        print(f"{product.name}{low_stock_indicator}")<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number">111</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number">111</span>        product.display_info(include_tax=True)<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number">112</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number">112</span>        print("-" * 30)<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-unchanged">
+                    <span class="line-number">113</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-unchanged">
+                    <span class="line-number">113</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number">114</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number">114</span># Main execution<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number">115</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number">115</span>if __name__ == "__main__":<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number">116</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number">116</span>    # Sample products with enhanced features<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number">117</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number">117</span>    products = [<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number">118</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number">118</span>        Product("Laptop", 999.99, 5, "Electronics", "SKU-LTP-001"),<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number">119</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number">119</span>        Product("Wireless Mouse", 25.50, 2, "Electronics"),<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number">120</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number">120</span>        Product("Mechanical Keyboard", 75.00, 8, "Electronics", "SKU-KBD-002"),<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number">121</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number">121</span>        Product("Desk Lamp", 45.00, 15, "Home Goods")<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number">122</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number">122</span>    ]<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-unchanged">
+                    <span class="line-number">123</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-unchanged">
+                    <span class="line-number">123</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number">124</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number">124</span>    generate_inventory_report(products)<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-unchanged">
+                    <span class="line-number">125</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-unchanged">
+                    <span class="line-number">125</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number">126</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number">126</span>    # Demonstrate new features<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number">127</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number">127</span>    print("\n=== DEMONSTRATING NEW FEATURES ===")<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number">128</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number">128</span>    sample_product = products[1]<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number">129</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number">129</span>    print(f"Before discount: ${sample_product.price:.2f}")<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number">130</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number">130</span>    sample_product.apply_discount(10)  # 10% discount<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number">131</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number">131</span>    print(f"After 10% discount: ${sample_product.price:.2f}")<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-unchanged">
+                    <span class="line-number">132</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-unchanged">
+                    <span class="line-number">132</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number">133</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number">133</span>    sample_product.restock(10)<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number">134</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number">134</span>    print(f"After restocking: {sample_product.quantity} units")<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-unchanged">
+                    <span class="line-number">135</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-unchanged">
+                    <span class="line-number">135</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number">136</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number">136</span>"""<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number">137</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number">137</span># Basic diff<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number">138</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number">138</span>git diff --no-index ./files/product_old.py ./files/product_new.py<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-unchanged">
+                    <span class="line-number">139</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-unchanged">
+                    <span class="line-number">139</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number">140</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number">140</span># Side-by-side diff<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number">141</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number">141</span>git diff --word-diff --no-index ./files/product_old.py ./files/product_new.py<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-unchanged">
+                    <span class="line-number">142</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-unchanged">
+                    <span class="line-number">142</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number">143</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number">143</span># Colored diff with context<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number">144</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number">144</span>git diff --color --unified=10 ./files/product_old.py ./files/product_new.py<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-unchanged">
+                    <span class="line-number">145</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-unchanged">
+                    <span class="line-number">145</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number">146</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number">146</span># See only the method signatures that changed<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number">147</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number">147</span>git diff --no-index -G  "def " ./files/product_old.py ./files/product_new.py<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-unchanged">
+                    <span class="line-number">148</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-unchanged">
+                    <span class="line-number">148</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number">149</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number">149</span># to quit<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number">150</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number">150</span>[esc] wq<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            <tr>
+                <td class="line-changed-old">
+                    <span class="line-number">151</span>
+                </td>
+                <td class="separator">|</td>
+                <td class="line-changed-new">
+                    <span class="line-number">151</span>"""<span class="change-marker">◄►</span>
+                </td>
+            </tr>
+        
+            </tbody>
+        </table>
+        <div class="footer">
+            Generated by Git Diff Viewer | 🔴 Red background = removed/changed | 🟢 Green background = added/changed | ◄► = modified line
+        </div>
+    </div>
+</body>
+</html>
+    
