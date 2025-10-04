@@ -1,5 +1,4 @@
-use 
-
+To compare 2 files remotely, point to 2 files and run the program, and view with: 
 http://htmlpreview.github.io/
 
 to view:
