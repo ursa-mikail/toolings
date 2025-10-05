@@ -1,0 +1,1351 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colorful Diff Viewer</title>
+    <style>
+        body {
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 14px;
+            line-height: 1.4;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .diff-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 28px;
+            font-weight: 300;
+        }
+        
+        .header .subtitle {
+            opacity: 0.8;
+            margin-top: 8px;
+        }
+        
+        .file-info {
+            background: #ecf0f1;
+            padding: 15px 25px;
+            border-bottom: 1px solid #bdc3c7;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .file-original {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+        
+        .file-modified {
+            color: #27ae60;
+            font-weight: bold;
+        }
+        
+        .timestamp {
+            color: #7f8c8d;
+            font-size: 12px;
+        }
+        
+        .diff-content {
+            padding: 0;
+        }
+        
+        .diff-line {
+            display: flex;
+            padding: 4px 8px;
+            border-bottom: 1px solid #ecf0f1;
+            transition: all 0.2s ease;
+        }
+        
+        .diff-line:hover {
+            background: #f8f9fa;
+            transform: translateX(5px);
+        }
+        
+        .line-number {
+            min-width: 60px;
+            text-align: right;
+            padding-right: 15px;
+            color: #95a5a6;
+            font-size: 12px;
+            border-right: 1px solid #ecf0f1;
+            user-select: none;
+        }
+        
+        .line-content {
+            flex: 1;
+            padding-left: 15px;
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+        
+        /* Line type styles */
+        .header-line {
+            background: #34495e;
+            color: #ecf0f1;
+            font-weight: bold;
+            padding: 10px 25px;
+        }
+        
+        .hunk-header {
+            background: #fff3cd;
+            color: #856404;
+            font-weight: bold;
+            padding: 8px 25px;
+            border-left: 4px solid #ffc107;
+        }
+        
+        .removed {
+            background: #ffeaea;
+            color: #c0392b;
+            border-left: 4px solid #e74c3c;
+        }
+        
+        .added {
+            background: #e8f5e8;
+            color: #27ae60;
+            border-left: 4px solid #2ecc71;
+        }
+        
+        .context {
+            background: #f8f9fa;
+            color: #2c3e50;
+            border-left: 4px solid #bdc3c7;
+        }
+        
+        .metadata {
+            background: #d6eaf8;
+            color: #2874a6;
+            padding: 8px 25px;
+            border-left: 4px solid #3498db;
+        }
+        
+        .statistics {
+            background: #2c3e50;
+            color: white;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 10px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 15px;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.1);
+        }
+        
+        .stat-number {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .additions { color: #2ecc71; }
+        .deletions { color: #e74c3c; }
+        .hunks { color: #f39c12; }
+        .net-change { color: #3498db; }
+        
+        .legend {
+            background: #ecf0f1;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 10px;
+        }
+        
+        .legend-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px;
+            border-radius: 5px;
+            background: white;
+        }
+        
+        .color-swatch {
+            width: 20px;
+            height: 20px;
+            border-radius: 3px;
+            border: 2px solid #bdc3c7;
+        }
+        
+        .swatch-removed { background: #ffeaea; border-color: #e74c3c; }
+        .swatch-added { background: #e8f5e8; border-color: #27ae60; }
+        .swatch-context { background: #f8f9fa; border-color: #bdc3c7; }
+        .swatch-hunk { background: #fff3cd; border-color: #ffc107; }
+        .swatch-header { background: #34495e; border-color: #2c3e50; }
+    </style>
+</head>
+<body>
+    <div class="diff-container">
+        <div class="header">
+            <h1>🎨 Colorful Diff Viewer</h1>
+            <div class="subtitle">Visual comparison of file differences</div>
+        </div>
+        
+        <div class="file-info">
+            <div>
+                <span class="file-original">Original: product_old.py</span> | 
+                <span class="file-modified">Modified: product_new.py</span>
+            </div>
+            <div class="timestamp">Generated: 2025-10-05 01:34:16</div>
+        </div>
+        
+        <div class="diff-content">
+            <div class="diff-line header-line">📁 --- file1</div>
+<div class="diff-line header-line">📁 +++ file2</div>
+<div class="diff-line hunk-header">🔧 @@ -1,63 +1,151 @@</div>
+
+                <div class="diff-line context">
+                    <div class="line-number">1</div>
+                    <div class="line-content">   #!/usr/bin/env python3</div>
+                </div>
+            
+
+                <div class="diff-line context">
+                    <div class="line-number">2</div>
+                    <div class="line-content">   &quot;&quot;&quot;</div>
+                </div>
+            
+
+                <div class="diff-line removed">
+                    <div class="line-number">3</div>
+                    <div class="line-content">➖ -Product Management System - Old Version</div>
+                </div>
+            
+
+                <div class="diff-line removed">
+                    <div class="line-number">4</div>
+                    <div class="line-content">➖ -Handles basic product operations</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">3</div>
+                    <div class="line-content">➕ +Product Management System - Enhanced Version</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">4</div>
+                    <div class="line-content">➕ +Handles product operations with additional features and validation</div>
+                </div>
+            
+
+                <div class="diff-line context">
+                    <div class="line-number">5</div>
+                    <div class="line-content">   &quot;&quot;&quot;</div>
+                </div>
+            
+
+                <div class="diff-line context">
+                    <div class="line-number">6</div>
+                    <div class="line-content">   </div>
+                </div>
+            
+
+                <div class="diff-line context">
+                    <div class="line-number">7</div>
+                    <div class="line-content">   class Product:</div>
+                </div>
+            
+
+                <div class="diff-line removed">
+                    <div class="line-number">8</div>
+                    <div class="line-content">➖ -    def __init__(self, name, price, quantity):</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">8</div>
+                    <div class="line-content">➕ +    def __init__(self, name, price, quantity, category=&quot;General&quot;, sku=None):</div>
+                </div>
+            
+
+                <div class="diff-line context">
+                    <div class="line-number">9</div>
+                    <div class="line-content">           self.name = name</div>
+                </div>
+            
+
+                <div class="diff-line context">
+                    <div class="line-number">10</div>
+                    <div class="line-content">           self.price = price</div>
+                </div>
+            
+
+                <div class="diff-line context">
+                    <div class="line-number">11</div>
+                    <div class="line-content">           self.quantity = quantity</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">12</div>
+                    <div class="line-content">➕ +        self.category = category</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">13</div>
+                    <div class="line-content">➕ +        self.sku = sku or f&quot;SKU-{name.upper().replace(&#39; &#39;, &#39;-&#39;)}&quot;</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">14</div>
+                    <div class="line-content">➕ +        self._validate_attributes()</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">15</div>
+                    <div class="line-content">➕ +    </div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">16</div>
+                    <div class="line-content">➕ +    def _validate_attributes(self):</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">17</div>
+                    <div class="line-content">➕ +        &quot;&quot;&quot;Validate product attributes&quot;&quot;&quot;</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">18</div>
+                    <div class="line-content">➕ +        if self.price &lt; 0:</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">19</div>
+                    <div class="line-content">➕ +            raise ValueError(&quot;Price cannot be negative&quot;)</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">20</div>
+                    <div class="line-content">➕ +        if self.quantity &lt; 0:</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">21</div>
+                    <div class="line-content">➕ +            raise ValueError(&quot;Quantity cannot be negative&quot;)</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">22</div>
+                    <div class="line-content">➕ +        if not self.name.strip():</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">23</div>
+                    <div class="line-content">➕ +            raise ValueError(&quot;Product name cannot be empty&quot;)</div>
+                </div>
+            
+
+                <div class="diff-line context">
+                    <div class="line-number">12</div>
+                    <div class="line-content">       </div>
+                </div>
+            
+
+                <div class="diff-line context">
+                    <div class="line-number">13</div>
+                    <div class="line-content">       def calculate_total_value(self):</div>
+                </div>
+            
+
+                <div class="diff-line removed">
+                    <div class="line-number">14</div>
+                    <div class="line-content">➖ -        &quot;&quot;&quot;Calculate total value of product inventory&quot;&quot;&quot;</div>
+                </div>
+            
+
+                <div class="diff-line removed">
+                    <div class="line-number">15</div>
+                    <div class="line-content">➖ -        return self.price * self.quantity</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">26</div>
+                    <div class="line-content">➕ +        &quot;&quot;&quot;Calculate total value of product inventory with tax consideration&quot;&quot;&quot;</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">27</div>
+                    <div class="line-content">➕ +        BASE_TAX_RATE = 1.08  # 8% tax</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">28</div>
+                    <div class="line-content">➕ +        return self.price * self.quantity * BASE_TAX_RATE</div>
+                </div>
+            
+
+                <div class="diff-line context">
+                    <div class="line-number">16</div>
+                    <div class="line-content">       </div>
+                </div>
+            
+
+                <div class="diff-line removed">
+                    <div class="line-number">17</div>
+                    <div class="line-content">➖ -    def display_info(self):</div>
+                </div>
+            
+
+                <div class="diff-line removed">
+                    <div class="line-number">18</div>
+                    <div class="line-content">➖ -        &quot;&quot;&quot;Display product information&quot;&quot;&quot;</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">30</div>
+                    <div class="line-content">➕ +    def display_info(self, include_tax=False):</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">31</div>
+                    <div class="line-content">➕ +        &quot;&quot;&quot;Display product information with optional tax details&quot;&quot;&quot;</div>
+                </div>
+            
+
+                <div class="diff-line context">
+                    <div class="line-number">19</div>
+                    <div class="line-content">           print(f&quot;Product: {self.name}&quot;)</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">33</div>
+                    <div class="line-content">➕ +        print(f&quot;SKU: {self.sku}&quot;)</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">34</div>
+                    <div class="line-content">➕ +        print(f&quot;Category: {self.category}&quot;)</div>
+                </div>
+            
+
+                <div class="diff-line context">
+                    <div class="line-number">20</div>
+                    <div class="line-content">           print(f&quot;Price: ${self.price:.2f}&quot;)</div>
+                </div>
+            
+
+                <div class="diff-line context">
+                    <div class="line-number">21</div>
+                    <div class="line-content">           print(f&quot;Quantity: {self.quantity}&quot;)</div>
+                </div>
+            
+
+                <div class="diff-line removed">
+                    <div class="line-number">22</div>
+                    <div class="line-content">➖ -        print(f&quot;Total Value: ${self.calculate_total_value():.2f}&quot;)</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">37</div>
+                    <div class="line-content">➕ +        </div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">38</div>
+                    <div class="line-content">➕ +        if include_tax:</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">39</div>
+                    <div class="line-content">➕ +            total_with_tax = self.calculate_total_value()</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">40</div>
+                    <div class="line-content">➕ +            total_without_tax = self.price * self.quantity</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">41</div>
+                    <div class="line-content">➕ +            print(f&quot;Subtotal: ${total_without_tax:.2f}&quot;)</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">42</div>
+                    <div class="line-content">➕ +            print(f&quot;Total with Tax (8%): ${total_with_tax:.2f}&quot;)</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">43</div>
+                    <div class="line-content">➕ +        else:</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">44</div>
+                    <div class="line-content">➕ +            print(f&quot;Total Value: ${self.calculate_total_value():.2f}&quot;)</div>
+                </div>
+            
+
+                <div class="diff-line context">
+                    <div class="line-number">23</div>
+                    <div class="line-content">       </div>
+                </div>
+            
+
+                <div class="diff-line removed">
+                    <div class="line-number">24</div>
+                    <div class="line-content">➖ -    def apply_discount(self, percentage):</div>
+                </div>
+            
+
+                <div class="diff-line removed">
+                    <div class="line-number">25</div>
+                    <div class="line-content">➖ -        &quot;&quot;&quot;Apply discount to product price&quot;&quot;&quot;</div>
+                </div>
+            
+
+                <div class="diff-line removed">
+                    <div class="line-number">26</div>
+                    <div class="line-content">➖ -        if 0 &lt;= percentage &lt;= 100:</div>
+                </div>
+            
+
+                <div class="diff-line removed">
+                    <div class="line-number">27</div>
+                    <div class="line-content">➖ -            self.price = self.price * (1 - percentage/100)</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">46</div>
+                    <div class="line-content">➕ +    def apply_discount(self, percentage, discount_type=&quot;percentage&quot;):</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">47</div>
+                    <div class="line-content">➕ +        &quot;&quot;&quot;Apply discount to product price with different discount types&quot;&quot;&quot;</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">48</div>
+                    <div class="line-content">➕ +        if discount_type == &quot;percentage&quot;:</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">49</div>
+                    <div class="line-content">➕ +            if 0 &lt;= percentage &lt;= 100:</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">50</div>
+                    <div class="line-content">➕ +                self.price = self.price * (1 - percentage/100)</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">51</div>
+                    <div class="line-content">➕ +                return True</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">52</div>
+                    <div class="line-content">➕ +        elif discount_type == &quot;fixed&quot;:</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">53</div>
+                    <div class="line-content">➕ +            if 0 &lt;= percentage &lt;= self.price:</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">54</div>
+                    <div class="line-content">➕ +                self.price -= percentage</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">55</div>
+                    <div class="line-content">➕ +                return True</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">56</div>
+                    <div class="line-content">➕ +        return False</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">57</div>
+                    <div class="line-content">➕ +    </div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">58</div>
+                    <div class="line-content">➕ +    def restock(self, additional_quantity):</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">59</div>
+                    <div class="line-content">➕ +        &quot;&quot;&quot;Add more quantity to existing product&quot;&quot;&quot;</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">60</div>
+                    <div class="line-content">➕ +        if additional_quantity &gt; 0:</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">61</div>
+                    <div class="line-content">➕ +            self.quantity += additional_quantity</div>
+                </div>
+            
+
+                <div class="diff-line context">
+                    <div class="line-number">28</div>
+                    <div class="line-content">               return True</div>
+                </div>
+            
+
+                <div class="diff-line context">
+                    <div class="line-number">29</div>
+                    <div class="line-content">           return False</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">64</div>
+                    <div class="line-content">➕ +    </div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">65</div>
+                    <div class="line-content">➕ +    def is_low_stock(self, threshold=5):</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">66</div>
+                    <div class="line-content">➕ +        &quot;&quot;&quot;Check if product is running low on stock&quot;&quot;&quot;</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">67</div>
+                    <div class="line-content">➕ +        return self.quantity &lt; threshold</div>
+                </div>
+            
+
+                <div class="diff-line context">
+                    <div class="line-number">30</div>
+                    <div class="line-content">   </div>
+                </div>
+            
+
+                <div class="diff-line context">
+                    <div class="line-number">31</div>
+                    <div class="line-content">   def load_products_from_file(filename):</div>
+                </div>
+            
+
+                <div class="diff-line removed">
+                    <div class="line-number">32</div>
+                    <div class="line-content">➖ -    &quot;&quot;&quot;Load products from text file&quot;&quot;&quot;</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">70</div>
+                    <div class="line-content">➕ +    &quot;&quot;&quot;Load products from CSV file with enhanced error handling&quot;&quot;&quot;</div>
+                </div>
+            
+
+                <div class="diff-line context">
+                    <div class="line-number">33</div>
+                    <div class="line-content">       products = []</div>
+                </div>
+            
+
+                <div class="diff-line context">
+                    <div class="line-number">34</div>
+                    <div class="line-content">       try:</div>
+                </div>
+            
+
+                <div class="diff-line context">
+                    <div class="line-number">35</div>
+                    <div class="line-content">           with open(filename, &#39;r&#39;) as file:</div>
+                </div>
+            
+
+                <div class="diff-line removed">
+                    <div class="line-number">36</div>
+                    <div class="line-content">➖ -            for line in file:</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">74</div>
+                    <div class="line-content">➕ +            headers = file.readline().strip().split(&#39;,&#39;)</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">75</div>
+                    <div class="line-content">➕ +            for line_num, line in enumerate(file, 2):</div>
+                </div>
+            
+
+                <div class="diff-line context">
+                    <div class="line-number">37</div>
+                    <div class="line-content">                   data = line.strip().split(&#39;,&#39;)</div>
+                </div>
+            
+
+                <div class="diff-line removed">
+                    <div class="line-number">38</div>
+                    <div class="line-content">➖ -                if len(data) == 3:</div>
+                </div>
+            
+
+                <div class="diff-line removed">
+                    <div class="line-number">39</div>
+                    <div class="line-content">➖ -                    name = data[0]</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">77</div>
+                    <div class="line-content">➕ +                if len(data) &gt;= 3:</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">78</div>
+                    <div class="line-content">➕ +                    name = data[0].strip()</div>
+                </div>
+            
+
+                <div class="diff-line context">
+                    <div class="line-number">40</div>
+                    <div class="line-content">                       price = float(data[1])</div>
+                </div>
+            
+
+                <div class="diff-line context">
+                    <div class="line-number">41</div>
+                    <div class="line-content">                       quantity = int(data[2])</div>
+                </div>
+            
+
+                <div class="diff-line removed">
+                    <div class="line-number">42</div>
+                    <div class="line-content">➖ -                    products.append(Product(name, price, quantity))</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">81</div>
+                    <div class="line-content">➕ +                    category = data[3].strip() if len(data) &gt; 3 else &quot;General&quot;</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">82</div>
+                    <div class="line-content">➕ +                    sku = data[4].strip() if len(data) &gt; 4 else None</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">83</div>
+                    <div class="line-content">➕ +                    </div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">84</div>
+                    <div class="line-content">➕ +                    products.append(Product(name, price, quantity, category, sku))</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">85</div>
+                    <div class="line-content">➕ +                else:</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">86</div>
+                    <div class="line-content">➕ +                    print(f&quot;Warning: Invalid data on line {line_num}&quot;)</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">87</div>
+                    <div class="line-content">➕ +    </div>
+                </div>
+            
+
+                <div class="diff-line context">
+                    <div class="line-number">43</div>
+                    <div class="line-content">       except FileNotFoundError:</div>
+                </div>
+            
+
+                <div class="diff-line context">
+                    <div class="line-number">44</div>
+                    <div class="line-content">           print(f&quot;Error: File {filename} not found&quot;)</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">90</div>
+                    <div class="line-content">➕ +    except ValueError as e:</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">91</div>
+                    <div class="line-content">➕ +        print(f&quot;Error: Invalid data format - {e}&quot;)</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">92</div>
+                    <div class="line-content">➕ +    except Exception as e:</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">93</div>
+                    <div class="line-content">➕ +        print(f&quot;Unexpected error: {e}&quot;)</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">94</div>
+                    <div class="line-content">➕ +    </div>
+                </div>
+            
+
+                <div class="diff-line context">
+                    <div class="line-number">45</div>
+                    <div class="line-content">       return products</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">96</div>
+                    <div class="line-content">➕ +</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">97</div>
+                    <div class="line-content">➕ +def generate_inventory_report(products):</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">98</div>
+                    <div class="line-content">➕ +    &quot;&quot;&quot;Generate a comprehensive inventory report&quot;&quot;&quot;</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">99</div>
+                    <div class="line-content">➕ +    total_value = sum(p.calculate_total_value() for p in products)</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">100</div>
+                    <div class="line-content">➕ +    low_stock_items = [p for p in products if p.is_low_stock()]</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">101</div>
+                    <div class="line-content">➕ +    </div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">102</div>
+                    <div class="line-content">➕ +    print(&quot;=== ENHANCED PRODUCT INVENTORY REPORT ===&quot;)</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">103</div>
+                    <div class="line-content">➕ +    print(f&quot;Total Products: {len(products)}&quot;)</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">104</div>
+                    <div class="line-content">➕ +    print(f&quot;Total Inventory Value: ${total_value:.2f}&quot;)</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">105</div>
+                    <div class="line-content">➕ +    print(f&quot;Low Stock Items: {len(low_stock_items)}&quot;)</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">106</div>
+                    <div class="line-content">➕ +    print(&quot;\n&quot; + &quot;=&quot; * 50)</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">107</div>
+                    <div class="line-content">➕ +    </div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">108</div>
+                    <div class="line-content">➕ +    for product in products:</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">109</div>
+                    <div class="line-content">➕ +        low_stock_indicator = &quot; [LOW STOCK]&quot; if product.is_low_stock() else &quot;&quot;</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">110</div>
+                    <div class="line-content">➕ +        print(f&quot;{product.name}{low_stock_indicator}&quot;)</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">111</div>
+                    <div class="line-content">➕ +        product.display_info(include_tax=True)</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">112</div>
+                    <div class="line-content">➕ +        print(&quot;-&quot; * 30)</div>
+                </div>
+            
+
+                <div class="diff-line context">
+                    <div class="line-number">46</div>
+                    <div class="line-content">   </div>
+                </div>
+            
+
+                <div class="diff-line context">
+                    <div class="line-number">47</div>
+                    <div class="line-content">   # Main execution</div>
+                </div>
+            
+
+                <div class="diff-line context">
+                    <div class="line-number">48</div>
+                    <div class="line-content">   if __name__ == &quot;__main__&quot;:</div>
+                </div>
+            
+
+                <div class="diff-line removed">
+                    <div class="line-number">49</div>
+                    <div class="line-content">➖ -    # Sample products</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">116</div>
+                    <div class="line-content">➕ +    # Sample products with enhanced features</div>
+                </div>
+            
+
+                <div class="diff-line context">
+                    <div class="line-number">50</div>
+                    <div class="line-content">       products = [</div>
+                </div>
+            
+
+                <div class="diff-line removed">
+                    <div class="line-number">51</div>
+                    <div class="line-content">➖ -        Product(&quot;Laptop&quot;, 999.99, 5),</div>
+                </div>
+            
+
+                <div class="diff-line removed">
+                    <div class="line-number">52</div>
+                    <div class="line-content">➖ -        Product(&quot;Mouse&quot;, 25.50, 10),</div>
+                </div>
+            
+
+                <div class="diff-line removed">
+                    <div class="line-number">53</div>
+                    <div class="line-content">➖ -        Product(&quot;Keyboard&quot;, 75.00, 8)</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">118</div>
+                    <div class="line-content">➕ +        Product(&quot;Laptop&quot;, 999.99, 5, &quot;Electronics&quot;, &quot;SKU-LTP-001&quot;),</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">119</div>
+                    <div class="line-content">➕ +        Product(&quot;Wireless Mouse&quot;, 25.50, 2, &quot;Electronics&quot;),</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">120</div>
+                    <div class="line-content">➕ +        Product(&quot;Mechanical Keyboard&quot;, 75.00, 8, &quot;Electronics&quot;, &quot;SKU-KBD-002&quot;),</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">121</div>
+                    <div class="line-content">➕ +        Product(&quot;Desk Lamp&quot;, 45.00, 15, &quot;Home Goods&quot;)</div>
+                </div>
+            
+
+                <div class="diff-line context">
+                    <div class="line-number">54</div>
+                    <div class="line-content">       ]</div>
+                </div>
+            
+
+                <div class="diff-line context">
+                    <div class="line-number">55</div>
+                    <div class="line-content">       </div>
+                </div>
+            
+
+                <div class="diff-line removed">
+                    <div class="line-number">56</div>
+                    <div class="line-content">➖ -    print(&quot;=== PRODUCT INVENTORY ===&quot;)</div>
+                </div>
+            
+
+                <div class="diff-line removed">
+                    <div class="line-number">57</div>
+                    <div class="line-content">➖ -    for product in products:</div>
+                </div>
+            
+
+                <div class="diff-line removed">
+                    <div class="line-number">58</div>
+                    <div class="line-content">➖ -        product.display_info()</div>
+                </div>
+            
+
+                <div class="diff-line removed">
+                    <div class="line-number">59</div>
+                    <div class="line-content">➖ -        print(&quot;-&quot; * 20)</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">124</div>
+                    <div class="line-content">➕ +    generate_inventory_report(products)</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">125</div>
+                    <div class="line-content">➕ +    </div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">126</div>
+                    <div class="line-content">➕ +    # Demonstrate new features</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">127</div>
+                    <div class="line-content">➕ +    print(&quot;\n=== DEMONSTRATING NEW FEATURES ===&quot;)</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">128</div>
+                    <div class="line-content">➕ +    sample_product = products[1]</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">129</div>
+                    <div class="line-content">➕ +    print(f&quot;Before discount: ${sample_product.price:.2f}&quot;)</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">130</div>
+                    <div class="line-content">➕ +    sample_product.apply_discount(10)  # 10% discount</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">131</div>
+                    <div class="line-content">➕ +    print(f&quot;After 10% discount: ${sample_product.price:.2f}&quot;)</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">132</div>
+                    <div class="line-content">➕ +    </div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">133</div>
+                    <div class="line-content">➕ +    sample_product.restock(10)</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">134</div>
+                    <div class="line-content">➕ +    print(f&quot;After restocking: {sample_product.quantity} units&quot;)</div>
+                </div>
+            
+
+                <div class="diff-line context">
+                    <div class="line-number">60</div>
+                    <div class="line-content">   </div>
+                </div>
+            
+
+                <div class="diff-line context">
+                    <div class="line-number">61</div>
+                    <div class="line-content">   &quot;&quot;&quot;</div>
+                </div>
+            
+
+                <div class="diff-line removed">
+                    <div class="line-number">62</div>
+                    <div class="line-content">➖ -2025-10-04_1355hr_46sec</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">137</div>
+                    <div class="line-content">➕ +# Basic diff</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">138</div>
+                    <div class="line-content">➕ +git diff --no-index ./files/product_old.py ./files/product_new.py</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">139</div>
+                    <div class="line-content">➕ +</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">140</div>
+                    <div class="line-content">➕ +# Side-by-side diff</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">141</div>
+                    <div class="line-content">➕ +git diff --word-diff --no-index ./files/product_old.py ./files/product_new.py</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">142</div>
+                    <div class="line-content">➕ +</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">143</div>
+                    <div class="line-content">➕ +# Colored diff with context</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">144</div>
+                    <div class="line-content">➕ +git diff --color --unified=10 ./files/product_old.py ./files/product_new.py</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">145</div>
+                    <div class="line-content">➕ +</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">146</div>
+                    <div class="line-content">➕ +# See only the method signatures that changed</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">147</div>
+                    <div class="line-content">➕ +git diff --no-index -G  &quot;def &quot; ./files/product_old.py ./files/product_new.py</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">148</div>
+                    <div class="line-content">➕ +</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">149</div>
+                    <div class="line-content">➕ +# to quit</div>
+                </div>
+            
+
+                <div class="diff-line added">
+                    <div class="line-number">150</div>
+                    <div class="line-content">➕ +[esc] wq </div>
+                </div>
+            
+
+                <div class="diff-line context">
+                    <div class="line-number">63</div>
+                    <div class="line-content">   &quot;&quot;&quot;</div>
+                </div>
+            
+        </div>
+        
+        
+    <div class="statistics">
+        <h3>📊 Diff Statistics</h3>
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-number additions">+114</div>
+                <div>Additions</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number deletions">-26</div>
+                <div>Deletions</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number hunks">1</div>
+                <div>Hunks</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number net-change">+88</div>
+                <div>Net Change</div>
+            </div>
+        </div>
+    </div>
+    
+        
+    <div class="legend">
+        <h3>📖 Color Legend</h3>
+        <div class="legend-grid">
+            <div class="legend-item">
+                <div class="color-swatch swatch-removed"></div>
+                <div><strong>Red</strong> - Removed lines</div>
+            </div>
+            <div class="legend-item">
+                <div class="color-swatch swatch-added"></div>
+                <div><strong>Green</strong> - Added lines</div>
+            </div>
+            <div class="legend-item">
+                <div class="color-swatch swatch-context"></div>
+                <div><strong>Gray</strong> - Context/unchanged lines</div>
+            </div>
+            <div class="legend-item">
+                <div class="color-swatch swatch-hunk"></div>
+                <div><strong>Yellow</strong> - Hunk headers</div>
+            </div>
+            <div class="legend-item">
+                <div class="color-swatch swatch-header"></div>
+                <div><strong>Blue</strong> - File headers</div>
+            </div>
+        </div>
+    </div>
+    
+    </div>
+</body>
+</html>
+    
