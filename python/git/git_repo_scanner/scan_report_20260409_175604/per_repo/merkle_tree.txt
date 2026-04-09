@@ -1,0 +1,49 @@
+================================================================================
+  REPO       : merkle_tree
+  FULL NAME  : ursa-mikail/merkle_tree
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Python
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/merkle_tree
+  MATCHES    : 36
+================================================================================
+
+  ▸ merkle_tree.py
+      line    13  [py_import]  from cryptography.hazmat.primitives import hashes
+      line    14  [py_import]  from cryptography.hazmat.primitives.asymmetric import padding, rsa
+      line    14  [asymmetric]  from cryptography.hazmat.primitives.asymmetric import padding, rsa
+      line    15  [py_import]  from cryptography.exceptions import InvalidSignature
+      line    16  [py_import]  import hashlib
+      line    27  [symmetric]  self.original_value = original_value  # Store original value for leaf nodes
+      line    28  [symmetric]  self.is_leaf = is_leaf  # Flag to identify leaf nodes
+      line    29  [symmetric]  self.is_placeholder = is_placeholder  # Flag to identify placeholder nodes
+      line    49  [symmetric]  self.leaves = []  # Store reference to leaf nodes
+      line    53  [symmetric]  # For leaf nodes, store original value and compute hash
+      line    56  [symmetric]  # Create leaf nodes for each value
+      line    61  [symmetric]  # Ensure even number of leaf nodes by adding a placeholder if needed
+      line    73  [symmetric]  # Store reference to leaf nodes
+      line    83  [symmetric]  # For non-leaf nodes, use hash of children's values
+      line   119  [symmetric]  # starts empty for each search It allows tracking unique values seen so far. It provides a way to detect duplicates by checking if a value is already in the dictionary. Without this approach, finding duplicates would require nested loops, which would be less efficient (O(n²) instead of O(n)).
+      line   160  [symmetric]  current_level_nodes = self.leaves # list of leaves at that level
+      line   161  [symmetric]  current_idx = leaf_index          # index of the modified leaf (this will be updated for only the nodes that are affected)
+      line   163  [symmetric]  while len(current_level_nodes) > 1: # Continue until we reach the root (when only one node remains)
+      line   164  [symmetric]  next_level = []                 # store the parent nodes for the next iteration
+      line   168  [symmetric]  for i in range(0, len(current_level_nodes), 2): # take every odd leaf or node (next 2 lines: Pair up nodes (left and right children))
+      line   169  [symmetric]  left = current_level_nodes[i]
+      line   170  [symmetric]  right = current_level_nodes[i + 1] if i + 1 < len(current_level_nodes) else left  # If an odd number of nodes, duplicate the last node (i.e. left)
+      line   173  [symmetric]  if i == current_idx or i + 1 == current_idx:  # Check if the current node pair includes the modified leaf (scan the level for the index affected)
+      line   186  [symmetric]  else: # For nodes not directly affected
+      line   189  [symmetric]  next_level.append(current_level_nodes[i // 2])
+      line   196  [symmetric]  current_level_nodes = next_level
+      line   200  [symmetric]  if current_level_nodes:
+      line   201  [symmetric]  self.root = current_level_nodes[0]
+      line   214  [symmetric]  # For leaf nodes, show first 20 chars of original value
+      line   215  [symmetric]  # For non-leaf nodes, show first N chars of hash
+      line   264  [symmetric]  if not leaf_node:   # if not found, try searching on [leaf.original_value] instead of [leaf.value] (hash stored in upper nodes) as it contains 2 values
+      line   283  [symmetric]  # Collect proof nodes (siblings along the path)
+      line   567  [symmetric]  proof (list): The Merkle proof (list of sibling nodes)
+      line   747  [symmetric]  print(f"\nMerkle Proof contains {len(proof)} nodes:")
+      line   866  [symmetric]  Merkle Proof contains 2 nodes:
+
+  ▸ readme.md
+      line    23  [symmetric]  __build_tree: Builds the Merkle tree by hashing values and creating parent nodes.

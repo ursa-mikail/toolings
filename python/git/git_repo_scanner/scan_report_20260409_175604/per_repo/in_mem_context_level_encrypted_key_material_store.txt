@@ -1,0 +1,27 @@
+================================================================================
+  REPO       : in_mem_context_level_encrypted_key_material_store
+  FULL NAME  : ursa-mikail/in_mem_context_level_encrypted_key_material_store
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Go
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/in_mem_context_level_encrypted_key_material_store
+  MATCHES    : 14
+================================================================================
+
+  ▸ in_mem_context_level_encrypted_key_material_store.go
+      line     5  [symmetric]  "crypto/aes"
+      line    40  [symmetric]  // Static master key (32 bytes for AES-256)
+      line    69  [symmetric]  block, err := aes.NewCipher(key)
+      line    76  [cipher_mode]  return nil, fmt.Errorf("failed to create GCM: %w", err)
+      line   328  [symmetric]  data1 := []byte(`{"type": "encryption", "algorithm": "AES-256", "size": 256, "secret": "sensitive-data-here"}`)
+      line   335  [asymmetric]  data2 := []byte(`{"type": "signing", "algorithm": "RSA", "size": 2048, "private_key": "super-secret-key"}`)
+      line   421  [symmetric]  updatedData := []byte(`{"type": "encryption", "algorithm": "AES-256", "size": 256, "secret": "updated-data", "status": "active"}`)
+      line   475  [symmetric]  "algorithm": "AES-256",
+
+  ▸ readme.md
+      line     7  [symmetric]  This library provides a secure, in-memory storage solution for cryptographic key materials that can be locked and unlocked as a complete unit. It's designed for applications that need to:
+      line    19  [symmetric]  Encrypts everything with AES-256-GCM
+      line    19  [cipher_mode]  Encrypts everything with AES-256-GCM
+      line    72  [symmetric]  **Locked State**: All key materials are encrypted with AES-256-GCM. Only ciphertext exists in memory. No operations can access plaintext data.
+      line    72  [cipher_mode]  **Locked State**: All key materials are encrypted with AES-256-GCM. Only ciphertext exists in memory. No operations can access plaintext data.
+      line    82  [symmetric]  - Provides atomic protection: all materials locked or unlocked together

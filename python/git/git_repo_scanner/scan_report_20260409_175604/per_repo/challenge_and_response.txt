@@ -1,0 +1,44 @@
+================================================================================
+  REPO       : challenge_and_response
+  FULL NAME  : ursa-mikail/challenge_and_response
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Python
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/challenge_and_response
+  MATCHES    : 27
+================================================================================
+
+  ▸ challenge_response_using_hmac.py
+      line     3  [py_import]  import hmac
+      line     3  [kdf]  import hmac
+      line     4  [py_import]  import hashlib
+      line     8  [random]  return os.urandom(length)
+      line    11  [kdf]  return hmac.new(key, message, hashlib.sha256).digest()
+      line    14  [kdf]  return hmac.compare_digest(compute_hmac(key, message), received_hmac)
+
+  ▸ payment_simple_transaction.py
+      line     1  [py_import]  import hmac
+      line     1  [kdf]  import hmac
+      line     2  [py_import]  import hashlib
+      line     6  [random]  return os.urandom(16)
+      line     9  [kdf]  return hmac.new(user_secret_key.encode(), user_id.encode(), hashlib.sha256).hexdigest()
+      line    13  [kdf]  return hmac.new(service_secret_key.encode(), message.encode(), hashlib.sha256).hexdigest()
+      line    17  [kdf]  return hmac.new(user_secret_key.encode(), message.encode(), hashlib.sha256).hexdigest()
+      line    19  [signature]  def verify_signature(message, signature, secret_key):
+      line    20  [kdf]  expected_signature = hmac.new(secret_key.encode(), message.encode(), hashlib.sha256).hexdigest()
+      line    21  [kdf]  return hmac.compare_digest(expected_signature, signature)
+      line    46  [signature]  is_verified_by_user = verify_signature(user_id, signed_id, user_secret_key)
+      line    47  [signature]  is_verified_by_service = verify_signature(f"{user_id}:{cvv}", signed_id_and_cvv, service_secret_key)
+      line    48  [signature]  is_verified_by_merchant = verify_signature(full_message, signed_order_details, user_secret_key)
+
+  ▸ payment_simple_transaction_UML.txt
+      line     7  [kdf]  User -> Service: 1. Sign ID (details: {ID, account_ID / card_ID}) with HMAC
+      line     8  [kdf]  Service -> User: 2. Signed ID (details given in [1] + serice details, e.g. bank ID) with HMAC
+      line     9  [kdf]  User -> Merchant: 3. Order details {json with order details, i.e. item, price, location, token session ID, token provider (tokenization service), etc}, \n Signed ID, CVV, and HMAC
+      line     9  [fpe_token]  User -> Merchant: 3. Order details {json with order details, i.e. item, price, location, token session ID, token provider (tokenization service), etc}, \n Signed ID, CVV, and HMAC
+      line    21  [kdf]  1. user will offer a signed hmac of ID to a service (ID service)
+      line    22  [kdf]  2. service will sign the ID and add back id and CVV, and signed with hmac
+      line    23  [kdf]  3. user will replay that to an added detail of order to purchase item X for Y usd, and verifier ID (hmac sign)
+
+  ▸ readme.md
+      line     1  [kdf]  1. challenge_response_using_hmac.py: Simple challenge-response using hmac

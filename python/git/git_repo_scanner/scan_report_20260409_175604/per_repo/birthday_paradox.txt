@@ -1,0 +1,19 @@
+================================================================================
+  REPO       : birthday_paradox
+  FULL NAME  : ursa-mikail/birthday_paradox
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Python
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/birthday_paradox
+  MATCHES    : 8
+================================================================================
+
+  ▸ readme.md
+      line   110  [symmetric]  Exponentiating both sides:
+      line   317  [symmetric]  The combined plot includes:
+      line   347  [symmetric]  The visualization shows how the different approximation methods compare and provides insight into when each approach is most appropriate. The SHA-256 analysis demonstrates why cryptographic hash functions are considered secure against collision attacks.
+      line   351  [symmetric]  Cryptosystems based on AES like AES-GCM tend to have distinguishing advantages bounded only by
+      line   351  [cipher_mode]  Cryptosystems based on AES like AES-GCM tend to have distinguishing advantages bounded only by
+      line   425  [symmetric]  Cryptosystems using AES may have smaller limits—for example, AES-GCM with a random nonce is unsafe for more than a few billion messages under the same key, because the nonce is only 96 bits long and the security degrades catastrophically in case of collision, which is expected to happen after only a
+      line   425  [symmetric]  Cryptosystems using AES may have smaller limits—for example, AES-GCM with a random nonce is unsafe for more than a few billion messages under the same key, because the nonce is only 96 bits long and the security degrades catastrophically in case of collision, which is expected to happen after only a
+      line   425  [cipher_mode]  Cryptosystems using AES may have smaller limits—for example, AES-GCM with a random nonce is unsafe for more than a few billion messages under the same key, because the nonce is only 96 bits long and the security degrades catastrophically in case of collision, which is expected to happen after only a

@@ -1,0 +1,31 @@
+================================================================================
+  REPO       : Kharon
+  FULL NAME  : ursa-mikail/Kharon
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Python
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/Kharon
+  MATCHES    : 20
+================================================================================
+
+  ▸ Kharon.py
+      line    15  [py_import]  import secrets
+      line    17  [py_import]  from cryptography.hazmat.primitives.kdf.hkdf import HKDF
+      line    17  [kdf]  from cryptography.hazmat.primitives.kdf.hkdf import HKDF
+      line    17  [kdf]  from cryptography.hazmat.primitives.kdf.hkdf import HKDF
+      line    18  [py_import]  from cryptography.hazmat.primitives import hashes
+      line    19  [py_import]  from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+      line    19  [symmetric]  from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+      line    20  [py_import]  from cryptography.hazmat.backends import default_backend
+      line    21  [py_import]  from cryptography.exceptions import InvalidSignature
+      line    22  [py_import]  from cryptography.exceptions import InvalidTag
+      line    36  [kdf]  hkdf = HKDF(
+      line    43  [kdf]  return hkdf.derive(password.encode())
+      line    46  [random]  salt = os.urandom(16)
+      line    48  [random]  iv = os.urandom(12)
+      line    50  [symmetric]  algorithms.AES(key),
+      line    51  [symmetric]  modes.GCM(iv),
+      line    51  [cipher_mode]  modes.GCM(iv),
+      line    61  [symmetric]  algorithms.AES(key),
+      line    62  [symmetric]  modes.GCM(iv, tag),
+      line    62  [cipher_mode]  modes.GCM(iv, tag),

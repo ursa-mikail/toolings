@@ -1,0 +1,433 @@
+================================================================================
+  REPO       : openssl_pqc_tutorial
+  FULL NAME  : ursa-mikail/openssl_pqc_tutorial
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Makefile
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/openssl_pqc_tutorial
+  MATCHES    : 334
+================================================================================
+
+  ▸ C/ml_dsa/Makefile
+      line    30  [asymmetric]  # Test different ML-DSA variants
+      line    32  [asymmetric]  @echo "Testing ML-DSA variants:"
+      line    34  [asymmetric]  ./$(TARGET) mldsa44 "Test message for ML-DSA-44"
+      line    36  [asymmetric]  ./$(TARGET) mldsa65 "Test message for ML-DSA-65"
+      line    38  [asymmetric]  ./$(TARGET) mldsa87 "Test message for ML-DSA-87"
+      line    72  [asymmetric]  @echo "  test          - Test all ML-DSA variants"
+
+  ▸ C/ml_dsa_oqs_example/Makefile
+      line     1  [asymmetric]  # Makefile for ML-DSA with OpenSSL linking
+      line    42  [asymmetric]  # Test different ML-DSA variants
+      line    44  [asymmetric]  @echo "🧪 Testing ML-DSA Algorithms"
+      line   110  [asymmetric]  @echo "  test             - Test all ML-DSA variants"
+
+  ▸ C/ml_dsa_oqs_example/mldsa_example.c
+      line    55  [post_quantum]  const char* message = "This is an important document that requires post-quantum signatures!";
+      line    80  [post_quantum]  const char* tampered_message = "This is a tampered document that requires post-quantum signatures!";
+      line   127  [asymmetric]  printf("🎯 ML-DSA (Dilithium) Signature Demonstration\n");
+      line   127  [post_quantum]  printf("🎯 ML-DSA (Dilithium) Signature Demonstration\n");
+      line   140  [asymmetric]  // Test specific ML-DSA variants
+      line   143  [asymmetric]  "ML-DSA-44", "ML-DSA-65", "ML-DSA-87",
+      line   155  [asymmetric]  printf("\n💡 No ML-DSA variants found. Available algorithms:\n");
+      line   159  [asymmetric]  printf("\n✨ ML-DSA demonstration completed!\n");
+
+  ▸ C/ml_kem/Makefile
+      line    81  [post_quantum]  @openssl list -public-key-algorithms 2>/dev/null | grep -i "ml-kem\|kyber" || echo "No ML-KEM algorithms found"
+
+  ▸ C/ml_kem/mlkem_demo.c
+      line    86  [symmetric]  printf("   Shared secret could be used for AES encryption\n");
+      line   138  [symmetric]  Shared secret could be used for AES encryption
+
+  ▸ C/ml_kem_oqs_example/mlkem_example.c
+      line    95  [symmetric]  printf("   • AES-256 encryption\n");
+
+  ▸ C/sld_dsa/Makefile
+      line    30  [asymmetric]  # Test different SLH-DSA variants
+      line    32  [asymmetric]  @echo "Testing SLH-DSA variants:"
+      line    34  [asymmetric]  @for algo in "SLH-DSA-SHA2-128s" "SLH-DSA-SHA2-128f" "SLH-DSA-SHA2-192s" "SLH-DSA-SHA2-192f" "SLH-DSA-SHA2-256s" "SLH-DSA-SHA2-256f"; do \
+      line    43  [asymmetric]  ./$(TARGET) "SLH-DSA-SHA2-128f" "This is a custom test message for SLH-DSA"
+      line    72  [asymmetric]  # Check if OpenSSL supports SLH-DSA
+      line    73  [asymmetric]  check-slh-dsa:
+      line    74  [asymmetric]  @echo "Checking SLH-DSA support in OpenSSL:"
+      line    75  [asymmetric]  @openssl list -public-key-algorithms 2>/dev/null | grep -i "slh-dsa" || echo "No SLH-DSA algorithms found"
+      line    87  [asymmetric]  @echo "  test             - Test all SLH-DSA variants"
+      line    95  [asymmetric]  @echo "  check-slh-dsa    - Check if OpenSSL supports SLH-DSA"
+      line    98  [asymmetric]  .PHONY: all run test test-custom clean install-deps-macos install-deps-ubuntu debug release show-config check-slh-dsa check-sig-algorithms help
+
+  ▸ C/sld_dsa/sld_dsa_demo.c
+      line   134  [asymmetric]  printf("🚀 SLH-DSA Signature Demo\n");
+      line   141  [asymmetric]  const char *type = "SLH-DSA-SHA2-128f";
+      line   157  [asymmetric]  fprintf(stderr, "💡 Make sure you're using OQS OpenSSL with SLH-DSA support\n");
+      line   159  [asymmetric]  fprintf(stderr, "   - SLH-DSA-SHA2-128s, SLH-DSA-SHA2-128f\n");
+      line   160  [asymmetric]  fprintf(stderr, "   - SLH-DSA-SHA2-192s, SLH-DSA-SHA2-192f\n");
+      line   161  [asymmetric]  fprintf(stderr, "   - SLH-DSA-SHA2-256s, SLH-DSA-SHA2-256f\n");
+      line   171  [asymmetric]  printf("\n🎉 SLH-DSA operations completed successfully!\n");
+      line   183  [asymmetric]  🚀 SLH-DSA Signature Demo
+      line   185  [asymmetric]  Using algorithm: SLH-DSA-SHA2-128f
+      line   187  [asymmetric]  🔐 Generating keys for: SLH-DSA-SHA2-128f
+      line   193  [asymmetric]  📝 Signing message with SLH-DSA-SHA2-128f
+      line   198  [asymmetric]  🎉 SLH-DSA operations completed successfully!
+
+  ▸ C/sld_dsa/sld_dsa_demo.c.basic.txt
+      line    94  [asymmetric]  unsigned char *type="SLH-DSA-SHA2-128f";
+      line   108  [asymmetric]  Type: SLH-DSA-SHA2-128f
+
+  ▸ C/slh_dsa_oqs_example_updated/Makefile
+      line     1  [post_quantum]  # Makefile for Post-Quantum Signatures Demo
+      line    29  [asymmetric]  # Run with default algorithm (ML-DSA-44)
+      line    37  [asymmetric]  @for algo in "ML-DSA-44" "ML-DSA-65" "Falcon-512" "SPHINCS+-SHA2-128f-simple"; do \
+      line    37  [post_quantum]  @for algo in "ML-DSA-44" "ML-DSA-65" "Falcon-512" "SPHINCS+-SHA2-128f-simple"; do \
+      line    37  [post_quantum]  @for algo in "ML-DSA-44" "ML-DSA-65" "Falcon-512" "SPHINCS+-SHA2-128f-simple"; do \
+      line    44  [asymmetric]  ./$(TARGET) ML-DSA-44
+      line    47  [asymmetric]  ./$(TARGET) ML-DSA-65
+      line    50  [post_quantum]  ./$(TARGET) Falcon-512
+      line    53  [post_quantum]  ./$(TARGET) SPHINCS+-SHA2-128f-simple
+      line    67  [asymmetric]  @echo "  run              - Run with ML-DSA-44 (default)"
+      line    69  [asymmetric]  @echo "  run-mldsa44      - Run with ML-DSA-44"
+      line    70  [asymmetric]  @echo "  run-mldsa65      - Run with ML-DSA-65"
+      line    71  [post_quantum]  @echo "  run-falcon512    - Run with Falcon-512"
+      line    72  [post_quantum]  @echo "  run-sphincs128   - Run with SPHINCS+-SHA2-128f-simple"
+
+  ▸ C/slh_dsa_oqs_example_updated/basic/Makefile
+      line     1  [asymmetric]  # Makefile for SLH-DSA Demo
+      line    38  [asymmetric]  # Test different SLH-DSA variants
+      line    40  [asymmetric]  @echo "🧪 Testing SLH-DSA Algorithms"
+      line    42  [asymmetric]  @for algo in "SLH-DSA-SHA2-128f" "SLH-DSA-SHA2-128s" "SLH-DSA-SHA2-192f"; do \
+      line    54  [asymmetric]  @./$(TARGET) 2>&1 | grep -A 20 "Available SLH-DSA"
+      line    56  [asymmetric]  # Rebuild liboqs with SLH-DSA support
+      line    58  [asymmetric]  @echo "🏗️  Rebuilding liboqs with SLH-DSA support..."
+      line    62  [asymmetric]  echo "✅ liboqs rebuilt with SLH-DSA support!"
+      line    69  [asymmetric]  @echo "  test              - Test SLH-DSA variants"
+      line    72  [asymmetric]  @echo "  rebuild-liboqs    - Rebuild liboqs with SLH-DSA support"
+
+  ▸ C/slh_dsa_oqs_example_updated/basic/slh_dsa_demo.c
+      line    16  [asymmetric]  printf("📋 Available SLH-DSA (SPHINCS+) Algorithms:\n");
+      line    16  [post_quantum]  printf("📋 Available SLH-DSA (SPHINCS+) Algorithms:\n");
+      line    22  [asymmetric]  // SLH-DSA algorithm names
+      line    24  [asymmetric]  "SLH-DSA-SHA2-128f", "SLH-DSA-SHA2-128s",
+      line    25  [asymmetric]  "SLH-DSA-SHA2-192f", "SLH-DSA-SHA2-192s",
+      line    26  [asymmetric]  "SLH-DSA-SHA2-256f", "SLH-DSA-SHA2-256s",
+      line    27  [asymmetric]  "SLH-DSA-SHAKE-128f", "SLH-DSA-SHAKE-128s",
+      line    28  [asymmetric]  "SLH-DSA-SHAKE-192f", "SLH-DSA-SHAKE-192s",
+      line    29  [asymmetric]  "SLH-DSA-SHAKE-256f", "SLH-DSA-SHAKE-256s",
+      line    50  [asymmetric]  printf("\n❌ No SLH-DSA algorithms are enabled!\n");
+      line    53  [asymmetric]  printf("\n✅ %d of %d SLH-DSA algorithms enabled\n", enabled_count, count);
+      line    97  [asymmetric]  const char* message1 = "This is the first document to sign with SLH-DSA";
+      line   142  [asymmetric]  const char* tampered_message = "This is a tampered document to sign with SLH-DSA";
+      line   152  [asymmetric]  printf("\n💡 SLH-DSA Characteristics:\n");
+      line   166  [asymmetric]  printf("🎯 SLH-DSA (SPHINCS+) Signature Demonstration\n");
+      line   166  [post_quantum]  printf("🎯 SLH-DSA (SPHINCS+) Signature Demonstration\n");
+      line   169  [asymmetric]  // List all available SLH-DSA algorithms
+      line   175  [asymmetric]  // Preferred SLH-DSA algorithms in order
+      line   177  [asymmetric]  "SLH-DSA-SHA2-128f", "SLH-DSA-SHA2-128s",
+      line   178  [asymmetric]  "SLH-DSA-SHAKE-128f", "SLH-DSA-SHAKE-128s",
+      line   179  [asymmetric]  "SLH-DSA-SHA2-192f", "SLH-DSA-SHA2-192s",
+      line   180  [asymmetric]  "SLH-DSA-SHAKE-192f", "SLH-DSA-SHAKE-192s",
+      line   181  [asymmetric]  "SLH-DSA-SHA2-256f", "SLH-DSA-SHA2-256s",
+      line   182  [asymmetric]  "SLH-DSA-SHAKE-256f", "SLH-DSA-SHAKE-256s",
+      line   203  [asymmetric]  printf("\n❌ No suitable SLH-DSA algorithms found!\n");
+      line   204  [post_quantum]  printf("💡 Rebuild liboqs with SPHINCS+ support:\n");
+      line   224  [asymmetric]  printf("\n✨ SLH-DSA demonstration completed!\n");
+
+  ▸ C/slh_dsa_oqs_example_updated/readme.md
+      line     5  [asymmetric]  # Run with default algorithm (ML-DSA-44)
+      line     9  [asymmetric]  ./pq_sig_demo ML-DSA-65
+      line    10  [post_quantum]  ./pq_sig_demo Falcon-512
+      line    11  [post_quantum]  ./pq_sig_demo SPHINCS+-SHA2-128f-simple
+
+  ▸ C/slh_dsa_oqs_example_updated/slh_dsa_demo_fixed.c
+      line    81  [post_quantum]  const char* message1 = "This document demonstrates post-quantum cryptography";
+      line   137  [asymmetric]  if (strstr(sig_name, "ML-DSA") != NULL || strstr(sig_name, "Dilithium") != NULL) {
+      line   137  [post_quantum]  if (strstr(sig_name, "ML-DSA") != NULL || strstr(sig_name, "Dilithium") != NULL) {
+      line   138  [asymmetric]  printf("   • ML-DSA (Dilithium) - Lattice-based signatures\n");
+      line   138  [post_quantum]  printf("   • ML-DSA (Dilithium) - Lattice-based signatures\n");
+      line   141  [post_quantum]  } else if (strstr(sig_name, "Falcon") != NULL) {
+      line   142  [post_quantum]  printf("   • Falcon - Lattice-based signatures\n");
+      line   145  [asymmetric]  } else if (strstr(sig_name, "SPHINCS") != NULL || strstr(sig_name, "SLH-DSA") != NULL) {
+      line   145  [post_quantum]  } else if (strstr(sig_name, "SPHINCS") != NULL || strstr(sig_name, "SLH-DSA") != NULL) {
+      line   146  [asymmetric]  printf("   • SLH-DSA (SPHINCS+) - Hash-based signatures\n");
+      line   146  [post_quantum]  printf("   • SLH-DSA (SPHINCS+) - Hash-based signatures\n");
+      line   159  [post_quantum]  printf("🎯 Post-Quantum Signature Demonstration\n");
+      line   170  [asymmetric]  "ML-DSA-44",        // Dilithium2 - 128-bit security
+      line   171  [asymmetric]  "ML-DSA-65",        // Dilithium3 - 192-bit security
+      line   172  [asymmetric]  "ML-DSA-87",        // Dilithium5 - 256-bit security
+      line   173  [post_quantum]  "Falcon-512",       // Small signatures
+      line   174  [post_quantum]  "Falcon-1024",      // Higher security
+      line   175  [post_quantum]  "SPHINCS+-SHA2-128f-simple",  // Hash-based
+      line   176  [post_quantum]  "SPHINCS+-SHA2-192f-simple",  // Hash-based
+      line   177  [post_quantum]  "SPHINCS+-SHA2-256f-simple",  // Hash-based
+      line   185  [asymmetric]  // Use ML-DSA-44 (Dilithium2) as default since it's available
+      line   186  [asymmetric]  algorithm_to_use = "ML-DSA-44";
+      line   211  [asymmetric]  🎯 Using algorithm: ML-DSA-44
+      line   213  [asymmetric]  🔐 Testing ML-DSA-44
+      line   215  [asymmetric]  ✅ Algorithm: ML-DSA-44
+      line   221  [post_quantum]  2. 📄 Message 1: "This document demonstrates post-quantum cryptography" (52 bytes)
+      line   235  [asymmetric]  • ML-DSA (Dilithium) - Lattice-based signatures
+      line   235  [post_quantum]  • ML-DSA (Dilithium) - Lattice-based signatures
+
+  ▸ Rust/ml-dsa/Cargo.toml
+      line     8  [asymmetric]  ml-dsa = "0.0.4"
+
+  ▸ Rust/ml-dsa/Makefile
+      line     1  [asymmetric]  # Makefile for ML-DSA Rust Implementations
+      line    10  [asymmetric]  # Find all ML-DSA source files in lib directory
+      line    53  [asymmetric]  @echo "Building ML-DSA project with current main.rs..."
+      line    56  [asymmetric]  # Build specific ML-DSA version (temporary replacement)
+      line    59  [asymmetric]  @echo "Building ML-DSA version: $@"
+      line    64  [asymmetric]  # Run specific ML-DSA version (temporary replacement)
+      line    67  [asymmetric]  @echo "Running ML-DSA version: $*"
+      line    74  [asymmetric]  @echo "Running ML-DSA version $* with custom message..."
+      line    76  [asymmetric]  $(CARGO) run $(CARGO_FLAGS) -- "Custom message for ML-DSA $*"
+      line    83  [asymmetric]  echo "Running ML-DSA version: $$version"; \
+      line    91  [asymmetric]  # Show available ML-DSA versions
+      line    94  [asymmetric]  @echo "Available ML-DSA versions:"
+      line   131  [asymmetric]  @echo "Available ML-DSA versions: $(ML_DSA_TARGETS)"
+      line   148  [asymmetric]  @echo "ML-DSA Makefile Targets:"
+      line   151  [asymmetric]  @echo "  ml_dsa<X>        - Build specific ML-DSA version (e.g., make ml_dsa44)"
+      line   152  [asymmetric]  @echo "  run-<version>    - Run specific ML-DSA version (e.g., make run-44)"
+      line   155  [asymmetric]  @echo "  list             - List available ML-DSA versions"
+
+  ▸ Rust/ml-dsa/lib/ml_dsa44.rs
+      line     8  [asymmetric]  let method = String::from("ML-DSA-44");
+      line    14  [signature]  let sig = kp.signing_key().sign(msg.as_bytes());
+      line    25  [signature]  let ver = kp.verifying_key().verify(msg.as_bytes(), &sig);
+
+  ▸ Rust/ml-dsa/lib/ml_dsa65.rs
+      line     8  [asymmetric]  let method = String::from("ML-DSA-65");
+      line    14  [signature]  let sig = kp.signing_key().sign(msg.as_bytes());
+      line    25  [signature]  let ver = kp.verifying_key().verify(msg.as_bytes(), &sig);
+
+  ▸ Rust/ml-dsa/lib/ml_dsa87.rs
+      line     8  [asymmetric]  let method = String::from("ML-DSA-87");
+      line    14  [signature]  let sig = kp.signing_key().sign(msg.as_bytes());
+      line    25  [signature]  let ver = kp.verifying_key().verify(msg.as_bytes(), &sig);
+
+  ▸ Rust/ml-dsa/readme.md
+      line     6  [asymmetric]  # List available ML-DSA versions
+      line    47  [asymmetric]  Running ML-DSA version: 44
+      line    74  [asymmetric]  Compiling ml-dsa v0.0.4
+      line    83  [asymmetric]  Method: ML-DSA-44
+      line    92  [asymmetric]  Running ML-DSA version: 65
+      line    99  [asymmetric]  Method: ML-DSA-65
+      line   108  [asymmetric]  Running ML-DSA version: 87
+      line   115  [asymmetric]  Method: ML-DSA-87
+
+  ▸ Rust/ml-dsa/src/main.rs
+      line     1  [asymmetric]  // Default main.rs - will be replaced by specific ML-DSA versions
+      line     3  [asymmetric]  println!("ML-DSA Signature Implementations");
+      line     5  [asymmetric]  println!("  make run-44    - Run ML-DSA-44");
+      line     6  [asymmetric]  println!("  make run-65    - Run ML-DSA-65");
+      line     7  [asymmetric]  println!("  make run-87    - Run ML-DSA-87");
+
+  ▸ Rust/ml-kem/Makefile
+      line   359  [symmetric]  @echo "Build Modes:"
+
+  ▸ Rust/ml-kem/lib/ml_kem_1024.rs
+      line     2  [symmetric]  use fips203::traits::{Decaps, Encaps, KeyGen, SerDes};
+
+  ▸ Rust/ml-kem/lib/ml_kem_512.rs
+      line     2  [symmetric]  use fips203::traits::{Decaps, Encaps, KeyGen, SerDes};
+
+  ▸ Rust/ml-kem/lib/ml_kem_768.rs
+      line     2  [symmetric]  use fips203::traits::{Decaps, Encaps, KeyGen, SerDes};
+
+  ▸ Rust/ml-kem/readme.md
+      line     3  [post_quantum]  A Rust implementation and testing framework for ML-KEM (formerly known as Kyber), a post-quantum key encapsulation mechanism.
+      line     3  [post_quantum]  A Rust implementation and testing framework for ML-KEM (formerly known as Kyber), a post-quantum key encapsulation mechanism.
+      line     7  [symmetric]  This project provides a comprehensive testing framework for ML-KEM implementations using the `fips203` crate. It supports all three security levels of ML-KEM as standardized in FIPS 203.
+
+  ▸ Rust/slh-dsa/Makefile
+      line     1  [asymmetric]  # Makefile for SLH-DSA Rust Implementations
+      line     9  [asymmetric]  # Find all SLH-DSA source files in lib directory
+      line    52  [asymmetric]  @echo "Building SLH-DSA project with current main.rs..."
+      line    55  [asymmetric]  # Build specific SLH-DSA version (temporary replacement)
+      line    58  [asymmetric]  @echo "Building SLH-DSA version: $@"
+      line    63  [asymmetric]  # Run specific SLH-DSA version with timer (temporary replacement)
+      line    67  [asymmetric]  echo "Running SLH-DSA version: $*"; \
+      line    81  [asymmetric]  @echo "Running SLH-DSA version $* with custom message..."; \
+      line    84  [asymmetric]  $(CARGO) run $(CARGO_FLAGS) -- "Custom message for SLH-DSA $*"; \
+      line    94  [asymmetric]  echo "🚀 Starting SLH-DSA test suite..."; \
+      line    99  [asymmetric]  echo "Running SLH-DSA version: $$version"; \
+      line   130  [asymmetric]  echo "Running SLH-DSA version: $$version"; \
+      line   163  [asymmetric]  echo "Running SLH-DSA version: $$version"; \
+      line   185  [asymmetric]  # Show available SLH-DSA versions
+      line   188  [asymmetric]  @echo "Available SLH-DSA versions:"
+      line   224  [asymmetric]  # Initialize project with SLH-DSA dependencies
+      line   233  [asymmetric]  echo '// SLH-DSA Main Entry Point\nfn main() {\n    println!("SLH-DSA Signature Implementations");\n    println!("Use: make run-<version> to test different implementations");\n}' > $(SRC_DIR)/main.rs; \
+      line   240  [asymmetric]  @echo "Available SLH-DSA versions: $(SLH_DSA_TARGETS)"
+      line   256  [asymmetric]  echo "🏁 SLH-DSA Performance Benchmark"; \
+      line   289  [asymmetric]  @echo "SLH-DSA Makefile Targets:"
+      line   294  [asymmetric]  @echo "  slh_dsa<X>       - Build specific SLH-DSA version"
+      line   305  [asymmetric]  @echo "  list             - List available SLH-DSA versions"
+      line   313  [asymmetric]  @echo "  init             - Initialize project with SLH-DSA dependencies"
+      line   316  [symmetric]  @echo "Build Modes:"
+
+  ▸ Rust/slh-dsa/lib/slh_dsa_shake128f.rs
+      line     2  [symmetric]  use fips205::traits::{SerDes, Signer, Verifier};
+      line     7  [asymmetric]  let method = String::from("SLH-DSA-SHAKE-128f");
+      line    46  [signature]  let verified = pk2.verify(&msg_send, &sig_send, b"");
+
+  ▸ Rust/slh-dsa/lib/slh_dsa_shake128s.rs
+      line     2  [symmetric]  use fips205::traits::{SerDes, Signer, Verifier};
+      line     7  [asymmetric]  let method = String::from("SLH-DSA-SHAKE-128s");
+      line    50  [signature]  let verified = pk_verifier.verify(msg_bytes, &sig_bytes, b"");
+
+  ▸ Rust/slh-dsa/lib/slh_dsa_shake192f.rs
+      line     2  [symmetric]  use fips205::traits::{SerDes, Signer, Verifier};
+      line     7  [asymmetric]  let method = String::from("SLH-DSA-SHAKE-192f");
+      line    43  [signature]  let verified = pk2.verify(&msg_send, &sig_send, b"");
+
+  ▸ Rust/slh-dsa/lib/slh_dsa_shake192s.rs
+      line     2  [symmetric]  use fips205::traits::{SerDes, Signer, Verifier};
+      line     7  [asymmetric]  let method = String::from("SLH-DSA-SHAKE-192s");
+      line    43  [signature]  let verified = pk2.verify(&msg_send, &sig_send, b"");
+
+  ▸ Rust/slh-dsa/lib/slh_dsa_shake256f.rs
+      line     2  [symmetric]  use fips205::traits::{SerDes, Signer, Verifier};
+      line     7  [asymmetric]  let method = String::from("SLH-DSA-SHAKE-256f");
+      line    43  [signature]  let verified = pk2.verify(&msg_send, &sig_send, b"");
+
+  ▸ Rust/slh-dsa/lib/slh_dsa_shake256s.rs
+      line     2  [symmetric]  use fips205::traits::{SerDes, Signer, Verifier};
+      line     7  [asymmetric]  let method = String::from("SLH-DSA-SHAKE-256s");
+      line    43  [signature]  let verified = pk2.verify(&msg_send, &sig_send, b"");
+
+  ▸ Rust/slh-dsa/readme.md
+      line     1  [asymmetric]  # SLH-DSA (SPHINCS+) Rust Implementation
+      line     1  [post_quantum]  # SLH-DSA (SPHINCS+) Rust Implementation
+      line     3  [asymmetric]  A Rust implementation demonstrating all six parameter sets of SLH-DSA (Stateless Hash-based Digital Signature Algorithm), also known as SPHINCS+, using the `fips205` crate.
+      line     3  [signature]  A Rust implementation demonstrating all six parameter sets of SLH-DSA (Stateless Hash-based Digital Signature Algorithm), also known as SPHINCS+, using the `fips205` crate.
+      line     3  [post_quantum]  A Rust implementation demonstrating all six parameter sets of SLH-DSA (Stateless Hash-based Digital Signature Algorithm), also known as SPHINCS+, using the `fips205` crate.
+      line     7  [asymmetric]  SLH-DSA is a post-quantum digital signature scheme standardized by NIST as FIPS 205. This implementation demonstrates:
+      line     7  [signature]  SLH-DSA is a post-quantum digital signature scheme standardized by NIST as FIPS 205. This implementation demonstrates:
+      line     7  [post_quantum]  SLH-DSA is a post-quantum digital signature scheme standardized by NIST as FIPS 205. This implementation demonstrates:
+      line    48  [symmetric]  The project includes six SLH-DSA parameter sets:
+      line    48  [asymmetric]  The project includes six SLH-DSA parameter sets:
+      line    63  [asymmetric]  SLH-DSA offers two variants for each security level:
+      line   110  [symmetric]  - **"f" variants**: Milliseconds in both debug and release modes
+      line   132  [asymmetric]  Method: SLH-DSA-SHAKE-128f
+      line   180  [symmetric]  use fips205::traits::{SerDes, Signer, Verifier};
+      line   183  [post_quantum]  let msg = b"Hello, post-quantum world!";
+      line   229  [symmetric]  - **SHAKE-128**: NIST Security Level 1 (equivalent to AES-128)
+      line   230  [symmetric]  - **SHAKE-192**: NIST Security Level 3 (equivalent to AES-192)
+      line   231  [symmetric]  - **SHAKE-256**: NIST Security Level 5 (equivalent to AES-256)
+      line   233  [asymmetric]  ## When to Use SLH-DSA
+      line   236  [post_quantum]  - ✅ Post-quantum secure
+      line   295  [post_quantum]  - [SPHINCS+ Website](https://sphincs.org/)
+      line   297  [post_quantum]  - [Post-Quantum Cryptography](https://csrc.nist.gov/projects/post-quantum-cryptography)
+      line   326  [asymmetric]  (base) chanfamily@Chans-MacBook-Air slh-dsa % make run-all
+      line   329  [asymmetric]  🚀 Starting SLH-DSA test suite...
+      line   333  [asymmetric]  Running SLH-DSA version: _shake128f
+      line   338  [asymmetric]  Method: SLH-DSA-SHAKE-128f
+      line   351  [asymmetric]  Running SLH-DSA version: _shake128s
+      line   355  [asymmetric]  Method: SLH-DSA-SHAKE-128s
+      line   368  [asymmetric]  Running SLH-DSA version: _shake192f
+      line   372  [asymmetric]  Method: SLH-DSA-SHAKE-192f
+      line   385  [asymmetric]  Running SLH-DSA version: _shake192s
+      line   388  [asymmetric]  Method: SLH-DSA-SHAKE-192s
+      line   401  [asymmetric]  Running SLH-DSA version: _shake256f
+      line   404  [asymmetric]  Method: SLH-DSA-SHAKE-256f
+      line   417  [asymmetric]  Running SLH-DSA version: _shake256s
+      line   421  [asymmetric]  Method: SLH-DSA-SHAKE-256s
+
+  ▸ Rust/slh-dsa/src/main.rs
+      line     1  [asymmetric]  // SLH-DSA Main Entry Point
+      line     3  [asymmetric]  println!("SLH-DSA Signature Implementations");
+
+  ▸ Rust/slh-dsa_02/Cargo.toml
+      line     8  [asymmetric]  slh-dsa = "=0.1.0"
+
+  ▸ Rust/slh-dsa_02/Makefile
+      line     1  [asymmetric]  # Makefile for SLH-DSA Rust Implementations
+      line     9  [asymmetric]  # Find all SLH-DSA source files in lib directory
+      line    52  [asymmetric]  @echo "Building SLH-DSA project with current main.rs..."
+      line    55  [asymmetric]  # Build specific SLH-DSA version (temporary replacement)
+      line    58  [asymmetric]  @echo "Building SLH-DSA version: $@"
+      line    63  [asymmetric]  # Run specific SLH-DSA version with timer
+      line    67  [asymmetric]  echo "Running SLH-DSA version: $*"; \
+      line    81  [asymmetric]  @echo "Running SLH-DSA version $* with custom message..."; \
+      line    84  [asymmetric]  $(CARGO) run $(CARGO_FLAGS) -- "Custom message for SLH-DSA $*"; \
+      line    94  [asymmetric]  echo "🚀 Starting SLH-DSA test suite..."; \
+      line    99  [asymmetric]  echo "Running SLH-DSA version: $$version"; \
+      line   130  [asymmetric]  echo "Running SLH-DSA version: $$version"; \
+      line   163  [asymmetric]  echo "Running SLH-DSA version: $$version"; \
+      line   196  [asymmetric]  echo "Running SLH-DSA version: $$version"; \
+      line   229  [asymmetric]  echo "Running SLH-DSA version: $$version"; \
+      line   251  [asymmetric]  # Show available SLH-DSA versions
+      line   254  [asymmetric]  @echo "Available SLH-DSA versions:"
+      line   305  [asymmetric]  echo '[package]\nname = "slh_dsa"\nversion = "0.1.0"\nedition = "2021"\n\n[dependencies]\nhex = "0.4.3"\nslh-dsa = "0.1.0"\nrand = "0.8.5"\nsignature = "2.2"' > $(CARGO_TOML); \
+      line   308  [asymmetric]  echo '// SLH-DSA Main Entry Point\nfn main() {\n    println!("SLH-DSA Signature Implementations");\n    println!("Use: make run-<version> to test different implementations");\n}' > $(SRC_DIR)/main.rs; \
+      line   315  [asymmetric]  @echo "Available SLH-DSA versions: $(SLH_DSA_TARGETS)"
+      line   331  [asymmetric]  echo "📊 SLH-DSA Performance Benchmark"; \
+      line   368  [asymmetric]  @echo "SLH-DSA Makefile Targets:"
+      line   385  [asymmetric]  @echo "  list             - List available SLH-DSA versions"
+      line   396  [symmetric]  @echo "Build Modes:"
+
+  ▸ Rust/slh-dsa_02/lib/slh_dsa_shake128f.rs
+      line     8  [asymmetric]  let method = String::from("SLH-DSA-SHAKE-128f");
+      line    27  [signature]  let ver = verify_key.verify(message, &signature);
+
+  ▸ Rust/slh-dsa_02/lib/slh_dsa_shake128s.rs
+      line     8  [asymmetric]  let method = String::from("SLH-DSA-SHAKE-128s");
+      line    29  [signature]  let ver = verify_key.verify(message, &signature);
+
+  ▸ Rust/slh-dsa_02/lib/slh_dsa_shake192f.rs
+      line     8  [asymmetric]  let method = String::from("SLH-DSA-SHAKE-192f");
+      line    29  [signature]  let ver = verify_key.verify(message, &signature);
+
+  ▸ Rust/slh-dsa_02/lib/slh_dsa_shake192s.rs
+      line     8  [asymmetric]  let method = String::from("SLH-DSA-SHAKE-192s");
+      line    29  [signature]  let ver = verify_key.verify(message, &signature);
+
+  ▸ Rust/slh-dsa_02/lib/slh_dsa_shake256f.rs
+      line     8  [asymmetric]  let method = String::from("SLH-DSA-SHAKE-256f");
+      line    29  [signature]  let ver = verify_key.verify(message, &signature);
+
+  ▸ Rust/slh-dsa_02/lib/slh_dsa_shake256s.rs
+      line     8  [asymmetric]  let method = String::from("SLH-DSA-SHAKE-256s");
+      line    29  [signature]  let ver = verify_key.verify(message, &signature);
+
+  ▸ Rust/slh-dsa_02/readme.md
+      line     1  [asymmetric]  # SLH-DSA (SPHINCS+) Rust Implementation
+      line     1  [post_quantum]  # SLH-DSA (SPHINCS+) Rust Implementation
+      line     3  [asymmetric]  A comprehensive Rust implementation demonstrating all **12 parameter sets** of SLH-DSA (Stateless Hash-based Digital Signature Algorithm), also known as SPHINCS+, using the `slh-dsa` crate.
+      line     3  [signature]  A comprehensive Rust implementation demonstrating all **12 parameter sets** of SLH-DSA (Stateless Hash-based Digital Signature Algorithm), also known as SPHINCS+, using the `slh-dsa` crate.
+      line     3  [post_quantum]  A comprehensive Rust implementation demonstrating all **12 parameter sets** of SLH-DSA (Stateless Hash-based Digital Signature Algorithm), also known as SPHINCS+, using the `slh-dsa` crate.
+      line     7  [asymmetric]  SLH-DSA is a post-quantum digital signature scheme standardized by NIST as FIPS 205. This implementation demonstrates:
+      line     7  [signature]  SLH-DSA is a post-quantum digital signature scheme standardized by NIST as FIPS 205. This implementation demonstrates:
+      line     7  [post_quantum]  SLH-DSA is a post-quantum digital signature scheme standardized by NIST as FIPS 205. This implementation demonstrates:
+      line    24  [asymmetric]  slh-dsa = "0.1.0"
+      line    60  [symmetric]  The project includes **12 SLH-DSA parameter sets** across two hash function families:
+      line    60  [asymmetric]  The project includes **12 SLH-DSA parameter sets** across two hash function families:
+      line    88  [asymmetric]  SLH-DSA offers two variants for each security level and hash function:
+      line   153  [symmetric]  - **"f" variants**: Milliseconds in both debug and release modes
+      line   193  [asymmetric]  Method: SLH-DSA-SHA2-128f
+      line   256  [post_quantum]  let msg = b"Hello, post-quantum world!";
+      line   274  [asymmetric]  ## API Reference (slh-dsa v0.1.0)
+      line   333  [symmetric]  - **128-bit**: NIST Security Level 1 (equivalent to AES-128)
+      line   334  [symmetric]  - **192-bit**: NIST Security Level 3 (equivalent to AES-192)
+      line   335  [symmetric]  - **256-bit**: NIST Security Level 5 (equivalent to AES-256)
+      line   337  [asymmetric]  ## When to Use SLH-DSA
+      line   340  [post_quantum]  - ✅ Post-quantum secure
+      line   387  [asymmetric]  - **Cause**: Wrong slh-dsa version
+      line   388  [asymmetric]  - **Solution**: Ensure `Cargo.toml` specifies `slh-dsa = "0.1.0"`
+      line   425  [post_quantum]  - [SPHINCS+ Website](https://sphincs.org/)
+      line   426  [asymmetric]  - [slh-dsa Crate Documentation](https://docs.rs/slh-dsa/)
+      line   427  [post_quantum]  - [Post-Quantum Cryptography](https://csrc.nist.gov/projects/post-quantum-cryptography)
+      line   431  [asymmetric]  This example code is provided for educational purposes. Check the `slh-dsa` crate license for production use.
+      line   464  [asymmetric]  Method: SLH-DSA-SHAKE-128f
+      line   477  [asymmetric]  Running SLH-DSA version: _shake128s
+      line   493  [asymmetric]  Method: SLH-DSA-SHAKE-128s
+      line   506  [asymmetric]  Running SLH-DSA version: _shake192f
+      line   522  [asymmetric]  Method: SLH-DSA-SHAKE-192f
+      line   535  [asymmetric]  Running SLH-DSA version: _shake192s
+      line   551  [asymmetric]  Method: SLH-DSA-SHAKE-192s
+      line   564  [asymmetric]  Running SLH-DSA version: _shake256f
+      line   580  [asymmetric]  Method: SLH-DSA-SHAKE-256f
+      line   593  [asymmetric]  Running SLH-DSA version: _shake256s
+      line   609  [asymmetric]  Method: SLH-DSA-SHAKE-256s
+
+  ▸ Rust/slh-dsa_02/src/main.rs
+      line     1  [asymmetric]  // SLH-DSA Main Entry Point
+      line     3  [asymmetric]  println!("SLH-DSA Signature Implementations");

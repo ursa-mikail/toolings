@@ -1,0 +1,12 @@
+================================================================================
+  REPO       : chartjs-react-tutorial
+  FULL NAME  : ursa-mikail/chartjs-react-tutorial
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : JavaScript
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/chartjs-react-tutorial
+  MATCHES    : 1
+================================================================================
+
+  ▸ public/index.html
+      line    14  [symmetric]  manifest.json provides metadata used when your web app is installed on a

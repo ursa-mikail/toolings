@@ -1,0 +1,62 @@
+================================================================================
+  REPO       : cipher_cli
+  FULL NAME  : ursa-mikail/cipher_cli
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Go
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/cipher_cli
+  MATCHES    : 47
+================================================================================
+
+  ▸ aes_gcm_cli/main.go
+      line     4  [symmetric]  "crypto/aes"
+      line    43  [symmetric]  fmt.Fprintf(os.Stderr, `AES-GCM-256 Encryption Tool
+      line    43  [cipher_mode]  fmt.Fprintf(os.Stderr, `AES-GCM-256 Encryption Tool
+      line    51  [symmetric]  encrypt    Encrypt a file using AES-256-GCM
+      line    51  [cipher_mode]  encrypt    Encrypt a file using AES-256-GCM
+      line    52  [symmetric]  decrypt    Decrypt a file using AES-256-GCM
+      line    52  [cipher_mode]  decrypt    Decrypt a file using AES-256-GCM
+      line    60  [symmetric]  Note: AES-GCM doesn't use a separate IV. The nonce is randomly generated
+      line    60  [cipher_mode]  Note: AES-GCM doesn't use a separate IV. The nonce is randomly generated
+      line    97  [symmetric]  fmt.Fprintf(os.Stderr, "Error: Key must be 32 bytes (64 hex chars) for AES-256\n")
+      line   108  [symmetric]  // Create AES cipher
+      line   109  [symmetric]  block, err := aes.NewCipher(key)
+      line   115  [cipher_mode]  // Create GCM mode
+      line   116  [cipher_mode]  gcm, err := cipher.NewGCM(block)
+      line   118  [cipher_mode]  fmt.Fprintf(os.Stderr, "Error creating GCM: %v\n", err)
+      line   123  [cipher_mode]  nonce := make([]byte, gcm.NonceSize())
+      line   130  [cipher_mode]  ciphertext := gcm.Seal(nonce, nonce, plaintext, nil)
+      line   153  [symmetric]  fmt.Fprintf(os.Stderr, "Error: Key must be 32 bytes (64 hex chars) for AES-256\n")
+      line   164  [symmetric]  // Create AES cipher
+      line   165  [symmetric]  block, err := aes.NewCipher(key)
+      line   171  [cipher_mode]  // Create GCM mode
+      line   172  [cipher_mode]  gcm, err := cipher.NewGCM(block)
+      line   174  [cipher_mode]  fmt.Fprintf(os.Stderr, "Error creating GCM: %v\n", err)
+      line   178  [cipher_mode]  nonceSize := gcm.NonceSize()
+      line   188  [cipher_mode]  plaintext, err := gcm.Open(nil, nonce, ciphertext, nil)
+
+  ▸ aes_gcm_cli/readme.md
+      line     2  [symmetric]  go build -o aes-gcm-256-cli main.go
+      line     2  [cipher_mode]  go build -o aes-gcm-256-cli main.go
+
+  ▸ aes_gcm_cli/test_encrypt.sh
+      line     3  [symmetric]  echo "===== AES-GCM-256 Encryption and Verification Script ====="
+      line     3  [cipher_mode]  echo "===== AES-GCM-256 Encryption and Verification Script ====="
+      line    12  [cipher_mode]  # Step 2: Generate random key (no IV needed for GCM)
+      line    14  [symmetric]  ./aes-gcm-256-cli genkey > mykey.hex
+      line    14  [cipher_mode]  ./aes-gcm-256-cli genkey > mykey.hex
+      line    19  [symmetric]  echo "Note: AES-GCM does not use a separate IV; nonce is generated automatically"
+      line    19  [cipher_mode]  echo "Note: AES-GCM does not use a separate IV; nonce is generated automatically"
+      line    24  [symmetric]  ./aes-gcm-256-cli encrypt -key "$KEY" -in plaintext.txt -out encrypted.bin
+      line    24  [cipher_mode]  ./aes-gcm-256-cli encrypt -key "$KEY" -in plaintext.txt -out encrypted.bin
+      line    63  [symmetric]  ./aes-gcm-256-cli decrypt -key "$EXTRACTED_KEY" -in encrypted.bin -out decrypted.txt
+      line    63  [cipher_mode]  ./aes-gcm-256-cli decrypt -key "$EXTRACTED_KEY" -in encrypted.bin -out decrypted.txt
+      line    98  [symmetric]  This script uses AES-GCM-256 encryption instead of AES-CBC:
+      line    98  [cipher_mode]  This script uses AES-GCM-256 encryption instead of AES-CBC:
+      line    98  [cipher_mode]  This script uses AES-GCM-256 encryption instead of AES-CBC:
+      line   100  [cipher_mode]  Key differences from CBC mode:
+      line   102  [symmetric]  - Provides authenticated encryption (integrity + confidentiality)
+      line   108  [symmetric]  2. Generates random 256-bit key with the aes-gcm-256-cli tool
+      line   108  [cipher_mode]  2. Generates random 256-bit key with the aes-gcm-256-cli tool
+      line   109  [symmetric]  3. Encrypts the file using AES-256-GCM (nonce auto-generated)
+      line   109  [cipher_mode]  3. Encrypts the file using AES-256-GCM (nonce auto-generated)

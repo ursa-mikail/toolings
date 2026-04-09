@@ -1,0 +1,349 @@
+================================================================================
+  REPO       : aes_utility
+  FULL NAME  : ursa-mikail/aes_utility
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Python
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/aes_utility
+  MATCHES    : 320
+================================================================================
+
+  ▸ aes_cbc_hmac.py
+      line     2  [py_import]  import hmac
+      line     2  [kdf]  import hmac
+      line     3  [py_import]  import hashlib
+      line     4  [py_import]  from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+      line     4  [symmetric]  from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+      line     5  [py_import]  from cryptography.hazmat.backends import default_backend
+      line     6  [py_import]  from Crypto.Random import get_random_bytes
+      line     6  [random]  from Crypto.Random import get_random_bytes
+      line     8  [kdf]  def hkdf(key, salt, info, length=32):
+      line     9  [kdf]  prk = hmac.new(salt, key, hashlib.sha256).digest()
+      line    15  [kdf]  t = hmac.new(prk, t + info + bytes([counter]), hashlib.sha256).digest()
+      line    22  [symmetric]  encKey = hkdf(key, b"encryption-cbc-hmac", b"AES-CBC encryption key")
+      line    22  [cipher_mode]  encKey = hkdf(key, b"encryption-cbc-hmac", b"AES-CBC encryption key")
+      line    22  [kdf]  encKey = hkdf(key, b"encryption-cbc-hmac", b"AES-CBC encryption key")
+      line    22  [kdf]  encKey = hkdf(key, b"encryption-cbc-hmac", b"AES-CBC encryption key")
+      line    23  [cipher_mode]  macKey = hkdf(key, b"authentication-cbc-hmac", b"HMAC authentication key")
+      line    23  [kdf]  macKey = hkdf(key, b"authentication-cbc-hmac", b"HMAC authentication key")
+      line    23  [kdf]  macKey = hkdf(key, b"authentication-cbc-hmac", b"HMAC authentication key")
+      line    28  [random]  iv = get_random_bytes(16)
+      line    30  [symmetric]  cipher = Cipher(algorithms.AES(encKey), modes.CBC(iv), backend=default_backend())
+      line    30  [symmetric]  cipher = Cipher(algorithms.AES(encKey), modes.CBC(iv), backend=default_backend())
+      line    30  [cipher_mode]  cipher = Cipher(algorithms.AES(encKey), modes.CBC(iv), backend=default_backend())
+      line    35  [kdf]  tag = hmac.new(macKey, iv + ciphertext, hashlib.sha256).digest()
+      line    45  [kdf]  expected_tag = hmac.new(macKey, iv + actual_ciphertext, hashlib.sha256).digest()
+      line    47  [kdf]  if not hmac.compare_digest(received_tag, expected_tag):
+      line    50  [symmetric]  cipher = Cipher(algorithms.AES(encKey), modes.CBC(iv), backend=default_backend())
+      line    50  [symmetric]  cipher = Cipher(algorithms.AES(encKey), modes.CBC(iv), backend=default_backend())
+      line    50  [cipher_mode]  cipher = Cipher(algorithms.AES(encKey), modes.CBC(iv), backend=default_backend())
+      line    66  [symmetric]  key = get_random_bytes(32)  # AES-256 key
+      line    66  [random]  key = get_random_bytes(32)  # AES-256 key
+
+  ▸ aes_cbc_weaknesses_demo.py
+      line     3  [py_import]  import hmac
+      line     3  [kdf]  import hmac
+      line     4  [py_import]  import hashlib
+      line     5  [py_import]  from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+      line     5  [symmetric]  from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+      line     6  [py_import]  from cryptography.hazmat.backends import default_backend
+      line     7  [py_import]  from Crypto.Random import get_random_bytes
+      line     7  [random]  from Crypto.Random import get_random_bytes
+      line     9  [kdf]  def hkdf(key, salt, info, length=32):
+      line    10  [kdf]  prk = hmac.new(salt, key, hashlib.sha256).digest()
+      line    16  [kdf]  t = hmac.new(prk, t + info + bytes([counter]), hashlib.sha256).digest()
+      line    23  [symmetric]  encKey = hkdf(key, enc_info, b"AES encryption key")
+      line    23  [kdf]  encKey = hkdf(key, enc_info, b"AES encryption key")
+      line    24  [kdf]  macKey = hkdf(key, mac_info, b"HMAC authentication key")
+      line    24  [kdf]  macKey = hkdf(key, mac_info, b"HMAC authentication key")
+      line    28  [cipher_mode]  encKey, macKey = derive_keys(key, b"encryption-ctr-hmac", b"authentication-ctr-hmac")
+      line    28  [kdf]  encKey, macKey = derive_keys(key, b"encryption-ctr-hmac", b"authentication-ctr-hmac")
+      line    29  [random]  nonce = get_random_bytes(16)
+      line    31  [symmetric]  cipher = Cipher(algorithms.AES(encKey), modes.CTR(nonce), backend=default_backend())
+      line    31  [symmetric]  cipher = Cipher(algorithms.AES(encKey), modes.CTR(nonce), backend=default_backend())
+      line    31  [cipher_mode]  cipher = Cipher(algorithms.AES(encKey), modes.CTR(nonce), backend=default_backend())
+      line    35  [kdf]  tag = hmac.new(macKey, nonce + ciphertext, hashlib.sha256).digest()
+      line    39  [cipher_mode]  encKey, macKey = derive_keys(key, b"encryption-ctr-hmac", b"authentication-ctr-hmac")
+      line    39  [kdf]  encKey, macKey = derive_keys(key, b"encryption-ctr-hmac", b"authentication-ctr-hmac")
+      line    45  [kdf]  expected_tag = hmac.new(macKey, nonce + actual_ciphertext, hashlib.sha256).digest()
+      line    47  [kdf]  if not hmac.compare_digest(received_tag, expected_tag):
+      line    50  [symmetric]  cipher = Cipher(algorithms.AES(encKey), modes.CTR(nonce), backend=default_backend())
+      line    50  [symmetric]  cipher = Cipher(algorithms.AES(encKey), modes.CTR(nonce), backend=default_backend())
+      line    50  [cipher_mode]  cipher = Cipher(algorithms.AES(encKey), modes.CTR(nonce), backend=default_backend())
+      line    55  [symmetric]  cipher = Cipher(algorithms.AES(key), modes.CBC(iv), backend=default_backend())
+      line    55  [symmetric]  cipher = Cipher(algorithms.AES(key), modes.CBC(iv), backend=default_backend())
+      line    55  [cipher_mode]  cipher = Cipher(algorithms.AES(key), modes.CBC(iv), backend=default_backend())
+      line    62  [random]  key = get_random_bytes(32)
+      line    83  [random]  key = get_random_bytes(32)
+      line    86  [random]  iv = get_random_bytes(16)
+      line   100  [symmetric]  key = get_random_bytes(32)  # AES-256 key
+      line   100  [random]  key = get_random_bytes(32)  # AES-256 key
+      line   104  [cipher_mode]  print("Encrypted (CTR):", encrypted_ctr.hex())
+      line   107  [cipher_mode]  print("Decrypted (CTR):", decrypted_ctr.decode())
+      line   109  [cipher_mode]  print("\n--- CBC-MAC Forgery Example ---")
+      line   119  [cipher_mode]  Encrypted (CTR): 7e0781257e0bef4a69b9903d4274c374ce6c4bfc94b5783e634edd936334fdf94a70cc32b144369b07ce0f7b78b6e813435667b05c7543c51e0cb6a43a2ca5b46b340155
+      line   120  [cipher_mode]  Decrypted (CTR): Confidential message
+      line   122  [cipher_mode]  --- CBC-MAC Forgery Example ---
+
+  ▸ aes_ctr_hmac.py
+      line     3  [py_import]  import hmac
+      line     3  [kdf]  import hmac
+      line     4  [py_import]  import hashlib
+      line     5  [py_import]  from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+      line     5  [symmetric]  from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+      line     6  [py_import]  from cryptography.hazmat.backends import default_backend
+      line     7  [py_import]  from Crypto.Random import get_random_bytes
+      line     7  [random]  from Crypto.Random import get_random_bytes
+      line     9  [kdf]  def hkdf(key, salt, info, length=32):
+      line    10  [kdf]  prk = hmac.new(salt, key, hashlib.sha256).digest()
+      line    16  [kdf]  t = hmac.new(prk, t + info + bytes([counter]), hashlib.sha256).digest()
+      line    23  [symmetric]  encKey = hkdf(key, enc_info, b"AES encryption key")
+      line    23  [kdf]  encKey = hkdf(key, enc_info, b"AES encryption key")
+      line    24  [kdf]  macKey = hkdf(key, mac_info, b"HMAC authentication key")
+      line    24  [kdf]  macKey = hkdf(key, mac_info, b"HMAC authentication key")
+      line    28  [cipher_mode]  encKey, macKey = derive_keys(key, b"encryption-ctr-hmac", b"authentication-ctr-hmac")
+      line    28  [kdf]  encKey, macKey = derive_keys(key, b"encryption-ctr-hmac", b"authentication-ctr-hmac")
+      line    29  [random]  nonce = get_random_bytes(16)
+      line    31  [symmetric]  cipher = Cipher(algorithms.AES(encKey), modes.CTR(nonce), backend=default_backend())
+      line    31  [symmetric]  cipher = Cipher(algorithms.AES(encKey), modes.CTR(nonce), backend=default_backend())
+      line    31  [cipher_mode]  cipher = Cipher(algorithms.AES(encKey), modes.CTR(nonce), backend=default_backend())
+      line    35  [kdf]  tag = hmac.new(macKey, nonce + ciphertext, hashlib.sha256).digest()
+      line    39  [cipher_mode]  encKey, macKey = derive_keys(key, b"encryption-ctr-hmac", b"authentication-ctr-hmac")
+      line    39  [kdf]  encKey, macKey = derive_keys(key, b"encryption-ctr-hmac", b"authentication-ctr-hmac")
+      line    45  [kdf]  expected_tag = hmac.new(macKey, nonce + actual_ciphertext, hashlib.sha256).digest()
+      line    47  [kdf]  if not hmac.compare_digest(received_tag, expected_tag):
+      line    50  [symmetric]  cipher = Cipher(algorithms.AES(encKey), modes.CTR(nonce), backend=default_backend())
+      line    50  [symmetric]  cipher = Cipher(algorithms.AES(encKey), modes.CTR(nonce), backend=default_backend())
+      line    50  [cipher_mode]  cipher = Cipher(algorithms.AES(encKey), modes.CTR(nonce), backend=default_backend())
+      line    55  [symmetric]  key = get_random_bytes(32)  # AES-256 key
+      line    55  [random]  key = get_random_bytes(32)  # AES-256 key
+      line    59  [cipher_mode]  print("Encrypted (CTR):", encrypted_ctr.hex())
+      line    62  [cipher_mode]  print("Decrypted (CTR):", decrypted_ctr.decode())
+      line    66  [cipher_mode]  Encrypted (CTR): e65cde9eab75349353b9f944344391eafab27846f75b5f28020c80bbd3765e28112142f34cb284b1e0797c8c7b0d960e01a78b3b88683c2e65dd866ffa42657dd43f6755
+      line    67  [cipher_mode]  Decrypted (CTR): Confidential message
+
+  ▸ aes_gcm_ciphering.py
+      line     2  [py_import]  import secrets
+      line     3  [py_import]  from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+      line     3  [symmetric]  from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+      line     4  [py_import]  from cryptography.hazmat.backends import default_backend
+      line    23  [symmetric]  # Generate AES key and nonce (keep these for decryption)
+      line    27  [symmetric]  # Initialize AES-GCM cipher
+      line    27  [cipher_mode]  # Initialize AES-GCM cipher
+      line    28  [symmetric]  cipher = Cipher(algorithms.AES(key), modes.GCM(nonce), backend=default_backend())
+      line    28  [symmetric]  cipher = Cipher(algorithms.AES(key), modes.GCM(nonce), backend=default_backend())
+      line    28  [cipher_mode]  cipher = Cipher(algorithms.AES(key), modes.GCM(nonce), backend=default_backend())
+      line    53  [symmetric]  # Initialize AES-GCM cipher for decryption
+      line    53  [cipher_mode]  # Initialize AES-GCM cipher for decryption
+      line    54  [symmetric]  cipher = Cipher(algorithms.AES(key), modes.GCM(nonce, tag), backend=default_backend())
+      line    54  [symmetric]  cipher = Cipher(algorithms.AES(key), modes.GCM(nonce, tag), backend=default_backend())
+      line    54  [cipher_mode]  cipher = Cipher(algorithms.AES(key), modes.GCM(nonce, tag), backend=default_backend())
+
+  ▸ aes_log_exclusive_access.py
+      line     9  [py_import]  from Crypto.Cipher import AES
+      line     9  [symmetric]  from Crypto.Cipher import AES
+      line    10  [py_import]  from Crypto.Random import get_random_bytes
+      line    10  [random]  from Crypto.Random import get_random_bytes
+      line    19  [symmetric]  # Helper functions for AES encryption
+      line    27  [symmetric]  cipher = AES.new(key, AES.MODE_CBC)
+      line    34  [symmetric]  cipher = AES.new(key, AES.MODE_CBC, iv)
+      line    37  [symmetric]  # Register users and assign AES keys
+      line    42  [symmetric]  aes_key = get_random_bytes(16)  # 128-bit AES key
+      line    42  [random]  aes_key = get_random_bytes(16)  # 128-bit AES key
+      line    44  [symmetric]  print(f"Registered User: {user_id}, AES Key: {aes_key.hex()}")
+      line   101  [symmetric]  Registered User: 3d37ac2d-2a11-4af3-ac75-fc7366696477, AES Key: aa3ec11d2c735f812ff2550c68d2853e
+      line   102  [symmetric]  Registered User: 7c8d1694-5259-4408-b376-86449ae47760, AES Key: cc230741f81b77883632c911f647069f
+      line   103  [symmetric]  Registered User: 80ace321-56f3-4ac9-8626-4b53f7395720, AES Key: 0425181ad9d2d52d6c679b14b7e4e352
+      line   104  [symmetric]  Registered User: fe130141-b554-4b4e-9961-12879764ff30, AES Key: dae8c54c0b20cc616cb849234364d960
+      line   105  [symmetric]  Registered User: 23cc4909-0e0b-493d-ad07-e30a238c5cea, AES Key: 3a039397337393e1a4463af113d96667
+
+  ▸ aes_prf_rng.py
+      line     1  [symmetric]  # use aes gcm as PRF RNG, randomly produce the random seeds (including its keys), and produce random hex of N bytes, and plot the distribution
+      line     1  [cipher_mode]  # use aes gcm as PRF RNG, randomly produce the random seeds (including its keys), and produce random hex of N bytes, and plot the distribution
+      line     4  [py_import]  import secrets
+      line     6  [py_import]  from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+      line     6  [symmetric]  from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+      line     7  [py_import]  from cryptography.hazmat.backends import default_backend
+      line    13  [symmetric]  # Generate random AES key (256-bit) and nonce (96-bit) securely
+      line    17  [symmetric]  # Initialize AES-GCM cipher
+      line    17  [cipher_mode]  # Initialize AES-GCM cipher
+      line    18  [symmetric]  cipher = Cipher(algorithms.AES(key), modes.GCM(nonce), backend=default_backend())
+      line    18  [symmetric]  cipher = Cipher(algorithms.AES(key), modes.GCM(nonce), backend=default_backend())
+      line    18  [cipher_mode]  cipher = Cipher(algorithms.AES(key), modes.GCM(nonce), backend=default_backend())
+      line    35  [symmetric]  plt.title("AES-GCM PRF RNG Byte Distribution")
+      line    35  [cipher_mode]  plt.title("AES-GCM PRF RNG Byte Distribution")
+
+  ▸ aes_xex_ciphering.py
+      line     2  [py_import]  from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+      line     2  [symmetric]  from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+      line     3  [py_import]  from cryptography.hazmat.backends import default_backend
+      line    21  [symmetric]  # AES-XEX Encryption
+      line    24  [symmetric]  raise ValueError("Key must be either 16 or 32 bytes long (AES-128/256)")
+      line    31  [symmetric]  # Create AES cipher in ECB mode (no IV needed)
+      line    31  [cipher_mode]  # Create AES cipher in ECB mode (no IV needed)
+      line    32  [symmetric]  cipher = Cipher(algorithms.AES(key), modes.ECB(), backend=default_backend())
+      line    32  [symmetric]  cipher = Cipher(algorithms.AES(key), modes.ECB(), backend=default_backend())
+      line    32  [cipher_mode]  cipher = Cipher(algorithms.AES(key), modes.ECB(), backend=default_backend())
+      line    48  [symmetric]  # AES-XEX Decryption
+      line    51  [symmetric]  raise ValueError("Key must be either 16 or 32 bytes long (AES-128/256)")
+      line    55  [symmetric]  # Create AES cipher in ECB mode
+      line    55  [cipher_mode]  # Create AES cipher in ECB mode
+      line    56  [symmetric]  cipher = Cipher(algorithms.AES(key), modes.ECB(), backend=default_backend())
+      line    56  [symmetric]  cipher = Cipher(algorithms.AES(key), modes.ECB(), backend=default_backend())
+      line    56  [cipher_mode]  cipher = Cipher(algorithms.AES(key), modes.ECB(), backend=default_backend())
+      line    76  [symmetric]  key = os.urandom(32)          # AES-256 key (32 bytes)
+      line    76  [random]  key = os.urandom(32)          # AES-256 key (32 bytes)
+      line    77  [random]  tweak = os.urandom(16)        # Tweak (16 bytes)
+      line    89  [symmetric]  AES requiring input data to be a multiple of the block size (16 bytes) when using ECB mode. AES operates on fixed-size blocks (128 bits = 16 bytes), so any input that isn’t a multiple of 16 bytes will raise a ValueError.
+      line    89  [cipher_mode]  AES requiring input data to be a multiple of the block size (16 bytes) when using ECB mode. AES operates on fixed-size blocks (128 bits = 16 bytes), so any input that isn’t a multiple of 16 bytes will raise a ValueError.
+      line   100  [symmetric]  Cipher Context Management: We recreate the AES cipher context after each encryption or decryption step to avoid the AlreadyFinalized error.
+      line   104  [symmetric]  AES-XEX is often used in disk encryption but not ideal for general-purpose message encryption. Consider AES-GCM or AES-CCM if authentication is required.
+      line   104  [cipher_mode]  AES-XEX is often used in disk encryption but not ideal for general-purpose message encryption. Consider AES-GCM or AES-CCM if authentication is required.
+      line   104  [cipher_mode]  AES-XEX is often used in disk encryption but not ideal for general-purpose message encryption. Consider AES-GCM or AES-CCM if authentication is required.
+
+  ▸ aes_xts_ciphering.py
+      line     3  [py_import]  from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+      line     3  [symmetric]  from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+      line     4  [py_import]  from cryptography.hazmat.backends import default_backend
+      line     6  [symmetric]  # AES-XTS Encryption
+      line     6  [cipher_mode]  # AES-XTS Encryption
+      line     9  [symmetric]  raise ValueError("AES-XTS requires two 256-bit (32-byte) keys")
+      line     9  [cipher_mode]  raise ValueError("AES-XTS requires two 256-bit (32-byte) keys")
+      line    11  [cipher_mode]  # Combine keys for XTS mode
+      line    14  [cipher_mode]  # XTS requires a 128-bit (16-byte) tweak, usually the sector number
+      line    17  [symmetric]  # Create AES-XTS cipher
+      line    17  [cipher_mode]  # Create AES-XTS cipher
+      line    18  [symmetric]  cipher = Cipher(algorithms.AES(combined_key), modes.XTS(tweak), backend=default_backend())
+      line    18  [symmetric]  cipher = Cipher(algorithms.AES(combined_key), modes.XTS(tweak), backend=default_backend())
+      line    18  [cipher_mode]  cipher = Cipher(algorithms.AES(combined_key), modes.XTS(tweak), backend=default_backend())
+      line    26  [symmetric]  # AES-XTS Decryption
+      line    26  [cipher_mode]  # AES-XTS Decryption
+      line    29  [symmetric]  raise ValueError("AES-XTS requires two 256-bit (32-byte) keys")
+      line    29  [cipher_mode]  raise ValueError("AES-XTS requires two 256-bit (32-byte) keys")
+      line    31  [cipher_mode]  # Combine keys for XTS mode
+      line    34  [cipher_mode]  # XTS requires a 128-bit (16-byte) tweak
+      line    37  [symmetric]  # Create AES-XTS cipher
+      line    37  [cipher_mode]  # Create AES-XTS cipher
+      line    38  [symmetric]  cipher = Cipher(algorithms.AES(combined_key), modes.XTS(tweak), backend=default_backend())
+      line    38  [symmetric]  cipher = Cipher(algorithms.AES(combined_key), modes.XTS(tweak), backend=default_backend())
+      line    38  [cipher_mode]  cipher = Cipher(algorithms.AES(combined_key), modes.XTS(tweak), backend=default_backend())
+      line    47  [random]  key1 = os.urandom(32)  # First part of 512-bit key (32 bytes)
+      line    48  [random]  key2 = os.urandom(32)  # Second part of 512-bit key (32 bytes)
+      line    50  [symmetric]  plaintext = b"Data to encrypt using AES-XTS mode."
+      line    50  [cipher_mode]  plaintext = b"Data to encrypt using AES-XTS mode."
+      line    66  [symmetric]  Plaintext: b'Data to encrypt using AES-XTS mode.\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'
+      line    66  [cipher_mode]  Plaintext: b'Data to encrypt using AES-XTS mode.\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'
+      line    68  [symmetric]  Decrypted: b'Data to encrypt using AES-XTS mode.\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'
+      line    68  [cipher_mode]  Decrypted: b'Data to encrypt using AES-XTS mode.\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'
+
+  ▸ readme.md
+      line     1  [symmetric]  ## AES GCM
+      line     1  [cipher_mode]  ## AES GCM
+      line     6  [symmetric]  Caveat: AES-GCM has nonce repeat weaknesses (CCA), hence, AES-GCM-SIV had been proposed.
+      line     6  [cipher_mode]  Caveat: AES-GCM has nonce repeat weaknesses (CCA), hence, AES-GCM-SIV had been proposed.
+      line     6  [cipher_mode]  Caveat: AES-GCM has nonce repeat weaknesses (CCA), hence, AES-GCM-SIV had been proposed.
+      line     8  [symmetric]  ## AES PRF RNG
+      line     9  [symmetric]  Use aes gcm as PRF RNG, randomly produce the random seeds (including its keys), and produce random hex of N bytes, and plot the distribution.
+      line     9  [cipher_mode]  Use aes gcm as PRF RNG, randomly produce the random seeds (including its keys), and produce random hex of N bytes, and plot the distribution.
+      line    19  [symmetric]  Since AES-GCM is a cryptographically secure PRF, the byte distribution should ideally be uniform. For 256 possible byte values, each byte should appear with approximately equal likelihood.
+      line    19  [cipher_mode]  Since AES-GCM is a cryptographically secure PRF, the byte distribution should ideally be uniform. For 256 possible byte values, each byte should appear with approximately equal likelihood.
+      line    36  [symmetric]  ## AES Log Exclusive Access
+      line    39  [symmetric]  User Registration: Each user is assigned a unique AES key.
+      line    43  [symmetric]  Encryption: Logs are encrypted using the user's AES key and saved in individual files.
+      line    45  [symmetric]  Access Control: Each user can only access their own logs by decrypting with their AES key.
+      line    48  [kdf]  ## CMAC and SHA-256
+      line    49  [kdf]  Hash and Hmac (with CMAC)
+      line    49  [kdf]  Hash and Hmac (with CMAC)
+      line    51  [symmetric]  ## AES GCM Ciphering
+      line    51  [cipher_mode]  ## AES GCM Ciphering
+      line    56  [symmetric]  AES-GCM Encryption: The provided data is encrypted with the AES-GCM mode. The encryptor.authenticate_additional_data() method ensures that the associated data is authenticated but not encrypted.
+      line    56  [cipher_mode]  AES-GCM Encryption: The provided data is encrypted with the AES-GCM mode. The encryptor.authenticate_additional_data() method ensures that the associated data is authenticated but not encrypted.
+      line    62  [symmetric]  ✅ Authenticated Encryption: AES-GCM protects both confidentiality and integrity with the AAD and the authentication tag.
+      line    62  [cipher_mode]  ✅ Authenticated Encryption: AES-GCM protects both confidentiality and integrity with the AAD and the authentication tag.
+      line    64  [symmetric]  ## AES XEX and XTS Intro
+      line    64  [cipher_mode]  ## AES XEX and XTS Intro
+      line    65  [symmetric]  XEX, XTS: define 2 keys (K1 and K2). If we use 128-bit AES, then we generate two keys which are 128 bits long. Next, we define an input block (P) and a sector number (i) and a block number (j), and create a tweak (X ):
+      line    65  [cipher_mode]  XEX, XTS: define 2 keys (K1 and K2). If we use 128-bit AES, then we generate two keys which are 128 bits long. Next, we define an input block (P) and a sector number (i) and a block number (j), and create a tweak (X ):
+      line    90  [symmetric]  ## AES XEX Ciphering
+      line    91  [symmetric]  AES-XEX (Xor-Encrypt-Xor) mode is a tweakable encryption mode often used for disk encryption. It works similarly to AES-ECB but introduces a tweak value to diversify ciphertexts for the same plaintext.
+      line    91  [cipher_mode]  AES-XEX (Xor-Encrypt-Xor) mode is a tweakable encryption mode often used for disk encryption. It works similarly to AES-ECB but introduces a tweak value to diversify ciphertexts for the same plaintext.
+      line    98  [symmetric]  Encrypt the tweak using AES.
+      line   108  [symmetric]  Ensure that the key size matches the AES mode (128, 192, or 256 bits).
+      line   110  [symmetric]  AES-XEX provides semantic security if the tweak is unique for each block.
+      line   110  [symmetric]  AES-XEX provides semantic security if the tweak is unique for each block.
+      line   112  [symmetric]  ## AES XTS Ciphering
+      line   112  [cipher_mode]  ## AES XTS Ciphering
+      line   113  [symmetric]  AES-XTS (XEX-based Tweaked CodeBook mode with ciphertext stealing) is a widely-used encryption mode designed for encrypting data on storage devices. It is more advanced than XEX because it handles data lengths that are not a multiple of the block size.
+      line   113  [cipher_mode]  AES-XTS (XEX-based Tweaked CodeBook mode with ciphertext stealing) is a widely-used encryption mode designed for encrypting data on storage devices. It is more advanced than XEX because it handles data lengths that are not a multiple of the block size.
+      line   115  [symmetric]  A sector of a size of 512 bytes will store 32, 16-byte AES-blocks (a block in AES is 128 bits long). In this way, for a single sector, we call the encrypt/decrypt method 32 times using the same i value, but different j values (0 to 31).
+      line   117  [symmetric]  Most fully encrypted disks use the AES-XTS block cipher mode, and which is defined in IEEE Standard 1619. It is now implemented in many USB encrypted devices, and with Microsoft Bitlocker for Windows 10, TrueCrypt, VeraCrypt, OpenSSL, and Mac OSX FileVault.
+      line   117  [cipher_mode]  Most fully encrypted disks use the AES-XTS block cipher mode, and which is defined in IEEE Standard 1619. It is now implemented in many USB encrypted devices, and with Microsoft Bitlocker for Windows 10, TrueCrypt, VeraCrypt, OpenSSL, and Mac OSX FileVault.
+      line   122  [symmetric]  AES-XTS Requirements:
+      line   122  [cipher_mode]  AES-XTS Requirements:
+      line   128  [cipher_mode]  XTS encrypts each block of plaintext with a tweak based on the sector number.
+      line   140  [symmetric]  Ensure 512-bit key (two 256-bit keys) for AES-XTS.
+      line   140  [cipher_mode]  Ensure 512-bit key (two 256-bit keys) for AES-XTS.
+      line   142  [cipher_mode]  Caveat: XTS weaknesses exists. XTS mode is susceptible to data manipulation and tampering. It is not suitable for message encryption—use it primarily for disk encryption.
+      line   144  [symmetric]  ## AES-CBC-Hmac
+      line   144  [cipher_mode]  ## AES-CBC-Hmac
+      line   144  [kdf]  ## AES-CBC-Hmac
+      line   145  [symmetric]  If you must use AES-CBC, you must MAC ciphertext (and IV). Devise some sort of key-separation mechanism so you’re not using the same key for 2 different algorithms:
+      line   145  [cipher_mode]  If you must use AES-CBC, you must MAC ciphertext (and IV). Devise some sort of key-separation mechanism so you’re not using the same key for 2 different algorithms:
+      line   147  [cipher_mode]  encKey := HmacSha256(“encryption-cbc-hmac”, key)
+      line   147  [kdf]  encKey := HmacSha256(“encryption-cbc-hmac”, key)
+      line   148  [cipher_mode]  macKey := HmacSha256(“authentication-cbc-hmac”, key)
+      line   148  [kdf]  macKey := HmacSha256(“authentication-cbc-hmac”, key)
+      line   152  [kdf]  For decryption you need a secure compare function. If one is not available to you, or you cannot guarantee it will run in constant time, a second HMAC call with a random per-comparison key will suffice.
+      line   154  [symmetric]  AES-CBC + HMAC-SHA256 (encrypt then MAC) is message-committing and therefore can be safely used with algorithms like OPAQUE.
+      line   154  [cipher_mode]  AES-CBC + HMAC-SHA256 (encrypt then MAC) is message-committing and therefore can be safely used with algorithms like OPAQUE.
+      line   154  [kdf]  AES-CBC + HMAC-SHA256 (encrypt then MAC) is message-committing and therefore can be safely used with algorithms like OPAQUE.
+      line   156  [symmetric]  The Signal Protocol uses AES-CBC + HMAC-SHA2 for message encryption.
+      line   156  [cipher_mode]  The Signal Protocol uses AES-CBC + HMAC-SHA2 for message encryption.
+      line   156  [kdf]  The Signal Protocol uses AES-CBC + HMAC-SHA2 for message encryption.
+      line   158  [symmetric]  ## AES-CTR-Hmac
+      line   158  [cipher_mode]  ## AES-CTR-Hmac
+      line   158  [kdf]  ## AES-CTR-Hmac
+      line   159  [symmetric]  If you must use AES-CTR, the same rules apply as for AES-CBC:
+      line   159  [cipher_mode]  If you must use AES-CTR, the same rules apply as for AES-CBC:
+      line   159  [cipher_mode]  If you must use AES-CTR, the same rules apply as for AES-CBC:
+      line   161  [cipher_mode]  encKey := HmacSha256(“encryption-ctr-hmac”, key)
+      line   161  [kdf]  encKey := HmacSha256(“encryption-ctr-hmac”, key)
+      line   162  [cipher_mode]  macKey := HmacSha256(“authentication-ctr-hmac”, key)
+      line   162  [kdf]  macKey := HmacSha256(“authentication-ctr-hmac”, key)
+      line   168  [symmetric]  AES-CTR + HMAC-SHA256 (encrypt then MAC) is message-committing and therefore can be safely used with algorithms like OPAQUE.
+      line   168  [cipher_mode]  AES-CTR + HMAC-SHA256 (encrypt then MAC) is message-committing and therefore can be safely used with algorithms like OPAQUE.
+      line   168  [kdf]  AES-CTR + HMAC-SHA256 (encrypt then MAC) is message-committing and therefore can be safely used with algorithms like OPAQUE.
+      line   170  [symmetric]  ## AES-CBC Weaknesses Demo
+      line   170  [cipher_mode]  ## AES-CBC Weaknesses Demo
+      line   172  [cipher_mode]  Illustration of the CBC-MAC vulnerabilities and their implications. This snippet focuses on:
+      line   177  [cipher_mode]  CBC-MAC is very similar to the classic CBC mode for encryption, with a few major differences. First, the Initialization Vector (IV) is a fixed value, usually zero. Second, CBC-MAC only outputs the last block of the ciphertext — this single value forms the MAC. Many dumb implementations stop here. An
+      line   183  [cipher_mode]  The standard fix to prepend the message length to the first block of the message before MACing it. But a surprisingly large number of (dumb) implementations skip this extra step. And many CBC-MAC implementations are dumb implementations.
+      line   186  [cipher_mode]  2. Random IV (Initialization Vector) Weakness – Highlighting how using a random IV in CBC-MAC allows tampering and message manipulation.
+      line   189  [cipher_mode]  If CBC-MAC with a fixed IV is great, surely CBC-MAC with a random IV must be super-great. But no, it isn’t.
+      line   191  [cipher_mode]  Using a random (or variable IV) is bad for the simple reason that verifying a CBC-MAC requires you to know the IV, and to know the IV you probably need to read it from somewhere. Typically this means the same untrusted place where you were storing your message.
+      line   193  [cipher_mode]  If the attacker can change the CBC-MAC IV, they can also change the first block of the MACed message in an equivalent manner. This works because the first step of CBC-MAC is to XOR the IV with the message. There are all kinds of silly variants of this problem, and all of them hurt.
+      line   196  [cipher_mode]  Examples to illustrate two key CBC-MAC vulnerabilities:
+      line   203  [cipher_mode]  When the same key is used for both encryption (CTR mode) and message authentication (CBC-MAC), it creates a vulnerability where an attacker can exploit nonce reuse to recover the keystream.
+      line   203  [cipher_mode]  When the same key is used for both encryption (CTR mode) and message authentication (CBC-MAC), it creates a vulnerability where an attacker can exploit nonce reuse to recover the keystream.
+      line   205  [cipher_mode]  Attack: By requesting the encryption of small files with consecutive counter values (C, C+1, etc.) of of the chosen ciphertext, the attacker can use the CBC-MAC outputs to reconstruct the keystream. With this keystream, they can decrypt any ciphertext encrypted under the same key and nonce (cause no
+      line   205  [cipher_mode]  Attack: By requesting the encryption of small files with consecutive counter values (C, C+1, etc.) of of the chosen ciphertext, the attacker can use the CBC-MAC outputs to reconstruct the keystream. With this keystream, they can decrypt any ciphertext encrypted under the same key and nonce (cause no
+
+  ▸ sha_and_cmac.py
+      line     2  [py_import]  import hashlib
+      line    25  [kdf]  # CMAC
+      line    27  [py_import]  from cryptography.hazmat.primitives import cmac
+      line    27  [kdf]  from cryptography.hazmat.primitives import cmac
+      line    28  [py_import]  from cryptography.hazmat.primitives.ciphers import algorithms
+      line    38  [kdf]  # Function to compute CMAC
+      line    40  [symmetric]  c = cmac.CMAC(algorithms.AES(key))
+      line    40  [kdf]  c = cmac.CMAC(algorithms.AES(key))
+      line    44  [kdf]  # Generate a key for CMAC (in real applications, this should be securely stored)
+      line    45  [symmetric]  key = os.urandom(16)  # 128-bit key for AES-CMAC
+      line    45  [kdf]  key = os.urandom(16)  # 128-bit key for AES-CMAC
+      line    45  [random]  key = os.urandom(16)  # 128-bit key for AES-CMAC
+      line    47  [kdf]  print(f"CMAC Key (hex): {key.hex()}")
+      line    57  [kdf]  print(f"CMAC: {cmac_value}")
+      line    64  [kdf]  CMAC Key (hex): 666668c723cd5215b3e76f269a583278
+      line    70  [kdf]  CMAC: 08d22ffde3b7e4a1423af2707e3ec540
+      line    74  [kdf]  CMAC: a5c52ee74b6ac3f15ed7f4659a94fa14
+      line    78  [kdf]  CMAC: d8a89966627e766857bbb9f4c2f13d23

@@ -1,0 +1,13 @@
+================================================================================
+  REPO       : cache_friendly_b_tree_node_in_rust
+  FULL NAME  : ursa-mikail/cache_friendly_b_tree_node_in_rust
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Rust
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/cache_friendly_b_tree_node_in_rust
+  MATCHES    : 2
+================================================================================
+
+  ▸ readme.md
+      line   185  [symmetric]  Unlike the C++ version which has hidden constraints with std::memmove and non-trivial types, Rust's type system provides better safety:
+      line   246  [symmetric]  SIMD-optimized search within nodes

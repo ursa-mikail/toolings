@@ -1,0 +1,33 @@
+================================================================================
+  REPO       : safety_assurance_numbers
+  FULL NAME  : ursa-mikail/safety_assurance_numbers
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Python
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/safety_assurance_numbers
+  MATCHES    : 16
+================================================================================
+
+  ▸ readme.md
+      line     1  [symmetric]  # Safety Passcodes For Mutual Assurance
+      line     3  [symmetric]  There are many ways to create safety passcodes for mutual assurance.
+      line    10  [fpe_token]  Encrypt <passcode> using FPE with pyffx.
+
+  ▸ safety_assurance_numbers_00.py
+      line     6  [fpe_token]  Encrypt "my_name_is_ursa_major" using FPE with pyffx.
+      line     9  [py_import]  import hashlib
+      line    18  [random]  random_bytes = os.urandom(N)
+      line    26  [fpe_token]  # === Step 3: FPE Encrypt each token ===
+      line    32  [fpe_token]  fpe = pyffx.String(hashed_key, alphabet=alphabet, length=len(token))
+      line    33  [fpe_token]  encrypted = fpe.encrypt(token)
+
+  ▸ safety_assurance_numbers_01.py
+      line     2  [py_import]  import hashlib
+      line     6  [random]  return os.urandom(32).hex()
+
+  ▸ safety_assurance_numbers_03.py
+      line     2  [symmetric]  Signal-style verification codes are based on short authentication strings (SAS) and are typically:
+      line    10  [symmetric]  Since you’re generating verification codes from a seed (SHA256(key1)||SHA256(key2) and vice versa), we can simulate Signal-style SAS codes by:
+      line    17  [symmetric]  Only if both see matching codes, can they trust the connection is secure (MITM-free).
+      line    22  [py_import]  import hashlib
+      line    25  [random]  return os.urandom(32).hex()

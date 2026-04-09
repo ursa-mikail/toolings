@@ -1,0 +1,25 @@
+================================================================================
+  REPO       : mtls_termination_with_server_key_inspection
+  FULL NAME  : ursa-mikail/mtls_termination_with_server_key_inspection
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Shell
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/mtls_termination_with_server_key_inspection
+  MATCHES    : 6
+================================================================================
+
+  ▸ grpc-mtls-demo/README.md
+      line   116  [symmetric]  - Decodes and parses the client certificate
+
+  ▸ grpc-mtls-demo/VERSION_FIX.txt
+      line    80  [symmetric]  The package now includes:
+
+  ▸ grpc-mtls-demo/generate_proto.sh
+      line    14  [symmetric]  echo "PATH includes: $GOPATH/bin"
+
+  ▸ grpc-mtls-demo/run_demo.sh
+      line    92  [symmetric]  echo "Current PATH includes: $GOPATH/bin"
+
+  ▸ readme.md
+      line   147  [symmetric]  │                          4. Proxy includes         │
+      line   318  [symmetric]  Current PATH includes: /go/bin

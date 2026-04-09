@@ -1,0 +1,13 @@
+================================================================================
+  REPO       : payment_statemachine_infra
+  FULL NAME  : ursa-mikail/payment_statemachine_infra
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : TypeScript
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/payment_statemachine_infra
+  MATCHES    : 2
+================================================================================
+
+  ▸ backend/main.go
+      line   332  [symmetric]  errCodes  = []string{"INSUFFICIENT_FUNDS", "INVALID_DESTINATION", "PROVIDER_TIMEOUT", "CHAIN_REORG", "PSP_DECLINE", "AML_BLOCK", "RATE_LIMITED"}
+      line   412  [symmetric]  sa.ErrorCode = pick(errCodes)

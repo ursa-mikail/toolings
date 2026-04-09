@@ -1,0 +1,15 @@
+================================================================================
+  REPO       : form-signer
+  FULL NAME  : ursa-mikail/form-signer
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : TypeScript
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/form-signer
+  MATCHES    : 2
+================================================================================
+
+  ▸ backend/internal/api/server.go
+      line   141  [signature]  signed, err := s.keyPair.Sign(payload, "form-submission", 365*24*time.Hour)
+
+  ▸ backend/internal/crypto/crypto.go
+      line    81  [signature]  sig, err := kp.PrivateKey.Sign(rand.Reader, sigInput, crypto.Hash(0))

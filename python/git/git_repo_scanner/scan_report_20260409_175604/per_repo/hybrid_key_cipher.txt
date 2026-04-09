@@ -1,0 +1,64 @@
+================================================================================
+  REPO       : hybrid_key_cipher
+  FULL NAME  : ursa-mikail/hybrid_key_cipher
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Go
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/hybrid_key_cipher
+  MATCHES    : 45
+================================================================================
+
+  ▸ go/trial_ECIES/lib/p0/p0.go
+      line    14  [kdf]  KDF  hpke.KDFID
+      line    23  [symmetric]  {hpke.DHKEM_X25519_HKDF_SHA256, hpke.HKDFSHA256, hpke.ChaCha20Poly1305, "X25519/SHA256/ChaCha20"},
+
+  ▸ go/trial_ECIES/readme.md
+      line     3  [signature]  The advantage of using Alice’s public key in the generation of S_k is that it is equivalent to a digital signature. If Alice does not have a key pair, she can generate a random scalar value (r) and produce R=rG. With Bob's public key, Q_b (= b.G), Alice can use S= r.Q_b to derive the shared secret k
+      line    10  [symmetric]  - AES-GCM for symmetric encryption of the actual data
+      line    10  [cipher_mode]  - AES-GCM for symmetric encryption of the actual data
+      line    11  [kdf]  - HMAC-SHA256 for key derivation and authentication
+      line    15  [symmetric]  - Configurable AES key sizes (16, 24, 32 bytes)
+      line    26  [symmetric]  keysize (int): AES key size in bytes (16, 24, or 32)
+      line    34  [kdf]  - Derives symmetric keys using HKDF with SHA-256
+      line    38  [symmetric]  - AES-GCM for authenticated encryption
+      line    38  [cipher_mode]  - AES-GCM for authenticated encryption
+      line    43  [kdf]  - HKDF-SHA256 for key derivation from shared secret
+      line    51  [symmetric]  - **Authenticated Encryption**: Built-in authentication via AES-GCM
+      line    51  [cipher_mode]  - **Authenticated Encryption**: Built-in authentication via AES-GCM
+      line    65  [symmetric]  DEMParameters:        demParameters,            // AES-GCM configuration
+      line    65  [cipher_mode]  DEMParameters:        demParameters,            // AES-GCM configuration
+      line    66  [kdf]  Salt:                 []byte{...},              // KDF salt
+      line    70  [symmetric]  ### AES-GCM Parameters
+      line    70  [cipher_mode]  ### AES-GCM Parameters
+      line   121  [symmetric]  1. **Parameter Configuration**: Sets up ECIES and AES-GCM parameters
+      line   121  [cipher_mode]  1. **Parameter Configuration**: Sets up ECIES and AES-GCM parameters
+      line   188  [kdf]  - [HKDF Specification (RFC 5869)](https://tools.ietf.org/html/rfc5869)
+      line   189  [symmetric]  - [AES-GCM Specification (NIST SP 800-38D)](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-38d.pdf)
+      line   189  [cipher_mode]  - [AES-GCM Specification (NIST SP 800-38D)](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-38d.pdf)
+
+  ▸ go/trial_key_encapsulation/lib/p0/p0.go
+      line    14  [kdf]  KDF  hpke.KDFID
+      line    23  [symmetric]  {hpke.DHKEM_X25519_HKDF_SHA256, hpke.HKDFSHA256, hpke.ChaCha20Poly1305, "X25519/SHA256/ChaCha20"},
+
+  ▸ go/trial_key_encapsulation/main.go
+      line    47  [kdf]  KDFID:   selected.KDF,
+
+  ▸ go/trial_key_encapsulation/readme.md
+      line     3  [kdf]  With Hybrid Public Key Encryption (HPKE), we use a recipient’s public key to encrypt plaintext using an asymmetric key encapsulation mechanism (KEM). The key is derived using a key derivation function (KDF), and where the data is encrypted with an authenticated encryption with additional data (AEAD)
+      line     3  [kdf]  With Hybrid Public Key Encryption (HPKE), we use a recipient’s public key to encrypt plaintext using an asymmetric key encapsulation mechanism (KEM). The key is derived using a key derivation function (KDF), and where the data is encrypted with an authenticated encryption with additional data (AEAD)
+      line    73  [kdf]  | Index | KEM | KDF | AEAD | Description |
+      line    75  [symmetric]  | 0 | P-256 | HKDF-SHA256 | AES-128-GCM | Fastest, smaller keys |
+      line    75  [cipher_mode]  | 0 | P-256 | HKDF-SHA256 | AES-128-GCM | Fastest, smaller keys |
+      line    75  [kdf]  | 0 | P-256 | HKDF-SHA256 | AES-128-GCM | Fastest, smaller keys |
+      line    76  [symmetric]  | 1 | P-384 | HKDF-SHA384 | AES-256-GCM | Balanced security/performance |
+      line    76  [cipher_mode]  | 1 | P-384 | HKDF-SHA384 | AES-256-GCM | Balanced security/performance |
+      line    76  [kdf]  | 1 | P-384 | HKDF-SHA384 | AES-256-GCM | Balanced security/performance |
+      line    77  [symmetric]  | 2 | P-521 | HKDF-SHA512 | AES-256-GCM | High security (default) |
+      line    77  [cipher_mode]  | 2 | P-521 | HKDF-SHA512 | AES-256-GCM | High security (default) |
+      line    77  [kdf]  | 2 | P-521 | HKDF-SHA512 | AES-256-GCM | High security (default) |
+      line    78  [symmetric]  | 3 | X25519 | HKDF-SHA256 | ChaCha20-Poly1305 | Modern, fast, secure |
+      line    78  [kdf]  | 3 | X25519 | HKDF-SHA256 | ChaCha20-Poly1305 | Modern, fast, secure |
+      line   105  [symmetric]  2. **AEAD Key Generation**: A random AES-256-GCM key is generated for symmetric encryption
+      line   105  [cipher_mode]  2. **AEAD Key Generation**: A random AES-256-GCM key is generated for symmetric encryption
+      line   112  [symmetric]  - **Forward Secrecy**: HPKE provides forward secrecy for the encapsulated keys
+      line   115  [post_quantum]  - **Post-Quantum Considerations**: Some profiles (like X25519) offer better post-quantum properties

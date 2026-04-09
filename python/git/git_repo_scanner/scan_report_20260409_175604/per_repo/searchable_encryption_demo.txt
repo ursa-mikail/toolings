@@ -1,0 +1,294 @@
+================================================================================
+  REPO       : searchable_encryption_demo
+  FULL NAME  : ursa-mikail/searchable_encryption_demo
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Go
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/searchable_encryption_demo
+  MATCHES    : 279
+================================================================================
+
+  ▸ readme.md
+      line    53  [symmetric]  ecb_key_name    ← AES-ECB key for encrypting name Bloom filters
+      line    53  [cipher_mode]  ecb_key_name    ← AES-ECB key for encrypting name Bloom filters
+      line    54  [symmetric]  gcm_key_name    ← AES-GCM key for encrypting name field values
+      line    54  [cipher_mode]  gcm_key_name    ← AES-GCM key for encrypting name field values
+      line    55  [kdf]  hmac_key_name   ← HMAC key for name exact-match lookups
+      line    58  [symmetric]  ecb_key_email   ← AES-ECB key for encrypting email Bloom filters
+      line    58  [cipher_mode]  ecb_key_email   ← AES-ECB key for encrypting email Bloom filters
+      line    59  [symmetric]  gcm_key_email   ← AES-GCM key for encrypting email field values
+      line    59  [cipher_mode]  gcm_key_email   ← AES-GCM key for encrypting email field values
+      line    60  [kdf]  hmac_key_email  ← HMAC key for email exact-match lookups
+      line    69  [cipher_mode]  **Why separate keys per purpose (ECB, GCM, HMAC) within the same column?**
+      line    69  [cipher_mode]  **Why separate keys per purpose (ECB, GCM, HMAC) within the same column?**
+      line    69  [kdf]  **Why separate keys per purpose (ECB, GCM, HMAC) within the same column?**
+      line    77  [symmetric]  ### AES-ECB — what it is and how it works here
+      line    77  [cipher_mode]  ### AES-ECB — what it is and how it works here
+      line    79  [symmetric]  AES (Advanced Encryption Standard) is a widely-used block cipher. A block cipher takes a fixed-size chunk of data (a "block") and scrambles it into an unreadable fixed-size output using a key. AES uses 128-bit (16-byte) blocks.
+      line    81  [symmetric]  **ECB** (Electronic Codebook) is the simplest mode of AES. You feed it a block of data and a key, and it produces an encrypted block. That's it — no other inputs.
+      line    81  [cipher_mode]  **ECB** (Electronic Codebook) is the simplest mode of AES. You feed it a block of data and a key, and it produces an encrypted block. That's it — no other inputs.
+      line    88  [symmetric]  The Bloom filter in this system is exactly 128 bits = 16 bytes, so it fits in one AES block with no padding needed. This makes ECB a natural fit.
+      line    88  [cipher_mode]  The Bloom filter in this system is exactly 128 bits = 16 bytes, so it fits in one AES block with no padding needed. This makes ECB a natural fit.
+      line    90  [cipher_mode]  **ECB's key property:** It is *deterministic*. The same input + the same key always produces the same output. Encrypt the same Bloom filter twice with the same key, and you get identical ciphertext both times. This is a known weakness of ECB (two identical inputs are visible as two identical ciphert
+      line    94  [symmetric]  ### AES-GCM — what it is and how it works here
+      line    94  [cipher_mode]  ### AES-GCM — what it is and how it works here
+      line    96  [symmetric]  **GCM** (Galois/Counter Mode) is a more sophisticated mode of AES used for encrypting actual field values. It has two important differences from ECB:
+      line    96  [cipher_mode]  **GCM** (Galois/Counter Mode) is a more sophisticated mode of AES used for encrypting actual field values. It has two important differences from ECB:
+      line    96  [cipher_mode]  **GCM** (Galois/Counter Mode) is a more sophisticated mode of AES used for encrypting actual field values. It has two important differences from ECB:
+      line   114  [symmetric]  AES-256-GCM means AES-GCM with a 256-bit (32-byte) key, which is the strongest standard key length.
+      line   114  [cipher_mode]  AES-256-GCM means AES-GCM with a 256-bit (32-byte) key, which is the strongest standard key length.
+      line   122  [cipher_mode]  Without a nonce (as in ECB), encrypting the same value twice always produces the same ciphertext. An attacker watching the database can see that `row 5` and `row 12` have identical ciphertext and conclude they contain the same value — even without knowing what that value is.
+      line   124  [cipher_mode]  With a fresh nonce each time (as in GCM), the ciphertext for the same value looks completely different on every encryption. The attacker learns nothing from seeing two identical ciphertexts because it never happens.
+      line   158  [kdf]  ### HMAC — what it is and why it matters
+      line   160  [kdf]  **HMAC** (Hash-based Message Authentication Code) is a way of computing a fixed-size fingerprint of a piece of data using a secret key. It is like a hash, but only someone with the key can verify or reproduce it.
+      line   166  [kdf]  HMAC is deterministic — the same key + the same input always produces the same output. This makes it useful as a blind index for exact-match lookups: hash the query with the key, look up that hash, find the matching UID, fetch and decrypt only that row.
+      line   168  [kdf]  HMAC does not protect the data against an attacker who can observe the HMAC values in Vault memory, but since Vault is trusted and the HMAC values never leave Vault, this is acceptable.
+      line   203  [symmetric]  - **Index rebuild.** If a key is rotated or the index is corrupted, sync provides a clean way to reconstruct the entire index from the database's encrypted source of truth.
+      line   235  [symmetric]  ecb_key_name     = random 16 bytes     (AES-128-ECB key, for Bloom filters)
+      line   235  [cipher_mode]  ecb_key_name     = random 16 bytes     (AES-128-ECB key, for Bloom filters)
+      line   236  [symmetric]  gcm_key_name     = random 32 bytes     (AES-256-GCM key, for field values)
+      line   236  [cipher_mode]  gcm_key_name     = random 32 bytes     (AES-256-GCM key, for field values)
+      line   237  [kdf]  hmac_key_name    = random 32 bytes     (HMAC-SHA256 key, for exact-match)
+      line   317  [symmetric]  The result is one 128-bit integer that encodes which trigrams appeared in `"Alice Johnson"`, mapped to bit positions using the column's salt.
+      line   328  [symmetric]  #### Step 1.5 — Encrypt the Bloom filter with AES-128-ECB
+      line   328  [cipher_mode]  #### Step 1.5 — Encrypt the Bloom filter with AES-128-ECB
+      line   332  [symmetric]  To prevent this, Vault encrypts the Bloom filter using `ecb_key_name` — the dedicated 16-byte AES-ECB key for the `name` column — before sending it to the database:
+      line   332  [cipher_mode]  To prevent this, Vault encrypts the Bloom filter using `ecb_key_name` — the dedicated 16-byte AES-ECB key for the `name` column — before sending it to the database:
+      line   335  [symmetric]  raw_filter    = 0xd889904180a4a84b7fa9116010129081  (16 bytes = one AES block)
+      line   344  [cipher_mode]  **ECB's accepted weakness:** ECB is deterministic — the same filter + the same key always produces the same ciphertext. This means two rows containing `"Alice Johnson"` would have identical `encrypted_bloom` values, revealing that those two rows contain the same value. The article accepts this limit
+      line   346  [symmetric]  **Why ECB specifically for Bloom filters?** The 128-bit filter is exactly one AES block. ECB encrypts exactly one block with no overhead — no nonce, no padding, no authentication tag. For an index that may contain tens of millions of entries, this matters. GCM would add 28 extra bytes per entry (12-
+      line   346  [cipher_mode]  **Why ECB specifically for Bloom filters?** The 128-bit filter is exactly one AES block. ECB encrypts exactly one block with no overhead — no nonce, no padding, no authentication tag. For an index that may contain tens of millions of entries, this matters. GCM would add 28 extra bytes per entry (12-
+      line   346  [cipher_mode]  **Why ECB specifically for Bloom filters?** The 128-bit filter is exactly one AES block. ECB encrypts exactly one block with no overhead — no nonce, no padding, no authentication tag. For an index that may contain tens of millions of entries, this matters. GCM would add 28 extra bytes per entry (12-
+      line   350  [symmetric]  #### Step 1.6 — Encrypt the field value with AES-256-GCM
+      line   350  [cipher_mode]  #### Step 1.6 — Encrypt the field value with AES-256-GCM
+      line   352  [symmetric]  The actual plaintext value is encrypted separately using `gcm_key_name` — the 32-byte AES-GCM key for the `name` column. Unlike the Bloom filter, this encryption generates a fresh random nonce every time:
+      line   352  [cipher_mode]  The actual plaintext value is encrypted separately using `gcm_key_name` — the 32-byte AES-GCM key for the `name` column. Unlike the Bloom filter, this encryption generates a fresh random nonce every time:
+      line   369  [cipher_mode]  **Why GCM for field values (not ECB)?** Field values need two properties that Bloom filters don't:
+      line   369  [cipher_mode]  **Why GCM for field values (not ECB)?** Field values need two properties that Bloom filters don't:
+      line   380  [kdf]  In addition to the Bloom filter (for glob/substring search), Vault also computes an HMAC fingerprint of the value using `hmac_key_name` — the 32-byte HMAC key for the `name` column:
+      line   396  [kdf]  It is never sent to the database. When a query like `WHERE name = 'Alice Johnson'` arrives, Vault computes the HMAC of the query, looks it up instantly in the blind_store, retrieves the matching UIDs, and fetches only those encrypted rows. The Bloom scan is bypassed entirely for exact matches.
+      line   606  [symmetric]  ecb_key_name     = random 16 bytes   ← AES-ECB key for Bloom filters
+      line   606  [cipher_mode]  ecb_key_name     = random 16 bytes   ← AES-ECB key for Bloom filters
+      line   607  [symmetric]  gcm_key_name     = random 32 bytes   ← AES-GCM key for field values
+      line   607  [cipher_mode]  gcm_key_name     = random 32 bytes   ← AES-GCM key for field values
+      line   608  [kdf]  hmac_key_name    = random 32 bytes   ← HMAC key for exact-match
+      line   678  [symmetric]  │    ecb_key_name     ← random, AES-ECB              │
+      line   678  [cipher_mode]  │    ecb_key_name     ← random, AES-ECB              │
+      line   679  [symmetric]  │    gcm_key_name     ← random, AES-GCM              │
+      line   679  [cipher_mode]  │    gcm_key_name     ← random, AES-GCM              │
+      line   680  [kdf]  │    hmac_key_name    ← random, HMAC                 │
+      line   713  [symmetric]  | Bloom encryption | `BloomEncryptor` | Wraps AES-128-ECB for one column's Bloom filters |
+      line   713  [cipher_mode]  | Bloom encryption | `BloomEncryptor` | Wraps AES-128-ECB for one column's Bloom filters |
+      line   714  [symmetric]  | Field encryption | `FieldEncryptor` | Wraps AES-256-GCM for one column's field values |
+      line   714  [cipher_mode]  | Field encryption | `FieldEncryptor` | Wraps AES-256-GCM for one column's field values |
+      line   715  [kdf]  | Blind index | `blind_index()` | HMAC-SHA256 fingerprint for exact-match lookups |
+      line   727  [cipher_mode]  Because each column has its own ECB key, GCM key, HMAC key, and bloom salt, a database attacker who observes patterns in one column's ciphertexts cannot correlate those patterns against another column. The `name` column's encrypted blooms are mathematically independent of the `email` column's encryp
+      line   727  [cipher_mode]  Because each column has its own ECB key, GCM key, HMAC key, and bloom salt, a database attacker who observes patterns in one column's ciphertexts cannot correlate those patterns against another column. The `name` column's encrypted blooms are mathematically independent of the `email` column's encryp
+      line   727  [kdf]  Because each column has its own ECB key, GCM key, HMAC key, and bloom salt, a database attacker who observes patterns in one column's ciphertexts cannot correlate those patterns against another column. The `name` column's encrypted blooms are mathematically independent of the `email` column's encryp
+      line   729  [cipher_mode]  ### ECB encrypting the Bloom filter defeats bit-frequency analysis
+      line   731  [symmetric]  Without ECB, the raw bitmask would be stored directly. An attacker with DB access could compute: "bit 43 is set in 70% of rows." Over time and with linguistic knowledge of what common trigrams look like, this leaks information about the data distribution. AES-ECB turns the bitmask into an opaque blo
+      line   731  [cipher_mode]  Without ECB, the raw bitmask would be stored directly. An attacker with DB access could compute: "bit 43 is set in 70% of rows." Over time and with linguistic knowledge of what common trigrams look like, this leaks information about the data distribution. AES-ECB turns the bitmask into an opaque blo
+      line   733  [cipher_mode]  ### ECB's accepted limitation: value-level correlation is still visible
+      line   735  [cipher_mode]  ECB is deterministic. Two rows with the same value produce the same raw Bloom filter, and encrypting with the same key produces the same ECB output. An attacker can tell that `row 5` and `row 12` in the `name` column contain the same value — even if they can't tell what it is. The article accepts th
+      line   737  [cipher_mode]  ### GCM for field values is non-deterministic
+      line   747  [kdf]  The HMAC lookup table lives only in Vault memory. The database never receives HMAC values, UIDs-to-HMAC mappings, or any other exact-match index data.
+      line   756  [symmetric]  | B | Bloom filter → AES-ECB encrypt → decrypt round-trip |
+      line   756  [cipher_mode]  | B | Bloom filter → AES-ECB encrypt → decrypt round-trip |
+      line   758  [cipher_mode]  | D | Why salt alone is insufficient, and what ECB protects against |
+      line   760  [kdf]  | F | Exact-match search via blind HMAC index |
+
+  ▸ searchable_encryption_demo.go
+      line    32  [symmetric]  "crypto/aes"
+      line    34  [kdf]  "crypto/hmac"
+      line   150  [symmetric]  // 3. BLOOM FILTER ENCRYPTION  (AES-128-ECB)
+      line   150  [cipher_mode]  // 3. BLOOM FILTER ENCRYPTION  (AES-128-ECB)
+      line   152  [symmetric]  // "We propose AES ECB with a different key per field."
+      line   152  [cipher_mode]  // "We propose AES ECB with a different key per field."
+      line   153  [symmetric]  // 128-bit Bloom filter fits exactly in one AES block — no padding.
+      line   154  [cipher_mode]  // ECB is deterministic: same filter + same key → same ciphertext.
+      line   158  [symmetric]  // BloomEncryptor encrypts/decrypts 128-bit Bloom filters with AES-128-ECB.
+      line   158  [cipher_mode]  // BloomEncryptor encrypts/decrypts 128-bit Bloom filters with AES-128-ECB.
+      line   160  [symmetric]  key []byte // 16 bytes = AES-128
+      line   170  [symmetric]  // encrypt encrypts a BloomFilter into 16 bytes using AES-ECB.
+      line   170  [cipher_mode]  // encrypt encrypts a BloomFilter into 16 bytes using AES-ECB.
+      line   172  [symmetric]  block, err := aes.NewCipher(e.key)
+      line   175  [cipher_mode]  block.Encrypt(dst, f.toBytes()) // ECB: single block, no IV
+      line   179  [symmetric]  // decrypt decrypts 16 AES-ECB bytes back into a BloomFilter.
+      line   179  [cipher_mode]  // decrypt decrypts 16 AES-ECB bytes back into a BloomFilter.
+      line   181  [symmetric]  block, err := aes.NewCipher(e.key)
+      line   189  [symmetric]  // 4. FIELD-LEVEL ENCRYPTION  (AES-256-GCM, non-deterministic)
+      line   189  [cipher_mode]  // 4. FIELD-LEVEL ENCRYPTION  (AES-256-GCM, non-deterministic)
+      line   192  [symmetric]  // FieldEncryptor encrypts/decrypts field values with AES-256-GCM.
+      line   192  [cipher_mode]  // FieldEncryptor encrypts/decrypts field values with AES-256-GCM.
+      line   194  [symmetric]  key []byte // 32 bytes = AES-256
+      line   206  [symmetric]  block, err := aes.NewCipher(e.key)
+      line   208  [cipher_mode]  gcm, err := cipher.NewGCM(block)
+      line   210  [cipher_mode]  nonce := make([]byte, gcm.NonceSize()) // 12 bytes
+      line   212  [cipher_mode]  ct := gcm.Seal(nil, nonce, []byte(plaintext), nil)
+      line   218  [symmetric]  block, err := aes.NewCipher(e.key)
+      line   220  [cipher_mode]  gcm, err := cipher.NewGCM(block)
+      line   222  [cipher_mode]  ns := gcm.NonceSize()
+      line   223  [cipher_mode]  pt, err := gcm.Open(nil, ciphertext[:ns], ciphertext[ns:], nil)
+      line   229  [kdf]  // 5. BLIND INDEX  (HMAC-SHA256, for exact-match)
+      line   232  [kdf]  // blindIndex returns a 16-byte deterministic HMAC of value.
+      line   234  [kdf]  mac := hmac.New(sha256.New, key)
+      line   248  [cipher_mode]  //    Each column gets its own bloom_salt AND its own ECB key.
+      line   425  [kdf]  blindStore map[string]map[[16]byte][]int // col → hmac → []uid
+      line   651  [symmetric]  fmt.Println("  Bloom Filters + Trigrams + AES-GCM/ECB  (Go)")
+      line   651  [cipher_mode]  fmt.Println("  Bloom Filters + Trigrams + AES-GCM/ECB  (Go)")
+      line   651  [cipher_mode]  fmt.Println("  Bloom Filters + Trigrams + AES-GCM/ECB  (Go)")
+      line   666  [cipher_mode]  // ── B. Bloom filter + ECB round-trip ─────────────────────
+      line   667  [symmetric]  sep("B. BLOOM FILTER ENCRYPTION  (AES-128-ECB, per field)")
+      line   667  [cipher_mode]  sep("B. BLOOM FILTER ENCRYPTION  (AES-128-ECB, per field)")
+      line   673  [cipher_mode]  fmt.Printf("  ECB encrypt : %s\n", hex.EncodeToString(ct))
+      line   674  [cipher_mode]  fmt.Printf("  ECB decrypt : 0x%s\n", dec.hex32())
+      line   678  [cipher_mode]  sep("C. PER-FIELD SALTS & ECB KEYS  (different per column)")
+      line   679  [cipher_mode]  fmt.Printf("  %-8s  %-34s  %s\n", "Column", "bloom_salt (hex)", "ECB key (first 16 hex chars)")
+      line   702  [cipher_mode]  sep("D. WHY SALT ALONE IS INSUFFICIENT  (and what ECB adds)")
+      line   708  [cipher_mode]  fmt.Println("  WITHOUT ECB — raw bloom stored directly in DB:")
+      line   716  [cipher_mode]  ecb := newBloomEncryptor()
+      line   717  [cipher_mode]  enc1 := ecb.encrypt(repeatedBloom)
+      line   718  [cipher_mode]  enc2 := ecb.encrypt(repeatedBloom)
+      line   719  [cipher_mode]  enc3 := ecb.encrypt(repeatedBloom)
+      line   720  [cipher_mode]  fmt.Println("  WITH ECB (same key, same input → same ciphertext — ECB is deterministic):")
+      line   721  [cipher_mode]  fmt.Printf("    row 1 ECB   : %s\n", hex.EncodeToString(enc1))
+      line   722  [cipher_mode]  fmt.Printf("    row 2 ECB   : %s  ← still identical\n", hex.EncodeToString(enc2))
+      line   723  [cipher_mode]  fmt.Printf("    row 3 ECB   : %s\n", hex.EncodeToString(enc3))
+      line   725  [cipher_mode]  fmt.Println("  ⚠  Article: 'two filters may still appear similar' — ECB does NOT")
+      line   726  [cipher_mode]  fmt.Println("     provide semantic security. Identical values → identical ECB blocks.")
+      line   728  [cipher_mode]  fmt.Println("  What ECB DOES protect against:")
+      line   732  [cipher_mode]  fmt.Println("    ECB turns structured bitmasks into opaque 128-bit blocks,")
+      line   741  [symmetric]  fmt.Printf("    encrypted_bloom : %s  ← AES-ECB\n", backend.encryptedBloomHex(uid1, "name"))
+      line   741  [cipher_mode]  fmt.Printf("    encrypted_bloom : %s  ← AES-ECB\n", backend.encryptedBloomHex(uid1, "name"))
+      line   743  [symmetric]  fmt.Printf("    ciphertext      : %s…  ← AES-GCM\n", base64.StdEncoding.EncodeToString(ctBytes)[:44])
+      line   743  [cipher_mode]  fmt.Printf("    ciphertext      : %s…  ← AES-GCM\n", base64.StdEncoding.EncodeToString(ctBytes)[:44])
+      line   749  [kdf]  sep("F. EXACT-MATCH SEARCH  (blind index / HMAC)")
+      line   865  [symmetric]  fmt.Println("  ✓  Trigrams → Bloom filter → AES-ECB encrypt → DB storage")
+      line   865  [cipher_mode]  fmt.Println("  ✓  Trigrams → Bloom filter → AES-ECB encrypt → DB storage")
+      line   868  [cipher_mode]  fmt.Println("  ✓  Per-field ECB key: each column encrypted independently")
+      line   869  [cipher_mode]  fmt.Println("  ✓  Salt alone insufficient: identical values → same bloom → same ECB block")
+      line   870  [cipher_mode]  fmt.Println("  ✓  ECB advantage: raw bloom bit-patterns hidden from DB (no statistical attack)")
+      line   899  [symmetric]  Bloom Filters + Trigrams + AES-GCM/ECB  (Go)
+      line   899  [cipher_mode]  Bloom Filters + Trigrams + AES-GCM/ECB  (Go)
+      line   899  [cipher_mode]  Bloom Filters + Trigrams + AES-GCM/ECB  (Go)
+      line   907  [symmetric]  ─── B. BLOOM FILTER ENCRYPTION  (AES-128-ECB, per field) ─────────
+      line   907  [cipher_mode]  ─── B. BLOOM FILTER ENCRYPTION  (AES-128-ECB, per field) ─────────
+      line   909  [cipher_mode]  ECB encrypt : 3ce5513c366cbafb7bdbb5831b815b47
+      line   910  [cipher_mode]  ECB decrypt : 0x2081412400202400008a418604e01000
+      line   913  [cipher_mode]  ─── C. PER-FIELD SALTS & ECB KEYS  (different per column) ────────
+      line   914  [cipher_mode]  Column    bloom_salt (hex)                    ECB key (first 16 hex chars)
+      line   925  [cipher_mode]  ─── D. WHY SALT ALONE IS INSUFFICIENT  (and what ECB adds) ───────
+      line   928  [cipher_mode]  WITHOUT ECB — raw bloom stored directly in DB:
+      line   935  [cipher_mode]  WITH ECB (same key, same input → same ciphertext — ECB is deterministic):
+      line   936  [cipher_mode]  row 1 ECB   : 80274ccb196b989efcbacd137faf9a3e
+      line   937  [cipher_mode]  row 2 ECB   : 80274ccb196b989efcbacd137faf9a3e  ← still identical
+      line   938  [cipher_mode]  row 3 ECB   : 80274ccb196b989efcbacd137faf9a3e
+      line   940  [cipher_mode]  ⚠  Article: 'two filters may still appear similar' — ECB does NOT
+      line   941  [cipher_mode]  provide semantic security. Identical values → identical ECB blocks.
+      line   943  [cipher_mode]  What ECB DOES protect against:
+      line   947  [cipher_mode]  ECB turns structured bitmasks into opaque 128-bit blocks,
+      line   952  [symmetric]  encrypted_bloom : 3d22eb3493ca8acad3750a2c7c99a80c  ← AES-ECB
+      line   952  [cipher_mode]  encrypted_bloom : 3d22eb3493ca8acad3750a2c7c99a80c  ← AES-ECB
+      line   953  [symmetric]  ciphertext      : XQBNK/gHk0ktE3le3I/PJ/VlKUC59SqnvZ7cqzftTGxZ…  ← AES-GCM
+      line   953  [cipher_mode]  ciphertext      : XQBNK/gHk0ktE3le3I/PJ/VlKUC59SqnvZ7cqzftTGxZ…  ← AES-GCM
+      line   958  [kdf]  ─── F. EXACT-MATCH SEARCH  (blind index / HMAC) ──────────────────
+
+  ▸ searchable_encryption_demo.py
+      line    26  [symmetric]  - Per-field AES-ECB key  (different key per column)
+      line    26  [cipher_mode]  - Per-field AES-ECB key  (different key per column)
+      line    34  [py_import]  import hashlib
+      line    35  [py_import]  import hmac as hmaclib
+      line    35  [kdf]  import hmac as hmaclib
+      line    39  [py_import]  import secrets
+      line    43  [py_import]  from cryptography.hazmat.primitives.ciphers.aead import AESGCM
+      line    44  [py_import]  from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+      line    44  [symmetric]  from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+      line    87  [symmetric]  # 3. BLOOM FILTER ENCRYPTION  (AES-128-ECB, per article)
+      line    87  [cipher_mode]  # 3. BLOOM FILTER ENCRYPTION  (AES-128-ECB, per article)
+      line    89  [symmetric]  #    "We propose AES ECB with a different key per field."
+      line    89  [cipher_mode]  #    "We propose AES ECB with a different key per field."
+      line    90  [symmetric]  #    128-bit Bloom filter fits exactly in one AES block — no padding.
+      line    91  [cipher_mode]  #    ECB is deterministic: same bloom int + same key → same ciphertext.
+      line    96  [symmetric]  """AES-128-ECB encryptor for a single 128-bit Bloom filter block."""
+      line    96  [cipher_mode]  """AES-128-ECB encryptor for a single 128-bit Bloom filter block."""
+      line    99  [symmetric]  self.key = key or secrets.token_bytes(16)   # 16 bytes = AES-128
+      line   103  [symmetric]  cipher = Cipher(algorithms.AES(self.key), modes.ECB())
+      line   103  [symmetric]  cipher = Cipher(algorithms.AES(self.key), modes.ECB())
+      line   103  [cipher_mode]  cipher = Cipher(algorithms.AES(self.key), modes.ECB())
+      line   108  [symmetric]  cipher = Cipher(algorithms.AES(self.key), modes.ECB())
+      line   108  [symmetric]  cipher = Cipher(algorithms.AES(self.key), modes.ECB())
+      line   108  [cipher_mode]  cipher = Cipher(algorithms.AES(self.key), modes.ECB())
+      line   115  [symmetric]  # 4. FIELD-LEVEL ENCRYPTION  (AES-256-GCM, non-deterministic)
+      line   115  [cipher_mode]  # 4. FIELD-LEVEL ENCRYPTION  (AES-256-GCM, non-deterministic)
+      line   120  [key_mgmt]  self.key = key or AESGCM.generate_key(bit_length=256)
+      line   121  [symmetric]  self._aes = AESGCM(self.key)
+      line   124  [random]  nonce = os.urandom(12)
+      line   125  [symmetric]  return nonce + self._aes.encrypt(nonce, plaintext.encode(), None)
+      line   128  [symmetric]  return self._aes.decrypt(ciphertext[:12], ciphertext[12:], None).decode()
+      line   132  [kdf]  # 5. BLIND INDEX  (HMAC-SHA256, for exact-match)
+      line   141  [cipher_mode]  #    Each column gets its own bloom_salt AND its own ECB key.
+      line   150  [cipher_mode]  self.bloom_encryptor = BloomEncryptor()    # independent ECB key per field
+      line   151  [cipher_mode]  self.field_encryptor = FieldEncryptor()    # independent GCM key per field
+      line   320  [symmetric]  print("  Bloom Filters + Trigrams + AES-GCM/ECB")
+      line   320  [cipher_mode]  print("  Bloom Filters + Trigrams + AES-GCM/ECB")
+      line   320  [cipher_mode]  print("  Bloom Filters + Trigrams + AES-GCM/ECB")
+      line   333  [cipher_mode]  # ── B. Bloom filter + ECB round-trip ─────────────────────
+      line   334  [symmetric]  sep("B. BLOOM FILTER ENCRYPTION  (AES-128-ECB, per field)")
+      line   334  [cipher_mode]  sep("B. BLOOM FILTER ENCRYPTION  (AES-128-ECB, per field)")
+      line   340  [cipher_mode]  print(f"  ECB encrypt : {ct.hex()}")
+      line   341  [cipher_mode]  print(f"  ECB decrypt : 0x{dec:032x}")
+      line   345  [cipher_mode]  sep("C. PER-FIELD SALTS & ECB KEYS  (different per column)")
+      line   346  [cipher_mode]  print(f"  {'Column':<8}  {'bloom_salt (hex)':<34}  ECB key (first 16 hex chars)")
+      line   363  [cipher_mode]  sep("D. WHY SALT ALONE IS INSUFFICIENT  (and what ECB adds)")
+      line   369  [cipher_mode]  print("  WITHOUT ECB — raw bloom stored directly in DB:")
+      line   377  [cipher_mode]  ecb  = BloomEncryptor()
+      line   378  [cipher_mode]  enc1 = ecb.encrypt(repeated_bloom)
+      line   379  [cipher_mode]  enc2 = ecb.encrypt(repeated_bloom)
+      line   380  [cipher_mode]  enc3 = ecb.encrypt(repeated_bloom)
+      line   381  [cipher_mode]  print("  WITH ECB (same key, same input → same ciphertext — ECB is deterministic):")
+      line   382  [cipher_mode]  print(f"    row 1 ECB   : {enc1.hex()}")
+      line   383  [cipher_mode]  print(f"    row 2 ECB   : {enc2.hex()}  ← still identical")
+      line   384  [cipher_mode]  print(f"    row 3 ECB   : {enc3.hex()}")
+      line   386  [cipher_mode]  print("  ⚠  Article: 'two filters may still appear similar' — ECB does NOT")
+      line   387  [cipher_mode]  print("     provide semantic security. Identical values → identical ECB blocks.")
+      line   389  [cipher_mode]  print("  What ECB DOES protect against:")
+      line   393  [cipher_mode]  print("    ECB turns structured bitmasks into opaque 128-bit blocks,")
+      line   400  [symmetric]  print(f"    encrypted_bloom : {backend.encrypted_bloom_hex(uid, 'name')}  ← AES-ECB")
+      line   400  [cipher_mode]  print(f"    encrypted_bloom : {backend.encrypted_bloom_hex(uid, 'name')}  ← AES-ECB")
+      line   402  [symmetric]  print(f"    ciphertext      : {ct_b64[:44]}…  ← AES-GCM")
+      line   402  [cipher_mode]  print(f"    ciphertext      : {ct_b64[:44]}…  ← AES-GCM")
+      line   408  [kdf]  sep("F. EXACT-MATCH SEARCH  (blind index / HMAC)")
+      line   499  [symmetric]  print("  ✓  Trigrams → Bloom filter → AES-ECB encrypt → DB storage")
+      line   499  [cipher_mode]  print("  ✓  Trigrams → Bloom filter → AES-ECB encrypt → DB storage")
+      line   502  [cipher_mode]  print("  ✓  Per-field ECB key: each column encrypted independently")
+      line   503  [cipher_mode]  print("  ✓  Salt alone insufficient: identical values → same bloom → same ECB block")
+      line   504  [cipher_mode]  print("  ✓  ECB advantage: raw bloom bit-patterns hidden from DB (no statistical attack)")
+      line   514  [symmetric]  Bloom Filters + Trigrams + AES-GCM/ECB
+      line   514  [cipher_mode]  Bloom Filters + Trigrams + AES-GCM/ECB
+      line   514  [cipher_mode]  Bloom Filters + Trigrams + AES-GCM/ECB
+      line   522  [symmetric]  ─── B. BLOOM FILTER ENCRYPTION  (AES-128-ECB, per field) ─────────
+      line   522  [cipher_mode]  ─── B. BLOOM FILTER ENCRYPTION  (AES-128-ECB, per field) ─────────
+      line   524  [cipher_mode]  ECB encrypt : 839d43535f335160d3a52ab8681ff96d
+      line   525  [cipher_mode]  ECB decrypt : 0x008a418604e010002081412400202400
+      line   528  [cipher_mode]  ─── C. PER-FIELD SALTS & ECB KEYS  (different per column) ────────
+      line   529  [cipher_mode]  Column    bloom_salt (hex)                    ECB key (first 16 hex chars)
+      line   540  [cipher_mode]  ─── D. WHY SALT ALONE IS INSUFFICIENT  (and what ECB adds) ───────
+      line   543  [cipher_mode]  WITHOUT ECB — raw bloom stored directly in DB:
+      line   550  [cipher_mode]  WITH ECB (same key, same input → same ciphertext — ECB is deterministic):
+      line   551  [cipher_mode]  row 1 ECB   : ec1338a41d0d08735500b214aa3e33cf
+      line   552  [cipher_mode]  row 2 ECB   : ec1338a41d0d08735500b214aa3e33cf  ← still identical
+      line   553  [cipher_mode]  row 3 ECB   : ec1338a41d0d08735500b214aa3e33cf
+      line   555  [cipher_mode]  ⚠  Article: 'two filters may still appear similar' — ECB does NOT
+      line   556  [cipher_mode]  provide semantic security. Identical values → identical ECB blocks.
+      line   558  [cipher_mode]  What ECB DOES protect against:
+      line   562  [cipher_mode]  ECB turns structured bitmasks into opaque 128-bit blocks,
+      line   567  [symmetric]  encrypted_bloom : bfe65fa2de7ee90fa088746e4edade53  ← AES-ECB
+      line   567  [cipher_mode]  encrypted_bloom : bfe65fa2de7ee90fa088746e4edade53  ← AES-ECB
+      line   568  [symmetric]  ciphertext      : f/WURzvu7DBH8IFFLaHKx2mEPis5WLaQCmQ6yyCaxMXf…  ← AES-GCM
+      line   568  [cipher_mode]  ciphertext      : f/WURzvu7DBH8IFFLaHKx2mEPis5WLaQCmQ6yyCaxMXf…  ← AES-GCM
+      line   573  [kdf]  ─── F. EXACT-MATCH SEARCH  (blind index / HMAC) ──────────────────
+      line   699  [symmetric]  ✓  Trigrams → Bloom filter → AES-ECB encrypt → DB storage
+      line   699  [cipher_mode]  ✓  Trigrams → Bloom filter → AES-ECB encrypt → DB storage
+      line   702  [cipher_mode]  ✓  Per-field ECB key: each column encrypted independently
+      line   703  [cipher_mode]  ✓  Salt alone insufficient: identical values → same bloom → same ECB block
+      line   704  [cipher_mode]  ✓  ECB advantage: raw bloom bit-patterns hidden from DB (no statistical attack)

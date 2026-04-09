@@ -1,0 +1,40 @@
+================================================================================
+  REPO       : verifiable_random_functions
+  FULL NAME  : ursa-mikail/verifiable_random_functions
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Python
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/verifiable_random_functions
+  MATCHES    : 17
+================================================================================
+
+  ▸ insights_for_trusted_setup/readme.md
+      line    74  [symmetric]  - This randomness decides what parts of the proof to check.
+
+  ▸ insights_for_trusted_setup/vrf_ECC_form_N_subjects.py
+      line     1  [py_import]  import hashlib
+      line     2  [py_import]  import secrets
+      line   305  [signature]  if vrf.verify(msg_bytes, vrf_output, proof):
+
+  ▸ insights_for_trusted_setup/vrf_hashed_form.py
+      line     1  [py_import]  import hashlib
+      line     2  [py_import]  import secrets
+      line    79  [signature]  if vrf.verify(m1, index1, proof1):
+      line    86  [signature]  if vrf.verify(m2, index2, proof2):
+      line   105  [signature]  if vrf.verify(msg_bytes, index, proof):
+
+  ▸ insights_for_trusted_setup/vrf_hashed_form_N_subjects.py
+      line     1  [py_import]  import hashlib
+      line     2  [py_import]  import secrets
+      line   133  [signature]  if vrf.verify(msg_bytes, hash_output, proof):
+
+  ▸ python/bernoulli_chain_selection.py
+      line    19  [py_import]  import hashlib
+      line    38  [random]  initial_seed = sha256_hex(os.urandom(32))
+      line    57  [random]  hex_inputs = [os.urandom(16).hex() for _ in range(N)]
+
+  ▸ python/bernoulli_select.py
+      line     4  [random]  return os.urandom(16).hex()
+
+  ▸ python/readme.md
+      line   101  [signature]  - **Digital Signatures (e.g., BLS)**

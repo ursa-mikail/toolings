@@ -1,0 +1,943 @@
+================================================================================
+  REPO       : ciphers
+  FULL NAME  : ursa-mikail/ciphers
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Python
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/ciphers
+  MATCHES    : 858
+================================================================================
+
+  ▸ aes-gcm_vs_chacha20-poly1305/golang/aes-gcm_vs_chacha20-poly1305.go
+      line     4  [symmetric]  "crypto/aes"
+      line    29  [symmetric]  block, err := aes.NewCipher(key)
+      line    59  [symmetric]  fmt.Printf("AES-GCM Encrypt avg: %.6fs\n", avgEnc)
+      line    59  [cipher_mode]  fmt.Printf("AES-GCM Encrypt avg: %.6fs\n", avgEnc)
+      line    60  [symmetric]  fmt.Printf("AES-GCM Decrypt avg: %.6fs\n", avgDec)
+      line    60  [cipher_mode]  fmt.Printf("AES-GCM Decrypt avg: %.6fs\n", avgDec)
+      line    93  [symmetric]  fmt.Printf("ChaCha20-Poly1305 Encrypt avg: %.6fs\n", avgEnc)
+      line    94  [symmetric]  fmt.Printf("ChaCha20-Poly1305 Decrypt avg: %.6fs\n", avgDec)
+      line   104  [symmetric]  encAES, decAES := benchmarkAESGCM(data)
+      line   107  [symmetric]  diffEnc := encAES - encCha
+      line   109  [symmetric]  fmt.Printf("ChaCha20-Poly1305 is faster than AES-GCM by: %.6fs\n", diffEnc)
+      line   109  [symmetric]  fmt.Printf("ChaCha20-Poly1305 is faster than AES-GCM by: %.6fs\n", diffEnc)
+      line   109  [cipher_mode]  fmt.Printf("ChaCha20-Poly1305 is faster than AES-GCM by: %.6fs\n", diffEnc)
+      line   111  [symmetric]  fmt.Printf("AES-GCM is faster than ChaCha20-Poly1305 by: %.6fs\n", -diffEnc)
+      line   111  [symmetric]  fmt.Printf("AES-GCM is faster than ChaCha20-Poly1305 by: %.6fs\n", -diffEnc)
+      line   111  [cipher_mode]  fmt.Printf("AES-GCM is faster than ChaCha20-Poly1305 by: %.6fs\n", -diffEnc)
+      line   114  [symmetric]  diffDec := decAES - decCha
+      line   116  [symmetric]  fmt.Printf("ChaCha20-Poly1305 is faster than AES-GCM by: %.6fs\n", diffDec)
+      line   116  [symmetric]  fmt.Printf("ChaCha20-Poly1305 is faster than AES-GCM by: %.6fs\n", diffDec)
+      line   116  [cipher_mode]  fmt.Printf("ChaCha20-Poly1305 is faster than AES-GCM by: %.6fs\n", diffDec)
+      line   118  [symmetric]  fmt.Printf("AES-GCM is faster than ChaCha20-Poly1305 by: %.6fs\n", -diffDec)
+      line   118  [symmetric]  fmt.Printf("AES-GCM is faster than ChaCha20-Poly1305 by: %.6fs\n", -diffDec)
+      line   118  [cipher_mode]  fmt.Printf("AES-GCM is faster than ChaCha20-Poly1305 by: %.6fs\n", -diffDec)
+      line   127  [symmetric]  AES-GCM Encrypt avg: 0.017811s
+      line   127  [cipher_mode]  AES-GCM Encrypt avg: 0.017811s
+      line   128  [symmetric]  AES-GCM Decrypt avg: 0.015735s
+      line   128  [cipher_mode]  AES-GCM Decrypt avg: 0.015735s
+      line   129  [symmetric]  ChaCha20-Poly1305 Encrypt avg: 0.096102s
+      line   130  [symmetric]  ChaCha20-Poly1305 Decrypt avg: 0.096312s
+      line   131  [symmetric]  AES-GCM is faster than ChaCha20-Poly1305 by: 0.078291s
+      line   131  [symmetric]  AES-GCM is faster than ChaCha20-Poly1305 by: 0.078291s
+      line   131  [cipher_mode]  AES-GCM is faster than ChaCha20-Poly1305 by: 0.078291s
+      line   132  [symmetric]  AES-GCM is faster than ChaCha20-Poly1305 by: 0.080577s
+      line   132  [symmetric]  AES-GCM is faster than ChaCha20-Poly1305 by: 0.080577s
+      line   132  [cipher_mode]  AES-GCM is faster than ChaCha20-Poly1305 by: 0.080577s
+      line   138  [symmetric]  | AES-256-GCM       | Fast w/ AES-NI  | Fast            | Slower on systems w/o AES-NI   |
+      line   138  [cipher_mode]  | AES-256-GCM       | Fast w/ AES-NI  | Fast            | Slower on systems w/o AES-NI   |
+      line   139  [symmetric]  | ChaCha20-Poly1305 | Uniformly fast  | Uniformly fast  | Great on mobile, constant-time |
+      line   141  [symmetric]  AES-GCM is faster on CPUs with AES-NI.
+      line   141  [cipher_mode]  AES-GCM is faster on CPUs with AES-NI.
+      line   142  [symmetric]  ChaCha20-Poly1305 outperforms on ARM or systems lacking hardware acceleration. However, this is not the case for golang.
+      line   145  [symmetric]  crypto/aes
+      line   148  [symmetric]  Benchmark Poly1305-ChaCha20 (PolyCha) vs AES-GCM using openssl, python, and golang. Each test will encrypt a fixed-size message (e.g., 1 MB), and we'll measure time/speed.
+      line   148  [symmetric]  Benchmark Poly1305-ChaCha20 (PolyCha) vs AES-GCM using openssl, python, and golang. Each test will encrypt a fixed-size message (e.g., 1 MB), and we'll measure time/speed.
+      line   148  [cipher_mode]  Benchmark Poly1305-ChaCha20 (PolyCha) vs AES-GCM using openssl, python, and golang. Each test will encrypt a fixed-size message (e.g., 1 MB), and we'll measure time/speed.
+
+  ▸ aes-gcm_vs_chacha20-poly1305/python/aes-gcm_vs_chacha20-poly1305.py
+      line     2  [py_import]  from cryptography.hazmat.primitives.ciphers.aead import AESGCM, ChaCha20Poly1305
+      line     5  [random]  DATA = os.urandom(1024 * 1024)*number_of_MB  # N MB random data
+      line     9  [random]  key = os.urandom(key_len)
+      line    10  [random]  nonce = os.urandom(12)
+      line    36  [symmetric]  time_average_encrypt_aes, time_average_decrypt_aes = benchmark("AES-GCM", AESGCM, 32)
+      line    36  [cipher_mode]  time_average_encrypt_aes, time_average_decrypt_aes = benchmark("AES-GCM", AESGCM, 32)
+      line    37  [symmetric]  time_average_encrypt_chacha, time_average_decrypt_chacha = benchmark("ChaCha20-Poly1305", ChaCha20Poly1305, 32)
+      line    39  [symmetric]  time_diff = time_average_encrypt_aes - time_average_encrypt_chacha
+      line    42  [symmetric]  print("AES-GCM is faster than ChaCha20-Poly1305 ", end ='')
+      line    42  [symmetric]  print("AES-GCM is faster than ChaCha20-Poly1305 ", end ='')
+      line    42  [cipher_mode]  print("AES-GCM is faster than ChaCha20-Poly1305 ", end ='')
+      line    44  [symmetric]  print("ChaCha20-Poly1305 is faster than AES-GCM ", end ='')
+      line    44  [symmetric]  print("ChaCha20-Poly1305 is faster than AES-GCM ", end ='')
+      line    44  [cipher_mode]  print("ChaCha20-Poly1305 is faster than AES-GCM ", end ='')
+      line    48  [symmetric]  time_diff = time_average_decrypt_aes - time_average_decrypt_chacha
+      line    51  [symmetric]  print("AES-GCM is faster than ChaCha20-Poly1305 ", end ='')
+      line    51  [symmetric]  print("AES-GCM is faster than ChaCha20-Poly1305 ", end ='')
+      line    51  [cipher_mode]  print("AES-GCM is faster than ChaCha20-Poly1305 ", end ='')
+      line    53  [symmetric]  print("ChaCha20-Poly1305 is faster than AES-GCM ", end ='')
+      line    53  [symmetric]  print("ChaCha20-Poly1305 is faster than AES-GCM ", end ='')
+      line    53  [cipher_mode]  print("ChaCha20-Poly1305 is faster than AES-GCM ", end ='')
+      line    63  [symmetric]  AES-GCM Encrypt avg: 0.103866s
+      line    63  [cipher_mode]  AES-GCM Encrypt avg: 0.103866s
+      line    64  [symmetric]  AES-GCM Decrypt avg: 0.108257s
+      line    64  [cipher_mode]  AES-GCM Decrypt avg: 0.108257s
+      line    65  [symmetric]  ChaCha20-Poly1305 Encrypt avg: 0.136823s
+      line    66  [symmetric]  ChaCha20-Poly1305 Decrypt avg: 0.136730s
+      line    67  [symmetric]  ChaCha20-Poly1305 is faster than AES-GCM by : 0.032957s
+      line    67  [symmetric]  ChaCha20-Poly1305 is faster than AES-GCM by : 0.032957s
+      line    67  [cipher_mode]  ChaCha20-Poly1305 is faster than AES-GCM by : 0.032957s
+      line    68  [symmetric]  ChaCha20-Poly1305 is faster than AES-GCM by : 0.028473s
+      line    68  [symmetric]  ChaCha20-Poly1305 is faster than AES-GCM by : 0.028473s
+      line    68  [cipher_mode]  ChaCha20-Poly1305 is faster than AES-GCM by : 0.028473s
+
+  ▸ aes-gcm_vs_chacha20-poly1305/readme.md
+      line     1  [symmetric]  # aes-gcm_vs_chacha20-poly1305
+      line     1  [symmetric]  # aes-gcm_vs_chacha20-poly1305
+      line     8  [symmetric]  | OpenSSL            | AES-256-GCM                                 | ChaCha20-Poly1305                           |
+      line     8  [symmetric]  | OpenSSL            | AES-256-GCM                                 | ChaCha20-Poly1305                           |
+      line     8  [cipher_mode]  | OpenSSL            | AES-256-GCM                                 | ChaCha20-Poly1305                           |
+      line     9  [symmetric]  | Python             | ChaCha20-Poly1305                           | AES-256-GCM                                 |
+      line     9  [symmetric]  | Python             | ChaCha20-Poly1305                           | AES-256-GCM                                 |
+      line     9  [cipher_mode]  | Python             | ChaCha20-Poly1305                           | AES-256-GCM                                 |
+      line    10  [symmetric]  | Go (Golang)        | AES-256-GCM                                 | ChaCha20-Poly1305                           |
+      line    10  [symmetric]  | Go (Golang)        | AES-256-GCM                                 | ChaCha20-Poly1305                           |
+      line    10  [cipher_mode]  | Go (Golang)        | AES-256-GCM                                 | ChaCha20-Poly1305                           |
+      line    11  [symmetric]  | Rust               | ChaCha20-Poly1305<br>AES-SIV                | AES-256-GCM<br>XChaCha20-Poly1305           |
+      line    11  [symmetric]  | Rust               | ChaCha20-Poly1305<br>AES-SIV                | AES-256-GCM<br>XChaCha20-Poly1305           |
+      line    11  [cipher_mode]  | Rust               | ChaCha20-Poly1305<br>AES-SIV                | AES-256-GCM<br>XChaCha20-Poly1305           |
+      line    11  [cipher_mode]  | Rust               | ChaCha20-Poly1305<br>AES-SIV                | AES-256-GCM<br>XChaCha20-Poly1305           |
+      line    18  [symmetric]  | AES-256-GCM       | Fast w/ AES-NI  | Fast            | Slower on systems w/o AES-NI   |
+      line    18  [cipher_mode]  | AES-256-GCM       | Fast w/ AES-NI  | Fast            | Slower on systems w/o AES-NI   |
+      line    19  [symmetric]  | ChaCha20-Poly1305 | Uniformly fast  | Uniformly fast  | Great on mobile, constant-time |
+      line    21  [symmetric]  AES-GCM is faster on CPUs with AES-NI.
+      line    21  [cipher_mode]  AES-GCM is faster on CPUs with AES-NI.
+      line    22  [symmetric]  ChaCha20-Poly1305 outperforms on ARM or systems lacking hardware acceleration. However, this is not the case for golang.
+      line    25  [symmetric]  crypto/aes
+      line    28  [symmetric]  Benchmark Poly1305-ChaCha20 (PolyCha) vs AES-GCM using openssl, python, and golang. Each test will encrypt a fixed-size message (e.g., 1 MB), and we'll measure time/speed.
+      line    28  [symmetric]  Benchmark Poly1305-ChaCha20 (PolyCha) vs AES-GCM using openssl, python, and golang. Each test will encrypt a fixed-size message (e.g., 1 MB), and we'll measure time/speed.
+      line    28  [cipher_mode]  Benchmark Poly1305-ChaCha20 (PolyCha) vs AES-GCM using openssl, python, and golang. Each test will encrypt a fixed-size message (e.g., 1 MB), and we'll measure time/speed.
+      line    35  [symmetric]  AES-GCM Encrypt avg: 0.103866s
+      line    35  [cipher_mode]  AES-GCM Encrypt avg: 0.103866s
+      line    36  [symmetric]  AES-GCM Decrypt avg: 0.108257s
+      line    36  [cipher_mode]  AES-GCM Decrypt avg: 0.108257s
+      line    37  [symmetric]  ChaCha20-Poly1305 Encrypt avg: 0.136823s
+      line    38  [symmetric]  ChaCha20-Poly1305 Decrypt avg: 0.136730s
+      line    39  [symmetric]  ChaCha20-Poly1305 is faster than AES-GCM by : 0.032957s
+      line    39  [symmetric]  ChaCha20-Poly1305 is faster than AES-GCM by : 0.032957s
+      line    39  [cipher_mode]  ChaCha20-Poly1305 is faster than AES-GCM by : 0.032957s
+      line    40  [symmetric]  ChaCha20-Poly1305 is faster than AES-GCM by : 0.028473s
+      line    40  [symmetric]  ChaCha20-Poly1305 is faster than AES-GCM by : 0.028473s
+      line    40  [cipher_mode]  ChaCha20-Poly1305 is faster than AES-GCM by : 0.028473s
+      line    46  [symmetric]  AES-GCM Encrypt avg: 0.017811s
+      line    46  [cipher_mode]  AES-GCM Encrypt avg: 0.017811s
+      line    47  [symmetric]  AES-GCM Decrypt avg: 0.015735s
+      line    47  [cipher_mode]  AES-GCM Decrypt avg: 0.015735s
+      line    48  [symmetric]  ChaCha20-Poly1305 Encrypt avg: 0.096102s
+      line    49  [symmetric]  ChaCha20-Poly1305 Decrypt avg: 0.096312s
+      line    50  [symmetric]  AES-GCM is faster than ChaCha20-Poly1305 by: 0.078291s
+      line    50  [symmetric]  AES-GCM is faster than ChaCha20-Poly1305 by: 0.078291s
+      line    50  [cipher_mode]  AES-GCM is faster than ChaCha20-Poly1305 by: 0.078291s
+      line    51  [symmetric]  AES-GCM is faster than ChaCha20-Poly1305 by: 0.080577s
+      line    51  [symmetric]  AES-GCM is faster than ChaCha20-Poly1305 by: 0.080577s
+      line    51  [cipher_mode]  AES-GCM is faster than ChaCha20-Poly1305 by: 0.080577s
+      line    57  [symmetric]  Go's crypto/aes package automatically leverages AES-NI (Advanced Encryption Standard New Instructions) on systems with compatible hardware, such as AMD64 systems with AES-NI extensions and s390x systems with Message-Security-Assist extensions. This hardware acceleration significantly improves the pe
+      line    59  [symmetric]  Key points regarding AES-NI in Go:
+      line    62  [symmetric]  The Go runtime automatically detects the presence of AES-NI support on the underlying hardware.
+      line    65  [symmetric]  When AES-NI is available, the crypto/aes package utilizes these specialized instructions, leading to substantial performance gains compared to software-only implementations.
+      line    68  [symmetric]  On systems with AES-NI, AES operations (and GHASH in GCM mode) are performed in constant time, which helps mitigate timing-based side-channel attacks.
+      line    68  [cipher_mode]  On systems with AES-NI, AES operations (and GHASH in GCM mode) are performed in constant time, which helps mitigate timing-based side-channel attacks.
+      line    71  [symmetric]  Developers do not need to explicitly enable or configure AES-NI in their Go code; the crypto/aes package handles this transparently.
+      line    73  [symmetric]  In essence, if the system running a Go application has AES-NI enabled, the crypto/aes package will automatically benefit from the hardware acceleration, providing faster and more secure AES operations without any additional effort from the developer.
+      line    78  [symmetric]  # Use openssl version to ensure ≥1.1.0 for chacha20-poly1305 support.
+      line    79  [symmetric]  !openssl speed -evp aes-256-gcm
+      line    79  [cipher_mode]  !openssl speed -evp aes-256-gcm
+      line    80  [symmetric]  !openssl speed -evp chacha20-poly1305
+      line    82  [symmetric]  Doing AES-256-GCM for 3s on 16 size blocks: 28853681 AES-256-GCM's in 2.45s
+      line    82  [cipher_mode]  Doing AES-256-GCM for 3s on 16 size blocks: 28853681 AES-256-GCM's in 2.45s
+      line    83  [symmetric]  Doing AES-256-GCM for 3s on 64 size blocks: 12023583 AES-256-GCM's in 1.67s
+      line    83  [cipher_mode]  Doing AES-256-GCM for 3s on 64 size blocks: 12023583 AES-256-GCM's in 1.67s
+      line    84  [symmetric]  Doing AES-256-GCM for 3s on 256 size blocks: 11448584 AES-256-GCM's in 2.76s
+      line    84  [cipher_mode]  Doing AES-256-GCM for 3s on 256 size blocks: 11448584 AES-256-GCM's in 2.76s
+      line    85  [symmetric]  Doing AES-256-GCM for 3s on 1024 size blocks: 4210453 AES-256-GCM's in 2.72s
+      line    85  [cipher_mode]  Doing AES-256-GCM for 3s on 1024 size blocks: 4210453 AES-256-GCM's in 2.72s
+      line    86  [symmetric]  Doing AES-256-GCM for 3s on 8192 size blocks: 691348 AES-256-GCM's in 2.84s
+      line    86  [cipher_mode]  Doing AES-256-GCM for 3s on 8192 size blocks: 691348 AES-256-GCM's in 2.84s
+      line    87  [symmetric]  Doing AES-256-GCM for 3s on 16384 size blocks: 246924 AES-256-GCM's in 2.08s
+      line    87  [cipher_mode]  Doing AES-256-GCM for 3s on 16384 size blocks: 246924 AES-256-GCM's in 2.08s
+      line    95  [symmetric]  AES-256-GCM     188432.20k   460784.02k  1061897.65k  1585111.72k  1994198.17k  1945001.35k
+      line    95  [cipher_mode]  AES-256-GCM     188432.20k   460784.02k  1061897.65k  1585111.72k  1994198.17k  1945001.35k
+      line    96  [symmetric]  Doing ChaCha20-Poly1305 for 3s on 16 size blocks: 19953740 ChaCha20-Poly1305's in 2.41s
+      line    97  [symmetric]  Doing ChaCha20-Poly1305 for 3s on 64 size blocks: 13241661 ChaCha20-Poly1305's in 2.86s
+      line    98  [symmetric]  Doing ChaCha20-Poly1305 for 3s on 256 size blocks: 6051148 ChaCha20-Poly1305's in 2.83s
+      line    99  [symmetric]  Doing ChaCha20-Poly1305 for 3s on 1024 size blocks: 2144561 ChaCha20-Poly1305's in 2.13s
+      line   100  [symmetric]  Doing ChaCha20-Poly1305 for 3s on 8192 size blocks: 255720 ChaCha20-Poly1305's in 1.86s
+      line   101  [symmetric]  Doing ChaCha20-Poly1305 for 3s on 16384 size blocks: 266451 ChaCha20-Poly1305's in 2.96s
+      line   109  [symmetric]  ChaCha20-Poly1305   132472.96k   296316.89k   547383.00k  1031000.22k  1126267.87k  1474842.29k
+      line   115  [symmetric]  - Deter import conflicts: Renamed the ChaCha20 trait imports to avoid conflicts with AES-GCM imports (ChaAead, ChaKeyInit).
+      line   115  [symmetric]  - Deter import conflicts: Renamed the ChaCha20 trait imports to avoid conflicts with AES-GCM imports (ChaAead, ChaKeyInit).
+      line   115  [cipher_mode]  - Deter import conflicts: Renamed the ChaCha20 trait imports to avoid conflicts with AES-GCM imports (ChaAead, ChaKeyInit).
+      line   126  [symmetric]  AES-GCM         Encrypt avg: 0.642772s
+      line   126  [cipher_mode]  AES-GCM         Encrypt avg: 0.642772s
+      line   127  [symmetric]  AES-GCM         Decrypt avg: 0.647063s
+      line   127  [cipher_mode]  AES-GCM         Decrypt avg: 0.647063s
+      line   128  [symmetric]  ChaCha20-Poly1305 Encrypt avg: 0.320332s
+      line   129  [symmetric]  ChaCha20-Poly1305 Decrypt avg: 0.319603s
+      line   130  [symmetric]  ChaCha20-Poly1305 is faster at encryption by 0.322441s
+      line   131  [symmetric]  ChaCha20-Poly1305 is faster at decryption by 0.327460s
+      line   136  [symmetric]  AES-SIV Encrypt avg: 0.134099s
+      line   136  [cipher_mode]  AES-SIV Encrypt avg: 0.134099s
+      line   137  [symmetric]  AES-SIV Decrypt avg: 0.133664s
+      line   137  [cipher_mode]  AES-SIV Decrypt avg: 0.133664s
+      line   138  [symmetric]  XChaCha20-Poly1305 Encrypt avg: 0.321946s
+      line   139  [symmetric]  XChaCha20-Poly1305 Decrypt avg: 0.319210s
+      line   140  [symmetric]  AES-SIV is faster at encryption by 0.187847s
+      line   140  [cipher_mode]  AES-SIV is faster at encryption by 0.187847s
+      line   141  [symmetric]  AES-SIV is faster at decryption by 0.185546s
+      line   141  [cipher_mode]  AES-SIV is faster at decryption by 0.185546s
+
+  ▸ aes-gcm_vs_chacha20-poly1305/rust/aes-gcm_vs_chacha20-poly1305/bench/Cargo.toml
+      line     7  [symmetric]  aes-gcm = "0.10"
+      line     7  [cipher_mode]  aes-gcm = "0.10"
+
+  ▸ aes-gcm_vs_chacha20-poly1305/rust/aes-gcm_vs_chacha20-poly1305/bench/src/main.rs
+      line    16  [symmetric]  /// Benchmarks AES-GCM encryption/decryption performance
+      line    16  [cipher_mode]  /// Benchmarks AES-GCM encryption/decryption performance
+      line    17  [symmetric]  fn benchmark_aes(data: &[u8]) -> (f64, f64) {
+      line    18  [key_mgmt]  let key = Aes256Gcm::generate_key(&mut OsRng);
+      line    27  [symmetric]  ciphertext = cipher.encrypt(nonce, data).expect("AES encryption failed");
+      line    34  [symmetric]  let _plaintext = cipher.decrypt(nonce, ciphertext.as_ref()).expect("AES decryption failed");
+      line    38  [symmetric]  println!("AES-GCM         Encrypt avg: {:.6}s", avg_enc);
+      line    38  [cipher_mode]  println!("AES-GCM         Encrypt avg: {:.6}s", avg_enc);
+      line    39  [symmetric]  println!("AES-GCM         Decrypt avg: {:.6}s", avg_dec);
+      line    39  [cipher_mode]  println!("AES-GCM         Decrypt avg: {:.6}s", avg_dec);
+      line    43  [symmetric]  /// Benchmarks ChaCha20-Poly1305 encryption/decryption performance
+      line    45  [key_mgmt]  let key = ChaCha20Poly1305::generate_key(&mut OsRng);
+      line    65  [symmetric]  println!("ChaCha20-Poly1305 Encrypt avg: {:.6}s", avg_enc);
+      line    66  [symmetric]  println!("ChaCha20-Poly1305 Decrypt avg: {:.6}s", avg_dec);
+      line    74  [symmetric]  let (enc_aes, dec_aes) = benchmark_aes(&data);
+      line    77  [symmetric]  let enc_diff = enc_aes - enc_chacha;
+      line    79  [symmetric]  println!("ChaCha20-Poly1305 is faster at encryption by {:.6}s", enc_diff.abs());
+      line    81  [symmetric]  println!("AES-GCM is faster at encryption by {:.6}s", enc_diff.abs());
+      line    81  [cipher_mode]  println!("AES-GCM is faster at encryption by {:.6}s", enc_diff.abs());
+      line    84  [symmetric]  let dec_diff = dec_aes - dec_chacha;
+      line    86  [symmetric]  println!("ChaCha20-Poly1305 is faster at decryption by {:.6}s", dec_diff.abs());
+      line    88  [symmetric]  println!("AES-GCM is faster at decryption by {:.6}s", dec_diff.abs());
+      line    88  [cipher_mode]  println!("AES-GCM is faster at decryption by {:.6}s", dec_diff.abs());
+      line    99  [symmetric]  * The aes-gcm and chacha20poly1305 crates implement AEAD (Authenticated Encryption with Associated Data) just like Python's cryptography library.
+      line    99  [cipher_mode]  * The aes-gcm and chacha20poly1305 crates implement AEAD (Authenticated Encryption with Associated Data) just like Python's cryptography library.
+
+  ▸ aes-gcm_vs_chacha20-poly1305/rust/aes-gcm_vs_chacha20-poly1305/log.txt
+      line     2  [symmetric]  AES-GCM         Encrypt avg: 0.646638s
+      line     2  [cipher_mode]  AES-GCM         Encrypt avg: 0.646638s
+      line     3  [symmetric]  AES-GCM         Decrypt avg: 0.647296s
+      line     3  [cipher_mode]  AES-GCM         Decrypt avg: 0.647296s
+      line     4  [symmetric]  ChaCha20-Poly1305 Encrypt avg: 0.322531s
+      line     5  [symmetric]  ChaCha20-Poly1305 Decrypt avg: 0.319666s
+      line     6  [symmetric]  ChaCha20-Poly1305 is faster at encryption by 0.324108s
+      line     7  [symmetric]  ChaCha20-Poly1305 is faster at decryption by 0.327630s
+
+  ▸ aes-gcm_vs_chacha20-poly1305/rust/aes-siv_vs_xchacha20-poly1305/bench/Cargo.toml
+      line     7  [symmetric]  aes-siv = "0.8.0-rc.0"
+      line     7  [cipher_mode]  aes-siv = "0.8.0-rc.0"
+
+  ▸ aes-gcm_vs_chacha20-poly1305/rust/aes-siv_vs_xchacha20-poly1305/bench/src/main.rs
+      line    16  [symmetric]  // Generate a random 512-bit (64-byte) key for AES-256-SIV
+      line    16  [cipher_mode]  // Generate a random 512-bit (64-byte) key for AES-256-SIV
+      line    22  [symmetric]  // AES-SIV uses a 128-bit (16-byte) nonce
+      line    22  [cipher_mode]  // AES-SIV uses a 128-bit (16-byte) nonce
+      line    30  [symmetric]  ciphertext = cipher.encrypt(&nonce, data).expect("AES-SIV encryption failed");
+      line    30  [cipher_mode]  ciphertext = cipher.encrypt(&nonce, data).expect("AES-SIV encryption failed");
+      line    37  [symmetric]  let _plaintext = cipher.decrypt(&nonce, ciphertext.as_slice()).expect("AES-SIV decryption failed");
+      line    37  [cipher_mode]  let _plaintext = cipher.decrypt(&nonce, ciphertext.as_slice()).expect("AES-SIV decryption failed");
+      line    41  [symmetric]  println!("AES-SIV Encrypt avg: {:.6}s", avg_enc);
+      line    41  [cipher_mode]  println!("AES-SIV Encrypt avg: {:.6}s", avg_enc);
+      line    42  [symmetric]  println!("AES-SIV Decrypt avg: {:.6}s", avg_dec);
+      line    42  [cipher_mode]  println!("AES-SIV Decrypt avg: {:.6}s", avg_dec);
+      line    47  [key_mgmt]  let key = XChaCha20Poly1305::generate_key(&mut OsRng);
+      line    50  [symmetric]  // XChaCha20-Poly1305 uses a 192-bit (24-byte) nonce
+      line    58  [symmetric]  ciphertext = cipher.encrypt(nonce, data).expect("XChaCha20 encryption failed");
+      line    65  [symmetric]  let _plaintext = cipher.decrypt(nonce, ciphertext.as_slice()).expect("XChaCha20 decryption failed");
+      line    69  [symmetric]  println!("XChaCha20-Poly1305 Encrypt avg: {:.6}s", avg_enc);
+      line    70  [symmetric]  println!("XChaCha20-Poly1305 Decrypt avg: {:.6}s", avg_dec);
+      line    83  [symmetric]  println!("XChaCha20-Poly1305 is faster at encryption by {:.6}s", enc_diff.abs());
+      line    85  [symmetric]  println!("AES-SIV is faster at encryption by {:.6}s", enc_diff.abs());
+      line    85  [cipher_mode]  println!("AES-SIV is faster at encryption by {:.6}s", enc_diff.abs());
+      line    90  [symmetric]  println!("XChaCha20-Poly1305 is faster at decryption by {:.6}s", dec_diff.abs());
+      line    92  [symmetric]  println!("AES-SIV is faster at decryption by {:.6}s", dec_diff.abs());
+      line    92  [cipher_mode]  println!("AES-SIV is faster at decryption by {:.6}s", dec_diff.abs());
+
+  ▸ aes-gcm_vs_chacha20-poly1305/rust/aes-siv_vs_xchacha20-poly1305/log.txt
+      line     2  [symmetric]  AES-SIV Encrypt avg: 0.134099s
+      line     2  [cipher_mode]  AES-SIV Encrypt avg: 0.134099s
+      line     3  [symmetric]  AES-SIV Decrypt avg: 0.133664s
+      line     3  [cipher_mode]  AES-SIV Decrypt avg: 0.133664s
+      line     4  [symmetric]  XChaCha20-Poly1305 Encrypt avg: 0.321946s
+      line     5  [symmetric]  XChaCha20-Poly1305 Decrypt avg: 0.319210s
+      line     6  [symmetric]  AES-SIV is faster at encryption by 0.187847s
+      line     6  [cipher_mode]  AES-SIV is faster at encryption by 0.187847s
+      line     7  [symmetric]  AES-SIV is faster at decryption by 0.185546s
+      line     7  [cipher_mode]  AES-SIV is faster at decryption by 0.185546s
+
+  ▸ aes-xts/disk_ciphering.py
+      line     2  [symmetric]  Key splitting: In XTS, a 64-byte key means two 32-byte AES-256 keys
+      line     2  [cipher_mode]  Key splitting: In XTS, a 64-byte key means two 32-byte AES-256 keys
+      line     4  [cipher_mode]  Data length: XTS requires the plaintext to be at least 16 bytes (one block)
+      line    13  [py_import]  from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+      line    13  [symmetric]  from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+      line    15  [symmetric]  BLOCK_SIZE = 16  # AES block size in bytes
+      line    19  [random]  return os.urandom(n)
+      line    23  [symmetric]  """Encrypt plaintext using AES-XTS mode."""
+      line    23  [cipher_mode]  """Encrypt plaintext using AES-XTS mode."""
+      line    25  [symmetric]  raise ValueError("Key must be 32 bytes (AES-128-XTS) or 64 bytes (AES-256-XTS)")
+      line    25  [cipher_mode]  raise ValueError("Key must be 32 bytes (AES-128-XTS) or 64 bytes (AES-256-XTS)")
+      line    29  [cipher_mode]  # For XTS mode, the key is split into two equal halves
+      line    30  [symmetric]  cipher = Cipher(algorithms.AES(key), modes.XTS(tweak))
+      line    30  [symmetric]  cipher = Cipher(algorithms.AES(key), modes.XTS(tweak))
+      line    30  [cipher_mode]  cipher = Cipher(algorithms.AES(key), modes.XTS(tweak))
+      line    33  [cipher_mode]  # XTS handles the encryption in blocks automatically
+      line    39  [symmetric]  """Decrypt ciphertext using AES-XTS mode."""
+      line    39  [cipher_mode]  """Decrypt ciphertext using AES-XTS mode."""
+      line    43  [symmetric]  cipher = Cipher(algorithms.AES(key), modes.XTS(tweak))
+      line    43  [symmetric]  cipher = Cipher(algorithms.AES(key), modes.XTS(tweak))
+      line    43  [cipher_mode]  cipher = Cipher(algorithms.AES(key), modes.XTS(tweak))
+      line    53  [symmetric]  key = os.urandom(64)  # AES-256-XTS (512 bits = 2×256-bit keys)
+      line    53  [cipher_mode]  key = os.urandom(64)  # AES-256-XTS (512 bits = 2×256-bit keys)
+      line    53  [random]  key = os.urandom(64)  # AES-256-XTS (512 bits = 2×256-bit keys)
+      line    54  [random]  tweak = os.urandom(16)  # 16-byte tweak (typically sector number)
+      line    63  [symmetric]  print("=== AES-XTS Encryption Stats ===")
+      line    63  [cipher_mode]  print("=== AES-XTS Encryption Stats ===")
+      line    82  [symmetric]  === AES-XTS Encryption Stats ===
+      line    82  [cipher_mode]  === AES-XTS Encryption Stats ===
+
+  ▸ aes-xts/file_ciphering.py
+      line     3  [symmetric]  AES-XTS File Encryption
+      line     3  [cipher_mode]  AES-XTS File Encryption
+      line     4  [symmetric]  Key splitting: In XTS, a 64-byte key means two 32-byte AES-256 keys
+      line     4  [cipher_mode]  Key splitting: In XTS, a 64-byte key means two 32-byte AES-256 keys
+      line     6  [cipher_mode]  Data length: XTS requires the plaintext to be at least 16 bytes (one block)
+      line    22  [symmetric]  AES-XTS File Encryption for Google Colab with SHA256 Verification
+      line    22  [cipher_mode]  AES-XTS File Encryption for Google Colab with SHA256 Verification
+      line    27  [py_import]  import hashlib
+      line    29  [py_import]  from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+      line    29  [symmetric]  from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+      line    30  [py_import]  from cryptography.hazmat.backends import default_backend
+      line    35  [cipher_mode]  Initialize XTS cipher.
+      line    36  [symmetric]  For AES-256-XTS: key should be 64 bytes (2×256-bit keys)
+      line    36  [cipher_mode]  For AES-256-XTS: key should be 64 bytes (2×256-bit keys)
+      line    37  [symmetric]  For AES-128-XTS: key should be 32 bytes (2×128-bit keys)
+      line    37  [cipher_mode]  For AES-128-XTS: key should be 32 bytes (2×128-bit keys)
+      line    40  [symmetric]  key = os.urandom(64)  # Default to AES-256-XTS
+      line    40  [cipher_mode]  key = os.urandom(64)  # Default to AES-256-XTS
+      line    40  [random]  key = os.urandom(64)  # Default to AES-256-XTS
+      line    42  [symmetric]  self.block_size = 16  # AES block size
+      line    79  [random]  chunk = os.urandom(min(chunk_size, size_bytes - bytes_written))
+      line    91  [symmetric]  Encrypt file using AES-XTS mode.
+      line    91  [cipher_mode]  Encrypt file using AES-XTS mode.
+      line   123  [symmetric]  cipher = Cipher(algorithms.AES(self.key), modes.XTS(tweak), backend=default_backend())
+      line   123  [symmetric]  cipher = Cipher(algorithms.AES(self.key), modes.XTS(tweak), backend=default_backend())
+      line   123  [cipher_mode]  cipher = Cipher(algorithms.AES(self.key), modes.XTS(tweak), backend=default_backend())
+      line   126  [cipher_mode]  # XTS requires data to be at least 16 bytes
+      line   146  [symmetric]  Decrypt file using AES-XTS mode.
+      line   146  [cipher_mode]  Decrypt file using AES-XTS mode.
+      line   179  [symmetric]  cipher = Cipher(algorithms.AES(self.key), modes.XTS(tweak), backend=default_backend())
+      line   179  [symmetric]  cipher = Cipher(algorithms.AES(self.key), modes.XTS(tweak), backend=default_backend())
+      line   179  [cipher_mode]  cipher = Cipher(algorithms.AES(self.key), modes.XTS(tweak), backend=default_backend())
+      line   200  [key_mgmt]  def generate_key(key_size: int = 64) -> bytes:
+      line   201  [cipher_mode]  """Generate a random key for XTS encryption."""
+      line   203  [symmetric]  raise ValueError("Key size must be 32 (AES-128-XTS) or 64 (AES-256-XTS) bytes")
+      line   203  [cipher_mode]  raise ValueError("Key size must be 32 (AES-128-XTS) or 64 (AES-256-XTS) bytes")
+      line   204  [random]  return os.urandom(key_size)
+      line   225  [symmetric]  print("🚀 AES-XTS Random File Encryption with SHA256 Verification")
+      line   225  [cipher_mode]  print("🚀 AES-XTS Random File Encryption with SHA256 Verification")
+      line   336  [key_mgmt]  key = generate_key(key_size)
+      line   358  [symmetric]  print("AES-XTS File Encryption with SHA256 Verification")
+      line   358  [cipher_mode]  print("AES-XTS File Encryption with SHA256 Verification")
+      line   388  [symmetric]  AES-XTS File Encryption with SHA256 Verification
+      line   388  [cipher_mode]  AES-XTS File Encryption with SHA256 Verification
+      line   390  [symmetric]  🚀 AES-XTS Random File Encryption with SHA256 Verification
+      line   390  [cipher_mode]  🚀 AES-XTS Random File Encryption with SHA256 Verification
+
+  ▸ aes-xts/readme.md
+      line     1  [symmetric]  # AES-XTS Encryption Toolkit
+      line     1  [cipher_mode]  # AES-XTS Encryption Toolkit
+      line     2  [symmetric]  An implementation of AES-XTS (XEX-based Tweaked CodeBook mode with CipherText Stealing) for disk and file encryption with SHA256 integrity verification.
+      line     2  [cipher_mode]  An implementation of AES-XTS (XEX-based Tweaked CodeBook mode with CipherText Stealing) for disk and file encryption with SHA256 integrity verification.
+      line     5  [symmetric]  AES-XTS is the standard encryption mode for disk encryption systems, providing efficient sector-based encryption with unique tweaks per sector. This implementation includes both file encryption capabilities and disk encryption simulation with proper sector handling.
+      line     5  [symmetric]  AES-XTS is the standard encryption mode for disk encryption systems, providing efficient sector-based encryption with unique tweaks per sector. This implementation includes both file encryption capabilities and disk encryption simulation with proper sector handling.
+      line     5  [cipher_mode]  AES-XTS is the standard encryption mode for disk encryption systems, providing efficient sector-based encryption with unique tweaks per sector. This implementation includes both file encryption capabilities and disk encryption simulation with proper sector handling.
+      line    11  [symmetric]  - AES-XTS-128 and AES-XTS-256 support
+      line    11  [cipher_mode]  - AES-XTS-128 and AES-XTS-256 support
+      line    40  [key_mgmt]  from xts_encryptor import generate_key, save_key, load_key
+      line    42  [symmetric]  # AES-128-XTS (32 bytes) or AES-256-XTS (64 bytes)
+      line    42  [cipher_mode]  # AES-128-XTS (32 bytes) or AES-256-XTS (64 bytes)
+      line    43  [symmetric]  key = generate_key(64)  # AES-256-XTS
+      line    43  [cipher_mode]  key = generate_key(64)  # AES-256-XTS
+      line    43  [key_mgmt]  key = generate_key(64)  # AES-256-XTS
+      line    61  [cipher_mode]  ### XTS Mode Fundamentals
+      line    63  [symmetric]  AES-XTS Encryption Process:
+      line    63  [cipher_mode]  AES-XTS Encryption Process:
+      line    64  [symmetric]  1. Key Splitting: 64-byte key → Two 32-byte AES-256 keys
+
+  ▸ cryptographic_function_access_control/combination_of_mechanisms.py
+      line     9  [random]  return base64.urlsafe_b64encode(os.urandom(length)).decode('utf-8')
+      line    13  [kdf]  return hmac.new(key, data.encode('utf-8'), hashlib.sha256).hexdigest()
+      line    20  [kdf]  if hmac.compare_digest(expected_token, token):
+
+  ▸ cryptographic_function_access_control/cryptographic_function_access_control.py
+      line     1  [py_import]  import hmac
+      line     1  [kdf]  import hmac
+      line     2  [py_import]  import hashlib
+      line     9  [kdf]  return hmac.new(key, message.encode('utf-8'), hashlib.sha256).hexdigest()
+      line    13  [kdf]  return hmac.compare_digest(expected_token, token)
+      line    30  [kdf]  # Generate valid HMAC tokens
+
+  ▸ cryptographic_function_access_control/ip_address_based_access_control.py
+      line    10  [kdf]  return hmac.new(key, data.encode('utf-8'), hashlib.sha256).hexdigest()
+      line    16  [kdf]  return hmac.compare_digest(expected_token, token)
+
+  ▸ cryptographic_function_access_control/nonce_based_access_control.py
+      line     7  [random]  return base64.urlsafe_b64encode(os.urandom(length)).decode('utf-8')
+      line    11  [kdf]  return hmac.new(key, data.encode('utf-8'), hashlib.sha256).hexdigest()
+      line    17  [kdf]  if hmac.compare_digest(expected_token, token):
+
+  ▸ cryptographic_function_access_control/readme.md
+      line     3  [symmetric]  Provides a secure access control system for cryptographic functions using HMAC (Hash-based Message Authentication Code). It supports multiple mechanisms to enhance security, including time-based access control, nonce-based access control, role-based access control, and IP address-based access contro
+      line     3  [kdf]  Provides a secure access control system for cryptographic functions using HMAC (Hash-based Message Authentication Code). It supports multiple mechanisms to enhance security, including time-based access control, nonce-based access control, role-based access control, and IP address-based access contro
+      line     7  [kdf]  - **Time-Based Access Control**: Ensures that the HMAC token is only valid for a specific time window.
+      line    11  [symmetric]  - **Combination of Mechanisms**: Provides stronger security by combining multiple access control mechanisms.
+
+  ▸ cryptographic_function_access_control/role_based_access_control_rbac.py
+      line    13  [kdf]  return hmac.new(key, data.encode('utf-8'), hashlib.sha256).hexdigest()
+      line    19  [kdf]  return hmac.compare_digest(expected_token, token)
+
+  ▸ cryptographic_function_access_control/time_based_access_control.py
+      line     1  [py_import]  import hmac
+      line     1  [kdf]  import hmac
+      line     2  [py_import]  import hashlib
+      line    11  [kdf]  return hmac.new(key, data.encode('utf-8'), hashlib.sha256).hexdigest()
+      line    18  [kdf]  return hmac.compare_digest(expected_token, token)
+
+  ▸ gcm_xts_chacha20poly1305/gcm_xts_chacha20poly1305_basics.py
+      line     2  [py_import]  from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+      line     2  [symmetric]  from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+      line     3  [py_import]  from cryptography.hazmat.primitives import padding
+      line     4  [py_import]  from cryptography.hazmat.primitives.ciphers.aead import ChaCha20Poly1305
+      line    13  [random]  key = os.urandom(key_size)
+      line    14  [random]  iv_nonce = os.urandom(iv_size)
+      line    22  [symmetric]  print("Type:\t\t\t", "ChaCha20")
+      line    33  [symmetric]  elif cipher_name == "AES-GCM":
+      line    33  [cipher_mode]  elif cipher_name == "AES-GCM":
+      line    34  [symmetric]  # For AES-GCM, we need to handle the tag properly
+      line    34  [cipher_mode]  # For AES-GCM, we need to handle the tag properly
+      line    45  [symmetric]  print("Type:\t\t\t", "AES")
+      line    46  [cipher_mode]  print("Mode:\t\t\t", "GCM")
+      line    55  [cipher_mode]  # For GCM decryption, we need to set the tag
+      line    60  [symmetric]  else:  # AES-XTS
+      line    60  [cipher_mode]  else:  # AES-XTS
+      line    64  [cipher_mode]  # Add padding for XTS
+      line    90  [cipher_mode]  # Alternative simpler GCM implementation using the AEAD interface
+      line    93  [symmetric]  print(f"Testing: AES-GCM (Simplified)")
+      line    93  [cipher_mode]  print(f"Testing: AES-GCM (Simplified)")
+      line    97  [random]  key = os.urandom(32)
+      line    98  [random]  nonce = os.urandom(12)
+      line   101  [cipher_mode]  # Use AEAD interface for GCM
+      line   102  [py_import]  from cryptography.hazmat.primitives.ciphers.aead import AESGCM
+      line   107  [symmetric]  print("Type:\t\t\t", "AES")
+      line   108  [cipher_mode]  print("Mode:\t\t\t", "GCM")
+      line   119  [symmetric]  print(f"Error with AES-GCM (simplified): {e}")
+      line   119  [cipher_mode]  print(f"Error with AES-GCM (simplified): {e}")
+      line   130  [symmetric]  # AES-GCM - using simplified version
+      line   130  [cipher_mode]  # AES-GCM - using simplified version
+      line   133  [symmetric]  # AES-XTS
+      line   133  [cipher_mode]  # AES-XTS
+      line   134  [symmetric]  test_cipher("AES-XTS", algorithms.AES, modes.XTS, 64, 16, message)  # XTS uses double-length key
+      line   134  [symmetric]  test_cipher("AES-XTS", algorithms.AES, modes.XTS, 64, 16, message)  # XTS uses double-length key
+      line   134  [cipher_mode]  test_cipher("AES-XTS", algorithms.AES, modes.XTS, 64, 16, message)  # XTS uses double-length key
+      line   152  [symmetric]  Type:            ChaCha20
+      line   161  [symmetric]  Testing: AES-GCM (Simplified)
+      line   161  [cipher_mode]  Testing: AES-GCM (Simplified)
+      line   163  [symmetric]  Type:            AES
+      line   164  [cipher_mode]  Mode:            GCM
+      line   172  [symmetric]  Testing: AES-XTS
+      line   172  [cipher_mode]  Testing: AES-XTS
+      line   174  [symmetric]  Type:            AES
+      line   175  [cipher_mode]  Mode:            XTS
+      line   190  [symmetric]  Type:            ChaCha20
+      line   199  [symmetric]  Testing: AES-GCM (Simplified)
+      line   199  [cipher_mode]  Testing: AES-GCM (Simplified)
+      line   201  [symmetric]  Type:            AES
+      line   202  [cipher_mode]  Mode:            GCM
+
+  ▸ linearity_in_aes_xts_multipliers.md
+      line    81  [cipher_mode]  Hence the XTS rule: the XTS spec limits how many blocks you should use a single tweak sequence for (practical limit often quoted ~1 million blocks) because over many operations these linear relationships can be leveraged by attackers for distinguishing or more advanced attacks. The safe pattern is: 
+      line    83  [cipher_mode]  ### Why This Matters for XTS:
+      line    89  [cipher_mode]  The XTS specification limits operations to ~1 million blocks precisely because this mathematical linearity becomes exploitable at scale, even though the individual operations look "random" to casual observation.
+      line    95  [cipher_mode]  Avoid long chains: don’t reuse a single tweak chain across millions of blocks — follow XTS limits.
+      line    99  [kdf]  Authenticate the ciphertext and tweak metadata (HMAC) so tampering is detectable.
+      line   101  [kdf]  If you need unpredictability, use a secure random per-block tweak (and store it) or a keyed KDF that produces per-block non-linear values and is not reused.
+      line   106  [cipher_mode]  This is cheap and deterministic. That chain means ciphertext patterns in XTS are related across blocks in mathematically tractable ways.
+      line   112  [cipher_mode]  - Uniqueness — tweak must not collide for different records encrypted under the same XTS key.
+      line   120  [kdf]  If you derive the tweak as HMAC(secret_key, canonical_json) then:
+      line   124  [kdf]  - Unpredictable: yes, unless the attacker learns the HMAC key.
+      line   132  [symmetric]  If you require both determinism (same JSON → same tweak) and unpredictability to outsiders: use a keyed PRF (HMAC or AES-PRF) with a KMS-held secret key.
+      line   132  [kdf]  If you require both determinism (same JSON → same tweak) and unpredictability to outsiders: use a keyed PRF (HMAC or AES-PRF) with a KMS-held secret key.
+      line   140  [kdf]  - A keyed HMAC-derived tweak is safe: observing tweak = HMAC_k(JSON)[:16] does not let the attacker compute HMACs for other JSONs without k.
+      line   144  [kdf]  - Still safe: HMAC is a secure PRF. They can try different JSONs but cannot predict the keyed output beyond brute force.
+      line   161  [kdf]  Passive attacker / secret key not known: Truncated HMAC is safe — attacker can’t predict or craft colliding HMACs without the key.
+      line   173  [cipher_mode]  Never reuse a tweak-key pair for different plaintexts under XTS. Reuse can break confidentiality. If you need to re-encrypt a record, allocate a new tweak or rotate keys.
+      line   175  [cipher_mode]  XTS is not authenticated — always store an authentication tag (HMAC) that covers JSON and ciphertext and verify on decrypt.
+      line   175  [kdf]  XTS is not authenticated — always store an authentication tag (HMAC) that covers JSON and ciphertext and verify on decrypt.
+      line   177  [cipher_mode]  Keep keys separate: use different keys for XTS (512-bit) and HMAC (256-bit).
+      line   177  [kdf]  Keep keys separate: use different keys for XTS (512-bit) and HMAC (256-bit).
+      line   183  [kdf]  HMAC has truncation (32 bytes truncate to 16 bytes). Tweak length = 16 bytes.
+      line   185  [cipher_mode]  - For non-deterministic methods, random tweaks are most common for XTS mode. Store the hex tweak value alongside your ciphertext
+      line   190  [kdf]  If you truncate an HMAC to 128 bits (16 bytes) you get a space of size
+      line   211  [cipher_mode]  The XTS specification limits operations to about 2^20 (roughly 1 million) blocks per key because:
+
+  ▸ linearity_in_aes_xts_multipliers.py
+      line     8  [symmetric]  Simplified GF(2^128) field operations for AES-XTS
+      line     8  [cipher_mode]  Simplified GF(2^128) field operations for AES-XTS
+      line    22  [cipher_mode]  a = (a << 1) ^ 0x87  # XTS reduction polynomial
+      line    30  [cipher_mode]  """Generate XTS-style sequential tweaks by multiplying by 2 (α) in GF(2^128)"""
+      line    84  [symmetric]  print("AES-XTS GF(2^128) Linearity Analysis - Improved Version")
+      line    84  [cipher_mode]  print("AES-XTS GF(2^128) Linearity Analysis - Improved Version")
+      line   188  [cipher_mode]  print(f"\nWhy XTS Limits Operations:")
+      line   191  [cipher_mode]  print(f"- XTS limits to ~2^20 operations to stay in 'safe zone'")
+      line   209  [symmetric]  AES-XTS GF(2^128) Linearity Analysis - Improved Version
+      line   209  [cipher_mode]  AES-XTS GF(2^128) Linearity Analysis - Improved Version
+      line   251  [cipher_mode]  Why XTS Limits Operations:
+      line   254  [cipher_mode]  - XTS limits to ~2^20 operations to stay in 'safe zone'
+
+  ▸ python/confidentiality/asymmetric/rsa_oaep.py
+      line     1  [asymmetric]  # RSA-OAEP
+      line     2  [py_import]  from cryptography.hazmat.primitives.asymmetric import rsa, padding
+      line     2  [asymmetric]  from cryptography.hazmat.primitives.asymmetric import rsa, padding
+      line     3  [py_import]  from cryptography.hazmat.primitives import hashes
+      line     4  [py_import]  from cryptography.hazmat.primitives import serialization
+      line     6  [asymmetric]  # Generate RSA private key
+      line     7  [asymmetric]  private_key = rsa.generate_private_key(
+      line     9  [key_mgmt]  key_size=2048,
+      line    23  [asymmetric]  # Encrypt the message using RSA with OAEP padding
+      line    51  [key_mgmt]  private_key_pem = private_key.private_bytes(
+      line    58  [key_mgmt]  public_key_pem = public_key.public_bytes(
+
+  ▸ python/confidentiality/symmetric/aes_gcm_siv.py
+      line     1  [symmetric]  # AES-GCM-SIV
+      line     1  [cipher_mode]  # AES-GCM-SIV
+      line     1  [cipher_mode]  # AES-GCM-SIV
+      line     6  [py_import]  from cryptography.hazmat.primitives.ciphers.aead import AESGCMSIV
+      line    91  [symmetric]  for bits, filename in [(128, "aes-128-gcm-siv.txt"), (192, "aes-192-gcm-siv.txt"), (256, "aes-256-gcm-siv.txt")]:
+      line    91  [cipher_mode]  for bits, filename in [(128, "aes-128-gcm-siv.txt"), (192, "aes-192-gcm-siv.txt"), (256, "aes-256-gcm-siv.txt")]:
+      line    91  [cipher_mode]  for bits, filename in [(128, "aes-128-gcm-siv.txt"), (192, "aes-192-gcm-siv.txt"), (256, "aes-256-gcm-siv.txt")]:
+      line   102  [symmetric]  aes-128-gcm-siv.txt
+      line   102  [cipher_mode]  aes-128-gcm-siv.txt
+      line   102  [cipher_mode]  aes-128-gcm-siv.txt
+      line   103  [symmetric]  aes-192-gcm-siv.txt
+      line   103  [cipher_mode]  aes-192-gcm-siv.txt
+      line   103  [cipher_mode]  aes-192-gcm-siv.txt
+      line   104  [symmetric]  aes-256-gcm-siv.txt
+      line   104  [cipher_mode]  aes-256-gcm-siv.txt
+      line   104  [cipher_mode]  aes-256-gcm-siv.txt
+
+  ▸ python/confidentiality/symmetric/aes_xex.py
+      line     1  [symmetric]  # AES-XEX
+      line     2  [py_import]  from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+      line     2  [symmetric]  from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+      line     3  [py_import]  from cryptography.hazmat.backends import default_backend
+      line     4  [py_import]  from cryptography.hazmat.primitives import padding
+      line     7  [key_mgmt]  def generate_key():
+      line     8  [symmetric]  return os.urandom(32)  # AES-256 key
+      line     8  [random]  return os.urandom(32)  # AES-256 key
+      line    14  [symmetric]  cipher = Cipher(algorithms.AES(key), modes.ECB(), backend=default_backend())
+      line    14  [symmetric]  cipher = Cipher(algorithms.AES(key), modes.ECB(), backend=default_backend())
+      line    14  [cipher_mode]  cipher = Cipher(algorithms.AES(key), modes.ECB(), backend=default_backend())
+      line    19  [symmetric]  cipher = Cipher(algorithms.AES(key), modes.ECB(), backend=default_backend())
+      line    19  [symmetric]  cipher = Cipher(algorithms.AES(key), modes.ECB(), backend=default_backend())
+      line    19  [cipher_mode]  cipher = Cipher(algorithms.AES(key), modes.ECB(), backend=default_backend())
+      line    24  [symmetric]  block_size = algorithms.AES.block_size // 8
+      line    26  [symmetric]  padder = padding.PKCS7(algorithms.AES.block_size).padder()
+      line    42  [symmetric]  block_size = algorithms.AES.block_size // 8
+      line    54  [symmetric]  unpadder = padding.PKCS7(algorithms.AES.block_size).unpadder()
+      line    60  [key_mgmt]  key = generate_key()
+      line    61  [random]  tweak = os.urandom(16)  # Initial tweak value
+      line    63  [symmetric]  #data = b"This is the data to encrypt using AES XEX mode."
+
+  ▸ python/confidentiality/symmetric/aes_xts.py
+      line     1  [symmetric]  # AES-XTS.py
+      line     1  [cipher_mode]  # AES-XTS.py
+      line     2  [py_import]  from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+      line     2  [symmetric]  from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+      line     3  [py_import]  from cryptography.hazmat.backends import default_backend
+      line     4  [py_import]  from cryptography.hazmat.primitives import padding
+      line     7  [key_mgmt]  def generate_key():
+      line     8  [symmetric]  return os.urandom(64)  # AES-XTS requires a 512-bit key (two 256-bit keys)
+      line     8  [cipher_mode]  return os.urandom(64)  # AES-XTS requires a 512-bit key (two 256-bit keys)
+      line     8  [random]  return os.urandom(64)  # AES-XTS requires a 512-bit key (two 256-bit keys)
+      line    12  [cipher_mode]  raise ValueError("tweak must be 128-bits (16 bytes) for xts")
+      line    14  [symmetric]  cipher = Cipher(algorithms.AES(key), modes.XTS(tweak), backend=default_backend())
+      line    14  [symmetric]  cipher = Cipher(algorithms.AES(key), modes.XTS(tweak), backend=default_backend())
+      line    14  [cipher_mode]  cipher = Cipher(algorithms.AES(key), modes.XTS(tweak), backend=default_backend())
+      line    20  [cipher_mode]  raise ValueError("tweak must be 128-bits (16 bytes) for xts")
+      line    22  [symmetric]  cipher = Cipher(algorithms.AES(key), modes.XTS(tweak), backend=default_backend())
+      line    22  [symmetric]  cipher = Cipher(algorithms.AES(key), modes.XTS(tweak), backend=default_backend())
+      line    22  [cipher_mode]  cipher = Cipher(algorithms.AES(key), modes.XTS(tweak), backend=default_backend())
+      line    27  [key_mgmt]  key = generate_key()
+      line    28  [random]  tweak = os.urandom(16)  # Tweak must be 128 bits (16 bytes)
+      line    30  [symmetric]  #data = b"This is the data to encrypt using AES XTS mode."
+      line    30  [cipher_mode]  #data = b"This is the data to encrypt using AES XTS mode."
+
+  ▸ python/integrity/mac/hmac.py
+      line     1  [kdf]  """ hmac.py
+      line     4  [kdf]  Compute the HMAC for each concatenated message using the specified hash functions.
+      line     7  [py_import]  import hmac
+      line     7  [kdf]  import hmac
+      line     8  [py_import]  import hashlib
+      line    14  [random]  return os.urandom(length)
+      line    17  [kdf]  """Generate HMAC for a given message using the specified hash function."""
+      line    18  [kdf]  return hmac.new(key, message, hash_function).hexdigest()
+      line    43  [kdf]  # Loop through each hash function and generate the HMAC
+      line    46  [kdf]  print(f'HMAC-{name}: {hmac_digest}')
+      line    57  [kdf]  HMAC-SHA-256: 99ae285f4dcc5d990612f2dedd8c933ce49083aec504200a66a24967ef022e00
+      line    58  [kdf]  HMAC-SHA-384: fa7ebebcb362fffbb76113463dfd864c7f2b79ed11d7348e0a5642eef2e75c4be3fe0cd01c5b769d80fc72c65a73b35d
+      line    59  [kdf]  HMAC-SHA-512: aa96252ab857deafdac349d8be2ccaaab00f57939fb4df96d11d4650c92c60a1ea2a3d50605be06c6398a096724fbbb0e74b9c2f92352d1f0b180196802b931e
+
+  ▸ python/integrity/mac/usage_poly1305.py
+      line     6  [py_import]  from nacl.secret import SecretBox
+      line     7  [py_import]  from nacl.utils import random
+      line    15  [random]  return binascii.hexlify(os.urandom(number_of_bytes)).decode()
+
+  ▸ python/integrity/signature/generate_and_derive_keys.py
+      line     2  [asymmetric]  ✅ Generate keys for each type: RSA, Ed25519, ECDSA, DSA
+      line     2  [asymmetric]  ✅ Generate keys for each type: RSA, Ed25519, ECDSA, DSA
+      line     9  [asymmetric]  ├── rsa/
+      line    14  [asymmetric]  └── dsa/
+      line    19  [py_import]  from cryptography.hazmat.backends import default_backend as crypto_default_backend
+      line    20  [py_import]  from cryptography.hazmat.primitives.asymmetric import rsa, dsa, ec, ed25519
+      line    20  [asymmetric]  from cryptography.hazmat.primitives.asymmetric import rsa, dsa, ec, ed25519
+      line    20  [asymmetric]  from cryptography.hazmat.primitives.asymmetric import rsa, dsa, ec, ed25519
+      line    21  [py_import]  from cryptography.hazmat.primitives import serialization as crypto_serialization
+      line    28  [key_mgmt]  pem_bytes = private_key.private_bytes(
+      line    39  [key_mgmt]  private_key = crypto_serialization.load_pem_private_key(
+      line    45  [key_mgmt]  pub_bytes = public_key.public_bytes(
+      line    69  [asymmetric]  "rsa": lambda: rsa.generate_private_key(public_exponent=65537, key_size=2048, backend=crypto_default_backend()),
+      line    69  [key_mgmt]  "rsa": lambda: rsa.generate_private_key(public_exponent=65537, key_size=2048, backend=crypto_default_backend()),
+      line    70  [asymmetric]  "dsa": lambda: dsa.generate_private_key(key_size=1024, backend=crypto_default_backend()),
+      line    70  [key_mgmt]  "dsa": lambda: dsa.generate_private_key(key_size=1024, backend=crypto_default_backend()),
+      line    85  [asymmetric]  [=== RSA ===]
+      line    86  [asymmetric]  [+] Private key saved to keys/personal/rsa/private_key.pem
+      line    89  [asymmetric]  [+] Derived public key saved to keys/personal/rsa/public_key.pem
+      line    91  [asymmetric]  [=== DSA ===]
+      line    92  [asymmetric]  [+] Private key saved to keys/personal/dsa/private_key.pem
+      line    95  [asymmetric]  [+] Derived public key saved to keys/personal/dsa/public_key.pem
+
+  ▸ python/integrity/signature/readme.md
+      line    10  [asymmetric]  - RSA (2048 bits)
+      line    11  [asymmetric]  - DSA (1024 bits, deprecated)
+      line    21  [asymmetric]  │ ├── rsa/
+      line    24  [asymmetric]  │ ├── dsa/
+      line    28  [asymmetric]  │ ├── rsa/
+      line    30  [asymmetric]  │ ├── dsa/
+
+  ▸ python/integrity/signature/rsa_pss.py
+      line     1  [asymmetric]  # RSA-PSS
+      line     2  [py_import]  from cryptography.hazmat.primitives.asymmetric import rsa, padding
+      line     2  [asymmetric]  from cryptography.hazmat.primitives.asymmetric import rsa, padding
+      line     3  [py_import]  from cryptography.hazmat.primitives import hashes
+      line     4  [py_import]  from cryptography.hazmat.primitives import serialization
+      line     8  [random]  return os.urandom(n)
+      line    13  [asymmetric]  # Generate RSA private key
+      line    14  [asymmetric]  private_key = rsa.generate_private_key(
+      line    16  [key_mgmt]  key_size=2048,
+      line    32  [asymmetric]  # Sign the message using RSA-PSS with SHA-256
+      line    33  [signature]  signature = private_key.sign(
+      line    44  [signature]  public_key.verify(
+      line    58  [key_mgmt]  private_key_pem = private_key.private_bytes(
+      line    65  [key_mgmt]  public_key_pem = public_key.public_bytes(
+
+  ▸ python/integrity/signature/sign_message_with_all_keys.py
+      line     8  [asymmetric]  ├── rsa/
+      line    10  [asymmetric]  ├── dsa/
+      line    20  [py_import]  from cryptography.hazmat.primitives.asymmetric import rsa, dsa, ec, ed25519
+      line    20  [asymmetric]  from cryptography.hazmat.primitives.asymmetric import rsa, dsa, ec, ed25519
+      line    20  [asymmetric]  from cryptography.hazmat.primitives.asymmetric import rsa, dsa, ec, ed25519
+      line    21  [py_import]  from cryptography.hazmat.primitives import serialization as crypto_serialization
+      line    22  [py_import]  from cryptography.hazmat.primitives import hashes
+      line    23  [py_import]  from cryptography.hazmat.primitives.asymmetric import padding, utils
+      line    27  [key_mgmt]  return crypto_serialization.load_pem_private_key(
+      line    33  [asymmetric]  if key_type == "rsa":
+      line    34  [signature]  return private_key.sign(
+      line    42  [asymmetric]  elif key_type == "dsa":
+      line    43  [signature]  return private_key.sign(
+      line    48  [signature]  return private_key.sign(
+      line    53  [signature]  return private_key.sign(message)
+      line    62  [asymmetric]  key_types = ["rsa", "dsa", "ecdsa", "ed25519"]
+      line    62  [asymmetric]  key_types = ["rsa", "dsa", "ecdsa", "ed25519"]
+      line    91  [asymmetric]  [+] Signing with RSA key...
+      line    92  [asymmetric]  [✓] Signature saved to signature_out/rsa/signature.bin
+      line    94  [asymmetric]  [+] Signing with DSA key...
+      line    95  [asymmetric]  [✓] Signature saved to signature_out/dsa/signature.bin
+
+  ▸ readme.md
+      line    15  [kdf]  │   └── hmac.py
+
+  ▸ xts_gcm.md
+      line     1  [symmetric]  | Feature / Aspect           | **AES-GCM**                                                                 | **AES-XTS**                                                                 |
+      line     1  [cipher_mode]  | Feature / Aspect           | **AES-GCM**                                                                 | **AES-XTS**                                                                 |
+      line     1  [cipher_mode]  | Feature / Aspect           | **AES-GCM**                                                                 | **AES-XTS**                                                                 |
+      line     4  [symmetric]  | **Authentication**          | Built-in authentication tag (integrity + authenticity guaranteed). Authenticated Encryption with Associated Data (AEAD). Provides confidentiality + integrity.         | No authentication; must combine with HMAC/MAC for tamper protection. Tweakable block cipher mode. P
+      line     4  [kdf]  | **Authentication**          | Built-in authentication tag (integrity + authenticity guaranteed). Authenticated Encryption with Associated Data (AEAD). Provides confidentiality + integrity.         | No authentication; must combine with HMAC/MAC for tamper protection. Tweakable block cipher mode. P
+      line     8  [symmetric]  | **Performance**             | Very fast on AES-NI capable CPUs. Authentication adds overhead.             | Very fast on AES-NI CPUs. No authentication overhead, simpler pipeline. |
+      line    12  [symmetric]  | **Implementation Notes**    | IV/nonce must never repeat for same key — reuse breaks security.            | Requires 2 AES keys internally (K1, K2). Implementations must carefully manage tweaks. |
+      line    20  [symmetric]  | **AES-GCM** | **Nonce** | Uniqueness for encryption | **12 bytes (96 bits)** | Most efficient size. Other sizes are possible but require GHASH processing. |
+      line    20  [cipher_mode]  | **AES-GCM** | **Nonce** | Uniqueness for encryption | **12 bytes (96 bits)** | Most efficient size. Other sizes are possible but require GHASH processing. |
+      line    22  [symmetric]  | | Tag | Authentication tag | 16 bytes (128 bits) | Can be truncated to 12-15 bytes, but 16 bytes provides full security. |
+      line    23  [symmetric]  | **ChaCha20-Poly1305** | **Nonce** | Uniqueness for encryption | **12 bytes (96 bits)** | IETF standard (RFC 8439) specifies exactly 12 bytes. |
+      line    24  [cipher_mode]  | | **AAD** | Authenticated but unencrypted data | Variable length<br>**Here: 20 bytes** | Common sizes: 0-64 bytes. Similar practical limits as GCM. |
+      line    26  [cipher_mode]  | **XTS** | **Tweak/Nonce** | Sector/block identification | **16 bytes (128 bits) input** | Typically contains a 64-bit (8-byte) sector address in lower bits, zeros in upper bits. |
+      line    27  [symmetric]  | | Key | Encryption key | 32 or 64 bytes | Double-sized: 256-bit (AES-128) uses 32 bytes, 512-bit (AES-256) uses 64 bytes. |
+      line    30  [symmetric]  | Property                         | AES-GCM                          | AES-XTS                | ChaCha20-Poly1305               |
+      line    30  [symmetric]  | Property                         | AES-GCM                          | AES-XTS                | ChaCha20-Poly1305               |
+      line    30  [cipher_mode]  | Property                         | AES-GCM                          | AES-XTS                | ChaCha20-Poly1305               |
+      line    30  [cipher_mode]  | Property                         | AES-GCM                          | AES-XTS                | ChaCha20-Poly1305               |
+      line    36  [symmetric]  | **Hardware Acceleration**        | ✅ AES-NI                         | ✅ AES-NI               | ⚪ Software only (faster on ARM) |
+      line    45  [cipher_mode]  ### === XTS-256 Materials ===
+      line    51  [cipher_mode]  XTS Nonce (256): 22e4fc58fcb99606a9ac40a4f80a7520...
+      line    52  [cipher_mode]  XTS Tweak (256): 452ffb16b9d1de7565963e6854f99fc4
+      line    55  [cipher_mode]  ### === XTS-512 Materials ===
+      line    61  [cipher_mode]  XTS Nonce (512): 3a1a7b2f216c1757c66d446321f15ca4...
+      line    62  [cipher_mode]  XTS Tweak (512): bc281b9c5038882116e67fac0f3b492d
+      line    65  [cipher_mode]  ### === GCM Materials (Comparison) ===
+      line    67  [symmetric]  Derived materials (AES-256/GCM):
+      line    67  [cipher_mode]  Derived materials (AES-256/GCM):
+      line    72  [symmetric]  Derived materials (AES-128/GCM):
+      line    72  [cipher_mode]  Derived materials (AES-128/GCM):
+      line    80  [cipher_mode]  XTS-256: Suitable for full disk encryption, databases
+      line    81  [cipher_mode]  XTS-512: Maximum security for sensitive storage systems
+      line    82  [cipher_mode]  GCM-256: General purpose authenticated encryption
+      line    83  [cipher_mode]  GCM-128: Lightweight authenticated encryption
+
+  ▸ xts_size_limitation_calculus.md
+      line     1  [cipher_mode]  # The Space Limitation Of XTS
+      line     5  [symmetric]  The 2⁻⁸⁸ threshold (2⁻⁸⁸ was chosen as the safety threshold in AES-XTS (IEEE P1619 / NIST SP 800-38E)) was the design target probability that the XTS designers used to define a safe maximum data-unit size (2²⁰ blocks = 16 MiB).
+      line     5  [cipher_mode]  The 2⁻⁸⁸ threshold (2⁻⁸⁸ was chosen as the safety threshold in AES-XTS (IEEE P1619 / NIST SP 800-38E)) was the design target probability that the XTS designers used to define a safe maximum data-unit size (2²⁰ blocks = 16 MiB).
+      line     7  [symmetric]  It ensures each sector’s internal structure contributes no more than a 2⁻⁸⁸ degradation to AES-128’s overall 128-bit security.
+      line    11  [symmetric]  | AES block size     | (b)                          | 128 bits                         | fixed by AES        |
+      line    15  [symmetric]  | Margin vs AES-128  | 40 bits                      | (128 – 88 = 40) bit gap          |                     |
+      line    39  [cipher_mode]  When the P1619 working group and NIST’s SP 800-38E editors formalized XTS, they needed a bound small enough that even in worst-case use, the total risk would remain cryptographically negligible.
+      line    45  [symmetric]  It’s 40 bits below AES-128’s baseline 128-bit strength, which is:
+      line    55  [cipher_mode]  That bound keeps XTS’s total security level effectively at ≈ 128 bits – 0 bits for realistic use.
+      line    59  [symmetric]  𝑛 = number of AES 16-byte blocks in a single data unit (aka sector, tweak domain) that you encrypt under one tweak.
+      line    69  [cipher_mode]  - 𝑛 must be an integer, 𝑛 ≥ 1, and by the XTS spec 𝑛 ≤
+      line   124  [symmetric]  | **Minimum**            | 16 bytes           | must have ≥ 1 AES block                                                        |
+      line   150  [cipher_mode]  ## Structure of the XTS security proof
+      line   172  [symmetric]  | (k)    | AES key size (128 bits)                        |
+      line   173  [symmetric]  | (b)    | AES block size (128 bits)                      |
+      line   174  [symmetric]  | (q)    | total number of AES invocations under 1 key    |
+      line   207  [symmetric]  It provides an engineering margin well above real sector sizes (512 B–4 KiB) while keeping formal cryptographic bounds conservative.
+      line   212  [cipher_mode]  ## XTS tweak size
+      line   214  [symmetric]  The tweak in AES-XTS is 128 bits = 2^128 possible values.
+      line   214  [cipher_mode]  The tweak in AES-XTS is 128 bits = 2^128 possible values.
+      line   250  [symmetric]  The mathematical max addressable space for AES-XTS is 2^140 bytes (≈1.4 × 10^42 bytes) if you use 4096-byte sectors. With 512-byte sectors, it’s 2^137 bytes (≈1.7 × 10^41 bytes).
+      line   250  [cipher_mode]  The mathematical max addressable space for AES-XTS is 2^140 bytes (≈1.4 × 10^42 bytes) if you use 4096-byte sectors. With 512-byte sectors, it’s 2^137 bytes (≈1.7 × 10^41 bytes).
+      line   252  [cipher_mode]  The practical limit is much lower (16 MiB per sector, enforced by the XTS spec), but the total addressable capacity across all sectors is unimaginably larger than anything you’ll ever hit.
+
+  ▸ xts_tweak_derive.py
+      line     3  [py_import]  import hmac, hashlib, json
+      line     3  [kdf]  import hmac, hashlib, json
+      line     4  [py_import]  from cryptography.hazmat.primitives.kdf.hkdf import HKDF
+      line     4  [kdf]  from cryptography.hazmat.primitives.kdf.hkdf import HKDF
+      line     4  [kdf]  from cryptography.hazmat.primitives.kdf.hkdf import HKDF
+      line     5  [py_import]  from cryptography.hazmat.primitives import hashes
+      line    11  [kdf]  mac = hmac.new(mac_key, msg, hashlib.sha256).digest()   # 32 bytes
+      line    12  [kdf]  # use HKDF to derive exactly 16 bytes (optional, but explicit)
+      line    13  [cipher_mode]  hk = HKDF(length=16, algorithm=hashes.SHA256(), salt=None, info=b'xts-tweak')
+      line    13  [kdf]  hk = HKDF(length=16, algorithm=hashes.SHA256(), salt=None, info=b'xts-tweak')
+      line    20  [kdf]  mac = hmac.new(mac_key, msg, hashlib.sha256).digest()   # 32 bytes
+      line    21  [kdf]  # use HKDF to derive exactly 16 bytes (optional, but explicit)
+      line    22  [cipher_mode]  hk = HKDF(length=16, algorithm=hashes.SHA256(), salt=None, info=b'xts-tweak')
+      line    22  [kdf]  hk = HKDF(length=16, algorithm=hashes.SHA256(), salt=None, info=b'xts-tweak')
+      line    29  [kdf]  full = hmac.new(mac_key, msg, hashlib.sha256).digest()  # 32B
+      line    34  [random]  return os.urandom(16)
+      line    38  [random]  return os.urandom(16)
+      line    40  [kdf]  # Deterministic but avoid leaking mapping if JSON is public: use nonce + HMAC # With truncation
+      line    44  [kdf]  mac = hmac.new(mac_key, msg + nonce, hashlib.sha256).digest()   # 32 bytes
+      line    45  [kdf]  # use HKDF to derive exactly 16 bytes (optional, but explicit)
+      line    46  [cipher_mode]  hk = HKDF(length=16, algorithm=hashes.SHA256(), salt=None, info=b'xts-tweak')
+      line    46  [kdf]  hk = HKDF(length=16, algorithm=hashes.SHA256(), salt=None, info=b'xts-tweak')
+      line    52  [cipher_mode]  hk = HKDF(length=16, algorithm=hashes.SHA256(), salt=None, info=b'xts-tweak')
+      line    52  [kdf]  hk = HKDF(length=16, algorithm=hashes.SHA256(), salt=None, info=b'xts-tweak')
+      line    95  [cipher_mode]  # only using the first few bytes effectively, which could be a security concern for XTS mode.
+      line   142  [kdf]  # Use HMAC to derive tweak
+      line   143  [kdf]  h = hmac.new(secret_key, key.encode(), hashlib.sha256)
+      line   151  [py_import]  from cryptography.hazmat.primitives.ciphers import Cipher, modes
+      line   151  [symmetric]  from cryptography.hazmat.primitives.ciphers import Cipher, modes
+      line   152  [py_import]  from cryptography.hazmat.primitives.ciphers.algorithms import AES
+      line   152  [symmetric]  from cryptography.hazmat.primitives.ciphers.algorithms import AES
+      line   153  [py_import]  from cryptography.hazmat.backends import default_backend
+      line   155  [cipher_mode]  # Your encryption key (should be 32 or 64 bytes for XTS)
+      line   156  [random]  encryption_key = os.urandom(32)
+      line   165  [symmetric]  cipher1 = Cipher(AES(encryption_key), modes.XTS(tweak1), backend=default_backend())
+      line   165  [symmetric]  cipher1 = Cipher(AES(encryption_key), modes.XTS(tweak1), backend=default_backend())
+      line   165  [cipher_mode]  cipher1 = Cipher(AES(encryption_key), modes.XTS(tweak1), backend=default_backend())
+      line   169  [kdf]  # Using Option 3 (HMAC-based - most secure)
+      line   171  [symmetric]  cipher3 = Cipher(AES(encryption_key), modes.XTS(tweak3), backend=default_backend())
+      line   171  [symmetric]  cipher3 = Cipher(AES(encryption_key), modes.XTS(tweak3), backend=default_backend())
+      line   171  [cipher_mode]  cipher3 = Cipher(AES(encryption_key), modes.XTS(tweak3), backend=default_backend())
+      line   177  [kdf]  print(f"Tweak3 (HMAC): {tweak3.hex()}")
+      line   183  [cipher_mode]  print("XTS Tweak Derivation Methods\n" + "="*40)
+      line   186  [random]  mac_key = os.urandom(32)
+      line   199  [cipher_mode]  # Method 1: Random tweak (most common for XTS)
+      line   211  [symmetric]  # Method 3: JSON with nonce (deterministic but hides patterns)
+      line   213  [random]  nonce = os.urandom(16)
+      line   221  [random]  seed = os.urandom(32)
+      line   233  [cipher_mode]  print("   → Store MAC for verification, use tweak for XTS\n")
+      line   239  [kdf]  computed_mac = hmac.new(mac_key, msg, hashlib.sha256).digest()
+      line   240  [kdf]  matches = hmac.compare_digest(computed_mac, full_mac)
+      line   255  [cipher_mode]  XTS Tweak Derivation Methods
+      line   283  [cipher_mode]  → Store MAC for verification, use tweak for XTS
+      line   298  [kdf]  Tweak3 (HMAC): 5159db2c43b322f2a25346b44f739044
+
+  ▸ xts_tweak_derive_collisionless.py
+      line     5  [kdf]  No truncation: We never truncate an HMAC for the tweak. Instead we allocate a 16-byte tweak deterministically from an ever-incrementing counter stored in a mapping file. That mapping file stores the complete association canonical JSON → tweak (16 bytes hex). Since each allocation uses an incrementin
+      line     9  [kdf]  Integrity: We still compute a full HMAC-SHA256 (32 bytes) over the canonical JSON and store it with the ciphertext. Before decrypting we verify the HMAC; that prevents tampering and key mismatch issues.
+      line    13  [symmetric]  DB/scale: The mapping file is a JSON object with a _counter and entries mapping canonical JSON → hex tweak. For large scale you would replace file storage with a proper DB/table that provides atomic INSERT with sequence allocation.
+      line    18  [py_import]  import hmac
+      line    18  [kdf]  import hmac
+      line    19  [py_import]  import hashlib
+      line    24  [py_import]  from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+      line    24  [symmetric]  from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+      line    25  [py_import]  from cryptography.hazmat.primitives import padding
+      line    26  [py_import]  from cryptography.hazmat.backends import default_backend
+      line    33  [symmetric]  Provides two keys per domain:
+      line    34  [symmetric]  - xts_key: 64 bytes (512 bits) required by AES-XTS
+      line    34  [cipher_mode]  - xts_key: 64 bytes (512 bits) required by AES-XTS
+      line    35  [kdf]  - mac_key: 32 bytes (256 bits) for HMAC-SHA256
+      line    43  [random]  "xts_key": os.urandom(64),
+      line    44  [random]  "mac_key": os.urandom(32)
+      line    85  [kdf]  # deterministic canonicalization for mapping and HMAC
+      line   109  [kdf]  # HMAC (full) for integrity (no truncation)
+      line   115  [kdf]  return hmac.new(mac_key, msg, hashlib.sha256).digest()  # full 32 bytes
+      line   118  [symmetric]  # AES-XTS encrypt / decrypt (with PKCS7 padding to satisfy XTS requirements)
+      line   118  [cipher_mode]  # AES-XTS encrypt / decrypt (with PKCS7 padding to satisfy XTS requirements)
+      line   122  [cipher_mode]  raise ValueError("XTS key must be 64 bytes (512 bits).")
+      line   125  [symmetric]  return Cipher(algorithms.AES(xts_key), modes.XTS(tweak16), backend=default_backend())
+      line   125  [symmetric]  return Cipher(algorithms.AES(xts_key), modes.XTS(tweak16), backend=default_backend())
+      line   125  [cipher_mode]  return Cipher(algorithms.AES(xts_key), modes.XTS(tweak16), backend=default_backend())
+      line   159  [kdf]  - mac: hex (HMAC-SHA256 over canonical JSON)
+      line   167  [kdf]  mac = compute_hmac_full(json_context, domain)               # 32 bytes full HMAC
+      line   183  [kdf]  Decrypt the record after verifying HMAC matches the JSON and domain's mac_key.
+      line   184  [kdf]  Raises ValueError on HMAC mismatch.
+      line   190  [kdf]  if not hmac.compare_digest(expected_mac, computed_mac):
+      line   191  [kdf]  raise ValueError("HMAC mismatch — integrity check failed or wrong domain/key.")
+      line   252  [cipher_mode]  If you need cross-machine deduplication without a central allocator, use a deterministic unique ID generated outside of local counters (e.g., canonical JSON → SHA-256 and then use the full 32-byte hash as stored ID), but if you want XTS tweak exactly 16 bytes and absolutely no collisions, you still 
+      line   257  [symmetric]  1. Replace Fernet with AES-XTS (no truncation, no collisions).
+      line   257  [cipher_mode]  1. Replace Fernet with AES-XTS (no truncation, no collisions).
+      line   268  [kdf]  4. Keep full HMAC for authenticity and integrity.
+      line   277  [py_import]  import hmac
+      line   277  [kdf]  import hmac
+      line   278  [py_import]  import hashlib
+      line   281  [py_import]  from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+      line   281  [symmetric]  from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+      line   282  [py_import]  from cryptography.hazmat.primitives import padding
+      line   283  [py_import]  from cryptography.hazmat.backends import default_backend
+      line   294  [symmetric]  "xts_key": os.urandom(64),  # AES-XTS key (512-bit)
+      line   294  [cipher_mode]  "xts_key": os.urandom(64),  # AES-XTS key (512-bit)
+      line   294  [random]  "xts_key": os.urandom(64),  # AES-XTS key (512-bit)
+      line   295  [kdf]  "mac_key": os.urandom(32),  # HMAC key
+      line   295  [random]  "mac_key": os.urandom(32),  # HMAC key
+      line   367  [symmetric]  # HMAC + AES-XTS crypto primitives
+      line   367  [cipher_mode]  # HMAC + AES-XTS crypto primitives
+      line   367  [kdf]  # HMAC + AES-XTS crypto primitives
+      line   373  [kdf]  return hmac.new(mac_key, msg, hashlib.sha256).digest()
+      line   377  [symmetric]  raise ValueError("AES-XTS key must be 64 bytes.")
+      line   377  [cipher_mode]  raise ValueError("AES-XTS key must be 64 bytes.")
+      line   379  [symmetric]  raise ValueError("AES-XTS tweak must be 16 bytes.")
+      line   379  [cipher_mode]  raise ValueError("AES-XTS tweak must be 16 bytes.")
+      line   380  [symmetric]  return Cipher(algorithms.AES(xts_key), modes.XTS(tweak16), backend=default_backend())
+      line   380  [symmetric]  return Cipher(algorithms.AES(xts_key), modes.XTS(tweak16), backend=default_backend())
+      line   380  [cipher_mode]  return Cipher(algorithms.AES(xts_key), modes.XTS(tweak16), backend=default_backend())
+      line   425  [kdf]  if not hmac.compare_digest(expected_mac, computed_mac):
+      line   426  [kdf]  raise ValueError("HMAC mismatch — possible tampering or wrong key/domain.")
+      line   467  [kdf]  | **Integrity**              | HMAC-SHA256 (full 32 bytes) ensures authenticity of JSON context.                              |
+      line   502  [kdf]  the HMAC authenticates both the canonical JSON context AND the ciphertext (AE-like protection). Below is the full, ready-to-drop-in file. Behavior changes:
+      line   504  [kdf]  On encrypt: HMAC = HMAC-SHA256(mac_key, canonical_json || ciphertext). Stored full 32-byte mac in record.
+      line   506  [kdf]  On decrypt: Recompute HMAC over the stored canonical JSON and ciphertext; reject if mismatch.
+      line   508  [symmetric]  All other guarantees remain: SQLite-backed atomic tweak allocator (no collisions), AES-XTS for encryption (with PKCS7 padding), separate domain keys, deterministic canonical JSON, persistent tweak mapping.
+      line   508  [cipher_mode]  All other guarantees remain: SQLite-backed atomic tweak allocator (no collisions), AES-XTS for encryption (with PKCS7 padding), separate domain keys, deterministic canonical JSON, persistent tweak mapping.
+      line   511  [symmetric]  HMAC now authenticates both the JSON context and ciphertext; this provides strong integrity protection and prevents tampering or tricking decryption into returning valid plaintext for altered ciphertext or context.
+      line   511  [kdf]  HMAC now authenticates both the JSON context and ciphertext; this provides strong integrity protection and prevents tampering or tricking decryption into returning valid plaintext for altered ciphertext or context.
+      line   521  [py_import]  import hmac
+      line   521  [kdf]  import hmac
+      line   522  [py_import]  import hashlib
+      line   525  [py_import]  from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+      line   525  [symmetric]  from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+      line   526  [py_import]  from cryptography.hazmat.primitives import padding
+      line   527  [py_import]  from cryptography.hazmat.backends import default_backend
+      line   534  [symmetric]  Mock KMS: provides xts_key (64 bytes) and mac_key (32 bytes) per domain.
+      line   542  [symmetric]  "xts_key": os.urandom(64),  # AES-XTS key (512-bit)
+      line   542  [cipher_mode]  "xts_key": os.urandom(64),  # AES-XTS key (512-bit)
+      line   542  [random]  "xts_key": os.urandom(64),  # AES-XTS key (512-bit)
+      line   543  [kdf]  "mac_key": os.urandom(32),  # HMAC key (256-bit)
+      line   543  [random]  "mac_key": os.urandom(32),  # HMAC key (256-bit)
+      line   617  [symmetric]  # HMAC + AES-XTS crypto primitives
+      line   617  [cipher_mode]  # HMAC + AES-XTS crypto primitives
+      line   617  [kdf]  # HMAC + AES-XTS crypto primitives
+      line   621  [kdf]  Compute full HMAC-SHA256 over canonical_json || ciphertext using domain mac_key.
+      line   629  [kdf]  return hmac.new(mac_key, mac_input, hashlib.sha256).digest()
+      line   633  [symmetric]  raise ValueError("AES-XTS key must be 64 bytes (512 bits).")
+      line   633  [cipher_mode]  raise ValueError("AES-XTS key must be 64 bytes (512 bits).")
+      line   635  [symmetric]  raise ValueError("AES-XTS tweak must be 16 bytes.")
+      line   635  [cipher_mode]  raise ValueError("AES-XTS tweak must be 16 bytes.")
+      line   636  [symmetric]  return Cipher(algorithms.AES(xts_key), modes.XTS(tweak16), backend=default_backend())
+      line   636  [symmetric]  return Cipher(algorithms.AES(xts_key), modes.XTS(tweak16), backend=default_backend())
+      line   636  [cipher_mode]  return Cipher(algorithms.AES(xts_key), modes.XTS(tweak16), backend=default_backend())
+      line   665  [kdf]  - mac: hex (HMAC-SHA256 over canonical_json || ciphertext)
+      line   688  [kdf]  Decrypt the record after verifying HMAC matches the canonical JSON and ciphertext.
+      line   689  [kdf]  Raises ValueError on HMAC mismatch.
+      line   696  [kdf]  if not hmac.compare_digest(expected_mac, computed_mac):
+      line   697  [kdf]  raise ValueError("HMAC mismatch — integrity check failed or wrong domain/key.")
+      line   716  [kdf]  # HMAC mismatch, decrypt failure, or wrong key — ignore
+
+  ▸ xts_tweak_derive_collisionless_with_migratable.py
+      line     5  [cipher_mode]  - cipher_version: "xts:1" — the crypto scheme and version.
+      line     6  [cipher_mode]  - The migration script writes format_version: 1 and cipher_version: "xts:1".
+      line     8  [kdf]  AE-like HMAC: HMAC covers canonical_json || ciphertext.
+      line    21  [symmetric]  AES-XTS + HMAC contextual encryption with persistent tweak allocator.
+      line    21  [cipher_mode]  AES-XTS + HMAC contextual encryption with persistent tweak allocator.
+      line    21  [kdf]  AES-XTS + HMAC contextual encryption with persistent tweak allocator.
+      line    27  [cipher_mode]  - cipher_version (string), e.g. "xts:1"
+      line    33  [py_import]  import hmac
+      line    33  [kdf]  import hmac
+      line    34  [py_import]  import hashlib
+      line    38  [py_import]  from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+      line    38  [symmetric]  from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+      line    39  [py_import]  from cryptography.hazmat.primitives import padding
+      line    40  [py_import]  from cryptography.hazmat.backends import default_backend
+      line    69  [symmetric]  "xts_key": os.urandom(64),  # AES-XTS 512-bit key
+      line    69  [cipher_mode]  "xts_key": os.urandom(64),  # AES-XTS 512-bit key
+      line    69  [random]  "xts_key": os.urandom(64),  # AES-XTS 512-bit key
+      line    70  [kdf]  "mac_key": os.urandom(32),  # HMAC-SHA256 key
+      line    70  [random]  "mac_key": os.urandom(32),  # HMAC-SHA256 key
+      line   211  [cipher_mode]  raise ValueError("XTS key must be 64 bytes (512-bit).")
+      line   214  [symmetric]  return Cipher(algorithms.AES(xts_key), modes.XTS(tweak16), backend=default_backend())
+      line   214  [symmetric]  return Cipher(algorithms.AES(xts_key), modes.XTS(tweak16), backend=default_backend())
+      line   214  [cipher_mode]  return Cipher(algorithms.AES(xts_key), modes.XTS(tweak16), backend=default_backend())
+      line   236  [kdf]  return hmac.new(mac_key, canonical + ciphertext, hashlib.sha256).digest()
+      line   242  [cipher_mode]  CIPHER_VERSION = "xts:1"
+      line   275  [kdf]  if not hmac.compare_digest(expected_mac, computed_mac):
+      line   276  [kdf]  raise ValueError("HMAC mismatch — integrity check failed or wrong domain/key.")
+      line   313  [cipher_mode]  "cipher_version": "xts:1",
+      line   324  [symmetric]  Migration helper: decrypt existing Fernet ciphertexts and re-encrypt into the new AES-XTS + HMAC scheme.
+      line   324  [cipher_mode]  Migration helper: decrypt existing Fernet ciphertexts and re-encrypt into the new AES-XTS + HMAC scheme.
+      line   324  [kdf]  Migration helper: decrypt existing Fernet ciphertexts and re-encrypt into the new AES-XTS + HMAC scheme.
+      line   330  [symmetric]  - new_records.json  : AES-XTS + HMAC versioned records compatible with contextual_non_fpe.py
+      line   330  [cipher_mode]  - new_records.json  : AES-XTS + HMAC versioned records compatible with contextual_non_fpe.py
+      line   330  [kdf]  - new_records.json  : AES-XTS + HMAC versioned records compatible with contextual_non_fpe.py
+      line   351  [py_import]  from cryptography.fernet import Fernet
+      line   519  [symmetric]  print(f"Fernet → AES-XTS+HMAC Migration")
+      line   519  [cipher_mode]  print(f"Fernet → AES-XTS+HMAC Migration")
+      line   519  [kdf]  print(f"Fernet → AES-XTS+HMAC Migration")
+      line   645  [key_mgmt]  key = Fernet.generate_key()
+      line   672  [symmetric]  Fernet → AES-XTS+HMAC Migration
+      line   672  [cipher_mode]  Fernet → AES-XTS+HMAC Migration
+      line   672  [kdf]  Fernet → AES-XTS+HMAC Migration

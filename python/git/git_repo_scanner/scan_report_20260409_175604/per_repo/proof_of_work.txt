@@ -1,0 +1,12 @@
+================================================================================
+  REPO       : proof_of_work
+  FULL NAME  : ursa-mikail/proof_of_work
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Go
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/proof_of_work
+  MATCHES    : 1
+================================================================================
+
+  ▸ proof_of_work.go
+      line    87  [signature]  ev.Sign(privateKey)

@@ -1,0 +1,76 @@
+================================================================================
+  REPO       : ai_ml_vulnerabilities
+  FULL NAME  : ursa-mikail/ai_ml_vulnerabilities
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Python
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/ai_ml_vulnerabilities
+  MATCHES    : 35
+================================================================================
+
+  ▸ ai_poisoning_attacks_cases.md
+      line     3  [symmetric]  | Attack | Where the Poison Hides | Trigger | Result |
+
+  ▸ ai_safety_mcp.md
+      line   617  [symmetric]  This detection scheme provides:
+
+  ▸ ai_vulnerabilities_patterns.md
+      line    77  [symmetric]  | **Trust Persistence** | The trust model in some IDEs is misleading, as core functionality requires marking a workspace as "trusted," effectively making trust an entry point to the product rather than a deliberate conferral of privileges. | Google Antigravity IDE | [Mindgard Disclosures](https://mi
+      line   280  [symmetric]  This document maps the critical locations where AI-powered IDEs are vulnerable, from initial entry points to data exfiltration channels.
+      line   325  [symmetric]  | | **🔑 Key Issue** | No authentication is required—the server provides complete open access to anyone who can reach it. |
+      line   406  [symmetric]  This reveals that AI IDEs have multiple concentric trust zones. Vulnerabilities exist at every layer where untrusted workspace data interacts with trusted IDE functionality.
+      line   411  [symmetric]  Based on the checklist's mapping, this document shows how 9 key security gates block the 25 vulnerability patterns in AI IDEs.
+      line   425  [symmetric]  | **G2 — Initialization Safety** | **1 pattern**: 1.7 (Race Condition) — *upgrades all config attacks to zero-click if missing* | **Medium** — prevents startup execution |
+      line   611  [symmetric]  | **Denial of Service** | Resource exhaustion attacks. These can bring a developer's machine to a standstill, halt CI/CD pipelines, or consume excessive cloud credits. May require reboot or VM termination. Includes fork bombs, memory exhaustion, disk filling, and API rate limit exhaustion. **Consequ
+      line   612  [symmetric]  | **Antagonism** | Merely annoying attacks. The most commonly encountered class. Includes `rm -rf /` jokes that fail due to permissions, infinite notification popups, changing editor themes, playing sounds, or deleting temporary files. May require restart of IDE. **Consequences: Light to Moderate** 
+      line   721  [symmetric]  ## Architecture Diagram: Defense-in-Depth for AI IDEs
+
+  ▸ mermaid_20260312_2c9de6.svg
+      line     2  [symmetric]  <svg xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" id="mermaid-svg-4" width="100%" class="flowchart" style="max-width: 100%;" viewBox="-103.5 -103.5 12332.53125 2277" height="100%"><style>#mermaid-svg-4{font-family:"trebuchet
+
+  ▸ mermaid_20260312_7fcfcb.svg
+      line     2  [symmetric]  <svg xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" id="mermaid-svg-5" width="100%" class="flowchart" style="max-width: 100%;" viewBox="-178.5 -178.5 8736.625 3927" height="100%"><style>#mermaid-svg-5{font-family:"trebuchet ms
+
+  ▸ mermaid_20260312_90a8f7.svg
+      line     2  [symmetric]  <svg xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" id="mermaid-svg-21" width="100%" class="flowchart" style="max-width: 100%;" viewBox="-46.380468750000006 -46.380468750000006 1198.8468750000002 1020.3703125" height="100%"><s
+
+  ▸ poisoned_pickles/00.py
+      line   104  [symmetric]  # Create exec sequence with protocol 4 pickle opcodes
+
+  ▸ poisoned_pickles/01.py
+      line   176  [symmetric]  # The XOR-encoded payload just decodes and executes the original payload
+
+  ▸ poisoned_pickles/02.py
+      line    61  [symmetric]  3. Hides bytecode in the unpickled object
+      line   476  [symmetric]  # Look for REDUCE opcodes (R)
+      line   481  [symmetric]  # Look for GLOBAL opcodes (c)
+
+  ▸ poisoned_pickles/03.py
+      line   139  [symmetric]  # Create a structure that includes both the payload and original data
+
+  ▸ poisoned_pickles/06.py
+      line   224  [symmetric]  Provides clear educational output - Explains what's happening at each step
+      line   226  [symmetric]  Includes security recommendations - Teaches how to stay safe
+
+  ▸ poisoned_pickles/08.py
+      line   231  [symmetric]  # Only activate in specific conditions (evades sandbox detection)
+      line   342  [py_import]  import hashlib
+      line   824  [symmetric]  Provides cleanup code to remove demo files when done
+
+  ▸ poisoned_pickles/readme.md
+      line    30  [symmetric]  - Safetensors provides format-level protection against code execution
+      line   142  [symmetric]  This script provides:
+      line   159  [symmetric]  This extensive script includes:
+      line   178  [symmetric]  - SafeTensors provides the best protection (no code execution possible)
+      line   193  [signature]  - Verify checksums and digital signatures
+
+  ▸ utility_mechanisms/dns_exfiltration_via_ping_nslookup.py
+      line   341  [symmetric]  Properly decodes the data and shows the "Would exfiltrate X bytes" message
+
+  ▸ utility_mechanisms/http_dns_hybrid_json_schema_ref.py
+      line   125  [symmetric]  Creates multiple malicious configuration files for different IDEs/tools
+      line   290  [symmetric]  Includes a decoder that can extract the original data from:
+      line   299  [symmetric]  Includes multi-vector examples for other IDEs and tools
+
+  ▸ utility_mechanisms/stealth_mode_model_provider_redirect.py
+      line    84  [symmetric]  - Overrides the API endpoint environment variables

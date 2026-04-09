@@ -1,0 +1,16 @@
+================================================================================
+  REPO       : ollama_guide
+  FULL NAME  : ursa-mikail/ollama_guide
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Python
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/ollama_guide
+  MATCHES    : 3
+================================================================================
+
+  ▸ RAG_basic.py
+      line    38  [symmetric]  query = f"For the text of '{text}'. Find the US postcodes, IP addresses, email addresses, bank details, telephone numbers, credit card details, MAC addresses, cities, and passwords."
+
+  ▸ RAG_with_API_key_basic.py
+      line    15  [symmetric]  postcode: str = Field(description="Extract all of the US postcodes from the the document")
+      line    18  [symmetric]  bank_details: str = Field(description="Find all the bank details and sort codes")

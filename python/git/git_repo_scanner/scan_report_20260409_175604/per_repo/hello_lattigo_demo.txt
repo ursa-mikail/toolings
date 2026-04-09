@@ -1,0 +1,21 @@
+================================================================================
+  REPO       : hello_lattigo_demo
+  FULL NAME  : ursa-mikail/hello_lattigo_demo
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Go
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/hello_lattigo_demo
+  MATCHES    : 6
+================================================================================
+
+  ▸ demo_00/README.md
+      line     3  [symmetric]  A runnable Go project that tours **10 real-world HE use-cases** and includes a
+      line   115  [symmetric]  CKKS encodes real numbers at a fixed-point **scale** (2^40 here). After each
+
+  ▸ demo_01/README.md
+      line    22  [symmetric]  CKKS is **leveled fully homomorphic**. It trades unlimited depth for practical speed.
+      line   113  [symmetric]  Multiplication doubles the scale of the ciphertext. Rescaling divides it back down and reduces the modulus by one level:
+      line   274  [post_quantum]  - Post-quantum secure (RLWE hardness is quantum-resistant).
+
+  ▸ demo_01/main.go
+      line   104  [symmetric]  // Rescale: divides by 2^LogDefaultScale to restore precision, consumes one level

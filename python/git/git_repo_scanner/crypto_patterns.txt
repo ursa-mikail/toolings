@@ -1,0 +1,161 @@
+# crypto_patterns.txt — Cryptography / Security API Pattern Scanner
+# ─────────────────────────────────────────────────────────────────────────────
+# Format: CATEGORY | PATTERN (Python regex, case-insensitive) | FILE_EXTENSIONS
+# Extensions: comma-separated (.ext or exact filename), or * for all files.
+# Lines starting with # are comments. Blank lines are ignored.
+# ─────────────────────────────────────────────────────────────────────────────
+
+# ─── Python Imports ──────────────────────────────────────────────────────────
+py_import           | ^\s*import\s+cryptography\b                 | .py
+py_import           | ^\s*from\s+cryptography\b                   | .py
+py_import           | ^\s*import\s+hashlib\b                      | .py
+py_import           | ^\s*import\s+hmac\b                         | .py
+py_import           | ^\s*import\s+secrets\b                      | .py
+py_import           | ^\s*import\s+ssl\b                          | .py
+py_import           | ^\s*from\s+Crypto\b                         | .py
+py_import           | ^\s*import\s+Crypto\b                       | .py
+py_import           | ^\s*from\s+nacl\b                           | .py
+py_import           | ^\s*import\s+nacl\b                         | .py
+py_import           | ^\s*from\s+jose\b                           | .py
+py_import           | ^\s*import\s+jwt\b                          | .py
+py_import           | ^\s*import\s+gnupg\b                        | .py
+py_import           | ^\s*import\s+pgpy\b                         | .py
+py_import           | ^\s*from\s+OpenSSL\b                        | .py
+
+# ─── Symmetric Ciphers ───────────────────────────────────────────────────────
+symmetric           | AES\b                                        | *
+symmetric           | ChaCha20\b                                   | *
+symmetric           | Salsa20\b                                    | *
+symmetric           | DES\b                                        | *
+symmetric           | 3DES\b|TripleDES\b                          | *
+symmetric           | Blowfish\b                                   | *
+symmetric           | Twofish\b                                    | *
+symmetric           | RC4\b                                        | *
+symmetric           | Camellia\b                                   | *
+
+# ─── Cipher Modes ────────────────────────────────────────────────────────────
+cipher_mode         | \bGCM\b                                      | *
+cipher_mode         | \bCBC\b                                      | *
+cipher_mode         | \bCCM\b                                      | *
+cipher_mode         | \bCTR\b                                      | *
+cipher_mode         | \bOFB\b                                      | *
+cipher_mode         | \bECB\b                                      | *
+cipher_mode         | \bSIV\b                                      | *
+cipher_mode         | \bXTS\b                                      | *
+cipher_mode         | \bOCB\b                                      | *
+
+# ─── Asymmetric / Public-Key ─────────────────────────────────────────────────
+asymmetric          | \bRSA\b                                      | *
+asymmetric          | \bECC\b|\bECDH\b|\bECDSA\b                  | *
+asymmetric          | \bDiffie.?Hellman\b|\bDH\b                   | *
+asymmetric          | \bElGamal\b                                  | *
+asymmetric          | \bDSA\b                                      | *
+asymmetric          | \bX25519\b|\bX448\b                          | *
+asymmetric          | \bEd25519\b|\bEd448\b                        | *
+asymmetric          | \bCurve25519\b|\bCurve448\b                  | *
+
+# ─── Hash / Digest Functions ─────────────────────────────────────────────────
+hash_func           | \bSHA-?256\b|\bSHA256\b                     | *
+hash_func           | \bSHA-?512\b|\bSHA512\b                     | *
+hash_func           | \bSHA-?3\b|\bSHA3\b                         | *
+hash_func           | \bSHA-?1\b|\bSHA1\b                         | *
+hash_func           | \bMD5\b                                      | *
+hash_func           | \bBLAKE2\b|\bBLAKE3\b                       | *
+hash_func           | \bWhirlpool\b                                | *
+hash_func           | \bRIPEMD\b                                   | *
+hash_func           | hashlib\.(md5|sha1|sha256|sha512|sha3|blake) | .py
+
+# ─── Key Derivation (KDF / PRF) ──────────────────────────────────────────────
+kdf                 | \bPBKDF2\b                                   | *
+kdf                 | \bscrypt\b                                   | *
+kdf                 | \bArgon2\b                                   | *
+kdf                 | \bbcrypt\b                                   | *
+kdf                 | \bHKDF\b                                      | *
+kdf                 | \bHMAC\b                                      | *
+kdf                 | \bCMAC\b                                      | *
+kdf                 | \bKDF\b                                       | *
+
+# ─── Digital Signatures ──────────────────────────────────────────────────────
+signature           | \.sign\s*\(                                  | .py,.js,.ts,.java,.kt,.go,.rs,.rb,.cs
+signature           | \.verify\s*\(                                | .py,.js,.ts,.java,.kt,.go,.rs,.rb,.cs
+signature           | sign_message\b                               | *
+signature           | verify_signature\b                           | *
+signature           | digital.?signature                           | *
+
+# ─── Key / Certificate Handling ──────────────────────────────────────────────
+key_mgmt            | -----BEGIN\s+(RSA |EC |ENCRYPTED )?PRIVATE KEY | *
+key_mgmt            | -----BEGIN CERTIFICATE                       | *
+key_mgmt            | -----BEGIN PUBLIC KEY                        | *
+key_mgmt            | generate_key\b                               | *
+key_mgmt            | load_pem_private_key\b                       | .py
+key_mgmt            | load_pem_public_key\b                        | .py
+key_mgmt            | private_bytes\b                              | .py
+key_mgmt            | public_bytes\b                               | .py
+key_mgmt            | key_size\s*=                                 | .py,.js,.ts,.java,.kt
+
+# ─── TLS / SSL / mTLS ────────────────────────────────────────────────────────
+tls                 | ssl\.wrap_socket\b                           | .py
+tls                 | ssl\.create_default_context\b                | .py
+tls                 | TLS\b|\bSSL\b|\bmTLS\b                       | .py,.js,.ts,.java,.kt,.go,.yaml,.yml,.conf
+tls                 | ssl_context\b                                | .py
+tls                 | verify_mode\s*=                              | .py
+
+# ─── Tokenization / Format-Preserving Encryption ────────────────────────────
+fpe_token           | \bFPE\b                                      | *
+fpe_token           | format.preserving                            | *
+fpe_token           | tokeniz                                      | *
+fpe_token           | FF1\b|FF3\b                                  | *
+
+# ─── Post-Quantum / PQC ──────────────────────────────────────────────────────
+post_quantum        | \bKyber\b                                    | *
+post_quantum        | \bDilithium\b                                | *
+post_quantum        | \bFALCON\b                                   | *
+post_quantum        | \bSPHINCS\b                                  | *
+post_quantum        | \bNTRU\b                                      | *
+post_quantum        | \bMcEliece\b                                 | *
+post_quantum        | \bClassicMcEliece\b                          | *
+post_quantum        | \bSIKE\b                                      | *
+post_quantum        | post.quantum\b                               | *
+post_quantum        | liboqs\b|pyoqs\b                             | *
+
+# ─── Zero-Knowledge / Advanced Protocols ────────────────────────────────────
+zkp                 | zero.?knowledge\b|ZKP\b|\bZK\b              | *
+zkp                 | \bSNARK\b|\bzk-SNARK\b                      | *
+zkp                 | \bSTARK\b|\bzk-STARK\b                      | *
+zkp                 | \bBulletproof\b                              | *
+zkp                 | \bMPC\b|\bSSS\b                              | *
+zkp                 | shamir.?secret\b                             | *
+zkp                 | secret.?sharing\b                            | *
+zkp                 | threshold.?signature\b                       | *
+zkp                 | blind.?signature\b                           | *
+
+# ─── Randomness / Entropy ────────────────────────────────────────────────────
+random              | os\.urandom\b                                | .py
+random              | secrets\.(token|randbits|choice)\b           | .py
+random              | SystemRandom\b                               | .py
+random              | /dev/urandom\b                               | *
+random              | /dev/random\b                                | *
+random              | CSPRNG\b|PRNG\b|DRBG\b|TRNG\b               | *
+random              | get_random_bytes\b                           | .py
+
+# ─── Encoding / Serialisation (crypto-adjacent) ──────────────────────────────
+encoding            | base64\.(b64encode|b64decode)\b             | .py
+encoding            | binascii\.(hexlify|unhexlify)\b             | .py
+encoding            | DER\b|PEM\b|PKCS#?\d+\b|ASN\.?1\b           | *
+
+# ─── OpenSSL / LibreSSL CLI usage ────────────────────────────────────────────
+openssl             | openssl\s+(enc|dgst|genrsa|genpkey|req|x509|pkcs|smime|s_client|s_server) | *
+openssl             | libssl\b|libcrypto\b|openssl\.conf\b         | *
+
+# ─── Secrets / Credentials in Config ────────────────────────────────────────
+secrets_leak        | (password|passwd|secret|api_key|private_key)\s*=\s*['"][^'"]{8,} | .env,.conf,.cfg,.ini,.yaml,.yml,.toml,.properties
+secrets_leak        | (password|passwd|secret)\s*:\s*\S{8,}       | .yaml,.yml,.toml
+
+# ─── Dependency / Build files ────────────────────────────────────────────────
+dependency          | cryptography\b                               | requirements.txt,Pipfile,setup.cfg,pyproject.toml
+dependency          | pycryptodome\b|pycrypto\b                    | requirements.txt,Pipfile,setup.cfg,pyproject.toml
+dependency          | pyopenssl\b                                  | requirements.txt,Pipfile,setup.cfg,pyproject.toml
+dependency          | libnacl\b|pynacl\b                           | requirements.txt,Pipfile,setup.cfg,pyproject.toml
+dependency          | python-jose\b|PyJWT\b                        | requirements.txt,Pipfile,setup.cfg,pyproject.toml
+dependency          | bcrypt\b                                     | requirements.txt,Pipfile,setup.cfg,pyproject.toml
+dependency          | argon2-cffi\b                                | requirements.txt,Pipfile,setup.cfg,pyproject.toml

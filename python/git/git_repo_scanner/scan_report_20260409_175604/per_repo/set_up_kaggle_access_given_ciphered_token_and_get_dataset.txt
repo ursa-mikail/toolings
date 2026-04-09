@@ -1,0 +1,29 @@
+================================================================================
+  REPO       : set_up_kaggle_access_given_ciphered_token_and_get_dataset
+  FULL NAME  : ursa-mikail/set_up_kaggle_access_given_ciphered_token_and_get_dataset
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Python
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/set_up_kaggle_access_given_ciphered_token_and_get_dataset
+  MATCHES    : 16
+================================================================================
+
+  ▸ readme.md
+      line     3  [symmetric]  Provides an example of how to securely encrypt and decrypt data using AES-256-CBC encryption, and how to work with Kaggle datasets using API keys.
+      line     3  [symmetric]  Provides an example of how to securely encrypt and decrypt data using AES-256-CBC encryption, and how to work with Kaggle datasets using API keys.
+      line     3  [cipher_mode]  Provides an example of how to securely encrypt and decrypt data using AES-256-CBC encryption, and how to work with Kaggle datasets using API keys.
+      line     7  [symmetric]  - **AES-256-CBC Encryption/Decryption**: Encrypt and decrypt JSON data securely.
+      line     7  [cipher_mode]  - **AES-256-CBC Encryption/Decryption**: Encrypt and decrypt JSON data securely.
+
+  ▸ set_up_kaggle_access_given_ciphered_token_and_get_dataset.py
+      line    15  [symmetric]  Decrypts the given encrypted data using AES-256-CBC with the specified key and iterations.
+      line    15  [cipher_mode]  Decrypts the given encrypted data using AES-256-CBC with the specified key and iterations.
+      line    25  [symmetric]  command = f'echo "{encrypted_data}" | openssl enc -aes-256-cbc -pbkdf2 -iter {iterations} -d -a -k "{key}"'
+      line    25  [cipher_mode]  command = f'echo "{encrypted_data}" | openssl enc -aes-256-cbc -pbkdf2 -iter {iterations} -d -a -k "{key}"'
+      line    25  [kdf]  command = f'echo "{encrypted_data}" | openssl enc -aes-256-cbc -pbkdf2 -iter {iterations} -d -a -k "{key}"'
+      line    37  [symmetric]  Encrypts the given data using AES-256-CBC with the specified key and iterations.
+      line    37  [cipher_mode]  Encrypts the given data using AES-256-CBC with the specified key and iterations.
+      line    47  [symmetric]  command = f'echo "{data}" | openssl enc -aes-256-cbc -pbkdf2 -iter {iterations} -a -k "{key}" | tr -d "\n"'
+      line    47  [cipher_mode]  command = f'echo "{data}" | openssl enc -aes-256-cbc -pbkdf2 -iter {iterations} -a -k "{key}" | tr -d "\n"'
+      line    47  [kdf]  command = f'echo "{data}" | openssl enc -aes-256-cbc -pbkdf2 -iter {iterations} -a -k "{key}" | tr -d "\n"'
+      line   285  [symmetric]  marmarplz/student-academic-grades-and-programs              Student Academic Marks and Programs             2MB  2024-11-18 18:31:40           1891         34  1.0

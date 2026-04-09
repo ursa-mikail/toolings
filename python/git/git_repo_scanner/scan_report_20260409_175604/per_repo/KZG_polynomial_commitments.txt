@@ -1,0 +1,19 @@
+================================================================================
+  REPO       : KZG_polynomial_commitments
+  FULL NAME  : ursa-mikail/KZG_polynomial_commitments
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Go
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/KZG_polynomial_commitments
+  MATCHES    : 6
+================================================================================
+
+  ▸ main.go
+      line    52  [signature]  ok := zzz.Verify(ts, c, proof, z, y)
+
+  ▸ readme.md
+      line     3  [zkp]  KZG polynomial commitment scheme allows a committer (Prover) to commit to a polynomial with a short string. Verifier can send Prover a challenge, and of which she creates a proof against the committed polynomial. It has applications into Credentials and Selective Disclosure of Signed Data. ZKS (zero
+      line    84  [symmetric]  Prover provides π and c are given by prover before, and where $$\ [τ]_2 \$$ is derived in the trusted setup, $$\ [z]_2 \$$ defines the point at which the polynomial has been evaluated with, and $$\ [y]_1 \$$ defines the claimed value of p(z) .
+      line   187  [symmetric]  - Light clients or full nodes randomly sample a few indices $$\ 𝑥_𝑖 ​ \$$ from the blob.
+      line   202  [zkp]  3. Verifiable Secret Sharing (VSS):
+      line   255  [symmetric]  Each data provider encodes their dataset into a polynomial.

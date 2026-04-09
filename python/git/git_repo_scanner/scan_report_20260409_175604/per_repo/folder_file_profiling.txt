@@ -1,0 +1,12 @@
+================================================================================
+  REPO       : folder_file_profiling
+  FULL NAME  : ursa-mikail/folder_file_profiling
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Python
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/folder_file_profiling
+  MATCHES    : 1
+================================================================================
+
+  ▸ readme.md
+      line     3  [symmetric]  This repository contains a Python script that demonstrates various OS and system functionalities for folder and file profiling. The script includes features for listing directories, walking through directories recursively, running system commands, changing directories, getting terminal size, listing

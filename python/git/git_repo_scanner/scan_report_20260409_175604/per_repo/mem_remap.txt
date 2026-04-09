@@ -1,0 +1,12 @@
+================================================================================
+  REPO       : mem_remap
+  FULL NAME  : ursa-mikail/mem_remap
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Go
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/mem_remap
+  MATCHES    : 1
+================================================================================
+
+  ▸ readme.md
+      line    28  [symmetric]  The key benefit is that it automatically tracks original values and provides safe bounds checking when restoring memory.

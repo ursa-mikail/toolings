@@ -1,0 +1,128 @@
+================================================================================
+  REPO       : blockchain_simple_learn_demo
+  FULL NAME  : ursa-mikail/blockchain_simple_learn_demo
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Python
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/blockchain_simple_learn_demo
+  MATCHES    : 103
+================================================================================
+
+  ▸ blockchain_simple_learn_demo.py
+      line     1  [py_import]  import hashlib
+
+  ▸ btc_key_make/btc_key_make.py
+      line     9  [hash_func]  6. p=RIPEMD(SHA256(pub))
+      line    13  [py_import]  import hashlib
+      line    15  [py_import]  from Crypto.Hash import RIPEMD160
+      line    16  [py_import]  import hmac, os
+      line    16  [kdf]  import hmac, os
+      line    28  [kdf]  """HMAC-SHA512 for key derivation"""
+      line    29  [kdf]  return hmac.new(key, data, hashlib.sha512).digest()
+      line    35  [random]  # seed = os.urandom(32)
+
+  ▸ eth_key_make/eth_key_make.py
+      line     7  [py_import]  import hashlib
+      line    14  [random]  return os.urandom(32).hex()
+      line    59  [signature]  def sign_message(signing_key: SigningKey, message: str) -> dict:
+      line    71  [signature]  signature = signing_key.sign(message_bytes)
+      line    80  [signature]  is_valid = verifying_key.verify(signature, message_bytes)
+      line   105  [signature]  signature_info = sign_message(key_info['signing_key'], message)
+      line   121  [signature]  print(f"Using public key to verify: {key_info['verifying_key'].verify(signature_info['signature_bytes'], message.encode())}")
+
+  ▸ readme.md
+      line     3  [symmetric]  The first transaction in a block is a transaction that starts a new coin owned by the creator of the block. This adds an incentive for nodes to support the network, and provides a way to initially distribute coins into circulation, since there is no central authority to issue them. The steady additi
+      line    18  [symmetric]  Nodes can broadcast their presence on a predefined port and in a predefined message format. Other nodes can be listening on this port, so that they "catch" the message from a new node (broadcasting their presence). To connect to a known peer, nodes establish a TCP connection, usually to port 8333 (t
+      line    20  [symmetric]  Some clients also have a predefined list of trusted nodes that are usually maintained by the network core development team or some other trusted groups, so that the client doesn't have to wait for other nodes to broadcast their presence and can communicate with these trusted nodes right away.
+      line    50  [symmetric]  Simple and clear actions like transaction should spell transaction purpose clearly in action (not leaving interpretation based on the inference of the params). Instead of non-intuitive option modes like is "23", “params "0 16"?”, “... add-cancel ... '0'” (what is the param "0" at the end?), etc, mak
+      line    72  [symmetric]  Byzantine fault tolerance (a.k.a. BFT) is a system that operates normally within a byzantine failure model. However, even BFT does not operate when there exist numerous faulty nodes. The amount of faulty nodes that can be tolerated must be mentioned. For example, if N = 5f, even if ⅕ of the nodes su
+      line    80  [symmetric]  For N nodes to function properly while having f nodes suffering from byzantine failure, a consensus has to be reached with N — f messages, i.e. N — f nodes are required for quorum.
+      line    81  [symmetric]  say that among the N — f nodes that achieved quorum, f were sent by byzantine failure. Even in this case, the system has to operate normally, and thus (N — f) — f messages must > f messages (sent by nodes suffering from byzantine failure).
+      line    82  [symmetric]  to resolve the 2 problems above, (N — f) — f > f. N > 3f, which means when there are f nodes that has a byzantine failure, there has > 3 f nodes in order for the system to be byzantine fault tolerant. The smallest N value is 3f + 1. Thus, in a system that is made up of 3f + 1 nodes, the greatest amo
+
+  ▸ witness_system/payment_witness.py
+      line     1  [py_import]  import hmac
+      line     1  [kdf]  import hmac
+      line     2  [py_import]  import hashlib
+      line     8  [kdf]  # Function to generate HMAC
+      line    10  [kdf]  return hmac.new(key.encode(), message.encode(), hashlib.sha256).hexdigest()
+      line    47  [kdf]  return hmac.new(
+      line    94  [kdf]  transaction_cp["hmac"] = generate_hmac(
+      line   117  [kdf]  witness_cp["hmac"] = generate_hmac(
+      line   181  [kdf]  "hmac": "38abda4711adad520f259087fa1985a294114d8c9e1e317995be27c0e55c0534"
+      line   194  [kdf]  "hmac": "925b314b9ba5a58ad86e91d67d3fa54830dca84cbbd889321b4c6765176b77de"
+
+  ▸ witness_system/permit.py
+      line     1  [py_import]  import hmac
+      line     1  [kdf]  import hmac
+      line     2  [py_import]  import hashlib
+      line    10  [kdf]  return hmac.new(self.secret_key, message, hashlib.sha256).hexdigest()
+      line    14  [kdf]  return hmac.compare_digest(generated_hmac, hmac_to_verify)
+      line    18  [kdf]  # Example: Check if request has a valid HMAC
+      line    19  [kdf]  if 'hmac' not in request or 'message' not in request:
+      line    23  [kdf]  hmac_to_verify = request['hmac']
+      line    37  [kdf]  print(f"Generated HMAC: {hmac_value}")
+      line    41  [kdf]  "hmac": hmac_value
+      line    50  [kdf]  "hmac": hmac_value
+      line    57  [kdf]  Generated HMAC: d2b2f5dc72858d07c688eef336cf348c223ff7a418662c90a7e4a739e822a834
+      line    71  [kdf]  new_permit["hmac"] = generate_hmac(master_key, json.dumps(new_permit, sort_keys=True, cls=CustomJSONEncoder))
+      line    98  [kdf]  final_cp["hmac"] = generate_hmac(master_key, json.dumps(final_cp, sort_keys=True, cls=CustomJSONEncoder))
+      line   113  [kdf]  "hmac": "a6ef6b39a1eac8a8aaedadb940fe0f987170cd868346461c51a6f5884dedb402"
+      line   159  [kdf]  "hmac": "f7a6eb3d7093782df727ee69004598d727ed60c8ad9a10b5ae68dc01ef0efa74"
+      line   164  [kdf]  "hmac": "a057152871aab1ebb9e393906121b585dbb2d3ac449756ee3cbf36cc78a049e8"
+
+  ▸ witness_system/readme.md
+      line     1  [kdf]  System that creates a blockchain-like structure for tracking system initialization, user registration, and witness verification with HMAC-based integrity protection.
+      line     4  [kdf]  This system generates a series of cryptographically linked checkpoints (CPs) that document the initialization of a secure system, including payment services, user registration, and witness services. Each checkpoint is timestamped and HMAC-signed to ensure data integrity.
+      line    10  [kdf]  HMAC Integrity Protection: Each checkpoint is signed with SHA-256 HMAC
+      line    36  [symmetric]  Includes:
+      line    40  [kdf]  Unique HMAC key for each user
+      line    49  [kdf]  Stores HMAC keys of registered users
+      line    51  [symmetric]  Provides witness functionality
+      line    60  [symmetric]  Includes final HMAC signature of entire chain
+      line    60  [kdf]  Includes final HMAC signature of entire chain
+      line    62  [symmetric]  Provides overall system integrity
+      line    74  [kdf]  hmac: SHA-256 HMAC signature
+      line    76  [kdf]  Type-specific data (user profiles, HMAC keys, etc.)
+      line    83  [kdf]  Individual User Keys: Unique HMAC keys for each user
+      line    91  [kdf]  A secure payment processing system that implements blockchain-inspired checkpoints for transaction validation, execution, and witness verification with HMAC-based integrity protection.
+      line    99  [kdf]  HMAC Integrity Protection: All checkpoints are signed with SHA-256 HMAC
+      line   119  [kdf]  ID Generation: Creates unique transaction identifiers using HMAC
+      line   122  [symmetric]  Provides independent transaction verification:
+      line   124  [kdf]  Multi-key Witnessing: Uses both users' HMAC keys for verification
+      line   128  [symmetric]  Independent Timestamping: Provides separate verification timing
+      line   148  [kdf]  "hmac": "signature"
+      line   159  [kdf]  "hmac": "signature"
+      line   164  [kdf]  A comprehensive security framework that combines HMAC-based policy enforcement with a blockchain-inspired permit system for user management and transaction processing.
+      line   167  [symmetric]  This system provides two main components:
+      line   169  [kdf]  Policy Engine: HMAC-based authentication and request validation
+      line   175  [kdf]  A robust HMAC-based authentication system for securing API requests and transactions.
+      line   178  [kdf]  HMAC Generation: Creates SHA-256 HMAC signatures for messages
+      line   191  [kdf]  # Create HMAC for a message
+      line   196  [kdf]  request = {"message": message, "hmac": hmac_value}
+      line   215  [symmetric]  Includes individual HMAC keys
+      line   215  [kdf]  Includes individual HMAC keys
+      line   223  [kdf]  Creates unique HMAC keys for each user
+      line   233  [symmetric]  Provides integrity verification for the entire system
+      line   262  [kdf]  "hmac": generated_hmac
+      line   274  [kdf]  User HMAC Keys: Individual keys for user-specific operations
+      line   290  [kdf]  Adjust HMAC key complexity requirements
+      line   295  [kdf]  hmac, hashlib: Cryptographic operations
+
+  ▸ witness_system/witness_system.py
+      line     2  [py_import]  import hmac
+      line     2  [kdf]  import hmac
+      line     3  [py_import]  import hashlib
+      line    24  [kdf]  # Function to generate HMAC
+      line    26  [kdf]  return hmac.new(key.encode(), message.encode(), hashlib.sha256).hexdigest()
+      line    37  [kdf]  cp_system["hmac"] = generate_hmac(master_key, json.dumps(cp_system, sort_keys=True, cls=CustomJSONEncoder))
+      line    45  [kdf]  cp_payment_service["hmac"] = generate_hmac(master_key, json.dumps(cp_payment_service, sort_keys=True, cls=CustomJSONEncoder))
+      line    59  [kdf]  cp_user["hmac"] = generate_hmac(master_key, json.dumps(cp_user, sort_keys=True, cls=CustomJSONEncoder))
+      line    69  [kdf]  cp_witness["hmac"] = generate_hmac(master_key, json.dumps(cp_witness, sort_keys=True, cls=CustomJSONEncoder))
+      line    90  [kdf]  final_cp["hmac"] = generate_hmac(master_key, json.dumps(final_cp, sort_keys=True, cls=CustomJSONEncoder))
+      line   104  [kdf]  "hmac": "a6ef6b39a1eac8a8aaedadb940fe0f987170cd868346461c51a6f5884dedb402"
+      line   110  [kdf]  "hmac": "9bcca23975d229bcf273cab1c1d83e85c8c8142521a3e85d17deeea1184b9e2d"
+      line   137  [kdf]  "hmac": "4bf3bedcfc72c5f76c85293a95538a23629960bf986f61252087daf47105d6d1"
+      line   166  [kdf]  "hmac": "027f8ff5ddb3bbf7b73e47cff058abd014cfb56e7e1dca8598a89a3497b04693"
+      line   176  [kdf]  "hmac": "df20ca1c52f8942a9f0060ab28cba8fe39dff942dd29fc1dec093c46ef3bfd78"
+      line   181  [kdf]  "hmac": "3860703290991125b02db66efee85f4a76e2bb0ef7ecb4fe9451428056936f61"

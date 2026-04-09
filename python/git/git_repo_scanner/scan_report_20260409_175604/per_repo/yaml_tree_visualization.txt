@@ -1,0 +1,23 @@
+================================================================================
+  REPO       : yaml_tree_visualization
+  FULL NAME  : ursa-mikail/yaml_tree_visualization
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Python
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/yaml_tree_visualization
+  MATCHES    : 10
+================================================================================
+
+  ▸ readme.md
+      line     2  [symmetric]  Provides a Python script to visualize a hierarchical tree structure defined in a YAML file. The script generates 2 tree diagrams: one displaying the keys and another displaying the values.
+
+  ▸ yaml_tree_visualization.py
+      line     1  [symmetric]  ## nodes
+      line    10  [symmetric]  # Recursive function to add nodes to the graph
+      line    11  [symmetric]  def add_nodes(graph, data, parent=None, pos=None, level=0, x=0, width=2.0, vert_gap=0.2, vert_loc=0):
+      line    23  [symmetric]  pos = add_nodes(graph, {child: value[child]}, key, pos, level+1, nextx, dx, vert_gap, vert_loc-vert_gap)
+      line    28  [symmetric]  pos = add_nodes(G, tree_data)
+      line    45  [symmetric]  # Recursive function to add nodes to the graph
+      line    46  [symmetric]  def add_nodes(graph, data, parent=None, pos=None, level=0, x=0, width=2.0, vert_gap=0.2, vert_loc=0):
+      line    60  [symmetric]  pos = add_nodes(graph, {child_key: child_value}, node_label, pos, level+1, nextx, dx, vert_gap, vert_loc-vert_gap)
+      line    66  [symmetric]  pos = add_nodes(G, data)

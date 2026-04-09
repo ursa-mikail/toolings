@@ -1,0 +1,144 @@
+================================================================================
+  REPO       : data_format
+  FULL NAME  : ursa-mikail/data_format
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Python
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/data_format
+  MATCHES    : 101
+================================================================================
+
+  ▸ compression/base64_zip_compression_ratio.py
+      line    16  [random]  data = os.urandom(size_bytes)
+
+  ▸ cvs_pandas/cvs_to_pandas_02.py
+      line    46  [symmetric]  ['CVE-1999-0001', 'Candidate', 'ip_input.c in BSD-derived TCP/IP implementations allows remote attackers to cause a denial of service (crash or hang) via crafted packets.', 'BUGTRAQ:19981223 Re: CERT Advisory CA-98.13 - TCP/IP Denial of Service   |   CERT:CA-98-13-tcp-denial-of-service   |   CONFIRM
+      line    53  [symmetric]  6: Christey> A Bugtraq posting indicates that the bug has to do with  |    "short packets with certain options set," so the description  |    should be modified accordingly.  |      |    But is this the same as CVE-1999-0052?  That one is related  |    to nestea (CVE-1999-0257) and probably the one 
+
+  ▸ data_access/data_segment_access.py
+      line     3  [py_import]  from cryptography.hazmat.primitives import hashes
+      line     4  [py_import]  from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+      line     4  [symmetric]  from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+      line     5  [py_import]  from cryptography.hazmat.primitives.hmac import HMAC
+      line     5  [kdf]  from cryptography.hazmat.primitives.hmac import HMAC
+      line     6  [py_import]  from cryptography.hazmat.backends import default_backend
+      line    13  [random]  aes_key = os.urandom(32)
+      line    14  [random]  hmac_key_before = os.urandom(16)
+      line    15  [random]  hmac_key_after = os.urandom(16)
+      line    18  [kdf]  # --- HMAC before encryption ---
+      line    19  [kdf]  hmac_before = HMAC(hmac_key_before, hashes.SHA256(), backend=default_backend())
+      line    23  [kdf]  # Append HMAC before encryption to plaintext
+      line    26  [symmetric]  # --- AES-GCM encryption ---
+      line    26  [cipher_mode]  # --- AES-GCM encryption ---
+      line    27  [random]  iv = os.urandom(12)
+      line    28  [symmetric]  cipher = Cipher(algorithms.AES(aes_key), modes.GCM(iv), backend=default_backend())
+      line    28  [symmetric]  cipher = Cipher(algorithms.AES(aes_key), modes.GCM(iv), backend=default_backend())
+      line    28  [cipher_mode]  cipher = Cipher(algorithms.AES(aes_key), modes.GCM(iv), backend=default_backend())
+      line    33  [kdf]  # --- HMAC after encryption ---
+      line    34  [kdf]  hmac_after = HMAC(hmac_key_after, hashes.SHA256(), backend=default_backend())
+      line    38  [kdf]  # Return encrypted data + appended HMAC
+      line    42  [kdf]  # --- Split HMAC after ---
+      line    46  [kdf]  # --- Verify HMAC after encryption ---
+      line    47  [kdf]  hmac_after = HMAC(hmac_key_after, hashes.SHA256(), backend=default_backend())
+      line    49  [signature]  hmac_after.verify(hmac_after_value)
+      line    56  [symmetric]  # --- AES-GCM decryption ---
+      line    56  [cipher_mode]  # --- AES-GCM decryption ---
+      line    57  [symmetric]  cipher = Cipher(algorithms.AES(aes_key), modes.GCM(iv, tag), backend=default_backend())
+      line    57  [symmetric]  cipher = Cipher(algorithms.AES(aes_key), modes.GCM(iv, tag), backend=default_backend())
+      line    57  [cipher_mode]  cipher = Cipher(algorithms.AES(aes_key), modes.GCM(iv, tag), backend=default_backend())
+      line    61  [kdf]  # --- Split data and HMAC before ---
+      line    64  [kdf]  # --- Verify HMAC before encryption ---
+      line    65  [kdf]  hmac_before = HMAC(hmac_key_before, hashes.SHA256(), backend=default_backend())
+      line    67  [signature]  hmac_before.verify(hmac_before_value)
+
+  ▸ data_acquisition_and_format/data_acquisition_and_format.py
+      line     3  [fpe_token]  Text extraction (removal of html tags and images, including document format stripping) -> language identification -> removal of duplicates -> removal of blacklist contents and abusive emotives -> removal of non-informative content -> ready for tokenization
+      line    24  [symmetric]  """Removes HTML tags and decodes HTML entities."""
+      line    52  [fpe_token]  """Runs the full pipeline to prepare text from a URL for tokenization."""
+      line    72  [symmetric]  import langcodes
+      line    77  [symmetric]  return langcodes.Language.get(lang_code).display_name()
+      line   101  [symmetric]  human_readable_languages = [(langcodes.Language.get(lang).display_name(), prob) for lang, prob in detected_languages]
+      line   107  [symmetric]  human_readable_languages = [(langcodes.Language.get(lang).display_name(), prob) for lang, prob in detected_languages]
+      line   112  [symmetric]  human_readable_languages = [(langcodes.Language.get(lang).display_name(), prob) for lang, prob in detected_languages]
+
+  ▸ data_acquisition_and_format/readme.md
+      line     3  [fpe_token]  Text extraction (removal of html tags and images, including document format stripping) -> language identification -> removal of duplicates -> removal of blacklist contents and abusive emotives -> removal of non-informative content -> ready for tokenization.
+
+  ▸ data_form_and_format/python/data_file_extraction_conversion.py
+      line     5  [py_import]  import hashlib
+
+  ▸ data_form_and_format/python/data_format_conversion.py
+      line    47  [random]  return binascii.hexlify(os.urandom(number_of_hex_bytes)).decode()
+
+  ▸ data_form_and_format/python/data_image_file_to_base64.py
+      line    34  [symmetric]  image_url = 'https://raw.githubusercontent.com/ursa-mikail/site_announcement/refs/heads/main/js/aes.js' # path_to_image
+
+  ▸ data_form_and_format/python/print_data_character_codes.py
+      line     2  [symmetric]  # print_data_character_codes.py
+
+  ▸ diff_str/diff_str.py
+      line     1  [py_import]  import hashlib
+      line    22  [symmetric]  # Color codes
+      line   147  [symmetric]  # Show character codes for better understanding
+      line   158  [hash_func]  def hash_with_append(data1, data2, append_data=b"hello", hash_algorithm='md5'):
+      line   166  [hash_func]  hash_algorithm: Hash algorithm ('md5', 'sha1', 'sha256', 'sha512')
+      line   175  [hash_func]  'md5': hashlib.md5,
+      line   229  [hash_func]  # Test case 1: Original hex strings (MD5 collision example)
+      line   230  [hash_func]  print("\n1. HEXADECIMAL STRINGS (MD5 Collision):")
+      line   242  [hash_func]  hash_with_append(m1_bytes, m2_bytes, b"hello", 'md5')
+
+  ▸ diff_str/diff_str_01.py
+      line    18  [py_import]  import hashlib
+      line   125  [hash_func]  hash1_direct = hashlib.md5(str1.encode('utf-8', errors='replace')).hexdigest()
+      line   126  [hash_func]  hash2_direct = hashlib.md5(str2.encode('utf-8', errors='replace')).hexdigest()
+      line   134  [hash_func]  hash1_with_suffix = hashlib.md5(str1.encode('utf-8', errors='replace') + suffix).hexdigest()
+      line   135  [hash_func]  hash2_with_suffix = hashlib.md5(str2.encode('utf-8', errors='replace') + suffix).hexdigest()
+      line   147  [hash_func]  hash1_hex = hashlib.md5(bytes1).hexdigest()
+      line   148  [hash_func]  hash2_hex = hashlib.md5(bytes2).hexdigest()
+
+  ▸ diff_str/hex/diff_hex_00.py
+      line     1  [py_import]  import hashlib
+      line    33  [hash_func]  mm1 = hashlib.md5()
+      line    34  [hash_func]  mm2 = hashlib.md5()
+      line    50  [hash_func]  MD5 Hash: fd70c57bdd6dd7464f0d4bcc47d9a71c
+      line    53  [hash_func]  MD5 Hash: fd70c57bdd6dd7464f0d4bcc47d9a71c
+
+  ▸ diff_str/hex/diff_hex_01.py
+      line     1  [py_import]  import hashlib
+      line    28  [symmetric]  # Color codes
+      line   121  [hash_func]  def hash_with_append(data1, data2, append_data=b"hello", hash_algorithm='md5'):
+      line   129  [hash_func]  hash_algorithm: Hash algorithm ('md5', 'sha1', 'sha256')
+      line   133  [hash_func]  if hash_algorithm == 'md5':
+      line   134  [hash_func]  hasher = hashlib.md5
+      line   179  [hash_func]  hash1, hash2 = hash_with_append(m1, m2, b"hello", 'md5')
+
+  ▸ readme.md
+      line     9  [symmetric]  3. System configs, there are criteria of local file inclusion protection. If data is tied to sys with loc that updates and upgrades, there has to be vulnerability scans to check odeon on arbitrary file up/downloads (system in/outgress), including path access traversal, trusted and vulnerable compone
+
+  ▸ sql_csv_yaml_json_porting/01_generate_data_to_csv.py
+      line     5  [py_import]  import hashlib
+
+  ▸ sql_csv_yaml_json_porting/yaml_csv_sql_export_to_csv/yaml_csv_sql_export_to_csv.py
+      line     7  [py_import]  import hashlib
+
+  ▸ tlv_coordinates/tlv_coordinates.py
+      line     1  [py_import]  import hashlib
+      line     2  [py_import]  import hmac
+      line     2  [kdf]  import hmac
+      line     5  [kdf]  return hmac.new(key, message.encode('utf-8'), hashlib.sha256).hexdigest()
+      line     9  [kdf]  Get the HMAC for the given TLV string.
+      line    15  [kdf]  Verify the HMAC for the given TLV string.
+      line    18  [kdf]  return hmac.compare_digest(received_hmac, expected_hmac)
+      line    22  [kdf]  Encode the given parameters into a TLV formatted string with HMAC.
+      line    45  [kdf]  # Generate HMAC for integrity
+      line    47  [kdf]  tlv_with_hmac = f"{tlv};hmac={hmac_value}"
+      line    53  [kdf]  Decode the given TLV formatted string with HMAC into its components.
+      line    55  [kdf]  # Split the TLV and HMAC
+      line    66  [kdf]  # Reconstruct the original TLV string (excluding the HMAC part)
+      line    69  [kdf]  # Verify HMAC
+      line    71  [kdf]  raise ValueError("HMAC verification failed.")
+      line    73  [kdf]  print(f"HMAC verification OK")
+      line   103  [kdf]  # Encode the TLV with HMAC
+      line   107  [kdf]  # Decode the TLV and verify HMAC
+      line   112  [kdf]  TLV Encoded: tag=#111;value=[x012y034r1c2123];len=15;hmac=78deb07638cd360d461ee1e07c41489f6222b4c4e374639728d6237cf6efd548
+      line   113  [kdf]  HMAC verification OK

@@ -1,0 +1,199 @@
+================================================================================
+  REPO       : toolings
+  FULL NAME  : ursa-mikail/toolings
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : HTML
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/toolings
+  MATCHES    : 156
+================================================================================
+
+  ▸ python/benchmark_and_plots/benchmark_and_plot_separate_and_comparison.ipynb
+      line   113  [symmetric]  "image/png": "iVBORw0KGgoAAAANSUhEUgAABKUAAAJOCAYAAABm7rQwAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjguMCwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy81sbWrAAAACXBIWXMAAA9hAAAPYQGoP6dpAAEAAElEQVR4nOzdd1wT9/8H8FdAWTJVhgNFXIjiKCjFhVYUR6221m0ddXSIrVpta2vdFbe4qdZRLY6v2lqrFkXqFheIe6CiqAi4AAGZud8f/EgJCZBANq9nH6
+      line   113  [fpe_token]  "image/png": "iVBORw0KGgoAAAANSUhEUgAABKUAAAJOCAYAAABm7rQwAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjguMCwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy81sbWrAAAACXBIWXMAAA9hAAAPYQGoP6dpAAEAAElEQVR4nOzdd1wT9/8H8FdAWTJVhgNFXIjiKCjFhVYUR6221m0ddXSIrVpta2vdFbe4qdZRLY6v2lqrFkXqFheIe6CiqAi4AAGZud8f/EgJCZBANq9nH6
+
+  ▸ python/benchmark_and_plots/benchmark_and_plots.py
+      line     6  [py_import]  from cryptography.hazmat.primitives import hashes, hmac
+      line     6  [kdf]  from cryptography.hazmat.primitives import hashes, hmac
+      line     7  [py_import]  from cryptography.hazmat.primitives.asymmetric import ec, rsa, padding
+      line     7  [asymmetric]  from cryptography.hazmat.primitives.asymmetric import ec, rsa, padding
+      line     8  [py_import]  from cryptography.hazmat.primitives.kdf.hkdf import HKDF
+      line     8  [kdf]  from cryptography.hazmat.primitives.kdf.hkdf import HKDF
+      line     8  [kdf]  from cryptography.hazmat.primitives.kdf.hkdf import HKDF
+      line     9  [py_import]  from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+      line     9  [symmetric]  from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+      line    10  [py_import]  from cryptography.hazmat.backends import default_backend
+      line    11  [py_import]  from Crypto.Cipher import ChaCha20_Poly1305
+      line    12  [py_import]  from Crypto.Protocol.KDF import scrypt
+      line    12  [kdf]  from Crypto.Protocol.KDF import scrypt
+      line    12  [kdf]  from Crypto.Protocol.KDF import scrypt
+      line    69  [signature]  signature = private_key.sign(data, ec.ECDSA(hashes.SHA256()))
+      line    70  [signature]  public_key.verify(signature, data, ec.ECDSA(hashes.SHA256()))
+      line    76  [signature]  signature = private_key.sign(data, ec.ECDSA(hashes.SHA384()))
+      line    77  [signature]  public_key.verify(signature, data, ec.ECDSA(hashes.SHA384()))
+      line    83  [signature]  signature = private_key.sign(data, ec.ECDSA(hashes.SHA256()))
+      line    84  [signature]  public_key.verify(signature, data, ec.ECDSA(hashes.SHA256()))
+      line    90  [signature]  signature = private_key.sign(data, ec.ECDSA(hashes.SHA256()))
+      line    91  [signature]  public_key.verify(signature, data, ec.ECDSA(hashes.SHA256()))
+      line    97  [signature]  signature = private_key.sign(data, ec.ECDSA(hashes.SHA384()))
+      line    98  [signature]  public_key.verify(signature, data, ec.ECDSA(hashes.SHA384()))
+      line   101  [asymmetric]  private_key = rsa.generate_private_key(public_exponent=65537, key_size=2048, backend=default_backend())
+      line   101  [key_mgmt]  private_key = rsa.generate_private_key(public_exponent=65537, key_size=2048, backend=default_backend())
+      line   103  [asymmetric]  data = b"Benchmarking RSA-PSS"
+      line   104  [signature]  signature = private_key.sign(data, padding.PSS(mgf=padding.MGF1(hashes.SHA256()), salt_length=padding.PSS.MAX_LENGTH), hashes.SHA256())
+      line   105  [signature]  public_key.verify(signature, data, padding.PSS(mgf=padding.MGF1(hashes.SHA256()), salt_length=padding.PSS.MAX_LENGTH), hashes.SHA256())
+      line   108  [asymmetric]  private_key = rsa.generate_private_key(public_exponent=65537, key_size=2048, backend=default_backend())
+      line   108  [key_mgmt]  private_key = rsa.generate_private_key(public_exponent=65537, key_size=2048, backend=default_backend())
+      line   110  [asymmetric]  data = b"Benchmarking RSA-PKCS1v15"
+      line   111  [signature]  signature = private_key.sign(data, padding.PKCS1v15(), hashes.SHA256())
+      line   112  [signature]  public_key.verify(signature, data, padding.PKCS1v15(), hashes.SHA256())
+      line   114  [py_import]  from cryptography.hazmat.primitives.asymmetric import rsa, padding
+      line   114  [asymmetric]  from cryptography.hazmat.primitives.asymmetric import rsa, padding
+      line   115  [py_import]  from cryptography.hazmat.primitives import hashes, serialization
+      line   116  [py_import]  from cryptography.hazmat.primitives.asymmetric import padding as asym_padding
+      line   117  [py_import]  from cryptography.hazmat.backends import default_backend
+      line   120  [asymmetric]  # Generate RSA private key
+      line   121  [asymmetric]  private_key = rsa.generate_private_key(
+      line   123  [key_mgmt]  key_size=2048,
+      line   131  [asymmetric]  data = b"Benchmarking RSA-OAEP"
+      line   134  [signature]  signature = private_key.sign(
+      line   141  [signature]  public_key.verify(
+      line   148  [asymmetric]  # Encrypt the data using RSA-OAEP
+      line   158  [asymmetric]  # Decrypt the data using RSA-OAEP
+      line   176  [symmetric]  data = b"Benchmarking AES-GCM-128"
+      line   176  [cipher_mode]  data = b"Benchmarking AES-GCM-128"
+      line   179  [symmetric]  cipher = Cipher(algorithms.AES(key), modes.GCM(iv), backend=default_backend())
+      line   179  [symmetric]  cipher = Cipher(algorithms.AES(key), modes.GCM(iv), backend=default_backend())
+      line   179  [cipher_mode]  cipher = Cipher(algorithms.AES(key), modes.GCM(iv), backend=default_backend())
+      line   185  [symmetric]  decryptor = Cipher(algorithms.AES(key), modes.GCM(iv, tag), backend=default_backend()).decryptor()
+      line   185  [symmetric]  decryptor = Cipher(algorithms.AES(key), modes.GCM(iv, tag), backend=default_backend()).decryptor()
+      line   185  [cipher_mode]  decryptor = Cipher(algorithms.AES(key), modes.GCM(iv, tag), backend=default_backend()).decryptor()
+      line   192  [symmetric]  data = b"Benchmarking AES-GCM-256"
+      line   192  [cipher_mode]  data = b"Benchmarking AES-GCM-256"
+      line   195  [symmetric]  cipher = Cipher(algorithms.AES(key), modes.GCM(iv), backend=default_backend())
+      line   195  [symmetric]  cipher = Cipher(algorithms.AES(key), modes.GCM(iv), backend=default_backend())
+      line   195  [cipher_mode]  cipher = Cipher(algorithms.AES(key), modes.GCM(iv), backend=default_backend())
+      line   201  [symmetric]  decryptor = Cipher(algorithms.AES(key), modes.GCM(iv, tag), backend=default_backend()).decryptor()
+      line   201  [symmetric]  decryptor = Cipher(algorithms.AES(key), modes.GCM(iv, tag), backend=default_backend()).decryptor()
+      line   201  [cipher_mode]  decryptor = Cipher(algorithms.AES(key), modes.GCM(iv, tag), backend=default_backend()).decryptor()
+      line   217  [kdf]  data = b"Benchmarking HMAC-SHA256"
+      line   218  [kdf]  h = hmac.HMAC(key, hashes.SHA256(), backend=default_backend())
+      line   224  [kdf]  data = b"Benchmarking HMAC-SHA384"
+      line   225  [kdf]  h = hmac.HMAC(key, hashes.SHA384(), backend=default_backend())
+      line   231  [kdf]  data = b"Benchmarking HMAC-SHA512"
+      line   232  [kdf]  h = hmac.HMAC(key, hashes.SHA512(), backend=default_backend())
+      line   238  [kdf]  data = b"Benchmarking HMAC-Poly1305"
+      line   239  [kdf]  h = hmac.HMAC(key, hashes.SHA256(), backend=default_backend())
+      line   259  [asymmetric]  ("RSA-PSS", benchmark_rsa_pss),
+      line   260  [asymmetric]  ("RSA-PKCS1v15", benchmark_rsa_PKCS1v15),
+      line   261  [asymmetric]  ("RSA-OAEP", benchmark_rsa_oaep),
+      line   262  [symmetric]  ("AES-GCM-128", benchmark_aes_gcm_128),
+      line   262  [cipher_mode]  ("AES-GCM-128", benchmark_aes_gcm_128),
+      line   263  [symmetric]  ("AES-GCM-256", benchmark_aes_gcm_256),
+      line   263  [cipher_mode]  ("AES-GCM-256", benchmark_aes_gcm_256),
+      line   265  [kdf]  ("HMAC-SHA256", benchmark_hmac_sha256),
+      line   266  [kdf]  ("HMAC-SHA384", benchmark_hmac_sha384),
+      line   267  [kdf]  ("HMAC-SHA512", benchmark_hmac_sha512),
+      line   268  [kdf]  ("HMAC-Poly1305", benchmark_hmac_poly1305),
+      line   326  [asymmetric]  name, elapsed_time, cpu_usage, mem_usage: [RSA-PSS]: 0.09598159790039062, 104.1, 1042
+      line   327  [asymmetric]  name, elapsed_time, cpu_usage, mem_usage: [RSA-PKCS1v15]: 0.033583641052246094, 89.2, 866
+      line   328  [asymmetric]  Original Data: b'Benchmarking RSA-OAEP'
+      line   330  [asymmetric]  Decrypted Data: b'Benchmarking RSA-OAEP'
+      line   331  [asymmetric]  name, elapsed_time, cpu_usage, mem_usage: [RSA-OAEP]: 0.23441195487976074, 102.4, 928
+      line   332  [symmetric]  name, elapsed_time, cpu_usage, mem_usage: [AES-GCM-128]: 0.0008504390716552734, 0.0, 1162
+      line   332  [cipher_mode]  name, elapsed_time, cpu_usage, mem_usage: [AES-GCM-128]: 0.0008504390716552734, 0.0, 1162
+      line   333  [symmetric]  name, elapsed_time, cpu_usage, mem_usage: [AES-GCM-256]: 0.000701904296875, 0.0, 1162
+      line   333  [cipher_mode]  name, elapsed_time, cpu_usage, mem_usage: [AES-GCM-256]: 0.000701904296875, 0.0, 1162
+      line   335  [kdf]  name, elapsed_time, cpu_usage, mem_usage: [HMAC-SHA256]: 0.0001499652862548828, 0.0, 384
+      line   336  [kdf]  name, elapsed_time, cpu_usage, mem_usage: [HMAC-SHA384]: 0.0001773834228515625, 0.0, 384
+      line   337  [kdf]  name, elapsed_time, cpu_usage, mem_usage: [HMAC-SHA512]: 0.0001308917999267578, 0.0, 384
+      line   338  [kdf]  name, elapsed_time, cpu_usage, mem_usage: [HMAC-Poly1305]: 0.00012493133544921875, 0.0, 384
+
+  ▸ python/benchmark_and_plots/readme.md
+      line    14  [asymmetric]  ### RSA
+      line    15  [asymmetric]  - RSA-PSS
+      line    16  [asymmetric]  - RSA-OAEP
+      line    17  [asymmetric]  - RSA-PKCS1v15
+      line    20  [symmetric]  - AES-GCM-128
+      line    20  [cipher_mode]  - AES-GCM-128
+      line    21  [symmetric]  - AES-GCM-256
+      line    21  [cipher_mode]  - AES-GCM-256
+      line    22  [symmetric]  - ChaCha20-Poly1305
+      line    24  [kdf]  ### Hash-Based Message Authentication Code (HMAC)
+      line    25  [kdf]  - HMAC-SHA256
+      line    26  [kdf]  - HMAC-SHA384
+      line    27  [kdf]  - HMAC-SHA512
+      line    28  [kdf]  - HMAC-Poly1305
+
+  ▸ python/git/curl_and_zip_files_from_git.py
+      line     3  [py_import]  import hashlib
+
+  ▸ python/git/git_commit_automated.py
+      line     8  [py_import]  import secrets
+
+  ▸ python/git/git_diff_viewer/git_diff_viewer_colored.py
+      line    20  [symmetric]  # ANSI color codes
+
+  ▸ python/git/git_diff_viewer/git_diff_viewer_colored_01.py
+      line    18  [symmetric]  """ANSI color codes for terminal output"""
+      line    23  [symmetric]  # 256-color codes
+
+  ▸ python/git/git_diff_viewer/readme.md
+      line    23  [symmetric]  Rich Color Palette: Uses 256-color ANSI codes for vibrant colors
+
+  ▸ python/git/git_frequency_monitoring.ipynb
+      line   141  [symmetric]  "Fetching commits for repository: reference_codes\n",
+      line   169  [fpe_token]  "Fetching commits for repository: tokenized_data_encryption_and_decryption\n",
+      line   449  [symmetric]  "image/png": "iVBORw0KGgoAAAANSUhEUgAABtcAAAR3CAYAAACMmzsLAAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjAsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvlHJYcgAAAAlwSFlzAAAPYQAAD2EBqD+naQABAABJREFUeJzs3Xd4FcX6wPHvSU9OcnJIQhJS6S30Jj1UkY50kkCC9CKggIUu0hGUKoIIgnRp0hQ1NBGxQOgiYEJIQkJN78n8/uBmL4ckEBTF6+/9PM95zO
+      line   449  [symmetric]  "image/png": "iVBORw0KGgoAAAANSUhEUgAABtcAAAR3CAYAAACMmzsLAAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjAsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvlHJYcgAAAAlwSFlzAAAPYQAAD2EBqD+naQABAABJREFUeJzs3Xd4FcX6wPHvSU9OcnJIQhJS6S30Jj1UkY50kkCC9CKggIUu0hGUKoIIgnRp0hQ1NBGxQOgiYEJIQkJN78n8/uBmL4ckEBTF6+/9PM95zO
+      line   826  [symmetric]  "Fetching commits for repository: reference_codes\n",
+      line   854  [fpe_token]  "Fetching commits for repository: tokenized_data_encryption_and_decryption\n",
+      line   879  [symmetric]  "image/png": "iVBORw0KGgoAAAANSUhEUgAAB8UAAASmCAYAAAC3LHqUAAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjAsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvlHJYcgAAAAlwSFlzAAAPYQAAD2EBqD+naQABAABJREFUeJzs3Xl8U1X6x/Hv7RrK0lJLoSwVZCktAgrOILK4IYsbUEBwGRYXZkYZFxSFUYTiCiiC4ojbzw1REaLjjjiioIOOikjVWpRB4lKoFShgbWmT+/
+
+  ▸ python/git/git_get_files_with_or_without_auth_tokens.py
+      line     4  [py_import]  import hashlib
+
+  ▸ python/git/git_graphs/git_graph.py
+      line    68  [symmetric]  for node in G.nodes:
+      line    69  [symmetric]  ntype = G.nodes[node].get("type", "")
+
+  ▸ python/git/git_graphs/git_graph_at_html.py
+      line    81  [symmetric]  for node in G.nodes():
+      line    85  [symmetric]  ntype = G.nodes[node].get("type")
+
+  ▸ python/git/git_graphs/keyword_graph.html
+      line    12  [symmetric]  !function(t,e){"object"==typeof exports&&"object"==typeof module?module.exports=e():"function"==typeof define&&define.amd?define([],e):"object"==typeof exports?exports.Plotly=e():t.Plotly=e()}(self,(function(){return function(){var t={6713:function(t,e,r){"use strict";var n=r(34809),i={"X,X div":'di
+      line    12  [cipher_mode]  !function(t,e){"object"==typeof exports&&"object"==typeof module?module.exports=e():"function"==typeof define&&define.amd?define([],e):"object"==typeof exports?exports.Plotly=e():t.Plotly=e()}(self,(function(){return function(){var t={6713:function(t,e,r){"use strict";var n=r(34809),i={"X,X div":'di
+      line    12  [fpe_token]  !function(t,e){"object"==typeof exports&&"object"==typeof module?module.exports=e():"function"==typeof define&&define.amd?define([],e):"object"==typeof exports?exports.Plotly=e():t.Plotly=e()}(self,(function(){return function(){var t={6713:function(t,e,r){"use strict";var n=r(34809),i={"X,X div":'di
+
+  ▸ python/git/git_hash_compute_all_python_files.py
+      line     2  [py_import]  import hashlib
+
+  ▸ python/git/git_repo_profiler.ipynb
+      line   199  [kdf]  "                       'csv', 'fit', 'bit_stream', 'range', 'numpy', 'load', 'n_samples', 'hmac', 'onehotencoder', 'score', 'raw', 'githubusercontent', 'sha256', 'append', 'guessed', 'show', 'get', 'hashlib', 'color',\n",
+      line   202  [symmetric]  "                       'tweak', 'set', 'guess', 'apply', 'png', 'txt', 'json', 'tag', 'clf', 'regression', 'py', 'write', 'usage', 'original', 'aes', 'file_path', 'figsize', 'justmarkham', 'videos', 'strings', 'request', 'new_data',\n",
+      line   210  [fpe_token]  "                       'object', 'based', 'user', 'titanic_train', 'vect', 'missing', 'matrix', 'avg', 'learning', 'feature_columns', 'tokenizer', 'bit_index', 'year', 'published', 'description', 'reader', 'balance', 'amount', 'hashes',\n",
+      line   215  [asymmetric]  "                       'binary', 'sns', 'constant', 'confusion', 'precision', 'recall', 'training', 'node', 'lab',  'addresses', 'bob', 'alice', 'notebook', 'download', 'hex_str', 'encrypt', 'make', 'rsa', 'time_00', 'string_length', 'prime', 'process',\n",
+      line   219  [fpe_token]  "                       'liblinear', 'tuning', 'l2', 'make_column_selector', 'x_new', 'reshape', 'coef_', 'passthrough', 'square', 'cost', 'batch_size', '_cum', 'bert', 'batch', 'tokenize', 'compound', 'inputs', 'icon',\n",
+      line   230  [symmetric]  "                       'africa', 'left', 'gcm', 'fig', 'encryption', 'hour', 'sum', 'shares', 'yes', 'end_time', 'pos', 'event', 'modes', 'number_of_bytes_to_pad', 'check', 'field', 'output_to_display', 'data_generator', 'title_main', 'secrets_data', 'dict',\n",
+      line   230  [cipher_mode]  "                       'africa', 'left', 'gcm', 'fig', 'encryption', 'hour', 'sum', 'shares', 'yes', 'end_time', 'pos', 'event', 'modes', 'number_of_bytes_to_pad', 'check', 'field', 'output_to_display', 'data_generator', 'title_main', 'secrets_data', 'dict',\n",
+      line   248  [cipher_mode]  "                       'record', 'cve', 'plotting', 'd_', 'rb', 'invalid', 'clear', 'filter', 'matches', 'timing', 'took', 'cbc', 'rate', 'fontsize', 'file_type', 'percentages',  'salt', 'column_01', 'column_02', 'tp', 'argument', 'module', 'line_color', 'aes_cipher', 'aes_cipher_object',\n",
+      line   267  [kdf]  "                       'right_node', 'add_data_to_node', 'data_dictionary', 'respond_answer_counter', 'respond_answer', 'pattern_part_1', 'pattern_part_2', 'constants', 'delete', 'writerow', 'highest', 'purple', 'representation', 'script', 'ok', 'since', 'double', 'pbkdf2', 'b64encode', 'mikail', '
+      line   267  [key_mgmt]  "                       'right_node', 'add_data_to_node', 'data_dictionary', 'respond_answer_counter', 'respond_answer', 'pattern_part_1', 'pattern_part_2', 'constants', 'delete', 'writerow', 'highest', 'purple', 'representation', 'script', 'ok', 'since', 'double', 'pbkdf2', 'b64encode', 'mikail', '
+      line   273  [symmetric]  "                       'min_loss_decision', 'outcomes', 'skyblue', 'file_names_and_plaintext_hex', 'kf', 'estimated_signal', 'topic', 'variance', 'nodes', 'statistics', 'negative', 'std', 'io', 'save_path', 'aaaaaaaaaaaaaaaad', 'aaaaaaaaaaaaaaa', 'starts', 'src_parts', 'current_dest_dir', 'scenario
+      line  1057  [symmetric]  "Cloned reference_codes\n"
+      line  1275  [fpe_token]  "Cloned tokenized_data_encryption_and_decryption\n"
+      line  1421  [symmetric]  "image/png": "iVBORw0KGgoAAAANSUhEUgAAAxYAAAGrCAYAAABddQElAAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjAsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvlHJYcgAAAAlwSFlzAAAPYQAAD2EBqD+naQABAABJREFUeJzsvXd8HOd9oP9M296wCyx6J0CwF7F39S5ZliXZcpG7Yztnx0nOSe5+l+Ryl3OSyyWxk0tsOYntnC0XWZZsq1qFEpvYxN4AAkTvwPY+OzO/Px
+
+  ▸ python/test_suites/testsuite_entropy_assurrance_dieharder.ipynb
+      line   107  [symmetric]  "     sample modes. \n",
+      line   117  [symmetric]  "     AES-derived T2D test failure thresholds for fully automated reliable \n",
+      line   120  [symmetric]  "  -S seed - where seed is a uint.  Overrides the default random seed\n",
+      line   144  [symmetric]  "     modes.  These flags and their modes act as follows:\n",
+      line   177  [symmetric]  "     a gold-standard generator (such as AES), or for the hypercautious the\n",
+      line   178  [symmetric]  "     XOR generator with AES, threefish, kiss, all loaded at once and xor'd\n",
+      line   180  [symmetric]  "     executing a T2D run on AES to get an idea of the test failure\n",
+      line   184  [symmetric]  "     of magnitude of the AES thresholds should probably be considered\n",
+
+  ▸ python/utilities/passcode_generator.py
+      line     2  [py_import]  import secrets

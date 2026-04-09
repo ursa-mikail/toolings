@@ -1,0 +1,20 @@
+================================================================================
+  REPO       : leansig_sdk_usage_tutorial
+  FULL NAME  : ursa-mikail/leansig_sdk_usage_tutorial
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Rust
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/leansig_sdk_usage_tutorial
+  MATCHES    : 5
+================================================================================
+
+  ▸ Cargo.toml
+      line     6  [post_quantum]  description = "SDK usage demo for leanSig — post-quantum synchronized hash-based signatures"
+
+  ▸ README.md
+      line     3  [post_quantum]  > Usage examples for [leanSig](https://github.com/leanEthereum/leanSig), a post-quantum
+      line   180  [post_quantum]  # Understanding LeanSig: Post-Quantum Aggregation for Ethereum
+      line   182  [post_quantum]  LeanSig is a new **post-quantum signature scheme** designed specifically for Ethereum's consensus layer. The core challenge it solves is that existing quantum-resistant signatures (like XMSS) are either too large or cannot be efficiently combined (aggregated), which is a critical requirement for blo
+
+  ▸ src/bin/multi_epoch.rs
+      line    65  [symmetric]  // ── Build a message that encodes the epoch (real validators would

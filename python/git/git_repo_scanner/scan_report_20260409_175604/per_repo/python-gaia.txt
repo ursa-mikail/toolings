@@ -1,0 +1,338 @@
+================================================================================
+  REPO       : python-gaia
+  FULL NAME  : ursa-mikail/python-gaia
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Python
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/python-gaia
+  MATCHES    : 247
+================================================================================
+
+  ▸ Construction_Facilities/ayahuasca_main_functions.sh
+      line   244  [symmetric]  ANS=$(echo -n $seed_hex | xxd -p -r | openssl enc -aes-256-cbc -S $SALT -k $PASS_FIXED)
+      line   244  [cipher_mode]  ANS=$(echo -n $seed_hex | xxd -p -r | openssl enc -aes-256-cbc -S $SALT -k $PASS_FIXED)
+      line   283  [symmetric]  # openssl enc -base64 -aes-256-cbc -S $SALT_FIXED -k $PASS_FIXED
+      line   283  [cipher_mode]  # openssl enc -base64 -aes-256-cbc -S $SALT_FIXED -k $PASS_FIXED
+      line   284  [symmetric]  #openssl enc -aes-256-cbc -S $SALT_FIXED -k $PASS_FIXED
+      line   284  [cipher_mode]  #openssl enc -aes-256-cbc -S $SALT_FIXED -k $PASS_FIXED
+      line   285  [symmetric]  ANS=$(echo "test" | openssl enc -aes-256-cbc -S 00000000 -k 00000000000000000000000000000000)
+      line   285  [cipher_mode]  ANS=$(echo "test" | openssl enc -aes-256-cbc -S 00000000 -k 00000000000000000000000000000000)
+
+  ▸ Construction_Facilities/utility_Gaia_generate_templates.py
+      line     2  [symmetric]  Utility: Gaia templates generator to create modules that includes library module, test usage, and utility codes.
+      line    98  [symmetric]  # copy template from dir:Gaia/Utility/templates/codes/ to library path and rename according to given library module name as<action_object>.py, e.g. checking_parameter.py
+      line   115  [symmetric]  # copy template from dir:Gaia/Utility/templates/codes/ to test usage path and rename according to given library module name as<action_object>.py, e.g. usage_checking_parameter.py
+      line   140  [symmetric]  # copy template from dir:Gaia/Utility/templates/codes/ to test usage path and rename according to given library module name as<action_object>.py, e.g. utility_checking_parameter.py
+
+  ▸ Libraries/cryptography/PKI/certificate/certificate_generator.py
+      line     4  [py_import]  from OpenSSL import crypto, SSL
+      line     5  [py_import]  from cryptography.hazmat.primitives.asymmetric import rsa
+      line     5  [asymmetric]  from cryptography.hazmat.primitives.asymmetric import rsa
+      line    49  [key_mgmt]  pkey.generate_key(type, bits)
+      line    78  [signature]  req.sign(pkey, digest)
+      line   107  [signature]  cert.sign(issuerKey, digest)
+      line   131  [asymmetric]  assert isinstance(key, rsa.RSAPrivateKey)
+      line   141  [asymmetric]  assert isinstance(key, rsa.RSAPublicKey)
+      line   188  [asymmetric]  print('key type: RSA')
+      line   190  [asymmetric]  print('key type: DSA')
+      line   215  [key_mgmt]  key.generate_key(asymetric_key_type, key_length)
+      line   218  [signature]  certificate_object.sign(key, key_integrity_algo)
+      line   231  [py_import]  from OpenSSL import crypto, SSL
+      line   254  [key_mgmt]  private_key.generate_key(asymetric_key_type, key_length) # crypto.TYPE_RSA
+      line   273  [signature]  cert.sign(private_key, key_integrity_algo) # public_key_object would be extracted internally
+
+  ▸ Libraries/cryptography/primitives/cipher/symmetric/aes_cipher.py
+      line     1  [py_import]  from Crypto.Cipher import AES
+      line     1  [symmetric]  from Crypto.Cipher import AES
+      line     2  [py_import]  from Crypto import Random
+      line     6  [py_import]  from cryptography.hazmat.backends import default_backend
+      line     7  [py_import]  from cryptography.hazmat.primitives.ciphers import (
+      line     8  [symmetric]  Cipher, algorithms, modes
+      line    11  [symmetric]  # ref: https://cryptography.io/en/latest/hazmat/primitives/symmetric-encryption/#cryptography.hazmat.primitives.ciphers.modes.GCM
+      line    11  [cipher_mode]  # ref: https://cryptography.io/en/latest/hazmat/primitives/symmetric-encryption/#cryptography.hazmat.primitives.ciphers.modes.GCM
+      line    25  [cipher_mode]  # ====== CBC ========
+      line    38  [symmetric]  iv = Random.new().read(AES.block_size)
+      line    46  [random]  nonce = os.urandom(number_of_bytes)
+      line    49  [cipher_mode]  # ====== CBC ========
+      line    54  [symmetric]  # Construct an AES-CBC Cipher object with the given key and a randomly generated IV.
+      line    54  [cipher_mode]  # Construct an AES-CBC Cipher object with the given key and a randomly generated IV.
+      line    56  [symmetric]  algorithms.AES(key),
+      line    57  [symmetric]  modes.CBC(iv),
+      line    57  [cipher_mode]  modes.CBC(iv),
+      line    61  [cipher_mode]  # Encrypt the plaintext and get the associated ciphertext. GCM does not require padding.
+      line    68  [symmetric]  algorithms.AES(key),
+      line    69  [symmetric]  modes.CBC(iv),
+      line    69  [cipher_mode]  modes.CBC(iv),
+      line    84  [symmetric]  cipher = AES.new( self.key, AES.MODE_CBC, iv )
+      line    94  [symmetric]  cipher = AES.new(self.key, AES.MODE_CBC, iv )
+      line    97  [cipher_mode]  # ====== GCM ========
+      line   101  [symmetric]  encryptor = Cipher( # Construct an AES-GCM Cipher object with the given key and a randomly generated IV.
+      line   101  [cipher_mode]  encryptor = Cipher( # Construct an AES-GCM Cipher object with the given key and a randomly generated IV.
+      line   102  [symmetric]  algorithms.AES(key),
+      line   103  [symmetric]  modes.GCM(iv),
+      line   103  [cipher_mode]  modes.GCM(iv),
+      line   110  [cipher_mode]  # Encrypt the plaintext and get the associated ciphertext. GCM does not require padding.
+      line   116  [cipher_mode]  # Construct a Cipher object, with the key, iv, and GCM tag used for authenticating the message.
+      line   118  [symmetric]  algorithms.AES(key),
+      line   119  [symmetric]  modes.GCM(iv, tag),
+      line   119  [cipher_mode]  modes.GCM(iv, tag),
+
+  ▸ Libraries/cryptography/primitives/cipher/symmetric/padding_schemes.py
+      line     3  [py_import]  import secrets # for Cryptographically Secure Random Numbers
+
+  ▸ Libraries/cryptography/primitives/integrity/HMAC/hmac_lib.py
+      line     1  [py_import]  from cryptography.hazmat.backends import default_backend
+      line     2  [py_import]  from cryptography.hazmat.primitives import hashes, hmac
+      line     2  [kdf]  from cryptography.hazmat.primitives import hashes, hmac
+      line    11  [kdf]  h = hmac.HMAC(key, hashes.SHA256(), backend=default_backend())
+      line    17  [kdf]  h = hmac.HMAC(key, hashes.SHA384(), backend=default_backend())
+      line    23  [kdf]  h = hmac.HMAC(key, hashes.SHA512(), backend=default_backend())
+      line    30  [signature]  status = hmac_context.verify(hmac_result_to_be_verified) # b"an incorrect signature"
+      line    40  [kdf]  hmac_context = hmac.HMAC(key, hashes.SHA256(), backend=default_backend())
+      line    47  [kdf]  hmac_context = hmac.HMAC(key, hashes.SHA384(), backend=default_backend())
+      line    53  [kdf]  hmac_context = hmac.HMAC(key, hashes.SHA512(), backend=default_backend())
+
+  ▸ Libraries/cryptography/primitives/integrity/hash/sha2_lib.py
+      line     1  [py_import]  from cryptography.hazmat.backends import default_backend
+      line     2  [py_import]  from cryptography.hazmat.primitives import hashes
+
+  ▸ Libraries/cryptography/primitives/key_generation/KDF/KDF_lib.py
+      line     2  [kdf]  from pbkdf2 import crypt
+      line     4  [py_import]  import hashlib, binascii
+
+  ▸ Libraries/data/data_generator.py
+      line    93  [random]  random_bytes = os.urandom(number_of_bytes)
+
+  ▸ Libraries/data/data_structure/json_manager.py
+      line   270  [fpe_token]  contents_serialized_string_tokenized = contents_serialized_string.split(':')
+      line   271  [fpe_token]  number_of_keys = len(contents_serialized_string_tokenized)
+      line   282  [fpe_token]  contents_serialized_string_tokenized = contents_serialized_string.split(':')
+      line   283  [fpe_token]  number_of_keys = len(contents_serialized_string_tokenized) - 1  # exclude the last segment containing values
+      line   284  [fpe_token]  last_segment = contents_serialized_string_tokenized[number_of_keys]
+      line   293  [fpe_token]  string_target = contents_serialized_string_tokenized[i]
+
+  ▸ Libraries/data/trend/trend_profiler.py
+      line    99  [symmetric]  proclivityModes = ['plateau', 'ascent', 'descent']
+      line   102  [symmetric]  proclivity = proclivityModes[0]
+      line   104  [symmetric]  proclivity = proclivityModes[1]
+      line   106  [symmetric]  proclivity = proclivityModes[2]
+      line   163  [symmetric]  stateModes = ['plateau', 'ascent', 'descent'];
+      line   164  [symmetric]  proclivityFeatureDetectModes = ['MAXIMA', 'MINIMA', 'NO_DETECT', 'ASCENT', 'DESCENT', 'PLATEAU'];
+      line   165  [symmetric]  proclivity_feature = proclivityFeatureDetectModes[2]; # default: 'NO_DETECT'
+      line   168  [symmetric]  # proclivity_feature = proclivityFeatureDetectModes[2];
+      line   176  [symmetric]  proclivity_feature = proclivityFeatureDetectModes[1]
+      line   183  [symmetric]  proclivity_feature = proclivityFeatureDetectModes[0]
+
+  ▸ Libraries/shell/shell_agent.py
+      line    49  [symmetric]  | openssl enc -aes-128-ecb -nopad -K 00000000000000000000000000000000 | xxd -p'
+      line    49  [cipher_mode]  | openssl enc -aes-128-ecb -nopad -K 00000000000000000000000000000000 | xxd -p'
+
+  ▸ Libraries/text/keywords_grep.py
+      line   334  [fpe_token]  def tokenize_line_given_substring(self, pattern_target, string_target, option):
+      line   339  [fpe_token]  tokenize_line = []
+      line   345  [fpe_token]  tokenize_line.append(string_target[start:end])
+      line   350  [fpe_token]  tokenize_line.append(string_target[start:end])
+      line   355  [fpe_token]  tokenize_line.append(string_target[start:(len(string_target))])
+      line   357  [fpe_token]  return tokenize_line
+      line   371  [symmetric]  text = ['coding logic', ' codxing', 'codes', 'cod', 'codex', 'fucod', 'cxd']
+      line   412  [fpe_token]  tokenize_line = keywords_grep_object.tokenize_line_given_substring(pattern_target, string_target, NULLS_INCLUDED)
+      line   413  [fpe_token]  print (tokenize_line)
+
+  ▸ Libraries/text/string_processor.py
+      line    23  [fpe_token]  list_tokenized = string_target.split(delimiter)
+      line    25  [fpe_token]  return list_tokenized
+
+  ▸ Libraries/text/text_processor.py
+      line    87  [fpe_token]  def string_to_tokenized_list (self, string_target, tag_delimiter):
+      line    88  [fpe_token]  tokenized_list = []
+      line    90  [fpe_token]  return tokenized_list
+      line   139  [fpe_token]  # untokenized
+      line   144  [fpe_token]  # tokenized and filter from keyword excluded list
+
+  ▸ Test_Usages/cryptography/PKI/certificate/data/certificates/CA/walnuss.tech.CA.cert.csr
+      line     1  [key_mgmt]  -----BEGIN CERTIFICATE REQUEST-----
+
+  ▸ Test_Usages/cryptography/PKI/certificate/data/certificates/CA/wtg.CA.cert.csr
+      line     1  [key_mgmt]  -----BEGIN CERTIFICATE REQUEST-----
+
+  ▸ Test_Usages/cryptography/PKI/certificate/data/certificates/CA/wtg.ca.cert
+      line     1  [key_mgmt]  -----BEGIN CERTIFICATE-----
+
+  ▸ Test_Usages/cryptography/PKI/certificate/data/certificates/CA/wtg.ca.key
+      line     1  [asymmetric]  -----BEGIN RSA PRIVATE KEY-----
+      line    27  [asymmetric]  -----END RSA PRIVATE KEY-----
+
+  ▸ Test_Usages/cryptography/PKI/certificate/data/certificates/CA/wtg.privatekey.CA.key
+      line     1  [asymmetric]  -----BEGIN RSA PRIVATE KEY-----
+      line    27  [asymmetric]  -----END RSA PRIVATE KEY-----
+
+  ▸ Test_Usages/cryptography/PKI/certificate/data/certificates/CA/wtg.public.CA.key
+      line     1  [key_mgmt]  -----BEGIN PUBLIC KEY-----
+
+  ▸ Test_Usages/cryptography/PKI/certificate/data/certificates/trial/CA.crt
+      line     1  [key_mgmt]  -----BEGIN CERTIFICATE-----
+
+  ▸ Test_Usages/cryptography/PKI/certificate/data/certificates/trial/ursa_app.crt
+      line     1  [key_mgmt]  -----BEGIN CERTIFICATE-----
+
+  ▸ Test_Usages/cryptography/PKI/certificate/data/certificates/trial/ursa_app_public_key.key
+      line     1  [key_mgmt]  -----BEGIN PUBLIC KEY-----
+
+  ▸ Test_Usages/cryptography/PKI/certificate/data/certificates/users/ursa/ursa.cert
+      line     1  [key_mgmt]  -----BEGIN CERTIFICATE-----
+
+  ▸ Test_Usages/cryptography/PKI/certificate/data/certificates/users/ursa/ursa.cert.csr
+      line     1  [key_mgmt]  -----BEGIN CERTIFICATE REQUEST-----
+
+  ▸ Test_Usages/cryptography/PKI/certificate/data/certificates/users/ursa/ursa.private.key
+      line     1  [asymmetric]  -----BEGIN RSA PRIVATE KEY-----
+      line    27  [asymmetric]  -----END RSA PRIVATE KEY-----
+
+  ▸ Test_Usages/cryptography/PKI/certificate/data/certificates/users/ursa/ursa.public.key
+      line     1  [key_mgmt]  -----BEGIN PUBLIC KEY-----
+
+  ▸ Test_Usages/cryptography/PKI/certificate/usage_certificate_generator.py
+      line     4  [py_import]  from cryptography.hazmat.primitives.asymmetric import rsa
+      line     4  [asymmetric]  from cryptography.hazmat.primitives.asymmetric import rsa
+      line    27  [py_import]  from OpenSSL import crypto
+      line    98  [asymmetric]  openssl rsa -in ./data/certificates/trial/ursa_app_private_key.key -check
+      line    99  [asymmetric]  openssl rsa -in ./data/certificates/trial/ursa_app_public_key.key -check
+      line   159  [asymmetric]  assert isinstance(key, rsa.RSAPublicKey)
+      line   168  [asymmetric]  assert isinstance(key, rsa.RSAPrivateKey)
+      line   174  [asymmetric]  # encrypt with RSA
+      line   175  [py_import]  from Crypto.PublicKey import RSA
+      line   175  [asymmetric]  from Crypto.PublicKey import RSA
+      line   176  [py_import]  from Crypto.Random import get_random_bytes
+      line   176  [random]  from Crypto.Random import get_random_bytes
+      line   177  [py_import]  from Crypto.Cipher import AES, PKCS1_OAEP
+      line   177  [symmetric]  from Crypto.Cipher import AES, PKCS1_OAEP
+      line   178  [py_import]  from Crypto import Random
+      line   181  [symmetric]  # AES_MODE = AES.MODE_EAX
+      line   182  [symmetric]  AES_MODE = AES.MODE_CBC
+      line   188  [asymmetric]  recipient_key = RSA.importKey(
+      line   190  [random]  session_key = get_random_bytes(number_of_bytes)
+      line   195  [symmetric]  iv = Random.new().read(AES.block_size)
+      line   196  [symmetric]  cipher_aes = AES.new(session_key, AES_MODE, iv)
+      line   203  [asymmetric]  # decrypt with RSA
+      line   207  [asymmetric]  private_key = RSA.importKey(
+      line   219  [symmetric]  iv = ciphertext[:AES.block_size]
+      line   220  [symmetric]  cipher = AES.new(self.key, AES.MODE_CBC, iv)
+      line   222  [symmetric]  data_message_payload_deciphered = cipher_aes.decrypt_and_verify(_unpad(cipher.decrypt(ciphertext[AES.block_size:])).decode('utf-8'), tag)
+      line   231  [asymmetric]  openssl rsa -in ./data/certificates/trial/CA.private.key -check
+      line   239  [py_import]  from cryptography import x509
+      line   261  [key_mgmt]  ['__class__', '__delattr__', '__doc__', '__format__', '__getattribute__', '__hash__', '__init__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', 'bits', 'check', 'generate_key', 'type']
+      line   276  [asymmetric]  cat rsa.public.pem
+      line   277  [asymmetric]  cat rsa.private.pem
+
+  ▸ Test_Usages/cryptography/primitives/cipher/symmetric/usage_aes_cipher.py
+      line    67  [cipher_mode]  # symmetric CBC
+      line    69  [py_import]  from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+      line    69  [symmetric]  from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+      line    70  [py_import]  from cryptography.hazmat.backends import default_backend
+      line    73  [random]  key = os.urandom(32)
+      line    74  [random]  iv = os.urandom(16)
+      line    75  [symmetric]  cipher = Cipher(algorithms.AES(key), modes.CBC(iv), backend=backend)
+      line    75  [symmetric]  cipher = Cipher(algorithms.AES(key), modes.CBC(iv), backend=backend)
+      line    75  [cipher_mode]  cipher = Cipher(algorithms.AES(key), modes.CBC(iv), backend=backend)
+      line    87  [symmetric]  # https://cryptography.io/en/latest/hazmat/primitives/symmetric-encryption/#cryptography.hazmat.primitives.ciphers.modes.GCM
+      line    87  [cipher_mode]  # https://cryptography.io/en/latest/hazmat/primitives/symmetric-encryption/#cryptography.hazmat.primitives.ciphers.modes.GCM
+      line    90  [py_import]  from cryptography.hazmat.primitives.ciphers.aead import AESGCM, ChaCha20Poly1305
+      line    95  [random]  nonce = os.urandom(12)
+      line    97  [key_mgmt]  #key = ChaCha20Poly1305.generate_key()
+      line   104  [key_mgmt]  key = AESGCM.generate_key(bit_length=bit_length)
+      line   113  [py_import]  from cryptography.fernet import Fernet
+      line   116  [key_mgmt]  key = Fernet.generate_key()
+      line   140  [kdf]  # HMAC
+      line   141  [py_import]  from cryptography.hazmat.backends import default_backend
+      line   142  [py_import]  from cryptography.hazmat.primitives import hashes, hmac
+      line   142  [kdf]  from cryptography.hazmat.primitives import hashes, hmac
+      line   144  [kdf]  h = hmac.HMAC(key, hashes.SHA256(), backend=default_backend())
+      line   149  [py_import]  from cryptography.hazmat.backends import default_backend
+      line   150  [py_import]  from cryptography.hazmat.primitives import hashes
+      line   162  [cipher_mode]  # symmetric ECB
+      line   164  [py_import]  from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+      line   164  [symmetric]  from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+      line   165  [py_import]  from cryptography.hazmat.backends import default_backend
+      line   168  [random]  key = os.urandom(32)
+      line   170  [random]  # iv = os.urandom(16)
+      line   172  [symmetric]  cipher = Cipher(algorithms.AES(key), modes.ECB(), backend=backend)
+      line   172  [symmetric]  cipher = Cipher(algorithms.AES(key), modes.ECB(), backend=backend)
+      line   172  [cipher_mode]  cipher = Cipher(algorithms.AES(key), modes.ECB(), backend=backend)
+      line   186  [py_import]  from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+      line   186  [symmetric]  from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+      line   187  [py_import]  from cryptography.hazmat.backends import default_backend
+      line   190  [random]  key = os.urandom(32)
+      line   191  [random]  iv = os.urandom(16)
+      line   193  [symmetric]  cipher = Cipher(algorithms.AES(key), modes.CBC(iv), backend=backend)
+      line   193  [symmetric]  cipher = Cipher(algorithms.AES(key), modes.CBC(iv), backend=backend)
+      line   193  [cipher_mode]  cipher = Cipher(algorithms.AES(key), modes.CBC(iv), backend=backend)
+      line   207  [random]  iv2 = os.urandom(16)
+      line   209  [symmetric]  cipher2 = Cipher(algorithms.AES(key), modes.CBC(iv2), backend=backend)
+      line   209  [symmetric]  cipher2 = Cipher(algorithms.AES(key), modes.CBC(iv2), backend=backend)
+      line   209  [cipher_mode]  cipher2 = Cipher(algorithms.AES(key), modes.CBC(iv2), backend=backend)
+      line   222  [py_import]  from cryptography.hazmat.backends import default_backend
+      line   223  [py_import]  from cryptography.hazmat.primitives import hashes
+      line   224  [py_import]  from cryptography.hazmat.primitives.asymmetric import dsa
+      line   224  [asymmetric]  from cryptography.hazmat.primitives.asymmetric import dsa
+      line   227  [asymmetric]  private_key = dsa.generate_private_key(key_size=1024,
+      line   227  [key_mgmt]  private_key = dsa.generate_private_key(key_size=1024,
+      line   230  [asymmetric]  private_key1 = dsa.generate_private_key(key_size=1024,
+      line   230  [key_mgmt]  private_key1 = dsa.generate_private_key(key_size=1024,
+      line   246  [signature]  verifier.verify()
+
+  ▸ Test_Usages/cryptography/primitives/cipher/symmetric/usage_aes_cipher_00.py
+      line    53  [cipher_mode]  # GCM
+
+  ▸ Test_Usages/cryptography/primitives/cipher/symmetric/usage_aes_cipher_01.py
+      line    21  [cipher_mode]  # CBC
+      line    30  [cipher_mode]  # GCM
+
+  ▸ Test_Usages/cryptography/primitives/integrity/HMAC/usage_hmac_00.py
+      line     5  [kdf]  lib_path = os.path.abspath('../../../../../Libraries/cryptography/primitives/integrity/HMAC')
+      line    19  [kdf]  id = "Usage Agent: <hmac>"
+
+  ▸ Test_Usages/cryptography/primitives/key_generation/KDF/usage_KDF_lib.py
+      line     6  [kdf]  lib_path = os.path.abspath('../../../../../Libraries/cryptography/primitives/key_generation/KDF/')
+
+  ▸ Test_Usages/data/trend/usage_trend_hunter.py
+      line    41  [symmetric]  proclivityFeatureToHuntModes = ['PLATEAU', 'MAXIMA', 'MINIMA'];
+      line    43  [symmetric]  proclivityFeatureToHunt = proclivityFeatureToHuntModes[proclivityFeatureToHunt_Choice];
+
+  ▸ Test_Usages/text/data/The_World_as_I_See_it.txt
+      line    13  [hash_func]  contrary to his own intention, into the whirlpool of political passions and
+      line   104  [symmetric]  Then followed a weary search for work, two brief interludes of teaching, and
+      line   134  [symmetric]  The World As I See It, in its original form, includes essays by Einstein on
+      line   760  [symmetric]  actually reading it. Besides, one always cuts a poor figure if one
+      line  1979  [symmetric]  mind. Not only does the machinery depend on traditional modes of feeling
+      line  1981  [symmetric]  exercises a powerful influence on national modes of feeling.
+      line  1987  [symmetric]  nationalistic spirit in them, which provides the psychological foundation of
+      line  2305  [symmetric]  infinite confusion, and besides—why should not such heroic feelings on the
+      line  3639  [symmetric]  psychological than real, and that they can be got over if both sides bring
+      line  3645  [symmetric]  media on which both sides agree.
+
+  ▸ Utilities/samples/data/notes.txt
+      line     3  [symmetric]  openssl req -x509 -new -nodes  -key cert.key -days 365  -out cert.crt
+      line    10  [asymmetric]  openssl rsa -in private.key -pubout -out public.key
+
+  ▸ Utilities/samples/data/places.txt
+      line   723  [symmetric]  Benavides
+      line  1351  [symmetric]  Cades
+      line  3406  [symmetric]  Geddes
+      line  4372  [symmetric]  Hydes
+      line  4461  [symmetric]  Ironsides
+      line  5464  [symmetric]  Lowndes
+      line  5877  [symmetric]  McBrides
+      line  7000  [symmetric]  Palisades
+
+  ▸ Utilities/samples/lab_derive_IIDs_FIDs_from_GID_with_key.py
+      line     4  [kdf]  # from Crypto import pbkdf2
+      line     6  [py_import]  import hashlib, binascii
+      line     7  [kdf]  from pbkdf2 import crypt
+
+  ▸ Utilities/samples/lab_json_constructor.py
+      line    45  [symmetric]  cryptographic_profile = ['ecdhe2048_rsa2048_aes256_gcm_sha384', 'ecdhe2048-rsa2048-chacha20-poly1305']
+      line    46  [signature]  key_usage = ['Digital_Signature_verification', 'Certificate Signing and verification', 'Code signing', 'CRL signing', 'Non-Repudiation_contentCommitment', 'Key Encipherment', 'Data Encipherment', 'Key Agreement']
+
+  ▸ Utilities/samples/lab_test_suite_00.py
+      line     2  [py_import]  import hashlib
+      line     7  [hash_func]  m = hashlib.md5()

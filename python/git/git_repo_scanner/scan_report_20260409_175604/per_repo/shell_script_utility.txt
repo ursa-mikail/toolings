@@ -1,0 +1,299 @@
+================================================================================
+  REPO       : shell_script_utility
+  FULL NAME  : ursa-mikail/shell_script_utility
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Shell
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/shell_script_utility
+  MATCHES    : 238
+================================================================================
+
+  ▸ readme.md
+      line     6  [symmetric]  - Includes a variety of utility scripts for automation and system management.
+
+  ▸ scripts/config_secrets.sh
+      line    14  [asymmetric]  ## Generate an RSA (or Ed25519) SSH keypair
+
+  ▸ scripts/functions/cert_utility.sh
+      line     6  [asymmetric]  openssl x509 -in ../certs/ursa.rsa.2048.crt -text -noout
+      line     7  [asymmetric]  openssl x509 -in ../certs/ursa.dsa.2048.crt -text -noout
+      line    22  [asymmetric]  cert='ursa.rsa.2048.crt'
+      line    30  [asymmetric]  key_signing='ursa.rsa.2048.private.key'
+      line    40  [symmetric]  # openssl dgst -sha256 -sigopt rsa_padding_mode:pss -sigopt rsa_pss_saltlen:-1 -signature <("$(tail -c 512 testaes.key)") -verify $certs_path$cert <("$(head -c 64 testaes.key)"
+      line    60  [asymmetric]  cert='ursa.rsa.2048.crt'
+      line    68  [asymmetric]  key_verifying='ursa.rsa.2048.public.key'
+      line    96  [symmetric]  openssl pkcs12 -in $cert_in_PFX -out $key_cert_profile_in_PEM -nodes
+      line   178  [asymmetric]  # where xxx := rsa, dsa, ecc
+      line   178  [asymmetric]  # where xxx := rsa, dsa, ecc
+
+  ▸ scripts/functions/cipher_asymmetric_utility.sh
+      line    11  [asymmetric]  # echo “Encode RSA-wrapped key in base64.”
+
+  ▸ scripts/functions/cipher_utility.sh
+      line     3  [symmetric]  #function cipher_file { openssl enc -aes-256-cbc -salt -in "$1" -out "$2"; }
+      line     3  [cipher_mode]  #function cipher_file { openssl enc -aes-256-cbc -salt -in "$1" -out "$2"; }
+      line     4  [symmetric]  #function decipher_file { openssl enc -aes-256-cbc -d -in "$1" -out "$2"; }
+      line     4  [cipher_mode]  #function decipher_file { openssl enc -aes-256-cbc -d -in "$1" -out "$2"; }
+      line    14  [symmetric]  # openssl enc -aes-256-cbc -salt -in "$1" -out "$2";
+      line    14  [cipher_mode]  # openssl enc -aes-256-cbc -salt -in "$1" -out "$2";
+      line    15  [symmetric]  openssl enc -aes-256-cbc -pbkdf2 -iter $number_of_cipher_nonce_rounds -in "$1" -out "$2";
+      line    15  [cipher_mode]  openssl enc -aes-256-cbc -pbkdf2 -iter $number_of_cipher_nonce_rounds -in "$1" -out "$2";
+      line    15  [kdf]  openssl enc -aes-256-cbc -pbkdf2 -iter $number_of_cipher_nonce_rounds -in "$1" -out "$2";
+      line    25  [symmetric]  openssl enc -aes-256-cbc -pbkdf2 -iter $number_of_cipher_nonce_rounds -d -in "$1" -out "$2"
+      line    25  [cipher_mode]  openssl enc -aes-256-cbc -pbkdf2 -iter $number_of_cipher_nonce_rounds -d -in "$1" -out "$2"
+      line    25  [kdf]  openssl enc -aes-256-cbc -pbkdf2 -iter $number_of_cipher_nonce_rounds -d -in "$1" -out "$2"
+      line    38  [symmetric]  # echo "$1" | openssl enc -aes-256-cbc -pbkdf2 -iter $number_of_cipher_nonce_rounds -a -k "$2";
+      line    38  [cipher_mode]  # echo "$1" | openssl enc -aes-256-cbc -pbkdf2 -iter $number_of_cipher_nonce_rounds -a -k "$2";
+      line    38  [kdf]  # echo "$1" | openssl enc -aes-256-cbc -pbkdf2 -iter $number_of_cipher_nonce_rounds -a -k "$2";
+      line    41  [symmetric]  #echo -n $1 | xxd -p -r | openssl enc -aes-128-cbc -pbkdf2 -iter $number_of_cipher_nonce_rounds -K $2 -iv '00000000000000000000000000000000' | xxd -p
+      line    41  [cipher_mode]  #echo -n $1 | xxd -p -r | openssl enc -aes-128-cbc -pbkdf2 -iter $number_of_cipher_nonce_rounds -K $2 -iv '00000000000000000000000000000000' | xxd -p
+      line    41  [kdf]  #echo -n $1 | xxd -p -r | openssl enc -aes-128-cbc -pbkdf2 -iter $number_of_cipher_nonce_rounds -K $2 -iv '00000000000000000000000000000000' | xxd -p
+      line    44  [symmetric]  echo -n $1 | xxd -p -r | openssl enc -aes-128-cbc -nopad -nosalt -K $2 -iv '00000000000000000000000000000000' | xxd -p
+      line    44  [cipher_mode]  echo -n $1 | xxd -p -r | openssl enc -aes-128-cbc -nopad -nosalt -K $2 -iv '00000000000000000000000000000000' | xxd -p
+      line    55  [symmetric]  # echo "$1" | openssl enc -aes-256-cbc -d -a -k "$2";
+      line    55  [cipher_mode]  # echo "$1" | openssl enc -aes-256-cbc -d -a -k "$2";
+      line    56  [symmetric]  # echo "$1" | openssl enc -aes-256-cbc -pbkdf2 -iter $number_of_cipher_nonce_rounds -d -a -k "$2";
+      line    56  [cipher_mode]  # echo "$1" | openssl enc -aes-256-cbc -pbkdf2 -iter $number_of_cipher_nonce_rounds -d -a -k "$2";
+      line    56  [kdf]  # echo "$1" | openssl enc -aes-256-cbc -pbkdf2 -iter $number_of_cipher_nonce_rounds -d -a -k "$2";
+      line    59  [symmetric]  #echo -n $1 | xxd -p -r | openssl enc -aes-128-cbc -pbkdf2 -iter $number_of_cipher_nonce_rounds -d -K $2 -iv '00000000000000000000000000000000' | xxd -p
+      line    59  [cipher_mode]  #echo -n $1 | xxd -p -r | openssl enc -aes-128-cbc -pbkdf2 -iter $number_of_cipher_nonce_rounds -d -K $2 -iv '00000000000000000000000000000000' | xxd -p
+      line    59  [kdf]  #echo -n $1 | xxd -p -r | openssl enc -aes-128-cbc -pbkdf2 -iter $number_of_cipher_nonce_rounds -d -K $2 -iv '00000000000000000000000000000000' | xxd -p
+      line    62  [symmetric]  echo -n $1 | xxd -p -r | openssl enc -aes-128-cbc -nopad -nosalt -d -K $2 -iv '00000000000000000000000000000000' | xxd -p
+      line    62  [cipher_mode]  echo -n $1 | xxd -p -r | openssl enc -aes-128-cbc -nopad -nosalt -d -K $2 -iv '00000000000000000000000000000000' | xxd -p
+      line    74  [symmetric]  # echo "$1" | openssl enc -aes-256-cbc -salt -a -k "$2";
+      line    74  [cipher_mode]  # echo "$1" | openssl enc -aes-256-cbc -salt -a -k "$2";
+      line    75  [symmetric]  echo "$1" | openssl enc -aes-256-cbc -pbkdf2 -iter $number_of_cipher_nonce_rounds -a -k "$2" | tr -d '\n';
+      line    75  [cipher_mode]  echo "$1" | openssl enc -aes-256-cbc -pbkdf2 -iter $number_of_cipher_nonce_rounds -a -k "$2" | tr -d '\n';
+      line    75  [kdf]  echo "$1" | openssl enc -aes-256-cbc -pbkdf2 -iter $number_of_cipher_nonce_rounds -a -k "$2" | tr -d '\n';
+      line    88  [symmetric]  # echo "$1" | openssl enc -aes-256-cbc -d -a -k "$2";
+      line    88  [cipher_mode]  # echo "$1" | openssl enc -aes-256-cbc -d -a -k "$2";
+      line    89  [symmetric]  echo "$1" | openssl enc -aes-256-cbc -pbkdf2 -iter $number_of_cipher_nonce_rounds -d -a -k "$2";
+      line    89  [cipher_mode]  echo "$1" | openssl enc -aes-256-cbc -pbkdf2 -iter $number_of_cipher_nonce_rounds -d -a -k "$2";
+      line    89  [kdf]  echo "$1" | openssl enc -aes-256-cbc -pbkdf2 -iter $number_of_cipher_nonce_rounds -d -a -k "$2";
+      line   101  [kdf]  echo "$1" | $pbkdf_source/pbkdf2 "$2" "$3";
+      line   135  [symmetric]  openssl enc -aes-256-cbc -salt -in $unciphered_zip -out "$2";
+      line   135  [cipher_mode]  openssl enc -aes-256-cbc -salt -in $unciphered_zip -out "$2";
+
+  ▸ scripts/functions/display.sh
+      line    75  [symmetric]  #Attribute codes:
+      line    78  [symmetric]  #Text color codes:
+      line    81  [symmetric]  #Background color codes:
+
+  ▸ scripts/functions/git_utility.sh
+      line  1676  [symmetric]  # Team can use patch to modify files. Git provides 2 commands to apply patches git am and git apply, respectively. Git apply modifies the local files without creating commit, while git am modifies file and creates commit as well. To apply patch and create commit:
+      line  1888  [asymmetric]  # Prompt for the key RSA length and email address
+      line  1889  [asymmetric]  echo "Enter the RSA key length (e.g., 4096):"
+      line  1912  [asymmetric]  ssh-keygen -t rsa -b "$key_rsa_length" -C "$email_address" -f "$HOME/.ssh/$key_name"
+
+  ▸ scripts/functions/hash_utility.sh
+      line    61  [hash_func]  #echo "hash_algo is not set. Please set the hash algorithm (e.g., sha256, md5)."
+
+  ▸ scripts/functions/identity.sh
+      line    13  [symmetric]  function get_path_nodes() {
+
+  ▸ scripts/functions/keys.sh
+      line   118  [asymmetric]  openssl rsa -text -in $key_rsa_ciphering_private
+      line   119  [asymmetric]  openssl rsa -in $key_rsa_ciphering_private -check
+      line   120  [asymmetric]  openssl rsa -noout -modulus -in $key_rsa_ciphering_private | openssl $hash_algo
+      line   122  [asymmetric]  # openssl rsa -in $key_rsa_ciphering_private -noout -text
+      line   124  [asymmetric]  # Export RSA Public Key to a File :
+      line   125  [asymmetric]  # openssl rsa -in $key_rsa_ciphering_private -outform PEM -pubout -out $key_rsa_ciphering_public
+      line   126  [asymmetric]  openssl rsa -in $key_rsa_ciphering_private -pubout -out $key_rsa_ciphering_public
+      line   155  [asymmetric]  openssl rsa -text -in $key_rsa_signing_private
+      line   156  [asymmetric]  openssl rsa -in $key_rsa_signing_private -check
+      line   157  [asymmetric]  openssl rsa -noout -modulus -in $key_rsa_signing_private | openssl $hash_algo
+      line   159  [asymmetric]  # openssl rsa -in $key_rsa_signing_private -noout -text
+      line   161  [asymmetric]  # Export RSA Public Key to a File :
+      line   162  [asymmetric]  # openssl rsa -in $key_rsa_signing_private -outform PEM -pubout -out $key_rsa_signing_public
+      line   163  [asymmetric]  openssl rsa -in $key_rsa_signing_private -pubout -out $key_rsa_signing_public
+      line   184  [asymmetric]  openssl rsa -text -in $key_rsa_signing_private
+      line   186  [asymmetric]  openssl rsa -in $key_rsa_signing_private -check
+      line   188  [asymmetric]  openssl rsa -noout -modulus -in $key_rsa_signing_private | openssl $hash_algo
+      line   209  [asymmetric]  label="[Creating DSA signing key: "$key_dsa_signing_private"]";
+      line   216  [asymmetric]  openssl dsaparam -genkey $key_length | openssl dsa -out  $key_dsa_signing_private #-aes128
+      line   217  [asymmetric]  openssl dsa -text -in $key_dsa_signing_private
+      line   218  [asymmetric]  # openssl dsa -in $key_dsa_signing_private -check
+      line   224  [asymmetric]  # Export DSA Public Key to a File :
+      line   225  [asymmetric]  openssl dsa -in $key_dsa_signing_private -pubout -out $key_dsa_signing_public
+
+  ▸ scripts/functions/mac_utility.sh
+      line    14  [kdf]  ANS=$(echo -n $message_input | xxd -r -p | openssl dgst -$hash_algo -mac HMAC -macopt hexkey:$key_hmac_sha256_authentication | awk '{print $2}')
+      line    16  [kdf]  echo "HMAC: " $ANS
+      line    40  [kdf]  ANS=$(echo -n $message_input | xxd -r -p | openssl dgst -$hash_algo -mac HMAC -macopt hexkey:$key_hmac_sha256_authentication | awk '{print $2}')
+      line    53  [kdf]  echo "Choose a file to hmac: "
+      line    73  [kdf]  ANS=$(openssl dgst -$hash_algo -mac HMAC -macopt hexkey:$key_hmac_sha256_authentication -hex "$message_store_path$TARGET_FILE" | awk '{print $2}')
+      line    76  [kdf]  echo "HMAC: " $ANS
+      line    93  [kdf]  echo "Choose a file to hmac: "
+      line   113  [kdf]  ANS=$(openssl dgst -$hash_algo -mac HMAC -macopt hexkey:$key_hmac_sha256_authentication -hex "$message_store_path$TARGET_FILE" | awk '{print $2}')
+
+  ▸ scripts/functions/parameters.sh
+      line     1  [symmetric]  # [includes]
+      line    30  [asymmetric]  key_rsa_ciphering_private=$key_store_path$key_name'.rsa.'$key_length'.ciphering.private.key'
+      line    31  [asymmetric]  key_rsa_ciphering_public=$key_store_path$key_name'.rsa.'$key_length'.ciphering.public.key'
+      line    41  [asymmetric]  key_rsa_signing_private=$key_store_path$key_name'.rsa.'$key_length'.private.key'
+      line    42  [asymmetric]  key_rsa_signing_public=$key_store_path$key_name'.rsa.'$key_length'.public.key'
+      line    44  [asymmetric]  key_dsa_signing_private=$key_store_path$key_name'.dsa.key'
+
+  ▸ scripts/functions/passcode_utility.sh
+      line    13  [symmetric]  passcode_ciphered=$(echo "$passcode_to_be_ciphered" | openssl enc -aes-256-cbc -salt -pbkdf2 -a -k "$passcode")
+      line    13  [cipher_mode]  passcode_ciphered=$(echo "$passcode_to_be_ciphered" | openssl enc -aes-256-cbc -salt -pbkdf2 -a -k "$passcode")
+      line    13  [kdf]  passcode_ciphered=$(echo "$passcode_to_be_ciphered" | openssl enc -aes-256-cbc -salt -pbkdf2 -a -k "$passcode")
+      line    43  [symmetric]  pass_deciphered=$(echo "$pass_ciphered" | openssl enc -aes-256-cbc -salt -pbkdf2 -d -a -k "$passcode")
+      line    43  [cipher_mode]  pass_deciphered=$(echo "$pass_ciphered" | openssl enc -aes-256-cbc -salt -pbkdf2 -d -a -k "$passcode")
+      line    43  [kdf]  pass_deciphered=$(echo "$pass_ciphered" | openssl enc -aes-256-cbc -salt -pbkdf2 -d -a -k "$passcode")
+      line    54  [symmetric]  pass_deciphered=$(echo "$pass_ciphered" | openssl enc -aes-256-cbc -salt -pbkdf2 -d -a -k "$key")
+      line    54  [cipher_mode]  pass_deciphered=$(echo "$pass_ciphered" | openssl enc -aes-256-cbc -salt -pbkdf2 -d -a -k "$key")
+      line    54  [kdf]  pass_deciphered=$(echo "$pass_ciphered" | openssl enc -aes-256-cbc -salt -pbkdf2 -d -a -k "$key")
+      line    60  [symmetric]  pass_ciphered=$(echo "$pass" | openssl enc -aes-256-cbc -salt -pbkdf2 -a -k "$key")
+      line    60  [cipher_mode]  pass_ciphered=$(echo "$pass" | openssl enc -aes-256-cbc -salt -pbkdf2 -a -k "$key")
+      line    60  [kdf]  pass_ciphered=$(echo "$pass" | openssl enc -aes-256-cbc -salt -pbkdf2 -a -k "$key")
+      line    69  [symmetric]  #pass_deciphered=$(echo "$pass_ciphered" | openssl enc -aes-256-cbc -salt -pbkdf2 -d -a -k "$key")
+      line    69  [cipher_mode]  #pass_deciphered=$(echo "$pass_ciphered" | openssl enc -aes-256-cbc -salt -pbkdf2 -d -a -k "$key")
+      line    69  [kdf]  #pass_deciphered=$(echo "$pass_ciphered" | openssl enc -aes-256-cbc -salt -pbkdf2 -d -a -k "$key")
+      line   179  [symmetric]  key_AES=''
+      line   189  [symmetric]  #t=$(echo "key_AES='m m'")
+      line   192  [symmetric]  text_to_write=$(echo "key_AES='$(openssl rand -hex $number_of_bytes)'"); # e.g. 9ebbb1e5, babb1e5
+      line   193  [symmetric]  echo "$text_to_write" > ./scripts/passcodes/keys_for_messaging.txt
+      line   195  [symmetric]  #$ echo "key_AES='Any string'" > keys_for_messaging.txt
+      line   198  [symmetric]  echo $key_AES
+      line   235  [symmetric]  ANS=$(echo -n $seed_hex | xxd -p -r | openssl enc -aes-256-cbc -S $SALT -k $PASS_FIXED)
+      line   235  [cipher_mode]  ANS=$(echo -n $seed_hex | xxd -p -r | openssl enc -aes-256-cbc -S $SALT -k $PASS_FIXED)
+      line   265  [symmetric]  # salt enc -base64 -aes-256-cbc -S $salt -k $PASS_FIXED
+      line   265  [cipher_mode]  # salt enc -base64 -aes-256-cbc -S $salt -k $PASS_FIXED
+      line   266  [symmetric]  #openssl enc -aes-256-cbc -S $salt -k $PASS_FIXED
+      line   266  [cipher_mode]  #openssl enc -aes-256-cbc -S $salt -k $PASS_FIXED
+      line   269  [symmetric]  ans=$(echo -n $seed_hex | xxd -p -r | openssl enc -aes-256-cbc -S '0000000000000000' -k $PASS_FIXED)
+      line   269  [cipher_mode]  ans=$(echo -n $seed_hex | xxd -p -r | openssl enc -aes-256-cbc -S '0000000000000000' -k $PASS_FIXED)
+
+  ▸ scripts/functions/random_naive.sh
+      line    19  [random]  # head -c $number_of_bytes /dev/urandom | LC_CTYPE=C tr '\n' = | xxd -p | tr -d '\n'
+      line    21  [random]  #  head -c $number_of_bytes /dev/urandom | LC_CTYPE=C tr '\n' = | hexdump -e '"%x"'
+      line    22  [random]  # head -c $number_of_bytes /dev/urandom | LC_CTYPE=C tr '\n' = | xxd -p
+      line    27  [random]  # cat /dev/urandom
+      line    65  [random]  # text_random=$(cat /dev/urandom | tr -dc "$charset" | fold -w "$number_of_characters" | head -n 1)
+      line    69  [random]  text_random=$(head -c "$number_of_characters" /dev/urandom | base64 | tr -dc "$charset" | cut -c1-"$number_of_characters")
+
+  ▸ scripts/functions/serial.sh
+      line    12  [symmetric]  echo $case_serial | openssl enc -aes-256-cbc -a -k $passcode
+      line    12  [cipher_mode]  echo $case_serial | openssl enc -aes-256-cbc -a -k $passcode
+      line    21  [symmetric]  echo $case_serial | openssl enc -aes-256-cbc -d -a -k $passcode # timestamp=$(date +%s)
+      line    21  [cipher_mode]  echo $case_serial | openssl enc -aes-256-cbc -d -a -k $passcode # timestamp=$(date +%s)
+
+  ▸ scripts/functions/signing_utility.sh
+      line     5  [asymmetric]  signing_algo='RSA'
+      line     6  [signature]  sign_message;
+      line    13  [asymmetric]  signing_algo='DSA'
+      line    14  [signature]  sign_message;
+      line    22  [signature]  sign_message;
+      line    25  [signature]  function sign_message(){
+      line    34  [asymmetric]  # Signs SHA256 (DSS1) hash of the file ($hash_file) using DSA private key in ($key_dsa_signing_private) and write signature out to (raw binary file: $signature_file_dsa). The PEM file format is a format for storing cryptographic objects such as private keys, certificates, etc.
+      line    39  [asymmetric]  # Verifies signature ($hash_file) that is contained in (raw binary file: $signature_file_dsa) using the SHA256 (DSS1) message digest algorithm and the DSA private key from the file ($key_dsa_signing_private).
+      line    50  [asymmetric]  # https://medium.com/@bn121rajesh/rsa-sign-and-verify-using-openssl-behind-the-scene-bf3cac0aade2
+      line    62  [asymmetric]  signing_algo='RSA'
+      line    69  [asymmetric]  signing_algo='DSA'
+      line    97  [asymmetric]  # Verifies signature ($hash_file) that is contained in (raw binary file: $signature_file_dsa) using the SHA256 (DSS1) message digest algorithm and the DSA private key from the file ($key_dsa_signing_private).
+      line   113  [asymmetric]  signing_algo='RSA'
+      line   121  [asymmetric]  signing_algo='DSA'
+      line   152  [asymmetric]  # Signs SHA256 (DSS1) hash of the file ($hash_file) using DSA private key in ($key_dsa_signing_private) and write signature out to (raw binary file: $signature_file_dsa). The PEM file format is a format for storing cryptographic objects such as private keys, certificates, etc.
+      line   157  [asymmetric]  # Verifies signature ($hash_file) that is contained in (raw binary file: $signature_file_dsa) using the SHA256 (DSS1) message digest algorithm and the DSA private key from the file ($key_dsa_signing_private).
+      line   170  [asymmetric]  signing_algo='RSA'
+      line   177  [asymmetric]  signing_algo='DSA'
+      line   214  [asymmetric]  # Verifies signature ($hash_file) that is contained in (raw binary file: $signature_file_dsa) using the SHA256 (DSS1) message digest algorithm and the DSA private key from the file ($key_dsa_signing_private).
+      line   231  [asymmetric]  # Signs SHA256 (DSS1) hash of the file ($hash_file) using DSA private key in ($key_dsa_signing_private) and write signature out to (raw binary file: $signature_file_dsa). The PEM file format is a format for storing cryptographic objects such as private keys, certificates, etc.
+      line   233  [asymmetric]  # Verifies signature ($hash_file) that is contained in (raw binary file: $signature_file_dsa) using the SHA256 (DSS1) message digest algorithm and the DSA private key from the file ($key_dsa_signing_private).
+      line   236  [asymmetric]  echo "DSA signature created"
+      line   240  [asymmetric]  # Signs SHA256 hash of ($file_to_sign) using RSA private key ($key_rsa_signing_private) and write signature out to ($signature_file_rsa).
+      line   243  [asymmetric]  # Verifies signature of($file_to_sign) that is contained in ($signature_file_rsa) using SHA256 and RSA public key from ($key_rsa_signing_public)
+      line   246  [asymmetric]  #echo "RSA signature created"
+      line   254  [asymmetric]  # Verifies signature ($hash_file) that is contained in (raw binary file: $signature_file_dsa) using the SHA256 (DSS1) message digest algorithm and the DSA private key from the file ($key_dsa_signing_private).
+      line   258  [asymmetric]  echo "DSA signature verified"
+      line   260  [asymmetric]  # Verifies signature of($file_to_sign) that is contained in ($signature_file_rsa) using SHA256 and RSA public key from ($key_rsa_signing_public)
+      line   264  [asymmetric]  echo "RSA signature verified"
+      line   270  [asymmetric]  signing_algo='rsa'
+      line   277  [asymmetric]  signing_algo='dsa'
+      line   325  [asymmetric]  signing_algo='rsa'
+      line   331  [asymmetric]  signing_algo='dsa'
+      line   383  [asymmetric]  signing_algo='rsa'
+      line   390  [asymmetric]  signing_algo='dsa'
+      line   436  [asymmetric]  signing_algo='rsa'
+      line   443  [asymmetric]  signing_algo='dsa'
+
+  ▸ scripts/functions/status_codes.sh
+      line     6  [symmetric]  echo "Usage : $0 check_status_codes $1: (status_codes)"
+
+  ▸ scripts/functions/supports/notes.txt
+      line     4  [kdf]  gcc pbkdf2.c -lssl -lcrypto -o pbkdf2
+
+  ▸ scripts/functions/supports/pbkdf2.c
+      line     7  [kdf]  #include <openssl/hmac.h>
+      line   135  [kdf]  echo -n "password" | ./pbkdf2 "salt" 1
+      line   136  [kdf]  http://stackoverflow.com/questions/5130513/pbkdf2-hmac-sha2-test-vectors
+      line   136  [kdf]  http://stackoverflow.com/questions/5130513/pbkdf2-hmac-sha2-test-vectors
+      line   138  [kdf]  echo -n "password" | ./pbkdf2 "salt" 1
+      line   143  [kdf]  **   function derive_key { echo -n "$1" | ./pbkdf2 "$2" "$3"; }
+      line   147  [kdf]  ** which uses openssl to perform PBKDF2 (RFC2898) iteritive (slow) password
+      line   151  [kdf]  **    gcc -o pbkdf2 pbkdf2.c -lssl
+      line   155  [kdf]  ** 	  gcc -o pbkdf2 pbkdf2.c -lcrypto
+      line   157  [kdf]  **    gcc -o pbkdf2 pbkdf2.c -lssl -lcrypto
+      line   160  [kdf]  **    echo -n <passcode> | ./pbkdf2 <salt> <number_of_rounds>
+      line   161  [kdf]  **    echo -n "ayahuasca" | ./pbkdf2 "to.see.the.world.in.a.grain.of.sand" 100000
+      line   181  [symmetric]  ** Crypt-AES-256 (or some other encryption method).
+
+  ▸ scripts/functions/test_zone/lab_generate_key_ratcheting.sh
+      line    15  [symmetric]  echo -n $1 | xxd -p -r | openssl enc -aes-128-cbc -nopad -nosalt -K $2 -iv '00000000000000000000000000000000' | xxd -p
+      line    15  [cipher_mode]  echo -n $1 | xxd -p -r | openssl enc -aes-128-cbc -nopad -nosalt -K $2 -iv '00000000000000000000000000000000' | xxd -p
+      line    20  [symmetric]  # ref: http://nwsmith.blogspot.com/2012/07/aes-encryption-decryption-from-command.html
+      line    31  [symmetric]  #echo "$1" | openssl enc -aes-256-cbc -pbkdf2 -iter $number_of_cipher_nonce_rounds -k "$2" | xxd -p;
+      line    31  [cipher_mode]  #echo "$1" | openssl enc -aes-256-cbc -pbkdf2 -iter $number_of_cipher_nonce_rounds -k "$2" | xxd -p;
+      line    31  [kdf]  #echo "$1" | openssl enc -aes-256-cbc -pbkdf2 -iter $number_of_cipher_nonce_rounds -k "$2" | xxd -p;
+      line    32  [symmetric]  # echo "0: $1" | xxd -r | openssl enc -d -aes-128-ecb -nopad -nosalt -K  "$2" | xxd -p
+      line    32  [cipher_mode]  # echo "0: $1" | xxd -r | openssl enc -d -aes-128-ecb -nopad -nosalt -K  "$2" | xxd -p
+      line    33  [symmetric]  # echo -n "$1" | xxd -p -r | openssl enc -d -aes-128-ecb -nopad -nosalt -K  "$2" | xxd -p
+      line    33  [cipher_mode]  # echo -n "$1" | xxd -p -r | openssl enc -d -aes-128-ecb -nopad -nosalt -K  "$2" | xxd -p
+      line    35  [symmetric]  echo -n $1 | xxd -p -r | openssl enc -aes-128-cbc -d -nosalt -K $2 -iv '00000000000000000000000000000000' -nopad | xxd -p
+      line    35  [cipher_mode]  echo -n $1 | xxd -p -r | openssl enc -aes-128-cbc -d -nosalt -K $2 -iv '00000000000000000000000000000000' -nopad | xxd -p
+      line    37  [symmetric]  # openssl enc -aes-256-cfb8 -in <file_plaintext_in> -k file:<file_ciphered_out> -out encrypted -pbkdf2 -iv 021afbb5928ac15fa4503d90959ed139
+      line    37  [kdf]  # openssl enc -aes-256-cfb8 -in <file_plaintext_in> -k file:<file_ciphered_out> -out encrypted -pbkdf2 -iv 021afbb5928ac15fa4503d90959ed139
+      line    39  [symmetric]  # openssl enc -d -aes-256-cfb8 -in encrypted -k file:<file_ciphered_in> -out <file_deciphered_out> -pbkdf2 -iv 021afbb5928ac15fa4503d90959ed139
+      line    39  [kdf]  # openssl enc -d -aes-256-cfb8 -in encrypted -k file:<file_ciphered_in> -out <file_deciphered_out> -pbkdf2 -iv 021afbb5928ac15fa4503d90959ed139
+
+  ▸ scripts/functions/time.sh
+      line   216  [kdf]  # time openssl enc -aes256 -e -pbkdf2 -iter $number_of_iterations -pass pass:$passcode -in $file_message_unciphered -out $file_message_ciphered
+      line   217  [symmetric]  # time echo "$1"  | xxd -r | openssl enc -aes-128-ecb -nopad -k "$2" | xxd -p;
+      line   217  [cipher_mode]  # time echo "$1"  | xxd -r | openssl enc -aes-128-ecb -nopad -k "$2" | xxd -p;
+
+  ▸ scripts/include.sh
+      line    20  [symmetric]  source $HOME"/scripts/functions/status_codes.sh"
+
+  ▸ scripts/parameters.sh
+      line     2  [asymmetric]  # entity_name='ursa.rsa.2048'			# Caveat: depends on which Zone, e.g. 'RCA.Zone_B'
+      line    15  [symmetric]  passcodes_store_path='./passcodes/'
+      line    29  [asymmetric]  csr_with_path=$csr_path$cert_name'.rsa.'$key_length'.csr'
+      line    30  [asymmetric]  cert_with_path=$certs_path$cert_name'.rsa.'$key_length'.crt'
+      line    32  [asymmetric]  cert_rsa_with_path=$certs_path$cert_name'.rsa.'$key_length'.crt'
+      line    33  [asymmetric]  cert_dsa_with_path=$certs_path$cert_name'.dsa.'$key_length'.crt'
+      line    54  [asymmetric]  key_rsa_signing_private=$key_store_path$key_name'.rsa.'$key_length'.private.key'
+      line    55  [asymmetric]  key_rsa_signing_public=$key_store_path$key_name'.rsa.'$key_length'.public.key'
+      line    57  [asymmetric]  key_dsa_signing_private=$key_store_path$key_name'.dsa.private.key'
+      line    58  [asymmetric]  key_dsa_signing_public=$key_store_path$key_name'.dsa.public.key'
+
+  ▸ scripts/utilities/batch_processor.sh
+      line    60  [asymmetric]  process_files "hsm_domain_key_{1..5}.pem" "" "./cert_folder" 'openssl genpkey -algorithm RSA -out "$outfile" -pkeyopt rsa_keygen_bits:2048'
+
+  ▸ scripts/utilities/dev_shell.sh
+      line   962  [asymmetric]  ssh-keygen -t rsa -b 4096 -f ~/ssh_keys/jumpbox_key -N ""
+
+  ▸ scripts/utilities/yubi.sh
+      line    37  [asymmetric]  openssl genpkey -algorithm RSA -out "key_$i.pem" -pkeyopt rsa_keygen_bits:2048
+      line    66  [symmetric]  # Note: read -s hides the PIN as it is typed
+      line   531  [signature]  echo "  9c - Digital Signature"
+      line   563  [random]  # /dev/urandom filtered to acceptable chars
+      line   564  [random]  LC_ALL=C tr -dc 'A-Za-z0-9!@#$%^&*()-_=+[]{}|;:,.<>?' < /dev/urandom | head -c "$length"
+      line   609  [signature]  yubikey_verify_signature document.txt document.txt.sig
+      line   645  [signature]  function yubikey_verify_signature() {
+      line   647  [signature]  echo "Usage: yubikey_verify_signature <file> <signature>"
+      line   663  [kdf]  # Provide a challenge and get the HMAC-SHA1 response
+      line   668  [kdf]  ✅ Uses raw binary for HMAC key
+      line   684  [kdf]  echo "⚙️ Setting up HMAC-SHA1 challenge-response in slot 2 for YubiKey $serial_number"
+      line   724  [kdf]  echo "🔍 Checking HMAC-SHA1 challenge-response slots on YubiKey $serial_number"
+      line   849  [signature]  9c - Digital Signature

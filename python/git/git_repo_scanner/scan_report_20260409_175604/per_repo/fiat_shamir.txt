@@ -1,0 +1,19 @@
+================================================================================
+  REPO       : fiat_shamir
+  FULL NAME  : ursa-mikail/fiat_shamir
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Python
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/fiat_shamir
+  MATCHES    : 4
+================================================================================
+
+  ▸ interactive.py
+      line     6  [hash_func]  x = int(hashlib.md5(secret.encode()).hexdigest(), 16) % curve.n
+
+  ▸ interactive_non.py
+      line     6  [hash_func]  x = int(hashlib.md5(secret.encode()).hexdigest(), 16) % curve.n
+      line    18  [hash_func]  c = int(hashlib.md5(chal_data.encode()).hexdigest(), 16) % curve.n    #
+
+  ▸ readme.md
+      line    37  [signature]  - Suitable for digital signatures and blockchain proofs.

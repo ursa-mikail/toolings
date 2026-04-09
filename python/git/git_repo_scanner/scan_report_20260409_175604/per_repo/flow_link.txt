@@ -1,0 +1,135 @@
+================================================================================
+  REPO       : flow_link
+  FULL NAME  : ursa-mikail/flow_link
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : HTML
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/flow_link
+  MATCHES    : 108
+================================================================================
+
+  ▸ README.md
+      line    86  [symmetric]  | Router     | Branch logic — fork to multiple downstream nodes|
+      line    92  [symmetric]  1. **Drag** nodes from the left palette onto the canvas
+      line    93  [symmetric]  2. **Connect** nodes by dragging from an output port (right ◦) to an input port (left ◦)
+      line    98  [symmetric]  4. **Run Pipeline** — backend executes nodes in topological order, streaming results via WebSocket
+      line    99  [symmetric]  5. **Run Tests** — isolates test nodes and runs assertions, streaming pass/fail live
+      line   118  [symmetric]  "pipeline": { "nodes": [...], "connections": [...] }
+      line   126  [symmetric]  { "type": "pipeline_done", "payload": { "totalNodes": 6, "passedTests": 2, "failedTests": 0, "totalMs": 850 } }
+
+  ▸ backend/internal/api/handlers.go
+      line    47  [symmetric]  // Checks the graph for cycles, disconnected nodes, etc.
+      line   101  [symmetric]  "nodes", len(req.Pipeline.Nodes),
+      line   137  [symmetric]  if len(p.Nodes) == 0 {
+      line   138  [symmetric]  issues = append(issues, Issue{Level: "error", Message: "pipeline has no nodes"})
+      line   145  [symmetric]  for _, n := range p.Nodes {
+      line   167  [symmetric]  for _, n := range p.Nodes {
+      line   174  [symmetric]  // Warn on isolated nodes (no connections at all)
+      line   180  [symmetric]  for _, n := range p.Nodes {
+      line   181  [symmetric]  if !connected[n.ID] && len(p.Nodes) > 1 {
+
+  ▸ backend/internal/executor/executor.go
+      line    29  [symmetric]  nodes := pipeline.Nodes
+      line    31  [symmetric]  nodes = filterByType(nodes, models.NodeTypeTest)
+      line    33  [symmetric]  nodes = filterByIDs(nodes, targetIDs)
+      line    36  [symmetric]  ordered := topoSort(nodes, pipeline.Connections)
+      line    38  [symmetric]  stats := models.PipelineStats{TotalNodes: len(ordered)}
+      line   170  [symmetric]  func filterByType(nodes []models.Node, t models.NodeType) []models.Node {
+      line   172  [symmetric]  for _, n := range nodes {
+      line   180  [symmetric]  func filterByIDs(nodes []models.Node, ids []string) []models.Node {
+      line   186  [symmetric]  for _, n := range nodes {
+      line   194  [symmetric]  // topoSort returns nodes in topological execution order using Kahn's algorithm.
+      line   195  [symmetric]  func topoSort(nodes []models.Node, conns []models.Connection) []models.Node {
+      line   197  [symmetric]  for _, n := range nodes {
+      line   203  [symmetric]  for _, n := range nodes {
+      line   233  [symmetric]  // Append any remaining (disconnected) nodes
+      line   238  [symmetric]  for _, n := range nodes {
+
+  ▸ backend/internal/models/models.go
+      line    40  [symmetric]  // Connection represents a directed edge between two nodes
+      line    53  [symmetric]  Nodes       []Node       `json:"nodes"`
+      line    84  [symmetric]  TotalNodes  int   `json:"totalNodes"`
+
+  ▸ flowlink.html
+      line   208  [symmetric]  /* ── NODES ──────────────────────────────────────── */
+      line   481  [symmetric]  <button class="btn" onclick="autoLayout()" title="Auto arrange nodes">⊞ Layout</button>
+      line   491  [symmetric]  <span>nodes</span>
+      line   492  [symmetric]  <span class="val" id="stat-nodes">0</span>
+      line   511  [symmetric]  <div class="sidebar-label">Pipeline Nodes</div>
+      line   632  [symmetric]  <div class="empty-big">Drop nodes here</div>
+      line   665  [symmetric]  let nodes = [];
+      line   756  [symmetric]  nodes.push(node);
+      line   834  [symmetric]  // ─── DRAG NODES ──────────────────────────────────────────────────────────
+      line   838  [symmetric]  const n = nodes.find(x => x.id === id);
+      line   859  [symmetric]  const n = nodes.find(x => x.id === dragNode);
+      line   931  [symmetric]  const from = nodes.find(n => n.id === fromId);
+      line   932  [symmetric]  const to = nodes.find(n => n.id === toId);
+      line   940  [symmetric]  const n = nodes.find(x => x.id === id);
+      line  1001  [symmetric]  const node = nodes.find(n => n.id === selectedNode);
+      line  1051  [symmetric]  const node = nodes.find(n => n.id === id);
+      line  1060  [symmetric]  const node = nodes.find(n => n.id === id);
+      line  1071  [symmetric]  if (nodes.length === 0) { showToast('No nodes to run'); return; }
+      line  1079  [symmetric]  const sorted = [...nodes].sort((a, b) => order.indexOf(a.type) - order.indexOf(b.type));
+      line  1094  [symmetric]  const testNodes = nodes.filter(n => n.type === 'test');
+      line  1095  [symmetric]  if (testNodes.length === 0) { showToast('No test nodes in pipeline'); return; }
+      line  1097  [symmetric]  logEntry('info', `Running ${testNodes.length} test case(s)`);
+      line  1098  [symmetric]  for (const node of testNodes) {
+      line  1106  [symmetric]  const node = nodes.find(n => n.id === id);
+      line  1175  [symmetric]  const testNodes = nodes.filter(n => n.type === 'test');
+      line  1176  [symmetric]  if (testNodes.length === 0) {
+      line  1177  [symmetric]  content.innerHTML = `<div style="color:var(--muted);font-size:11px;text-align:center;margin-top:32px;">No test nodes in pipeline.<br><br><span style="color:var(--accent);cursor:pointer" onclick="createNode('test',80,80)">+ Add a test node</span></div>`;
+      line  1180  [symmetric]  const items = testNodes.map(n => {
+      line  1191  [symmetric]  <div style="font-size:11px;color:var(--muted)">${testNodes.length} test case(s)</div>
+      line  1198  [symmetric]  const testNodes = nodes.filter(n => n.type === 'test');
+      line  1199  [symmetric]  const passed = testNodes.filter(n => n.status === 'pass').length;
+      line  1200  [symmetric]  document.getElementById('stat-tests').textContent = `${passed}/${testNodes.length}`;
+      line  1255  [symmetric]  const node = nodes.find(n => n.id === ctxNodeId);
+      line  1277  [symmetric]  nodes = nodes.filter(n => n.id !== id);
+      line  1284  [symmetric]  if (nodes.length === 0) document.getElementById('empty-hint').classList.remove('hidden');
+      line  1288  [symmetric]  nodes = []; connections = [];
+      line  1300  [symmetric]  if (nodes.length === 0) return;
+      line  1303  [symmetric]  nodes.forEach(n => {
+      line  1320  [symmetric]  showToast('Nodes arranged automatically');
+      line  1334  [symmetric]  const node = nodes.find(n => n.id === selectedNode);
+      line  1358  [symmetric]  document.getElementById('stat-nodes').textContent = nodes.length;
+
+  ▸ frontend/index.html
+      line    25  [symmetric]  <div class="stat-chip"><span>nodes</span><span class="val" id="stat-nodes">0</span></div>
+      line    33  [symmetric]  <div class="sidebar-label">Pipeline Nodes</div>
+      line    68  [symmetric]  <div class="empty-big">Drop nodes here</div>
+
+  ▸ frontend/src/main.ts
+      line    10  [symmetric]  let nodes: Node[] = []
+      line    32  [symmetric]  const statNodes = document.getElementById('stat-nodes') as HTMLSpanElement
+      line   107  [symmetric]  nodes.push(node)
+      line   175  [symmetric]  // ── Drag nodes ────────────────────────────────────────────────────────────
+      line   374  [symmetric]  if (nodes.length === 0) { showToast('No nodes to run'); return }
+      line   379  [symmetric]  const testNodes = nodes.filter(n => n.type === 'test')
+      line   380  [symmetric]  if (testNodes.length === 0) { showToast('No test nodes'); return }
+      line   381  [symmetric]  await execute('tests', testNodes.map(n => n.id))
+      line   447  [symmetric]  toRun = nodes.filter(n => n.type === 'test')
+      line   449  [symmetric]  toRun = nodes.filter(n => nodeIds.includes(n.id))
+      line   451  [symmetric]  toRun = [...nodes].sort((a, b) => order.indexOf(a.type) - order.indexOf(b.type))
+      line   563  [symmetric]  const testNodes = nodes.filter(n => n.type === 'test')
+      line   564  [symmetric]  if (!testNodes.length) {
+      line   565  [symmetric]  panelContent.innerHTML = `<div class="panel-empty">No test nodes.<br><span class="link" id="add-test-link">+ Add a test node</span></div>`
+      line   571  [symmetric]  const items = testNodes.map(n => {
+      line   582  [symmetric]  <div style="font-size:11px;color:var(--muted)">${testNodes.length} test case(s)</div>
+      line   652  [symmetric]  nodes = nodes.filter(n => n.id !== id)
+      line   659  [symmetric]  if (!nodes.length) emptyHint.classList.remove('hidden')
+      line   667  [symmetric]  nodes.forEach(n => (groups[n.type] ??= []).push(n))
+      line   679  [symmetric]  showToast('Nodes arranged')
+      line   686  [symmetric]  nodes = []; connections = []
+      line   744  [symmetric]  nodes: nodes.map(n => ({ ...n })),
+      line   750  [symmetric]  return nodes.find(n => n.id === id)
+      line   770  [symmetric]  statNodes.textContent = String(nodes.length)
+      line   771  [symmetric]  const testNodes = nodes.filter(n => n.type === 'test')
+      line   772  [symmetric]  const passed = testNodes.filter(n => n.status === 'pass').length
+      line   773  [symmetric]  statTests.textContent = `${passed}/${testNodes.length}`
+
+  ▸ frontend/src/style.css
+      line   180  [symmetric]  /* ── NODES ───────────────────────────────────────── */
+
+  ▸ frontend/src/types.ts
+      line    28  [symmetric]  nodes: Node[]
+      line    52  [symmetric]  totalNodes: number

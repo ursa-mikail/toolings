@@ -1,0 +1,56 @@
+================================================================================
+  REPO       : python_api_site
+  FULL NAME  : ursa-mikail/python_api_site
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Python
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/python_api_site
+  MATCHES    : 35
+================================================================================
+
+  ▸ README.md
+      line     3  [symmetric]  A simple system for managing encrypted site data using AES-GCM encryption.
+      line     3  [cipher_mode]  A simple system for managing encrypted site data using AES-GCM encryption.
+      line     7  [symmetric]  - 🔐 AES-GCM encryption for site data
+      line     7  [cipher_mode]  - 🔐 AES-GCM encryption for site data
+      line     9  [kdf]  - 🔑 Key derivation using PBKDF2
+      line    20  [symmetric]  │   ├── encryption.py      # AES-GCM encryption
+      line    20  [cipher_mode]  │   ├── encryption.py      # AES-GCM encryption
+
+  ▸ app/encryption.py
+      line     4  [py_import]  from cryptography.hazmat.primitives import hashes
+      line     5  [py_import]  from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
+      line     5  [kdf]  from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
+      line     5  [kdf]  from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
+      line     6  [py_import]  from cryptography.hazmat.primitives.ciphers.aead import AESGCM
+      line     7  [py_import]  from cryptography.hazmat.backends import default_backend
+      line    16  [kdf]  """Derive encryption key from passcode using PBKDF2"""
+      line    18  [random]  salt = os.urandom(16)
+      line    20  [kdf]  kdf = PBKDF2HMAC(
+      line    27  [kdf]  key = kdf.derive(self.passcode.encode('utf-8'))
+      line    31  [symmetric]  """Encrypt data using AES-GCM"""
+      line    31  [cipher_mode]  """Encrypt data using AES-GCM"""
+      line    39  [random]  nonce = os.urandom(12)
+      line    45  [symmetric]  """Decrypt data using AES-GCM"""
+      line    45  [cipher_mode]  """Decrypt data using AES-GCM"""
+
+  ▸ app/routes.py
+      line    23  [symmetric]  Encrypt data using AES-GCM
+      line    23  [cipher_mode]  Encrypt data using AES-GCM
+      line    75  [symmetric]  Decrypt data using AES-GCM
+      line    75  [cipher_mode]  Decrypt data using AES-GCM
+
+  ▸ app/site_manager.py
+      line    56  [symmetric]  "encryption_method": "AES-GCM",
+      line    56  [cipher_mode]  "encryption_method": "AES-GCM",
+      line    57  [kdf]  "key_derivation": "PBKDF2-HMAC-SHA256"
+      line    57  [kdf]  "key_derivation": "PBKDF2-HMAC-SHA256"
+
+  ▸ requirements.txt
+      line     4  [dependency]  cryptography
+
+  ▸ site/data/manifest.json
+      line     7  [symmetric]  "encryption_method": "AES-GCM",
+      line     7  [cipher_mode]  "encryption_method": "AES-GCM",
+      line     8  [kdf]  "key_derivation": "PBKDF2-HMAC-SHA256"
+      line     8  [kdf]  "key_derivation": "PBKDF2-HMAC-SHA256"

@@ -1,0 +1,35 @@
+================================================================================
+  REPO       : time_formats
+  FULL NAME  : ursa-mikail/time_formats
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Python
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/time_formats
+  MATCHES    : 18
+================================================================================
+
+  ▸ cert_with_specific_time_validity/cert_with_specific_time_validity_check_00.py
+      line    10  [py_import]  import ssl
+      line    11  [py_import]  from cryptography import x509
+      line    12  [py_import]  from cryptography.hazmat.backends import default_backend
+      line    83  [symmetric]  For general testing: !openssl req -x509 -newkey rsa:2048 -keyout test_key.pem -out "./sample_data/cert.pem" -days 10 -nodes -subj "/CN=Test Cert"
+      line    83  [asymmetric]  For general testing: !openssl req -x509 -newkey rsa:2048 -keyout test_key.pem -out "./sample_data/cert.pem" -days 10 -nodes -subj "/CN=Test Cert"
+
+  ▸ cert_with_specific_time_validity/cert_with_specific_time_validity_make_00.py
+      line     4  [py_import]  from cryptography import x509
+      line     5  [py_import]  from cryptography.x509.oid import NameOID
+      line     6  [py_import]  from cryptography.hazmat.primitives import hashes, serialization
+      line     7  [py_import]  from cryptography.hazmat.primitives.asymmetric import rsa
+      line     7  [asymmetric]  from cryptography.hazmat.primitives.asymmetric import rsa
+      line    15  [asymmetric]  private_key = rsa.generate_private_key(
+      line    17  [key_mgmt]  key_size=2048,
+      line    38  [signature]  .sign(private_key, hashes.SHA256())
+      line    43  [key_mgmt]  f.write(cert.public_bytes(serialization.Encoding.PEM))
+      line    46  [key_mgmt]  f.write(private_key.private_bytes(
+
+  ▸ readme.md
+      line     3  [symmetric]  This project provides a collection of common and custom time formats that can be easily used in Python. It covers a variety of standard date and time representations, ranging from simple `YYYY-MM-DD` formats to more detailed ones such as ISO 8601 with timezone information and Unix timestamps with mi
+
+  ▸ time_formats.py
+      line    29  [symmetric]  "%Y-%m-%d %H:%M:%S.%f",     # Includes microseconds
+      line    52  [symmetric]  current_time_with_micro = current_datetime.strftime(formats[-1])  # Includes microseconds

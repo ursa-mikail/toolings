@@ -1,0 +1,92 @@
+================================================================================
+  REPO       : flask_file_encryption_and_decryption
+  FULL NAME  : ursa-mikail/flask_file_encryption_and_decryption
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Python
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/flask_file_encryption_and_decryption
+  MATCHES    : 65
+================================================================================
+
+  ▸ key_based/app.py
+      line     4  [py_import]  from cryptography.hazmat.primitives.ciphers.aead import AESGCM
+      line     6  [py_import]  import secrets
+      line    19  [key_mgmt]  def generate_key(self) -> tuple:
+      line    20  [symmetric]  """Generate a random 256-bit AES key"""
+      line    44  [symmetric]  """Encrypt file using AES-GCM with provided or randomly generated key"""
+      line    44  [cipher_mode]  """Encrypt file using AES-GCM with provided or randomly generated key"""
+      line    52  [key_mgmt]  key, key_hex, key_b64 = self.generate_key()
+      line    57  [symmetric]  # Initialize AES-GCM
+      line    57  [cipher_mode]  # Initialize AES-GCM
+      line    85  [symmetric]  """Decrypt file using AES-GCM"""
+      line    85  [cipher_mode]  """Decrypt file using AES-GCM"""
+      line   110  [symmetric]  # Initialize AES-GCM and decrypt
+      line   110  [cipher_mode]  # Initialize AES-GCM and decrypt
+      line   130  [key_mgmt]  @app.route('/generate_key', methods=['GET'])
+      line   131  [key_mgmt]  def generate_key():
+      line   134  [key_mgmt]  key, key_hex, key_b64 = encryptor.generate_key()
+
+  ▸ key_based/readme.md
+      line     3  [symmetric]  A secure web-based file encryption/decryption tool using AES-GCM with randomly generated 256-bit keys.
+      line     3  [cipher_mode]  A secure web-based file encryption/decryption tool using AES-GCM with randomly generated 256-bit keys.
+      line     6  [key_mgmt]  http://localhost:5000/generate_key
+      line    18  [symmetric]  ✅ **Strong Encryption**: AES-GCM (256-bit keys)
+      line    18  [cipher_mode]  ✅ **Strong Encryption**: AES-GCM (256-bit keys)
+      line   101  [symmetric]  1. **Key Generation**: Random 256-bit (32-byte) AES key using `secrets.token_bytes()`
+      line   102  [symmetric]  2. **Nonce Generation**: Random 12-byte nonce for AES-GCM
+      line   102  [cipher_mode]  2. **Nonce Generation**: Random 12-byte nonce for AES-GCM
+      line   103  [symmetric]  3. **Encryption**: AES-GCM mode (provides authentication + confidentiality)
+      line   103  [symmetric]  3. **Encryption**: AES-GCM mode (provides authentication + confidentiality)
+      line   103  [cipher_mode]  3. **Encryption**: AES-GCM mode (provides authentication + confidentiality)
+      line   122  [symmetric]  - **AES-GCM**: Provides both encryption and authentication
+      line   122  [symmetric]  - **AES-GCM**: Provides both encryption and authentication
+      line   122  [cipher_mode]  - **AES-GCM**: Provides both encryption and authentication
+
+  ▸ key_based/requirements.txt
+      line     2  [dependency]  cryptography==41.0.3
+
+  ▸ key_based/static/js/app.js
+      line    68  [key_mgmt]  console.log('Fetching /generate_key...');
+      line    69  [key_mgmt]  const response = await fetch('/generate_key');
+
+  ▸ key_based/templates/index.html
+      line    12  [symmetric]  <p>Encrypt and decrypt files using AES-GCM encryption with 256-bit keys.</p>
+      line    12  [cipher_mode]  <p>Encrypt and decrypt files using AES-GCM encryption with 256-bit keys.</p>
+
+  ▸ password_based/app.py
+      line     4  [py_import]  from cryptography.hazmat.primitives import hashes
+      line     5  [py_import]  from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
+      line     5  [kdf]  from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
+      line     5  [kdf]  from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
+      line     6  [py_import]  from cryptography.hazmat.primitives.ciphers.aead import AESGCM
+      line     7  [py_import]  from cryptography.hazmat.backends import default_backend
+      line     9  [py_import]  import secrets
+      line    23  [symmetric]  """Derive AES key from password using PBKDF2"""
+      line    23  [kdf]  """Derive AES key from password using PBKDF2"""
+      line    24  [kdf]  kdf = PBKDF2HMAC(
+      line    31  [kdf]  key = kdf.derive(password.encode())
+      line    35  [symmetric]  """Encrypt file using AES-GCM"""
+      line    35  [cipher_mode]  """Encrypt file using AES-GCM"""
+      line    44  [symmetric]  # Initialize AES-GCM
+      line    44  [cipher_mode]  # Initialize AES-GCM
+      line    73  [symmetric]  """Decrypt file using AES-GCM"""
+      line    73  [cipher_mode]  """Decrypt file using AES-GCM"""
+      line   100  [symmetric]  # Initialize AES-GCM and decrypt
+      line   100  [cipher_mode]  # Initialize AES-GCM and decrypt
+
+  ▸ password_based/readme.md
+      line    37  [symmetric]  ✅ File encryption with AES-GCM
+      line    37  [cipher_mode]  ✅ File encryption with AES-GCM
+      line    38  [kdf]  ✅ Password-based key derivation (PBKDF2)
+      line    49  [kdf]  Uses PBKDF2 with 100,000 iterations for key derivation
+      line    51  [symmetric]  AES-GCM provides both confidentiality and authentication
+      line    51  [symmetric]  AES-GCM provides both confidentiality and authentication
+      line    51  [cipher_mode]  AES-GCM provides both confidentiality and authentication
+      line    59  [symmetric]  The application provides a complete, secure file encryption/decryption solution with a user-friendly web interface!
+
+  ▸ password_based/requirements.txt
+      line     2  [dependency]  cryptography==41.0.3
+
+  ▸ password_based/templates/index.html
+      line    12  [symmetric]  <p>Encrypt and decrypt files using AES-GCM encryption with password-derived keys.</p>
+      line    12  [cipher_mode]  <p>Encrypt and decrypt files using AES-GCM encryption with password-derived keys.</p>

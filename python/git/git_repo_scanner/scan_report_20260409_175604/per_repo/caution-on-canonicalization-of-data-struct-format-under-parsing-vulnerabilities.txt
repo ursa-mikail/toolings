@@ -1,0 +1,12 @@
+================================================================================
+  REPO       : caution-on-canonicalization-of-data-struct-format-under-parsing-vulnerabilities
+  FULL NAME  : ursa-mikail/caution-on-canonicalization-of-data-struct-format-under-parsing-vulnerabilities
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Python
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/caution-on-canonicalization-of-data-struct-format-under-parsing-vulnerabilities
+  MATCHES    : 1
+================================================================================
+
+  ▸ readme.md
+      line    21  [symmetric]  The common canonicalization strategy ("exc-c14n") removes comments, interpreting the NameId as "trump@org.com.evil.com". The common parsing strategy sees this as a sequence of text nodes and comments, and interprets only the first node: "trump@org.com", which is not what the IdP (Identity Provider, 

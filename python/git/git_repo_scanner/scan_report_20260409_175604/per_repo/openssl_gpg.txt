@@ -1,0 +1,66 @@
+================================================================================
+  REPO       : openssl_gpg
+  FULL NAME  : ursa-mikail/openssl_gpg
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Shell
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/openssl_gpg
+  MATCHES    : 35
+================================================================================
+
+  ▸ demo_for_gpg_usage/generate_gpg_test_key.sh
+      line    23  [asymmetric]  Key-Type: RSA
+
+  ▸ demo_for_gpg_usage/gpg_util_01.sh
+      line    35  [asymmetric]  Key-Type: RSA
+
+  ▸ generate_key_and_cert.sh
+      line    45  [signature]  keyUsage = digitalSignature
+      line   100  [asymmetric]  Key-Type: RSA
+      line   121  [asymmetric]  Key-Type: RSA
+
+  ▸ gpg/in/gpg_cipher_batch
+      line     2  [asymmetric]  Key-Type: RSA
+
+  ▸ gpg/in/gpg_sign_batch
+      line     2  [asymmetric]  Key-Type: RSA
+
+  ▸ openssl/in/openssl_sign.cnf
+      line    16  [signature]  keyUsage = digitalSignature
+
+  ▸ openssl/out/openssl_cipher_cert.pem
+      line     1  [key_mgmt]  -----BEGIN CERTIFICATE-----
+
+  ▸ openssl/out/openssl_sign_cert.pem
+      line     1  [key_mgmt]  -----BEGIN CERTIFICATE-----
+
+  ▸ read_key_params.py
+      line     3  [py_import]  from cryptography.hazmat.primitives.serialization import load_pem_private_key
+      line     3  [key_mgmt]  from cryptography.hazmat.primitives.serialization import load_pem_private_key
+      line     4  [py_import]  from cryptography.hazmat.backends import default_backend
+      line     9  [key_mgmt]  key = load_pem_private_key(key_data, password=None, backend=default_backend())
+      line    42  [py_import]  import pgpy
+      line    49  [asymmetric]  # For RSA keys, access key material:
+      line    52  [asymmetric]  # e.g. subkey._key._key material for RSA params
+      line    69  [key_mgmt]  -----BEGIN PUBLIC KEY-----
+
+  ▸ read_public_params.py
+      line     1  [py_import]  from cryptography.hazmat.primitives.serialization import load_pem_public_key
+      line     1  [key_mgmt]  from cryptography.hazmat.primitives.serialization import load_pem_public_key
+      line     2  [py_import]  from cryptography.hazmat.backends import default_backend
+      line    14  [key_mgmt]  pub_key = load_pem_public_key(pub_data, backend=default_backend())
+      line    16  [asymmetric]  # Example for RSA:
+      line    23  [py_import]  from cryptography import x509
+      line    24  [py_import]  from cryptography.hazmat.backends import default_backend
+      line    38  [asymmetric]  print(f"Modulus (n): {hex(numbers.n)}")  # for RSA
+
+  ▸ readme.md
+      line     4  [asymmetric]  ❌ You cannot directly import an OpenSSL-generated RSA keypair into GPG for use as an OpenPGP key, because GPG uses its own OpenPGP format, which is not the same as X.509/PKCS standards used by OpenSSL.
+      line     8  [asymmetric]  | Generate 4096-bit RSA keypair | OpenSSL      | Done via config                               |
+      line    17  [asymmetric]  | 1    | Generate OpenSSL RSA 4096 signing key      | OpenSSL |
+      line    19  [asymmetric]  | 3    | Generate OpenSSL RSA 4096 encryption key   | OpenSSL |
+      line    21  [asymmetric]  | 5    | Generate GPG RSA 4096 signing key          | GnuPG   |
+      line    23  [asymmetric]  | 7    | Generate GPG RSA 4096 encryption key       | GnuPG   |
+      line    95  [asymmetric]  gpg:                using RSA key 0A627B97663F8AF12ADE83FDEA060A34D72D8B8A
+      line   151  [asymmetric]  gpg:                using RSA key 0A627B97663F8AF12ADE83FDEA060A34D72D8B8A
+      line   206  [symmetric]  It includes a BIST (Built-In Self Test) function at the bottom to demonstrate and validate these steps.

@@ -1,0 +1,76 @@
+================================================================================
+  REPO       : secure_uefi_helloworld
+  FULL NAME  : ursa-mikail/secure_uefi_helloworld
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Shell
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/secure_uefi_helloworld
+  MATCHES    : 47
+================================================================================
+
+  ▸ Makefile
+      line   111  [asymmetric]  echo "Generating RSA keys..."; \
+      line   113  [asymmetric]  $(OPENSSL) rsa -in $(KEYS_DIR)/private_key.pem -pubout -out $(KEYS_DIR)/public_key.pem 2>/dev/null; \
+      line   114  [asymmetric]  $(OPENSSL) rsa -in $(KEYS_DIR)/private_key.pem -pubout -outform DER -out $(KEYS_DIR)/public_key.der 2>/dev/null; \
+
+  ▸ Makefile.bak
+      line    70  [asymmetric]  echo "Generating RSA keys..."; \
+      line    72  [asymmetric]  $(OPENSSL) rsa -in $(KEYS_DIR)/private_key.pem -pubout -out $(KEYS_DIR)/public_key.pem 2>/dev/null; \
+      line    73  [asymmetric]  $(OPENSSL) rsa -in $(KEYS_DIR)/private_key.pem -pubout -outform DER -out $(KEYS_DIR)/public_key.der 2>/dev/null; \
+
+  ▸ create_uefi_project.sh
+      line   301  [asymmetric]  echo "Generating RSA keys..."; \
+      line   303  [asymmetric]  $(OPENSSL) rsa -in $(KEYS_DIR)/private_key.pem -pubout -out $(KEYS_DIR)/public_key.pem 2>/dev/null; \
+      line   304  [asymmetric]  $(OPENSSL) rsa -in $(KEYS_DIR)/private_key.pem -pubout -outform DER -out $(KEYS_DIR)/public_key.der 2>/dev/null; \
+      line   388  [asymmetric]  echo "Generating RSA keys..."
+      line   392  [asymmetric]  openssl rsa -in private_key.pem -pubout -out public_key.pem 2>/dev/null
+      line   393  [asymmetric]  openssl rsa -in private_key.pem -pubout -outform DER -out public_key.der 2>/dev/null
+      line   426  [asymmetric]  make sign     # Sign with RSA keys
+      line   437  [asymmetric]  - keys/              - RSA signing keys
+      line   441  [asymmetric]  2. make sign   → Signs .efi with RSA key
+      line   463  [asymmetric]  echo "   2. make sign   - Sign with RSA keys"
+
+  ▸ generate_makefile.py
+      line    75  [asymmetric]  <TAB><TAB>echo "Generating RSA keys..."; \\
+      line    77  [asymmetric]  <TAB><TAB>$(OPENSSL) rsa -in $(KEYS_DIR)/private_key.pem -pubout -out $(KEYS_DIR)/public_key.pem 2>/dev/null; \\
+      line    78  [asymmetric]  <TAB><TAB>$(OPENSSL) rsa -in $(KEYS_DIR)/private_key.pem -pubout -outform DER -out $(KEYS_DIR)/public_key.der 2>/dev/null; \\
+
+  ▸ menu.sh
+      line   246  [asymmetric]  ✓ Digitally signed with RSA keys
+      line   367  [asymmetric]  ├── keys/                     # RSA keys (private_key.pem is SECRET!)
+
+  ▸ readme.md
+      line     3  [signature]  A complete implementation of a secure UEFI application with digital signature verification, remote build capabilities, and QEMU testing support.
+      line     8  [asymmetric]  make sign     # Sign with RSA keys
+      line    31  [asymmetric]  - keys/              - RSA signing keys
+      line    35  [asymmetric]  2. make sign   → Signs .efi with RSA key
+      line   169  [asymmetric]  - Uses RSA digital signatures for verification
+      line   169  [signature]  - Uses RSA digital signatures for verification
+      line   172  [symmetric]  - Includes automated build, sign, and verify pipeline
+      line   177  [asymmetric]  - **Digital Signing**: RSA-2048 signature generation and verification
+      line   235  [asymmetric]  # Sign with RSA keys (auto-generates keys if needed)
+      line   282  [asymmetric]  │   └── generate_keys.sh           # RSA key generation script
+      line   284  [asymmetric]  ├── keys/                          # RSA signing keys (gitignored)
+      line   300  [signature]  └── helloworld.sig                 # Digital signature (generated)
+      line   341  [asymmetric]  Generating RSA keys...
+      line   465  [asymmetric]  3. Sign with RSA keys
+      line   642  [asymmetric]  openssl rsa -in keys/private_key.pem -pubout -out keys/public_key.pem
+
+  ▸ scripts/generate_keys.sh
+      line     2  [asymmetric]  echo "Generating RSA keys..."
+      line     6  [asymmetric]  openssl rsa -in private_key.pem -pubout -out public_key.pem 2>/dev/null
+      line     7  [asymmetric]  openssl rsa -in private_key.pem -pubout -outform DER -out public_key.der 2>/dev/null
+
+  ▸ secure_uefi_helloworld/Makefile
+      line    61  [asymmetric]  echo "Generating RSA keys..."; \
+      line    63  [asymmetric]  $(OPENSSL) rsa -in $(KEYS_DIR)/private_key.pem -pubout -out $(KEYS_DIR)/public_key.pem 2>/dev/null; \
+      line    64  [asymmetric]  $(OPENSSL) rsa -in $(KEYS_DIR)/private_key.pem -pubout -outform DER -out $(KEYS_DIR)/public_key.der 2>/dev/null; \
+
+  ▸ secure_uefi_helloworld/README.md
+      line     6  [asymmetric]  make sign     # Sign with RSA keys
+      line    14  [asymmetric]  - keys/              RSA signing keys
+
+  ▸ secure_uefi_helloworld/scripts/generate_keys.sh
+      line     2  [asymmetric]  echo "Generating RSA keys..."
+      line     5  [asymmetric]  openssl rsa -in private_key.pem -pubout -out public_key.pem 2>/dev/null
+      line     6  [asymmetric]  openssl rsa -in private_key.pem -pubout -outform DER -out public_key.der 2>/dev/null

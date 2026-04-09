@@ -1,0 +1,1603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Code Pattern Scan — ursa-mikail — https://github.com / ursa-mikail</title>
+<style>
+:root{
+  --bg:#0d1117;--surf:#161b22;--surf2:#21262d;--bdr:#30363d;
+  --tx:#e6edf3;--mu:#8b949e;--acc:#58a6ff;--grn:#3fb950;--red:#f85149;
+  --rad:8px;--font:'Segoe UI',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--tx);font-family:var(--font);font-size:14px;
+      line-height:1.6;padding:2.5rem 3rem}
+h1{font-size:1.7rem;font-weight:800;color:var(--acc);margin-bottom:.2rem}
+h2{font-size:1rem;font-weight:700;color:var(--tx);margin:2.5rem 0 1rem;
+    border-left:3px solid var(--acc);padding-left:.75rem;letter-spacing:.02em}
+.sub{color:var(--mu);font-size:.82rem;margin-bottom:2rem}
+.stats{display:flex;gap:.85rem;flex-wrap:wrap;margin-bottom:2.5rem}
+.stat{background:var(--surf);border:1px solid var(--bdr);border-radius:var(--rad);
+       padding:.9rem 1.4rem;flex:1;min-width:130px}
+.sv{font-size:2rem;font-weight:900;color:var(--acc)}
+.sl{color:var(--mu);font-size:.75rem;margin-top:.1rem;text-transform:uppercase;letter-spacing:.07em}
+.cats{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2.5rem}
+.cat-badge{background:color-mix(in srgb,var(--c) 12%,var(--surf));
+            border:1px solid color-mix(in srgb,var(--c) 50%,transparent);
+            border-radius:20px;padding:.28rem .85rem;display:flex;align-items:center;gap:.45rem}
+.cn{font-weight:600;color:var(--c);font-size:.8rem}
+.cc{background:var(--c);color:#000;border-radius:20px;padding:0 .45rem;
+     font-weight:800;font-size:.75rem}
+table{width:100%;border-collapse:collapse;background:var(--surf);
+       border-radius:var(--rad);overflow:hidden;border:1px solid var(--bdr);margin-bottom:2rem}
+thead{background:var(--surf2)}
+th{text-align:left;padding:.65rem 1rem;color:var(--mu);font-size:.75rem;
+    text-transform:uppercase;letter-spacing:.06em}
+td{padding:.6rem 1rem;border-top:1px solid var(--bdr);vertical-align:top}
+.ow{font-weight:700;color:var(--acc)}
+.rl{color:var(--mu);font-size:.8rem}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:.85rem}
+.card{background:var(--surf);border:1px solid var(--bdr);border-radius:var(--rad);
+       padding:1.1rem;transition:border-color .15s}
+.card:hover{border-color:var(--acc)}
+.card-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.4rem}
+.rname{font-size:.95rem;font-weight:700;color:var(--acc);text-decoration:none}
+.rname:hover{text-decoration:underline}
+.rmeta{margin-left:.4rem}
+.lang,.vis{font-size:.7rem;color:var(--mu);background:var(--surf2);
+            border:1px solid var(--bdr);border-radius:4px;padding:.1rem .4rem;margin-left:.25rem}
+.mbadge{background:var(--acc);color:#000;font-weight:900;border-radius:20px;
+         padding:.1rem .7rem;font-size:.82rem;white-space:nowrap}
+.owner-line{font-size:.8rem;color:var(--mu);margin-bottom:.35rem}
+.desc{font-size:.8rem;color:var(--mu);font-style:italic;margin-bottom:.4rem}
+.pills{display:flex;flex-wrap:wrap;gap:.3rem;margin-top:.45rem}
+.pill{font-size:.7rem;font-weight:700;color:#fff;border-radius:20px;padding:.12rem .55rem}
+.dlink{display:inline-block;margin-top:.7rem;font-size:.78rem;color:var(--acc);text-decoration:none}
+.dlink:hover{text-decoration:underline}
+section{margin-bottom:2rem}
+footer{color:var(--mu);font-size:.75rem;margin-top:3rem;padding-top:1rem;
+        border-top:1px solid var(--bdr)}
+</style>
+</head>
+<body>
+<h1>🔍 Code Pattern Scan — ursa-mikail</h1>
+<p class="sub">Target: <strong>https://github.com / ursa-mikail</strong>&nbsp;·&nbsp;Scanned: 2026-04-09T17:57:10.755569Z</p>
+
+<div class="stats">
+  <div class="stat"><div class="sv">185</div><div class="sl">Repos Scanned</div></div>
+  <div class="stat"><div class="sv" style="color:var(--grn)">137</div><div class="sl">With Matches</div></div>
+  <div class="stat"><div class="sv">18953</div><div class="sl">Total Matches</div></div>
+  <div class="stat"><div class="sv">14</div><div class="sl">Categories Hit</div></div>
+</div>
+
+<section>
+  <h2>📊 Matches by Category</h2>
+  <div class="cats"><div class="cat-badge" style="--c:#6366f1"><span class="cn">symmetric</span><span class="cc">9771</span></div><div class="cat-badge" style="--c:#f59e0b"><span class="cn">asymmetric</span><span class="cc">2015</span></div><div class="cat-badge" style="--c:#ef4444"><span class="cn">cipher_mode</span><span class="cc">1872</span></div><div class="cat-badge" style="--c:#10b981"><span class="cn">kdf</span><span class="cc">1355</span></div><div class="cat-badge" style="--c:#3b82f6"><span class="cn">post_quantum</span><span class="cc">995</span></div><div class="cat-badge" style="--c:#8b5cf6"><span class="cn">hash_func</span><span class="cc">634</span></div><div class="cat-badge" style="--c:#ec4899"><span class="cn">signature</span><span class="cc">622</span></div><div class="cat-badge" style="--c:#64748b"><span class="cn">fpe_token</span><span class="cc">618</span></div><div class="cat-badge" style="--c:#14b8a6"><span class="cn">py_import</span><span class="cc">456</span></div><div class="cat-badge" style="--c:#f97316"><span class="cn">key_mgmt</span><span class="cc">303</span></div><div class="cat-badge" style="--c:#06b6d4"><span class="cn">random</span><span class="cc">205</span></div><div class="cat-badge" style="--c:#84cc16"><span class="cn">zkp</span><span class="cc">98</span></div><div class="cat-badge" style="--c:#a855f7"><span class="cn">dependency</span><span class="cc">6</span></div><div class="cat-badge" style="--c:#e11d48"><span class="cn">tls</span><span class="cc">3</span></div></div>
+</section>
+
+<section>
+  <h2>👥 Owners with Matching Repos</h2>
+  <table>
+    <thead><tr><th>Owner</th><th>Repos</th><th>Repository Names</th></tr></thead>
+    <tbody><tr><td class='ow'>ursa-mikail</td><td>137</td><td class='rl'>ai_ml_vulnerabilities, aes_utility, authentication_authorization_system, At-The-Back-Of-Your-Head-An-Insight-To-Mnemonics, activity_monitoring, batch_certificate_generation_with_intermediary_ca_automation, beginning_ML_analytics, birthday_paradox, blockchain_simple_learn_demo, caution-on-canonicalization-of-data-struct-format-under-parsing-vulnerabilities, cache_friendly_b_tree_node_in_rust, challenge_and_response, chartjs-react-tutorial, cert_utility, bolting_and_molting_with_rust_an_anarchist_coding_cook_book, bolting_and_molting_with_golang_an_anarchist_coding_cook_book, clean_zsh_history, cipher_cli, code_profile_and_edit, ciphers, contact_tracing_simulation_on_world_map, context_management, cipher_js, credit_card_tokens, cuda_c_starter_kit, cryptographic_permit_system_with_dynamic_policy_ui, crypto_frails_and_fails, curl-email, data_pull, demo_timing_attack, data_format, double_linked_list_chained_permit, ElGamal_mix_net_shuffle, entropy_comparison_word_lists_vs_random_data, emotion_tree_visualization, fiat_shamir, environment_compatibility_checker, erasure_coding, extracting_specific_frames_from_video_with_pytorch, file_activity_monitor_with_sha_256_hash_calculation, flask_file_encryption_and_decryption, flask_hello, file_embedded_with_file_with_LSB_encoding, folder_file_profiling, flow_link, fpe_with_key_versioning, form-signer, git_all_repo_static, glassworm_attack_illustration, Golang-Introspect-Utility, guide_to_security_notions_in_modern_encryption_ind_cpa_ind_cca1_and_ind_cca2, hello_lattigo_demo, golang_file_encryption_and_decryption, iframed_multiple_readmes, hybrid_key_cipher, image_registry, in_mem_context_level_encrypted_key_material_store, JSON_Filesystem_Emulator, key_lifecycle_statemachine, Kharon, KZG_polynomial_commitments, lamport_hash_signature, jwt_rsa_ecc, leansig_sdk_usage_tutorial, length_preserving_cipher_using_ciphertext_stealing, LEAN_LEET_-33-_-3-, linearity_in_aes_xts_multipliers, location_display, livemetrics, memory_management_context, memory_layout, mem_safe_copy_transfer, mikail-eliyah.github.io, mechanisms, merkle_tree, mem_remap, mtls_termination_with_server_key_inspection, multi_event_deterministic_uncertainty_scoring_analysis__medusa, mutex_payment, nist_sp800_90b_tool_usage, ollama_guide, openssl_gpg, openssl_pqc_tutorial, payment_statemachine_infra, policy_as_code_automation_for_ai_agents_at_scale, plot_3d_intro, preventing_identity_spoofing_with_nonce_based_verification, proof_of_work, profile_secure_sharing, pqc_mechanisms, Python-Introspect-Utility, pqc_crypto_joints, python_api_site, python_argparse_demo, qr_code_json_encoder_decoder_for_contact_share, randomized_device_connections_with_directions, reference_codes, ring_and_group_signatures, safety_assurance_numbers, python-gaia, remote_go_agent_via_ssh, searchable_encryption_demo, SDK_secure_membrane, secure_cv_profile_system, secure_uefi_helloworld, sessional_secrecy, set_up_kaggle_access_given_ciphered_token_and_get_dataset, shamir_share, pqc_golang_demo, shell_secret_keep, shell_menu_rsa_sign, shell_script_utility, signals_and_noise, templates, terraform_architecture_diagram_draw, Test_Framework_For_Reversible_Action, text_diff_utilities, threat_modeling_framework_and_sop, test_ground_observatory_zone_00, site_announcement, tokenized_data_encryption_and_decryption, time_formats, tree_pruning_text, trial_ffx_based_on_ff1, trial_high_availability_stress_testing_for_aes_gcm_key_rotation, trial_multiply_functions_benchmark, toolings, uml, trial_QR_file, ursa_bbs_python, verifiable_random_functions, word_cloud_maker, yubi_util_demo, yaml_tree_visualization, x509_js, yubikey_usage, app_site_demo</td></tr></tbody>
+  </table>
+</section>
+
+<section>
+  <h2>📁 Matching Repositories (137)</h2>
+  <div class="cards">
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/app_site_demo" target="_blank">app_site_demo</a>
+              <span class="rmeta"><span class='lang'>Shell</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">7245</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#6366f1">symmetric 5495</span><span class="pill" style="background:#f59e0b">asymmetric 469</span><span class="pill" style="background:#ef4444">cipher_mode 375</span><span class="pill" style="background:#64748b">fpe_token 359</span><span class="pill" style="background:#10b981">kdf 295</span><span class="pill" style="background:#8b5cf6">hash_func 145</span><span class="pill" style="background:#ec4899">signature 94</span><span class="pill" style="background:#f97316">key_mgmt 13</span></div>
+          <a class="dlink" href="per_repo/app_site_demo.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/pqc_golang_demo" target="_blank">pqc_golang_demo</a>
+              <span class="rmeta"><span class='lang'>Go</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">2097</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#6366f1">symmetric 817</span><span class="pill" style="background:#3b82f6">post_quantum 544</span><span class="pill" style="background:#f59e0b">asymmetric 340</span><span class="pill" style="background:#ec4899">signature 189</span><span class="pill" style="background:#10b981">kdf 95</span><span class="pill" style="background:#f97316">key_mgmt 60</span><span class="pill" style="background:#ef4444">cipher_mode 34</span><span class="pill" style="background:#84cc16">zkp 17</span><span class="pill" style="background:#8b5cf6">hash_func 1</span></div>
+          <a class="dlink" href="per_repo/pqc_golang_demo.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/ciphers" target="_blank">ciphers</a>
+              <span class="rmeta"><span class='lang'>Python</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">858</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#6366f1">symmetric 329</span><span class="pill" style="background:#ef4444">cipher_mode 247</span><span class="pill" style="background:#10b981">kdf 110</span><span class="pill" style="background:#14b8a6">py_import 64</span><span class="pill" style="background:#f59e0b">asymmetric 42</span><span class="pill" style="background:#06b6d4">random 36</span><span class="pill" style="background:#f97316">key_mgmt 24</span><span class="pill" style="background:#ec4899">signature 6</span></div>
+          <a class="dlink" href="per_repo/ciphers.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/pqc_crypto_joints" target="_blank">pqc_crypto_joints</a>
+              <span class="rmeta"><span class='lang'>Go</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">766</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#6366f1">symmetric 296</span><span class="pill" style="background:#3b82f6">post_quantum 242</span><span class="pill" style="background:#f59e0b">asymmetric 159</span><span class="pill" style="background:#ec4899">signature 31</span><span class="pill" style="background:#10b981">kdf 24</span><span class="pill" style="background:#ef4444">cipher_mode 14</span></div>
+          <a class="dlink" href="per_repo/pqc_crypto_joints.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/mechanisms" target="_blank">mechanisms</a>
+              <span class="rmeta"><span class='lang'>Python</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">731</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#6366f1">symmetric 325</span><span class="pill" style="background:#ef4444">cipher_mode 216</span><span class="pill" style="background:#10b981">kdf 81</span><span class="pill" style="background:#14b8a6">py_import 43</span><span class="pill" style="background:#f97316">key_mgmt 30</span><span class="pill" style="background:#06b6d4">random 16</span><span class="pill" style="background:#ec4899">signature 12</span><span class="pill" style="background:#f59e0b">asymmetric 7</span><span class="pill" style="background:#84cc16">zkp 1</span></div>
+          <a class="dlink" href="per_repo/mechanisms.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/credit_card_tokens" target="_blank">credit_card_tokens</a>
+              <span class="rmeta"><span class='lang'>Python</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">557</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#8b5cf6">hash_func 378</span><span class="pill" style="background:#64748b">fpe_token 112</span><span class="pill" style="background:#10b981">kdf 58</span><span class="pill" style="background:#14b8a6">py_import 6</span><span class="pill" style="background:#6366f1">symmetric 3</span></div>
+          <a class="dlink" href="per_repo/credit_card_tokens.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/site_announcement" target="_blank">site_announcement</a>
+              <span class="rmeta"><span class='lang'>HTML</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">500</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#6366f1">symmetric 366</span><span class="pill" style="background:#10b981">kdf 46</span><span class="pill" style="background:#f59e0b">asymmetric 29</span><span class="pill" style="background:#ef4444">cipher_mode 25</span><span class="pill" style="background:#8b5cf6">hash_func 19</span><span class="pill" style="background:#84cc16">zkp 3</span><span class="pill" style="background:#3b82f6">post_quantum 3</span><span class="pill" style="background:#f97316">key_mgmt 3</span><span class="pill" style="background:#64748b">fpe_token 3</span><span class="pill" style="background:#ec4899">signature 2</span><span class="pill" style="background:#06b6d4">random 1</span></div>
+          <a class="dlink" href="per_repo/site_announcement.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/crypto_frails_and_fails" target="_blank">crypto_frails_and_fails</a>
+              <span class="rmeta"><span class='lang'>Python</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">422</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#6366f1">symmetric 158</span><span class="pill" style="background:#ef4444">cipher_mode 113</span><span class="pill" style="background:#f59e0b">asymmetric 60</span><span class="pill" style="background:#14b8a6">py_import 35</span><span class="pill" style="background:#06b6d4">random 34</span><span class="pill" style="background:#8b5cf6">hash_func 12</span><span class="pill" style="background:#f97316">key_mgmt 4</span><span class="pill" style="background:#10b981">kdf 3</span><span class="pill" style="background:#84cc16">zkp 2</span><span class="pill" style="background:#a855f7">dependency 1</span></div>
+          <a class="dlink" href="per_repo/crypto_frails_and_fails.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/cert_utility" target="_blank">cert_utility</a>
+              <span class="rmeta"><span class='lang'>Python</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">415</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#f59e0b">asymmetric 188</span><span class="pill" style="background:#6366f1">symmetric 90</span><span class="pill" style="background:#f97316">key_mgmt 40</span><span class="pill" style="background:#ec4899">signature 37</span><span class="pill" style="background:#14b8a6">py_import 32</span><span class="pill" style="background:#ef4444">cipher_mode 16</span><span class="pill" style="background:#10b981">kdf 9</span><span class="pill" style="background:#e11d48">tls 3</span></div>
+          <a class="dlink" href="per_repo/cert_utility.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/length_preserving_cipher_using_ciphertext_stealing" target="_blank">length_preserving_cipher_using_ciphertext_stealing</a>
+              <span class="rmeta"><span class='lang'>Python</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">350</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#6366f1">symmetric 191</span><span class="pill" style="background:#ef4444">cipher_mode 146</span><span class="pill" style="background:#14b8a6">py_import 6</span><span class="pill" style="background:#64748b">fpe_token 3</span><span class="pill" style="background:#10b981">kdf 2</span><span class="pill" style="background:#06b6d4">random 2</span></div>
+          <a class="dlink" href="per_repo/length_preserving_cipher_using_ciphertext_stealing.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/openssl_pqc_tutorial" target="_blank">openssl_pqc_tutorial</a>
+              <span class="rmeta"><span class='lang'>Makefile</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">334</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#f59e0b">asymmetric 238</span><span class="pill" style="background:#3b82f6">post_quantum 47</span><span class="pill" style="background:#6366f1">symmetric 27</span><span class="pill" style="background:#ec4899">signature 22</span></div>
+          <a class="dlink" href="per_repo/openssl_pqc_tutorial.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/aes_utility" target="_blank">aes_utility</a>
+              <span class="rmeta"><span class='lang'>Python</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">320</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#6366f1">symmetric 115</span><span class="pill" style="background:#ef4444">cipher_mode 96</span><span class="pill" style="background:#10b981">kdf 60</span><span class="pill" style="background:#14b8a6">py_import 30</span><span class="pill" style="background:#06b6d4">random 19</span></div>
+          <a class="dlink" href="per_repo/aes_utility.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/searchable_encryption_demo" target="_blank">searchable_encryption_demo</a>
+              <span class="rmeta"><span class='lang'>Go</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">279</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#ef4444">cipher_mode 167</span><span class="pill" style="background:#6366f1">symmetric 78</span><span class="pill" style="background:#10b981">kdf 27</span><span class="pill" style="background:#14b8a6">py_import 5</span><span class="pill" style="background:#f97316">key_mgmt 1</span><span class="pill" style="background:#06b6d4">random 1</span></div>
+          <a class="dlink" href="per_repo/searchable_encryption_demo.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/python-gaia" target="_blank">python-gaia</a>
+              <span class="rmeta"><span class='lang'>Python</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">247</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#6366f1">symmetric 77</span><span class="pill" style="background:#14b8a6">py_import 37</span><span class="pill" style="background:#ef4444">cipher_mode 28</span><span class="pill" style="background:#f59e0b">asymmetric 28</span><span class="pill" style="background:#64748b">fpe_token 21</span><span class="pill" style="background:#f97316">key_mgmt 19</span><span class="pill" style="background:#10b981">kdf 16</span><span class="pill" style="background:#06b6d4">random 12</span><span class="pill" style="background:#ec4899">signature 7</span><span class="pill" style="background:#8b5cf6">hash_func 2</span></div>
+          <a class="dlink" href="per_repo/python-gaia.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/bolting_and_molting_with_golang_an_anarchist_coding_cook_book" target="_blank">bolting_and_molting_with_golang_an_anarchist_coding_cook_book</a>
+              <span class="rmeta"><span class='lang'>Go</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">242</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#6366f1">symmetric 114</span><span class="pill" style="background:#ef4444">cipher_mode 49</span><span class="pill" style="background:#10b981">kdf 37</span><span class="pill" style="background:#f59e0b">asymmetric 23</span><span class="pill" style="background:#f97316">key_mgmt 9</span><span class="pill" style="background:#ec4899">signature 6</span><span class="pill" style="background:#14b8a6">py_import 4</span></div>
+          <a class="dlink" href="per_repo/bolting_and_molting_with_golang_an_anarchist_coding_cook_book.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/shell_script_utility" target="_blank">shell_script_utility</a>
+              <span class="rmeta"><span class='lang'>Shell</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">238</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#f59e0b">asymmetric 86</span><span class="pill" style="background:#6366f1">symmetric 57</span><span class="pill" style="background:#10b981">kdf 43</span><span class="pill" style="background:#ef4444">cipher_mode 34</span><span class="pill" style="background:#ec4899">signature 9</span><span class="pill" style="background:#06b6d4">random 8</span><span class="pill" style="background:#8b5cf6">hash_func 1</span></div>
+          <a class="dlink" href="per_repo/shell_script_utility.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/SDK_secure_membrane" target="_blank">SDK_secure_membrane</a>
+              <span class="rmeta"><span class='lang'>Shell</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">216</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#6366f1">symmetric 70</span><span class="pill" style="background:#f59e0b">asymmetric 51</span><span class="pill" style="background:#ef4444">cipher_mode 45</span><span class="pill" style="background:#ec4899">signature 24</span><span class="pill" style="background:#14b8a6">py_import 12</span><span class="pill" style="background:#f97316">key_mgmt 8</span><span class="pill" style="background:#10b981">kdf 3</span><span class="pill" style="background:#06b6d4">random 2</span><span class="pill" style="background:#a855f7">dependency 1</span></div>
+          <a class="dlink" href="per_repo/SDK_secure_membrane.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/cipher_js" target="_blank">cipher_js</a>
+              <span class="rmeta"><span class='lang'>JavaScript</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">212</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#6366f1">symmetric 85</span><span class="pill" style="background:#10b981">kdf 56</span><span class="pill" style="background:#8b5cf6">hash_func 30</span><span class="pill" style="background:#ef4444">cipher_mode 21</span><span class="pill" style="background:#f59e0b">asymmetric 14</span><span class="pill" style="background:#f97316">key_mgmt 3</span><span class="pill" style="background:#ec4899">signature 3</span></div>
+          <a class="dlink" href="per_repo/cipher_js.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/pqc_mechanisms" target="_blank">pqc_mechanisms</a>
+              <span class="rmeta"><span class='lang'>Python</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">203</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#3b82f6">post_quantum 113</span><span class="pill" style="background:#f59e0b">asymmetric 37</span><span class="pill" style="background:#ec4899">signature 25</span><span class="pill" style="background:#6366f1">symmetric 24</span><span class="pill" style="background:#14b8a6">py_import 4</span></div>
+          <a class="dlink" href="per_repo/pqc_mechanisms.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/profile_secure_sharing" target="_blank">profile_secure_sharing</a>
+              <span class="rmeta"><span class='lang'>Python</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">195</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#10b981">kdf 90</span><span class="pill" style="background:#6366f1">symmetric 34</span><span class="pill" style="background:#14b8a6">py_import 23</span><span class="pill" style="background:#06b6d4">random 20</span><span class="pill" style="background:#ef4444">cipher_mode 18</span><span class="pill" style="background:#ec4899">signature 10</span></div>
+          <a class="dlink" href="per_repo/profile_secure_sharing.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/toolings" target="_blank">toolings</a>
+              <span class="rmeta"><span class='lang'>HTML</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">156</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#6366f1">symmetric 46</span><span class="pill" style="background:#10b981">kdf 28</span><span class="pill" style="background:#f59e0b">asymmetric 24</span><span class="pill" style="background:#14b8a6">py_import 16</span><span class="pill" style="background:#ec4899">signature 16</span><span class="pill" style="background:#ef4444">cipher_mode 15</span><span class="pill" style="background:#64748b">fpe_token 7</span><span class="pill" style="background:#f97316">key_mgmt 4</span></div>
+          <a class="dlink" href="per_repo/toolings.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/flow_link" target="_blank">flow_link</a>
+              <span class="rmeta"><span class='lang'>HTML</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">108</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#6366f1">symmetric 108</span></div>
+          <a class="dlink" href="per_repo/flow_link.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/blockchain_simple_learn_demo" target="_blank">blockchain_simple_learn_demo</a>
+              <span class="rmeta"><span class='lang'>Python</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">103</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#10b981">kdf 67</span><span class="pill" style="background:#6366f1">symmetric 17</span><span class="pill" style="background:#14b8a6">py_import 11</span><span class="pill" style="background:#ec4899">signature 5</span><span class="pill" style="background:#06b6d4">random 2</span><span class="pill" style="background:#8b5cf6">hash_func 1</span></div>
+          <a class="dlink" href="per_repo/blockchain_simple_learn_demo.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/data_format" target="_blank">data_format</a>
+              <span class="rmeta"><span class='lang'>Python</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">101</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#10b981">kdf 31</span><span class="pill" style="background:#6366f1">symmetric 21</span><span class="pill" style="background:#8b5cf6">hash_func 21</span><span class="pill" style="background:#14b8a6">py_import 13</span><span class="pill" style="background:#06b6d4">random 6</span><span class="pill" style="background:#ef4444">cipher_mode 4</span><span class="pill" style="background:#64748b">fpe_token 3</span><span class="pill" style="background:#ec4899">signature 2</span></div>
+          <a class="dlink" href="per_repo/data_format.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/ElGamal_mix_net_shuffle" target="_blank">ElGamal_mix_net_shuffle</a>
+              <span class="rmeta"><span class='lang'>Python</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">97</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#3b82f6">post_quantum 37</span><span class="pill" style="background:#6366f1">symmetric 30</span><span class="pill" style="background:#f59e0b">asymmetric 29</span><span class="pill" style="background:#84cc16">zkp 1</span></div>
+          <a class="dlink" href="per_repo/ElGamal_mix_net_shuffle.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/x509_js" target="_blank">x509_js</a>
+              <span class="rmeta"><span class='lang'>CSS</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">94</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#f59e0b">asymmetric 25</span><span class="pill" style="background:#6366f1">symmetric 19</span><span class="pill" style="background:#ec4899">signature 18</span><span class="pill" style="background:#10b981">kdf 13</span><span class="pill" style="background:#8b5cf6">hash_func 7</span><span class="pill" style="background:#ef4444">cipher_mode 7</span><span class="pill" style="background:#f97316">key_mgmt 5</span></div>
+          <a class="dlink" href="per_repo/x509_js.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/jwt_rsa_ecc" target="_blank">jwt_rsa_ecc</a>
+              <span class="rmeta"><span class='lang'>CSS</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">81</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#6366f1">symmetric 23</span><span class="pill" style="background:#f59e0b">asymmetric 18</span><span class="pill" style="background:#10b981">kdf 15</span><span class="pill" style="background:#ec4899">signature 14</span><span class="pill" style="background:#8b5cf6">hash_func 6</span><span class="pill" style="background:#ef4444">cipher_mode 3</span><span class="pill" style="background:#f97316">key_mgmt 2</span></div>
+          <a class="dlink" href="per_repo/jwt_rsa_ecc.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/reference_codes" target="_blank">reference_codes</a>
+              <span class="rmeta"><span class='lang'>Python</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">67</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#14b8a6">py_import 23</span><span class="pill" style="background:#f97316">key_mgmt 17</span><span class="pill" style="background:#ec4899">signature 15</span><span class="pill" style="background:#6366f1">symmetric 7</span><span class="pill" style="background:#f59e0b">asymmetric 3</span><span class="pill" style="background:#06b6d4">random 2</span></div>
+          <a class="dlink" href="per_repo/reference_codes.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/flask_file_encryption_and_decryption" target="_blank">flask_file_encryption_and_decryption</a>
+              <span class="rmeta"><span class='lang'>Python</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">65</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#6366f1">symmetric 24</span><span class="pill" style="background:#ef4444">cipher_mode 17</span><span class="pill" style="background:#f97316">key_mgmt 8</span><span class="pill" style="background:#10b981">kdf 7</span><span class="pill" style="background:#14b8a6">py_import 7</span><span class="pill" style="background:#a855f7">dependency 2</span></div>
+          <a class="dlink" href="per_repo/flask_file_encryption_and_decryption.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/trial_ffx_based_on_ff1" target="_blank">trial_ffx_based_on_ff1</a>
+              <span class="rmeta"><span class='lang'>Go</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">64</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#6366f1">symmetric 45</span><span class="pill" style="background:#64748b">fpe_token 13</span><span class="pill" style="background:#ef4444">cipher_mode 5</span><span class="pill" style="background:#3b82f6">post_quantum 1</span></div>
+          <a class="dlink" href="per_repo/trial_ffx_based_on_ff1.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/sessional_secrecy" target="_blank">sessional_secrecy</a>
+              <span class="rmeta"><span class='lang'>Jupyter Notebook</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">57</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#6366f1">symmetric 28</span><span class="pill" style="background:#f59e0b">asymmetric 15</span><span class="pill" style="background:#10b981">kdf 9</span><span class="pill" style="background:#ef4444">cipher_mode 4</span><span class="pill" style="background:#f97316">key_mgmt 1</span></div>
+          <a class="dlink" href="per_repo/sessional_secrecy.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/shamir_share" target="_blank">shamir_share</a>
+              <span class="rmeta"><span class='lang'>Go</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">54</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#84cc16">zkp 39</span><span class="pill" style="background:#6366f1">symmetric 7</span><span class="pill" style="background:#ef4444">cipher_mode 7</span><span class="pill" style="background:#06b6d4">random 1</span></div>
+          <a class="dlink" href="per_repo/shamir_share.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/beginning_ML_analytics" target="_blank">beginning_ML_analytics</a>
+              <span class="rmeta"><span class='lang'>Python</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">53</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#64748b">fpe_token 48</span><span class="pill" style="background:#6366f1">symmetric 5</span></div>
+          <a class="dlink" href="per_repo/beginning_ML_analytics.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/cryptographic_permit_system_with_dynamic_policy_ui" target="_blank">cryptographic_permit_system_with_dynamic_policy_ui</a>
+              <span class="rmeta"><span class='lang'>TypeScript</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">50</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#6366f1">symmetric 44</span><span class="pill" style="background:#ec4899">signature 6</span></div>
+          <a class="dlink" href="per_repo/cryptographic_permit_system_with_dynamic_policy_ui.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/cipher_cli" target="_blank">cipher_cli</a>
+              <span class="rmeta"><span class='lang'>Go</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">47</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#ef4444">cipher_mode 26</span><span class="pill" style="background:#6366f1">symmetric 21</span></div>
+          <a class="dlink" href="per_repo/cipher_cli.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/secure_uefi_helloworld" target="_blank">secure_uefi_helloworld</a>
+              <span class="rmeta"><span class='lang'>Shell</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">47</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#f59e0b">asymmetric 43</span><span class="pill" style="background:#ec4899">signature 3</span><span class="pill" style="background:#6366f1">symmetric 1</span></div>
+          <a class="dlink" href="per_repo/secure_uefi_helloworld.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/hybrid_key_cipher" target="_blank">hybrid_key_cipher</a>
+              <span class="rmeta"><span class='lang'>Go</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">45</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#6366f1">symmetric 17</span><span class="pill" style="background:#10b981">kdf 15</span><span class="pill" style="background:#ef4444">cipher_mode 11</span><span class="pill" style="background:#3b82f6">post_quantum 1</span><span class="pill" style="background:#ec4899">signature 1</span></div>
+          <a class="dlink" href="per_repo/hybrid_key_cipher.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/policy_as_code_automation_for_ai_agents_at_scale" target="_blank">policy_as_code_automation_for_ai_agents_at_scale</a>
+              <span class="rmeta"><span class='lang'>Python</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">44</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#6366f1">symmetric 28</span><span class="pill" style="background:#ef4444">cipher_mode 15</span><span class="pill" style="background:#14b8a6">py_import 1</span></div>
+          <a class="dlink" href="per_repo/policy_as_code_automation_for_ai_agents_at_scale.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/secure_cv_profile_system" target="_blank">secure_cv_profile_system</a>
+              <span class="rmeta"><span class='lang'>Go</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">44</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#6366f1">symmetric 31</span><span class="pill" style="background:#ef4444">cipher_mode 11</span><span class="pill" style="background:#14b8a6">py_import 2</span></div>
+          <a class="dlink" href="per_repo/secure_cv_profile_system.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/authentication_authorization_system" target="_blank">authentication_authorization_system</a>
+              <span class="rmeta"><span class='lang'>Python</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">37</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#10b981">kdf 22</span><span class="pill" style="background:#14b8a6">py_import 9</span><span class="pill" style="background:#ec4899">signature 6</span></div>
+          <a class="dlink" href="per_repo/authentication_authorization_system.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/golang_file_encryption_and_decryption" target="_blank">golang_file_encryption_and_decryption</a>
+              <span class="rmeta"><span class='lang'>Go</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">37</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#ef4444">cipher_mode 15</span><span class="pill" style="background:#6366f1">symmetric 13</span><span class="pill" style="background:#f97316">key_mgmt 5</span><span class="pill" style="background:#10b981">kdf 3</span><span class="pill" style="background:#64748b">fpe_token 1</span></div>
+          <a class="dlink" href="per_repo/golang_file_encryption_and_decryption.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/ursa_bbs_python" target="_blank">ursa_bbs_python</a>
+              <span class="rmeta"><span class='lang'>Rust</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">37</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#84cc16">zkp 17</span><span class="pill" style="background:#ec4899">signature 14</span><span class="pill" style="background:#6366f1">symmetric 4</span><span class="pill" style="background:#06b6d4">random 1</span><span class="pill" style="background:#f59e0b">asymmetric 1</span></div>
+          <a class="dlink" href="per_repo/ursa_bbs_python.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/merkle_tree" target="_blank">merkle_tree</a>
+              <span class="rmeta"><span class='lang'>Python</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">36</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#6366f1">symmetric 31</span><span class="pill" style="background:#14b8a6">py_import 4</span><span class="pill" style="background:#f59e0b">asymmetric 1</span></div>
+          <a class="dlink" href="per_repo/merkle_tree.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/Test_Framework_For_Reversible_Action" target="_blank">Test_Framework_For_Reversible_Action</a>
+              <span class="rmeta"><span class='lang'>Python</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">36</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#6366f1">symmetric 10</span><span class="pill" style="background:#f59e0b">asymmetric 8</span><span class="pill" style="background:#ef4444">cipher_mode 8</span><span class="pill" style="background:#14b8a6">py_import 5</span><span class="pill" style="background:#06b6d4">random 2</span><span class="pill" style="background:#8b5cf6">hash_func 2</span><span class="pill" style="background:#f97316">key_mgmt 1</span></div>
+          <a class="dlink" href="per_repo/Test_Framework_For_Reversible_Action.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/ai_ml_vulnerabilities" target="_blank">ai_ml_vulnerabilities</a>
+              <span class="rmeta"><span class='lang'>Python</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">35</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#6366f1">symmetric 33</span><span class="pill" style="background:#ec4899">signature 1</span><span class="pill" style="background:#14b8a6">py_import 1</span></div>
+          <a class="dlink" href="per_repo/ai_ml_vulnerabilities.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/openssl_gpg" target="_blank">openssl_gpg</a>
+              <span class="rmeta"><span class='lang'>Shell</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">35</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#f59e0b">asymmetric 18</span><span class="pill" style="background:#14b8a6">py_import 7</span><span class="pill" style="background:#f97316">key_mgmt 7</span><span class="pill" style="background:#ec4899">signature 2</span><span class="pill" style="background:#6366f1">symmetric 1</span></div>
+          <a class="dlink" href="per_repo/openssl_gpg.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/python_api_site" target="_blank">python_api_site</a>
+              <span class="rmeta"><span class='lang'>Python</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">35</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#10b981">kdf 10</span><span class="pill" style="background:#6366f1">symmetric 9</span><span class="pill" style="background:#ef4444">cipher_mode 9</span><span class="pill" style="background:#14b8a6">py_import 4</span><span class="pill" style="background:#06b6d4">random 2</span><span class="pill" style="background:#a855f7">dependency 1</span></div>
+          <a class="dlink" href="per_repo/python_api_site.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/yubikey_usage" target="_blank">yubikey_usage</a>
+              <span class="rmeta"><span class='lang'>Shell</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">35</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          <div class="desc">yubikey_usage</div>
+          <div class="pills"><span class="pill" style="background:#f97316">key_mgmt 14</span><span class="pill" style="background:#06b6d4">random 10</span><span class="pill" style="background:#f59e0b">asymmetric 4</span><span class="pill" style="background:#14b8a6">py_import 3</span><span class="pill" style="background:#6366f1">symmetric 2</span><span class="pill" style="background:#a855f7">dependency 1</span><span class="pill" style="background:#ec4899">signature 1</span></div>
+          <a class="dlink" href="per_repo/yubikey_usage.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/terraform_architecture_diagram_draw" target="_blank">terraform_architecture_diagram_draw</a>
+              <span class="rmeta"><span class='lang'>Python</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">34</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#6366f1">symmetric 34</span></div>
+          <a class="dlink" href="per_repo/terraform_architecture_diagram_draw.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/preventing_identity_spoofing_with_nonce_based_verification" target="_blank">preventing_identity_spoofing_with_nonce_based_verification</a>
+              <span class="rmeta"><span class='lang'>Python</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">33</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#10b981">kdf 24</span><span class="pill" style="background:#ec4899">signature 6</span><span class="pill" style="background:#14b8a6">py_import 3</span></div>
+          <a class="dlink" href="per_repo/preventing_identity_spoofing_with_nonce_based_verification.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/ring_and_group_signatures" target="_blank">ring_and_group_signatures</a>
+              <span class="rmeta"><span class='lang'>Python</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">33</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#f97316">key_mgmt 13</span><span class="pill" style="background:#f59e0b">asymmetric 9</span><span class="pill" style="background:#ec4899">signature 5</span><span class="pill" style="background:#14b8a6">py_import 4</span><span class="pill" style="background:#06b6d4">random 2</span></div>
+          <a class="dlink" href="per_repo/ring_and_group_signatures.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/trial_high_availability_stress_testing_for_aes_gcm_key_rotation" target="_blank">trial_high_availability_stress_testing_for_aes_gcm_key_rotation</a>
+              <span class="rmeta"><span class='lang'>Go</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">31</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#ef4444">cipher_mode 17</span><span class="pill" style="background:#6366f1">symmetric 14</span></div>
+          <a class="dlink" href="per_repo/trial_high_availability_stress_testing_for_aes_gcm_key_rotation.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/double_linked_list_chained_permit" target="_blank">double_linked_list_chained_permit</a>
+              <span class="rmeta"><span class='lang'>Go</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">30</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#6366f1">symmetric 24</span><span class="pill" style="background:#f97316">key_mgmt 5</span><span class="pill" style="background:#14b8a6">py_import 1</span></div>
+          <a class="dlink" href="per_repo/double_linked_list_chained_permit.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/challenge_and_response" target="_blank">challenge_and_response</a>
+              <span class="rmeta"><span class='lang'>Python</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">27</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#10b981">kdf 16</span><span class="pill" style="background:#14b8a6">py_import 4</span><span class="pill" style="background:#ec4899">signature 4</span><span class="pill" style="background:#06b6d4">random 2</span><span class="pill" style="background:#64748b">fpe_token 1</span></div>
+          <a class="dlink" href="per_repo/challenge_and_response.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/fpe_with_key_versioning" target="_blank">fpe_with_key_versioning</a>
+              <span class="rmeta"><span class='lang'>Go</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">24</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#64748b">fpe_token 17</span><span class="pill" style="background:#6366f1">symmetric 5</span><span class="pill" style="background:#10b981">kdf 2</span></div>
+          <a class="dlink" href="per_repo/fpe_with_key_versioning.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/tokenized_data_encryption_and_decryption" target="_blank">tokenized_data_encryption_and_decryption</a>
+              <span class="rmeta"><span class='lang'>Python</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">23</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#6366f1">symmetric 9</span><span class="pill" style="background:#ef4444">cipher_mode 8</span><span class="pill" style="background:#10b981">kdf 5</span><span class="pill" style="background:#64748b">fpe_token 1</span></div>
+          <a class="dlink" href="per_repo/tokenized_data_encryption_and_decryption.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/linearity_in_aes_xts_multipliers" target="_blank">linearity_in_aes_xts_multipliers</a>
+              <span class="rmeta"><span class='lang'>Python</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">22</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#ef4444">cipher_mode 16</span><span class="pill" style="background:#6366f1">symmetric 6</span></div>
+          <a class="dlink" href="per_repo/linearity_in_aes_xts_multipliers.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/threat_modeling_framework_and_sop" target="_blank">threat_modeling_framework_and_sop</a>
+              <span class="rmeta"><span class='vis'>public</span></span></div>
+            <span class="mbadge">22</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#6366f1">symmetric 19</span><span class="pill" style="background:#ec4899">signature 3</span></div>
+          <a class="dlink" href="per_repo/threat_modeling_framework_and_sop.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/trial_QR_file" target="_blank">trial_QR_file</a>
+              <span class="rmeta"><span class='lang'>Go</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">22</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#6366f1">symmetric 14</span><span class="pill" style="background:#ef4444">cipher_mode 6</span><span class="pill" style="background:#10b981">kdf 1</span><span class="pill" style="background:#06b6d4">random 1</span></div>
+          <a class="dlink" href="per_repo/trial_QR_file.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/git_all_repo_static" target="_blank">git_all_repo_static</a>
+              <span class="rmeta"><span class='lang'>HTML</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">21</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#6366f1">symmetric 9</span><span class="pill" style="background:#64748b">fpe_token 9</span><span class="pill" style="background:#10b981">kdf 3</span></div>
+          <a class="dlink" href="per_repo/git_all_repo_static.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/key_lifecycle_statemachine" target="_blank">key_lifecycle_statemachine</a>
+              <span class="rmeta"><span class='lang'>Go</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">21</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#f59e0b">asymmetric 11</span><span class="pill" style="background:#ec4899">signature 7</span><span class="pill" style="background:#f97316">key_mgmt 2</span><span class="pill" style="background:#6366f1">symmetric 1</span></div>
+          <a class="dlink" href="per_repo/key_lifecycle_statemachine.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/Kharon" target="_blank">Kharon</a>
+              <span class="rmeta"><span class='lang'>Python</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">20</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#14b8a6">py_import 7</span><span class="pill" style="background:#6366f1">symmetric 5</span><span class="pill" style="background:#10b981">kdf 4</span><span class="pill" style="background:#06b6d4">random 2</span><span class="pill" style="background:#ef4444">cipher_mode 2</span></div>
+          <a class="dlink" href="per_repo/Kharon.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/shell_menu_rsa_sign" target="_blank">shell_menu_rsa_sign</a>
+              <span class="rmeta"><span class='lang'>Shell</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">19</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#f59e0b">asymmetric 16</span><span class="pill" style="background:#ec4899">signature 2</span><span class="pill" style="background:#f97316">key_mgmt 1</span></div>
+          <a class="dlink" href="per_repo/shell_menu_rsa_sign.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/time_formats" target="_blank">time_formats</a>
+              <span class="rmeta"><span class='lang'>Python</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">18</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#14b8a6">py_import 7</span><span class="pill" style="background:#6366f1">symmetric 4</span><span class="pill" style="background:#f59e0b">asymmetric 3</span><span class="pill" style="background:#f97316">key_mgmt 3</span><span class="pill" style="background:#ec4899">signature 1</span></div>
+          <a class="dlink" href="per_repo/time_formats.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/trial_multiply_functions_benchmark" target="_blank">trial_multiply_functions_benchmark</a>
+              <span class="rmeta"><span class='lang'>Go</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">18</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#6366f1">symmetric 12</span><span class="pill" style="background:#84cc16">zkp 6</span></div>
+          <a class="dlink" href="per_repo/trial_multiply_functions_benchmark.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/verifiable_random_functions" target="_blank">verifiable_random_functions</a>
+              <span class="rmeta"><span class='lang'>Python</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">17</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#14b8a6">py_import 7</span><span class="pill" style="background:#ec4899">signature 6</span><span class="pill" style="background:#06b6d4">random 3</span><span class="pill" style="background:#6366f1">symmetric 1</span></div>
+          <a class="dlink" href="per_repo/verifiable_random_functions.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/demo_timing_attack" target="_blank">demo_timing_attack</a>
+              <span class="rmeta"><span class='lang'>Python</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">16</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#6366f1">symmetric 15</span><span class="pill" style="background:#ef4444">cipher_mode 1</span></div>
+          <a class="dlink" href="per_repo/demo_timing_attack.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/LEAN_LEET_-33-_-3-" target="_blank">LEAN_LEET_-33-_-3-</a>
+              <span class="rmeta"><span class='lang'>Python</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">16</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#6366f1">symmetric 16</span></div>
+          <a class="dlink" href="per_repo/LEAN_LEET_-33-_-3-.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/safety_assurance_numbers" target="_blank">safety_assurance_numbers</a>
+              <span class="rmeta"><span class='lang'>Python</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">16</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#64748b">fpe_token 5</span><span class="pill" style="background:#6366f1">symmetric 5</span><span class="pill" style="background:#14b8a6">py_import 3</span><span class="pill" style="background:#06b6d4">random 3</span></div>
+          <a class="dlink" href="per_repo/safety_assurance_numbers.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/set_up_kaggle_access_given_ciphered_token_and_get_dataset" target="_blank">set_up_kaggle_access_given_ciphered_token_and_get_dataset</a>
+              <span class="rmeta"><span class='lang'>Python</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">16</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#6366f1">symmetric 8</span><span class="pill" style="background:#ef4444">cipher_mode 6</span><span class="pill" style="background:#10b981">kdf 2</span></div>
+          <a class="dlink" href="per_repo/set_up_kaggle_access_given_ciphered_token_and_get_dataset.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/in_mem_context_level_encrypted_key_material_store" target="_blank">in_mem_context_level_encrypted_key_material_store</a>
+              <span class="rmeta"><span class='lang'>Go</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">14</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#6366f1">symmetric 10</span><span class="pill" style="background:#ef4444">cipher_mode 3</span><span class="pill" style="background:#f59e0b">asymmetric 1</span></div>
+          <a class="dlink" href="per_repo/in_mem_context_level_encrypted_key_material_store.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/shell_secret_keep" target="_blank">shell_secret_keep</a>
+              <span class="rmeta"><span class='lang'>Shell</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">14</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#6366f1">symmetric 12</span><span class="pill" style="background:#06b6d4">random 2</span></div>
+          <a class="dlink" href="per_repo/shell_secret_keep.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/yubi_util_demo" target="_blank">yubi_util_demo</a>
+              <span class="rmeta"><span class='lang'>Shell</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">14</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#6366f1">symmetric 6</span><span class="pill" style="background:#84cc16">zkp 6</span><span class="pill" style="background:#ec4899">signature 2</span></div>
+          <a class="dlink" href="per_repo/yubi_util_demo.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/activity_monitoring" target="_blank">activity_monitoring</a>
+              <span class="rmeta"><span class='lang'>Jupyter Notebook</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">13</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#6366f1">symmetric 12</span><span class="pill" style="background:#ef4444">cipher_mode 1</span></div>
+          <a class="dlink" href="per_repo/activity_monitoring.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/lamport_hash_signature" target="_blank">lamport_hash_signature</a>
+              <span class="rmeta"><span class='lang'>Python</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">13</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#6366f1">symmetric 4</span><span class="pill" style="background:#14b8a6">py_import 3</span><span class="pill" style="background:#f59e0b">asymmetric 3</span><span class="pill" style="background:#3b82f6">post_quantum 2</span><span class="pill" style="background:#06b6d4">random 1</span></div>
+          <a class="dlink" href="per_repo/lamport_hash_signature.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/randomized_device_connections_with_directions" target="_blank">randomized_device_connections_with_directions</a>
+              <span class="rmeta"><span class='lang'>Python</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">13</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#6366f1">symmetric 13</span></div>
+          <a class="dlink" href="per_repo/randomized_device_connections_with_directions.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/data_pull" target="_blank">data_pull</a>
+              <span class="rmeta"><span class='lang'>Shell</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">12</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#f59e0b">asymmetric 7</span><span class="pill" style="background:#6366f1">symmetric 3</span><span class="pill" style="background:#ef4444">cipher_mode 2</span></div>
+          <a class="dlink" href="per_repo/data_pull.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/file_embedded_with_file_with_LSB_encoding" target="_blank">file_embedded_with_file_with_LSB_encoding</a>
+              <span class="rmeta"><span class='lang'>Python</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">11</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#6366f1">symmetric 10</span><span class="pill" style="background:#8b5cf6">hash_func 1</span></div>
+          <a class="dlink" href="per_repo/file_embedded_with_file_with_LSB_encoding.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/image_registry" target="_blank">image_registry</a>
+              <span class="rmeta"><span class='lang'>Python</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">11</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#10b981">kdf 9</span><span class="pill" style="background:#14b8a6">py_import 2</span></div>
+          <a class="dlink" href="per_repo/image_registry.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/templates" target="_blank">templates</a>
+              <span class="rmeta"><span class='lang'>Go</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">11</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#6366f1">symmetric 7</span><span class="pill" style="background:#64748b">fpe_token 4</span></div>
+          <a class="dlink" href="per_repo/templates.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/code_profile_and_edit" target="_blank">code_profile_and_edit</a>
+              <span class="rmeta"><span class='lang'>Jupyter Notebook</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">10</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#64748b">fpe_token 8</span><span class="pill" style="background:#6366f1">symmetric 2</span></div>
+          <a class="dlink" href="per_repo/code_profile_and_edit.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/yaml_tree_visualization" target="_blank">yaml_tree_visualization</a>
+              <span class="rmeta"><span class='lang'>Python</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">10</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#6366f1">symmetric 10</span></div>
+          <a class="dlink" href="per_repo/yaml_tree_visualization.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/birthday_paradox" target="_blank">birthday_paradox</a>
+              <span class="rmeta"><span class='lang'>Python</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">8</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#6366f1">symmetric 6</span><span class="pill" style="background:#ef4444">cipher_mode 2</span></div>
+          <a class="dlink" href="per_repo/birthday_paradox.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/extracting_specific_frames_from_video_with_pytorch" target="_blank">extracting_specific_frames_from_video_with_pytorch</a>
+              <span class="rmeta"><span class='lang'>HTML</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">7</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#6366f1">symmetric 5</span><span class="pill" style="background:#ef4444">cipher_mode 1</span><span class="pill" style="background:#64748b">fpe_token 1</span></div>
+          <a class="dlink" href="per_repo/extracting_specific_frames_from_video_with_pytorch.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/glassworm_attack_illustration" target="_blank">glassworm_attack_illustration</a>
+              <span class="rmeta"><span class='lang'>Python</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">7</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#8b5cf6">hash_func 3</span><span class="pill" style="background:#14b8a6">py_import 2</span><span class="pill" style="background:#6366f1">symmetric 2</span></div>
+          <a class="dlink" href="per_repo/glassworm_attack_illustration.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/nist_sp800_90b_tool_usage" target="_blank">nist_sp800_90b_tool_usage</a>
+              <span class="rmeta"><span class='lang'>Shell</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">7</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#06b6d4">random 7</span></div>
+          <a class="dlink" href="per_repo/nist_sp800_90b_tool_usage.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/Python-Introspect-Utility" target="_blank">Python-Introspect-Utility</a>
+              <span class="rmeta"><span class='lang'>Python</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">7</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#6366f1">symmetric 7</span></div>
+          <a class="dlink" href="per_repo/Python-Introspect-Utility.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/remote_go_agent_via_ssh" target="_blank">remote_go_agent_via_ssh</a>
+              <span class="rmeta"><span class='lang'>Go</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">7</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#6366f1">symmetric 4</span><span class="pill" style="background:#84cc16">zkp 3</span></div>
+          <a class="dlink" href="per_repo/remote_go_agent_via_ssh.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/uml" target="_blank">uml</a>
+              <span class="rmeta"><span class='vis'>public</span></span></div>
+            <span class="mbadge">7</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#10b981">kdf 6</span><span class="pill" style="background:#64748b">fpe_token 1</span></div>
+          <a class="dlink" href="per_repo/uml.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/batch_certificate_generation_with_intermediary_ca_automation" target="_blank">batch_certificate_generation_with_intermediary_ca_automation</a>
+              <span class="rmeta"><span class='lang'>Python</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">6</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#f59e0b">asymmetric 2</span><span class="pill" style="background:#6366f1">symmetric 2</span><span class="pill" style="background:#f97316">key_mgmt 1</span><span class="pill" style="background:#14b8a6">py_import 1</span></div>
+          <a class="dlink" href="per_repo/batch_certificate_generation_with_intermediary_ca_automation.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/bolting_and_molting_with_rust_an_anarchist_coding_cook_book" target="_blank">bolting_and_molting_with_rust_an_anarchist_coding_cook_book</a>
+              <span class="rmeta"><span class='lang'>Rust</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">6</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#6366f1">symmetric 3</span><span class="pill" style="background:#ef4444">cipher_mode 1</span><span class="pill" style="background:#10b981">kdf 1</span><span class="pill" style="background:#84cc16">zkp 1</span></div>
+          <a class="dlink" href="per_repo/bolting_and_molting_with_rust_an_anarchist_coding_cook_book.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/hello_lattigo_demo" target="_blank">hello_lattigo_demo</a>
+              <span class="rmeta"><span class='lang'>Go</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">6</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#6366f1">symmetric 5</span><span class="pill" style="background:#3b82f6">post_quantum 1</span></div>
+          <a class="dlink" href="per_repo/hello_lattigo_demo.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/KZG_polynomial_commitments" target="_blank">KZG_polynomial_commitments</a>
+              <span class="rmeta"><span class='lang'>Go</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">6</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#6366f1">symmetric 3</span><span class="pill" style="background:#84cc16">zkp 2</span><span class="pill" style="background:#ec4899">signature 1</span></div>
+          <a class="dlink" href="per_repo/KZG_polynomial_commitments.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/mtls_termination_with_server_key_inspection" target="_blank">mtls_termination_with_server_key_inspection</a>
+              <span class="rmeta"><span class='lang'>Shell</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">6</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#6366f1">symmetric 6</span></div>
+          <a class="dlink" href="per_repo/mtls_termination_with_server_key_inspection.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/environment_compatibility_checker" target="_blank">environment_compatibility_checker</a>
+              <span class="rmeta"><span class='lang'>Python</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">5</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#10b981">kdf 2</span><span class="pill" style="background:#64748b">fpe_token 1</span><span class="pill" style="background:#f59e0b">asymmetric 1</span><span class="pill" style="background:#6366f1">symmetric 1</span></div>
+          <a class="dlink" href="per_repo/environment_compatibility_checker.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/erasure_coding" target="_blank">erasure_coding</a>
+              <span class="rmeta"><span class='lang'>Python</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">5</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#14b8a6">py_import 2</span><span class="pill" style="background:#06b6d4">random 2</span><span class="pill" style="background:#6366f1">symmetric 1</span></div>
+          <a class="dlink" href="per_repo/erasure_coding.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/leansig_sdk_usage_tutorial" target="_blank">leansig_sdk_usage_tutorial</a>
+              <span class="rmeta"><span class='lang'>Rust</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">5</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#3b82f6">post_quantum 4</span><span class="pill" style="background:#6366f1">symmetric 1</span></div>
+          <a class="dlink" href="per_repo/leansig_sdk_usage_tutorial.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/livemetrics" target="_blank">livemetrics</a>
+              <span class="rmeta"><span class='lang'>TypeScript</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">5</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#10b981">kdf 5</span></div>
+          <a class="dlink" href="per_repo/livemetrics.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/memory_management_context" target="_blank">memory_management_context</a>
+              <span class="rmeta"><span class='lang'>C</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">5</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#6366f1">symmetric 5</span></div>
+          <a class="dlink" href="per_repo/memory_management_context.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/qr_code_json_encoder_decoder_for_contact_share" target="_blank">qr_code_json_encoder_decoder_for_contact_share</a>
+              <span class="rmeta"><span class='lang'>Python</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">5</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#6366f1">symmetric 4</span><span class="pill" style="background:#06b6d4">random 1</span></div>
+          <a class="dlink" href="per_repo/qr_code_json_encoder_decoder_for_contact_share.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/At-The-Back-Of-Your-Head-An-Insight-To-Mnemonics" target="_blank">At-The-Back-Of-Your-Head-An-Insight-To-Mnemonics</a>
+              <span class="rmeta"><span class='lang'>HTML</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">4</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#6366f1">symmetric 4</span></div>
+          <a class="dlink" href="per_repo/At-The-Back-Of-Your-Head-An-Insight-To-Mnemonics.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/fiat_shamir" target="_blank">fiat_shamir</a>
+              <span class="rmeta"><span class='lang'>Python</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">4</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#8b5cf6">hash_func 3</span><span class="pill" style="background:#ec4899">signature 1</span></div>
+          <a class="dlink" href="per_repo/fiat_shamir.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/Golang-Introspect-Utility" target="_blank">Golang-Introspect-Utility</a>
+              <span class="rmeta"><span class='lang'>Go</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">4</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#6366f1">symmetric 4</span></div>
+          <a class="dlink" href="per_repo/Golang-Introspect-Utility.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/guide_to_security_notions_in_modern_encryption_ind_cpa_ind_cca1_and_ind_cca2" target="_blank">guide_to_security_notions_in_modern_encryption_ind_cpa_ind_cca1_and_ind_cca2</a>
+              <span class="rmeta"><span class='vis'>public</span></span></div>
+            <span class="mbadge">4</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#ef4444">cipher_mode 2</span><span class="pill" style="background:#6366f1">symmetric 2</span></div>
+          <a class="dlink" href="per_repo/guide_to_security_notions_in_modern_encryption_ind_cpa_ind_cca1_and_ind_cca2.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/test_ground_observatory_zone_00" target="_blank">test_ground_observatory_zone_00</a>
+              <span class="rmeta"><span class='lang'>HTML</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">4</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#6366f1">symmetric 4</span></div>
+          <a class="dlink" href="per_repo/test_ground_observatory_zone_00.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/iframed_multiple_readmes" target="_blank">iframed_multiple_readmes</a>
+              <span class="rmeta"><span class='lang'>HTML</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">3</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#6366f1">symmetric 3</span></div>
+          <a class="dlink" href="per_repo/iframed_multiple_readmes.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/multi_event_deterministic_uncertainty_scoring_analysis__medusa" target="_blank">multi_event_deterministic_uncertainty_scoring_analysis__medusa</a>
+              <span class="rmeta"><span class='lang'>Python</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">3</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#6366f1">symmetric 3</span></div>
+          <a class="dlink" href="per_repo/multi_event_deterministic_uncertainty_scoring_analysis__medusa.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/ollama_guide" target="_blank">ollama_guide</a>
+              <span class="rmeta"><span class='lang'>Python</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">3</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#6366f1">symmetric 3</span></div>
+          <a class="dlink" href="per_repo/ollama_guide.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/signals_and_noise" target="_blank">signals_and_noise</a>
+              <span class="rmeta"><span class='lang'>Python</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">3</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#ef4444">cipher_mode 3</span></div>
+          <a class="dlink" href="per_repo/signals_and_noise.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/cache_friendly_b_tree_node_in_rust" target="_blank">cache_friendly_b_tree_node_in_rust</a>
+              <span class="rmeta"><span class='lang'>Rust</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">2</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#6366f1">symmetric 2</span></div>
+          <a class="dlink" href="per_repo/cache_friendly_b_tree_node_in_rust.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/clean_zsh_history" target="_blank">clean_zsh_history</a>
+              <span class="rmeta"><span class='lang'>Python</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">2</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#6366f1">symmetric 2</span></div>
+          <a class="dlink" href="per_repo/clean_zsh_history.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/context_management" target="_blank">context_management</a>
+              <span class="rmeta"><span class='lang'>Python</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">2</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#06b6d4">random 2</span></div>
+          <a class="dlink" href="per_repo/context_management.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/entropy_comparison_word_lists_vs_random_data" target="_blank">entropy_comparison_word_lists_vs_random_data</a>
+              <span class="rmeta"><span class='lang'>Python</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">2</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#6366f1">symmetric 2</span></div>
+          <a class="dlink" href="per_repo/entropy_comparison_word_lists_vs_random_data.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/emotion_tree_visualization" target="_blank">emotion_tree_visualization</a>
+              <span class="rmeta"><span class='lang'>Python</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">2</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#6366f1">symmetric 2</span></div>
+          <a class="dlink" href="per_repo/emotion_tree_visualization.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/form-signer" target="_blank">form-signer</a>
+              <span class="rmeta"><span class='lang'>TypeScript</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">2</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#ec4899">signature 2</span></div>
+          <a class="dlink" href="per_repo/form-signer.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/mikail-eliyah.github.io" target="_blank">mikail-eliyah.github.io</a>
+              <span class="rmeta"><span class='lang'>HTML</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">2</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#f59e0b">asymmetric 2</span></div>
+          <a class="dlink" href="per_repo/mikail-eliyah.github.io.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/payment_statemachine_infra" target="_blank">payment_statemachine_infra</a>
+              <span class="rmeta"><span class='lang'>TypeScript</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">2</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#6366f1">symmetric 2</span></div>
+          <a class="dlink" href="per_repo/payment_statemachine_infra.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/text_diff_utilities" target="_blank">text_diff_utilities</a>
+              <span class="rmeta"><span class='lang'>Python</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">2</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#6366f1">symmetric 2</span></div>
+          <a class="dlink" href="per_repo/text_diff_utilities.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/tree_pruning_text" target="_blank">tree_pruning_text</a>
+              <span class="rmeta"><span class='lang'>Python</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">2</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#6366f1">symmetric 2</span></div>
+          <a class="dlink" href="per_repo/tree_pruning_text.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/word_cloud_maker" target="_blank">word_cloud_maker</a>
+              <span class="rmeta"><span class='lang'>Python</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">2</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#8b5cf6">hash_func 2</span></div>
+          <a class="dlink" href="per_repo/word_cloud_maker.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/caution-on-canonicalization-of-data-struct-format-under-parsing-vulnerabilities" target="_blank">caution-on-canonicalization-of-data-struct-format-under-parsing-vulnerabilities</a>
+              <span class="rmeta"><span class='lang'>Python</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">1</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#6366f1">symmetric 1</span></div>
+          <a class="dlink" href="per_repo/caution-on-canonicalization-of-data-struct-format-under-parsing-vulnerabilities.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/chartjs-react-tutorial" target="_blank">chartjs-react-tutorial</a>
+              <span class="rmeta"><span class='lang'>JavaScript</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">1</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#6366f1">symmetric 1</span></div>
+          <a class="dlink" href="per_repo/chartjs-react-tutorial.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/contact_tracing_simulation_on_world_map" target="_blank">contact_tracing_simulation_on_world_map</a>
+              <span class="rmeta"><span class='lang'>Python</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">1</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#6366f1">symmetric 1</span></div>
+          <a class="dlink" href="per_repo/contact_tracing_simulation_on_world_map.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/cuda_c_starter_kit" target="_blank">cuda_c_starter_kit</a>
+              <span class="rmeta"><span class='lang'>Cuda</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">1</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#6366f1">symmetric 1</span></div>
+          <a class="dlink" href="per_repo/cuda_c_starter_kit.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/curl-email" target="_blank">curl-email</a>
+              <span class="rmeta"><span class='lang'>Python</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">1</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#14b8a6">py_import 1</span></div>
+          <a class="dlink" href="per_repo/curl-email.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/file_activity_monitor_with_sha_256_hash_calculation" target="_blank">file_activity_monitor_with_sha_256_hash_calculation</a>
+              <span class="rmeta"><span class='lang'>Python</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">1</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#14b8a6">py_import 1</span></div>
+          <a class="dlink" href="per_repo/file_activity_monitor_with_sha_256_hash_calculation.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/flask_hello" target="_blank">flask_hello</a>
+              <span class="rmeta"><span class='lang'>Python</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">1</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#6366f1">symmetric 1</span></div>
+          <a class="dlink" href="per_repo/flask_hello.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/folder_file_profiling" target="_blank">folder_file_profiling</a>
+              <span class="rmeta"><span class='lang'>Python</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">1</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#6366f1">symmetric 1</span></div>
+          <a class="dlink" href="per_repo/folder_file_profiling.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/JSON_Filesystem_Emulator" target="_blank">JSON_Filesystem_Emulator</a>
+              <span class="rmeta"><span class='lang'>Python</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">1</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#6366f1">symmetric 1</span></div>
+          <a class="dlink" href="per_repo/JSON_Filesystem_Emulator.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/location_display" target="_blank">location_display</a>
+              <span class="rmeta"><span class='lang'>Python</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">1</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#6366f1">symmetric 1</span></div>
+          <a class="dlink" href="per_repo/location_display.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/memory_layout" target="_blank">memory_layout</a>
+              <span class="rmeta"><span class='lang'>Python</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">1</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#14b8a6">py_import 1</span></div>
+          <a class="dlink" href="per_repo/memory_layout.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/mem_safe_copy_transfer" target="_blank">mem_safe_copy_transfer</a>
+              <span class="rmeta"><span class='lang'>Go</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">1</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#6366f1">symmetric 1</span></div>
+          <a class="dlink" href="per_repo/mem_safe_copy_transfer.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/mem_remap" target="_blank">mem_remap</a>
+              <span class="rmeta"><span class='lang'>Go</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">1</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#6366f1">symmetric 1</span></div>
+          <a class="dlink" href="per_repo/mem_remap.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/mutex_payment" target="_blank">mutex_payment</a>
+              <span class="rmeta"><span class='lang'>Python</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">1</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#6366f1">symmetric 1</span></div>
+          <a class="dlink" href="per_repo/mutex_payment.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/plot_3d_intro" target="_blank">plot_3d_intro</a>
+              <span class="rmeta"><span class='lang'>Python</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">1</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#6366f1">symmetric 1</span></div>
+          <a class="dlink" href="per_repo/plot_3d_intro.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/proof_of_work" target="_blank">proof_of_work</a>
+              <span class="rmeta"><span class='lang'>Go</span><span class='vis'>public</span></span></div>
+            <span class="mbadge">1</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#ec4899">signature 1</span></div>
+          <a class="dlink" href="per_repo/proof_of_work.txt">View full match listing →</a>
+        </div>
+        <div class="card">
+          <div class="card-top">
+            <div><a class="rname" href="https://github.com/ursa-mikail/python_argparse_demo" target="_blank">python_argparse_demo</a>
+              <span class="rmeta"><span class='vis'>public</span></span></div>
+            <span class="mbadge">1</span>
+          </div>
+          <div class="owner-line">👤 <strong>ursa-mikail</strong></div>
+          
+          <div class="pills"><span class="pill" style="background:#6366f1">symmetric 1</span></div>
+          <a class="dlink" href="per_repo/python_argparse_demo.txt">View full match listing →</a>
+        </div></div>
+</section>
+
+
+
+<footer>Generated by repo_scanner.py · 2026-04-09T17:57:10.755569Z</footer>
+</body>
+</html>

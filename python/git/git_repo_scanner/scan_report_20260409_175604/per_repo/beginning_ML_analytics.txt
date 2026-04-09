@@ -1,0 +1,76 @@
+================================================================================
+  REPO       : beginning_ML_analytics
+  FULL NAME  : ursa-mikail/beginning_ML_analytics
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Python
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/beginning_ML_analytics
+  MATCHES    : 53
+================================================================================
+
+  ▸ _01g_decision_tree_pruning.py
+      line    21  [symmetric]  # Default tree has 331 nodes
+      line    32  [symmetric]  # Pruned tree has fewer nodes
+      line    42  [symmetric]  # Compare the number of nodes and accuracy before and after pruning
+
+  ▸ sentiment_analysis/readme.md
+      line     4  [fpe_token]  - Tokenizing
+
+  ▸ sentiment_analysis/sentiment_analysis_BERT_demo_01.py
+      line     3  [fpe_token]  from transformers import TFAutoModel, AutoTokenizer
+      line     6  [fpe_token]  # Load BERT model and tokenizer
+      line     8  [fpe_token]  tokenizer = AutoTokenizer.from_pretrained("bert-base-uncased")
+      line    10  [fpe_token]  # Tokenize the sample input
+      line    11  [fpe_token]  inputs = tokenizer(['Hello world', 'Hi how are you'], padding=True, truncation=True, return_tensors='tf')
+      line    16  [fpe_token]  # Tokenize emotion dataset
+      line    17  [fpe_token]  def tokenize(batch):
+      line    18  [fpe_token]  return tokenizer(batch["text"], padding=True, truncation=True)
+      line    20  [fpe_token]  emotions_encoded = emotions.map(tokenize, batched=True, batch_size=None)
+
+  ▸ sentiment_analysis/sentiment_analysis_BERT_demo_02.py
+      line     6  [fpe_token]  from transformers import BertTokenizer
+      line    16  [fpe_token]  # Feature extraction using Hugging Face's BERT tokenizer
+      line    17  [fpe_token]  tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
+      line    26  [fpe_token]  # Feature extraction using Hugging Face's BERT tokenizer
+      line    27  [fpe_token]  tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
+      line    30  [fpe_token]  model_inputs = tokenizer(sequences, padding=True, return_tensors='tf')
+      line    56  [fpe_token]  model.add(Embedding(len(tokenizer.get_vocab()), 32))
+
+  ▸ sentiment_analysis/sentiment_analysis_demo_00.py
+      line     6  [fpe_token]  from nltk.tokenize import RegexpTokenizer
+      line    23  [fpe_token]  # Tokenize text
+      line    24  [fpe_token]  regexp = RegexpTokenizer('\w+')
+      line    25  [fpe_token]  df['text_token'] = df['text'].apply(regexp.tokenize)
+      line    97  [fpe_token]  from transformers import AutoTokenizer, TFAutoModelForSequenceClassification
+      line   103  [fpe_token]  Preprocess text by lowercasing, tokenizing, removing stopwords, and lemmatizing
+      line   108  [fpe_token]  # Tokenize
+      line   109  [fpe_token]  regexp = RegexpTokenizer(r'\w+')
+      line   110  [fpe_token]  tokens = regexp.tokenize(text)
+      line   148  [fpe_token]  tokenizer = AutoTokenizer.from_pretrained("j-hartmann/emotion-english-distilroberta-base")
+      line   152  [fpe_token]  inputs = tokenizer(df['processed_text'].tolist(), return_tensors="tf", padding=True, truncation=True)
+      line   227  [fpe_token]  tokenizer = AutoTokenizer.from_pretrained("j-hartmann/emotion-english-distilroberta-base")
+      line   231  [fpe_token]  inputs = tokenizer(df['processed_text'].tolist(), return_tensors="tf", padding=True, truncation=True)
+
+  ▸ understanding_llm_training_metrics/readme.md
+      line     5  [fpe_token]  - Tokenization - Working Byte-Pair Encoding example
+
+  ▸ understanding_llm_training_metrics/understanding_llm_training_metrics.py
+      line    17  [fpe_token]  # SECTION 1: TOKENIZATION
+      line    20  [fpe_token]  print("SECTION 1: TOKENIZATION")
+      line    23  [fpe_token]  class SimpleTokenizer:
+      line    24  [fpe_token]  """Simplified Byte-Pair Encoding tokenizer"""
+      line    32  [fpe_token]  def tokenize(self, text: str) -> List[int]:
+      line    40  [fpe_token]  def detokenize(self, token_ids: List[int]) -> str:
+      line    46  [fpe_token]  tokenizer = SimpleTokenizer()
+      line    48  [fpe_token]  tokens = tokenizer.tokenize(text)
+      line    49  [fpe_token]  recovered = tokenizer.detokenize(tokens)
+      line    54  [fpe_token]  print(f"Vocabulary size: {len(tokenizer.vocab)}")
+      line    90  [fpe_token]  lm = SimpleLM(vocab_size=len(tokenizer.vocab))
+      line    93  [fpe_token]  tokens = tokenizer.tokenize(sentence)
+      line   103  [fpe_token]  print(f"P('{tokenizer.detokenize([tokens[0]])}') = {prob_first}")
+      line   104  [fpe_token]  print(f"P('{tokenizer.detokenize([tokens[1]])}' | '{tokenizer.detokenize([tokens[0]])}') = {prob_second}")
+      line   635  [symmetric]  (Includes weights, gradients, optimizer states in FP16)
+      line   651  [fpe_token]  print("  ✓ Tokenization")
+      line  1026  [fpe_token]  SECTION 1: TOKENIZATION
+      line  1276  [symmetric]  (Includes weights, gradients, optimizer states in FP16)
+      line  1291  [fpe_token]  ✓ Tokenization

@@ -1,0 +1,991 @@
+================================================================================
+  REPO       : pqc_crypto_joints
+  FULL NAME  : ursa-mikail/pqc_crypto_joints
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Go
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/pqc_crypto_joints
+  MATCHES    : 766
+================================================================================
+
+  ▸ modelled_version/README.md
+      line     8  [post_quantum]  All 3 NIST/FIPS post-quantum standards are covered:
+      line    13  [asymmetric]  | FIPS 204 | ML-DSA    | 44 · 65 · 87 |
+      line    14  [asymmetric]  | FIPS 205 | SLH-DSA   | 12 variants (SHA2+SHAKE × {128,192,256} × {s,f}) |
+      line    24  [symmetric]  │  RSA-2048 · ECDH-P256 · ECDSA-P384 · AES-256-GCM      │
+      line    24  [cipher_mode]  │  RSA-2048 · ECDH-P256 · ECDSA-P384 · AES-256-GCM      │
+      line    24  [asymmetric]  │  RSA-2048 · ECDH-P256 · ECDSA-P384 · AES-256-GCM      │
+      line    30  [asymmetric]  RSA/ECDH→  ECDSA→     SHA-2→
+      line    31  [asymmetric]  ML-KEM   ML-DSA/    SHA-3/SHAKE
+      line    32  [asymmetric]  SLH-DSA
+      line    44  [asymmetric]  ML-KEM   ML-DSA     SLH-DSA
+      line    53  [asymmetric]  ML-KEM · ML-DSA · SLH-DSA · SHA-3/SHAKE
+      line    65  [symmetric]  | `legacy.go` | Legacy crypto layer (RSA, ECDH, ECDSA, AES) |
+      line    65  [asymmetric]  | `legacy.go` | Legacy crypto layer (RSA, ECDH, ECDSA, AES) |
+      line    88  [asymmetric]  RSA:   2048-bit key
+      line    91  [symmetric]  AES:   256-bit key  GCM=true
+      line    91  [cipher_mode]  AES:   256-bit key  GCM=true
+      line    94  [asymmetric]  KEM   legacy=RSA/ECDH           PQC=ML-KEM (FIPS 203)          legacy_active=true  pqc_active=false
+      line    95  [asymmetric]  Sign  legacy=ECDSA              PQC=ML-DSA / SLH-DSA (FIPS …)  legacy_active=true  pqc_active=false
+      line   101  [asymmetric]  [mesh] registered ML-DSA-65    → TA-Sign
+      line   102  [asymmetric]  [mesh] registered SLH-DSA-SHA2-128s → TA-Sign
+      line   107  [asymmetric]  ML-DSA-65                         FIPS 204   3    ✓     ✓     ✓  dual-path OK
+      line   108  [asymmetric]  SLH-DSA-SHA2-128s                 FIPS 205   1    ✓     ✓     ✓  dual-path OK
+      line   116  [asymmetric]  Sign : ML-DSA-65      FIPS 204  cat=3
+      line   117  [asymmetric]  SLH  : SLH-DSA-SHA2-128s FIPS 205 cat=1
+      line   122  [asymmetric]  DSA  (ML-DSA-65): sign/verify OK=true  sig_len=3293
+      line   124  [asymmetric]  SLH  (SLH-DSA-SHA2-128s): sign/verify OK=true  sig_len=7856
+      line   131  [asymmetric]  ### Add all 12 SLH-DSA variants
+      line   160  [asymmetric]  - **cloudflare/circl** – `circl/kem/kyber` (ML-KEM), `circl/sign/dilithium` (ML-DSA)
+      line   160  [post_quantum]  - **cloudflare/circl** – `circl/kem/kyber` (ML-KEM), `circl/sign/dilithium` (ML-DSA)
+      line   160  [post_quantum]  - **cloudflare/circl** – `circl/kem/kyber` (ML-KEM), `circl/sign/dilithium` (ML-DSA)
+      line   173  [asymmetric]  - RSA/ECDSA/ECDH operations use Go's `crypto/` standard library.
+      line   174  [asymmetric]  - ML-KEM and ML-DSA operations are **structurally correct simulations** —
+
+  ▸ modelled_version/joints.go
+      line    34  [asymmetric]  // ─── KEM Joint (RSA/ECDH → ML-KEM) ──────────────────────────────────────────
+      line    36  [asymmetric]  // KEMJoint bridges RSA/ECDH key-encapsulation to ML-KEM.
+      line    47  [asymmetric]  LegacyAlg:    "RSA/ECDH",
+      line    71  [asymmetric]  // ─── Sign Joint (ECDSA → ML-DSA / SLH-DSA) ──────────────────────────────────
+      line    73  [asymmetric]  // SignJoint bridges ECDSA to ML-DSA (lattice) and SLH-DSA (hash-based).
+      line    85  [asymmetric]  PQCAlg:       "ML-DSA / SLH-DSA (FIPS 204/205)",
+      line    95  [signature]  r, s, err = ecdsa.Sign(rand.Reader, j.legacy.ecdsaKey, h[:])
+      line   102  [signature]  return ecdsa.Verify(j.legacy.ECDSAPublicKey(), h[:], r, s)
+
+  ▸ modelled_version/legacy.go
+      line     4  [symmetric]  "crypto/aes"
+      line    10  [asymmetric]  "crypto/rsa"
+      line    30  [asymmetric]  rsaKey    *rsa.PrivateKey
+      line    43  [asymmetric]  // RSA
+      line    44  [asymmetric]  l.rsaKey, err = rsa.GenerateKey(rand.Reader, cfg.RSAKeyBits)
+      line    45  [asymmetric]  mustf(err, "rsa keygen")
+      line    55  [symmetric]  // AES
+      line    58  [symmetric]  mustf(err, "aes key gen")
+      line    61  [symmetric]  block, e := aes.NewCipher(l.aesKey)
+      line    62  [symmetric]  mustf(e, "aes cipher")
+      line    64  [symmetric]  mustf(err, "aes-gcm")
+      line    64  [cipher_mode]  mustf(err, "aes-gcm")
+      line    72  [asymmetric]  fmt.Printf("  RSA:   %d-bit key  (public modulus bits: %d)\n",
+      line    76  [symmetric]  fmt.Printf("  AES:   %d-bit key  GCM=%v\n", l.cfg.AESKeyBits, l.cfg.AESLegacyGCM)
+      line    76  [cipher_mode]  fmt.Printf("  AES:   %d-bit key  GCM=%v\n", l.cfg.AESKeyBits, l.cfg.AESLegacyGCM)
+      line    79  [asymmetric]  // RSAPublicKey returns the RSA public key.
+      line    80  [asymmetric]  func (l *LegacyCryptoLayer) RSAPublicKey() *rsa.PublicKey { return &l.rsaKey.PublicKey }
+
+  ▸ modelled_version/main.go
+      line   114  [asymmetric]  // DSA sign / verify
+      line   116  [post_quantum]  msg := []byte("hello post-quantum world")
+      line   117  [signature]  sig, err := state.SignProvider.Sign(msg)
+      line   121  [signature]  ok, err := state.SignProvider.Verify(msg, sig)
+      line   125  [asymmetric]  fmt.Printf("  DSA  (%s): sign/verify OK=%v  sig_len=%d\n",
+      line   133  [post_quantum]  data := []byte("hash-me-post-quantum")
+      line   143  [asymmetric]  // SLH-DSA (stateless hash-based) sign / verify
+      line   146  [signature]  sig, err := state.SLHProvider.Sign(msg)
+      line   148  [asymmetric]  log.Printf("  SLH-DSA sign error: %v", err)
+      line   150  [signature]  ok, err := state.SLHProvider.Verify(msg, sig)
+      line   152  [asymmetric]  log.Printf("  SLH-DSA verify error: %v", err)
+
+  ▸ modelled_version/pqc_algorithms.go
+      line   107  [asymmetric]  // ML-DSA – FIPS 204  (Digital Signature Algorithm, lattice / Module-LWE+SIS)
+      line   107  [signature]  // ML-DSA – FIPS 204  (Digital Signature Algorithm, lattice / Module-LWE+SIS)
+      line   128  [asymmetric]  // MLDSAProvider implements ML-DSA (FIPS 204).
+      line   144  [asymmetric]  func (m *MLDSAProvider) Name() string         { return fmt.Sprintf("ML-DSA-%d", int(m.variant)) }
+      line   152  [asymmetric]  // Sign produces an ML-DSA signature (simulated: SHA3-512 + key binding).
+      line   168  [asymmetric]  // Verify checks an ML-DSA signature.
+      line   172  [asymmetric]  return false, fmt.Errorf("ML-DSA-%d: wrong signature length", int(m.variant))
+      line   174  [signature]  expected, _ := m.Sign(msg)
+      line   185  [asymmetric]  // SLH-DSA – FIPS 205  (Stateless Hash-Based Digital Signature)
+      line   185  [signature]  // SLH-DSA – FIPS 205  (Stateless Hash-Based Digital Signature)
+      line   193  [asymmetric]  SLHDSA_SHA2_128s  SLHDSAVariant = "SLH-DSA-SHA2-128s"
+      line   194  [asymmetric]  SLHDSA_SHA2_128f  SLHDSAVariant = "SLH-DSA-SHA2-128f"
+      line   195  [asymmetric]  SLHDSA_SHA2_192s  SLHDSAVariant = "SLH-DSA-SHA2-192s"
+      line   196  [asymmetric]  SLHDSA_SHA2_192f  SLHDSAVariant = "SLH-DSA-SHA2-192f"
+      line   197  [asymmetric]  SLHDSA_SHA2_256s  SLHDSAVariant = "SLH-DSA-SHA2-256s"
+      line   198  [asymmetric]  SLHDSA_SHA2_256f  SLHDSAVariant = "SLH-DSA-SHA2-256f"
+      line   200  [asymmetric]  SLHDSA_SHAKE_128s SLHDSAVariant = "SLH-DSA-SHAKE-128s"
+      line   201  [asymmetric]  SLHDSA_SHAKE_128f SLHDSAVariant = "SLH-DSA-SHAKE-128f"
+      line   202  [asymmetric]  SLHDSA_SHAKE_192s SLHDSAVariant = "SLH-DSA-SHAKE-192s"
+      line   203  [asymmetric]  SLHDSA_SHAKE_192f SLHDSAVariant = "SLH-DSA-SHAKE-192f"
+      line   204  [asymmetric]  SLHDSA_SHAKE_256s SLHDSAVariant = "SLH-DSA-SHAKE-256s"
+      line   205  [asymmetric]  SLHDSA_SHAKE_256f SLHDSAVariant = "SLH-DSA-SHAKE-256f"
+      line   233  [asymmetric]  // SLHDSAProvider implements SLH-DSA (FIPS 205).
+      line   277  [asymmetric]  // Sign produces an SLH-DSA signature (simulated FORS+HT structure).
+      line   295  [asymmetric]  // Verify checks an SLH-DSA signature.
+
+  ▸ modelled_version/prune_gate.go
+      line   162  [asymmetric]  fmt.Println("  All traffic: ML-KEM · ML-DSA · SLH-DSA · SHA-3/SHAKE")
+
+  ▸ ver_01/README.md
+      line     7  [post_quantum]  All four NIST/FIPS post-quantum standards are covered:
+      line    11  [post_quantum]  | FIPS 203 | ML-KEM     | 512 · 768 · 1024             | `cloudflare/circl` Kyber (constant-time, formally reviewed) |
+      line    12  [asymmetric]  | FIPS 204 | ML-DSA     | 44 · 65 · 87                 | `cloudflare/circl` Dilithium (constant-time) |
+      line    12  [post_quantum]  | FIPS 204 | ML-DSA     | 44 · 65 · 87                 | `cloudflare/circl` Dilithium (constant-time) |
+      line    13  [asymmetric]  | FIPS 205 | SLH-DSA    | 12 variants (SHA2+SHAKE × {128,192,256} × {s,f}) | Structurally-faithful sim using `golang.org/x/crypto/sha3` with correct FIPS 205 hash primitives — replace with `circl/sign/sphincsplus` when available |
+      line    17  [post_quantum]  The primary standard for quantum-safe key exchange. Kyber / ML-KEM allows two
+      line    21  [asymmetric]  ### ML-DSA (FIPS 204) — Digital Signatures
+      line    21  [signature]  ### ML-DSA (FIPS 204) — Digital Signatures
+      line    22  [asymmetric]  The primary lattice-based signature standard. Dilithium / ML-DSA ensures data
+      line    22  [post_quantum]  The primary lattice-based signature standard. Dilithium / ML-DSA ensures data
+      line    25  [asymmetric]  ### SLH-DSA (FIPS 205) — Stateless Hash-Based Signatures
+      line    30  [asymmetric]  ### FN-DSA (FIPS 206) — Note
+      line    31  [asymmetric]  FIPS 206 (Falcon / FN-DSA) offers smaller signatures than ML-DSA at the cost
+      line    31  [post_quantum]  FIPS 206 (Falcon / FN-DSA) offers smaller signatures than ML-DSA at the cost
+      line    32  [symmetric]  of more complex sampling. `cloudflare/circl` includes Falcon; it can be added
+      line    32  [post_quantum]  of more complex sampling. `cloudflare/circl` includes Falcon; it can be added
+      line    42  [symmetric]  │  RSA-2048 · ECDH-P256 · ECDSA-P384 · AES-256-GCM      │
+      line    42  [cipher_mode]  │  RSA-2048 · ECDH-P256 · ECDSA-P384 · AES-256-GCM      │
+      line    42  [asymmetric]  │  RSA-2048 · ECDH-P256 · ECDSA-P384 · AES-256-GCM      │
+      line    48  [asymmetric]  RSA/ECDH→  ECDSA→     SHA-2→
+      line    49  [asymmetric]  ML-KEM   ML-DSA/    SHA-3/SHAKE
+      line    50  [asymmetric]  SLH-DSA
+      line    62  [asymmetric]  ML-KEM   ML-DSA     SLH-DSA
+      line    71  [asymmetric]  ML-KEM · ML-DSA · SLH-DSA · SHA-3/SHAKE
+      line    81  [symmetric]  | `legacy.go` | Legacy crypto layer (RSA, ECDH, ECDSA, AES) |
+      line    81  [asymmetric]  | `legacy.go` | Legacy crypto layer (RSA, ECDH, ECDSA, AES) |
+      line   112  [asymmetric]  RSA:   2048-bit key  (public modulus bits: 2048)
+      line   115  [symmetric]  AES:   256-bit key  GCM=true
+      line   115  [cipher_mode]  AES:   256-bit key  GCM=true
+      line   118  [asymmetric]  KEM   legacy=RSA/ECDH           PQC=ML-KEM (FIPS 203)          legacy_active=true  pqc_active=false
+      line   119  [asymmetric]  Sign  legacy=ECDSA              PQC=ML-DSA / SLH-DSA (FIPS …)  legacy_active=true  pqc_active=false
+      line   125  [asymmetric]  [mesh] registered ML-DSA-65    → TA-Sign
+      line   126  [asymmetric]  [mesh] registered SLH-DSA-SHA2-128s → TA-Sign
+      line   130  [asymmetric]  ML-DSA-65           FIPS 204  cat=3  ✓  ✓  ✓  dual-path OK
+      line   131  [asymmetric]  SLH-DSA-SHA2-128s   FIPS 205  cat=1  ✓  ✓  ✓  dual-path OK
+      line   139  [asymmetric]  Sign : ML-DSA-65         FIPS 204  cat=3
+      line   140  [asymmetric]  SLH  : SLH-DSA-SHA2-128s FIPS 205  cat=1
+      line   145  [asymmetric]  DSA  (ML-DSA-65): sign/verify OK=true  sig_len=3293
+      line   147  [asymmetric]  SLH  (SLH-DSA-SHA2-128s): sign/verify OK=true  sig_len=7856
+      line   156  [asymmetric]  ### cloudflare/circl — ML-KEM and ML-DSA
+      line   159  [post_quantum]  **ML-KEM** is accessed via the Kyber sub-packages, which implement the
+      line   160  [post_quantum]  Round-3 Kyber specification — the same parameter sets standardised as
+      line   165  [post_quantum]  | ML-KEM-512  | `circl/kem/kyber/kyber512`  |
+      line   166  [post_quantum]  | ML-KEM-768  | `circl/kem/kyber/kyber768`  |
+      line   167  [post_quantum]  | ML-KEM1024 | `circl/kem/kyber/kyber1024` |
+      line   169  [asymmetric]  **ML-DSA** is accessed via the Dilithium sub-packages:
+      line   169  [post_quantum]  **ML-DSA** is accessed via the Dilithium sub-packages:
+      line   173  [asymmetric]  | ML-DSA-44 | `Dilithium2` |
+      line   174  [asymmetric]  | ML-DSA-65 | `Dilithium3` |
+      line   175  [asymmetric]  | ML-DSA-87 | `Dilithium5` |
+      line   179  [asymmetric]  ### golang.org/x/crypto/sha3 — FIPS 202 and SLH-DSA PRF
+      line   180  [symmetric]  `golang.org/x/crypto/sha3` provides production-grade SHA3-{256,384,512}
+      line   184  [asymmetric]  ### SLH-DSA status
+      line   185  [asymmetric]  `circl` v1.3.7 does not yet include an SLH-DSA / sphincsplus package.
+      line   202  [asymmetric]  ### Register all twelve SLH-DSA variants
+      line   218  [asymmetric]  ### Add FN-DSA (FIPS 206 / Falcon)
+      line   218  [post_quantum]  ### Add FN-DSA (FIPS 206 / Falcon)
+      line   221  [post_quantum]  import "github.com/cloudflare/circl/sign/falcon"
+      line   223  [post_quantum]  // Implement FNDSAProvider wrapping falcon.Falcon512 or falcon.Falcon1024
+      line   227  [asymmetric]  ### Swap in a certified SLH-DSA library (future)
+      line   238  [post_quantum]  - ML-KEM operations use `cloudflare/circl` Kyber — constant-time, production-grade.
+      line   239  [asymmetric]  - ML-DSA operations use `cloudflare/circl` Dilithium — constant-time, production-grade.
+      line   239  [post_quantum]  - ML-DSA operations use `cloudflare/circl` Dilithium — constant-time, production-grade.
+      line   241  [asymmetric]  - SLH-DSA verification uses constant-time byte comparison (`constantTimeEqual`).
+      line   242  [asymmetric]  - SLH-DSA key operations are a structurally-correct simulation pending a
+      line   245  [asymmetric]  - RSA/ECDSA/ECDH operations (legacy layer) use Go's `crypto/` standard library.
+
+  ▸ ver_01/joints.go
+      line    34  [asymmetric]  // ─── KEM Joint (RSA/ECDH → ML-KEM) ──────────────────────────────────────────
+      line    36  [asymmetric]  // KEMJoint bridges RSA/ECDH key-encapsulation to ML-KEM.
+      line    47  [asymmetric]  LegacyAlg:    "RSA/ECDH",
+      line    71  [asymmetric]  // ─── Sign Joint (ECDSA → ML-DSA / SLH-DSA) ──────────────────────────────────
+      line    73  [asymmetric]  // SignJoint bridges ECDSA to ML-DSA (lattice) and SLH-DSA (hash-based).
+      line    85  [asymmetric]  PQCAlg:       "ML-DSA / SLH-DSA (FIPS 204/205)",
+      line    95  [signature]  r, s, err = ecdsa.Sign(rand.Reader, j.legacy.ecdsaKey, h[:])
+      line   102  [signature]  return ecdsa.Verify(j.legacy.ECDSAPublicKey(), h[:], r, s)
+
+  ▸ ver_01/legacy.go
+      line     4  [symmetric]  "crypto/aes"
+      line    10  [asymmetric]  "crypto/rsa"
+      line    30  [asymmetric]  rsaKey    *rsa.PrivateKey
+      line    43  [asymmetric]  // RSA
+      line    44  [asymmetric]  l.rsaKey, err = rsa.GenerateKey(rand.Reader, cfg.RSAKeyBits)
+      line    45  [asymmetric]  mustf(err, "rsa keygen")
+      line    55  [symmetric]  // AES
+      line    58  [symmetric]  mustf(err, "aes key gen")
+      line    61  [symmetric]  block, e := aes.NewCipher(l.aesKey)
+      line    62  [symmetric]  mustf(e, "aes cipher")
+      line    64  [symmetric]  mustf(err, "aes-gcm")
+      line    64  [cipher_mode]  mustf(err, "aes-gcm")
+      line    72  [asymmetric]  fmt.Printf("  RSA:   %d-bit key  (public modulus bits: %d)\n",
+      line    76  [symmetric]  fmt.Printf("  AES:   %d-bit key  GCM=%v\n", l.cfg.AESKeyBits, l.cfg.AESLegacyGCM)
+      line    76  [cipher_mode]  fmt.Printf("  AES:   %d-bit key  GCM=%v\n", l.cfg.AESKeyBits, l.cfg.AESLegacyGCM)
+      line    79  [asymmetric]  // RSAPublicKey returns the RSA public key.
+      line    80  [asymmetric]  func (l *LegacyCryptoLayer) RSAPublicKey() *rsa.PublicKey { return &l.rsaKey.PublicKey }
+
+  ▸ ver_01/main.go
+      line   114  [asymmetric]  // DSA sign / verify
+      line   116  [post_quantum]  msg := []byte("hello post-quantum world")
+      line   117  [signature]  sig, err := state.SignProvider.Sign(msg)
+      line   121  [signature]  ok, err := state.SignProvider.Verify(msg, sig)
+      line   125  [asymmetric]  fmt.Printf("  DSA  (%s): sign/verify OK=%v  sig_len=%d\n",
+      line   133  [post_quantum]  data := []byte("hash-me-post-quantum")
+      line   143  [asymmetric]  // SLH-DSA (stateless hash-based) sign / verify
+      line   146  [signature]  sig, err := state.SLHProvider.Sign(msg)
+      line   148  [asymmetric]  log.Printf("  SLH-DSA sign error: %v", err)
+      line   150  [signature]  ok, err := state.SLHProvider.Verify(msg, sig)
+      line   152  [asymmetric]  log.Printf("  SLH-DSA verify error: %v", err)
+
+  ▸ ver_01/pqc_algorithms.go
+      line     6  [post_quantum]  //   FIPS 203 (ML-KEM)  →  github.com/cloudflare/circl/kem/kyber/{512,768,1024}
+      line     7  [post_quantum]  //                          Kyber is the Round-3 submission that became ML-KEM.
+      line    10  [asymmetric]  //   FIPS 204 (ML-DSA)  →  github.com/cloudflare/circl/sign/dilithium
+      line    10  [post_quantum]  //   FIPS 204 (ML-DSA)  →  github.com/cloudflare/circl/sign/dilithium
+      line    11  [asymmetric]  //                          Dilithium2 ≡ ML-DSA-44  (NIST Cat 2)
+      line    12  [asymmetric]  //                          Dilithium3 ≡ ML-DSA-65  (NIST Cat 3)
+      line    13  [asymmetric]  //                          Dilithium5 ≡ ML-DSA-87  (NIST Cat 5)
+      line    16  [asymmetric]  //   FIPS 205 (SLH-DSA) →  Stateless hash-based signature constructed from
+      line    18  [asymmetric]  //                          circl v1.3.7 pre-dates SLH-DSA finalisation; we
+      line    34  [post_quantum]  // FIPS 203 — ML-KEM via Kyber (cloudflare/circl)
+      line    35  [post_quantum]  kyber512  "github.com/cloudflare/circl/kem/kyber/kyber512"
+      line    36  [post_quantum]  kyber768  "github.com/cloudflare/circl/kem/kyber/kyber768"
+      line    37  [post_quantum]  kyber1024 "github.com/cloudflare/circl/kem/kyber/kyber1024"
+      line    39  [asymmetric]  // FIPS 204 — ML-DSA via Dilithium (cloudflare/circl)
+      line    39  [post_quantum]  // FIPS 204 — ML-DSA via Dilithium (cloudflare/circl)
+      line    40  [post_quantum]  "github.com/cloudflare/circl/sign/dilithium"
+      line    41  [post_quantum]  _ "github.com/cloudflare/circl/sign/dilithium/mode2" // registers "Dilithium2"
+      line    42  [post_quantum]  _ "github.com/cloudflare/circl/sign/dilithium/mode3" // registers "Dilithium3"
+      line    43  [post_quantum]  _ "github.com/cloudflare/circl/sign/dilithium/mode5" // registers "Dilithium5"
+      line    63  [post_quantum]  // Backed by cloudflare/circl Kyber (identical parameter sets, constant-time)
+      line    86  [post_quantum]  // MLKEMProvider implements KEMProvider using cloudflare/circl Kyber.
+      line    98  [post_quantum]  // NewMLKEMProvider generates a fresh Kyber key pair for the requested variant.
+      line   121  [post_quantum]  // Encapsulate uses the Kyber public key to produce (ciphertext, sharedSecret).
+      line   181  [asymmetric]  // ML-DSA – FIPS 204
+      line   182  [post_quantum]  // Backed by cloudflare/circl Dilithium (identical parameter sets)
+      line   184  [asymmetric]  //   Dilithium2 ≡ ML-DSA-44  (NIST Cat 2)
+      line   185  [asymmetric]  //   Dilithium3 ≡ ML-DSA-65  (NIST Cat 3)
+      line   186  [asymmetric]  //   Dilithium5 ≡ ML-DSA-87  (NIST Cat 5)
+      line   210  [post_quantum]  // MLDSAProvider implements SignProvider using cloudflare/circl Dilithium.
+      line   213  [post_quantum]  mode    dilithium.Mode
+      line   214  [post_quantum]  pk      dilithium.PublicKey
+      line   215  [post_quantum]  sk      dilithium.PrivateKey
+      line   218  [post_quantum]  // NewMLDSAProvider generates a fresh Dilithium key pair.
+      line   221  [post_quantum]  mode := dilithium.ModeByName(meta.circlMode)
+      line   223  [post_quantum]  panic(fmt.Sprintf("circl: dilithium mode %q not registered – ensure blank imports are present", meta.circlMode))
+      line   226  [asymmetric]  mustf(err, fmt.Sprintf("ML-DSA-%d keygen", int(v)))
+      line   237  [asymmetric]  func (m *MLDSAProvider) Name() string          { return fmt.Sprintf("ML-DSA-%d", int(m.variant)) }
+      line   245  [post_quantum]  // Sign produces a Dilithium signature (randomised internally, constant-time).
+      line   247  [signature]  return m.mode.Sign(m.sk, msg), nil
+      line   250  [post_quantum]  // Verify checks a Dilithium signature.
+      line   252  [signature]  return m.mode.Verify(m.pk, msg, sig), nil
+      line   262  [asymmetric]  // SLH-DSA – FIPS 205  (Stateless Hash-Based Digital Signatures)
+      line   262  [signature]  // SLH-DSA – FIPS 205  (Stateless Hash-Based Digital Signatures)
+      line   264  [asymmetric]  // circl v1.3.7 pre-dates the SLH-DSA finalisation.
+      line   280  [asymmetric]  SLHDSA_SHA2_128s  SLHDSAVariant = "SLH-DSA-SHA2-128s"
+      line   281  [asymmetric]  SLHDSA_SHA2_128f  SLHDSAVariant = "SLH-DSA-SHA2-128f"
+      line   282  [asymmetric]  SLHDSA_SHA2_192s  SLHDSAVariant = "SLH-DSA-SHA2-192s"
+      line   283  [asymmetric]  SLHDSA_SHA2_192f  SLHDSAVariant = "SLH-DSA-SHA2-192f"
+      line   284  [asymmetric]  SLHDSA_SHA2_256s  SLHDSAVariant = "SLH-DSA-SHA2-256s"
+      line   285  [asymmetric]  SLHDSA_SHA2_256f  SLHDSAVariant = "SLH-DSA-SHA2-256f"
+      line   286  [asymmetric]  SLHDSA_SHAKE_128s SLHDSAVariant = "SLH-DSA-SHAKE-128s"
+      line   287  [asymmetric]  SLHDSA_SHAKE_128f SLHDSAVariant = "SLH-DSA-SHAKE-128f"
+      line   288  [asymmetric]  SLHDSA_SHAKE_192s SLHDSAVariant = "SLH-DSA-SHAKE-192s"
+      line   289  [asymmetric]  SLHDSA_SHAKE_192f SLHDSAVariant = "SLH-DSA-SHAKE-192f"
+      line   290  [asymmetric]  SLHDSA_SHAKE_256s SLHDSAVariant = "SLH-DSA-SHAKE-256s"
+      line   291  [asymmetric]  SLHDSA_SHAKE_256f SLHDSAVariant = "SLH-DSA-SHAKE-256f"
+      line   317  [asymmetric]  // SLHDSAProvider implements SignProvider for all twelve SLH-DSA parameter sets.
+      line   324  [asymmetric]  // NewSLHDSAProvider generates fresh SLH-DSA key material using crypto/rand.
+      line   329  [asymmetric]  mustf(secureRand(pk), "SLH-DSA pk rand")
+      line   330  [asymmetric]  mustf(secureRand(sk), "SLH-DSA sk rand")
+      line   370  [asymmetric]  // Sign produces an SLH-DSA signature.
+      line   398  [asymmetric]  // SLH-DSA property: no per-key counter or state is required).
+
+  ▸ ver_01/prune_gate.go
+      line   162  [asymmetric]  fmt.Println("  All traffic: ML-KEM · ML-DSA · SLH-DSA · SHA-3/SHAKE")
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/internal/sha3/doc.go
+      line    54  [symmetric]  // 64 bytes, provides 256-bit security against all attacks.  The Keccak team
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/internal/sha3/hashes.go
+      line     7  [symmetric]  // This file provides functions for creating instances of the SHA-3
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/internal/sha3/shake.go
+      line     7  [symmetric]  // This file defines the ShakeHash interface, and provides
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/kem/kem.go
+      line     1  [symmetric]  // Package kem provides a unified interface for KEM schemes.
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/kem/kyber/kyber1024/kyber.go
+      line     7  [post_quantum]  // https://pq-crystals.org/kyber/data/kyber-specification-round3.pdf
+      line    18  [post_quantum]  cpapke "github.com/cloudflare/circl/pke/kyber/kyber1024"
+      line   139  [post_quantum]  // c = Kyber.CPAPKE.Enc(pk, m, r)
+      line   147  [kdf]  // K = KDF(K' ‖ H(c))
+      line   148  [kdf]  kdf := sha3.NewShake256()
+      line   149  [kdf]  kdf.Write(kr[:])
+      line   150  [kdf]  kdf.Read(ss[:SharedKeySize])
+      line   167  [post_quantum]  // m' = Kyber.CPAPKE.Dec(sk, ct)
+      line   178  [post_quantum]  // c' = Kyber.CPAPKE.Enc(pk, m', r')
+      line   194  [kdf]  // K = KDF(K''/z, H(c))
+      line   195  [kdf]  kdf := sha3.NewShake256()
+      line   196  [kdf]  kdf.Write(kr2[:])
+      line   197  [kdf]  kdf.Read(ss[:SharedKeySize])
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/kem/kyber/kyber512/kyber.go
+      line     7  [post_quantum]  // https://pq-crystals.org/kyber/data/kyber-specification-round3.pdf
+      line    18  [post_quantum]  cpapke "github.com/cloudflare/circl/pke/kyber/kyber512"
+      line   139  [post_quantum]  // c = Kyber.CPAPKE.Enc(pk, m, r)
+      line   147  [kdf]  // K = KDF(K' ‖ H(c))
+      line   148  [kdf]  kdf := sha3.NewShake256()
+      line   149  [kdf]  kdf.Write(kr[:])
+      line   150  [kdf]  kdf.Read(ss[:SharedKeySize])
+      line   167  [post_quantum]  // m' = Kyber.CPAPKE.Dec(sk, ct)
+      line   178  [post_quantum]  // c' = Kyber.CPAPKE.Enc(pk, m', r')
+      line   194  [kdf]  // K = KDF(K''/z, H(c))
+      line   195  [kdf]  kdf := sha3.NewShake256()
+      line   196  [kdf]  kdf.Write(kr2[:])
+      line   197  [kdf]  kdf.Read(ss[:SharedKeySize])
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/kem/kyber/kyber768/kyber.go
+      line     7  [post_quantum]  // https://pq-crystals.org/kyber/data/kyber-specification-round3.pdf
+      line    18  [post_quantum]  cpapke "github.com/cloudflare/circl/pke/kyber/kyber768"
+      line   139  [post_quantum]  // c = Kyber.CPAPKE.Enc(pk, m, r)
+      line   147  [kdf]  // K = KDF(K' ‖ H(c))
+      line   148  [kdf]  kdf := sha3.NewShake256()
+      line   149  [kdf]  kdf.Write(kr[:])
+      line   150  [kdf]  kdf.Read(ss[:SharedKeySize])
+      line   167  [post_quantum]  // m' = Kyber.CPAPKE.Dec(sk, ct)
+      line   178  [post_quantum]  // c' = Kyber.CPAPKE.Enc(pk, m', r')
+      line   194  [kdf]  // K = KDF(K''/z, H(c))
+      line   195  [kdf]  kdf := sha3.NewShake256()
+      line   196  [kdf]  kdf.Write(kr2[:])
+      line   197  [kdf]  kdf.Read(ss[:SharedKeySize])
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/pke/kyber/internal/common/ntt.go
+      line   158  [post_quantum]  // keeping a separate InvZetas table as in Dilithium.
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/pke/kyber/internal/common/params.go
+      line     4  [post_quantum]  "github.com/cloudflare/circl/pke/kyber/internal/common/params"
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/pke/kyber/kyber1024/internal/cpapke.go
+      line     7  [post_quantum]  "github.com/cloudflare/circl/pke/kyber/internal/common"
+      line    10  [post_quantum]  // A Kyber.CPAPKE private key.
+      line    15  [post_quantum]  // A Kyber.CPAPKE public key.
+      line    49  [post_quantum]  // Derives a new Kyber.CPAPKE keypair from the given seed.
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/pke/kyber/kyber1024/internal/mat.go
+      line     6  [post_quantum]  "github.com/cloudflare/circl/pke/kyber/internal/common"
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/pke/kyber/kyber1024/internal/params.go
+      line     6  [post_quantum]  "github.com/cloudflare/circl/pke/kyber/internal/common"
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/pke/kyber/kyber1024/internal/vec.go
+      line     6  [post_quantum]  "github.com/cloudflare/circl/pke/kyber/internal/common"
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/pke/kyber/kyber1024/kyber.go
+      line     7  [post_quantum]  // https://pq-crystals.org/kyber/data/kyber-specification-round3.pdf
+      line    14  [post_quantum]  "github.com/cloudflare/circl/pke/kyber/kyber1024/internal"
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/pke/kyber/kyber512/internal/cpapke.go
+      line     5  [post_quantum]  "github.com/cloudflare/circl/pke/kyber/internal/common"
+      line     8  [post_quantum]  // A Kyber.CPAPKE private key.
+      line    13  [post_quantum]  // A Kyber.CPAPKE public key.
+      line    47  [post_quantum]  // Derives a new Kyber.CPAPKE keypair from the given seed.
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/pke/kyber/kyber512/internal/mat.go
+      line     4  [post_quantum]  "github.com/cloudflare/circl/pke/kyber/internal/common"
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/pke/kyber/kyber512/internal/params.go
+      line     6  [post_quantum]  "github.com/cloudflare/circl/pke/kyber/internal/common"
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/pke/kyber/kyber512/internal/vec.go
+      line     4  [post_quantum]  "github.com/cloudflare/circl/pke/kyber/internal/common"
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/pke/kyber/kyber512/kyber.go
+      line     7  [post_quantum]  // https://pq-crystals.org/kyber/data/kyber-specification-round3.pdf
+      line    14  [post_quantum]  "github.com/cloudflare/circl/pke/kyber/kyber512/internal"
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/pke/kyber/kyber768/internal/cpapke.go
+      line     7  [post_quantum]  "github.com/cloudflare/circl/pke/kyber/internal/common"
+      line    10  [post_quantum]  // A Kyber.CPAPKE private key.
+      line    15  [post_quantum]  // A Kyber.CPAPKE public key.
+      line    49  [post_quantum]  // Derives a new Kyber.CPAPKE keypair from the given seed.
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/pke/kyber/kyber768/internal/mat.go
+      line     6  [post_quantum]  "github.com/cloudflare/circl/pke/kyber/internal/common"
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/pke/kyber/kyber768/internal/params.go
+      line     6  [post_quantum]  "github.com/cloudflare/circl/pke/kyber/internal/common"
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/pke/kyber/kyber768/internal/vec.go
+      line     6  [post_quantum]  "github.com/cloudflare/circl/pke/kyber/internal/common"
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/pke/kyber/kyber768/kyber.go
+      line     7  [post_quantum]  // https://pq-crystals.org/kyber/data/kyber-specification-round3.pdf
+      line    14  [post_quantum]  "github.com/cloudflare/circl/pke/kyber/kyber768/internal"
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/sign/dilithium/dilithium.go
+      line     3  [post_quantum]  // dilithium implements the CRYSTALS-Dilithium signature schemes
+      line     6  [post_quantum]  // https://pq-crystals.org/dilithium/data/dilithium-specification-round3-20210208.pdf
+      line     8  [symmetric]  // Each of the eight different modes of Dilithium is implemented by a
+      line     8  [post_quantum]  // Each of the eight different modes of Dilithium is implemented by a
+      line    12  [post_quantum]  //	github.com/cloudflare/circl/sign/dilithium/mode2
+      line    15  [symmetric]  // This package provides a convenient wrapper around all of the subpackages
+      line    18  [post_quantum]  // The authors of Dilithium recommend to combine it with a "pre-quantum"
+      line    27  [post_quantum]  package dilithium
+      line    34  [post_quantum]  // PublicKey is a Dilithium public key.
+      line    43  [post_quantum]  // PrivateKey is a Dilithium public key.
+      line    54  [post_quantum]  // Mode is a certain configuration of the Dilithium signature scheme.
+      line    97  [symmetric]  var modes = make(map[string]Mode)
+      line    99  [symmetric]  // ModeNames returns the list of supported modes.
+      line   102  [symmetric]  for name := range modes {
+      line   110  [symmetric]  return modes[name]
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/sign/dilithium/internal/common/aes.go
+      line     4  [symmetric]  "crypto/aes"
+      line     9  [symmetric]  // AES CTR stream used as a replacement for SHAKE in Dilithium[1234]-AES.
+      line     9  [cipher_mode]  // AES CTR stream used as a replacement for SHAKE in Dilithium[1234]-AES.
+      line     9  [post_quantum]  // AES CTR stream used as a replacement for SHAKE in Dilithium[1234]-AES.
+      line    17  [symmetric]  // not all occurrences of SHAKE are replaced by AES in the AES-variants).
+      line    19  [symmetric]  c, _ := aes.NewCipher(key[:])
+      line    24  [symmetric]  // not all occurrences of SHAKE are replaced by AES in the AES-variants.)
+      line    26  [symmetric]  // Yes, in an AES mode, Dilithium throws away the last 32 bytes of a seed ...
+      line    26  [post_quantum]  // Yes, in an AES mode, Dilithium throws away the last 32 bytes of a seed ...
+      line    29  [symmetric]  c, _ := aes.NewCipher(key[:32])
+      line    33  [symmetric]  // Squeeze some more blocks from the AES CTR stream into buf.
+      line    33  [cipher_mode]  // Squeeze some more blocks from the AES CTR stream into buf.
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/sign/dilithium/internal/common/params.go
+      line     4  [post_quantum]  "github.com/cloudflare/circl/sign/dilithium/internal/common/params"
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/sign/dilithium/internal/common/params/params.go
+      line    16  [symmetric]  // but it is for the parameters used in the modes of Dilithium.)
+      line    16  [post_quantum]  // but it is for the parameters used in the modes of Dilithium.)
+      line    20  [symmetric]  // but it is for the parameters used in the modes of Dilithium.)
+      line    20  [post_quantum]  // but it is for the parameters used in the modes of Dilithium.)
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/sign/dilithium/mode2.go
+      line     3  [post_quantum]  package dilithium
+      line     9  [post_quantum]  "github.com/cloudflare/circl/sign/dilithium/internal/common"
+      line    10  [post_quantum]  "github.com/cloudflare/circl/sign/dilithium/mode2"
+      line    16  [post_quantum]  // Mode2 is Dilithium in mode "Dilithium2".
+      line    43  [signature]  return mode2.Verify(ipk, msg, signature)
+      line    89  [symmetric]  modes["Dilithium2"] = Mode2
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/sign/dilithium/mode2/dilithium.go
+      line     3  [post_quantum]  // mode2 implements the CRYSTALS-Dilithium signature scheme Dilithium2
+      line     6  [post_quantum]  // https://pq-crystals.org/dilithium/data/dilithium-specification-round3-20210208.pdf
+      line    14  [post_quantum]  "github.com/cloudflare/circl/sign/dilithium/internal/common"
+      line    15  [post_quantum]  "github.com/cloudflare/circl/sign/dilithium/mode2/internal"
+      line    63  [signature]  return internal.Verify(
+      line   150  [post_quantum]  return nil, errors.New("dilithium: cannot sign hashed message")
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/sign/dilithium/mode2/internal/dilithium.go
+      line     1  [post_quantum]  // Code generated from mode3/internal/dilithium.go by gen.go
+      line    11  [post_quantum]  "github.com/cloudflare/circl/sign/dilithium/internal/common"
+      line    44  [post_quantum]  // PublicKey is the type of Dilithium public keys.
+      line    55  [post_quantum]  // PrivateKey is the type of Dilithium private keys.
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/sign/dilithium/mode2/internal/mat.go
+      line     6  [post_quantum]  "github.com/cloudflare/circl/sign/dilithium/internal/common"
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/sign/dilithium/mode2/internal/pack.go
+      line     6  [post_quantum]  "github.com/cloudflare/circl/sign/dilithium/internal/common"
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/sign/dilithium/mode2/internal/params.go
+      line     7  [symmetric]  UseAES        = false
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/sign/dilithium/mode2/internal/rounding.go
+      line     6  [post_quantum]  "github.com/cloudflare/circl/sign/dilithium/internal/common"
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/sign/dilithium/mode2/internal/sample.go
+      line     9  [post_quantum]  "github.com/cloudflare/circl/sign/dilithium/internal/common"
+      line    15  [symmetric]  var DeriveX4Available = keccakf1600.IsEnabledX4() && !UseAES
+      line    94  [symmetric]  var buf [12 * 16]byte // fits 168B SHAKE-128 rate and 12 16B AES blocks
+      line    96  [symmetric]  if UseAES {
+      line   103  [symmetric]  // Note that 3 divides into 168 and 12*16, so we use up buf completely.
+      line   116  [symmetric]  if UseAES {
+      line   145  [symmetric]  var buf [9 * 16]byte // fits 136B SHAKE-256 rate and 9 16B AES blocks
+      line   147  [symmetric]  if UseAES {
+      line   184  [symmetric]  if UseAES {
+      line   226  [symmetric]  if UseAES {
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/sign/dilithium/mode2/internal/vec.go
+      line     6  [post_quantum]  "github.com/cloudflare/circl/sign/dilithium/internal/common"
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/sign/dilithium/mode2aes.go
+      line     3  [post_quantum]  package dilithium
+      line     9  [post_quantum]  "github.com/cloudflare/circl/sign/dilithium/internal/common"
+      line    10  [symmetric]  "github.com/cloudflare/circl/sign/dilithium/mode2aes"
+      line    10  [post_quantum]  "github.com/cloudflare/circl/sign/dilithium/mode2aes"
+      line    13  [symmetric]  // implMode2AES implements the mode.Mode interface for Dilithium2-AES.
+      line    14  [symmetric]  type implMode2AES struct{}
+      line    16  [symmetric]  // Mode2AES is Dilithium in mode "Dilithium2-AES".
+      line    16  [post_quantum]  // Mode2AES is Dilithium in mode "Dilithium2-AES".
+      line    17  [symmetric]  var Mode2AES Mode = &implMode2AES{}
+      line    19  [symmetric]  func (m *implMode2AES) GenerateKey(rand io.Reader) (
+      line    21  [symmetric]  return mode2aes.GenerateKey(rand)
+      line    24  [symmetric]  func (m *implMode2AES) NewKeyFromSeed(seed []byte) (PublicKey,
+      line    31  [symmetric]  return mode2aes.NewKeyFromSeed(&seedBuf)
+      line    34  [symmetric]  func (m *implMode2AES) Sign(sk PrivateKey, msg []byte) []byte {
+      line    35  [symmetric]  isk := sk.(*mode2aes.PrivateKey)
+      line    36  [symmetric]  ret := [mode2aes.SignatureSize]byte{}
+      line    37  [symmetric]  mode2aes.SignTo(isk, msg, ret[:])
+      line    41  [symmetric]  func (m *implMode2AES) Verify(pk PublicKey, msg []byte, signature []byte) bool {
+      line    42  [symmetric]  ipk := pk.(*mode2aes.PublicKey)
+      line    43  [symmetric]  return mode2aes.Verify(ipk, msg, signature)
+      line    43  [signature]  return mode2aes.Verify(ipk, msg, signature)
+      line    46  [symmetric]  func (m *implMode2AES) PublicKeyFromBytes(data []byte) PublicKey {
+      line    47  [symmetric]  var ret mode2aes.PublicKey
+      line    48  [symmetric]  if len(data) != mode2aes.PublicKeySize {
+      line    49  [symmetric]  panic("packed public key must be of mode2aes.PublicKeySize bytes")
+      line    51  [symmetric]  var buf [mode2aes.PublicKeySize]byte
+      line    57  [symmetric]  func (m *implMode2AES) PrivateKeyFromBytes(data []byte) PrivateKey {
+      line    58  [symmetric]  var ret mode2aes.PrivateKey
+      line    59  [symmetric]  if len(data) != mode2aes.PrivateKeySize {
+      line    60  [symmetric]  panic("packed public key must be of mode2aes.PrivateKeySize bytes")
+      line    62  [symmetric]  var buf [mode2aes.PrivateKeySize]byte
+      line    68  [symmetric]  func (m *implMode2AES) SeedSize() int {
+      line    72  [symmetric]  func (m *implMode2AES) PublicKeySize() int {
+      line    73  [symmetric]  return mode2aes.PublicKeySize
+      line    76  [symmetric]  func (m *implMode2AES) PrivateKeySize() int {
+      line    77  [symmetric]  return mode2aes.PrivateKeySize
+      line    80  [symmetric]  func (m *implMode2AES) SignatureSize() int {
+      line    81  [symmetric]  return mode2aes.SignatureSize
+      line    84  [symmetric]  func (m *implMode2AES) Name() string {
+      line    85  [symmetric]  return "Dilithium2-AES"
+      line    89  [symmetric]  modes["Dilithium2-AES"] = Mode2AES
+      line    89  [symmetric]  modes["Dilithium2-AES"] = Mode2AES
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/sign/dilithium/mode2aes/dilithium.go
+      line     3  [symmetric]  // mode2aes implements the CRYSTALS-Dilithium signature scheme Dilithium2-AES
+      line     3  [post_quantum]  // mode2aes implements the CRYSTALS-Dilithium signature scheme Dilithium2-AES
+      line     6  [post_quantum]  // https://pq-crystals.org/dilithium/data/dilithium-specification-round3-20210208.pdf
+      line     7  [symmetric]  package mode2aes
+      line    14  [post_quantum]  "github.com/cloudflare/circl/sign/dilithium/internal/common"
+      line    15  [symmetric]  "github.com/cloudflare/circl/sign/dilithium/mode2aes/internal"
+      line    15  [post_quantum]  "github.com/cloudflare/circl/sign/dilithium/mode2aes/internal"
+      line    32  [symmetric]  // PublicKey is the type of Dilithium2-AES public key
+      line    35  [symmetric]  // PrivateKey is the type of Dilithium2-AES private key
+      line    63  [signature]  return internal.Verify(
+      line   117  [symmetric]  return errors.New("packed public key must be of mode2aes.PublicKeySize bytes")
+      line   128  [symmetric]  return errors.New("packed private key must be of mode2aes.PrivateKeySize bytes")
+      line   150  [post_quantum]  return nil, errors.New("dilithium: cannot sign hashed message")
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/sign/dilithium/mode2aes/internal/dilithium.go
+      line     1  [post_quantum]  // Code generated from mode3/internal/dilithium.go by gen.go
+      line    11  [post_quantum]  "github.com/cloudflare/circl/sign/dilithium/internal/common"
+      line    44  [post_quantum]  // PublicKey is the type of Dilithium public keys.
+      line    55  [post_quantum]  // PrivateKey is the type of Dilithium private keys.
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/sign/dilithium/mode2aes/internal/mat.go
+      line     6  [post_quantum]  "github.com/cloudflare/circl/sign/dilithium/internal/common"
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/sign/dilithium/mode2aes/internal/pack.go
+      line     6  [post_quantum]  "github.com/cloudflare/circl/sign/dilithium/internal/common"
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/sign/dilithium/mode2aes/internal/params.go
+      line     6  [symmetric]  Name          = "Dilithium2-AES"
+      line     7  [symmetric]  UseAES        = true
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/sign/dilithium/mode2aes/internal/rounding.go
+      line     6  [post_quantum]  "github.com/cloudflare/circl/sign/dilithium/internal/common"
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/sign/dilithium/mode2aes/internal/sample.go
+      line     9  [post_quantum]  "github.com/cloudflare/circl/sign/dilithium/internal/common"
+      line    15  [symmetric]  var DeriveX4Available = keccakf1600.IsEnabledX4() && !UseAES
+      line    94  [symmetric]  var buf [12 * 16]byte // fits 168B SHAKE-128 rate and 12 16B AES blocks
+      line    96  [symmetric]  if UseAES {
+      line   103  [symmetric]  // Note that 3 divides into 168 and 12*16, so we use up buf completely.
+      line   116  [symmetric]  if UseAES {
+      line   145  [symmetric]  var buf [9 * 16]byte // fits 136B SHAKE-256 rate and 9 16B AES blocks
+      line   147  [symmetric]  if UseAES {
+      line   184  [symmetric]  if UseAES {
+      line   226  [symmetric]  if UseAES {
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/sign/dilithium/mode2aes/internal/vec.go
+      line     6  [post_quantum]  "github.com/cloudflare/circl/sign/dilithium/internal/common"
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/sign/dilithium/mode3.go
+      line     3  [post_quantum]  package dilithium
+      line     9  [post_quantum]  "github.com/cloudflare/circl/sign/dilithium/internal/common"
+      line    10  [post_quantum]  "github.com/cloudflare/circl/sign/dilithium/mode3"
+      line    16  [post_quantum]  // Mode3 is Dilithium in mode "Dilithium3".
+      line    43  [signature]  return mode3.Verify(ipk, msg, signature)
+      line    89  [symmetric]  modes["Dilithium3"] = Mode3
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/sign/dilithium/mode3/dilithium.go
+      line     3  [post_quantum]  // mode3 implements the CRYSTALS-Dilithium signature scheme Dilithium3
+      line     6  [post_quantum]  // https://pq-crystals.org/dilithium/data/dilithium-specification-round3-20210208.pdf
+      line    14  [post_quantum]  "github.com/cloudflare/circl/sign/dilithium/internal/common"
+      line    15  [post_quantum]  "github.com/cloudflare/circl/sign/dilithium/mode3/internal"
+      line    63  [signature]  return internal.Verify(
+      line   150  [post_quantum]  return nil, errors.New("dilithium: cannot sign hashed message")
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/sign/dilithium/mode3/internal/dilithium.go
+      line     9  [post_quantum]  "github.com/cloudflare/circl/sign/dilithium/internal/common"
+      line    42  [post_quantum]  // PublicKey is the type of Dilithium public keys.
+      line    53  [post_quantum]  // PrivateKey is the type of Dilithium private keys.
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/sign/dilithium/mode3/internal/mat.go
+      line     4  [post_quantum]  "github.com/cloudflare/circl/sign/dilithium/internal/common"
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/sign/dilithium/mode3/internal/pack.go
+      line     4  [post_quantum]  "github.com/cloudflare/circl/sign/dilithium/internal/common"
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/sign/dilithium/mode3/internal/params.go
+      line     7  [symmetric]  UseAES        = false
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/sign/dilithium/mode3/internal/rounding.go
+      line     4  [post_quantum]  "github.com/cloudflare/circl/sign/dilithium/internal/common"
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/sign/dilithium/mode3/internal/sample.go
+      line     7  [post_quantum]  "github.com/cloudflare/circl/sign/dilithium/internal/common"
+      line    13  [symmetric]  var DeriveX4Available = keccakf1600.IsEnabledX4() && !UseAES
+      line    92  [symmetric]  var buf [12 * 16]byte // fits 168B SHAKE-128 rate and 12 16B AES blocks
+      line    94  [symmetric]  if UseAES {
+      line   101  [symmetric]  // Note that 3 divides into 168 and 12*16, so we use up buf completely.
+      line   114  [symmetric]  if UseAES {
+      line   143  [symmetric]  var buf [9 * 16]byte // fits 136B SHAKE-256 rate and 9 16B AES blocks
+      line   145  [symmetric]  if UseAES {
+      line   182  [symmetric]  if UseAES {
+      line   224  [symmetric]  if UseAES {
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/sign/dilithium/mode3/internal/vec.go
+      line     4  [post_quantum]  "github.com/cloudflare/circl/sign/dilithium/internal/common"
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/sign/dilithium/mode3aes.go
+      line     3  [post_quantum]  package dilithium
+      line     9  [post_quantum]  "github.com/cloudflare/circl/sign/dilithium/internal/common"
+      line    10  [symmetric]  "github.com/cloudflare/circl/sign/dilithium/mode3aes"
+      line    10  [post_quantum]  "github.com/cloudflare/circl/sign/dilithium/mode3aes"
+      line    13  [symmetric]  // implMode3AES implements the mode.Mode interface for Dilithium3-AES.
+      line    14  [symmetric]  type implMode3AES struct{}
+      line    16  [symmetric]  // Mode3AES is Dilithium in mode "Dilithium3-AES".
+      line    16  [post_quantum]  // Mode3AES is Dilithium in mode "Dilithium3-AES".
+      line    17  [symmetric]  var Mode3AES Mode = &implMode3AES{}
+      line    19  [symmetric]  func (m *implMode3AES) GenerateKey(rand io.Reader) (
+      line    21  [symmetric]  return mode3aes.GenerateKey(rand)
+      line    24  [symmetric]  func (m *implMode3AES) NewKeyFromSeed(seed []byte) (PublicKey,
+      line    31  [symmetric]  return mode3aes.NewKeyFromSeed(&seedBuf)
+      line    34  [symmetric]  func (m *implMode3AES) Sign(sk PrivateKey, msg []byte) []byte {
+      line    35  [symmetric]  isk := sk.(*mode3aes.PrivateKey)
+      line    36  [symmetric]  ret := [mode3aes.SignatureSize]byte{}
+      line    37  [symmetric]  mode3aes.SignTo(isk, msg, ret[:])
+      line    41  [symmetric]  func (m *implMode3AES) Verify(pk PublicKey, msg []byte, signature []byte) bool {
+      line    42  [symmetric]  ipk := pk.(*mode3aes.PublicKey)
+      line    43  [symmetric]  return mode3aes.Verify(ipk, msg, signature)
+      line    43  [signature]  return mode3aes.Verify(ipk, msg, signature)
+      line    46  [symmetric]  func (m *implMode3AES) PublicKeyFromBytes(data []byte) PublicKey {
+      line    47  [symmetric]  var ret mode3aes.PublicKey
+      line    48  [symmetric]  if len(data) != mode3aes.PublicKeySize {
+      line    49  [symmetric]  panic("packed public key must be of mode3aes.PublicKeySize bytes")
+      line    51  [symmetric]  var buf [mode3aes.PublicKeySize]byte
+      line    57  [symmetric]  func (m *implMode3AES) PrivateKeyFromBytes(data []byte) PrivateKey {
+      line    58  [symmetric]  var ret mode3aes.PrivateKey
+      line    59  [symmetric]  if len(data) != mode3aes.PrivateKeySize {
+      line    60  [symmetric]  panic("packed public key must be of mode3aes.PrivateKeySize bytes")
+      line    62  [symmetric]  var buf [mode3aes.PrivateKeySize]byte
+      line    68  [symmetric]  func (m *implMode3AES) SeedSize() int {
+      line    72  [symmetric]  func (m *implMode3AES) PublicKeySize() int {
+      line    73  [symmetric]  return mode3aes.PublicKeySize
+      line    76  [symmetric]  func (m *implMode3AES) PrivateKeySize() int {
+      line    77  [symmetric]  return mode3aes.PrivateKeySize
+      line    80  [symmetric]  func (m *implMode3AES) SignatureSize() int {
+      line    81  [symmetric]  return mode3aes.SignatureSize
+      line    84  [symmetric]  func (m *implMode3AES) Name() string {
+      line    85  [symmetric]  return "Dilithium3-AES"
+      line    89  [symmetric]  modes["Dilithium3-AES"] = Mode3AES
+      line    89  [symmetric]  modes["Dilithium3-AES"] = Mode3AES
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/sign/dilithium/mode3aes/dilithium.go
+      line     3  [symmetric]  // mode3aes implements the CRYSTALS-Dilithium signature scheme Dilithium3-AES
+      line     3  [post_quantum]  // mode3aes implements the CRYSTALS-Dilithium signature scheme Dilithium3-AES
+      line     6  [post_quantum]  // https://pq-crystals.org/dilithium/data/dilithium-specification-round3-20210208.pdf
+      line     7  [symmetric]  package mode3aes
+      line    14  [post_quantum]  "github.com/cloudflare/circl/sign/dilithium/internal/common"
+      line    15  [symmetric]  "github.com/cloudflare/circl/sign/dilithium/mode3aes/internal"
+      line    15  [post_quantum]  "github.com/cloudflare/circl/sign/dilithium/mode3aes/internal"
+      line    32  [symmetric]  // PublicKey is the type of Dilithium3-AES public key
+      line    35  [symmetric]  // PrivateKey is the type of Dilithium3-AES private key
+      line    63  [signature]  return internal.Verify(
+      line   117  [symmetric]  return errors.New("packed public key must be of mode3aes.PublicKeySize bytes")
+      line   128  [symmetric]  return errors.New("packed private key must be of mode3aes.PrivateKeySize bytes")
+      line   150  [post_quantum]  return nil, errors.New("dilithium: cannot sign hashed message")
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/sign/dilithium/mode3aes/internal/dilithium.go
+      line     1  [post_quantum]  // Code generated from mode3/internal/dilithium.go by gen.go
+      line    11  [post_quantum]  "github.com/cloudflare/circl/sign/dilithium/internal/common"
+      line    44  [post_quantum]  // PublicKey is the type of Dilithium public keys.
+      line    55  [post_quantum]  // PrivateKey is the type of Dilithium private keys.
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/sign/dilithium/mode3aes/internal/mat.go
+      line     6  [post_quantum]  "github.com/cloudflare/circl/sign/dilithium/internal/common"
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/sign/dilithium/mode3aes/internal/pack.go
+      line     6  [post_quantum]  "github.com/cloudflare/circl/sign/dilithium/internal/common"
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/sign/dilithium/mode3aes/internal/params.go
+      line     6  [symmetric]  Name          = "Dilithium3-AES"
+      line     7  [symmetric]  UseAES        = true
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/sign/dilithium/mode3aes/internal/rounding.go
+      line     6  [post_quantum]  "github.com/cloudflare/circl/sign/dilithium/internal/common"
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/sign/dilithium/mode3aes/internal/sample.go
+      line     9  [post_quantum]  "github.com/cloudflare/circl/sign/dilithium/internal/common"
+      line    15  [symmetric]  var DeriveX4Available = keccakf1600.IsEnabledX4() && !UseAES
+      line    94  [symmetric]  var buf [12 * 16]byte // fits 168B SHAKE-128 rate and 12 16B AES blocks
+      line    96  [symmetric]  if UseAES {
+      line   103  [symmetric]  // Note that 3 divides into 168 and 12*16, so we use up buf completely.
+      line   116  [symmetric]  if UseAES {
+      line   145  [symmetric]  var buf [9 * 16]byte // fits 136B SHAKE-256 rate and 9 16B AES blocks
+      line   147  [symmetric]  if UseAES {
+      line   184  [symmetric]  if UseAES {
+      line   226  [symmetric]  if UseAES {
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/sign/dilithium/mode3aes/internal/vec.go
+      line     6  [post_quantum]  "github.com/cloudflare/circl/sign/dilithium/internal/common"
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/sign/dilithium/mode5.go
+      line     3  [post_quantum]  package dilithium
+      line     9  [post_quantum]  "github.com/cloudflare/circl/sign/dilithium/internal/common"
+      line    10  [post_quantum]  "github.com/cloudflare/circl/sign/dilithium/mode5"
+      line    16  [post_quantum]  // Mode5 is Dilithium in mode "Dilithium5".
+      line    43  [signature]  return mode5.Verify(ipk, msg, signature)
+      line    89  [symmetric]  modes["Dilithium5"] = Mode5
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/sign/dilithium/mode5/dilithium.go
+      line     3  [post_quantum]  // mode5 implements the CRYSTALS-Dilithium signature scheme Dilithium5
+      line     6  [post_quantum]  // https://pq-crystals.org/dilithium/data/dilithium-specification-round3-20210208.pdf
+      line    14  [post_quantum]  "github.com/cloudflare/circl/sign/dilithium/internal/common"
+      line    15  [post_quantum]  "github.com/cloudflare/circl/sign/dilithium/mode5/internal"
+      line    63  [signature]  return internal.Verify(
+      line   150  [post_quantum]  return nil, errors.New("dilithium: cannot sign hashed message")
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/sign/dilithium/mode5/internal/dilithium.go
+      line     1  [post_quantum]  // Code generated from mode3/internal/dilithium.go by gen.go
+      line    11  [post_quantum]  "github.com/cloudflare/circl/sign/dilithium/internal/common"
+      line    44  [post_quantum]  // PublicKey is the type of Dilithium public keys.
+      line    55  [post_quantum]  // PrivateKey is the type of Dilithium private keys.
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/sign/dilithium/mode5/internal/mat.go
+      line     6  [post_quantum]  "github.com/cloudflare/circl/sign/dilithium/internal/common"
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/sign/dilithium/mode5/internal/pack.go
+      line     6  [post_quantum]  "github.com/cloudflare/circl/sign/dilithium/internal/common"
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/sign/dilithium/mode5/internal/params.go
+      line     7  [symmetric]  UseAES        = false
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/sign/dilithium/mode5/internal/rounding.go
+      line     6  [post_quantum]  "github.com/cloudflare/circl/sign/dilithium/internal/common"
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/sign/dilithium/mode5/internal/sample.go
+      line     9  [post_quantum]  "github.com/cloudflare/circl/sign/dilithium/internal/common"
+      line    15  [symmetric]  var DeriveX4Available = keccakf1600.IsEnabledX4() && !UseAES
+      line    94  [symmetric]  var buf [12 * 16]byte // fits 168B SHAKE-128 rate and 12 16B AES blocks
+      line    96  [symmetric]  if UseAES {
+      line   103  [symmetric]  // Note that 3 divides into 168 and 12*16, so we use up buf completely.
+      line   116  [symmetric]  if UseAES {
+      line   145  [symmetric]  var buf [9 * 16]byte // fits 136B SHAKE-256 rate and 9 16B AES blocks
+      line   147  [symmetric]  if UseAES {
+      line   184  [symmetric]  if UseAES {
+      line   226  [symmetric]  if UseAES {
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/sign/dilithium/mode5/internal/vec.go
+      line     6  [post_quantum]  "github.com/cloudflare/circl/sign/dilithium/internal/common"
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/sign/dilithium/mode5aes.go
+      line     3  [post_quantum]  package dilithium
+      line     9  [post_quantum]  "github.com/cloudflare/circl/sign/dilithium/internal/common"
+      line    10  [symmetric]  "github.com/cloudflare/circl/sign/dilithium/mode5aes"
+      line    10  [post_quantum]  "github.com/cloudflare/circl/sign/dilithium/mode5aes"
+      line    13  [symmetric]  // implMode5AES implements the mode.Mode interface for Dilithium5-AES.
+      line    14  [symmetric]  type implMode5AES struct{}
+      line    16  [symmetric]  // Mode5AES is Dilithium in mode "Dilithium5-AES".
+      line    16  [post_quantum]  // Mode5AES is Dilithium in mode "Dilithium5-AES".
+      line    17  [symmetric]  var Mode5AES Mode = &implMode5AES{}
+      line    19  [symmetric]  func (m *implMode5AES) GenerateKey(rand io.Reader) (
+      line    21  [symmetric]  return mode5aes.GenerateKey(rand)
+      line    24  [symmetric]  func (m *implMode5AES) NewKeyFromSeed(seed []byte) (PublicKey,
+      line    31  [symmetric]  return mode5aes.NewKeyFromSeed(&seedBuf)
+      line    34  [symmetric]  func (m *implMode5AES) Sign(sk PrivateKey, msg []byte) []byte {
+      line    35  [symmetric]  isk := sk.(*mode5aes.PrivateKey)
+      line    36  [symmetric]  ret := [mode5aes.SignatureSize]byte{}
+      line    37  [symmetric]  mode5aes.SignTo(isk, msg, ret[:])
+      line    41  [symmetric]  func (m *implMode5AES) Verify(pk PublicKey, msg []byte, signature []byte) bool {
+      line    42  [symmetric]  ipk := pk.(*mode5aes.PublicKey)
+      line    43  [symmetric]  return mode5aes.Verify(ipk, msg, signature)
+      line    43  [signature]  return mode5aes.Verify(ipk, msg, signature)
+      line    46  [symmetric]  func (m *implMode5AES) PublicKeyFromBytes(data []byte) PublicKey {
+      line    47  [symmetric]  var ret mode5aes.PublicKey
+      line    48  [symmetric]  if len(data) != mode5aes.PublicKeySize {
+      line    49  [symmetric]  panic("packed public key must be of mode5aes.PublicKeySize bytes")
+      line    51  [symmetric]  var buf [mode5aes.PublicKeySize]byte
+      line    57  [symmetric]  func (m *implMode5AES) PrivateKeyFromBytes(data []byte) PrivateKey {
+      line    58  [symmetric]  var ret mode5aes.PrivateKey
+      line    59  [symmetric]  if len(data) != mode5aes.PrivateKeySize {
+      line    60  [symmetric]  panic("packed public key must be of mode5aes.PrivateKeySize bytes")
+      line    62  [symmetric]  var buf [mode5aes.PrivateKeySize]byte
+      line    68  [symmetric]  func (m *implMode5AES) SeedSize() int {
+      line    72  [symmetric]  func (m *implMode5AES) PublicKeySize() int {
+      line    73  [symmetric]  return mode5aes.PublicKeySize
+      line    76  [symmetric]  func (m *implMode5AES) PrivateKeySize() int {
+      line    77  [symmetric]  return mode5aes.PrivateKeySize
+      line    80  [symmetric]  func (m *implMode5AES) SignatureSize() int {
+      line    81  [symmetric]  return mode5aes.SignatureSize
+      line    84  [symmetric]  func (m *implMode5AES) Name() string {
+      line    85  [symmetric]  return "Dilithium5-AES"
+      line    89  [symmetric]  modes["Dilithium5-AES"] = Mode5AES
+      line    89  [symmetric]  modes["Dilithium5-AES"] = Mode5AES
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/sign/dilithium/mode5aes/dilithium.go
+      line     3  [symmetric]  // mode5aes implements the CRYSTALS-Dilithium signature scheme Dilithium5-AES
+      line     3  [post_quantum]  // mode5aes implements the CRYSTALS-Dilithium signature scheme Dilithium5-AES
+      line     6  [post_quantum]  // https://pq-crystals.org/dilithium/data/dilithium-specification-round3-20210208.pdf
+      line     7  [symmetric]  package mode5aes
+      line    14  [post_quantum]  "github.com/cloudflare/circl/sign/dilithium/internal/common"
+      line    15  [symmetric]  "github.com/cloudflare/circl/sign/dilithium/mode5aes/internal"
+      line    15  [post_quantum]  "github.com/cloudflare/circl/sign/dilithium/mode5aes/internal"
+      line    32  [symmetric]  // PublicKey is the type of Dilithium5-AES public key
+      line    35  [symmetric]  // PrivateKey is the type of Dilithium5-AES private key
+      line    63  [signature]  return internal.Verify(
+      line   117  [symmetric]  return errors.New("packed public key must be of mode5aes.PublicKeySize bytes")
+      line   128  [symmetric]  return errors.New("packed private key must be of mode5aes.PrivateKeySize bytes")
+      line   150  [post_quantum]  return nil, errors.New("dilithium: cannot sign hashed message")
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/sign/dilithium/mode5aes/internal/dilithium.go
+      line     1  [post_quantum]  // Code generated from mode3/internal/dilithium.go by gen.go
+      line    11  [post_quantum]  "github.com/cloudflare/circl/sign/dilithium/internal/common"
+      line    44  [post_quantum]  // PublicKey is the type of Dilithium public keys.
+      line    55  [post_quantum]  // PrivateKey is the type of Dilithium private keys.
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/sign/dilithium/mode5aes/internal/mat.go
+      line     6  [post_quantum]  "github.com/cloudflare/circl/sign/dilithium/internal/common"
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/sign/dilithium/mode5aes/internal/pack.go
+      line     6  [post_quantum]  "github.com/cloudflare/circl/sign/dilithium/internal/common"
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/sign/dilithium/mode5aes/internal/params.go
+      line     6  [symmetric]  Name          = "Dilithium5-AES"
+      line     7  [symmetric]  UseAES        = true
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/sign/dilithium/mode5aes/internal/rounding.go
+      line     6  [post_quantum]  "github.com/cloudflare/circl/sign/dilithium/internal/common"
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/sign/dilithium/mode5aes/internal/sample.go
+      line     9  [post_quantum]  "github.com/cloudflare/circl/sign/dilithium/internal/common"
+      line    15  [symmetric]  var DeriveX4Available = keccakf1600.IsEnabledX4() && !UseAES
+      line    94  [symmetric]  var buf [12 * 16]byte // fits 168B SHAKE-128 rate and 12 16B AES blocks
+      line    96  [symmetric]  if UseAES {
+      line   103  [symmetric]  // Note that 3 divides into 168 and 12*16, so we use up buf completely.
+      line   116  [symmetric]  if UseAES {
+      line   145  [symmetric]  var buf [9 * 16]byte // fits 136B SHAKE-256 rate and 9 16B AES blocks
+      line   147  [symmetric]  if UseAES {
+      line   184  [symmetric]  if UseAES {
+      line   226  [symmetric]  if UseAES {
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/sign/dilithium/mode5aes/internal/vec.go
+      line     6  [post_quantum]  "github.com/cloudflare/circl/sign/dilithium/internal/common"
+
+  ▸ ver_01/vendor/github.com/cloudflare/circl/simd/keccakf1600/f1600x.go
+      line     1  [symmetric]  // Package keccakf1600 provides a two and four-way Keccak-f[1600] permutation in parallel.
+      line    13  [symmetric]  // For those systems not supporting these, the package still provides the
+
+  ▸ ver_01/vendor/golang.org/x/crypto/sha3/doc.go
+      line    54  [symmetric]  // 64 bytes, provides 256-bit security against all attacks.  The Keccak team
+
+  ▸ ver_01/vendor/golang.org/x/crypto/sha3/hashes.go
+      line     7  [symmetric]  // This file provides functions for creating instances of the SHA-3
+
+  ▸ ver_01/vendor/golang.org/x/crypto/sha3/sha3_s390x.go
+      line    19  [symmetric]  // codes represent 7-bit KIMD/KLMD function codes as defined in
+      line    24  [symmetric]  // function codes for KIMD/KLMD
+
+  ▸ ver_01/vendor/golang.org/x/crypto/sha3/shake.go
+      line     7  [symmetric]  // This file defines the ShakeHash interface, and provides
+
+  ▸ ver_01/vendor/golang.org/x/sys/cpu/cpu.go
+      line    33  [symmetric]  HasAES              bool // AES hardware implementation (AES NI)
+      line    53  [symmetric]  HasAVX512VAES       bool // Advanced vector extension 512 Vector AES instructions
+      line    66  [symmetric]  HasPCLMULQDQ        bool // PCLMULQDQ instruction - most often used for AES-GCM
+      line    66  [cipher_mode]  HasPCLMULQDQ        bool // PCLMULQDQ instruction - most often used for AES-GCM
+      line    86  [symmetric]  HasAES      bool // AES hardware implementation
+      line   138  [symmetric]  HasAES      bool // AES hardware implementation
+      line   187  [symmetric]  HasAES    bool // KM-AES{128,192,256} functions
+      line   188  [symmetric]  HasAESCBC bool // KMC-AES{128,192,256} functions
+      line   189  [symmetric]  HasAESCTR bool // KMCTR-AES{128,192,256} functions
+      line   190  [symmetric]  HasAESGCM bool // KMA-GCM-AES{128,192,256} functions
+      line   190  [cipher_mode]  HasAESGCM bool // KMA-GCM-AES{128,192,256} functions
+
+  ▸ ver_01/vendor/golang.org/x/sys/cpu/cpu_arm.go
+      line    35  [symmetric]  hwcap2_AES   = 1 << 0
+      line    69  [symmetric]  {Name: "aes", Feature: &ARM.HasAES},
+
+  ▸ ver_01/vendor/golang.org/x/sys/cpu/cpu_arm64.go
+      line    19  [symmetric]  {Name: "aes", Feature: &ARM64.HasAES},
+      line    72  [symmetric]  ARM64.HasAES = true
+      line    74  [symmetric]  ARM64.HasAES = true
+
+  ▸ ver_01/vendor/golang.org/x/sys/cpu/cpu_linux_arm.go
+      line    30  [symmetric]  ARM.HasAES = isSet(hwCap2, hwcap2_AES)
+
+  ▸ ver_01/vendor/golang.org/x/sys/cpu/cpu_linux_arm64.go
+      line    17  [symmetric]  hwcap_AES      = 1 << 3
+      line    86  [symmetric]  ARM64.HasAES = isSet(hwCap, hwcap_AES)
+
+  ▸ ver_01/vendor/golang.org/x/sys/cpu/cpu_netbsd_arm64.go
+      line    57  [symmetric]  func sysctlNodes(mib []int32) ([]sysctlNode, error) {
+      line    60  [symmetric]  // Get a list of all sysctl nodes below the given MIB by performing
+      line    70  [symmetric]  // Now that we know the size, get the actual nodes.
+      line    71  [symmetric]  nodes := make([]sysctlNode, olen/sz)
+      line    72  [symmetric]  np := (*byte)(unsafe.Pointer(&nodes[0]))
+      line    77  [symmetric]  return nodes, nil
+      line    93  [symmetric]  // Discover the nodes and construct the MIB OID.
+      line    95  [symmetric]  nodes, err := sysctlNodes(mib)
+      line    99  [symmetric]  for _, node := range nodes {
+      line   139  [cipher_mode]  ctr       uint64 /* Cache Type Register */
+
+  ▸ ver_01/vendor/golang.org/x/sys/cpu/cpu_s390x.go
+      line    18  [symmetric]  {Name: "aes", Feature: &S390X.HasAES},
+      line    90  [symmetric]  // KM{,A,C,CTR} function codes
+      line    90  [cipher_mode]  // KM{,A,C,CTR} function codes
+      line    91  [symmetric]  aes128 function = 18 // AES-128
+      line    92  [symmetric]  aes192 function = 19 // AES-192
+      line    93  [symmetric]  aes256 function = 20 // AES-256
+      line    95  [symmetric]  // K{I,L}MD function codes
+      line   106  [symmetric]  // KLMD function codes
+      line   120  [symmetric]  panic("no function codes provided")
+      line   141  [symmetric]  aes := []function{aes128, aes192, aes256}
+      line   145  [symmetric]  S390X.HasAES = km.Has(aes...)
+      line   146  [symmetric]  S390X.HasAESCBC = kmc.Has(aes...)
+      line   151  [symmetric]  S390X.HasAESCTR = kmctr.Has(aes...)
+      line   155  [symmetric]  S390X.HasAESGCM = kma.Has(aes...)
+
+  ▸ ver_01/vendor/golang.org/x/sys/cpu/cpu_x86.go
+      line    16  [symmetric]  {Name: "aes", Feature: &X86.HasAES},
+      line    35  [symmetric]  {Name: "avx512vaes", Feature: &X86.HasAVX512VAES},
+      line    83  [symmetric]  X86.HasAES = isSet(25, ecx1)
+      line   136  [symmetric]  X86.HasAVX512VAES = isSet(9, ecx7)
+
+  ▸ ver_01/vendor/modules.txt
+      line     5  [post_quantum]  github.com/cloudflare/circl/kem/kyber/kyber1024
+      line     6  [post_quantum]  github.com/cloudflare/circl/kem/kyber/kyber512
+      line     7  [post_quantum]  github.com/cloudflare/circl/kem/kyber/kyber768
+      line     8  [post_quantum]  github.com/cloudflare/circl/pke/kyber/internal/common
+      line     9  [post_quantum]  github.com/cloudflare/circl/pke/kyber/internal/common/params
+      line    10  [post_quantum]  github.com/cloudflare/circl/pke/kyber/kyber1024
+      line    11  [post_quantum]  github.com/cloudflare/circl/pke/kyber/kyber1024/internal
+      line    12  [post_quantum]  github.com/cloudflare/circl/pke/kyber/kyber512
+      line    13  [post_quantum]  github.com/cloudflare/circl/pke/kyber/kyber512/internal
+      line    14  [post_quantum]  github.com/cloudflare/circl/pke/kyber/kyber768
+      line    15  [post_quantum]  github.com/cloudflare/circl/pke/kyber/kyber768/internal
+      line    16  [post_quantum]  github.com/cloudflare/circl/sign/dilithium
+      line    17  [post_quantum]  github.com/cloudflare/circl/sign/dilithium/internal/common
+      line    18  [post_quantum]  github.com/cloudflare/circl/sign/dilithium/internal/common/params
+      line    19  [post_quantum]  github.com/cloudflare/circl/sign/dilithium/mode2
+      line    20  [post_quantum]  github.com/cloudflare/circl/sign/dilithium/mode2/internal
+      line    21  [symmetric]  github.com/cloudflare/circl/sign/dilithium/mode2aes
+      line    21  [post_quantum]  github.com/cloudflare/circl/sign/dilithium/mode2aes
+      line    22  [symmetric]  github.com/cloudflare/circl/sign/dilithium/mode2aes/internal
+      line    22  [post_quantum]  github.com/cloudflare/circl/sign/dilithium/mode2aes/internal
+      line    23  [post_quantum]  github.com/cloudflare/circl/sign/dilithium/mode3
+      line    24  [post_quantum]  github.com/cloudflare/circl/sign/dilithium/mode3/internal
+      line    25  [symmetric]  github.com/cloudflare/circl/sign/dilithium/mode3aes
+      line    25  [post_quantum]  github.com/cloudflare/circl/sign/dilithium/mode3aes
+      line    26  [symmetric]  github.com/cloudflare/circl/sign/dilithium/mode3aes/internal
+      line    26  [post_quantum]  github.com/cloudflare/circl/sign/dilithium/mode3aes/internal
+      line    27  [post_quantum]  github.com/cloudflare/circl/sign/dilithium/mode5
+      line    28  [post_quantum]  github.com/cloudflare/circl/sign/dilithium/mode5/internal
+      line    29  [symmetric]  github.com/cloudflare/circl/sign/dilithium/mode5aes
+      line    29  [post_quantum]  github.com/cloudflare/circl/sign/dilithium/mode5aes
+      line    30  [symmetric]  github.com/cloudflare/circl/sign/dilithium/mode5aes/internal
+      line    30  [post_quantum]  github.com/cloudflare/circl/sign/dilithium/mode5aes/internal

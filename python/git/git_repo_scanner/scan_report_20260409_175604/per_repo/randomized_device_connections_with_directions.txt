@@ -1,0 +1,28 @@
+================================================================================
+  REPO       : randomized_device_connections_with_directions
+  FULL NAME  : ursa-mikail/randomized_device_connections_with_directions
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Python
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/randomized_device_connections_with_directions
+  MATCHES    : 13
+================================================================================
+
+  ▸ graph_of_machines_and_humans.py
+      line    10  [symmetric]  pos_nodes = nx.spring_layout(G)
+      line    11  [symmetric]  nx.draw(G, pos_nodes, with_labels=True)
+      line    14  [symmetric]  for node, coords in pos_nodes.items():
+
+  ▸ randomized_device_connections_with_directions.py
+      line    12  [symmetric]  # Define connection modes
+      line    13  [symmetric]  connection_modes = ["uni", "bi", "none"]
+      line    19  [symmetric]  connection_mode = random.choice(connection_modes)
+      line    39  [symmetric]  # Define positions for the nodes (optional, for better visualization)
+      line    42  [symmetric]  # Draw nodes and edges
+
+  ▸ readme.md
+      line     6  [symmetric]  Nodes representing devices: "Device1", "Device2", "Device3", and "Cloud".
+      line    15  [symmetric]  Creates an undirected graph using NetworkX and visualizes it with Matplotlib. It includes nodes representing machines and humans and edges representing their connections. The nodes are labeled with their type.
+      line    18  [symmetric]  Nodes categorized as either 'machine' or 'human'.
+      line    19  [symmetric]  Connections between nodes represented as edges.
+      line    20  [symmetric]  Custom labels for nodes indicating their type.

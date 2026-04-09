@@ -1,0 +1,60 @@
+================================================================================
+  REPO       : authentication_authorization_system
+  FULL NAME  : ursa-mikail/authentication_authorization_system
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Python
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/authentication_authorization_system
+  MATCHES    : 37
+================================================================================
+
+  ▸ authentication_authorization_system.py
+      line     2  [py_import]  import hashlib
+      line     3  [py_import]  import hmac
+      line     3  [kdf]  import hmac
+      line    10  [py_import]  import secrets
+      line   122  [kdf]  # Create HMAC signature
+      line   123  [kdf]  signature = hmac.new(
+      line   137  [kdf]  return hmac.compare_digest(permit.signature, expected_signature)
+
+  ▸ model_02/client.py
+      line   134  [signature]  valid, msg = server.verify(permit)
+      line   153  [signature]  valid, msg = server.verify(permit_b)
+      line   180  [signature]  valid, msg = server.verify(permit)
+      line   197  [signature]  valid, msg = server.verify(permit_e)
+
+  ▸ model_02/crypto.py
+      line     9  [kdf]  2.  Compute HMAC-SHA256 over the UTF-8 bytes using the server's secret key.
+      line    13  [kdf]  hmac.compare_digest() to prevent timing attacks.
+      line    21  [py_import]  import hashlib
+      line    22  [py_import]  import hmac
+      line    22  [kdf]  import hmac
+      line    50  [kdf]  Compute and attach the HMAC-SHA256 signature to a Permit.
+      line    69  [kdf]  return hmac.compare_digest(expected_digest, permit.signature)
+      line   106  [kdf]  return hmac.new(_SERVER_SECRET, data, hashlib.sha256).hexdigest()
+
+  ▸ model_02/models.py
+      line   213  [kdf]  signature   : hex-encoded HMAC-SHA256 over the canonical payload
+
+  ▸ model_02/readme.md
+      line    11  [kdf]  crypto.py 	HMAC-SHA256 signing & verification of Permit documents
+
+  ▸ model_02/server.py
+      line    23  [kdf]  HMAC-SHA256(server_secret, canonical_json(payload))
+      line    33  [py_import]  import hashlib
+      line    34  [py_import]  import hmac
+      line    34  [kdf]  import hmac
+      line    36  [py_import]  import secrets
+      line    41  [py_import]  from crypto import sign_permit, verify_permit
+      line    62  [kdf]  # AuthToken  (simple HMAC-signed opaque token — not a full JWT)
+      line    69  [kdf]  sig   = hmac.new(secret, msg, hashlib.sha256).hexdigest()
+      line    82  [kdf]  expected = hmac.new(secret, msg, hashlib.sha256).hexdigest()
+      line    83  [kdf]  if hmac.compare_digest(expected, sig):
+      line   111  [kdf]  return hmac.compare_digest(stored, candidate)
+      line   189  [signature]  ok = server.verify(permit)
+      line   220  [signature]  if not self._credentials.verify(principal_id, credential):
+
+  ▸ readme.md
+      line     7  [kdf]  - **🔐 Certificate-like Permits**: Each permit is cryptographically signed using HMAC-SHA256
+      line    91  [kdf]  │  │  │ • Signature: HMAC-SHA256(...)                        │     │   │
+      line   242  [kdf]  signature: Optional[str]             # HMAC signature

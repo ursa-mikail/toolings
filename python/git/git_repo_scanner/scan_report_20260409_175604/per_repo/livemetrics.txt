@@ -1,0 +1,20 @@
+================================================================================
+  REPO       : livemetrics
+  FULL NAME  : ursa-mikail/livemetrics
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : TypeScript
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/livemetrics
+  MATCHES    : 5
+================================================================================
+
+  ▸ README.md
+      line   261  [kdf]  | golang.org/x/crypto  | bcrypt password hashing      |
+
+  ▸ backend/handlers/auth.go
+      line    11  [kdf]  "golang.org/x/crypto/bcrypt"
+      line    35  [kdf]  if err := bcrypt.CompareHashAndPassword([]byte(user.PasswordHash), []byte(req.Password)); err != nil {
+
+  ▸ backend/main.go
+      line    18  [kdf]  "golang.org/x/crypto/bcrypt"
+      line   153  [kdf]  hash, _ := bcrypt.GenerateFromPassword([]byte("demo1234"), bcrypt.DefaultCost)

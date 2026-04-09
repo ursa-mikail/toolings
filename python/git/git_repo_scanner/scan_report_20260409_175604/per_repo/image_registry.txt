@@ -1,0 +1,24 @@
+================================================================================
+  REPO       : image_registry
+  FULL NAME  : ursa-mikail/image_registry
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Python
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/image_registry
+  MATCHES    : 11
+================================================================================
+
+  ▸ image_registry.py
+      line     3  [py_import]  import hashlib
+      line     4  [py_import]  import hmac
+      line     4  [kdf]  import hmac
+      line    16  [kdf]  hmac TEXT NOT NULL,
+      line    30  [kdf]  hmac_hash = hmac.new(secret_key.encode(), contents.encode(), hashlib.sha256).hexdigest()
+      line    32  [kdf]  status_signature = hmac.new(secret_key.encode(), data_to_sign.encode(), hashlib.sha256).hexdigest()
+      line    35  [kdf]  INSERT INTO image (name, contents, sha256, hmac, team, team_owner, status, status_signature, status_url)
+      line    53  [kdf]  hmac_hash = hmac.new(secret_key.encode(), new_contents.encode(), hashlib.sha256).hexdigest()
+      line    55  [kdf]  new_status_signature = hmac.new(secret_key.encode(), data_to_sign.encode(), hashlib.sha256).hexdigest()
+      line    59  [kdf]  SET contents = ?, sha256 = ?, hmac = ?, team = ?, team_owner = ?, status = ?, status_signature = ?, status_url = ?
+
+  ▸ readme.md
+      line    23  [kdf]  hmac:

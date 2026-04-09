@@ -1,0 +1,35 @@
+================================================================================
+  REPO       : linearity_in_aes_xts_multipliers
+  FULL NAME  : ursa-mikail/linearity_in_aes_xts_multipliers
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Python
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/linearity_in_aes_xts_multipliers
+  MATCHES    : 22
+================================================================================
+
+  ▸ linearity_in_aes_xts_multipliers_demo.py
+      line     8  [symmetric]  Simplified GF(2^128) field operations for AES-XTS
+      line     8  [cipher_mode]  Simplified GF(2^128) field operations for AES-XTS
+      line    22  [cipher_mode]  a = (a << 1) ^ 0x87  # XTS reduction polynomial
+      line    30  [cipher_mode]  """Generate XTS-style sequential tweaks by multiplying by 2 (α) in GF(2^128)"""
+      line    84  [symmetric]  print("AES-XTS GF(2^128) Linearity Analysis - Improved Version")
+      line    84  [cipher_mode]  print("AES-XTS GF(2^128) Linearity Analysis - Improved Version")
+      line   188  [cipher_mode]  print(f"\nWhy XTS Limits Operations:")
+      line   191  [cipher_mode]  print(f"- XTS limits to ~2^20 operations to stay in 'safe zone'")
+      line   209  [symmetric]  AES-XTS GF(2^128) Linearity Analysis - Improved Version
+      line   209  [cipher_mode]  AES-XTS GF(2^128) Linearity Analysis - Improved Version
+      line   251  [cipher_mode]  Why XTS Limits Operations:
+      line   254  [cipher_mode]  - XTS limits to ~2^20 operations to stay in 'safe zone'
+
+  ▸ readme.md
+      line     3  [symmetric]  There are linearity issues in AES-XTS's GF(2^128) multipliers used for tweak chaining. This will show why the XTS specification limits the number of operations to prevent cryptographic weaknesses.
+      line     3  [cipher_mode]  There are linearity issues in AES-XTS's GF(2^128) multipliers used for tweak chaining. This will show why the XTS specification limits the number of operations to prevent cryptographic weaknesses.
+      line     5  [cipher_mode]  1. GF(2^128) Operations: Implements the finite field arithmetic used in XTS for tweak generation
+      line     9  [symmetric]  While the AES block cipher is cryptographically sound, its security in operational modes like Galois/Counter Mode (GCM) is contingent upon the strict uniqueness of nonces for a given key. The underlying algebraic structure of AES over the Galois field, while providing efficiency, does not prevent th
+      line     9  [symmetric]  While the AES block cipher is cryptographically sound, its security in operational modes like Galois/Counter Mode (GCM) is contingent upon the strict uniqueness of nonces for a given key. The underlying algebraic structure of AES over the Galois field, while providing efficiency, does not prevent th
+      line     9  [cipher_mode]  While the AES block cipher is cryptographically sound, its security in operational modes like Galois/Counter Mode (GCM) is contingent upon the strict uniqueness of nonces for a given key. The underlying algebraic structure of AES over the Galois field, while providing efficiency, does not prevent th
+      line    18  [cipher_mode]  ## Why XTS Has Limits:
+      line    19  [cipher_mode]  The XTS specification limits operations to about 2^20 (roughly 1 million) blocks per key because:
+      line    50  [cipher_mode]  ## Why This Matters for XTS:
+      line    56  [cipher_mode]  The XTS specification limits operations to ~1 million blocks precisely because this mathematical linearity becomes exploitable at scale, even though the individual operations look "random" to casual observation.

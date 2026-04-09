@@ -1,0 +1,122 @@
+================================================================================
+  REPO       : ElGamal_mix_net_shuffle
+  FULL NAME  : ursa-mikail/ElGamal_mix_net_shuffle
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Python
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/ElGamal_mix_net_shuffle
+  MATCHES    : 97
+================================================================================
+
+  ▸ N_party_shuffle_cards.py
+      line     3  [asymmetric]  # Toy ElGamal setup (not secure, just demo)
+      line    45  [symmetric]  # Run through N mix nodes sequentially
+      line    55  [symmetric]  print("\nDecrypted messages after 3 mix nodes (first 5):")
+      line    62  [symmetric]  With N mix nodes (say 3), each node will sequentially:
+      line    71  [symmetric]  Runs the ciphertext list through N = 3 mix nodes.
+      line   104  [symmetric]  Decrypted messages after 3 mix nodes (first 5):
+
+  ▸ a_b_2_party_shuffle_cards.py
+      line     3  [asymmetric]  # Toy ElGamal setup (not secure, just demo)
+
+  ▸ golang/main.go
+      line     6  [post_quantum]  "go.dedis.ch/kyber/v3"
+      line     7  [post_quantum]  "go.dedis.ch/kyber/v3/group/edwards25519"
+      line     8  [post_quantum]  "go.dedis.ch/kyber/v3/proof"
+      line     9  [post_quantum]  "go.dedis.ch/kyber/v3/shuffle"
+      line    12  [asymmetric]  // Ciphertext is ElGamal encrypted data
+      line    14  [post_quantum]  X kyber.Point
+      line    15  [post_quantum]  Y kyber.Point
+      line    20  [post_quantum]  priv  kyber.Scalar
+      line    21  [post_quantum]  pub   kyber.Point
+      line    27  [symmetric]  numNodes := 5 // Number of mixers
+      line    32  [symmetric]  // 1. Initialize nodes with individual keys
+      line    33  [symmetric]  nodes := make([]*Node, numNodes)
+      line    35  [symmetric]  for i := 0; i < numNodes; i++ {
+      line    38  [symmetric]  nodes[i] = &Node{priv: priv, pub: pub}
+      line    43  [post_quantum]  msgs := make([]kyber.Point, n)
+      line    60  [symmetric]  for i, node := range nodes {
+      line    61  [post_quantum]  Xs := make([]kyber.Point, n)
+      line    62  [post_quantum]  Ys := make([]kyber.Point, n)
+
+  ▸ golang/main.go.2025-06-27_1603hr_51sec.txt
+      line     6  [post_quantum]  "go.dedis.ch/kyber/v3"
+      line     7  [post_quantum]  "go.dedis.ch/kyber/v3/group/edwards25519"
+      line     8  [post_quantum]  proof "go.dedis.ch/kyber/v3/proof"
+      line     9  [post_quantum]  "go.dedis.ch/kyber/v3/shuffle"
+      line    24  [post_quantum]  c := make([]kyber.Scalar, k)
+      line    25  [post_quantum]  C := make([]kyber.Point, k)
+      line    33  [asymmetric]  // ElGamal-encrypt all these keypairs with the "server" key
+      line    34  [post_quantum]  X := make([]kyber.Point, k)
+      line    35  [post_quantum]  Y := make([]kyber.Point, k)
+      line    40  [asymmetric]  Y[i] = suite.Point().Mul(r, H) // ElGamal blinding factor
+
+  ▸ golang/main.go.keypair_1_2025-06-27_1606hr_40sec.txt
+      line     6  [post_quantum]  "go.dedis.ch/kyber/v3"
+      line     7  [post_quantum]  "go.dedis.ch/kyber/v3/group/edwards25519"
+      line     8  [post_quantum]  "go.dedis.ch/kyber/v3/proof"
+      line     9  [post_quantum]  "go.dedis.ch/kyber/v3/shuffle"
+      line    18  [asymmetric]  // Server ElGamal keypair (h, H)
+      line    23  [post_quantum]  values := make([]kyber.Point, n)
+      line    29  [asymmetric]  // Encrypt each value using ElGamal with server public key H
+      line    30  [post_quantum]  X := make([]kyber.Point, n) // ephemeral public key
+      line    31  [post_quantum]  Y := make([]kyber.Point, n) // message ciphertext
+
+  ▸ golang/main.go.keypairs_5_2025-06-27_1609hr_28sec.txt
+      line     6  [post_quantum]  "go.dedis.ch/kyber/v3"
+      line     7  [post_quantum]  "go.dedis.ch/kyber/v3/group/edwards25519"
+      line     8  [post_quantum]  "go.dedis.ch/kyber/v3/proof"
+      line     9  [post_quantum]  "go.dedis.ch/kyber/v3/shuffle"
+      line    12  [asymmetric]  // Ciphertext is ElGamal encrypted data
+      line    14  [post_quantum]  X kyber.Point
+      line    15  [post_quantum]  Y kyber.Point
+      line    20  [post_quantum]  priv  kyber.Scalar
+      line    21  [post_quantum]  pub   kyber.Point
+      line    27  [symmetric]  numNodes := 5 // Number of mixers
+      line    32  [symmetric]  // 1. Initialize nodes with individual keys
+      line    33  [symmetric]  nodes := make([]*Node, numNodes)
+      line    35  [symmetric]  for i := 0; i < numNodes; i++ {
+      line    38  [symmetric]  nodes[i] = &Node{priv: priv, pub: pub}
+      line    43  [post_quantum]  msgs := make([]kyber.Point, n)
+      line    60  [symmetric]  for i, node := range nodes {
+      line    61  [post_quantum]  Xs := make([]kyber.Point, n)
+      line    62  [post_quantum]  Ys := make([]kyber.Point, n)
+
+  ▸ golang/readme.md
+      line     2  [symmetric]  ✅ Each of the N mix servers or clients (e.g. 5 nodes) would:
+      line     3  [asymmetric]  1. Generate its own ElGamal key pair (cₖ, Cₖ = cₖ·G)
+      line    26  [asymmetric]  ### 🧩 ElGamal Mixnet with Multiple Keys (High-level sketch):
+
+  ▸ readme.md
+      line     1  [asymmetric]  # ElGamal Mix-Net
+      line     6  [symmetric]  - In secure systems, we want to prevent cheating, even if some "dealers" (mixing nodes) are dishonest.
+      line     7  [symmetric]  - We do this using encryption and a group of nodes (mix-net). As long as one node is honest, the whole shuffle remains secure.
+      line    28  [asymmetric]  In the basic ElGamal mix-net shuffle setup:
+      line    30  [symmetric]  - The mix nodes (often called mix servers) each take the entire list of ciphertext pairs and do two things:
+      line    37  [symmetric]  The nodes doing the shuffle and re-encryption operate on these pairs (a,b).
+      line    39  [symmetric]  You can have multiple such nodes, each doing their own shuffle + re-encryption in sequence.
+      line    41  [symmetric]  ```Example with 2 nodes:
+      line    52  [symmetric]  | Number of nodes | Can be many, each shuffling sequentially |
+      line    55  [asymmetric]  ## What do $$\ 𝑎_𝑖 \$$ and $$\ 𝑏_𝑖 \$$ ​ represent in ElGamal encryption?
+      line    60  [symmetric]  - A card in a deck (e.g., “Ace of Spades” represented by 0)
+      line    72  [asymmetric]  To protect that message $$/ 𝑀_𝑖 /$$​ , ElGamal encryption transforms it into 2 numbers, $$\ 𝑎_𝑖 \$$ and $$\ 𝑏_𝑖 \$$ , which together are the encrypted message — kind of like a sealed envelope.
+      line    90  [asymmetric]  - ElGamal encryption mathematically splits the ciphertext into 2 parts:
+      line   102  [asymmetric]  | 1. Encrypt messages                 | Using ElGamal: $(a, b) = (g^k, Y^k \cdot M)$                                             |
+      line   103  [symmetric]  | 2. Mix nodes permute and re-encrypt | Without decrypting, change order and randomness                                          |
+      line   104  [symmetric]  | 3. Final decryption                 | Done by multiple nodes using threshold secret sharing                                    |
+      line   104  [zkp]  | 3. Final decryption                 | Done by multiple nodes using threshold secret sharing                                    |
+      line   145  [asymmetric]  In ElGamal encryption for each item (like a vote or card), the full data is:
+      line   222  [asymmetric]  ## 🚫 ElGamal Mix-Net ≠ VRF
+      line   223  [asymmetric]  ElGamal mix-nets:
+      line   231  [asymmetric]  ✅ How ElGamal mix-nets help:
+      line   242  [symmetric]  3. Mix nodes (run by election trustees) do:
+      line   249  [symmetric]  4. Finally, the mix nodes jointly decrypt the shuffled ciphertexts.
+      line   270  [asymmetric]  ✅ How ElGamal + mix-nets help:
+      line   294  [asymmetric]  ✅ How mix-nets and ElGamal help:
+      line   320  [asymmetric]  ✅ ElGamal Mix-Net helps with verifiable shuffles
+      line   322  [asymmetric]  🔄 To build a VRF-style tool from ElGamal, you'd need to:
+      line   323  [asymmetric]  - Use ElGamal encryption for input masking
+      line   327  [asymmetric]  So in advanced protocols (like MixCoin, or modern zero-knowledge random beacons), you might combine ElGamal shuffles with VRFs or commitments to achieve verifiable randomness in privacy-preserving ways.
+      line   332  [asymmetric]  | I want a verifiable shuffle                        | Use **ElGamal + ZKP proof of shuffle** |
+      line   336  [asymmetric]  | Concept        | VRF                         | ElGamal Shuffle                       |
+      line   346  [asymmetric]  ## 🔐 What is ElGamal Encryption?

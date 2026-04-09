@@ -1,0 +1,67 @@
+================================================================================
+  REPO       : secure_cv_profile_system
+  FULL NAME  : ursa-mikail/secure_cv_profile_system
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Go
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/secure_cv_profile_system
+  MATCHES    : 44
+================================================================================
+
+  ▸ field_cipher/libs/keychain/keychain.go
+      line    36  [symmetric]  keyBytes := cryptoutils.GenerateRandomBytes(32) // AES-256
+
+  ▸ field_cipher/main.go.00.txt
+      line     4  [symmetric]  "crypto/aes"
+      line    57  [symmetric]  keyBytes := generateRandomBytes(32) // AES-256
+      line   183  [symmetric]  // Encrypt encrypts data with AES-GCM
+      line   183  [cipher_mode]  // Encrypt encrypts data with AES-GCM
+      line   185  [symmetric]  block, err := aes.NewCipher(key)
+      line   222  [symmetric]  // Decrypt decrypts data with AES-GCM
+      line   222  [cipher_mode]  // Decrypt decrypts data with AES-GCM
+      line   224  [symmetric]  block, err := aes.NewCipher(key)
+
+  ▸ field_cipher/readme.md
+      line     2  [symmetric]  A Go-based encryption system that provides field-level encryption for CV/resume data with flexible key management and rotation capabilities.
+      line    14  [symmetric]  - Flexible Key Modes: Single key for all fields or separate keys per field
+      line    16  [symmetric]  - Secure Crypto: Uses AES-GCM encryption for authenticated encryption
+      line    16  [cipher_mode]  - Secure Crypto: Uses AES-GCM encryption for authenticated encryption
+
+  ▸ field_cipher/tests/test_cases.go
+      line    11  [symmetric]  // getSampleData provides sample CV data for testing
+
+  ▸ field_cipher/utils/cryptoutils/crypto.go
+      line     5  [symmetric]  "crypto/aes"
+      line    14  [symmetric]  // EncryptData encrypts data with AES-GCM
+      line    14  [cipher_mode]  // EncryptData encrypts data with AES-GCM
+      line    16  [symmetric]  block, err := aes.NewCipher(key)
+      line    53  [symmetric]  // DecryptData decrypts data with AES-GCM
+      line    53  [cipher_mode]  // DecryptData decrypts data with AES-GCM
+      line    55  [symmetric]  block, err := aes.NewCipher(key)
+      line   124  [symmetric]  // ValidateKey checks if a key is valid for AES encryption
+      line   127  [symmetric]  case 16, 24, 32: // AES-128, AES-192, AES-256
+      line   134  [symmetric]  // GenerateAESKey generates a new AES key of specified size
+      line   141  [symmetric]  return nil, fmt.Errorf("invalid AES key size: %d (must be 128, 192, or 256)", size)
+
+  ▸ readme.md
+      line     3  [symmetric]  A Python-based encryption system for managing CV/resume data with granular access control using AES-256-GCM encryption and doubly linked list key management.
+      line     3  [cipher_mode]  A Python-based encryption system for managing CV/resume data with granular access control using AES-256-GCM encryption and doubly linked list key management.
+      line     5  [symmetric]  I've created a comprehensive README.md that clearly explains both modes:
+      line    46  [symmetric]  **Two Modes:**
+      line    52  [symmetric]  - AES-256-GCM encryption for each field
+      line    52  [cipher_mode]  - AES-256-GCM encryption for each field
+      line    88  [symmetric]  Shows how to access `previous_experience` in both modes:
+      line   122  [symmetric]  This system encrypts each field of your CV (name, email, skills, etc.) and manages encryption keys through a doubly linked list structure. It supports two operational modes with different security and sharing characteristics.
+      line   140  [symmetric]  ## Encryption Modes
+      line   361  [symmetric]  - **Algorithm**: AES-256-GCM (Galois/Counter Mode)
+      line   361  [cipher_mode]  - **Algorithm**: AES-256-GCM (Galois/Counter Mode)
+      line   364  [cipher_mode]  - **Authentication**: Built-in with GCM mode
+
+  ▸ secure_cv_profile_system.py
+      line     2  [py_import]  import secrets
+      line     5  [py_import]  from cryptography.hazmat.primitives.ciphers.aead import AESGCM
+      line    35  [symmetric]  key_bytes = secrets.token_bytes(32)  # AES-256
+      line   100  [symmetric]  """Encrypt data with AES-GCM"""
+      line   100  [cipher_mode]  """Encrypt data with AES-GCM"""
+      line   115  [symmetric]  """Decrypt data with AES-GCM"""
+      line   115  [cipher_mode]  """Decrypt data with AES-GCM"""

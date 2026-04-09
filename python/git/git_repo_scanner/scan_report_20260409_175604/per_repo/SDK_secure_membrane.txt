@@ -1,0 +1,273 @@
+================================================================================
+  REPO       : SDK_secure_membrane
+  FULL NAME  : ursa-mikail/SDK_secure_membrane
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Shell
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/SDK_secure_membrane
+  MATCHES    : 216
+================================================================================
+
+  ▸ golang/readme.md
+      line    55  [symmetric]  5. File Encryption/Decryption (AES-GCM)
+      line    55  [cipher_mode]  5. File Encryption/Decryption (AES-GCM)
+
+  ▸ golang/securefabric-sdk/README.md
+      line    10  [symmetric]  - **Encryption**: AES-GCM file and data encryption
+      line    10  [cipher_mode]  - **Encryption**: AES-GCM file and data encryption
+      line    11  [asymmetric]  - **Digital Signatures**: RSA signing and verification
+      line    11  [signature]  - **Digital Signatures**: RSA signing and verification
+      line    73  [symmetric]  File encryption/decryption (AES-GCM)
+      line    73  [cipher_mode]  File encryption/decryption (AES-GCM)
+
+  ▸ golang/securefabric-sdk/pkg/config/config.go
+      line     1  [symmetric]  // Package config provides SDK configuration management.
+
+  ▸ golang/securefabric-sdk/pkg/connector/session.go
+      line     1  [symmetric]  // Package connector provides HTTP session management.
+
+  ▸ golang/securefabric-sdk/pkg/crypto/encrypt.go
+      line     1  [symmetric]  // Package crypto provides encryption and signing operations.
+      line     5  [symmetric]  "crypto/aes"
+      line    15  [symmetric]  // AESGCMCipher provides AES-GCM encryption
+      line    15  [symmetric]  // AESGCMCipher provides AES-GCM encryption
+      line    15  [cipher_mode]  // AESGCMCipher provides AES-GCM encryption
+      line    28  [symmetric]  // NewAESGCMCipher creates a new AES-GCM cipher
+      line    28  [cipher_mode]  // NewAESGCMCipher creates a new AES-GCM cipher
+      line    37  [symmetric]  block, err := aes.NewCipher(key)
+      line    42  [cipher_mode]  gcm, err := cipher.NewGCM(block)
+      line    49  [cipher_mode]  cipher: gcm,
+      line    53  [symmetric]  // Encrypt encrypts data using AES-GCM
+      line    53  [cipher_mode]  // Encrypt encrypts data using AES-GCM
+      line    65  [symmetric]  Algorithm:  "AES-GCM-256",
+      line    65  [cipher_mode]  Algorithm:  "AES-GCM-256",
+      line    69  [symmetric]  // Decrypt decrypts data using AES-GCM
+      line    69  [cipher_mode]  // Decrypt decrypts data using AES-GCM
+
+  ▸ golang/securefabric-sdk/pkg/crypto/sign.go
+      line     6  [asymmetric]  "crypto/rsa"
+      line    15  [symmetric]  // Signer provides digital signature operations
+      line    15  [signature]  // Signer provides digital signature operations
+      line    17  [asymmetric]  privateKey *rsa.PrivateKey
+      line    18  [asymmetric]  publicKey  *rsa.PublicKey
+      line    28  [asymmetric]  // NewSigner creates a new signer with RSA key pair
+      line    30  [asymmetric]  privateKey, err := rsa.GenerateKey(rand.Reader, 2048)
+      line    45  [asymmetric]  signature, err := rsa.SignPSS(rand.Reader, s.privateKey, crypto.SHA256, hashed[:], nil)
+      line    62  [asymmetric]  err = rsa.VerifyPSS(s.publicKey, crypto.SHA256, hashed[:], signature, nil)
+      line    73  [signature]  signature, err := s.Sign(data)
+      line    81  [asymmetric]  Algorithm: "RSA-PSS-SHA256",
+      line    96  [asymmetric]  Type:  "RSA PUBLIC KEY",
+
+  ▸ golang/securefabric-sdk/pkg/identity/jwt.go
+      line     1  [symmetric]  // Package identity provides JWT and OIDC authentication.
+      line    50  [symmetric]  // VerifyToken verifies and decodes a JWT token
+
+  ▸ golang/securefabric-sdk/pkg/internal/utils.go
+      line     1  [symmetric]  // Package internal provides internal utility functions.
+
+  ▸ golang/securefabric-sdk/pkg/pki/certs.go
+      line     1  [symmetric]  // Package pki provides PKI certificate management.
+      line     6  [asymmetric]  "crypto/rsa"
+      line    20  [asymmetric]  caKey   *rsa.PrivateKey
+      line    51  [asymmetric]  caKey, err := rsa.GenerateKey(rand.Reader, 2048)
+      line    70  [signature]  KeyUsage:              x509.KeyUsageDigitalSignature | x509.KeyUsageCertSign,
+      line   104  [asymmetric]  certKey, err := rsa.GenerateKey(rand.Reader, 2048)
+      line   127  [signature]  KeyUsage:       x509.KeyUsageDigitalSignature,
+      line   141  [asymmetric]  Type:  "RSA PRIVATE KEY",
+
+  ▸ golang/securefabric-sdk/pkg/policy/rbac.go
+      line     1  [symmetric]  // Package policy provides RBAC policies.
+
+  ▸ golang/securefabric-sdk/sdk.go
+      line     1  [symmetric]  // Package securefabric provides a comprehensive security infrastructure SDK.
+
+  ▸ golang/setup_project.sh
+      line    38  [symmetric]  // Package securefabric provides a comprehensive security infrastructure SDK.
+      line    96  [symmetric]  // Package config provides SDK configuration management.
+      line   155  [symmetric]  // Package connector provides HTTP session management.
+      line   243  [symmetric]  // Package identity provides JWT and OIDC authentication.
+      line   292  [symmetric]  // VerifyToken verifies and decodes a JWT token
+      line   441  [symmetric]  // Package crypto provides encryption and signing operations.
+      line   445  [symmetric]  "crypto/aes"
+      line   455  [symmetric]  // AESGCMCipher provides AES-GCM encryption
+      line   455  [symmetric]  // AESGCMCipher provides AES-GCM encryption
+      line   455  [cipher_mode]  // AESGCMCipher provides AES-GCM encryption
+      line   468  [symmetric]  // NewAESGCMCipher creates a new AES-GCM cipher
+      line   468  [cipher_mode]  // NewAESGCMCipher creates a new AES-GCM cipher
+      line   477  [symmetric]  block, err := aes.NewCipher(key)
+      line   482  [cipher_mode]  gcm, err := cipher.NewGCM(block)
+      line   489  [cipher_mode]  cipher: gcm,
+      line   493  [symmetric]  // Encrypt encrypts data using AES-GCM
+      line   493  [cipher_mode]  // Encrypt encrypts data using AES-GCM
+      line   505  [symmetric]  Algorithm:  "AES-GCM-256",
+      line   505  [cipher_mode]  Algorithm:  "AES-GCM-256",
+      line   509  [symmetric]  // Decrypt decrypts data using AES-GCM
+      line   509  [cipher_mode]  // Decrypt decrypts data using AES-GCM
+      line   595  [asymmetric]  "crypto/rsa"
+      line   604  [symmetric]  // Signer provides digital signature operations
+      line   604  [signature]  // Signer provides digital signature operations
+      line   606  [asymmetric]  privateKey *rsa.PrivateKey
+      line   607  [asymmetric]  publicKey  *rsa.PublicKey
+      line   617  [asymmetric]  // NewSigner creates a new signer with RSA key pair
+      line   619  [asymmetric]  privateKey, err := rsa.GenerateKey(rand.Reader, 2048)
+      line   634  [asymmetric]  signature, err := rsa.SignPSS(rand.Reader, s.privateKey, crypto.SHA256, hashed[:], nil)
+      line   651  [asymmetric]  err = rsa.VerifyPSS(s.publicKey, crypto.SHA256, hashed[:], signature, nil)
+      line   670  [asymmetric]  Algorithm: "RSA-PSS-SHA256",
+      line   685  [asymmetric]  Type:  "RSA PUBLIC KEY",
+      line   695  [symmetric]  // Package pki provides PKI certificate management.
+      line   700  [asymmetric]  "crypto/rsa"
+      line   714  [asymmetric]  caKey   *rsa.PrivateKey
+      line   745  [asymmetric]  caKey, err := rsa.GenerateKey(rand.Reader, 2048)
+      line   764  [signature]  KeyUsage:              x509.KeyUsageDigitalSignature | x509.KeyUsageCertSign,
+      line   798  [asymmetric]  certKey, err := rsa.GenerateKey(rand.Reader, 2048)
+      line   821  [signature]  KeyUsage:       x509.KeyUsageDigitalSignature,
+      line   835  [asymmetric]  Type:  "RSA PRIVATE KEY",
+      line   908  [symmetric]  // Package secrets provides secrets management.
+      line  1002  [symmetric]  // MemoryStore provides simple in-memory storage
+      line  1042  [symmetric]  // Package policy provides RBAC policies.
+      line  1158  [symmetric]  // Package internal provides internal utility functions.
+      line  1331  [symmetric]  printSection("5. File Encryption/Decryption (AES-GCM)")
+      line  1331  [cipher_mode]  printSection("5. File Encryption/Decryption (AES-GCM)")
+      line  1542  [symmetric]  - **Encryption**: AES-GCM file and data encryption
+      line  1542  [cipher_mode]  - **Encryption**: AES-GCM file and data encryption
+      line  1543  [asymmetric]  - **Digital Signatures**: RSA signing and verification
+      line  1543  [signature]  - **Digital Signatures**: RSA signing and verification
+      line  1605  [symmetric]  File encryption/decryption (AES-GCM)
+      line  1605  [cipher_mode]  File encryption/decryption (AES-GCM)
+
+  ▸ python/readme.md
+      line    10  [symmetric]  - **Encryption**: AES-GCM-256 file and data encryption/decryption
+      line    10  [cipher_mode]  - **Encryption**: AES-GCM-256 file and data encryption/decryption
+      line    11  [asymmetric]  - **Digital Signatures**: RSA-PSS signing and verification for binaries
+      line    11  [signature]  - **Digital Signatures**: RSA-PSS signing and verification for binaries
+      line    22  [asymmetric]  4. **Binary Signing** - Sign binary files with RSA-PSS digital signatures
+      line    22  [signature]  4. **Binary Signing** - Sign binary files with RSA-PSS digital signatures
+      line    23  [symmetric]  5. **File Encryption/Decryption** - Secure files using AES-GCM-256 encryption
+      line    23  [cipher_mode]  5. **File Encryption/Decryption** - Secure files using AES-GCM-256 encryption
+      line    73  [symmetric]  # Returns: {"ciphertext": "...", "nonce": "...", "algorithm": "AES-GCM-256"}
+      line    73  [cipher_mode]  # Returns: {"ciphertext": "...", "nonce": "...", "algorithm": "AES-GCM-256"}
+      line    83  [signature]  Digital Signatures
+      line    92  [asymmetric]  # Returns: {"file": "...", "signature": "...", "algorithm": "RSA-PSS-SHA256"}
+      line   257  [symmetric]  5. File Encryption/Decryption (AES-GCM)
+      line   257  [cipher_mode]  5. File Encryption/Decryption (AES-GCM)
+
+  ▸ python/securefabric-sdk/README.md
+      line    10  [symmetric]  - **Encryption**: AES-GCM file and data encryption
+      line    10  [cipher_mode]  - **Encryption**: AES-GCM file and data encryption
+      line    11  [asymmetric]  - **Digital Signatures**: RSA signing and verification
+      line    11  [signature]  - **Digital Signatures**: RSA signing and verification
+      line    60  [symmetric]  5. File encryption/decryption (AES-GCM)
+      line    60  [cipher_mode]  5. File encryption/decryption (AES-GCM)
+
+  ▸ python/securefabric-sdk/main.py
+      line    50  [random]  "encryption_key": os.urandom(32).hex()
+      line   114  [signature]  is_valid = sdk.signer.verify(binary_content, signature_data['signature'])
+      line   131  [symmetric]  """Demo 5: Encrypt and decrypt files with AES-GCM."""
+      line   131  [cipher_mode]  """Demo 5: Encrypt and decrypt files with AES-GCM."""
+      line   132  [symmetric]  print_section("5. File Encryption/Decryption (AES-GCM)")
+      line   132  [cipher_mode]  print_section("5. File Encryption/Decryption (AES-GCM)")
+
+  ▸ python/securefabric-sdk/requirements.txt
+      line     1  [dependency]  cryptography>=41.0.0
+
+  ▸ python/securefabric-sdk/securefabric/crypto/encrypt.py
+      line     1  [symmetric]  """AES-GCM encryption/decryption."""
+      line     1  [cipher_mode]  """AES-GCM encryption/decryption."""
+      line     3  [py_import]  from cryptography.hazmat.primitives.ciphers.aead import AESGCM
+      line    10  [symmetric]  """AES-GCM encryption and decryption."""
+      line    10  [cipher_mode]  """AES-GCM encryption and decryption."""
+      line    14  [key_mgmt]  self.key = key or AESGCM.generate_key(bit_length=256)
+      line    18  [symmetric]  """Encrypt data using AES-GCM."""
+      line    18  [cipher_mode]  """Encrypt data using AES-GCM."""
+      line    19  [random]  nonce = os.urandom(12)
+      line    25  [symmetric]  "algorithm": "AES-GCM-256"
+      line    25  [cipher_mode]  "algorithm": "AES-GCM-256"
+      line    29  [symmetric]  """Decrypt data using AES-GCM."""
+      line    29  [cipher_mode]  """Decrypt data using AES-GCM."""
+
+  ▸ python/securefabric-sdk/securefabric/crypto/sign.py
+      line     1  [signature]  """Digital signature operations."""
+      line     3  [py_import]  from cryptography.hazmat.primitives import hashes, serialization
+      line     4  [py_import]  from cryptography.hazmat.primitives.asymmetric import rsa, padding
+      line     4  [asymmetric]  from cryptography.hazmat.primitives.asymmetric import rsa, padding
+      line     5  [py_import]  from cryptography.hazmat.backends import default_backend
+      line    10  [signature]  """Digital signature creation and verification."""
+      line    13  [asymmetric]  """Initialize with RSA key pair."""
+      line    14  [asymmetric]  self.private_key = rsa.generate_private_key(
+      line    16  [key_mgmt]  key_size=2048,
+      line    23  [signature]  signature = self.private_key.sign(
+      line    37  [signature]  self.public_key.verify(
+      line    55  [signature]  signature = self.sign(data)
+      line    60  [asymmetric]  "algorithm": "RSA-PSS-SHA256"
+      line    68  [key_mgmt]  pem = self.public_key.public_bytes(
+
+  ▸ python/securefabric-sdk/securefabric/identity/jwt.py
+      line     3  [py_import]  import jwt
+
+  ▸ python/securefabric-sdk/securefabric/internal/utils.py
+      line     3  [py_import]  import hashlib
+      line     4  [py_import]  import secrets
+
+  ▸ python/securefabric-sdk/securefabric/pki/certs.py
+      line     3  [py_import]  from cryptography import x509
+      line     4  [py_import]  from cryptography.x509.oid import NameOID, ExtensionOID
+      line     5  [py_import]  from cryptography.hazmat.primitives import hashes, serialization
+      line     6  [py_import]  from cryptography.hazmat.primitives.asymmetric import rsa
+      line     6  [asymmetric]  from cryptography.hazmat.primitives.asymmetric import rsa
+      line     7  [py_import]  from cryptography.hazmat.backends import default_backend
+      line    23  [asymmetric]  self.ca_key = rsa.generate_private_key(
+      line    25  [key_mgmt]  key_size=2048,
+      line    52  [signature]  ).sign(self.ca_key, hashes.SHA256(), default_backend())
+      line    67  [asymmetric]  private_key = rsa.generate_private_key(
+      line    69  [key_mgmt]  key_size=2048,
+      line    95  [signature]  ).sign(self.ca_key, hashes.SHA256(), default_backend())
+      line    98  [key_mgmt]  cert_pem = cert.public_bytes(serialization.Encoding.PEM).decode('utf-8')
+      line    99  [key_mgmt]  key_pem = private_key.private_bytes(
+
+  ▸ python/securefabric-sdk/tests/test_sdk.py
+      line    48  [symmetric]  """Test AES-GCM encryption."""
+      line    48  [cipher_mode]  """Test AES-GCM encryption."""
+
+  ▸ python/setup_project.sh
+      line   246  [symmetric]  """AES-GCM encryption/decryption."""
+      line   246  [cipher_mode]  """AES-GCM encryption/decryption."""
+      line   255  [symmetric]  """AES-GCM encryption and decryption."""
+      line   255  [cipher_mode]  """AES-GCM encryption and decryption."""
+      line   259  [key_mgmt]  self.key = key or AESGCM.generate_key(bit_length=256)
+      line   263  [symmetric]  """Encrypt data using AES-GCM."""
+      line   263  [cipher_mode]  """Encrypt data using AES-GCM."""
+      line   270  [symmetric]  "algorithm": "AES-GCM-256"
+      line   270  [cipher_mode]  "algorithm": "AES-GCM-256"
+      line   274  [symmetric]  """Decrypt data using AES-GCM."""
+      line   274  [cipher_mode]  """Decrypt data using AES-GCM."""
+      line   317  [signature]  """Digital signature operations."""
+      line   320  [asymmetric]  from cryptography.hazmat.primitives.asymmetric import rsa, padding
+      line   326  [signature]  """Digital signature creation and verification."""
+      line   329  [asymmetric]  """Initialize with RSA key pair."""
+      line   330  [asymmetric]  self.private_key = rsa.generate_private_key(
+      line   376  [asymmetric]  "algorithm": "RSA-PSS-SHA256"
+      line   398  [asymmetric]  from cryptography.hazmat.primitives.asymmetric import rsa
+      line   415  [asymmetric]  self.ca_key = rsa.generate_private_key(
+      line   459  [asymmetric]  private_key = rsa.generate_private_key(
+      line   912  [symmetric]  """Demo 5: Encrypt and decrypt files with AES-GCM."""
+      line   912  [cipher_mode]  """Demo 5: Encrypt and decrypt files with AES-GCM."""
+      line   913  [symmetric]  print_section("5. File Encryption/Decryption (AES-GCM)")
+      line   913  [cipher_mode]  print_section("5. File Encryption/Decryption (AES-GCM)")
+      line  1155  [symmetric]  - **Encryption**: AES-GCM file and data encryption
+      line  1155  [cipher_mode]  - **Encryption**: AES-GCM file and data encryption
+      line  1156  [asymmetric]  - **Digital Signatures**: RSA signing and verification
+      line  1156  [signature]  - **Digital Signatures**: RSA signing and verification
+      line  1205  [symmetric]  5. File encryption/decryption (AES-GCM)
+      line  1205  [cipher_mode]  5. File encryption/decryption (AES-GCM)
+      line  1421  [symmetric]  """Test AES-GCM encryption."""
+      line  1421  [cipher_mode]  """Test AES-GCM encryption."""
+
+  ▸ readme.md
+      line    95  [symmetric]  Encrypt/Decrypt (AES-GCM, RSA-OAEP, ChaCha20, etc.)
+      line    95  [symmetric]  Encrypt/Decrypt (AES-GCM, RSA-OAEP, ChaCha20, etc.)
+      line    95  [cipher_mode]  Encrypt/Decrypt (AES-GCM, RSA-OAEP, ChaCha20, etc.)
+      line    95  [asymmetric]  Encrypt/Decrypt (AES-GCM, RSA-OAEP, ChaCha20, etc.)
+      line    97  [asymmetric]  Sign/Verify (RSA, ECDSA, Ed25519)
+      line    99  [kdf]  HMAC/Key Derivation (PBKDF2, HKDF)
+      line    99  [kdf]  HMAC/Key Derivation (PBKDF2, HKDF)
+      line    99  [kdf]  HMAC/Key Derivation (PBKDF2, HKDF)

@@ -1,0 +1,38 @@
+================================================================================
+  REPO       : git_all_repo_static
+  FULL NAME  : ursa-mikail/git_all_repo_static
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : HTML
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/git_all_repo_static
+  MATCHES    : 21
+================================================================================
+
+  ▸ git_all_repo_static.html
+      line   188  [kdf]  <span data-view-component="true" class="position-relative"><a aria-label="Change your avatar" data-hydro-click="{&quot;event_type&quot;:&quot;user_profile.click&quot;,&quot;payload&quot;:{&quot;profile_user_id&quot;:178732451,&quot;target&quot;:&quot;EDIT_AVATAR&quot;,&quot;user_id&quot;:178732451,&
+      line  2266  [symmetric]  <span data-view-component="true" class="position-relative"><a id="865758490" href="https://github.com/ursa-mikail/reference_codes" data-view-component="true" class="min-width-0 Link text-bold flex-auto wb-break-all">
+      line  2268  [symmetric]  reference_codes
+      line  2269  [symmetric]  </span></a><tool-tip id="tooltip-865758490" for="865758490" popover="manual" data-direction="s" data-type="description" data-view-component="true" class="sr-only position-absolute">reference_codes</tool-tip></span>
+      line  2586  [fpe_token]  <span data-view-component="true" class="position-relative"><a id="897163064" href="https://github.com/ursa-mikail/tokenized_data_encryption_and_decryption" data-view-component="true" class="min-width-0 Link text-bold flex-auto wb-break-all">
+      line  2588  [fpe_token]  tokenized_data_encryption_and_decryption
+      line  2589  [fpe_token]  </span></a><tool-tip id="tooltip-897163064" for="897163064" popover="manual" data-direction="s" data-type="description" data-view-component="true" class="sr-only position-absolute">tokenized_data_encryption_and_decryption</tool-tip></span>
+
+  ▸ index.html
+      line   186  [kdf]  <span data-view-component="true" class="position-relative"><a aria-label="Change your avatar" data-hydro-click="{&quot;event_type&quot;:&quot;user_profile.click&quot;,&quot;payload&quot;:{&quot;profile_user_id&quot;:178732451,&quot;target&quot;:&quot;EDIT_AVATAR&quot;,&quot;user_id&quot;:178732451,&
+      line  3800  [symmetric]  <span data-view-component="true" class="position-relative"><a id="865758490" href="https://github.com/ursa-mikail/reference_codes" data-view-component="true" class="min-width-0 Link text-bold flex-auto wb-break-all">
+      line  3802  [symmetric]  reference_codes
+      line  3803  [symmetric]  </span></a><tool-tip id="tooltip-865758490" for="865758490" popover="manual" data-direction="s" data-type="description" data-view-component="true" class="sr-only position-absolute">reference_codes</tool-tip></span>
+      line  4280  [fpe_token]  <span data-view-component="true" class="position-relative"><a id="897163064" href="https://github.com/ursa-mikail/tokenized_data_encryption_and_decryption" data-view-component="true" class="min-width-0 Link text-bold flex-auto wb-break-all">
+      line  4282  [fpe_token]  tokenized_data_encryption_and_decryption
+      line  4283  [fpe_token]  </span></a><tool-tip id="tooltip-897163064" for="897163064" popover="manual" data-direction="s" data-type="description" data-view-component="true" class="sr-only position-absolute">tokenized_data_encryption_and_decryption</tool-tip></span>
+
+  ▸ part_mid.txt
+      line  3289  [symmetric]  <span data-view-component="true" class="position-relative"><a id="865758490" href="https://github.com/ursa-mikail/reference_codes" data-view-component="true" class="min-width-0 Link text-bold flex-auto wb-break-all">
+      line  3291  [symmetric]  reference_codes
+      line  3292  [symmetric]  </span></a><tool-tip id="tooltip-865758490" for="865758490" popover="manual" data-direction="s" data-type="description" data-view-component="true" class="sr-only position-absolute">reference_codes</tool-tip></span>
+      line  3769  [fpe_token]  <span data-view-component="true" class="position-relative"><a id="897163064" href="https://github.com/ursa-mikail/tokenized_data_encryption_and_decryption" data-view-component="true" class="min-width-0 Link text-bold flex-auto wb-break-all">
+      line  3771  [fpe_token]  tokenized_data_encryption_and_decryption
+      line  3772  [fpe_token]  </span></a><tool-tip id="tooltip-897163064" for="897163064" popover="manual" data-direction="s" data-type="description" data-view-component="true" class="sr-only position-absolute">tokenized_data_encryption_and_decryption</tool-tip></span>
+
+  ▸ part_top.txt
+      line   186  [kdf]  <span data-view-component="true" class="position-relative"><a aria-label="Change your avatar" data-hydro-click="{&quot;event_type&quot;:&quot;user_profile.click&quot;,&quot;payload&quot;:{&quot;profile_user_id&quot;:178732451,&quot;target&quot;:&quot;EDIT_AVATAR&quot;,&quot;user_id&quot;:178732451,&

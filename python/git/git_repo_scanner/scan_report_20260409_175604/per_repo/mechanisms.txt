@@ -1,0 +1,816 @@
+================================================================================
+  REPO       : mechanisms
+  FULL NAME  : ursa-mikail/mechanisms
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Python
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/mechanisms
+  MATCHES    : 731
+================================================================================
+
+  ▸ agents/serialization_sanitized/harmless_gnat_00.py
+      line    11  [random]  - Writes 32 bytes of random hex into that file using os.urandom(32).hex().
+      line    30  [random]  hex_data = os.urandom(32).hex()
+
+  ▸ agents/serialization_sanitized/harmless_gnat_02.py
+      line    19  [symmetric]  It serializes it using pickle.dumps() and base64-encodes the result.
+
+  ▸ agents/serialization_sanitized/inter_process_metric_sharing/readme.md
+      line    16  [symmetric]  - Includes process IDs and memory addresses for tracking
+
+  ▸ agents/serialization_sanitized/readme.md
+      line    19  [symmetric]  It serializes it using pickle.dumps() and base64-encodes the result.
+
+  ▸ agents/stealth/agent_X/agent_handler.py
+      line     5  [py_import]  from cryptography.fernet import Fernet
+      line    10  [key_mgmt]  self.key = Fernet.generate_key()
+
+  ▸ defenses/hardware/power_attack_sentinel.py
+      line   407  [symmetric]  In real cryptographic defenses (like AES S-box masking), we also process on shares directly, like:
+
+  ▸ defenses/memory/python/overwrite_files_and_folders_N_times_with_FF_bytes_with_params.py
+      line    53  [symmetric]  macOS includes the rm command with the -P option, which overwrites files before deleting them:
+
+  ▸ resource_profiling/gcm_chunk_ciphering/go/chunks_metadata_detailed.json
+      line     7  [symmetric]  "nodes": [
+      line    13  [symmetric]  "algo": "AES-GCM",
+      line    13  [cipher_mode]  "algo": "AES-GCM",
+      line    29  [symmetric]  "algo": "AES-GCM",
+      line    29  [cipher_mode]  "algo": "AES-GCM",
+      line    45  [symmetric]  "algo": "AES-GCM",
+      line    45  [cipher_mode]  "algo": "AES-GCM",
+      line    61  [symmetric]  "algo": "AES-GCM",
+      line    61  [cipher_mode]  "algo": "AES-GCM",
+      line    77  [symmetric]  "algo": "AES-GCM",
+      line    77  [cipher_mode]  "algo": "AES-GCM",
+      line    93  [symmetric]  "algo": "AES-GCM",
+      line    93  [cipher_mode]  "algo": "AES-GCM",
+      line   109  [symmetric]  "algo": "AES-GCM",
+      line   109  [cipher_mode]  "algo": "AES-GCM",
+      line   125  [symmetric]  "algo": "AES-GCM",
+      line   125  [cipher_mode]  "algo": "AES-GCM",
+      line   141  [symmetric]  "algo": "AES-GCM",
+      line   141  [cipher_mode]  "algo": "AES-GCM",
+      line   157  [symmetric]  "algo": "AES-GCM",
+      line   157  [cipher_mode]  "algo": "AES-GCM",
+      line   173  [symmetric]  "algo": "AES-GCM",
+      line   173  [cipher_mode]  "algo": "AES-GCM",
+      line   189  [symmetric]  "algo": "AES-GCM",
+      line   189  [cipher_mode]  "algo": "AES-GCM",
+      line   205  [symmetric]  "algo": "AES-GCM",
+      line   205  [cipher_mode]  "algo": "AES-GCM",
+      line   221  [symmetric]  "algo": "AES-GCM",
+      line   221  [cipher_mode]  "algo": "AES-GCM",
+      line   237  [symmetric]  "algo": "AES-GCM",
+      line   237  [cipher_mode]  "algo": "AES-GCM",
+      line   253  [symmetric]  "algo": "AES-GCM",
+      line   253  [cipher_mode]  "algo": "AES-GCM",
+      line   269  [symmetric]  "algo": "AES-GCM",
+      line   269  [cipher_mode]  "algo": "AES-GCM",
+      line   285  [symmetric]  "algo": "AES-GCM",
+      line   285  [cipher_mode]  "algo": "AES-GCM",
+      line   301  [symmetric]  "algo": "AES-GCM",
+      line   301  [cipher_mode]  "algo": "AES-GCM",
+      line   317  [symmetric]  "algo": "AES-GCM",
+      line   317  [cipher_mode]  "algo": "AES-GCM",
+      line   333  [symmetric]  "algo": "AES-GCM",
+      line   333  [cipher_mode]  "algo": "AES-GCM",
+      line   349  [symmetric]  "algo": "AES-GCM",
+      line   349  [cipher_mode]  "algo": "AES-GCM",
+      line   365  [symmetric]  "algo": "AES-GCM",
+      line   365  [cipher_mode]  "algo": "AES-GCM",
+      line   381  [symmetric]  "algo": "AES-GCM",
+      line   381  [cipher_mode]  "algo": "AES-GCM",
+      line   397  [symmetric]  "algo": "AES-GCM",
+      line   397  [cipher_mode]  "algo": "AES-GCM",
+      line   413  [symmetric]  "algo": "AES-GCM",
+      line   413  [cipher_mode]  "algo": "AES-GCM",
+      line   429  [symmetric]  "algo": "AES-GCM",
+      line   429  [cipher_mode]  "algo": "AES-GCM",
+      line   445  [symmetric]  "algo": "AES-GCM",
+      line   445  [cipher_mode]  "algo": "AES-GCM",
+      line   461  [symmetric]  "algo": "AES-GCM",
+      line   461  [cipher_mode]  "algo": "AES-GCM",
+      line   477  [symmetric]  "algo": "AES-GCM",
+      line   477  [cipher_mode]  "algo": "AES-GCM",
+      line   493  [symmetric]  "algo": "AES-GCM",
+      line   493  [cipher_mode]  "algo": "AES-GCM",
+      line   509  [symmetric]  "algo": "AES-GCM",
+      line   509  [cipher_mode]  "algo": "AES-GCM",
+      line   525  [symmetric]  "algo": "AES-GCM",
+      line   525  [cipher_mode]  "algo": "AES-GCM",
+      line   541  [symmetric]  "algo": "AES-GCM",
+      line   541  [cipher_mode]  "algo": "AES-GCM",
+      line   557  [symmetric]  "algo": "AES-GCM",
+      line   557  [cipher_mode]  "algo": "AES-GCM",
+      line   573  [symmetric]  "algo": "AES-GCM",
+      line   573  [cipher_mode]  "algo": "AES-GCM",
+      line   589  [symmetric]  "algo": "AES-GCM",
+      line   589  [cipher_mode]  "algo": "AES-GCM",
+      line   605  [symmetric]  "algo": "AES-GCM",
+      line   605  [cipher_mode]  "algo": "AES-GCM",
+      line   621  [symmetric]  "algo": "AES-GCM",
+      line   621  [cipher_mode]  "algo": "AES-GCM",
+      line   637  [symmetric]  "algo": "AES-GCM",
+      line   637  [cipher_mode]  "algo": "AES-GCM",
+      line   653  [symmetric]  "algo": "AES-GCM",
+      line   653  [cipher_mode]  "algo": "AES-GCM",
+      line   669  [symmetric]  "algo": "AES-GCM",
+      line   669  [cipher_mode]  "algo": "AES-GCM",
+      line   685  [symmetric]  "algo": "AES-GCM",
+      line   685  [cipher_mode]  "algo": "AES-GCM",
+      line   701  [symmetric]  "algo": "AES-GCM",
+      line   701  [cipher_mode]  "algo": "AES-GCM",
+      line   717  [symmetric]  "algo": "AES-GCM",
+      line   717  [cipher_mode]  "algo": "AES-GCM",
+      line   733  [symmetric]  "algo": "AES-GCM",
+      line   733  [cipher_mode]  "algo": "AES-GCM",
+      line   749  [symmetric]  "algo": "AES-GCM",
+      line   749  [cipher_mode]  "algo": "AES-GCM",
+      line   765  [symmetric]  "algo": "AES-GCM",
+      line   765  [cipher_mode]  "algo": "AES-GCM",
+      line   781  [symmetric]  "algo": "AES-GCM",
+      line   781  [cipher_mode]  "algo": "AES-GCM",
+      line   797  [symmetric]  "algo": "AES-GCM",
+      line   797  [cipher_mode]  "algo": "AES-GCM",
+      line   813  [symmetric]  "algo": "AES-GCM",
+      line   813  [cipher_mode]  "algo": "AES-GCM",
+      line   829  [symmetric]  "algo": "AES-GCM",
+      line   829  [cipher_mode]  "algo": "AES-GCM",
+      line   845  [symmetric]  "algo": "AES-GCM",
+      line   845  [cipher_mode]  "algo": "AES-GCM",
+      line   861  [symmetric]  "algo": "AES-GCM",
+      line   861  [cipher_mode]  "algo": "AES-GCM",
+      line   877  [symmetric]  "algo": "AES-GCM",
+      line   877  [cipher_mode]  "algo": "AES-GCM",
+      line   893  [symmetric]  "algo": "AES-GCM",
+      line   893  [cipher_mode]  "algo": "AES-GCM",
+      line   909  [symmetric]  "algo": "AES-GCM",
+      line   909  [cipher_mode]  "algo": "AES-GCM",
+      line   925  [symmetric]  "algo": "AES-GCM",
+      line   925  [cipher_mode]  "algo": "AES-GCM",
+      line   941  [symmetric]  "algo": "AES-GCM",
+      line   941  [cipher_mode]  "algo": "AES-GCM",
+      line   957  [symmetric]  "algo": "AES-GCM",
+      line   957  [cipher_mode]  "algo": "AES-GCM",
+      line   973  [symmetric]  "algo": "AES-GCM",
+      line   973  [cipher_mode]  "algo": "AES-GCM",
+      line   989  [symmetric]  "algo": "AES-GCM",
+      line   989  [cipher_mode]  "algo": "AES-GCM",
+      line  1005  [symmetric]  "algo": "AES-GCM",
+      line  1005  [cipher_mode]  "algo": "AES-GCM",
+      line  1021  [symmetric]  "algo": "AES-GCM",
+      line  1021  [cipher_mode]  "algo": "AES-GCM",
+      line  1037  [symmetric]  "algo": "AES-GCM",
+      line  1037  [cipher_mode]  "algo": "AES-GCM",
+      line  1053  [symmetric]  "algo": "AES-GCM",
+      line  1053  [cipher_mode]  "algo": "AES-GCM",
+      line  1069  [symmetric]  "algo": "AES-GCM",
+      line  1069  [cipher_mode]  "algo": "AES-GCM",
+      line  1085  [symmetric]  "algo": "AES-GCM",
+      line  1085  [cipher_mode]  "algo": "AES-GCM",
+      line  1101  [symmetric]  "algo": "AES-GCM",
+      line  1101  [cipher_mode]  "algo": "AES-GCM",
+      line  1117  [symmetric]  "algo": "AES-GCM",
+      line  1117  [cipher_mode]  "algo": "AES-GCM",
+      line  1133  [symmetric]  "algo": "AES-GCM",
+      line  1133  [cipher_mode]  "algo": "AES-GCM",
+      line  1149  [symmetric]  "algo": "AES-GCM",
+      line  1149  [cipher_mode]  "algo": "AES-GCM",
+      line  1165  [symmetric]  "algo": "AES-GCM",
+      line  1165  [cipher_mode]  "algo": "AES-GCM",
+      line  1181  [symmetric]  "algo": "AES-GCM",
+      line  1181  [cipher_mode]  "algo": "AES-GCM",
+      line  1197  [symmetric]  "algo": "AES-GCM",
+      line  1197  [cipher_mode]  "algo": "AES-GCM",
+      line  1213  [symmetric]  "algo": "AES-GCM",
+      line  1213  [cipher_mode]  "algo": "AES-GCM",
+      line  1229  [symmetric]  "algo": "AES-GCM",
+      line  1229  [cipher_mode]  "algo": "AES-GCM",
+      line  1245  [symmetric]  "algo": "AES-GCM",
+      line  1245  [cipher_mode]  "algo": "AES-GCM",
+      line  1261  [symmetric]  "algo": "AES-GCM",
+      line  1261  [cipher_mode]  "algo": "AES-GCM",
+      line  1277  [symmetric]  "algo": "AES-GCM",
+      line  1277  [cipher_mode]  "algo": "AES-GCM",
+      line  1293  [symmetric]  "algo": "AES-GCM",
+      line  1293  [cipher_mode]  "algo": "AES-GCM",
+      line  1309  [symmetric]  "algo": "AES-GCM",
+      line  1309  [cipher_mode]  "algo": "AES-GCM",
+      line  1325  [symmetric]  "algo": "AES-GCM",
+      line  1325  [cipher_mode]  "algo": "AES-GCM",
+      line  1341  [symmetric]  "algo": "AES-GCM",
+      line  1341  [cipher_mode]  "algo": "AES-GCM",
+      line  1357  [symmetric]  "algo": "AES-GCM",
+      line  1357  [cipher_mode]  "algo": "AES-GCM",
+      line  1373  [symmetric]  "algo": "AES-GCM",
+      line  1373  [cipher_mode]  "algo": "AES-GCM",
+      line  1389  [symmetric]  "algo": "AES-GCM",
+      line  1389  [cipher_mode]  "algo": "AES-GCM",
+      line  1405  [symmetric]  "algo": "AES-GCM",
+      line  1405  [cipher_mode]  "algo": "AES-GCM",
+      line  1421  [symmetric]  "algo": "AES-GCM",
+      line  1421  [cipher_mode]  "algo": "AES-GCM",
+      line  1437  [symmetric]  "algo": "AES-GCM",
+      line  1437  [cipher_mode]  "algo": "AES-GCM",
+      line  1453  [symmetric]  "algo": "AES-GCM",
+      line  1453  [cipher_mode]  "algo": "AES-GCM",
+      line  1469  [symmetric]  "algo": "AES-GCM",
+      line  1469  [cipher_mode]  "algo": "AES-GCM",
+      line  1485  [symmetric]  "algo": "AES-GCM",
+      line  1485  [cipher_mode]  "algo": "AES-GCM",
+      line  1501  [symmetric]  "algo": "AES-GCM",
+      line  1501  [cipher_mode]  "algo": "AES-GCM",
+      line  1517  [symmetric]  "algo": "AES-GCM",
+      line  1517  [cipher_mode]  "algo": "AES-GCM",
+      line  1533  [symmetric]  "algo": "AES-GCM",
+      line  1533  [cipher_mode]  "algo": "AES-GCM",
+      line  1549  [symmetric]  "algo": "AES-GCM",
+      line  1549  [cipher_mode]  "algo": "AES-GCM",
+      line  1565  [symmetric]  "algo": "AES-GCM",
+      line  1565  [cipher_mode]  "algo": "AES-GCM",
+      line  1581  [symmetric]  "algo": "AES-GCM",
+      line  1581  [cipher_mode]  "algo": "AES-GCM",
+      line  1597  [symmetric]  "algo": "AES-GCM",
+      line  1597  [cipher_mode]  "algo": "AES-GCM",
+
+  ▸ resource_profiling/gcm_chunk_ciphering/go/main.go
+      line    45  [symmetric]  Nodes          []Node `json:"nodes"`
+      line   177  [symmetric]  nodes := make([]Node, 100)
+      line   213  [symmetric]  Algo:      "AES-GCM",
+      line   213  [cipher_mode]  Algo:      "AES-GCM",
+      line   223  [symmetric]  nodes[i] = node
+      line   247  [symmetric]  Nodes:          nodes,
+      line   263  [symmetric]  // Also save a separate detailed nodes JSON file
+      line   295  [symmetric]  fmt.Printf("Found %d nodes in metadata\n", len(metadata.Nodes))
+      line   304  [symmetric]  // Iterate through nodes in order
+      line   305  [symmetric]  for i, node := range metadata.Nodes {
+      line   322  [symmetric]  fmt.Printf("Added chunk %d/%d: %s (%d bytes)\n", i+1, len(metadata.Nodes), chunkFilename, len(chunkData))
+      line   412  [symmetric]  // Display first few nodes as example
+      line   413  [symmetric]  fmt.Printf("\nFirst 3 nodes example:\n")
+      line   414  [symmetric]  for i := 0; i < 3 && i < len(metadata.Nodes); i++ {
+      line   415  [symmetric]  node := metadata.Nodes[i]
+      line   419  [symmetric]  // Display last few nodes as example
+      line   420  [symmetric]  fmt.Printf("\nLast 3 nodes example:\n")
+      line   421  [symmetric]  start := len(metadata.Nodes) - 3
+      line   425  [symmetric]  for i := start; i < len(metadata.Nodes); i++ {
+      line   426  [symmetric]  node := metadata.Nodes[i]
+      line   585  [symmetric]  Found 100 nodes in metadata
+      line   607  [symmetric]  First 3 nodes example:
+      line   612  [symmetric]  Last 3 nodes example:
+
+  ▸ resource_profiling/gcm_chunk_ciphering/python/chunks_metadata_detailed.json
+      line     7  [symmetric]  "nodes": [
+      line    13  [symmetric]  "algo": "AES-GCM",
+      line    13  [cipher_mode]  "algo": "AES-GCM",
+      line    29  [symmetric]  "algo": "AES-GCM",
+      line    29  [cipher_mode]  "algo": "AES-GCM",
+      line    45  [symmetric]  "algo": "AES-GCM",
+      line    45  [cipher_mode]  "algo": "AES-GCM",
+      line    61  [symmetric]  "algo": "AES-GCM",
+      line    61  [cipher_mode]  "algo": "AES-GCM",
+      line    77  [symmetric]  "algo": "AES-GCM",
+      line    77  [cipher_mode]  "algo": "AES-GCM",
+      line    93  [symmetric]  "algo": "AES-GCM",
+      line    93  [cipher_mode]  "algo": "AES-GCM",
+      line   109  [symmetric]  "algo": "AES-GCM",
+      line   109  [cipher_mode]  "algo": "AES-GCM",
+      line   125  [symmetric]  "algo": "AES-GCM",
+      line   125  [cipher_mode]  "algo": "AES-GCM",
+      line   141  [symmetric]  "algo": "AES-GCM",
+      line   141  [cipher_mode]  "algo": "AES-GCM",
+      line   157  [symmetric]  "algo": "AES-GCM",
+      line   157  [cipher_mode]  "algo": "AES-GCM",
+      line   173  [symmetric]  "algo": "AES-GCM",
+      line   173  [cipher_mode]  "algo": "AES-GCM",
+      line   189  [symmetric]  "algo": "AES-GCM",
+      line   189  [cipher_mode]  "algo": "AES-GCM",
+      line   205  [symmetric]  "algo": "AES-GCM",
+      line   205  [cipher_mode]  "algo": "AES-GCM",
+      line   221  [symmetric]  "algo": "AES-GCM",
+      line   221  [cipher_mode]  "algo": "AES-GCM",
+      line   237  [symmetric]  "algo": "AES-GCM",
+      line   237  [cipher_mode]  "algo": "AES-GCM",
+      line   253  [symmetric]  "algo": "AES-GCM",
+      line   253  [cipher_mode]  "algo": "AES-GCM",
+      line   269  [symmetric]  "algo": "AES-GCM",
+      line   269  [cipher_mode]  "algo": "AES-GCM",
+      line   285  [symmetric]  "algo": "AES-GCM",
+      line   285  [cipher_mode]  "algo": "AES-GCM",
+      line   301  [symmetric]  "algo": "AES-GCM",
+      line   301  [cipher_mode]  "algo": "AES-GCM",
+      line   317  [symmetric]  "algo": "AES-GCM",
+      line   317  [cipher_mode]  "algo": "AES-GCM",
+      line   333  [symmetric]  "algo": "AES-GCM",
+      line   333  [cipher_mode]  "algo": "AES-GCM",
+      line   349  [symmetric]  "algo": "AES-GCM",
+      line   349  [cipher_mode]  "algo": "AES-GCM",
+      line   365  [symmetric]  "algo": "AES-GCM",
+      line   365  [cipher_mode]  "algo": "AES-GCM",
+      line   381  [symmetric]  "algo": "AES-GCM",
+      line   381  [cipher_mode]  "algo": "AES-GCM",
+      line   397  [symmetric]  "algo": "AES-GCM",
+      line   397  [cipher_mode]  "algo": "AES-GCM",
+      line   413  [symmetric]  "algo": "AES-GCM",
+      line   413  [cipher_mode]  "algo": "AES-GCM",
+      line   429  [symmetric]  "algo": "AES-GCM",
+      line   429  [cipher_mode]  "algo": "AES-GCM",
+      line   445  [symmetric]  "algo": "AES-GCM",
+      line   445  [cipher_mode]  "algo": "AES-GCM",
+      line   461  [symmetric]  "algo": "AES-GCM",
+      line   461  [cipher_mode]  "algo": "AES-GCM",
+      line   477  [symmetric]  "algo": "AES-GCM",
+      line   477  [cipher_mode]  "algo": "AES-GCM",
+      line   493  [symmetric]  "algo": "AES-GCM",
+      line   493  [cipher_mode]  "algo": "AES-GCM",
+      line   509  [symmetric]  "algo": "AES-GCM",
+      line   509  [cipher_mode]  "algo": "AES-GCM",
+      line   525  [symmetric]  "algo": "AES-GCM",
+      line   525  [cipher_mode]  "algo": "AES-GCM",
+      line   541  [symmetric]  "algo": "AES-GCM",
+      line   541  [cipher_mode]  "algo": "AES-GCM",
+      line   557  [symmetric]  "algo": "AES-GCM",
+      line   557  [cipher_mode]  "algo": "AES-GCM",
+      line   573  [symmetric]  "algo": "AES-GCM",
+      line   573  [cipher_mode]  "algo": "AES-GCM",
+      line   589  [symmetric]  "algo": "AES-GCM",
+      line   589  [cipher_mode]  "algo": "AES-GCM",
+      line   605  [symmetric]  "algo": "AES-GCM",
+      line   605  [cipher_mode]  "algo": "AES-GCM",
+      line   621  [symmetric]  "algo": "AES-GCM",
+      line   621  [cipher_mode]  "algo": "AES-GCM",
+      line   637  [symmetric]  "algo": "AES-GCM",
+      line   637  [cipher_mode]  "algo": "AES-GCM",
+      line   653  [symmetric]  "algo": "AES-GCM",
+      line   653  [cipher_mode]  "algo": "AES-GCM",
+      line   669  [symmetric]  "algo": "AES-GCM",
+      line   669  [cipher_mode]  "algo": "AES-GCM",
+      line   685  [symmetric]  "algo": "AES-GCM",
+      line   685  [cipher_mode]  "algo": "AES-GCM",
+      line   701  [symmetric]  "algo": "AES-GCM",
+      line   701  [cipher_mode]  "algo": "AES-GCM",
+      line   717  [symmetric]  "algo": "AES-GCM",
+      line   717  [cipher_mode]  "algo": "AES-GCM",
+      line   733  [symmetric]  "algo": "AES-GCM",
+      line   733  [cipher_mode]  "algo": "AES-GCM",
+      line   749  [symmetric]  "algo": "AES-GCM",
+      line   749  [cipher_mode]  "algo": "AES-GCM",
+      line   765  [symmetric]  "algo": "AES-GCM",
+      line   765  [cipher_mode]  "algo": "AES-GCM",
+      line   781  [symmetric]  "algo": "AES-GCM",
+      line   781  [cipher_mode]  "algo": "AES-GCM",
+      line   797  [symmetric]  "algo": "AES-GCM",
+      line   797  [cipher_mode]  "algo": "AES-GCM",
+      line   813  [symmetric]  "algo": "AES-GCM",
+      line   813  [cipher_mode]  "algo": "AES-GCM",
+      line   829  [symmetric]  "algo": "AES-GCM",
+      line   829  [cipher_mode]  "algo": "AES-GCM",
+      line   845  [symmetric]  "algo": "AES-GCM",
+      line   845  [cipher_mode]  "algo": "AES-GCM",
+      line   861  [symmetric]  "algo": "AES-GCM",
+      line   861  [cipher_mode]  "algo": "AES-GCM",
+      line   877  [symmetric]  "algo": "AES-GCM",
+      line   877  [cipher_mode]  "algo": "AES-GCM",
+      line   893  [symmetric]  "algo": "AES-GCM",
+      line   893  [cipher_mode]  "algo": "AES-GCM",
+      line   909  [symmetric]  "algo": "AES-GCM",
+      line   909  [cipher_mode]  "algo": "AES-GCM",
+      line   925  [symmetric]  "algo": "AES-GCM",
+      line   925  [cipher_mode]  "algo": "AES-GCM",
+      line   941  [symmetric]  "algo": "AES-GCM",
+      line   941  [cipher_mode]  "algo": "AES-GCM",
+      line   957  [symmetric]  "algo": "AES-GCM",
+      line   957  [cipher_mode]  "algo": "AES-GCM",
+      line   973  [symmetric]  "algo": "AES-GCM",
+      line   973  [cipher_mode]  "algo": "AES-GCM",
+      line   989  [symmetric]  "algo": "AES-GCM",
+      line   989  [cipher_mode]  "algo": "AES-GCM",
+      line  1005  [symmetric]  "algo": "AES-GCM",
+      line  1005  [cipher_mode]  "algo": "AES-GCM",
+      line  1021  [symmetric]  "algo": "AES-GCM",
+      line  1021  [cipher_mode]  "algo": "AES-GCM",
+      line  1037  [symmetric]  "algo": "AES-GCM",
+      line  1037  [cipher_mode]  "algo": "AES-GCM",
+      line  1053  [symmetric]  "algo": "AES-GCM",
+      line  1053  [cipher_mode]  "algo": "AES-GCM",
+      line  1069  [symmetric]  "algo": "AES-GCM",
+      line  1069  [cipher_mode]  "algo": "AES-GCM",
+      line  1085  [symmetric]  "algo": "AES-GCM",
+      line  1085  [cipher_mode]  "algo": "AES-GCM",
+      line  1101  [symmetric]  "algo": "AES-GCM",
+      line  1101  [cipher_mode]  "algo": "AES-GCM",
+      line  1117  [symmetric]  "algo": "AES-GCM",
+      line  1117  [cipher_mode]  "algo": "AES-GCM",
+      line  1133  [symmetric]  "algo": "AES-GCM",
+      line  1133  [cipher_mode]  "algo": "AES-GCM",
+      line  1149  [symmetric]  "algo": "AES-GCM",
+      line  1149  [cipher_mode]  "algo": "AES-GCM",
+      line  1165  [symmetric]  "algo": "AES-GCM",
+      line  1165  [cipher_mode]  "algo": "AES-GCM",
+      line  1181  [symmetric]  "algo": "AES-GCM",
+      line  1181  [cipher_mode]  "algo": "AES-GCM",
+      line  1197  [symmetric]  "algo": "AES-GCM",
+      line  1197  [cipher_mode]  "algo": "AES-GCM",
+      line  1213  [symmetric]  "algo": "AES-GCM",
+      line  1213  [cipher_mode]  "algo": "AES-GCM",
+      line  1229  [symmetric]  "algo": "AES-GCM",
+      line  1229  [cipher_mode]  "algo": "AES-GCM",
+      line  1245  [symmetric]  "algo": "AES-GCM",
+      line  1245  [cipher_mode]  "algo": "AES-GCM",
+      line  1261  [symmetric]  "algo": "AES-GCM",
+      line  1261  [cipher_mode]  "algo": "AES-GCM",
+      line  1277  [symmetric]  "algo": "AES-GCM",
+      line  1277  [cipher_mode]  "algo": "AES-GCM",
+      line  1293  [symmetric]  "algo": "AES-GCM",
+      line  1293  [cipher_mode]  "algo": "AES-GCM",
+      line  1309  [symmetric]  "algo": "AES-GCM",
+      line  1309  [cipher_mode]  "algo": "AES-GCM",
+      line  1325  [symmetric]  "algo": "AES-GCM",
+      line  1325  [cipher_mode]  "algo": "AES-GCM",
+      line  1341  [symmetric]  "algo": "AES-GCM",
+      line  1341  [cipher_mode]  "algo": "AES-GCM",
+      line  1357  [symmetric]  "algo": "AES-GCM",
+      line  1357  [cipher_mode]  "algo": "AES-GCM",
+      line  1373  [symmetric]  "algo": "AES-GCM",
+      line  1373  [cipher_mode]  "algo": "AES-GCM",
+      line  1389  [symmetric]  "algo": "AES-GCM",
+      line  1389  [cipher_mode]  "algo": "AES-GCM",
+      line  1405  [symmetric]  "algo": "AES-GCM",
+      line  1405  [cipher_mode]  "algo": "AES-GCM",
+      line  1421  [symmetric]  "algo": "AES-GCM",
+      line  1421  [cipher_mode]  "algo": "AES-GCM",
+      line  1437  [symmetric]  "algo": "AES-GCM",
+      line  1437  [cipher_mode]  "algo": "AES-GCM",
+      line  1453  [symmetric]  "algo": "AES-GCM",
+      line  1453  [cipher_mode]  "algo": "AES-GCM",
+      line  1469  [symmetric]  "algo": "AES-GCM",
+      line  1469  [cipher_mode]  "algo": "AES-GCM",
+      line  1485  [symmetric]  "algo": "AES-GCM",
+      line  1485  [cipher_mode]  "algo": "AES-GCM",
+      line  1501  [symmetric]  "algo": "AES-GCM",
+      line  1501  [cipher_mode]  "algo": "AES-GCM",
+      line  1517  [symmetric]  "algo": "AES-GCM",
+      line  1517  [cipher_mode]  "algo": "AES-GCM",
+      line  1533  [symmetric]  "algo": "AES-GCM",
+      line  1533  [cipher_mode]  "algo": "AES-GCM",
+      line  1549  [symmetric]  "algo": "AES-GCM",
+      line  1549  [cipher_mode]  "algo": "AES-GCM",
+      line  1565  [symmetric]  "algo": "AES-GCM",
+      line  1565  [cipher_mode]  "algo": "AES-GCM",
+      line  1581  [symmetric]  "algo": "AES-GCM",
+      line  1581  [cipher_mode]  "algo": "AES-GCM",
+      line  1597  [symmetric]  "algo": "AES-GCM",
+      line  1597  [cipher_mode]  "algo": "AES-GCM",
+
+  ▸ resource_profiling/gcm_chunk_ciphering/python/file_into_chunks_peg_to_keys.py
+      line     4  [symmetric]  100 nodes with unique node_id values
+      line    14  [py_import]  import hashlib
+      line    15  [py_import]  import secrets
+      line    88  [symmetric]  nodes = []
+      line   116  [symmetric]  "algo": "AES-GCM",
+      line   116  [cipher_mode]  "algo": "AES-GCM",
+      line   126  [symmetric]  nodes.append(node)
+      line   142  [symmetric]  "nodes": nodes
+      line   151  [symmetric]  # Also save a separate detailed nodes JSON file
+      line   175  [symmetric]  nodes = metadata["nodes"]
+      line   177  [symmetric]  print(f"Found {len(nodes)} nodes in metadata")
+      line   179  [symmetric]  # Iterate through nodes in the order they appear in the array
+      line   180  [symmetric]  for i, node in enumerate(nodes):
+      line   191  [symmetric]  print(f"Added chunk {i+1}/{len(nodes)}: {chunk_filename} ({len(chunk_data)} bytes)")
+      line   245  [symmetric]  # Display first few nodes as example
+      line   246  [symmetric]  print(f"\nFirst 3 nodes example:")
+      line   247  [symmetric]  for i in range(min(3, len(metadata['nodes']))):
+      line   248  [symmetric]  node = metadata['nodes'][i]
+      line   251  [symmetric]  # Display last few nodes as example
+      line   252  [symmetric]  print(f"\nLast 3 nodes example:")
+      line   253  [symmetric]  for i in range(max(0, len(metadata['nodes'])-3), len(metadata['nodes'])):
+      line   254  [symmetric]  node = metadata['nodes'][i]
+      line   335  [symmetric]  Found 100 nodes in metadata
+      line   357  [symmetric]  First 3 nodes example:
+      line   362  [symmetric]  Last 3 nodes example:
+
+  ▸ security/basis_keys/basis_keys.py
+      line    11  [kdf]  - HKDF(SHA256) on the concatenated shared secrets:
+      line    12  [kdf]  - SK = KDF(DH1 || DH2 || DH3 || DH4 || DH5)   # root ratchet
+      line    16  [py_import]  from cryptography.hazmat.primitives.asymmetric import ec
+      line    17  [py_import]  from cryptography.hazmat.primitives.kdf.hkdf import HKDF
+      line    17  [kdf]  from cryptography.hazmat.primitives.kdf.hkdf import HKDF
+      line    17  [kdf]  from cryptography.hazmat.primitives.kdf.hkdf import HKDF
+      line    18  [py_import]  from cryptography.hazmat.primitives import hashes
+      line    19  [py_import]  from cryptography.hazmat.primitives.serialization import PublicFormat, Encoding
+      line    44  [key_mgmt]  purpose: keys[purpose].public_key().public_bytes(
+      line    62  [kdf]  hkdf = HKDF(
+      line    68  [kdf]  return hkdf.derive(combined)
+
+  ▸ security/basis_keys/basis_permit.py
+      line     2  [py_import]  from cryptography.hazmat.primitives.asymmetric import ec, utils
+      line     3  [py_import]  from cryptography.hazmat.primitives import serialization, hashes
+      line     4  [py_import]  from cryptography.hazmat.primitives.serialization import Encoding, PublicFormat
+      line     5  [py_import]  from cryptography import x509
+      line     6  [py_import]  from cryptography.x509.oid import NameOID
+      line    26  [signature]  .sign(private_key, hashes.SHA256())
+      line    27  [key_mgmt]  return cert.public_bytes(Encoding.PEM)
+      line    33  [key_mgmt]  purpose: keys[purpose].public_key().public_bytes(
+      line    61  [signature]  signature = authorization_private_key.sign(
+      line    88  [signature]  signature = keypairs["authorization"].sign(
+      line   110  [signature]  auth_pubkey.verify(signature, message, ec.ECDSA(hashes.SHA256()))
+      line   140  [symmetric]  "ciphering": {"purpose": "symmetric_encryption", "encryption_schemes": ["AES-GCM"]}
+      line   140  [cipher_mode]  "ciphering": {"purpose": "symmetric_encryption", "encryption_schemes": ["AES-GCM"]}
+      line   153  [key_mgmt]  pem = pubkey.public_bytes(
+      line   179  [py_import]  from cryptography.x509 import load_pem_x509_certificate
+      line   283  [key_mgmt]  "identity_cert": "-----BEGIN CERTIFICATE-----\nMIIBKDCB0KADAgECAhRAR6kPBrJZNvw+9XvotbDF8VUrRzAKBggqhkjOPQQDAjAV\nMRMwEQYDVQQDDApVcnNhIE1ham9yMB4XDTI1MDYyMjE5MzE1MVoXDTI3MDUyMzE5\nMzE1MVowFTETMBEGA1UEAwwKVXJzYSBNYWpvcjBZMBMGByqGSM49AgEGCCqGSM49\nAwEHA0IABEB18mFvVg/12PWQPWnrEfAsD0szT8ApFURQ2Nr6aSVUHSF
+      line   309  [symmetric]  "AES-GCM"
+      line   309  [cipher_mode]  "AES-GCM"
+      line   332  [key_mgmt]  -----BEGIN PUBLIC KEY-----
+
+  ▸ security/basis_keys/basis_permit_cert_renewal_with_same_key.py
+      line    17  [signature]  .sign(private_key, hashes.SHA256())
+      line    19  [key_mgmt]  return cert.public_bytes(Encoding.PEM)
+
+  ▸ security/basis_keys/basis_permit_cert_validity.py
+      line     1  [py_import]  from cryptography.x509 import load_pem_x509_certificate
+      line    80  [symmetric]  - encryption_schemes: ['AES-GCM']
+      line    80  [cipher_mode]  - encryption_schemes: ['AES-GCM']
+      line   111  [key_mgmt]  "identity_cert": "-----BEGIN CERTIFICATE-----\nMIIBKDCB0KADAgECAhRAR6kPBrJZNvw+9XvotbDF8VUrRzAKBggqhkjOPQQDAjAV\nMRMwEQYDVQQDDApVcnNhIE1ham9yMB4XDTI1MDYyMjE5MzE1MVoXDTI3MDUyMzE5\nMzE1MVowFTETMBEGA1UEAwwKVXJzYSBNYWpvcjBZMBMGByqGSM49AgEGCCqGSM49\nAwEHA0IABEB18mFvVg/12PWQPWnrEfAsD0szT8ApFURQ2Nr6aSVUHSF
+      line   137  [symmetric]  "AES-GCM"
+      line   137  [cipher_mode]  "AES-GCM"
+
+  ▸ security/basis_keys/readme.md
+      line     3  [kdf]  Diffie-Hellman (DH) key exchange between 2 parties, with the generation of 5 key pairs (identity (authentication), attestation, endorsement, authorization, ciphering), and derivation of a session key using a KDF from all 5 DH symmetric keys.
+      line    14  [kdf]  - HKDF(SHA256) on the concatenated shared secrets:
+      line    15  [kdf]  - SK = KDF(DH1 || DH2 || DH3 || DH4 || DH5)   # root ratchet
+      line    20  [kdf]  HKDF as the Key Derivation Function (KDF).
+      line    20  [kdf]  HKDF as the Key Derivation Function (KDF).
+
+  ▸ security/confidentiality/go/asymmetric/generate_ecdsa_and_eddsa_certs.go
+      line    88  [signature]  KeyUsage:     x509.KeyUsageDigitalSignature | x509.KeyUsageKeyEncipherment,
+      line   121  [key_mgmt]  -----BEGIN PUBLIC KEY-----
+      line   125  [key_mgmt]  -----BEGIN CERTIFICATE-----
+      line   150  [key_mgmt]  -----BEGIN PUBLIC KEY-----
+      line   155  [key_mgmt]  -----BEGIN CERTIFICATE-----
+
+  ▸ security/confidentiality/python/aes_log_exclusive_access.py
+      line     9  [py_import]  from Crypto.Cipher import AES
+      line     9  [symmetric]  from Crypto.Cipher import AES
+      line    10  [py_import]  from Crypto.Random import get_random_bytes
+      line    10  [random]  from Crypto.Random import get_random_bytes
+      line    19  [symmetric]  # Helper functions for AES encryption
+      line    27  [symmetric]  cipher = AES.new(key, AES.MODE_CBC)
+      line    34  [symmetric]  cipher = AES.new(key, AES.MODE_CBC, iv)
+      line    37  [symmetric]  # Register users and assign AES keys
+      line    42  [symmetric]  aes_key = get_random_bytes(16)  # 128-bit AES key
+      line    42  [random]  aes_key = get_random_bytes(16)  # 128-bit AES key
+      line    44  [symmetric]  print(f"Registered User: {user_id}, AES Key: {aes_key.hex()}")
+      line   101  [symmetric]  Registered User: 3d37ac2d-2a11-4af3-ac75-fc7366696477, AES Key: aa3ec11d2c735f812ff2550c68d2853e
+      line   102  [symmetric]  Registered User: 7c8d1694-5259-4408-b376-86449ae47760, AES Key: cc230741f81b77883632c911f647069f
+      line   103  [symmetric]  Registered User: 80ace321-56f3-4ac9-8626-4b53f7395720, AES Key: 0425181ad9d2d52d6c679b14b7e4e352
+      line   104  [symmetric]  Registered User: fe130141-b554-4b4e-9961-12879764ff30, AES Key: dae8c54c0b20cc616cb849234364d960
+      line   105  [symmetric]  Registered User: 23cc4909-0e0b-493d-ad07-e30a238c5cea, AES Key: 3a039397337393e1a4463af113d96667
+
+  ▸ security/confidentiality/python/generate_key_split_and_recovery.py
+      line    14  [random]  key_bytes = os.urandom(key_length)
+      line    23  [random]  key_bytes = os.urandom(key_length)
+      line   218  [symmetric]  share_4: 5-vRQHNGs4941/ZsjTKJB7yQFj9aqRjZQc3Rc4+6sTgsTpdZ4KsJRcZNxHxbskabBVyaH6pQeYjM1aWISZEdBftow=
+      line   269  [symmetric]  "5-vRQHNGs4941/ZsjTKJB7yQFj9aqRjZQc3Rc4+6sTgsTpdZ4KsJRcZNxHxbskabBVyaH6pQeYjM1aWISZEdBftow="
+      line   318  [symmetric]  "5-vRQHNGs4941/ZsjTKJB7yQFj9aqRjZQc3Rc4+6sTgsTpdZ4KsJRcZNxHxbskabBVyaH6pQeYjM1aWISZEdBftow="
+      line   388  [zkp]  Hash and securely split each key using Shamir's Secret Sharing (SSS)
+      line   394  [random]  Generates N-byte random keys using os.urandom.
+
+  ▸ security/double_ratchet/golang/main.go
+      line     4  [kdf]  "crypto/hmac"
+      line    15  [kdf]  "golang.org/x/crypto/pbkdf2"
+      line    57  [kdf]  e.key = pbkdf2.Key([]byte(password), salt, 10000, keySize, sha256.New)
+      line   104  [symmetric]  // ChaCha20-Poly1305 Suite
+      line   117  [kdf]  return pbkdf2.Key(secret, []byte("DoubleRatchet"), 10000, s.KeySize(), sha256.New)
+      line   191  [kdf]  mac := hmac.New(sha256.New, rootKey)
+      line   195  [kdf]  mac = hmac.New(sha256.New, prk)
+      line   200  [kdf]  mac = hmac.New(sha256.New, prk)
+      line   209  [kdf]  mac := hmac.New(sha256.New, chainKey)
+      line   213  [kdf]  mac = hmac.New(sha256.New, chainKey)
+      line   413  [symmetric]  modes := []string{"0", "1", "2", "3"}
+      line   421  [symmetric]  for i, mode := range modes {
+
+  ▸ security/double_ratchet/golang/main.go.signal.txt
+      line     4  [kdf]  "crypto/hmac"
+      line    16  [kdf]  "golang.org/x/crypto/pbkdf2"
+      line    32  [symmetric]  // X25519 + ChaCha20-Poly1305 + SHA256
+      line    45  [kdf]  return pbkdf2.Key(secret, []byte("DoubleRatchet"), 10000, s.KeySize(), sha256.New)
+      line    64  [symmetric]  // X25519 + NaCl SecretBox (XSalsa20-Poly1305) + SHA256
+      line    77  [kdf]  return pbkdf2.Key(secret, []byte("DoubleRatchet"), 10000, s.KeySize(), sha256.New)
+      line   102  [symmetric]  // X25519 + AES-256-GCM + SHA512
+      line   102  [cipher_mode]  // X25519 + AES-256-GCM + SHA512
+      line   115  [kdf]  return pbkdf2.Key(secret, []byte("DoubleRatchet"), 10000, s.KeySize(), sha512.New)
+      line   119  [symmetric]  // Fallback to ChaCha20-Poly1305 for this demo
+      line   120  [symmetric]  // In production, use crypto/aes + crypto/cipher for proper AES-GCM
+      line   120  [cipher_mode]  // In production, use crypto/aes + crypto/cipher for proper AES-GCM
+      line   129  [symmetric]  // Fallback to ChaCha20-Poly1305 for this demo
+      line   196  [kdf]  mac := hmac.New(sha256.New, rootKey)
+      line   201  [kdf]  mac = hmac.New(sha256.New, prk)
+      line   207  [kdf]  mac = hmac.New(sha256.New, prk)
+      line   217  [kdf]  mac := hmac.New(sha256.New, chainKey)
+      line   222  [kdf]  mac = hmac.New(sha256.New, chainKey)
+
+  ▸ security/double_ratchet/golang/readme.md
+      line    29  [symmetric]  The Double Ratchet Protocol is a cryptographic protocol that provides **end-to-end encryption** for messaging applications. It's the core of:
+      line    53  [symmetric]  - ✅ **Multiple Cipher Suites** - ChaCha20, NaCl SecretBox, AES-256-GCM
+      line    53  [symmetric]  - ✅ **Multiple Cipher Suites** - ChaCha20, NaCl SecretBox, AES-256-GCM
+      line    53  [cipher_mode]  - ✅ **Multiple Cipher Suites** - ChaCha20, NaCl SecretBox, AES-256-GCM
+      line    98  [symmetric]  │  │  ChaCha20    │  │    NaCl      │  │  AES-256     │      │
+      line    98  [symmetric]  │  │  ChaCha20    │  │    NaCl      │  │  AES-256     │      │
+      line    99  [cipher_mode]  │  │  Poly1305    │  │  SecretBox   │  │    GCM       │      │
+      line   110  [symmetric]  ### 1. ChaCha20-Poly1305 (Default) 🚀
+      line   118  [symmetric]  - **Encryption:** ChaCha20-Poly1305 (Stream cipher + MAC)
+      line   131  [symmetric]  ### 2. NaCl SecretBox (XSalsa20-Poly1305) 🔒
+      line   139  [symmetric]  - **Encryption:** XSalsa20-Poly1305
+      line   152  [symmetric]  ### 3. AES-256-GCM 🏛️
+      line   152  [cipher_mode]  ### 3. AES-256-GCM 🏛️
+      line   160  [symmetric]  - **Encryption:** AES-256-GCM (note: demo uses ChaCha20)
+      line   160  [symmetric]  - **Encryption:** AES-256-GCM (note: demo uses ChaCha20)
+      line   160  [cipher_mode]  - **Encryption:** AES-256-GCM (note: demo uses ChaCha20)
+      line   169  [symmetric]  - Hardware acceleration (AES-NI)
+      line   175  [symmetric]  | Feature | ChaCha20 | NaCl | AES-256 |
+      line   175  [symmetric]  | Feature | ChaCha20 | NaCl | AES-256 |
+      line   199  [kdf]  go get golang.org/x/crypto/pbkdf2
+      line   230  [symmetric]  # ChaCha20-Poly1305 (default)
+      line   236  [symmetric]  # AES-256-GCM
+      line   236  [cipher_mode]  # AES-256-GCM
+      line   315  [kdf]  ├─ KDF ─▶ Message Key 0 ──▶ Encrypt("Hello")
+      line   320  [kdf]  ├─ KDF ─▶ Message Key 1 ──▶ Encrypt("How are you?")
+      line   325  [kdf]  ├─ KDF ─▶ Message Key 2 ──▶ Encrypt("Great!")
+      line   331  [kdf]  **Key Derivation Function (KDF):**
+      line   335  [kdf]  messageKey = HMAC-SHA256(chainKey, "MessageKey")
+      line   336  [kdf]  nextChainKey = HMAC-SHA256(chainKey, "NextChain")
+      line   435  [symmetric]  │   ├── ChaCha20Suite       # ChaCha20-Poly1305 implementation
+      line   436  [symmetric]  │   ├── NaClSuite           # XSalsa20-Poly1305 implementation
+      line   437  [symmetric]  │   ├── AES256Suite         # AES-256-GCM implementation
+      line   437  [cipher_mode]  │   ├── AES256Suite         # AES-256-GCM implementation
+      line   512  [kdf]  **How:** Each message uses a unique key derived from a chain. Once used, the message key is deleted. Even if an attacker gets today's chain key, they can't reverse the KDF to get yesterday's message keys.
+      line   537  [symmetric]  **How:** Messages are encrypted with keys derived from a shared secret that only Alice and Bob know (via X3DH and DH ratchets). The encryption (ChaCha20/NaCl/AES-GCM) is authenticated, preventing tampering.
+      line   537  [symmetric]  **How:** Messages are encrypted with keys derived from a shared secret that only Alice and Bob know (via X3DH and DH ratchets). The encryption (ChaCha20/NaCl/AES-GCM) is authenticated, preventing tampering.
+      line   537  [cipher_mode]  **How:** Messages are encrypted with keys derived from a shared secret that only Alice and Bob know (via X3DH and DH ratchets). The encryption (ChaCha20/NaCl/AES-GCM) is authenticated, preventing tampering.
+      line   543  [symmetric]  **How:** Each message includes an Authentication Tag (from Poly1305 or GCM) computed using the shared secret. Only someone with the correct keys can generate a valid tag.
+      line   543  [cipher_mode]  **How:** Each message includes an Authentication Tag (from Poly1305 or GCM) computed using the shared secret. Only someone with the correct keys can generate a valid tag.
+      line   549  [signature]  **How:** Both parties have the same message keys. Either party could have encrypted a message. There's no digital signature that proves "Alice sent this" in a way a third party would believe.
+      line   650  [symmetric]  The implementation includes three comprehensive test suites:
+      line   761  [symmetric]  ChaCha20-Poly1305:
+      line   781  [symmetric]  4. **Use ChaCha20** - Fastest on most platforms without AES-NI
+      line   781  [symmetric]  4. **Use ChaCha20** - Fastest on most platforms without AES-NI
+
+  ▸ security/double_ratchet/python/01/double_ratchet_mechanisms.ipynb
+      line    50  [kdf]  "from cryptography.hazmat.primitives.kdf.hkdf import HKDF\n",
+      line    50  [kdf]  "from cryptography.hazmat.primitives.kdf.hkdf import HKDF\n",
+      line    53  [symmetric]  "from Crypto.Cipher import AES\n",
+      line    59  [kdf]  "def hkdf(inp, length):\n",
+      line    60  [kdf]  "    # use HKDF on an input to derive a key\n",
+      line    61  [kdf]  "    hkdf = HKDF(algorithm=hashes.SHA256(), length=length, salt=b'',\n",
+      line    63  [kdf]  "    return hkdf.derive(inp)\n",
+      line    81  [kdf]  "        # the shared key is KDF(DH1||DH2||DH3||DH4)\n",
+      line    82  [kdf]  "        self.sk = hkdf(dh1 + dh2 + dh3 + dh4, 32)\n",
+      line   110  [symmetric]  "        cipher = AES.new(key, AES.MODE_CBC, iv).encrypt(pad(msg))\n",
+      line   120  [symmetric]  "        msg = unpad(AES.new(key, AES.MODE_CBC, iv).decrypt(cipher))\n",
+      line   138  [kdf]  "        # the shared key is KDF(DH1||DH2||DH3||DH4)\n",
+      line   139  [kdf]  "        self.sk = hkdf(dh1 + dh2 + dh3 + dh4, 32)\n",
+      line   169  [symmetric]  "        cipher = AES.new(key, AES.MODE_CBC, iv).encrypt(pad(msg))\n",
+      line   179  [symmetric]  "        msg = unpad(AES.new(key, AES.MODE_CBC, iv).decrypt(cipher))\n",
+      line   201  [kdf]  "        output = hkdf(self.state + inp, 80)\n",
+
+  ▸ security/double_ratchet/python/01/ratchet_turn_ratchet.svg
+      line    39  [kdf]  x="0 9.1785431 17.69557">KDF</tspan></text>
+
+  ▸ security/double_ratchet/python/02/double_ratchet_demo.py
+      line     5  [py_import]  import hashlib
+      line     6  [py_import]  import hmac
+      line     6  [kdf]  import hmac
+      line     8  [py_import]  from nacl.public import PrivateKey, PublicKey, Box
+      line     9  [py_import]  from nacl.secret import SecretBox
+      line    57  [kdf]  Uses HMAC-based key derivation.
+      line    60  [kdf]  prk = hmac.new(root_key, dh_output, hashlib.sha256).digest()
+      line    63  [kdf]  new_root_key = hmac.new(prk, b"RootKey" + b'\x01', hashlib.sha256).digest()
+      line    64  [kdf]  new_chain_key = hmac.new(prk, b"ChainKey" + b'\x01', hashlib.sha256).digest()
+      line    73  [kdf]  message_key = hmac.new(chain_key, b"MessageKey", hashlib.sha256).digest()
+      line    74  [kdf]  next_chain_key = hmac.new(chain_key, b"NextChain", hashlib.sha256).digest()
+
+  ▸ security/double_ratchet/python/02/readme.md
+      line    88  [kdf]  ### 2. Key Derivation Functions (KDF)
+      line   241  [kdf]  message_key = hmac.new(chain_key, b"MessageKey", hashlib.sha256).digest()
+      line   242  [kdf]  next_chain_key = hmac.new(chain_key, b"NextChain", hashlib.sha256).digest()
+      line   246  [kdf]  **Why HMAC?** It's a cryptographically secure way to derive keys deterministically.
+
+  ▸ security/integrity/go/asymmetric/sign_and_verify_with_ecdsa_and_eddsa_certs.go
+      line    88  [signature]  signature := ed25519.Sign(privKey, data)
+      line    91  [signature]  valid := ed25519.Verify(pubKey, data, signature)
+      line   110  [signature]  r, s, _ := ecdsa.Sign(rand.Reader, privKey, hash[:])
+      line   113  [signature]  valid := ecdsa.Verify(pubKey, hash[:], r, s)
+      line   126  [signature]  KeyUsage:              x509.KeyUsageDigitalSignature | x509.KeyUsageCertSign,
+
+  ▸ security/integrity/go/object_signing.go
+      line     4  [kdf]  "crypto/hmac"
+      line    48  [kdf]  h := hmac.New(sha256.New, []byte(secretKey))
+      line    87  [kdf]  return hmac.Equal([]byte(expectedSignature), []byte(signature))
+
+  ▸ security/integrity/python/object_signing.py
+      line     1  [py_import]  import hmac
+      line     1  [kdf]  import hmac
+      line     2  [py_import]  import hashlib
+      line    12  [random]  "random_hex": os.urandom(16).hex(),
+      line    17  [kdf]  """Sign the object using HMAC-SHA256."""
+      line    19  [kdf]  return hmac.new(SECRET_KEY, obj_json, hashlib.sha256).hexdigest()
+      line    33  [kdf]  """Verify the object's integrity using HMAC."""
+      line    35  [kdf]  return hmac.compare_digest(expected_signature, signature)
+
+  ▸ security/privacy/garbled_circuit/python/implicit_agreement_using_garbled_circuit.py
+      line     3  [py_import]  from cryptography.fernet import Fernet
+      line    52  [key_mgmt]  'a_0': Fernet.generate_key(),
+      line    53  [key_mgmt]  'a_1': Fernet.generate_key(),
+      line    54  [key_mgmt]  'b_0': Fernet.generate_key(),
+      line    55  [key_mgmt]  'b_1': Fernet.generate_key(),
+      line    56  [key_mgmt]  'c_0': Fernet.generate_key(),
+      line    57  [key_mgmt]  'c_1': Fernet.generate_key(),
+
+  ▸ security/privacy/garbled_circuit/python/implicit_agreement_using_garbled_circuit_simple.py
+      line     1  [py_import]  from cryptography.fernet import Fernet
+      line    19  [key_mgmt]  keyX_0 = Fernet.generate_key()
+      line    20  [key_mgmt]  keyX_1 = Fernet.generate_key()
+      line    21  [key_mgmt]  keyY_0 = Fernet.generate_key()
+      line    22  [key_mgmt]  keyY_1 = Fernet.generate_key()
+      line    61  [symmetric]  # Bob passes the cipher_text values (cipher_text00 ... cipher_text11) to Alice, and provides the key for his input. If he says YES, he passes keyX_1, otherwise he will pass keyX_0.
+
+  ▸ security/privacy/garbled_circuit/python/implicit_agreement_using_garbled_circuit_threshold.py
+      line    30  [py_import]  from cryptography.fernet import Fernet
+      line    53  [key_mgmt]  keys = {i: Fernet.generate_key() for i in truth_table.keys()}
+
+  ▸ security/privacy/garbled_circuit/python/implicit_agreement_using_garbled_circuit_xor.py
+      line     1  [py_import]  from cryptography.fernet import Fernet
+      line    12  [key_mgmt]  alice_key = Fernet.generate_key()
+      line    13  [key_mgmt]  bob_key = Fernet.generate_key()
+      line    85  [symmetric]  It provides cryptographic guarantees rather than just policy-based privacy
+
+  ▸ security/privacy/garbled_circuit/python/implicit_agreement_using_garbled_circuit_xor_enhanced.py
+      line     1  [py_import]  from cryptography.fernet import Fernet
+      line     2  [py_import]  from cryptography.hazmat.primitives.asymmetric import rsa, padding
+      line     2  [asymmetric]  from cryptography.hazmat.primitives.asymmetric import rsa, padding
+      line     3  [py_import]  from cryptography.hazmat.primitives import hashes, serialization
+      line     4  [py_import]  from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
+      line     4  [kdf]  from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
+      line     4  [kdf]  from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
+      line     5  [py_import]  from cryptography.hazmat.primitives.ciphers.aead import AESGCM
+      line    10  [py_import]  import hmac
+      line    10  [kdf]  import hmac
+      line    11  [py_import]  import hashlib
+      line    16  [asymmetric]  self.alice_private_key = rsa.generate_private_key(
+      line    18  [key_mgmt]  key_size=2048
+      line    22  [asymmetric]  self.bob_private_key = rsa.generate_private_key(
+      line    24  [key_mgmt]  key_size=2048
+      line    28  [kdf]  # For HMAC-based input validation
+      line    29  [random]  self.validation_key = os.urandom(32)
+      line    32  [random]  self.nonce_salt = os.urandom(16)
+      line    41  [key_mgmt]  alice_session_key = AESGCM.generate_key(bit_length=256)
+      line    42  [key_mgmt]  bob_session_key = AESGCM.generate_key(bit_length=256)
+      line    90  [kdf]  # Verify HMAC signature to ensure input has not been tampered with
+      line    91  [kdf]  expected_sig = hmac.new(
+      line    97  [kdf]  return hmac.compare_digest(signature, expected_sig)
+      line   101  [kdf]  return hmac.new(
+      line   145  [random]  alice_nonce = os.urandom(12)  # 96 bits as recommended for AESGCM
+      line   146  [random]  bob_nonce = os.urandom(12)
+      line   285  [asymmetric]  print("✓ Secure key exchange using RSA asymmetric encryption")
+      line   287  [kdf]  print("✓ Input validation with HMAC signatures")
+      line   312  [asymmetric]  ✓ Secure key exchange using RSA asymmetric encryption
+      line   314  [kdf]  ✓ Input validation with HMAC signatures
+      line   319  [asymmetric]  The code now implements RSA asymmetric encryption to securely exchange session keys:
+      line   323  [asymmetric]  RSA-OAEP with SHA-256 is used for secure key exchange
+      line   335  [symmetric]  The code now includes robust input validation:
+      line   337  [kdf]  HMAC-based signatures to verify input integrity
+      line   354  [kdf]  Used secure comparison functions (hmac.compare_digest) to prevent timing attacks
+
+  ▸ security/privacy/garbled_circuit/readme.md
+      line    17  [symmetric]  - You can securely evaluate decision tree nodes (feature_i > threshold, etc.) without exposing feature values.
+
+  ▸ security/privacy/oblivious_transfer/ot_1_of_2.py
+      line     3  [py_import]  from Crypto.Cipher import AES
+      line     3  [symmetric]  from Crypto.Cipher import AES
+      line     4  [py_import]  from Crypto.Util.Padding import pad, unpad
+      line     5  [py_import]  from Crypto.Util.number import getPrime
+      line     6  [py_import]  from Crypto.Random import get_random_bytes
+      line     6  [random]  from Crypto.Random import get_random_bytes
+      line     7  [py_import]  import hashlib
+      line    21  [random]  n = getPrime(bits, randfunc=get_random_bytes)
+      line    31  [symmetric]  # Pad messages for AES encryption
+      line    45  [symmetric]  # === Alice computes two symmetric AES keys ===
+      line    53  [symmetric]  cipher0 = AES.new(key0, AES.MODE_ECB)
+      line    54  [symmetric]  cipher1 = AES.new(key1, AES.MODE_ECB)
+      line    66  [symmetric]  cipher = AES.new(bob_key, AES.MODE_ECB)
+
+  ▸ security/privacy/oblivious_transfer/ot_1_of_N.py
+      line     3  [py_import]  from Crypto.Cipher import AES
+      line     3  [symmetric]  from Crypto.Cipher import AES
+      line     4  [py_import]  from Crypto.Util.Padding import pad, unpad
+      line     5  [py_import]  from Crypto.Util.number import getPrime
+      line     6  [py_import]  from Crypto.Random import get_random_bytes
+      line     6  [random]  from Crypto.Random import get_random_bytes
+      line     7  [py_import]  import hashlib
+      line    17  [random]  p = getPrime(bits, randfunc=get_random_bytes)
+      line    50  [symmetric]  cipher = AES.new(key, AES.MODE_ECB)
+      line    61  [symmetric]  cipher = AES.new(bob_key, AES.MODE_ECB)
+
+  ▸ security/privacy/oblivious_transfer/readme.md
+      line    23  [symmetric]  | **Need**                             | **This Protocol Provides**                  |

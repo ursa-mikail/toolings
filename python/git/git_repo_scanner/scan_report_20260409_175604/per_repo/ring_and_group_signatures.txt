@@ -1,0 +1,48 @@
+================================================================================
+  REPO       : ring_and_group_signatures
+  FULL NAME  : ursa-mikail/ring_and_group_signatures
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Python
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/ring_and_group_signatures
+  MATCHES    : 33
+================================================================================
+
+  ▸ group_signature_demo.py
+      line     3  [py_import]  import hashlib
+      line     5  [py_import]  from Crypto.PublicKey import RSA
+      line     5  [asymmetric]  from Crypto.PublicKey import RSA
+      line    14  [asymmetric]  key = RSA.generate(1024, os.urandom)
+      line    14  [random]  key = RSA.generate(1024, os.urandom)
+      line    76  [signature]  sig = gss.sign(msg, member_id="user1", private_key=priv_keys[1])
+      line    84  [signature]  print("✅ Verified?", gss.verify(msg, sig))
+      line    90  [key_mgmt]  user0 public key: b'-----BEGIN PUBLIC KEY-----\nMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCigG9mOSVRat9UuWXWs96Hfjc3\nfPR1IDAKThs0zmDfp7pptxUrn0QRv2Q74Ljyzji6UM01QgUa0g9h31MuTHWi4z5q\ncfCmspYhikXLtwRyY0o8w3GL1iz0aeYVMknabvyFTkp5oBut1GgxhuchZBY3opCX\nHsdmjMsAUEMNRbtSPQIDAQAB\n-----END PUBLIC KEY-----'
+      line    91  [key_mgmt]  user1 public key: b'-----BEGIN PUBLIC KEY-----\nMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCvTJZyAxwBTJ/BBJOBvzsnvLWC\nLzZwUafl06wSm47CZWTbViwNDIk7JsZ+V8XNMy8MX4lvjypTVphjfY7xvL0Ml5T7\nMgVViPtUBG2Rs55KKDkjJWNvO7RQiBhpllHjFvCR9yAZtlaFySAiJtCP1MuYoHk/\nh+TKOFkKFfejA2J5pwIDAQAB\n-----END PUBLIC KEY-----'
+      line    92  [key_mgmt]  user2 public key: b'-----BEGIN PUBLIC KEY-----\nMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDRKsBNbQoO8jW4irskQkNPUP3w\nkytFKILYK2s2BIC8Yx+1bfIwYUrhSZcg8hqLrXqHJEZONIGL064/FS7vfK7xzhQV\nIoOMLZpf7mtkCS4CZzNi6qLg0tszWjML4O2zAbjWfhMx9quoJDGQzsrhNeIyZ/GZ\nifEvkfaSaOLtAePPvwIDAQAB\n-----END PUBLIC KEY-----'
+      line    93  [key_mgmt]  user3 public key: b'-----BEGIN PUBLIC KEY-----\nMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDJrSJuBqzptNlKoc8o/yX293qZ\nFrLetwDfOMHCoLSzJwtFE/IuWqx7iw9mo9Bn76Ofrn9OjzWVmiZiy5qMNLTlpA0q\nyUuFXwSsLMNPCydFFljooOWbpxaq11/7BnWoRrOj0smpbX2u03QoOAi0JtuVTl0X\nxjSwVzoyY0OlrNPR2QIDAQAB\n-----END PUBLIC KEY-----'
+      line    94  [key_mgmt]  user4 public key: b'-----BEGIN PUBLIC KEY-----\nMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDjH1jlE7v9R/h0fZb8/npOafUF\nIwWp/4xzy7KADOntyqvxBeBXz0YsgaFII7PTEW5SUDmYwLiBdKn6rHICXACR3Val\nLvIKTG+pjcc1PtAmvdGTMX29iACwolLnl0xHThkaCTWFW1CAhkh5iHWhQuho+mFU\nO1mru/7JYr6AhZK/qQIDAQAB\n-----END PUBLIC KEY-----'
+      line    95  [key_mgmt]  user5 public key: b'-----BEGIN PUBLIC KEY-----\nMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCkz2RwD9Vc8cOfHp3jpTDfrp/a\nLrNxa9gKGi2272BP4KZqjIFmmOuU3t5p+cm0kmkxwOqGjITP8lvao/0QdleMotIZ\nXN7mQv/k70CVDQre5cP4X2s5ssYveAjS3zEcs4lcLNMQ9NIlw91dL90Gq5GvouRx\nUba+Rf9TYWsSZCJCjQIDAQAB\n-----END PUBLIC KEY-----'
+      line    96  [key_mgmt]  user6 public key: b'-----BEGIN PUBLIC KEY-----\nMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC7aTMfRjS1R1adztPdE5McfXHH\nUgbdGQ6KhEvU46ZwgXhYH9EPxrzlc3RPiIZVUKxQKbeNQ5fppv/qyfx7vex1DjDR\nEh+fnLpV+bQlrXmJC8TMBz6y6SJey6FMYQCNkowRgaCKtVexelG8lJ25qUw52cjl\nUlDxvSXZoMeiXKagLwIDAQAB\n-----END PUBLIC KEY-----'
+      line    97  [key_mgmt]  user7 public key: b'-----BEGIN PUBLIC KEY-----\nMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC0ylQJKKraMgAGQ7z2OuBhRiou\ntdCf8NdFXHDNZPOMIrgKFciPS5bFChtLvYnS38FOP+ouwCIXHdqO/IAY4mEKrPVQ\nELdh0I943rAFi0EfK5zrQ/2DcwGRt0Inh3vENXuvaQdYnDZx3BRrXkzOvPQ/Pshv\n5w1SWcSiNbrOi8yOwQIDAQAB\n-----END PUBLIC KEY-----'
+      line    98  [key_mgmt]  user8 public key: b'-----BEGIN PUBLIC KEY-----\nMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDWeVnNaCFkeb6kjPmqIQ2LqNUr\nAbSbXB8zG3ZQJ+PWeNjmk/ENohy15ZPwdkgg6NA6kiexXK95xsFI5343DzhRD2Fg\nPRCKZGTt0YV/6IWwY6Fl9a8+v5D0gAEgF894s/wnN7XMS8Mz2HEf6l5+gXH03Stb\nox1CqaHdjT4p+DZDywIDAQAB\n-----END PUBLIC KEY-----'
+      line    99  [key_mgmt]  user9 public key: b'-----BEGIN PUBLIC KEY-----\nMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDP//KQfJuB1firu0XmlSxwuyxC\n4fV/uenZXbYfCK/VbLc4bOzwli6GdnAourFgXOxMzvdl/ExD86+2y19NpxZ1EwNG\nyT1LpVFv/GOg4L1rj9D+Xi+ycNsjR42A5xrdpLN8fGsTktUGmhyghMUDYh6/7khY\nifOAXSyF5aRoLgPjBQIDAQAB\n-----END PUBLIC KEY-----'
+
+  ▸ readme.md
+      line     5  [asymmetric]  This project demonstrates the creation and verification of **ring signatures** using RSA keys. A ring signature allows a signer to sign a message on behalf of a group (ring) in a way that:
+      line    19  [asymmetric]  This is a symmetric key (e.g., 256-bit) used for lightweight operations like XOR chaining. It’s not RSA.
+      line   140  [asymmetric]  🛠️ To add more signers, just increase num_participants and provide more RSA keys via generate_rsa_keys(...).
+      line   146  [asymmetric]  Each member in the ring holds an RSA key pair. The real signer uses their private key, while the rest are simulated with public keys to form a verifiable signature.
+
+  ▸ ring_signature_demo.py
+      line     4  [py_import]  import hashlib
+      line     6  [py_import]  from Crypto.PublicKey import RSA
+      line     6  [asymmetric]  from Crypto.PublicKey import RSA
+      line    10  [key_mgmt]  def __init__(self, public_keys, key_size=1024):
+      line    11  [asymmetric]  self.public_keys = public_keys  # List of RSA keys
+      line    12  [key_mgmt]  self.key_size = key_size
+      line    76  [key_mgmt]  def generate_rsa_keys(num_keys, key_size=1024):
+      line    77  [asymmetric]  return [RSA.generate(key_size, os.urandom) for _ in range(num_keys)]
+      line    77  [random]  return [RSA.generate(key_size, os.urandom) for _ in range(num_keys)]
+      line    89  [signature]  signature = ring.sign(message, actual_signer_index)
+      line    93  [signature]  print("\n✅ Verification correct message:", ring.verify(message, signature))
+      line    94  [signature]  print("❌ Verification tampered message:", ring.verify(tampered_message, signature))

@@ -1,0 +1,13 @@
+================================================================================
+  REPO       : word_cloud_maker
+  FULL NAME  : ursa-mikail/word_cloud_maker
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Python
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/word_cloud_maker
+  MATCHES    : 2
+================================================================================
+
+  ▸ demo_word_cloud_maker.py
+      line    71  [hash_func]  contrary to his own intention, into the whirlpool of political passions andcontemporary history. As a result, Einstein is experiencing the fate that somany of the great men of history experienced: his character and opinions arebeing exhibited to the world in an utterly distorted form.
+      line    84  [hash_func]  contrary to his own intention, into the whirlpool of political passions andcontemporary history. As a result, Einstein is experiencing the fate that somany of the great men of history experienced: his character and opinions arebeing exhibited to the world in an utterly distorted form.

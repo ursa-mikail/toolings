@@ -1,0 +1,81 @@
+================================================================================
+  REPO       : trial_ffx_based_on_ff1
+  FULL NAME  : ursa-mikail/trial_ffx_based_on_ff1
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Go
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/trial_ffx_based_on_ff1
+  MATCHES    : 64
+================================================================================
+
+  ▸ aesffx/aesffx.go
+      line     4  [symmetric]  "crypto/aes"
+      line    20  [symmetric]  // FF1Cipher represents the parameters needed for AES-FF1.
+      line    32  [symmetric]  // using the AES-FF1 mode for format-preserving encryption.
+      line    32  [fpe_token]  // using the AES-FF1 mode for format-preserving encryption.
+      line    47  [symmetric]  aesBlock, err := aes.NewCipher(key)
+      line   265  [symmetric]  // prf implements the PRF function using AES-CBC-MAC
+      line   265  [cipher_mode]  // prf implements the PRF function using AES-CBC-MAC
+      line   274  [cipher_mode]  // CBC-MAC with zero IV
+
+  ▸ aesffx/aesffx_test.go
+      line     9  [symmetric]  //  * http://csrc.nist.gov/groups/ST/toolkit/BCM/documents/proposedmodes/ffx/aes-ffx-vectors.txt
+      line     9  [symmetric]  //  * http://csrc.nist.gov/groups/ST/toolkit/BCM/documents/proposedmodes/ffx/aes-ffx-vectors.txt
+      line    20  [symmetric]  aes, err := NewCipher(10, key, tweak)
+      line    25  [symmetric]  cipher, err := aes.Encrypt(plainString)
+      line    34  [symmetric]  plain, err := aes.Decrypt(cipher)
+      line    54  [symmetric]  aes, err := NewCipher(10, key, tweak)
+      line    59  [symmetric]  cipher, err := aes.Encrypt(plainString)
+      line    68  [symmetric]  plain, err := aes.Decrypt(cipher)
+      line    88  [symmetric]  aes, err := NewCipher(10, key, tweak)
+      line    93  [symmetric]  cipher, err := aes.Encrypt(plainString)
+      line   102  [symmetric]  plain, err := aes.Decrypt(cipher)
+      line   121  [symmetric]  aes, err := NewCipher(10, key, tweak)
+      line   126  [symmetric]  cipher, err := aes.Encrypt(plainString)
+      line   135  [symmetric]  plain, err := aes.Decrypt(cipher)
+
+  ▸ main.go
+      line    38  [symmetric]  // 128-bit AES key (16 bytes)
+      line   164  [fpe_token]  fmt.Println("✓ Format-preserving encryption successful!")
+      line   171  [symmetric]  // Sample 1: AES-128, radix 10
+      line   172  [symmetric]  fmt.Println("NIST Sample #1 (AES-128, Radix 10):")
+      line   205  [symmetric]  // Sample 2: AES-128, radix 10 with tweak
+      line   206  [symmetric]  fmt.Println("NIST Sample #2 (AES-128, Radix 10, with tweak):")
+      line   290  [symmetric]  - FF1 Specification: https://csrc.nist.gov/projects/block-cipher-techniques/bcm/modes-development
+      line   320  [symmetric]  Ref: https://csrc.nist.gov/csrc/media/projects/block-cipher-techniques/documents/bcm/proposed-modes/ffx/ffx-spec.pdf
+
+  ▸ readme.md
+      line    16  [symmetric]  AES:    9f86d081884c7d659a2feaa0c55ad015 (32 hex characters)
+      line    29  [fpe_token]  **FFX** (Format-preserving, Feistel-based encryption eXtension) is not a single algorithm—it's a **construction framework** for building format-preserving encryption schemes.
+      line    32  [symmetric]  - **AES** is a specific encryption algorithm
+      line    33  [symmetric]  - **FFX** is a framework that uses AES as a building block to create format-preserving variants
+      line    33  [fpe_token]  - **FFX** is a framework that uses AES as a building block to create format-preserving variants
+      line    39  [symmetric]  FFX is built on a Feistel network, the same structure used in DES. This is crucial because:
+      line    44  [symmetric]  - It's **proven secure** through decades of cryptographic analysis
+      line    52  [symmetric]  Round 2:  [R₁] [L₁]  ← Swap sides
+      line    63  [fpe_token]  This is the secret sauce that makes FFX truly format-preserving.
+      line   105  [symmetric]  ## The FFX Family: Different Modes
+      line   107  [symmetric]  FFX is a framework that has produced multiple standardized modes:
+      line   112  [fpe_token]  - **Best for**: General purpose FPE
+      line   226  [symmetric]  F(L, round_number, tweak) = AES-CBC(key, L || round_number || tweak)
+      line   226  [cipher_mode]  F(L, round_number, tweak) = AES-CBC(key, L || round_number || tweak)
+      line   231  [symmetric]  **Why AES-CBC specifically?**
+      line   231  [cipher_mode]  **Why AES-CBC specifically?**
+      line   232  [symmetric]  - Provides pseudorandom output
+      line   245  [fpe_token]  3. **Use weak crypto**: Use outdated, insecure format-preserving methods
+      line   249  [fpe_token]  **1. Cycle-walking (naive FPE)**
+      line   252  [symmetric]  output = AES(input)
+      line   272  [symmetric]  ✅ **Provable security** (reducible to AES security)
+      line   285  [symmetric]  - 10 is the security/performance sweet spot for AES-based Feistel
+      line   302  [symmetric]  - Maintains security guarantees of underlying AES
+      line   356  [symmetric]  US State codes: 50 values (attacker builds lookup table)
+      line   358  [symmetric]  Status codes: 10-20 values (frequency analysis reveals patterns)
+      line   363  [symmetric]  File encryption: Use AES-GCM instead
+      line   363  [cipher_mode]  File encryption: Use AES-GCM instead
+      line   364  [symmetric]  Message encryption: Use ChaCha20-Poly1305
+      line   379  [fpe_token]  - Tokenization systems
+      line   414  [post_quantum]  1. **Post-quantum variants**: Making FFX resistant to quantum computers
+      line   417  [fpe_token]  4. **Searchable encryption**: Combining FPE with searchable encryption schemes
+      line   434  [fpe_token]  **Key Insight:** Format-preserving encryption was always possible in theory, but FFX made it:
+      line   445  [fpe_token]  - **Original Paper**: "The FFX Mode of Operation for Format-Preserving Encryption" (Bellare, Rogaway, Spies, 2010)
+      line   447  [fpe_token]  - **Security Analysis**: "On the Security of Format-Preserving Encryption" (various authors, ongoing research)

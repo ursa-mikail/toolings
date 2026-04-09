@@ -1,0 +1,24 @@
+================================================================================
+  REPO       : glassworm_attack_illustration
+  FULL NAME  : ursa-mikail/glassworm_attack_illustration
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Python
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/glassworm_attack_illustration
+  MATCHES    : 7
+================================================================================
+
+  ▸ illustrative_codes.py
+      line    66  [symmetric]  Hides malicious payload inside seemingly legitimate code
+
+  ▸ readme.md
+      line    64  [symmetric]  - Decodes a hidden script
+
+  ▸ sql_injection_with_glassworm_03.py
+      line     6  [py_import]  import hashlib
+
+  ▸ sql_injection_with_glassworm_04.py
+      line     5  [py_import]  import hashlib
+      line    36  [hash_func]  return hashlib.md5(pw.encode()).hexdigest()
+      line   140  [hash_func]  for position in range(1, 33):  # MD5 is 32 chars
+      line   371  [hash_func]  - MD5 is used for password hashing, which is framed as realistic but in 2025 no real app should use MD5. Worth a comment noting it's intentionally weak for demo purposes.

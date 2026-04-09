@@ -1,0 +1,21 @@
+================================================================================
+  REPO       : code_profile_and_edit
+  FULL NAME  : ursa-mikail/code_profile_and_edit
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Jupyter Notebook
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/code_profile_and_edit
+  MATCHES    : 10
+================================================================================
+
+  ▸ code_profile_and_edit.ipynb
+      line   201  [symmetric]  "image/png": "iVBORw0KGgoAAAANSUhEUgAABW0AAAJOCAYAAADMCCWlAAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjEwLjAsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvlHJYcgAAAAlwSFlzAAAPYQAAD2EBqD+naQABAABJREFUeJzs3XmcTvX///HnNYaxZJB9HVJZxoyxLzN22bJWRGFspYUILWRPSUX4tKKImKRFCwpFIST7lqzF2LOMdZiZ9++P+V3nO9dc22hoDh732+26Me
+      line   212  [fpe_token]  "# tokenize_keywords_and_plot_histograms.py\n",
+      line   218  [fpe_token]  "# Read and tokenize unique words in a .cu file\n",
+      line   219  [fpe_token]  "def tokenize_keywords_and_plot_histograms(filename):\n",
+      line   263  [fpe_token]  "    tokenize_keywords_and_plot_histograms(file_of_interest)\n"
+      line   288  [fpe_token]  "# tokenize_keywords.py\n",
+      line   291  [fpe_token]  "# Read and tokenize unique words in a .cu file\n",
+      line   292  [fpe_token]  "def tokenize_keywords(filename):\n",
+      line   305  [fpe_token]  "    tokenize_keywords(file_of_interest)"
+      line   588  [symmetric]  "# ANSI color codes\n",

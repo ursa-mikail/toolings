@@ -1,0 +1,369 @@
+================================================================================
+  REPO       : length_preserving_cipher_using_ciphertext_stealing
+  FULL NAME  : ursa-mikail/length_preserving_cipher_using_ciphertext_stealing
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Python
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/length_preserving_cipher_using_ciphertext_stealing
+  MATCHES    : 350
+================================================================================
+
+  ▸ go/main.go
+      line    14  [symmetric]  // ChaCha20Poly1305TagEmbedding implements ChaCha20-Poly1305 with tag embedding
+      line    18  [symmetric]  // ChaCha20 is a stream cipher that already produces length-preserving output.
+      line    27  [symmetric]  // NewChaCha20Poly1305TagEmbedding creates a new ChaCha20-Poly1305 cipher with tag embedding
+      line    30  [symmetric]  return nil, fmt.Errorf("key must be %d bytes for ChaCha20-Poly1305", chacha20poly1305.KeySize)
+      line    42  [symmetric]  // 1. ChaCha20 encrypts plaintext (already length-preserving)
+      line    54  [symmetric]  // Create ChaCha20-Poly1305 AEAD cipher
+      line    61  [symmetric]  nonce := make([]byte, aead.NonceSize()) // 12 bytes for ChaCha20-Poly1305
+      line    75  [symmetric]  // Create ChaCha20-Poly1305 AEAD cipher
+      line    85  [symmetric]  // Standard ChaCha20-Poly1305 encryption
+      line    90  [symmetric]  // ChaCha20-Poly1305 appends a 16-byte Poly1305 tag
+      line   123  [symmetric]  // 2. Reconstruct original ChaCha20-Poly1305 format
+      line   130  [symmetric]  // Create ChaCha20-Poly1305 AEAD cipher
+      line   157  [symmetric]  // Decrypt and verify with ChaCha20-Poly1305
+      line   166  [symmetric]  // ChaCha20Poly1305Simple provides standard ChaCha20-Poly1305 without tag embedding
+      line   166  [symmetric]  // ChaCha20Poly1305Simple provides standard ChaCha20-Poly1305 without tag embedding
+      line   172  [symmetric]  // NewChaCha20Poly1305Simple creates a standard ChaCha20-Poly1305 cipher
+      line   180  [symmetric]  // Encrypt using standard ChaCha20-Poly1305 (16-byte overhead)
+      line   196  [symmetric]  // Decrypt using standard ChaCha20-Poly1305
+      line   207  [symmetric]  fmt.Println("ChaCha20-Poly1305 with Tag Embedding (Length-Preserving)")
+      line   210  [symmetric]  fmt.Println("ChaCha20 is already length-preserving (stream cipher)")
+      line   294  [symmetric]  func compareWithStandardChaCha20() {
+      line   296  [symmetric]  fmt.Println("Comparison: Tag Embedding vs Standard ChaCha20-Poly1305")
+      line   311  [symmetric]  // Standard ChaCha20-Poly1305
+      line   313  [symmetric]  fmt.Printf("\nStandard ChaCha20-Poly1305:\n")
+      line   318  [symmetric]  // ChaCha20-Poly1305 with tag embedding
+      line   320  [symmetric]  fmt.Printf("\nChaCha20-Poly1305 with Tag Embedding:\n")
+      line   438  [symmetric]  compareWithStandardChaCha20()
+      line   446  [symmetric]  ChaCha20-Poly1305 with Tag Embedding (NOT True Ciphertext Stealing):
+      line   450  [symmetric]  ✓ Modern cipher: ChaCha20 stream cipher (faster than AES without AES-NI)
+      line   450  [symmetric]  ✓ Modern cipher: ChaCha20 stream cipher (faster than AES without AES-NI)
+      line   458  [symmetric]  - ChaCha20 already produces length-preserving output
+      line   463  [cipher_mode]  - CBC-CTS: Bytes from penultimate block (true stealing)
+      line   464  [symmetric]  - ChaCha20: Last 16 bytes of ciphertext space (tag embedding)
+      line   474  [symmetric]  1. Encrypt with ChaCha20-Poly1305 → ciphertext || tag
+      line   481  [symmetric]  3. Decrypt and verify with ChaCha20-Poly1305
+      line   488  [symmetric]  ChaCha20-Poly1305 with Tag Embedding (Length-Preserving)
+      line   492  [symmetric]  ChaCha20 is already length-preserving (stream cipher)
+      line   635  [symmetric]  Comparison: Tag Embedding vs Standard ChaCha20-Poly1305
+      line   641  [symmetric]  Standard ChaCha20-Poly1305:
+      line   646  [symmetric]  ChaCha20-Poly1305 with Tag Embedding:
+      line   695  [symmetric]  ChaCha20-Poly1305 with Tag Embedding (NOT True Ciphertext Stealing):
+      line   699  [symmetric]  ✓ Modern cipher: ChaCha20 stream cipher (faster than AES without AES-NI)
+      line   699  [symmetric]  ✓ Modern cipher: ChaCha20 stream cipher (faster than AES without AES-NI)
+      line   707  [symmetric]  - ChaCha20 already produces length-preserving output
+      line   712  [cipher_mode]  - CBC-CTS: Bytes from penultimate block (true stealing)
+      line   713  [symmetric]  - ChaCha20: Last 16 bytes of ciphertext space (tag embedding)
+      line   723  [symmetric]  1. Encrypt with ChaCha20-Poly1305 → ciphertext || tag
+      line   730  [symmetric]  3. Decrypt and verify with ChaCha20-Poly1305
+
+  ▸ go/main.go.txt
+      line     4  [symmetric]  "crypto/aes"
+      line    13  [symmetric]  // AESCBCCTS implements AES-256-CBC with Ciphertext Stealing (CBC-CS3 variant)
+      line    13  [cipher_mode]  // AESCBCCTS implements AES-256-CBC with Ciphertext Stealing (CBC-CS3 variant)
+      line    19  [symmetric]  // NewAESCBCCTS creates a new AES-CBC-CTS cipher with a 256-bit key
+      line    19  [cipher_mode]  // NewAESCBCCTS creates a new AES-CBC-CTS cipher with a 256-bit key
+      line    22  [symmetric]  return nil, errors.New("key must be 32 bytes for AES-256")
+      line    27  [symmetric]  blockSize: aes.BlockSize, // 16 bytes
+      line    31  [cipher_mode]  // Encrypt encrypts plaintext using CBC with ciphertext stealing
+      line    56  [symmetric]  // Create AES cipher
+      line    57  [symmetric]  block, err := aes.NewCipher(c.key)
+      line    64  [cipher_mode]  // If block-aligned, use standard CBC
+      line    78  [cipher_mode]  // Step 2: Encrypt using standard CBC mode
+      line   101  [cipher_mode]  // Decrypt decrypts CBC ciphertext stealing
+      line   110  [symmetric]  // Create AES cipher
+      line   111  [symmetric]  block, err := aes.NewCipher(c.key)
+      line   118  [cipher_mode]  // If block-aligned, use standard CBC
+      line   140  [cipher_mode]  // Step 1: Decrypt Cn-1 (which is cnMinus1Partial after swap) using ECB
+      line   151  [cipher_mode]  // Step 3: Swap back - reconstruct original CBC ciphertext
+      line   160  [cipher_mode]  // Step 4: Decrypt using standard CBC mode
+      line   173  [symmetric]  fmt.Println("AES-256-CBC with Ciphertext Stealing (CBC-CS3)")
+      line   173  [cipher_mode]  fmt.Println("AES-256-CBC with Ciphertext Stealing (CBC-CS3)")
+      line   176  [cipher_mode]  fmt.Println("Uses standard CBC with block swapping for partial blocks")
+      line   268  [cipher_mode]  fmt.Println("Error Propagation in CBC Ciphertext Stealing")
+      line   402  [cipher_mode]  CBC Ciphertext Stealing (CBC-CS3) Implementation:
+      line   406  [cipher_mode]  ✓ Uses standard CBC encryption with block swapping
+      line   411  [cipher_mode]  2. Encrypt with standard CBC
+      line   416  [cipher_mode]  1. Decrypt second-to-last block with ECB to get Dn
+      line   419  [cipher_mode]  4. Decrypt with standard CBC
+
+  ▸ python/length_preserving_cipher_using_ciphertext_stealing.py
+      line     2  [py_import]  from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+      line     2  [symmetric]  from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+      line     3  [py_import]  from cryptography.hazmat.backends import default_backend
+      line     4  [py_import]  import secrets
+      line    12  [symmetric]  AES-CBC with Ciphertext Stealing for true length-preserving encryption.
+      line    12  [cipher_mode]  AES-CBC with Ciphertext Stealing for true length-preserving encryption.
+      line    13  [cipher_mode]  Implements the standard CBC-CS3 variant (swap last two blocks).
+      line    19  [symmetric]  raise ValueError("Key must be 32 bytes for AES-256")
+      line    21  [symmetric]  self.block_size = 16  # AES block size
+      line    26  [cipher_mode]  Encrypt with CBC ciphertext stealing.
+      line    31  [cipher_mode]  2. Encrypt the whole padded plaintext using standard CBC mode
+      line    45  [cipher_mode]  # No padding needed, standard CBC
+      line    47  [symmetric]  algorithms.AES(self.key),
+      line    48  [symmetric]  modes.CBC(iv),
+      line    48  [cipher_mode]  modes.CBC(iv),
+      line    59  [cipher_mode]  # Step 2: Encrypt using standard CBC mode
+      line    61  [symmetric]  algorithms.AES(self.key),
+      line    62  [symmetric]  modes.CBC(iv),
+      line    62  [cipher_mode]  modes.CBC(iv),
+      line    83  [cipher_mode]  Decrypt CBC ciphertext stealing.
+      line    86  [cipher_mode]  1. Dn = Decrypt(K, Cn-1) using ECB mode (second-to-last block)
+      line    89  [cipher_mode]  4. Decrypt using standard CBC mode
+      line    98  [cipher_mode]  # Standard CBC decryption
+      line   100  [symmetric]  algorithms.AES(self.key),
+      line   101  [symmetric]  modes.CBC(iv),
+      line   101  [cipher_mode]  modes.CBC(iv),
+      line   118  [cipher_mode]  # Step 1: Decrypt Cn-1 (which is now cn_partial after swap) using ECB
+      line   120  [symmetric]  algorithms.AES(self.key),
+      line   121  [symmetric]  modes.ECB(),
+      line   121  [cipher_mode]  modes.ECB(),
+      line   131  [cipher_mode]  # Step 3: Swap back - reconstruct original CBC ciphertext
+      line   137  [cipher_mode]  # Step 4: Decrypt using standard CBC mode
+      line   139  [symmetric]  algorithms.AES(self.key),
+      line   140  [symmetric]  modes.CBC(iv),
+      line   140  [cipher_mode]  modes.CBC(iv),
+      line   153  [cipher_mode]  """Demonstrate CBC ciphertext stealing encryption."""
+      line   155  [symmetric]  print("AES-256-CBC with Ciphertext Stealing (CBC-CS3)")
+      line   155  [cipher_mode]  print("AES-256-CBC with Ciphertext Stealing (CBC-CS3)")
+      line   158  [cipher_mode]  print("Uses standard CBC with block swapping for partial blocks")
+      line   228  [cipher_mode]  """Demonstrate CBC-CTS error propagation properties."""
+      line   230  [cipher_mode]  print("Error Propagation in CBC Ciphertext Stealing")
+      line   322  [cipher_mode]  CBC Ciphertext Stealing (CBC-CS3) Implementation:
+      line   326  [cipher_mode]  ✓ Uses standard CBC encryption with block swapping
+      line   331  [cipher_mode]  2. Encrypt with standard CBC
+      line   336  [cipher_mode]  1. Decrypt second-to-last block with ECB to get Dn
+      line   339  [cipher_mode]  4. Decrypt with standard CBC
+      line   349  [symmetric]  AES-256-CBC with Ciphertext Stealing (CBC-CS3)
+      line   349  [cipher_mode]  AES-256-CBC with Ciphertext Stealing (CBC-CS3)
+      line   353  [cipher_mode]  Uses standard CBC with block swapping for partial blocks
+      line   485  [cipher_mode]  Error Propagation in CBC Ciphertext Stealing
+      line   524  [cipher_mode]  CBC Ciphertext Stealing (CBC-CS3) Implementation:
+      line   528  [cipher_mode]  ✓ Uses standard CBC encryption with block swapping
+      line   533  [cipher_mode]  2. Encrypt with standard CBC
+      line   538  [cipher_mode]  1. Decrypt second-to-last block with ECB to get Dn
+      line   541  [cipher_mode]  4. Decrypt with standard CBC
+
+  ▸ python/length_preserving_cipher_with_ChaCha20Poly1305CTS.py
+      line     1  [py_import]  from cryptography.hazmat.primitives.ciphers.aead import ChaCha20Poly1305
+      line     2  [py_import]  from cryptography.hazmat.backends import default_backend
+      line     3  [py_import]  import secrets
+      line     9  [symmetric]  ChaCha20-Poly1305 with Tag Embedding for true length-preserving
+      line    12  [symmetric]  Note: This is NOT traditional "ciphertext stealing" - ChaCha20 is a stream
+      line    23  [symmetric]  raise ValueError("Key must be 32 bytes for ChaCha20-Poly1305")
+      line    26  [symmetric]  self.nonce_size = 12  # Standard for ChaCha20-Poly1305
+      line    35  [symmetric]  1. ChaCha20 encrypts plaintext (already length-preserving)
+      line    48  [random]  nonce = os.urandom(self.nonce_size)
+      line    53  [symmetric]  # Standard ChaCha20-Poly1305 encryption
+      line    58  [symmetric]  # ChaCha20-Poly1305 appends a 16-byte Poly1305 tag
+      line    84  [symmetric]  2. Reconstruct original ChaCha20-Poly1305 format
+      line   106  [symmetric]  # Decrypt and verify with ChaCha20-Poly1305
+      line   116  [symmetric]  Standard ChaCha20-Poly1305 without CTS for comparison.
+      line   127  [symmetric]  """Encrypt using standard ChaCha20-Poly1305 (16-byte overhead)"""
+      line   129  [random]  nonce = os.urandom(self.nonce_size)
+      line   135  [symmetric]  """Decrypt using standard ChaCha20-Poly1305"""
+      line   140  [symmetric]  """Demonstrate ChaCha20-Poly1305 tag embedding encryption."""
+      line   142  [symmetric]  print("ChaCha20-Poly1305 with Tag Embedding (Length-Preserving)")
+      line   145  [symmetric]  print("ChaCha20 is already length-preserving (stream cipher)")
+      line   208  [symmetric]  def compare_with_standard_chacha20():
+      line   209  [symmetric]  """Compare tag embedding with standard ChaCha20-Poly1305."""
+      line   211  [symmetric]  print("Comparison: Tag Embedding vs Standard ChaCha20-Poly1305")
+      line   224  [symmetric]  # Standard ChaCha20-Poly1305
+      line   226  [symmetric]  print(f"\nStandard ChaCha20-Poly1305:")
+      line   231  [symmetric]  # ChaCha20-Poly1305 with CTS
+      line   233  [symmetric]  print(f"\nChaCha20-Poly1305 with Tag Embedding:")
+      line   252  [symmetric]  """Show that ChaCha20-Poly1305-CTS detects tampering."""
+      line   297  [symmetric]  """Demonstrate error propagation in ChaCha20-Poly1305 tag embedding."""
+      line   299  [symmetric]  print("Error Propagation in ChaCha20-Poly1305 Tag Embedding")
+      line   313  [symmetric]  print("\nNote: ChaCha20 is a stream cipher, so bit errors propagate 1-to-1")
+      line   371  [symmetric]  print(f"{'Feature':<30} | {'ChaCha20-Poly1305-CTS':<20}")
+      line   385  [symmetric]  compare_with_standard_chacha20()
+      line   394  [symmetric]  ChaCha20-Poly1305 with Tag Embedding (NOT True Ciphertext Stealing):
+      line   398  [symmetric]  ✓ Modern cipher: ChaCha20 stream cipher (faster than AES without AES-NI)
+      line   398  [symmetric]  ✓ Modern cipher: ChaCha20 stream cipher (faster than AES without AES-NI)
+      line   406  [symmetric]  - ChaCha20 already produces length-preserving output
+      line   411  [cipher_mode]  - CBC-CTS: Bytes from penultimate block (true stealing)
+      line   412  [symmetric]  - ChaCha20: Last 16 bytes of ciphertext space (tag embedding)
+      line   414  [cipher_mode]  Advantages over CBC-CTS:
+      line   416  [symmetric]  - Faster on CPUs without AES hardware acceleration
+      line   429  [symmetric]  1. Encrypt with ChaCha20-Poly1305 → ciphertext || tag
+      line   436  [symmetric]  3. Decrypt and verify with ChaCha20-Poly1305
+      line   441  [symmetric]  - Embedded systems without AES-NI hardware
+      line   442  [cipher_mode]  - Modern alternative to CBC-CTS for new implementations
+      line   448  [symmetric]  ChaCha20-Poly1305 with Tag Embedding (Length-Preserving)
+      line   452  [symmetric]  ChaCha20 is already length-preserving (stream cipher)
+      line   595  [symmetric]  Comparison: Tag Embedding vs Standard ChaCha20-Poly1305
+      line   601  [symmetric]  Standard ChaCha20-Poly1305:
+      line   606  [symmetric]  ChaCha20-Poly1305 with Tag Embedding:
+      line   641  [symmetric]  Error Propagation in ChaCha20-Poly1305 Tag Embedding
+      line   647  [symmetric]  Note: ChaCha20 is a stream cipher, so bit errors propagate 1-to-1
+      line   684  [symmetric]  Feature                        | ChaCha20-Poly1305-CTS
+      line   700  [symmetric]  ChaCha20-Poly1305 with Tag Embedding (NOT True Ciphertext Stealing):
+      line   704  [symmetric]  ✓ Modern cipher: ChaCha20 stream cipher (faster than AES without AES-NI)
+      line   704  [symmetric]  ✓ Modern cipher: ChaCha20 stream cipher (faster than AES without AES-NI)
+      line   712  [symmetric]  - ChaCha20 already produces length-preserving output
+      line   717  [cipher_mode]  - CBC-CTS: Bytes from penultimate block (true stealing)
+      line   718  [symmetric]  - ChaCha20: Last 16 bytes of ciphertext space (tag embedding)
+      line   720  [cipher_mode]  Advantages over CBC-CTS:
+      line   722  [symmetric]  - Faster on CPUs without AES hardware acceleration
+      line   735  [symmetric]  1. Encrypt with ChaCha20-Poly1305 → ciphertext || tag
+      line   742  [symmetric]  3. Decrypt and verify with ChaCha20-Poly1305
+      line   747  [symmetric]  - Embedded systems without AES-NI hardware
+      line   748  [cipher_mode]  - Modern alternative to CBC-CTS for new implementations
+
+  ▸ readme.md
+      line     5  [symmetric]  Ciphertext Stealing (CTS) is a technique that enables block cipher modes to process messages of arbitrary length while maintaining the same ciphertext length as the plaintext—without requiring padding. This is particularly useful in scenarios where length preservation is critical, such as disk encry
+      line     9  [symmetric]  ChaCha20-Poly1305 can be used with ciphertext stealing, and it has several advantages over CBC-CTS:
+      line     9  [cipher_mode]  ChaCha20-Poly1305 can be used with ciphertext stealing, and it has several advantages over CBC-CTS:
+      line    10  [symmetric]  Key Advantages of ChaCha20-Poly1305-CTS:
+      line    12  [cipher_mode]  Stream Cipher: No block alignment needed at all (unlike CBC which requires 16+ bytes)
+      line    14  [symmetric]  Faster on Most CPUs: Especially on systems without AES-NI hardware acceleration
+      line    18  [symmetric]  How CTS Works with ChaCha20-Poly1305:
+      line    22  [symmetric]  Standard ChaCha20-Poly1305: 29 bytes plaintext → 45 bytes output (29 + 16-byte tag)
+      line    23  [symmetric]  ChaCha20-Poly1305-CTS: 29 bytes plaintext → 29 bytes ciphertext + separate 16-byte tag
+      line    27  [symmetric]  Comparison with standard ChaCha20-Poly1305
+      line    30  [symmetric]  ChaCha20-Poly1305 is a choice for modern systems, especially when AES hardware isn't available or when you want simpler, more modern cryptography.
+      line    30  [symmetric]  ChaCha20-Poly1305 is a choice for modern systems, especially when AES hardware isn't available or when you want simpler, more modern cryptography.
+      line    32  [symmetric]  # Ciphertext Stealing Design Changes: CBC vs ChaCha20-Poly1305
+      line    32  [cipher_mode]  # Ciphertext Stealing Design Changes: CBC vs ChaCha20-Poly1305
+      line    36  [symmetric]  The ciphertext stealing technique **changes fundamentally** when moving from block ciphers (CBC) to stream ciphers (ChaCha20). This is because:
+      line    36  [cipher_mode]  The ciphertext stealing technique **changes fundamentally** when moving from block ciphers (CBC) to stream ciphers (ChaCha20). This is because:
+      line    38  [cipher_mode]  - **Block ciphers** (like CBC) operate on fixed-size blocks and have unused space in the last block
+      line    39  [symmetric]  - **Stream ciphers** (like ChaCha20) produce a keystream that can be any length, matching plaintext exactly
+      line    41  [cipher_mode]  ## CBC Ciphertext Stealing (Block Cipher)
+      line    43  [cipher_mode]  ### The Problem CBC-CTS Solves
+      line    45  [cipher_mode]  CBC requires plaintext length to be a multiple of the block size (16 bytes). For non-aligned plaintexts:
+      line    49  [cipher_mode]  ### CBC-CTS Encryption Steps
+      line    60  [cipher_mode]  Step 2: Encrypt with standard CBC
+      line    63  [symmetric]  │ C1 = AES(K, P1 ⊕ C0)    [16 bytes]         │
+      line    64  [symmetric]  │ C2 = AES(K, P2 ⊕ C1)    [16 bytes]         │
+      line    81  [cipher_mode]  ### CBC-CTS Decryption Steps
+      line    87  [cipher_mode]  Step 1: Decrypt C2 (second-to-last) using ECB mode
+      line    99  [cipher_mode]  Step 3: Swap back to original CBC order
+      line   104  [cipher_mode]  Step 4: Decrypt using standard CBC
+      line   118  [cipher_mode]  ### Key Characteristics of CBC-CTS
+      line   120  [cipher_mode]  - **Works by**: Swapping blocks and using ECB decryption to recover stolen bytes
+      line   122  [cipher_mode]  - **Complexity**: Moderate - requires block manipulation and ECB operation
+      line   123  [cipher_mode]  - **Authentication**: None (CBC is not authenticated)
+      line   127  [symmetric]  ## ChaCha20-Poly1305 Tag Embedding (NOT True Ciphertext Stealing)
+      line   131  [symmetric]  **This is NOT traditional ciphertext stealing!** ChaCha20 is a stream cipher that already produces exactly the right amount of output - there are no blocks to "steal" from.
+      line   137  [symmetric]  ChaCha20-Poly1305 is an AEAD (Authenticated Encryption with Associated Data) construction:
+      line   138  [symmetric]  - ChaCha20 produces a keystream matching plaintext length exactly (already length-preserving!)
+      line   144  [symmetric]  ### ChaCha20-Poly1305 Tag Embedding Steps
+      line   150  [symmetric]  Step 1: Generate keystream and encrypt (standard ChaCha20)
+      line   152  [symmetric]  │ Keystream = ChaCha20(Key, Nonce, Counter)   │
+      line   155  [symmetric]  │ Note: ChaCha20 is ALREADY length-preserving!│
+      line   191  [symmetric]  ### ChaCha20-Poly1305-CTS Decryption Steps
+      line   203  [symmetric]  │ This recovers the original ChaCha20          │
+      line   215  [symmetric]  Step 3: Decrypt with ChaCha20
+      line   217  [symmetric]  │ Keystream = ChaCha20(Key, Nonce, Counter)   │
+      line   224  [symmetric]  ### Key Characteristics of ChaCha20-Poly1305 Tag Embedding
+      line   238  [symmetric]  | Aspect | CBC-CTS | ChaCha20-Poly1305 Tag Embedding |
+      line   238  [cipher_mode]  | Aspect | CBC-CTS | ChaCha20-Poly1305 Tag Embedding |
+      line   245  [cipher_mode]  | **Decryption Complexity** | ECB decrypt + CBC decrypt | XOR + stream decrypt |
+      line   245  [cipher_mode]  | **Decryption Complexity** | ECB decrypt + CBC decrypt | XOR + stream decrypt |
+      line   253  [cipher_mode]  ### CBC-CTS: True Block Stealing
+      line   272  [symmetric]  ### ChaCha20-Poly1305: Tag Embedding (NOT True Stealing)
+      line   299  [cipher_mode]  ### Why CBC-CTS Swaps Blocks (True Stealing)
+      line   301  [cipher_mode]  CBC has a **structural constraint**: each block depends on the previous block for the XOR operation. When you truncate the last block:
+      line   303  [cipher_mode]  - Solution: Swap blocks so you have a full block to decrypt via ECB, which gives you the "stolen" bytes
+      line   306  [symmetric]  ### Why ChaCha20 Uses XOR (Tag Embedding, Not True Stealing)
+      line   308  [symmetric]  ChaCha20 is a **stream cipher**: encryption is `C = P ⊕ Keystream`
+      line   309  [symmetric]  - **Already length-preserving**: ChaCha20 produces exactly the right amount of keystream
+      line   319  [cipher_mode]  **CBC-CTS**:
+      line   321  [kdf]  Encrypt → Get ciphertext → Compute HMAC separately
+      line   322  [kdf]  Storage: Ciphertext || HMAC (adds 32 bytes for HMAC-SHA256)
+      line   325  [symmetric]  **ChaCha20-Poly1305-CTS**:
+      line   333  [cipher_mode]  ### CBC-CTS Pseudocode
+      line   352  [cipher_mode]  # ECB decrypt second-to-last block
+      line   361  [cipher_mode]  # CBC decrypt
+      line   367  [symmetric]  ### ChaCha20-Poly1305-CTS Pseudocode
+      line   389  [symmetric]  # Standard AEAD decryption (includes authentication)
+      line   395  [symmetric]  **Complexity comparison**: ChaCha20-CTS is significantly simpler!
+      line   399  [symmetric]  | Design Element | CBC-CTS (True Stealing) | ChaCha20 Tag Embedding (Not True CTS) |
+      line   399  [cipher_mode]  | Design Element | CBC-CTS (True Stealing) | ChaCha20 Tag Embedding (Not True CTS) |
+      line   405  [cipher_mode]  | **Steps to Decrypt** | 5 steps (ECB, pad, swap, decrypt, truncate) | 2 steps (XOR, decrypt+verify) |
+      line   407  [cipher_mode]  | **Why This Works** | ECB recovers stolen bytes | XOR is self-inverting |
+      line   413  [cipher_mode]  **Use CBC-CTS when**:
+      line   414  [cipher_mode]  - You must use CBC mode (regulatory/compliance)
+      line   415  [symmetric]  - You have AES hardware acceleration
+      line   418  [symmetric]  **Use ChaCha20-Poly1305 Tag Embedding when**:
+      line   422  [symmetric]  - You're on systems without AES-NI
+      line   428  [symmetric]  **Is there true ciphertext stealing with ChaCha20-Poly1305?**
+      line   430  [symmetric]  **No.** The term "ciphertext stealing" is technically a misnomer for ChaCha20-Poly1305 because:
+      line   432  [cipher_mode]  1. **CBC-CTS is true stealing**: Bytes are actually borrowed from the penultimate ciphertext block to complete the final partial block
+      line   433  [symmetric]  2. **ChaCha20 uses tag embedding**: The tag is XORed into existing ciphertext space, not stolen from another block
+      line   434  [symmetric]  3. **Stream ciphers don't have blocks to steal from**: ChaCha20 already produces exactly the right amount of output
+      line   438  [cipher_mode]  - **CBC-CTS**: Bytes from Block N-1 are used to pad Block N (true stealing between blocks)
+      line   439  [symmetric]  - **ChaCha20**: The last 16 bytes of ciphertext are used to hide the tag (space borrowing, not inter-block stealing)
+      line   442  [cipher_mode]  - CBC-CTS: "Ciphertext Stealing" ✓ (accurate)
+      line   443  [symmetric]  - ChaCha20-Poly1305: "Tag Embedding" or "Tag Masking" ✓ (more accurate than "CTS")
+      line   446  [cipher_mode]  - **CBC-CTS**: Complex block manipulation (swap, ECB decrypt, reconstruct)
+      line   446  [cipher_mode]  - **CBC-CTS**: Complex block manipulation (swap, ECB decrypt, reconstruct)
+      line   447  [symmetric]  - **ChaCha20 Tag Embedding**: Simple XOR masking (no swapping, no reconstruction)
+      line   449  [symmetric]  The ChaCha20 approach is **simpler, faster, and more secure** for modern applications, even though it's not technically "ciphertext stealing" in the traditional sense.
+      line   454  [cipher_mode]  CBC-CTS (Block Cipher):
+      line   457  [cipher_mode]  Decryption: Uses ECB to decrypt second-to-last block to recover "stolen" bytes
+      line   461  [symmetric]  ChaCha20-Poly1305-CTS (Stream Cipher):
+      line   469  [cipher_mode]  CBC-CTS is complex because it must swap and reconstruct blocks to work around block cipher dependencies.
+      line   470  [symmetric]  ChaCha20-CTS is simple because it just XORs the tag in and out - no block manipulation needed at all!
+      line   477  [symmetric]  Traditional block cipher modes like CBC require the plaintext to be a multiple of the block size (16 bytes for AES). When the plaintext length is not block-aligned, padding must be added:
+      line   477  [symmetric]  Traditional block cipher modes like CBC require the plaintext to be a multiple of the block size (16 bytes for AES). When the plaintext length is not block-aligned, padding must be added:
+      line   477  [cipher_mode]  Traditional block cipher modes like CBC require the plaintext to be a multiple of the block size (16 bytes for AES). When the plaintext length is not block-aligned, padding must be added:
+      line   504  [symmetric]  - ✓ Compatible with standard block cipher modes
+      line   506  [cipher_mode]  ## CBC Ciphertext Stealing (CBC-CS3)
+      line   510  [cipher_mode]  CBC-CS3 is the most common CTS variant, using a "swap last two blocks" approach.
+      line   523  [cipher_mode]  2. **Encrypt using standard CBC mode**
+      line   525  [symmetric]  C[0] = AES(K, P[0] ⊕ IV)
+      line   526  [symmetric]  C[i] = AES(K, P[i] ⊕ C[i-1]) for i = 1..n
+      line   544  [cipher_mode]  1. **Decrypt C[n-1] using ECB mode**
+      line   561  [cipher_mode]  4. **Decrypt using standard CBC mode**
+      line   584  [cipher_mode]  │ Step 2 - CBC Encrypt:                                   │
+      line   598  [cipher_mode]  │ Step 1 - ECB Decrypt C2:                                │
+      line   607  [cipher_mode]  │ Step 4 - CBC Decrypt:                                   │
+      line   617  [cipher_mode]  CTS inherits CBC's error propagation characteristics with some modifications due to the block swap:
+      line   655  [cipher_mode]  | C[i] (i < n-1) | Unaffected | Unaffected | Standard CBC propagation |
+      line   663  [cipher_mode]  3. **Standard Cryptographic Primitives**: Uses well-analyzed CBC mode internally
+      line   668  [cipher_mode]  1. **IV Reuse Vulnerability** (inherited from CBC)
+      line   672  [cipher_mode]  2. **Chosen Ciphertext Attacks** (inherited from CBC)
+      line   673  [cipher_mode]  - **Weakness**: CBC is malleable; attackers can flip bits in ciphertext
+      line   677  [symmetric]  - **Weakness**: CTS requires plaintext ≥ block_size (16 bytes for AES)
+      line   678  [cipher_mode]  - **Mitigation**: Use standard CBC or CTR for shorter messages
+      line   678  [cipher_mode]  - **Mitigation**: Use standard CBC or CTR for shorter messages
+      line   682  [symmetric]  - **Mitigation**: Use error detection codes or authenticated encryption
+      line   704  [cipher_mode]  ### CBC-CS1 (Original)
+      line   709  [cipher_mode]  ### CBC-CS2
+      line   714  [cipher_mode]  ### CBC-CS3 (Most Common)
+      line   729  [symmetric]  For AES-256:
+      line   735  [cipher_mode]  - Standard CBC with padding
+      line   736  [cipher_mode]  - CTR mode (naturally length-preserving)
+      line   743  [cipher_mode]  - Use standard CBC encryption/decryption
+      line   751  [symmetric]  - Consider side-channel resistant AES implementations
+      line   771  [fpe_token]  4. **Format-Preserving Requirements**
+      line   772  [fpe_token]  - Credit card numbers, SSNs (with FPE)
+      line   773  [fpe_token]  - When combined with format-preserving encryption techniques
+      line   777  [cipher_mode]  1. **Messages < Block Size**: Use CTR mode or stream ciphers instead
+      line   778  [cipher_mode]  2. **When Authentication is Built-in**: Consider GCM mode (16-byte overhead acceptable)
+      line   779  [cipher_mode]  3. **High-Speed Requirements**: CTR mode may be faster (parallelizable)
+      line   780  [symmetric]  4. **Streaming Data**: CTR or CFB modes are better suited
+      line   780  [cipher_mode]  4. **Streaming Data**: CTR or CFB modes are better suited
+      line   786  [cipher_mode]  - Decryption: O(n) + 1 extra block decryption (ECB of C[n-1])
+      line   789  [cipher_mode]  - No additional space beyond standard CBC
+      line   792  [symmetric]  ### Comparison with Other Modes
+      line   796  [cipher_mode]  | CBC-CTS | 0 bytes | Moderate | No | No |
+      line   797  [cipher_mode]  | CBC+PKCS7 | 1-16 bytes | Moderate | No | No |
+      line   798  [cipher_mode]  | CTR | 0 bytes | Fast | Yes | No |
+      line   799  [cipher_mode]  | GCM | 16 bytes | Fast | Yes | Yes |
+      line   800  [cipher_mode]  | CCM | 16 bytes | Moderate | No | Yes |
+      line   805  [cipher_mode]  - **RFC 2040**: The RC5, RC5-CBC, RC5-CBC-Pad, and RC5-CTS Algorithms (historical reference)
+      line   806  [symmetric]  - **NIST SP 800-38A Addendum**: Recommendation for Block Cipher Modes of Operation: Three Variants of Ciphertext Stealing for CBC Mode
+      line   806  [cipher_mode]  - **NIST SP 800-38A Addendum**: Recommendation for Block Cipher Modes of Operation: Three Variants of Ciphertext Stealing for CBC Mode
+      line   810  [cipher_mode]  - Schneier, B., "Applied Cryptography" (2nd ed.) - Section on CBC mode variations
+      line   822  [cipher_mode]  Should use standard CBC (no stealing)
+      line   840  [cipher_mode]  Should use standard CBC (no stealing)
+      line   846  [cipher_mode]  - OpenSSL's CBC-CTS implementation
+      line   862  [symmetric]  For new systems, consider modern alternatives like AES-GCM-SIV or ChaCha20-Poly1305 unless length preservation is a strict requirement.
+      line   862  [symmetric]  For new systems, consider modern alternatives like AES-GCM-SIV or ChaCha20-Poly1305 unless length preservation is a strict requirement.
+      line   862  [cipher_mode]  For new systems, consider modern alternatives like AES-GCM-SIV or ChaCha20-Poly1305 unless length preservation is a strict requirement.
+      line   862  [cipher_mode]  For new systems, consider modern alternatives like AES-GCM-SIV or ChaCha20-Poly1305 unless length preservation is a strict requirement.

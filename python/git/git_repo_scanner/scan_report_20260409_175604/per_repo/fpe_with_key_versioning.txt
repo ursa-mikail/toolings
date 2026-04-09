@@ -1,0 +1,37 @@
+================================================================================
+  REPO       : fpe_with_key_versioning
+  FULL NAME  : ursa-mikail/fpe_with_key_versioning
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Go
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/fpe_with_key_versioning
+  MATCHES    : 24
+================================================================================
+
+  ▸ fpe_with_key_versioning.go
+      line    10  [fpe_token]  // FF1 is a format-preserving encryption implementation (simplified for demonstration)
+      line    11  [fpe_token]  // In production, use a proper crypto library like github.com/capitalone/fpe
+      line    29  [symmetric]  // Encrypt encrypts the plaintext (simplified - in reality would use AES/FF1)
+      line    86  [kdf]  // DeriveKey simulates key derivation (in production use HKDF)
+      line    88  [kdf]  // Simplified key derivation - in production use HKDF or similar
+      line    89  [symmetric]  derived := make([]byte, 32) // 32 bytes for AES-256
+      line   220  [fpe_token]  fmt.Println("🔐 FPE Key Versioning Demonstration")
+      line   223  [symmetric]  // Generate a master key (32 bytes for AES-256)
+      line   330  [fpe_token]  return []byte(fmt.Sprintf("tenant-A-fpe-v%d-k%d", version, keyID))
+      line   360  [fpe_token]  ctx := []byte(fmt.Sprintf("tenant-A-fpe-v%d-k%d", version, keyID))
+      line   381  [fpe_token]  ctxV1 := []byte("tenant-" + tenantID + "-fpe-v1")
+      line   385  [fpe_token]  ctxV2 := []byte("tenant-" + tenantID + "-fpe-v2")
+      line   414  [symmetric]  fmt.Println("✓ Resolver pattern provides clean key management abstraction")
+      line   418  [fpe_token]  🔐 FPE Key Versioning Demonstration
+      line   471  [symmetric]  ✓ Resolver pattern provides clean key management abstraction
+
+  ▸ readme.md
+      line     1  [fpe_token]  # FPE Key Versioning Demonstration
+      line     3  [fpe_token]  A Go implementation demonstrating Format-Preserving Encryption (FPE) with key versioning and domain separation. This example shows how to manage cryptographic keys for FPE in enterprise environments, supporting key rotation, multiple domains, and versioned tokens.
+      line     3  [fpe_token]  A Go implementation demonstrating Format-Preserving Encryption (FPE) with key versioning and domain separation. This example shows how to manage cryptographic keys for FPE in enterprise environments, supporting key rotation, multiple domains, and versioned tokens.
+      line     9  [fpe_token]  - [github.com/capitalone/fpe](https://github.com/capitalone/fpe) - Proper FF1 implementation
+      line    10  [fpe_token]  - [cloud.google.com/security/encryption](https://cloud.google.com/security/encryption) - Google Cloud Tink with FPE support
+      line    81  [fpe_token]  return []byte(fmt.Sprintf("tenant-A-fpe-v%d-k%d", version, keyID))
+      line   100  [fpe_token]  ctx := []byte(fmt.Sprintf("tenant-A-fpe-v%d-k%d", version, keyID))
+      line   117  [fpe_token]  ctxV1 := []byte("tenant-" + tenantID + "-fpe-v1")
+      line   121  [fpe_token]  ctxV2 := []byte("tenant-" + tenantID + "-fpe-v2")

@@ -1,0 +1,14 @@
+================================================================================
+  REPO       : signals_and_noise
+  FULL NAME  : ursa-mikail/signals_and_noise
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Python
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/signals_and_noise
+  MATCHES    : 3
+================================================================================
+
+  ▸ noise/noise_interactive_00.py
+      line   245  [cipher_mode]  print(f"True CTR: {true_ctr:.1%}")
+      line   330  [cipher_mode]  plt.suptitle('Website Analytics: Privacy-Preserving CTR Measurement', fontsize=16, fontweight='bold')
+      line   358  [cipher_mode]  True CTR: 5.0%

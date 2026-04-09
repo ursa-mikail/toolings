@@ -1,0 +1,91 @@
+================================================================================
+  REPO       : shamir_share
+  FULL NAME  : ursa-mikail/shamir_share
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Go
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/shamir_share
+  MATCHES    : 54
+================================================================================
+
+  ▸ go/benchmark_standalone/main.go
+      line    78  [zkp]  fmt.Println("=== Go Shamir Secret Sharing Benchmark (Hashicorp Vault) ===")
+      line    78  [zkp]  fmt.Println("=== Go Shamir Secret Sharing Benchmark (Hashicorp Vault) ===")
+      line   118  [zkp]  === Go Shamir Secret Sharing Benchmark (Hashicorp Vault) ===
+      line   118  [zkp]  === Go Shamir Secret Sharing Benchmark (Hashicorp Vault) ===
+
+  ▸ go/cli/main.go
+      line    80  [zkp]  fmt.Println(`Shamir Secret Sharing CLI Tool
+      line    80  [zkp]  fmt.Println(`Shamir Secret Sharing CLI Tool
+
+  ▸ go/cli/test_comprehensive.sh
+      line     5  [zkp]  echo "  Shamir Secret Sharing - Comprehensive Test"
+      line     5  [zkp]  echo "  Shamir Secret Sharing - Comprehensive Test"
+      line    80  [symmetric]  openssl enc -aes-256-cbc -K "$KEY_RECOVERED" -iv "$IV_RECOVERED" \
+      line    80  [cipher_mode]  openssl enc -aes-256-cbc -K "$KEY_RECOVERED" -iv "$IV_RECOVERED" \
+      line    84  [symmetric]  openssl enc -aes-256-cbc -d -K "$KEY_RECOVERED" -iv "$IV_RECOVERED" \
+      line    84  [cipher_mode]  openssl enc -aes-256-cbc -d -K "$KEY_RECOVERED" -iv "$IV_RECOVERED" \
+
+  ▸ go/cli/test_comprehensive_multiple_keys.sh
+      line     5  [zkp]  echo "  Shamir Secret Sharing - MULTI-KEY TEST"
+      line     5  [zkp]  echo "  Shamir Secret Sharing - MULTI-KEY TEST"
+      line   159  [symmetric]  openssl enc -aes-256-cbc -K "$KEY_RECOVERED" -iv "$IV_RECOVERED" \
+      line   159  [cipher_mode]  openssl enc -aes-256-cbc -K "$KEY_RECOVERED" -iv "$IV_RECOVERED" \
+      line   163  [symmetric]  openssl enc -aes-256-cbc -d -K "$KEY_RECOVERED" -iv "$IV_RECOVERED" \
+      line   163  [cipher_mode]  openssl enc -aes-256-cbc -d -K "$KEY_RECOVERED" -iv "$IV_RECOVERED" \
+
+  ▸ go/cli/test_enc_and_verify_no_shamir.sh
+      line    26  [symmetric]  openssl enc -aes-256-cbc -K "$KEY" -iv "$IV" \
+      line    26  [cipher_mode]  openssl enc -aes-256-cbc -K "$KEY" -iv "$IV" \
+      line    78  [symmetric]  openssl enc -aes-256-cbc -d -K "$EXTRACTED_KEY" -iv "$EXTRACTED_IV" \
+      line    78  [cipher_mode]  openssl enc -aes-256-cbc -d -K "$EXTRACTED_KEY" -iv "$EXTRACTED_IV" \
+      line   119  [symmetric]  Encrypts the file using AES-256-CBC
+      line   119  [cipher_mode]  Encrypts the file using AES-256-CBC
+
+  ▸ go_c_hybrid/c/shamir.c
+      line     7  [zkp]  // Simple GF(256) arithmetic for Shamir's Secret Sharing
+      line    49  [random]  FILE *f = fopen("/dev/urandom", "rb");
+      line    67  [zkp]  // Basic Shamir's Secret Sharing implementation
+
+  ▸ go_c_hybrid/go/main.go
+      line    57  [zkp]  fmt.Println("=== Go-C Hybrid Shamir Secret Sharing Benchmark ===")
+      line    57  [zkp]  fmt.Println("=== Go-C Hybrid Shamir Secret Sharing Benchmark ===")
+      line   107  [zkp]  === Go-C Hybrid Shamir Secret Sharing Benchmark ===
+      line   107  [zkp]  === Go-C Hybrid Shamir Secret Sharing Benchmark ===
+
+  ▸ go_rust_hybrid/go/main.go
+      line    74  [zkp]  fmt.Println("=== Go-Rust Hybrid Shamir Secret Sharing Benchmark ===")
+      line    74  [zkp]  fmt.Println("=== Go-Rust Hybrid Shamir Secret Sharing Benchmark ===")
+
+  ▸ go_rust_hybrid/readme.md
+      line   184  [zkp]  === Go-Rust Hybrid Shamir Secret Sharing Benchmark ===
+      line   184  [zkp]  === Go-Rust Hybrid Shamir Secret Sharing Benchmark ===
+
+  ▸ plot_performance_between_go_and_rust.py
+      line     4  [zkp]  Shamir Secret Sharing implementations
+      line     4  [zkp]  Shamir Secret Sharing implementations
+      line    30  [zkp]  fig.suptitle('Rust (sharks) vs Go (Hashicorp Vault) Shamir Secret Sharing Performance Comparison',
+      line    30  [zkp]  fig.suptitle('Rust (sharks) vs Go (Hashicorp Vault) Shamir Secret Sharing Performance Comparison',
+      line   195  [zkp]  print("SHAMIR SECRET SHARING PERFORMANCE SUMMARY")
+      line   195  [zkp]  print("SHAMIR SECRET SHARING PERFORMANCE SUMMARY")
+      line   261  [zkp]  SHAMIR SECRET SHARING PERFORMANCE SUMMARY
+      line   261  [zkp]  SHAMIR SECRET SHARING PERFORMANCE SUMMARY
+
+  ▸ plot_performance_between_go_and_rust.readme.md
+      line     6  [zkp]  SHAMIR SECRET SHARING PERFORMANCE SUMMARY
+      line     6  [zkp]  SHAMIR SECRET SHARING PERFORMANCE SUMMARY
+
+  ▸ python/shamir_share_demo.py
+      line    24  [zkp]  """Splits a key into Shamir secret shares."""
+      line    33  [zkp]  parser = argparse.ArgumentParser(description="Shamir Secret Sharing for Key Splitting and Reconstruction")
+      line    33  [zkp]  parser = argparse.ArgumentParser(description="Shamir Secret Sharing for Key Splitting and Reconstruction")
+
+  ▸ python/shamir_share_demo_test.py
+      line     6  [zkp]  """Test Shamir Secret Sharing with default values (no inputs)."""
+      line     6  [zkp]  """Test Shamir Secret Sharing with default values (no inputs)."""
+
+  ▸ rust/benchmark_standalone/src/main.rs
+      line    76  [zkp]  println!("=== Rust Shamir Secret Sharing Benchmark (sharks crate) ===");
+      line    76  [zkp]  println!("=== Rust Shamir Secret Sharing Benchmark (sharks crate) ===");
+      line   136  [zkp]  === Rust Shamir Secret Sharing Benchmark (sharks crate) ===
+      line   136  [zkp]  === Rust Shamir Secret Sharing Benchmark (sharks crate) ===

@@ -1,0 +1,36 @@
+================================================================================
+  REPO       : activity_monitoring
+  FULL NAME  : ursa-mikail/activity_monitoring
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Jupyter Notebook
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/activity_monitoring
+  MATCHES    : 13
+================================================================================
+
+  ▸ golang/activity_monitoring_with_html_dashboard_tools.go
+      line   167  [symmetric]  const filtered = data.filter(d => selected.length === 0 || d.tags.some(t => selected.includes(t)));
+
+  ▸ golang/score_time_series_with_dashboard_tools.html
+      line    32  [symmetric]  const data = [{"Timestamp":"2025-05-07_2132:14 [1746678734]","datetime":"2025-05-07T21:32:14.110257-07:00","log":"Jump over secondly some between any man upshot company some.","score":84.79,"reference":"5a9f9d8c-f5a1-4139-8774-7a87e864ac9d","tags":["at","life","neither"]},{"Timestamp":"2025-05-08_00
+      line    75  [symmetric]  const filtered = data.filter(d => selected.length === 0 || d.tags.some(t => selected.includes(t)));
+
+  ▸ python/activity_monitoring.ipynb
+      line   285  [symmetric]  "image/png": "iVBORw0KGgoAAAANSUhEUgAAA90AAAJOCAYAAACqS2TfAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjguMCwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy81sbWrAAAACXBIWXMAAA9hAAAPYQGoP6dpAAEAAElEQVR4nOzdd5hU5dk/8O+Zvr1XWGDpAgoCgqiIiEhR7BoFe141JGqsMfomIjHRX9SYYoy+qVY00VhCElHAhgrSBEUEKUvfwvY6/fz+mHnOzPYp58ycmf
+      line   482  [symmetric]  "image/png": "iVBORw0KGgoAAAANSUhEUgAAA9gAAAMWCAYAAAAKyC61AAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjguMCwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy81sbWrAAAACXBIWXMAAA9hAAAPYQGoP6dpAAEAAElEQVR4nOzdd3hT5dsH8G+SJuneGwotZRbKkA2yK2WIgshSZIjiQkSQ1x8OhgtRUUEUBBEcIIgCKihakE1l77Ipq3tPupLn/SNN2rTpzuj4fq4rF+3JyT
+      line   611  [cipher_mode]  "image/png": "iVBORw0KGgoAAAANSUhEUgAAA9gAAAMWCAYAAAAKyC61AAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjguMCwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy81sbWrAAAACXBIWXMAAA9hAAAPYQGoP6dpAAEAAElEQVR4nOzdd3iT1dsH8G+SpukedBdKW6DsPS17SRkiS5bKEreICPIqiixFREVZKoIC/kQEmSooisgSKnvv0QVdtKV7ZZz3jzRpQ1voyGja7+e6crV5cv
+
+  ▸ python/activity_monitoring_with_html_dashboard_tools.py
+      line   135  [symmetric]  const filtered = data.filter(d => selected.length === 0 || d.tags.some(t => selected.includes(t)));
+
+  ▸ python/incident_tracking/readme.md
+      line    15  [symmetric]  - This increased sensitivity to large trades.
+      line    35  [symmetric]  Markets lost nearly 9% in minutes, with trades occurring at extreme and irrational values. Recovery took 15–20 minutes—but confidence in automated trading was permanently impacted.
+
+  ▸ python/reverse_and_forward_market_valuation/readme.md
+      line   152  [symmetric]  3. Includes **conditional reasoning**, not just deterministic forecasting.
+      line   316  [symmetric]  Program includes an interactive plot where hovering over each point displays annotations explaining the data.
+      line   326  [symmetric]  Each point includes hoverable reasons for valuation change.
+
+  ▸ python/score_time_series_with_dashboard_tools.html
+      line    76  [symmetric]  const filtered = data.filter(d => selected.length === 0 || d.tags.some(t => selected.includes(t)));

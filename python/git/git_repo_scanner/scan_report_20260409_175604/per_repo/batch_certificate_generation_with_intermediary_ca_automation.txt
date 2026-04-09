@@ -1,0 +1,23 @@
+================================================================================
+  REPO       : batch_certificate_generation_with_intermediary_ca_automation
+  FULL NAME  : ursa-mikail/batch_certificate_generation_with_intermediary_ca_automation
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Python
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/batch_certificate_generation_with_intermediary_ca_automation
+  MATCHES    : 6
+================================================================================
+
+  ▸ batch_certificate_generation_with_intermediary_ca_automation.py
+      line    58  [key_mgmt]  days=365, key_size=2048, **subject_fields):
+      line    66  [asymmetric]  key_size: RSA key size in bits
+      line   563  [py_import]  import ssl
+
+  ▸ batch_from_csv.sh
+      line    29  [symmetric]  # Color codes
+
+  ▸ batch_generation_certs.sh
+      line    23  [symmetric]  # Color codes for output
+
+  ▸ readme.md
+      line    13  [asymmetric]  # Generate encrypted RSA private key (you'll set a password)

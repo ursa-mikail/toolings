@@ -1,0 +1,84 @@
+================================================================================
+  REPO       : reference_codes
+  FULL NAME  : ursa-mikail/reference_codes
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Python
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/reference_codes
+  MATCHES    : 67
+================================================================================
+
+  ▸ python/flask/push_notification_example/readme.txt
+      line     3  [symmetric]  This setup provides a basic example of a Flask server capable of handling webhooks, SSE, and push notifications. The client script triggers a webhook notification. For push notifications to work, you'll need to replace the dummy subscription information with actual data obtained from the client's se
+
+  ▸ python/message_sign_and_verify_with_cert_EdDSA_and_ECDSA.py
+      line     1  [py_import]  from cryptography import x509
+      line     2  [py_import]  from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey, Ed25519PublicKey
+      line     3  [py_import]  from cryptography.hazmat.primitives import serialization
+      line     4  [py_import]  from cryptography.x509.oid import NameOID
+      line     5  [py_import]  from cryptography.hazmat.backends import default_backend
+      line     6  [py_import]  from cryptography.exceptions import InvalidSignature
+      line    39  [signature]  .sign(private_key, None, default_backend())  # Use None for Ed25519
+      line    44  [signature]  signature = private_key.sign(message)
+      line    48  [signature]  cert.public_key().verify(signature, message)
+      line    49  [signature]  # public_key.verify(signature, message)
+      line    56  [key_mgmt]  f.write(cert.public_bytes(serialization.Encoding.PEM))
+      line    60  [key_mgmt]  f.write(private_key.private_bytes(
+      line    67  [py_import]  from cryptography import x509
+      line    68  [py_import]  from cryptography.hazmat.primitives.asymmetric import ec
+      line    69  [py_import]  from cryptography.hazmat.primitives import serialization
+      line    70  [py_import]  from cryptography.x509.oid import NameOID
+      line    71  [py_import]  from cryptography.hazmat.primitives import hashes
+      line    72  [py_import]  from cryptography.hazmat.backends import default_backend
+      line    73  [py_import]  from cryptography.hazmat.primitives.asymmetric.utils import Prehashed
+      line    74  [py_import]  from cryptography.exceptions import InvalidSignature
+      line   107  [signature]  .sign(private_key, hashes.SHA256(), default_backend())
+      line   115  [signature]  signature = private_key.sign(digest, ec.ECDSA(Prehashed(hashes.SHA256())))
+      line   119  [signature]  cert.public_key().verify(signature, digest, ec.ECDSA(Prehashed(hashes.SHA256())))
+      line   120  [signature]  # public_key.verify(signature, digest, ec.ECDSA(Prehashed(hashes.SHA256())))
+      line   127  [key_mgmt]  f.write(cert.public_bytes(serialization.Encoding.PEM))
+      line   131  [key_mgmt]  f.write(private_key.private_bytes(
+
+  ▸ python/permit_issuance_conditioned_by_counter.py
+      line    26  [py_import]  import hashlib
+      line    35  [signature]  # Simulate a digital signature with a hash for simplicity
+
+  ▸ python/secure_file_messaging_with_certs.py
+      line     2  [py_import]  from cryptography import x509
+      line     3  [py_import]  from cryptography.x509.oid import NameOID
+      line     4  [py_import]  from cryptography.hazmat.primitives import hashes, serialization
+      line     5  [py_import]  from cryptography.hazmat.primitives.asymmetric import rsa
+      line     5  [asymmetric]  from cryptography.hazmat.primitives.asymmetric import rsa
+      line     6  [py_import]  from cryptography.hazmat.primitives.serialization import BestAvailableEncryption, NoEncryption
+      line     7  [py_import]  from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+      line     7  [symmetric]  from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+      line     8  [py_import]  from cryptography.hazmat.primitives.asymmetric import padding
+      line    10  [py_import]  from cryptography.hazmat.backends import default_backend
+      line    17  [asymmetric]  # Generate RSA key pair
+      line    18  [asymmetric]  key = rsa.generate_private_key(
+      line    20  [key_mgmt]  key_size=2048,
+      line    56  [signature]  ).sign(key, hashes.SHA256(), default_backend())
+      line    67  [key_mgmt]  key.private_bytes(
+      line    77  [key_mgmt]  cert.public_bytes(serialization.Encoding.PEM)
+      line    85  [key_mgmt]  key = serialization.load_pem_private_key(key_data, password=password, backend=default_backend())
+      line    87  [key_mgmt]  key = serialization.load_pem_private_key(key_data, password=None, backend=default_backend())
+      line    99  [key_mgmt]  cert_str = cert_pem.replace('-----BEGIN CERTIFICATE-----', '').replace('-----END CERTIFICATE-----', '').strip()
+      line   115  [key_mgmt]  'Public Key': cert.public_key().public_bytes(
+      line   149  [key_mgmt]  print(f"User {i} Private Key: {read_key.private_bytes(serialization.Encoding.PEM, serialization.PrivateFormat.PKCS8, NoEncryption()).decode('utf-8')}")
+      line   150  [key_mgmt]  print(f"User {i} Public Key: {read_key.public_key().public_bytes(serialization.Encoding.PEM, serialization.PublicFormat.SubjectPublicKeyInfo).decode('utf-8')}")
+      line   151  [key_mgmt]  certificate_pem = read_cert.public_bytes(serialization.Encoding.PEM).decode('utf-8')
+      line   164  [key_mgmt]  User N Public Key: -----BEGIN PUBLIC KEY-----
+      line   170  [key_mgmt]  User N Certificate: -----BEGIN CERTIFICATE-----
+      line   182  [key_mgmt]  Public Key: -----BEGIN PUBLIC KEY-----
+      line   200  [random]  iv = os.urandom(16)
+      line   203  [symmetric]  cipher = Cipher(algorithms.AES(symmetric_key), modes.CFB(iv), backend=default_backend())
+      line   203  [symmetric]  cipher = Cipher(algorithms.AES(symmetric_key), modes.CFB(iv), backend=default_backend())
+      line   219  [symmetric]  cipher = Cipher(algorithms.AES(symmetric_key), modes.CFB(iv), backend=default_backend())
+      line   219  [symmetric]  cipher = Cipher(algorithms.AES(symmetric_key), modes.CFB(iv), backend=default_backend())
+      line   241  [signature]  signature = private_key.sign(
+      line   248  [signature]  def verify_signature(file_path, signature, public_key): # sender's public_key
+      line   253  [signature]  public_key.verify(
+      line   284  [symmetric]  symmetric_key = os.urandom(32)  # AES-256 key
+      line   284  [random]  symmetric_key = os.urandom(32)  # AES-256 key
+      line   304  [signature]  if verify_signature(file_path, signature, certs[signer_id].public_key()):
+      line   362  [signature]  verification_results[f"user{i}"] = verify_signature(file_path, signature, certs[4].public_key())

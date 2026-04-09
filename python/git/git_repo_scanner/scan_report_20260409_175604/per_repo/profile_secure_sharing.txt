@@ -1,0 +1,216 @@
+================================================================================
+  REPO       : profile_secure_sharing
+  FULL NAME  : ursa-mikail/profile_secure_sharing
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Python
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/profile_secure_sharing
+  MATCHES    : 195
+================================================================================
+
+  ▸ demo_profile_share00_hmac_before_and_after_00.py
+      line     3  [py_import]  from cryptography.hazmat.primitives import hashes
+      line     4  [py_import]  from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+      line     4  [symmetric]  from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+      line     5  [py_import]  from cryptography.hazmat.primitives.hmac import HMAC
+      line     5  [kdf]  from cryptography.hazmat.primitives.hmac import HMAC
+      line     6  [py_import]  from cryptography.hazmat.backends import default_backend
+      line     7  [py_import]  from cryptography.hazmat.primitives import hmac
+      line     7  [kdf]  from cryptography.hazmat.primitives import hmac
+      line    10  [kdf]  """Generate HMAC for given data using a consistent method."""
+      line    11  [kdf]  h = hmac.HMAC(key, hashes.SHA256(), backend=default_backend())
+      line    20  [kdf]  # HMAC before encryption
+      line    23  [symmetric]  # Encrypt using AES-GCM
+      line    23  [cipher_mode]  # Encrypt using AES-GCM
+      line    24  [random]  iv = os.urandom(12)
+      line    25  [symmetric]  cipher = Cipher(algorithms.AES(aes_key), modes.GCM(iv), backend=default_backend())
+      line    25  [symmetric]  cipher = Cipher(algorithms.AES(aes_key), modes.GCM(iv), backend=default_backend())
+      line    25  [cipher_mode]  cipher = Cipher(algorithms.AES(aes_key), modes.GCM(iv), backend=default_backend())
+      line    34  [kdf]  # HMAC after encryption
+      line    48  [kdf]  """Decrypt profile with comprehensive HMAC verification."""
+      line    59  [kdf]  # Verify HMAC after encryption
+      line    62  [kdf]  # Recreate HMAC verification
+      line    63  [kdf]  h_after = hmac.HMAC(hmac_key_after, hashes.SHA256(), backend=default_backend())
+      line    65  [signature]  h_after.verify(received_hmac_after)
+      line    66  [kdf]  print("Post-encryption HMAC verification successful.")
+      line    68  [kdf]  print(f"HMAC After verification failed: {e}")
+      line    72  [symmetric]  cipher = Cipher(algorithms.AES(aes_key), modes.GCM(iv, tag), backend=default_backend())
+      line    72  [symmetric]  cipher = Cipher(algorithms.AES(aes_key), modes.GCM(iv, tag), backend=default_backend())
+      line    72  [cipher_mode]  cipher = Cipher(algorithms.AES(aes_key), modes.GCM(iv, tag), backend=default_backend())
+      line    76  [kdf]  # Verify HMAC before encryption
+      line    78  [kdf]  h_before = hmac.HMAC(hmac_key_before, hashes.SHA256(), backend=default_backend())
+      line    80  [signature]  h_before.verify(original_hmac_before)
+      line    81  [kdf]  print("Pre-encryption HMAC verification successful.")
+      line    83  [kdf]  print(f"HMAC Before verification failed: {e}")
+      line   107  [random]  aes_key = os.urandom(32)
+      line   108  [random]  hmac_key_before = os.urandom(32)
+      line   109  [random]  hmac_key_after = os.urandom(32)
+      line   139  [kdf]  Post-encryption HMAC verification successful.
+      line   140  [kdf]  Pre-encryption HMAC verification successful.
+
+  ▸ demo_profile_share00_selective_fields_01.py
+      line     3  [py_import]  from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
+      line     3  [kdf]  from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
+      line     3  [kdf]  from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
+      line     4  [py_import]  from cryptography.hazmat.primitives import hashes
+      line     5  [py_import]  from cryptography.hazmat.primitives.kdf.scrypt import Scrypt
+      line     5  [kdf]  from cryptography.hazmat.primitives.kdf.scrypt import Scrypt
+      line     5  [kdf]  from cryptography.hazmat.primitives.kdf.scrypt import Scrypt
+      line     6  [py_import]  from cryptography.hazmat.backends import default_backend
+      line     7  [py_import]  from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+      line     7  [symmetric]  from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+      line     8  [py_import]  from cryptography.hazmat.primitives.hmac import HMAC
+      line     8  [kdf]  from cryptography.hazmat.primitives.hmac import HMAC
+      line    25  [symmetric]  # AES-GCM-256 Key and HMAC Keys
+      line    25  [cipher_mode]  # AES-GCM-256 Key and HMAC Keys
+      line    25  [kdf]  # AES-GCM-256 Key and HMAC Keys
+      line    26  [random]  aes_key = os.urandom(32)
+      line    27  [random]  hmac_key_before = os.urandom(16)
+      line    28  [random]  hmac_key_after = os.urandom(16)
+      line    30  [kdf]  # Function to encrypt and HMAC a message
+      line    32  [random]  iv = os.urandom(12)
+      line    33  [symmetric]  cipher = Cipher(algorithms.AES(aes_key), modes.GCM(iv), backend=default_backend())
+      line    33  [symmetric]  cipher = Cipher(algorithms.AES(aes_key), modes.GCM(iv), backend=default_backend())
+      line    33  [cipher_mode]  cipher = Cipher(algorithms.AES(aes_key), modes.GCM(iv), backend=default_backend())
+      line    38  [kdf]  # HMAC before encryption
+      line    39  [kdf]  hmac_before = HMAC(hmac_key_before, hashes.SHA256(), backend=default_backend())
+      line    43  [kdf]  # HMAC after encryption
+      line    44  [kdf]  hmac_after = HMAC(hmac_key_after, hashes.SHA256(), backend=default_backend())
+      line    50  [kdf]  # Function to decrypt and verify HMAC
+      line    57  [kdf]  # Verify HMAC after encryption
+      line    58  [kdf]  hmac_after = HMAC(hmac_key_after, hashes.SHA256(), backend=default_backend())
+      line    60  [signature]  hmac_after.verify(hmac_after_value)
+      line    62  [symmetric]  cipher = Cipher(algorithms.AES(aes_key), modes.GCM(iv, tag), backend=default_backend())
+      line    62  [symmetric]  cipher = Cipher(algorithms.AES(aes_key), modes.GCM(iv, tag), backend=default_backend())
+      line    62  [cipher_mode]  cipher = Cipher(algorithms.AES(aes_key), modes.GCM(iv, tag), backend=default_backend())
+      line    66  [kdf]  # Verify HMAC before encryption
+      line    67  [kdf]  hmac_before = HMAC(hmac_key_before, hashes.SHA256(), backend=default_backend())
+      line    69  [signature]  hmac_before.verify(hmac_before_value)
+      line    84  [kdf]  # Encrypt and HMAC the shared profile
+      line    87  [kdf]  # Print the encrypted shared profile and HMAC
+      line    90  [kdf]  print("HMAC (Before Encryption):")
+      line   105  [kdf]  HMAC (Before Encryption):
+
+  ▸ demo_profile_share00_selective_fields_with_enumerated_select_03.py
+      line     3  [py_import]  from cryptography.hazmat.primitives import hashes
+      line     4  [py_import]  from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+      line     4  [symmetric]  from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+      line     5  [py_import]  from cryptography.hazmat.primitives.hmac import HMAC
+      line     5  [kdf]  from cryptography.hazmat.primitives.hmac import HMAC
+      line     6  [py_import]  from cryptography.hazmat.backends import default_backend
+      line     8  [symmetric]  # AES-GCM-256 Key and HMAC Keys
+      line     8  [cipher_mode]  # AES-GCM-256 Key and HMAC Keys
+      line     8  [kdf]  # AES-GCM-256 Key and HMAC Keys
+      line     9  [random]  aes_key = os.urandom(32)
+      line    10  [random]  hmac_key_before = os.urandom(16)
+      line    11  [random]  hmac_key_after = os.urandom(16)
+      line    14  [random]  iv = os.urandom(12)
+      line    15  [symmetric]  cipher = Cipher(algorithms.AES(aes_key), modes.GCM(iv), backend=default_backend())
+      line    15  [symmetric]  cipher = Cipher(algorithms.AES(aes_key), modes.GCM(iv), backend=default_backend())
+      line    15  [cipher_mode]  cipher = Cipher(algorithms.AES(aes_key), modes.GCM(iv), backend=default_backend())
+      line    20  [kdf]  # HMAC before encryption
+      line    21  [kdf]  hmac_before = HMAC(hmac_key_before, hashes.SHA256(), backend=default_backend())
+      line    25  [kdf]  # HMAC after encryption
+      line    26  [kdf]  hmac_after = HMAC(hmac_key_after, hashes.SHA256(), backend=default_backend())
+      line    38  [kdf]  # Verify HMAC after encryption
+      line    39  [kdf]  hmac_after = HMAC(hmac_key_after, hashes.SHA256(), backend=default_backend())
+      line    41  [signature]  hmac_after.verify(hmac_after_value)
+      line    43  [symmetric]  cipher = Cipher(algorithms.AES(aes_key), modes.GCM(iv, tag), backend=default_backend())
+      line    43  [symmetric]  cipher = Cipher(algorithms.AES(aes_key), modes.GCM(iv, tag), backend=default_backend())
+      line    43  [cipher_mode]  cipher = Cipher(algorithms.AES(aes_key), modes.GCM(iv, tag), backend=default_backend())
+      line    47  [kdf]  # Verify HMAC before encryption
+      line    48  [kdf]  hmac_before = HMAC(hmac_key_before, hashes.SHA256(), backend=default_backend())
+      line    50  [signature]  hmac_before.verify(hmac_before_value)
+      line    85  [kdf]  # Print the encrypted shared profile and HMAC
+      line    88  [kdf]  print("HMAC (Before Encryption):")
+      line    98  [kdf]  print("Decryption or HMAC verification failed:", e)
+      line   113  [kdf]  HMAC (Before Encryption):
+
+  ▸ demo_profile_share00_selective_fields_with_enumerated_select_04.py
+      line     3  [py_import]  from cryptography.hazmat.primitives import hashes
+      line     4  [py_import]  from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+      line     4  [symmetric]  from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+      line     5  [py_import]  from cryptography.hazmat.primitives.hmac import HMAC
+      line     5  [kdf]  from cryptography.hazmat.primitives.hmac import HMAC
+      line     6  [py_import]  from cryptography.hazmat.backends import default_backend
+      line    10  [symmetric]  # AES-GCM-256 Key and HMAC Keys
+      line    10  [cipher_mode]  # AES-GCM-256 Key and HMAC Keys
+      line    10  [kdf]  # AES-GCM-256 Key and HMAC Keys
+      line    11  [random]  aes_key = os.urandom(32)
+      line    12  [random]  hmac_key_before = os.urandom(16)
+      line    13  [random]  hmac_key_after = os.urandom(16)
+      line    16  [random]  iv = os.urandom(12)
+      line    17  [symmetric]  cipher = Cipher(algorithms.AES(aes_key), modes.GCM(iv), backend=default_backend())
+      line    17  [symmetric]  cipher = Cipher(algorithms.AES(aes_key), modes.GCM(iv), backend=default_backend())
+      line    17  [cipher_mode]  cipher = Cipher(algorithms.AES(aes_key), modes.GCM(iv), backend=default_backend())
+      line    22  [kdf]  # HMAC before encryption
+      line    23  [kdf]  hmac_before = HMAC(hmac_key_before, hashes.SHA256(), backend=default_backend())
+      line    27  [kdf]  # HMAC after encryption
+      line    28  [kdf]  hmac_after = HMAC(hmac_key_after, hashes.SHA256(), backend=default_backend())
+      line    40  [kdf]  # Verify HMAC after encryption
+      line    41  [kdf]  hmac_after = HMAC(hmac_key_after, hashes.SHA256(), backend=default_backend())
+      line    43  [signature]  hmac_after.verify(hmac_after_value)
+      line    45  [symmetric]  cipher = Cipher(algorithms.AES(aes_key), modes.GCM(iv, tag), backend=default_backend())
+      line    45  [symmetric]  cipher = Cipher(algorithms.AES(aes_key), modes.GCM(iv, tag), backend=default_backend())
+      line    45  [cipher_mode]  cipher = Cipher(algorithms.AES(aes_key), modes.GCM(iv, tag), backend=default_backend())
+      line    49  [kdf]  # Verify HMAC before encryption
+      line    50  [kdf]  hmac_before = HMAC(hmac_key_before, hashes.SHA256(), backend=default_backend())
+      line    52  [signature]  hmac_before.verify(hmac_before_value)
+      line    96  [kdf]  # Print the encrypted shared profile and HMAC
+      line    99  [kdf]  print("HMAC (Before Encryption):")
+      line   109  [kdf]  print("Decryption or HMAC verification failed:", e)
+      line   130  [kdf]  HMAC (Before Encryption):
+
+  ▸ demo_profile_share00_selective_fields_with_questionnaire_02.py
+      line     3  [py_import]  from cryptography.hazmat.primitives import hashes
+      line     4  [py_import]  from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+      line     4  [symmetric]  from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+      line     5  [py_import]  from cryptography.hazmat.primitives.hmac import HMAC
+      line     5  [kdf]  from cryptography.hazmat.primitives.hmac import HMAC
+      line     6  [py_import]  from cryptography.hazmat.backends import default_backend
+      line     8  [symmetric]  # AES-GCM-256 Key and HMAC Keys
+      line     8  [cipher_mode]  # AES-GCM-256 Key and HMAC Keys
+      line     8  [kdf]  # AES-GCM-256 Key and HMAC Keys
+      line     9  [random]  aes_key = os.urandom(32)
+      line    10  [random]  hmac_key_before = os.urandom(16)
+      line    11  [random]  hmac_key_after = os.urandom(16)
+      line    14  [random]  iv = os.urandom(12)
+      line    15  [symmetric]  cipher = Cipher(algorithms.AES(aes_key), modes.GCM(iv), backend=default_backend())
+      line    15  [symmetric]  cipher = Cipher(algorithms.AES(aes_key), modes.GCM(iv), backend=default_backend())
+      line    15  [cipher_mode]  cipher = Cipher(algorithms.AES(aes_key), modes.GCM(iv), backend=default_backend())
+      line    20  [kdf]  # HMAC before encryption
+      line    21  [kdf]  hmac_before = HMAC(hmac_key_before, hashes.SHA256(), backend=default_backend())
+      line    25  [kdf]  # HMAC after encryption
+      line    26  [kdf]  hmac_after = HMAC(hmac_key_after, hashes.SHA256(), backend=default_backend())
+      line    38  [kdf]  # Verify HMAC after encryption
+      line    39  [kdf]  hmac_after = HMAC(hmac_key_after, hashes.SHA256(), backend=default_backend())
+      line    41  [signature]  hmac_after.verify(hmac_after_value)
+      line    43  [symmetric]  cipher = Cipher(algorithms.AES(aes_key), modes.GCM(iv, tag), backend=default_backend())
+      line    43  [symmetric]  cipher = Cipher(algorithms.AES(aes_key), modes.GCM(iv, tag), backend=default_backend())
+      line    43  [cipher_mode]  cipher = Cipher(algorithms.AES(aes_key), modes.GCM(iv, tag), backend=default_backend())
+      line    47  [kdf]  # Verify HMAC before encryption
+      line    48  [kdf]  hmac_before = HMAC(hmac_key_before, hashes.SHA256(), backend=default_backend())
+      line    50  [signature]  hmac_before.verify(hmac_before_value)
+      line    74  [kdf]  # Print the encrypted shared profile and HMAC
+      line    77  [kdf]  print("HMAC (Before Encryption):")
+      line    87  [kdf]  print("Decryption or HMAC verification failed:", e)
+      line   101  [kdf]  HMAC (Before Encryption):
+
+  ▸ readme.md
+      line     2  [symmetric]  This project demonstrates the use of AES-GCM-256 encryption for securing user profile data and HMAC (Hash-based Message Authentication Code) for verifying the integrity of the data before and after encryption.
+      line     2  [cipher_mode]  This project demonstrates the use of AES-GCM-256 encryption for securing user profile data and HMAC (Hash-based Message Authentication Code) for verifying the integrity of the data before and after encryption.
+      line     2  [kdf]  This project demonstrates the use of AES-GCM-256 encryption for securing user profile data and HMAC (Hash-based Message Authentication Code) for verifying the integrity of the data before and after encryption.
+      line     6  [symmetric]  - **AES-GCM-256 Encryption**: Encrypts sensitive user data using AES encryption in Galois/Counter Mode (GCM).
+      line     6  [cipher_mode]  - **AES-GCM-256 Encryption**: Encrypts sensitive user data using AES encryption in Galois/Counter Mode (GCM).
+      line     7  [kdf]  - **HMAC**: Ensures data integrity by signing both the plaintext (before encryption) and the ciphertext (after encryption).
+      line    19  [symmetric]  - The encryption process is handled using AES-GCM-256 with random IV and HMAC keys.
+      line    19  [cipher_mode]  - The encryption process is handled using AES-GCM-256 with random IV and HMAC keys.
+      line    19  [kdf]  - The encryption process is handled using AES-GCM-256 with random IV and HMAC keys.
+      line    20  [kdf]  - The user profile is encrypted, and two HMAC values are generated:
+      line    21  [kdf]  - **HMAC before encryption**: Used to verify the integrity of the plaintext data.
+      line    22  [kdf]  - **HMAC after encryption**: Used to verify the integrity of the encrypted data.
+      line    26  [kdf]  - The encrypted profile and HMAC values are displayed in hexadecimal format for both before and after encryption.
+      line    27  [kdf]  - HMAC verification is performed on the encrypted data to ensure it has not been tampered with.
+      line    31  [symmetric]  - The program uses random AES and HMAC keys for encryption and verification.
+      line    31  [kdf]  - The program uses random AES and HMAC keys for encryption and verification.
+      line    34  [kdf]  The script will encrypt the profile, display HMAC values, and perform verification.

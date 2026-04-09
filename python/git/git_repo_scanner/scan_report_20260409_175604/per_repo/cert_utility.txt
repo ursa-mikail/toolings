@@ -1,0 +1,526 @@
+================================================================================
+  REPO       : cert_utility
+  FULL NAME  : ursa-mikail/cert_utility
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Python
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/cert_utility
+  MATCHES    : 415
+================================================================================
+
+  ▸ cert_tool/shell_make_multiple_certs/cert_maker_manager/cnf/openssl.cnf
+      line    30  [signature]  keyUsage = nonRepudiation, digitalSignature, keyEncipherment
+
+  ▸ cert_tool/shell_make_multiple_certs/cert_maker_manager/config.txt
+      line     3  [asymmetric]  # Default key size for RSA keys
+
+  ▸ cert_tool/shell_make_multiple_certs/cert_maker_manager/csr/ursa_fort.ecdsa.csr
+      line     1  [key_mgmt]  -----BEGIN CERTIFICATE REQUEST-----
+
+  ▸ cert_tool/shell_make_multiple_certs/cert_maker_manager/menu.sh
+      line    26  [key_mgmt]  generate_key() {
+      line    29  [asymmetric]  echo "1. RSA"
+      line    36  [asymmetric]  openssl genpkey -algorithm RSA -out "key_store/$KEY_NAME.rsa.2048.private.key" -pkeyopt rsa_keygen_bits:2048
+      line    37  [asymmetric]  openssl rsa -in "key_store/$KEY_NAME.rsa.2048.private.key" -pubout -out "key_store/$KEY_NAME.rsa.2048.public.key"
+      line    58  [asymmetric]  echo "1. RSA"
+      line    65  [asymmetric]  openssl req -new -key "key_store/$ENTITY_NAME.rsa.2048.private.key" -out "csr/$ENTITY_NAME.rsa.2048.csr" -subj "/CN=$ENTITY_NAME"
+      line    84  [asymmetric]  echo "1. RSA"
+      line    91  [asymmetric]  openssl x509 -req -in "csr/$CSR_NAME.rsa.2048.csr" -signkey "key_store/$CSR_NAME.rsa.2048.private.key" -out "certs/$CSR_NAME.rsa.2048.crt" -days 3650
+      line   121  [key_mgmt]  1) generate_key ;;
+
+  ▸ cert_tool/shell_make_multiple_certs/cert_maker_manager/setup_dirs.sh
+      line    14  [symmetric]  "$BASE_DIR/passcodes"
+
+  ▸ cert_tool/shell_make_multiple_certs/generate_multiple_certificates.sh
+      line    24  [symmetric]  openssl req -newkey rsa:${KEY_LENGTH} -nodes -keyout ${OUTPUT_KEY} -x509 -days ${DAYS_VALID} -out ${OUTPUT_CERT} -subj "/C=${COUNTRY}/ST=${STATE}/L=${LOCALITY}/O=${ORGANIZATION}/OU=${ORGANIZATIONAL_UNIT}/CN=${COMMON_NAME}"
+      line    24  [asymmetric]  openssl req -newkey rsa:${KEY_LENGTH} -nodes -keyout ${OUTPUT_KEY} -x509 -days ${DAYS_VALID} -out ${OUTPUT_CERT} -subj "/C=${COUNTRY}/ST=${STATE}/L=${LOCALITY}/O=${ORGANIZATION}/OU=${ORGANIZATIONAL_UNIT}/CN=${COMMON_NAME}"
+
+  ▸ cert_tool/shell_make_multiple_certs/means_to_authenticate/cert_authentication.py
+      line     4  [py_import]  import hashlib
+      line     5  [py_import]  import cryptography
+      line     6  [py_import]  from cryptography.hazmat.primitives.asymmetric import rsa, padding
+      line     6  [asymmetric]  from cryptography.hazmat.primitives.asymmetric import rsa, padding
+      line     7  [py_import]  from cryptography.hazmat.primitives import serialization, hashes
+      line     8  [py_import]  from cryptography import x509
+      line     9  [py_import]  from cryptography.x509.oid import NameOID
+      line    12  [asymmetric]  # Generate RSA key pair
+      line    14  [asymmetric]  private_key = rsa.generate_private_key(
+      line    16  [key_mgmt]  key_size=2048
+      line    38  [signature]  .sign(private_key, hashes.SHA256())
+      line    44  [signature]  signature = private_key.sign(
+      line    56  [signature]  public_key.verify(
+
+  ▸ cert_tool/shell_make_multiple_certs/means_to_authenticate/cert_authentication/cert_authentication.sh
+      line     1  [asymmetric]  #1️⃣ Generate an RSA Key Pair
+      line     2  [asymmetric]  openssl genpkey -algorithm RSA -out private_key.pem -pkeyopt rsa_keygen_bits:2048
+      line     3  [asymmetric]  openssl rsa -in private_key.pem -pubout -out public_key.pem
+      line    23  [asymmetric]  Generates an RSA key pair.
+
+  ▸ cert_tool/shell_make_multiple_certs/means_to_authenticate/cert_authentication/certificate.pem
+      line     1  [key_mgmt]  -----BEGIN CERTIFICATE-----
+
+  ▸ cert_tool/shell_make_multiple_certs/means_to_authenticate/cert_authentication/key_pair_authentication.sh
+      line     1  [asymmetric]  # Generate an RSA Key Pair
+      line     2  [asymmetric]  openssl genpkey -algorithm RSA -out private_key.pem -pkeyopt rsa_keygen_bits:2048
+      line     3  [asymmetric]  openssl rsa -in private_key.pem -pubout -out public_key.pem
+      line    24  [asymmetric]  Generates an RSA key pair.
+
+  ▸ cert_tool/shell_make_multiple_certs/means_to_authenticate/cert_authentication/public_key.pem
+      line     1  [key_mgmt]  -----BEGIN PUBLIC KEY-----
+
+  ▸ cert_tool/shell_make_multiple_certs/means_to_authenticate/cert_authentication_with_cert_file.py
+      line     4  [py_import]  import hashlib
+      line     5  [py_import]  import cryptography
+      line     6  [py_import]  from cryptography.hazmat.primitives.asymmetric import rsa, padding
+      line     6  [asymmetric]  from cryptography.hazmat.primitives.asymmetric import rsa, padding
+      line     7  [py_import]  from cryptography.hazmat.primitives import serialization, hashes
+      line     8  [py_import]  from cryptography import x509
+      line     9  [py_import]  from cryptography.x509.oid import NameOID
+      line    12  [asymmetric]  # Generate RSA key pair
+      line    14  [asymmetric]  private_key = rsa.generate_private_key(
+      line    16  [key_mgmt]  key_size=2048
+      line    39  [signature]  .sign(private_key, hashes.SHA256())
+      line    43  [key_mgmt]  f.write(cert.public_bytes(serialization.Encoding.PEM))
+      line    48  [signature]  signature = private_key.sign(
+      line    60  [signature]  public_key.verify(
+
+  ▸ cert_tool/shell_make_multiple_certs/means_to_authenticate/rsa_cipher_with_cert_check/certificate.pem
+      line     1  [key_mgmt]  -----BEGIN CERTIFICATE-----
+
+  ▸ cert_tool/shell_make_multiple_certs/means_to_authenticate/rsa_cipher_with_cert_check/public_key.pem
+      line     1  [key_mgmt]  -----BEGIN PUBLIC KEY-----
+
+  ▸ cert_tool/shell_make_multiple_certs/means_to_authenticate/rsa_cipher_with_cert_check/rsa_cipher_check.sh
+      line     1  [asymmetric]  # 1️⃣ Generate an RSA Key Pair
+      line     2  [asymmetric]  openssl genpkey -algorithm RSA -out private_key.pem -pkeyopt rsa_keygen_bits:2048
+      line     3  [asymmetric]  openssl rsa -in private_key.pem -pubout -out public_key.pem
+      line    39  [asymmetric]  Generates an RSA key pair.
+
+  ▸ cert_tool/shell_make_multiple_certs/means_to_authenticate/rsa_cipher_with_cert_check/rsa_cipher_with_cert_check.sh
+      line     1  [asymmetric]  # 1️⃣ Generate an RSA Key Pair
+      line     2  [asymmetric]  openssl genpkey -algorithm RSA -out private_key.pem -pkeyopt rsa_keygen_bits:2048
+      line     3  [asymmetric]  openssl rsa -in private_key.pem -pubout -out public_key.pem
+      line    42  [asymmetric]  Generates an RSA key pair.
+
+  ▸ cert_tool/shell_make_multiple_certs/menu_view_certificates_and_keys.sh
+      line    14  [asymmetric]  openssl rsa -in ${file} -check -noout
+
+  ▸ cert_tool/tls_certificate_validation_usage/check_server_certs_and_get_details.py
+      line     1  [py_import]  import ssl
+      line     2  [py_import]  from OpenSSL import crypto
+      line    20  [symmetric]  'rc4': 'https://rc4.badssl.com/',
+      line    96  [symmetric]  [RC4] https://rc4.badssl.com/
+
+  ▸ cert_tool/tls_certificate_validation_usage/generate_cert_and_get_info.py
+      line     2  [py_import]  from cryptography import x509
+      line     3  [py_import]  from cryptography.x509.oid import NameOID
+      line     4  [py_import]  from cryptography.hazmat.primitives import serialization, hashes
+      line     5  [py_import]  from cryptography.hazmat.primitives.asymmetric import rsa
+      line     5  [asymmetric]  from cryptography.hazmat.primitives.asymmetric import rsa
+      line     9  [asymmetric]  key = rsa.generate_private_key(public_exponent=65537, key_size=2048)
+      line     9  [key_mgmt]  key = rsa.generate_private_key(public_exponent=65537, key_size=2048)
+      line    28  [signature]  ).sign(key, hashes.SHA256())
+      line    32  [key_mgmt]  f.write(cert.public_bytes(serialization.Encoding.PEM))
+      line    35  [key_mgmt]  f.write(key.private_bytes(
+      line    42  [py_import]  from cryptography import x509
+      line    43  [py_import]  from cryptography.hazmat.backends import default_backend
+      line    78  [asymmetric]  Public Key: <cryptography.hazmat.bindings._rust.openssl.rsa.RSAPublicKey object at 0x7be24078e130>
+
+  ▸ cert_tool/tls_certificate_validation_usage/tls_certificate_validation.go
+      line    61  [symmetric]  "rc4":             "https://rc4.badssl.com/",
+      line   141  [symmetric]  Testing [rc4]: https://rc4.badssl.com/
+      line   143  [symmetric]  rc4: correct (Get "https://rc4.badssl.com/": dial tcp: lookup rc4.badssl.com on 169.254.169.254:53: dial udp 169.254.169.254:53: connect: no route to host)
+
+  ▸ cert_tool/tls_certificate_validation_usage/tls_certificate_validation.py
+      line     2  [py_import]  import ssl
+      line    45  [tls]  return urlopen(url, context=ssl.create_default_context(), timeout=TIMEOUT).read()
+      line    51  [tls]  return urlopen2(url, context=ssl.create_default_context(), timeout=TIMEOUT).read()
+      line    59  [tls]  conn = HTTPSConnection(urlparse(url).netloc, context=ssl.create_default_context(), timeout=TIMEOUT)
+      line    83  [symmetric]  'rc4': 'https://rc4.badssl.com/',
+      line   149  [symmetric]  Testing [rc4]: https://rc4.badssl.com/
+      line   151  [symmetric]  rc4: correct
+      line   206  [symmetric]  Testing [rc4]: https://rc4.badssl.com/
+      line   208  [symmetric]  rc4: correct
+      line   263  [symmetric]  Testing [rc4]: https://rc4.badssl.com/
+      line   265  [symmetric]  rc4: correct
+      line   320  [symmetric]  Testing [rc4]: https://rc4.badssl.com/
+      line   322  [symmetric]  rc4: correct
+      line   377  [symmetric]  Testing [rc4]: https://rc4.badssl.com/
+      line   379  [symmetric]  rc4: correct
+
+  ▸ golang/expiry_check/main.go
+      line     5  [asymmetric]  "crypto/rsa"
+      line    53  [asymmetric]  privKey, err := rsa.GenerateKey(rand.Reader, 2048)
+      line    84  [signature]  KeyUsage:              x509.KeyUsageKeyEncipherment | x509.KeyUsageDigitalSignature | x509.KeyUsageCertSign,
+
+  ▸ golang/golang_cert_utility/certs/demo_user_ecc.crt
+      line     1  [key_mgmt]  -----BEGIN CERTIFICATE-----
+
+  ▸ golang/golang_cert_utility/certs/demo_user_rsa.crt
+      line     1  [key_mgmt]  -----BEGIN CERTIFICATE-----
+
+  ▸ golang/golang_cert_utility/cnf/demo_user_rsa.cnf
+      line     1  [asymmetric]  # OpenSSL Configuration File for RSA
+      line    24  [signature]  keyUsage = digitalSignature, keyEncipherment, dataEncipherment
+
+  ▸ golang/golang_cert_utility/cnf/ursa.cnf
+      line    27  [signature]  keyUsage = digitalSignature, keyEncipherment, dataEncipherment
+      line    77  [signature]  keyUsage = nonRepudiation, digitalSignature, keyEncipherment
+      line    83  [signature]  keyUsage = critical, digitalSignature, cRLSign, keyCertSign
+
+  ▸ golang/golang_cert_utility/csr/demo_user_rsa.csr
+      line     1  [key_mgmt]  -----BEGIN CERTIFICATE REQUEST-----
+
+  ▸ golang/golang_cert_utility/key_store/demo_user_ecc_public.pem
+      line     1  [key_mgmt]  -----BEGIN PUBLIC KEY-----
+
+  ▸ golang/golang_cert_utility/key_store/demo_user_rsa_oaep_private.pem
+      line     1  [asymmetric]  -----BEGIN RSA PRIVATE KEY-----
+      line    27  [asymmetric]  -----END RSA PRIVATE KEY-----
+
+  ▸ golang/golang_cert_utility/key_store/demo_user_rsa_oaep_public.pem
+      line     1  [key_mgmt]  -----BEGIN PUBLIC KEY-----
+
+  ▸ golang/golang_cert_utility/key_store/demo_user_rsa_pss_private.pem
+      line     1  [asymmetric]  -----BEGIN RSA PRIVATE KEY-----
+      line    27  [asymmetric]  -----END RSA PRIVATE KEY-----
+
+  ▸ golang/golang_cert_utility/key_store/demo_user_rsa_pss_public.pem
+      line     1  [key_mgmt]  -----BEGIN PUBLIC KEY-----
+
+  ▸ golang/golang_cert_utility/main.go
+      line     8  [symmetric]  "crypto/aes"
+      line    13  [asymmetric]  "crypto/rsa"
+      line   196  [asymmetric]  // RSA Keys
+      line   197  [asymmetric]  RSAOAEPPrivateKey *rsa.PrivateKey
+      line   198  [asymmetric]  RSAOAEPPublicKey  *rsa.PublicKey
+      line   199  [asymmetric]  RSAPSSPrivateKey  *rsa.PrivateKey
+      line   200  [asymmetric]  RSAPSSPublicKey   *rsa.PublicKey
+      line   308  [asymmetric]  fmt.Println("[Generating RSA-OAEP key for encryption]")
+      line   311  [asymmetric]  privateKey, err := rsa.GenerateKey(rand.Reader, ks.config.RSAKeyLength)
+      line   330  [asymmetric]  fmt.Printf("✓ RSA-OAEP key pair generated (%d bits)\n", ks.config.RSAKeyLength)
+      line   338  [asymmetric]  fmt.Println("[Generating RSA-PSS key for signing]")
+      line   341  [asymmetric]  privateKey, err := rsa.GenerateKey(rand.Reader, ks.config.RSAKeyLength)
+      line   360  [asymmetric]  fmt.Printf("✓ RSA-PSS key pair generated (%d bits)\n", ks.config.RSAKeyLength)
+      line   405  [symmetric]  fmt.Println("[Generating AES-256 key for ciphering]")
+      line   421  [symmetric]  fmt.Printf("✓ AES-256 key generated\n")
+      line   428  [kdf]  fmt.Println("[Generating HMAC-SHA256 key]")
+      line   444  [kdf]  fmt.Printf("✓ HMAC-SHA256 key generated\n")
+      line   450  [asymmetric]  func (ks *KeyStore) saveRSAPrivateKey(privateKey *rsa.PrivateKey, filename string) error {
+      line   459  [asymmetric]  Type:  "RSA PRIVATE KEY",
+      line   466  [asymmetric]  func (ks *KeyStore) saveRSAPublicKey(publicKey *rsa.PublicKey, filename string) error {
+      line   540  [signature]  KeyUsage:              x509.KeyUsageDigitalSignature | x509.KeyUsageKeyEncipherment | x509.KeyUsageDataEncipherment,
+      line   551  [asymmetric]  fmt.Println("[Generating RSA certificate]")
+      line   558  [asymmetric]  return fmt.Errorf("RSA private key not found. Please generate keys first (option 2)")
+      line   563  [asymmetric]  return fmt.Errorf("failed to read RSA private key: %v", err)
+      line   568  [asymmetric]  return fmt.Errorf("failed to parse RSA private key PEM")
+      line   573  [asymmetric]  return fmt.Errorf("failed to parse RSA private key: %v", err)
+      line   600  [asymmetric]  fmt.Printf("✓ RSA certificate generated\n")
+      line   670  [asymmetric]  fmt.Println("1. RSA Certificate")
+      line   728  [signature]  if cert.KeyUsage&x509.KeyUsageDigitalSignature != 0 {
+      line   729  [signature]  keyUsage = append(keyUsage, "Digital Signature")
+      line   772  [asymmetric]  case *rsa.PublicKey:
+      line   773  [asymmetric]  fmt.Printf("RSA Public Key: %d bits\n", pub.N.BitLen())
+      line   786  [asymmetric]  fmt.Println("[Sign Message with RSA-PSS]")
+      line   794  [asymmetric]  return fmt.Errorf("RSA private key not found. Please generate keys first (option 2)")
+      line   799  [asymmetric]  return fmt.Errorf("failed to read RSA private key: %v", err)
+      line   804  [asymmetric]  return fmt.Errorf("failed to parse RSA private key PEM")
+      line   809  [asymmetric]  return fmt.Errorf("failed to parse RSA private key: %v", err)
+      line   817  [asymmetric]  signature, err := rsa.SignPSS(rand.Reader, ks.RSAPSSPrivateKey, crypto.SHA256, hashed[:], nil)
+      line   834  [asymmetric]  fmt.Printf("✓ Message signed with RSA-PSS\n")
+      line   841  [asymmetric]  fmt.Println("[Verify RSA-PSS Signature]")
+      line   849  [asymmetric]  return fmt.Errorf("RSA public key not found. Please generate keys first (option 2)")
+      line   854  [asymmetric]  return fmt.Errorf("failed to read RSA public key: %v", err)
+      line   859  [asymmetric]  return fmt.Errorf("failed to parse RSA public key PEM")
+      line   864  [asymmetric]  return fmt.Errorf("failed to parse RSA public key: %v", err)
+      line   867  [asymmetric]  rsaPubKey, ok := pubKey.(*rsa.PublicKey)
+      line   869  [asymmetric]  return fmt.Errorf("not an RSA public key")
+      line   883  [asymmetric]  err = rsa.VerifyPSS(ks.RSAPSSPublicKey, crypto.SHA256, hashed[:], signature, nil)
+      line   926  [signature]  r, s, err := ecdsa.Sign(rand.Reader, ks.ECCPrivateKey, hashed[:])
+      line  1000  [signature]  valid := ecdsa.Verify(ks.ECCPublicKey, hashed[:], r, s)
+      line  1010  [symmetric]  // AES encryption/decryption functions
+      line  1011  [symmetric]  // Update the AES encryption/decryption functions
+      line  1012  [symmetric]  func (ks *KeyStore) EncryptWithAES(message string) error {
+      line  1014  [symmetric]  fmt.Println("[Encrypt with AES-256-CBC]")
+      line  1014  [cipher_mode]  fmt.Println("[Encrypt with AES-256-CBC]")
+      line  1022  [symmetric]  return fmt.Errorf("AES key not found. Please generate AES key first (option 9)")
+      line  1027  [symmetric]  return fmt.Errorf("failed to read AES key: %v", err)
+      line  1032  [symmetric]  return fmt.Errorf("failed to decode AES key: %v", err)
+      line  1051  [symmetric]  block, err := aes.NewCipher(ks.AESKey)
+      line  1057  [symmetric]  iv := make([]byte, aes.BlockSize)
+      line  1069  [symmetric]  plaintext = pkcs7Pad(plaintext, aes.BlockSize)
+      line  1089  [symmetric]  func (ks *KeyStore) DecryptWithAES() error {
+      line  1091  [symmetric]  fmt.Println("[Decrypt with AES-256-CBC]")
+      line  1091  [cipher_mode]  fmt.Println("[Decrypt with AES-256-CBC]")
+      line  1099  [symmetric]  return fmt.Errorf("AES key not found. Please generate AES key first (option 9)")
+      line  1104  [symmetric]  return fmt.Errorf("failed to read AES key: %v", err)
+      line  1109  [symmetric]  return fmt.Errorf("failed to decode AES key: %v", err)
+      line  1130  [symmetric]  block, err := aes.NewCipher(ks.AESKey)
+      line  1141  [symmetric]  plaintext, err = pkcs7Unpad(plaintext, aes.BlockSize)
+      line  1192  [asymmetric]  fmt.Println("[Complete RSA Workflow Demo]")
+      line  1218  [asymmetric]  testMessage := "Test message for RSA-PSS signing"
+      line  1231  [asymmetric]  fmt.Println("✓ RSA workflow complete!")
+      line  1288  [asymmetric]  fmt.Println("2  : Generate keys (RSA-OAEP, RSA-PSS, ECC)")
+      line  1294  [asymmetric]  fmt.Println("[SIGNING - RSA-PSS]")
+      line  1295  [asymmetric]  fmt.Println("5  : Sign message with RSA-PSS")
+      line  1296  [asymmetric]  fmt.Println("6  : Verify RSA-PSS signature")
+      line  1302  [symmetric]  fmt.Println("[CIPHERING - AES]")
+      line  1303  [symmetric]  fmt.Println("9  : Generate AES key")
+      line  1304  [symmetric]  fmt.Println("10 : Encrypt message with AES")
+      line  1305  [symmetric]  fmt.Println("11 : Decrypt message with AES")
+      line  1308  [asymmetric]  fmt.Println("12 : Run complete RSA workflow demo")
+      line  1350  [asymmetric]  fmt.Println("1. RSA-PSS")
+      line  1409  [symmetric]  if err := keyStore.EncryptWithAES(message); err != nil {
+      line  1413  [symmetric]  if err := keyStore.DecryptWithAES(); err != nil {
+
+  ▸ golang/golang_cert_utility/readme.md
+      line     9  [asymmetric]  - RSA key generation (OAEP and PSS)
+      line    11  [symmetric]  - AES key generation
+      line    13  [asymmetric]  - Digital signing (RSA-PSS and ECDSA)
+      line    15  [symmetric]  - AES encryption/decryption
+
+  ▸ python/main.py
+      line     8  [py_import]  from cryptography.hazmat.primitives import hashes, serialization
+      line     9  [py_import]  from cryptography.hazmat.primitives.asymmetric import rsa, ec, padding
+      line     9  [asymmetric]  from cryptography.hazmat.primitives.asymmetric import rsa, ec, padding
+      line    10  [py_import]  from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+      line    10  [symmetric]  from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+      line    11  [py_import]  from cryptography import x509
+      line    12  [py_import]  from cryptography.x509.oid import NameOID
+      line    14  [py_import]  import secrets
+      line   120  [asymmetric]  # RSA Keys
+      line   181  [asymmetric]  """Generate RSA-OAEP key pair"""
+      line   183  [asymmetric]  print("[Generating RSA-OAEP key for encryption]")
+      line   186  [asymmetric]  self.rsa_oaep_private_key = rsa.generate_private_key(
+      line   188  [key_mgmt]  key_size=self.config.rsa_key_length
+      line   199  [asymmetric]  print(f"✓ RSA-OAEP key pair generated ({self.config.rsa_key_length} bits)")
+      line   204  [asymmetric]  """Generate RSA-PSS key pair"""
+      line   206  [asymmetric]  print("[Generating RSA-PSS key for signing]")
+      line   209  [asymmetric]  self.rsa_pss_private_key = rsa.generate_private_key(
+      line   211  [key_mgmt]  key_size=self.config.rsa_key_length
+      line   222  [asymmetric]  print(f"✓ RSA-PSS key pair generated ({self.config.rsa_key_length} bits)")
+      line   253  [symmetric]  """Generate AES-256 key"""
+      line   255  [symmetric]  print("[Generating AES-256 key for ciphering]")
+      line   265  [symmetric]  print(f"✓ AES-256 key generated")
+      line   269  [kdf]  """Generate HMAC-SHA256 key"""
+      line   271  [kdf]  print("[Generating HMAC-SHA256 key]")
+      line   281  [kdf]  print(f"✓ HMAC-SHA256 key generated")
+      line   285  [asymmetric]  """Save RSA private key to file"""
+      line   287  [key_mgmt]  f.write(private_key.private_bytes(
+      line   294  [asymmetric]  """Save RSA public key to file"""
+      line   296  [key_mgmt]  f.write(public_key.public_bytes(
+      line   304  [key_mgmt]  f.write(private_key.private_bytes(
+      line   313  [key_mgmt]  f.write(public_key.public_bytes(
+      line   319  [asymmetric]  """Load RSA private key from file"""
+      line   321  [key_mgmt]  return serialization.load_pem_private_key(f.read(), password=None)
+      line   324  [asymmetric]  """Load RSA public key from file"""
+      line   326  [key_mgmt]  return serialization.load_pem_public_key(f.read())
+      line   331  [key_mgmt]  return serialization.load_pem_private_key(f.read(), password=None)
+      line   336  [key_mgmt]  return serialization.load_pem_public_key(f.read())
+      line   339  [symmetric]  """Load AES key from file"""
+      line   344  [asymmetric]  """Generate RSA certificate"""
+      line   346  [asymmetric]  print("[Generating RSA certificate]")
+      line   349  [asymmetric]  # Use RSA-OAEP keys for certificate generation (matching Go version)
+      line   354  [asymmetric]  raise Exception("RSA private key not found. Please generate keys first (option 2)")
+      line   390  [signature]  digital_signature=True,
+      line   409  [signature]  ).sign(self.rsa_oaep_private_key, self.config.hash_algo)
+      line   414  [key_mgmt]  f.write(cert.public_bytes(serialization.Encoding.PEM))
+      line   416  [asymmetric]  print(f"✓ RSA certificate generated")
+      line   466  [signature]  digital_signature=True,
+      line   485  [signature]  ).sign(self.ecc_private_key, self.config.hash_algo)
+      line   490  [key_mgmt]  f.write(cert.public_bytes(serialization.Encoding.PEM))
+      line   503  [asymmetric]  print("1. RSA Certificate")
+      line   565  [asymmetric]  """Sign message with RSA-PSS"""
+      line   567  [asymmetric]  print("[Sign Message with RSA-PSS]")
+      line   575  [asymmetric]  raise Exception("RSA private key not found. Please generate keys first (option 2)")
+      line   580  [signature]  signature = self.rsa_pss_private_key.sign(
+      line   599  [asymmetric]  print(f"✓ Message signed with RSA-PSS")
+      line   603  [asymmetric]  """Verify RSA-PSS signature"""
+      line   605  [asymmetric]  print("[Verify RSA-PSS Signature]")
+      line   613  [asymmetric]  raise Exception("RSA public key not found. Please generate keys first (option 2)")
+      line   625  [signature]  self.rsa_pss_public_key.verify(
+      line   654  [signature]  signature = self.ecc_private_key.sign(
+      line   695  [signature]  self.ecc_public_key.verify(
+      line   704  [symmetric]  def encrypt_with_aes(self, message):
+      line   705  [symmetric]  """Encrypt message with AES-256-GCM"""
+      line   705  [cipher_mode]  """Encrypt message with AES-256-GCM"""
+      line   707  [symmetric]  print("[Encrypt with AES-256-GCM]")
+      line   707  [cipher_mode]  print("[Encrypt with AES-256-GCM]")
+      line   715  [symmetric]  raise Exception("AES key not found. Please generate AES key first (option 9)")
+      line   722  [symmetric]  # Encrypt using AES-GCM
+      line   722  [cipher_mode]  # Encrypt using AES-GCM
+      line   723  [symmetric]  cipher = Cipher(algorithms.AES(self.aes_key), modes.GCM(nonce))
+      line   723  [symmetric]  cipher = Cipher(algorithms.AES(self.aes_key), modes.GCM(nonce))
+      line   723  [cipher_mode]  cipher = Cipher(algorithms.AES(self.aes_key), modes.GCM(nonce))
+      line   745  [symmetric]  def decrypt_with_aes(self):
+      line   746  [symmetric]  """Decrypt message with AES-256-GCM"""
+      line   746  [cipher_mode]  """Decrypt message with AES-256-GCM"""
+      line   748  [symmetric]  print("[Decrypt with AES-256-GCM]")
+      line   748  [cipher_mode]  print("[Decrypt with AES-256-GCM]")
+      line   756  [symmetric]  raise Exception("AES key not found. Please generate AES key first (option 9)")
+      line   773  [symmetric]  cipher = Cipher(algorithms.AES(self.aes_key), modes.GCM(nonce, tag))
+      line   773  [symmetric]  cipher = Cipher(algorithms.AES(self.aes_key), modes.GCM(nonce, tag))
+      line   773  [cipher_mode]  cipher = Cipher(algorithms.AES(self.aes_key), modes.GCM(nonce, tag))
+      line   789  [asymmetric]  """Complete RSA workflow demo"""
+      line   791  [asymmetric]  print("[Complete RSA Workflow Demo]")
+      line   810  [asymmetric]  test_message = "Test message for RSA-PSS signing"
+      line   818  [asymmetric]  print("✓ RSA workflow complete!")
+      line   861  [asymmetric]  print("2  : Generate keys (RSA-OAEP, RSA-PSS, ECC)")
+      line   867  [asymmetric]  print("[SIGNING - RSA-PSS]")
+      line   868  [asymmetric]  print("5  : Sign message with RSA-PSS")
+      line   869  [asymmetric]  print("6  : Verify RSA-PSS signature")
+      line   875  [symmetric]  print("[CIPHERING - AES]")
+      line   876  [symmetric]  print("9  : Generate AES key")
+      line   877  [symmetric]  print("10 : Encrypt message with AES")
+      line   878  [symmetric]  print("11 : Decrypt message with AES")
+      line   881  [asymmetric]  print("12 : Run complete RSA workflow demo")
+      line   909  [asymmetric]  print("1. RSA-PSS")
+      line   938  [symmetric]  key_store.encrypt_with_aes(message)
+      line   940  [symmetric]  key_store.decrypt_with_aes()
+
+  ▸ python/make_cert.py
+      line     2  [py_import]  from cryptography import x509
+      line     3  [py_import]  from cryptography.hazmat.backends import default_backend
+      line     4  [py_import]  from cryptography.hazmat.primitives import hashes, serialization
+      line     5  [py_import]  from cryptography.hazmat.primitives.asymmetric import rsa, padding
+      line     5  [asymmetric]  from cryptography.hazmat.primitives.asymmetric import rsa, padding
+      line     6  [py_import]  from cryptography.x509.oid import NameOID
+      line    10  [asymmetric]  private_key = rsa.generate_private_key(
+      line    12  [key_mgmt]  key_size=2048,
+      line    41  [signature]  ).sign(private_key, hashes.SHA256(), default_backend())
+      line    45  [key_mgmt]  f.write(private_key.private_bytes(
+      line    52  [key_mgmt]  f.write(certificate.public_bytes(serialization.Encoding.PEM))
+      line    56  [signature]  signature = private_key.sign(
+      line    68  [signature]  public_key.verify(
+
+  ▸ shell/certs/demo_user_rsa.crt
+      line     1  [key_mgmt]  -----BEGIN CERTIFICATE-----
+
+  ▸ shell/cnf/demo_user_rsa.cnf
+      line     1  [asymmetric]  # OpenSSL Configuration File for RSA
+      line    24  [signature]  keyUsage = digitalSignature, keyEncipherment, dataEncipherment
+
+  ▸ shell/cnf/ursa.cnf
+      line    27  [signature]  keyUsage = digitalSignature, keyEncipherment, dataEncipherment
+      line    77  [signature]  keyUsage = nonRepudiation, digitalSignature, keyEncipherment
+      line    83  [signature]  keyUsage = critical, digitalSignature, cRLSign, keyCertSign
+
+  ▸ shell/csr/demo_user_rsa.csr
+      line     1  [key_mgmt]  -----BEGIN CERTIFICATE REQUEST-----
+
+  ▸ shell/demo_functions.sh
+      line    66  [asymmetric]  label="[Generating RSA-OAEP key for encryption]"
+      line    75  [asymmetric]  openssl rsa -in "$RSA_OAEP_PRIVATE_KEY" -pubout -out "$RSA_OAEP_PUBLIC_KEY" 2>/dev/null
+      line    77  [asymmetric]  echo "✓ RSA-OAEP key pair generated ($RSA_KEY_LENGTH bits)"
+      line    88  [asymmetric]  # OpenSSL Configuration File for RSA
+      line    90  [asymmetric]  name_main = ${ENTITY_NAME}.rsa${RSA_KEY_LENGTH}
+      line   111  [signature]  keyUsage = digitalSignature, keyEncipherment, dataEncipherment
+      line   148  [signature]  keyUsage = digitalSignature
+      line   163  [asymmetric]  # OpenSSL Configuration File for DSA
+      line   165  [asymmetric]  name_main = ${ENTITY_NAME}.dsa
+      line   185  [signature]  keyUsage = digitalSignature
+      line   208  [asymmetric]  echo "1. RSA-PSS"
+      line   210  [asymmetric]  echo "3. DSA"
+      line   226  [asymmetric]  echo "✗ RSA private key not found. Generate it first."
+      line   235  [asymmetric]  echo "✓ RSA CSR created: $CSR_RSA_FILE"
+      line   260  [asymmetric]  echo "✗ DSA private key not found. Generate it first."
+      line   269  [asymmetric]  echo "✓ DSA CSR created: $CSR_DSA_FILE"
+      line   285  [asymmetric]  echo "1. RSA-PSS"
+      line   287  [asymmetric]  echo "3. DSA"
+      line   307  [asymmetric]  echo "1. RSA Certificate"
+      line   309  [asymmetric]  echo "3. DSA Certificate"
+      line   342  [asymmetric]  echo "[Sign Message with RSA-PSS]"
+      line   347  [asymmetric]  echo "✗ RSA private key not found. Generate it first."
+      line   356  [asymmetric]  echo "[Verify RSA-PSS Signature]"
+      line   361  [asymmetric]  echo "✗ RSA public key not found."
+      line   407  [symmetric]  # AES DEMOS
+      line   412  [symmetric]  echo "[Generate AES-256 Key]"
+      line   423  [symmetric]  echo "[Encrypt with AES-256-CBC]"
+      line   423  [cipher_mode]  echo "[Encrypt with AES-256-CBC]"
+      line   428  [symmetric]  echo "✗ AES key not found. Generate it first."
+      line   446  [symmetric]  echo "[Decrypt with AES-256-CBC]"
+      line   446  [cipher_mode]  echo "[Decrypt with AES-256-CBC]"
+      line   477  [asymmetric]  echo "[Complete RSA Workflow Demo]"
+      line   498  [asymmetric]  echo "Test message for RSA-PSS signing" > "$PLAINTEXT_FILE"
+      line   523  [asymmetric]  echo "✓ RSA workflow complete!"
+
+  ▸ shell/demo_parameters.sh
+      line    29  [asymmetric]  # RSA Keys
+      line    41  [asymmetric]  # DSA Keys
+      line   100  [symmetric]  AES_MODE="aes-256-cbc"
+      line   100  [cipher_mode]  AES_MODE="aes-256-cbc"
+
+  ▸ shell/key_store/demo_user_dsa_public.pem
+      line     1  [key_mgmt]  -----BEGIN PUBLIC KEY-----
+
+  ▸ shell/key_store/demo_user_ecc_public.pem
+      line     1  [key_mgmt]  -----BEGIN PUBLIC KEY-----
+
+  ▸ shell/key_store/demo_user_rsa_oaep_public.pem
+      line     1  [key_mgmt]  -----BEGIN PUBLIC KEY-----
+
+  ▸ shell/key_store/demo_user_rsa_pss_public.pem
+      line     1  [key_mgmt]  -----BEGIN PUBLIC KEY-----
+
+  ▸ shell/key_store/dsa_params.pem
+      line     1  [asymmetric]  -----BEGIN DSA PARAMETERS-----
+      line    14  [asymmetric]  -----END DSA PARAMETERS-----
+
+  ▸ shell/main.sh
+      line     3  [symmetric]  # Demonstrates: CSR creation, Certificate generation, Signing (ECC/RSA-PSS), and Ciphering (AES)
+      line     3  [asymmetric]  # Demonstrates: CSR creation, Certificate generation, Signing (ECC/RSA-PSS), and Ciphering (AES)
+      line    18  [asymmetric]  echo "2  : Generate keys (RSA-OAEP, RSA-PSS, ECC)"
+      line    25  [asymmetric]  echo "[SIGNING - RSA-PSS]"
+      line    26  [asymmetric]  echo "6  : Sign message with RSA-PSS"
+      line    27  [asymmetric]  echo "7  : Verify RSA-PSS signature"
+      line    33  [symmetric]  echo "[CIPHERING - AES]"
+      line    34  [symmetric]  echo "10 : Generate AES key"
+      line    35  [symmetric]  echo "11 : Cipher message with AES"
+      line    36  [symmetric]  echo "12 : Decipher message with AES"
+      line    39  [asymmetric]  echo "13 : Run complete RSA workflow demo"
+
+  ▸ shell/main_functions.sh
+      line    52  [symmetric]  label="[Generating AES-256 key for ciphering]"
+      line    57  [symmetric]  echo "✓ AES-256 key generated"
+      line    62  [kdf]  label="[Generating HMAC-SHA256 key]"
+      line    67  [kdf]  echo "✓ HMAC-SHA256 key generated"
+      line    72  [asymmetric]  label="[Generating RSA-PSS key for signing]"
+      line    81  [asymmetric]  openssl rsa -in "$RSA_PSS_PRIVATE_KEY" -pubout -out "$RSA_PSS_PUBLIC_KEY" 2>/dev/null
+      line    83  [asymmetric]  echo "✓ RSA-PSS key pair generated ($RSA_KEY_LENGTH bits)"
+      line    89  [asymmetric]  label="[Generating DSA key for signing]"
+      line    92  [asymmetric]  # Generate DSA parameters first
+      line    95  [asymmetric]  # Generate DSA key
+      line    99  [asymmetric]  openssl dsa -in "${KEY_STORE_PATH}${KEY_NAME}_dsa_private.pem" \
+      line   102  [asymmetric]  echo "✓ DSA key pair generated"
+      line   122  [asymmetric]  label="[Generating RSA certificate]"
+      line   133  [asymmetric]  echo "✓ RSA certificate generated"
+      line   139  [asymmetric]  label="[Generating DSA certificate]"
+      line   150  [asymmetric]  echo "✓ DSA certificate generated"
+      line   176  [symmetric]  echo "AES-256 Key (hex):"
+      line   179  [symmetric]  echo "✗ AES key not found. Generate it first."
+      line   185  [kdf]  echo "HMAC-SHA256 Key (hex):"
+      line   188  [kdf]  echo "✗ HMAC key not found. Generate it first."
+      line   194  [asymmetric]  echo "RSA Private Key:"
+      line   195  [asymmetric]  openssl rsa -in "$RSA_PSS_PRIVATE_KEY" -noout -text | head -20
+      line   197  [asymmetric]  echo "✗ RSA key not found. Generate it first."
+      line   203  [asymmetric]  echo "DSA Private Key:"
+      line   204  [asymmetric]  openssl dsa -in "${KEY_STORE_PATH}${KEY_NAME}_dsa_private.pem" -noout -text | head -20
+      line   206  [asymmetric]  echo "✗ DSA key not found. Generate it first."
+      line   234  [symmetric]  local encrypted=$(echo -n "$message" | openssl enc -aes-256-cbc -K "$key" -iv "$IV" | xxd -p | tr -d '\n')
+      line   234  [cipher_mode]  local encrypted=$(echo -n "$message" | openssl enc -aes-256-cbc -K "$key" -iv "$IV" | xxd -p | tr -d '\n')
+      line   247  [symmetric]  local decrypted=$(echo "$encrypted" | xxd -r -p | openssl enc -d -aes-256-cbc -K "$key" -iv "$IV")
+      line   247  [cipher_mode]  local decrypted=$(echo "$encrypted" | xxd -r -p | openssl enc -d -aes-256-cbc -K "$key" -iv "$IV")
+      line   263  [symmetric]  openssl enc -aes-256-cbc -in "${message_store_path}${file_input}" \
+      line   263  [cipher_mode]  openssl enc -aes-256-cbc -in "${message_store_path}${file_input}" \
+      line   282  [symmetric]  openssl enc -d -aes-256-cbc -in "${message_store_path}${file_input}" \
+      line   282  [cipher_mode]  openssl enc -d -aes-256-cbc -in "${message_store_path}${file_input}" \
+      line   304  [asymmetric]  echo "✓ Message signed with RSA-PSS"
+
+  ▸ shell/readme.md
+      line     5  [symmetric]  Multiple Algorithms: RSA-OAEP, RSA-PSS, ECC (P-256), AES-256
+      line     5  [asymmetric]  Multiple Algorithms: RSA-OAEP, RSA-PSS, ECC (P-256), AES-256
+
+  ▸ shell/setup.sh
+      line    92  [signature]  echo "  - signatures/     (digital signatures)"
+      line   116  [asymmetric]  echo "  2. Try option 13:    Complete RSA workflow"
+      line   124  [asymmetric]  echo "  Select option 13 (Complete RSA workflow demo)"

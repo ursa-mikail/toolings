@@ -1,0 +1,578 @@
+================================================================================
+  REPO       : credit_card_tokens
+  FULL NAME  : ursa-mikail/credit_card_tokens
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Python
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/credit_card_tokens
+  MATCHES    : 557
+================================================================================
+
+  ▸ collisions/midriff_tokenization_demo.py
+      line     1  [fpe_token]  class TokenizationSystem:
+      line     6  [kdf]  self.hmac_pointers = {}  # HMAC pointer storage
+      line     9  [fpe_token]  print(f"Initialized Tokenization System")
+      line    11  [kdf]  print(f"HMAC Algorithm: SHA-512\n")
+      line    15  [kdf]  # Use HMAC-SHA512 for primary token
+      line    16  [kdf]  hmac_obj = hmac.new(
+      line    24  [kdf]  """Generate HMAC pointer token (pointer to pointer)"""
+      line    27  [kdf]  hmac_obj = hmac.new(
+      line    34  [fpe_token]  def tokenize(self, card_number: str) -> Dict:
+      line    35  [fpe_token]  """Tokenize a credit card number with collision handling"""
+      line    51  [kdf]  # Generate HMAC pointer
+      line   101  [fpe_token]  def detokenize(self, token: str) -> Optional[Dict]:
+      line   102  [kdf]  """Retrieve original card number using either primary token or HMAC pointer"""
+      line   103  [kdf]  # Try HMAC pointer first
+      line   127  [symmetric]  print("HMAC-SHA512 provides excellent collision resistance")
+      line   127  [kdf]  print("HMAC-SHA512 provides excellent collision resistance")
+      line   143  [fpe_token]  def correct_tokenization_areas():
+      line   144  [fpe_token]  """Show the ACTUAL tokenization areas preserving BIN and last 4 digits"""
+      line   146  [fpe_token]  print("CORRECT TOKENIZATION: PRESERVE BIN & LAST 4, TOKENIZE MIDDLE")
+      line   157  [fpe_token]  print(f"\n📋 ACTUAL TOKENIZATION PATTERN:")
+      line   160  [fpe_token]  print(f"   Tokenized: Middle 6 digits (for 16-digit cards)")
+      line   167  [fpe_token]  middle_part = card[6:12]  # 6 digits to tokenize
+      line   169  [fpe_token]  tokenized_display = f"{bin_part}{'T' * 6}{last4_part}"
+      line   172  [fpe_token]  middle_part = card[6:11]  # 5 digits to tokenize
+      line   174  [fpe_token]  tokenized_display = f"{bin_part}{'T' * 5}{last4_part}"
+      line   179  [fpe_token]  print(f"T:  {' '.join(f'{char:>2}' for char in tokenized_display)}")
+      line   183  [fpe_token]  correct_tokenization_areas()
+      line   186  [fpe_token]  CORRECT TOKENIZATION: PRESERVE BIN & LAST 4, TOKENIZE MIDDLE
+      line   189  [fpe_token]  📋 ACTUAL TOKENIZATION PATTERN:
+      line   192  [fpe_token]  Tokenized: Middle 6 digits (for 16-digit cards)
+      line   224  [fpe_token]  def real_world_tokenization_examples():
+      line   225  [fpe_token]  """Show real-world tokenization examples from major providers"""
+      line   228  [fpe_token]  print("REAL-WORLD TOKENIZATION EXAMPLES")
+      line   244  [fpe_token]  print(f"\n🏢 PROVIDER TOKENIZATION PATTERNS:")
+      line   260  [fpe_token]  real_world_tokenization_examples()
+      line   265  [fpe_token]  REAL-WORLD TOKENIZATION EXAMPLES
+      line   271  [fpe_token]  🏢 PROVIDER TOKENIZATION PATTERNS:
+
+  ▸ collisions/midriff_weakness_demo.py
+      line     2  [fpe_token]  Credit card tokenization uses randomly generated tokens and strong, modern cryptographic functions.
+      line     8  [hash_func]  Full MD5: 128 bits - cryptographically secure
+      line    16  [hash_func]  Takes only first N bits of MD5 hash
+      line    30  [py_import]  import hashlib
+      line    31  [py_import]  import hmac
+      line    31  [kdf]  import hmac
+      line    32  [py_import]  import secrets
+      line   183  [fpe_token]  class MidriffTokenizationSystem:
+      line   184  [fpe_token]  """Midriff tokenization system with adjustable N-bit weak hashing"""
+      line   188  [fpe_token]  self.N = N  # Number of bits for weak tokenization
+      line   203  [hash_func]  """Weak hash using only first N bits of MD5"""
+      line   204  [hash_func]  md5_hash = hashlib.md5(data.encode()).hexdigest()
+      line   207  [hash_func]  binary_hash = bin(int(md5_hash, 16))[2:].zfill(128)  # 128-bit MD5 in binary
+      line   214  [fpe_token]  def tokenize_midriff(self, card_number: str) -> Dict:
+      line   215  [fpe_token]  """Tokenize using midriff + N-bit weak hashing"""
+      line   252  [hash_func]  'full_md5': hashlib.md5(midriff.encode()).hexdigest()
+      line   356  [hash_func]  print(f"Full MD5 of midriff: {self.token_map[token]['full_md5']}")
+      line   369  [fpe_token]  print("MIDRIFF TOKENIZATION COLLISION DEMONSTRATION")
+      line   382  [fpe_token]  system = MidriffTokenizationSystem(N=N)
+      line   394  [fpe_token]  result = system.tokenize_midriff(card)
+      line   426  [fpe_token]  system = MidriffTokenizationSystem(N=4)
+      line   446  [fpe_token]  result1 = system.tokenize_midriff(card1)
+      line   447  [fpe_token]  result2 = system.tokenize_midriff(card2)
+      line   472  [fpe_token]  """Compare midriff tokenization vs full card tokenization"""
+      line   475  [fpe_token]  print("MIDRIFF VS FULL CARD TOKENIZATION")
+      line   478  [fpe_token]  system = MidriffTokenizationSystem(N=4)
+      line   488  [fpe_token]  print(f"\nTokenization Examples (N=4 bits):")
+      line   492  [fpe_token]  result = system.tokenize_midriff(card)
+      line   493  [hash_func]  full_md5 = hashlib.md5(card.encode()).hexdigest()
+      line   494  [hash_func]  midriff_md5 = hashlib.md5(result['midriff'].encode()).hexdigest()
+      line   499  [hash_func]  print(f"  Full MD5: {full_md5}")
+      line   500  [hash_func]  print(f"  Midriff MD5: {midriff_md5}")
+
+  ▸ collisions/midriff_weakness_demo.trace
+      line    69  [hash_func]  Full MD5 of midriff: eb21b505dd045f5a46949ff0b6df6e09
+      line   112  [hash_func]  Full MD5 of midriff: 5ed91faa65f52c2afe8c5864fdfb0b2e
+      line   163  [hash_func]  Full MD5 of midriff: 711296df418a63dd380960fc15cad569
+      line   210  [hash_func]  Full MD5 of midriff: edb756698a3383f440dc36d2a412d864
+      line   249  [hash_func]  Full MD5 of midriff: 593089e761681cbe3b5d98471230a5f1
+      line   308  [hash_func]  Full MD5 of midriff: 229bcde7c88c5d883d16ae85139aa5a4
+      line   351  [hash_func]  Full MD5 of midriff: f6a5fbdd13b70c473fc97d07c8fe1a9a
+      line   370  [hash_func]  Full MD5 of midriff: a635237b24c454ceeb9059e78c03df00
+      line   385  [hash_func]  Full MD5 of midriff: 3fdc92b6f3fd18d6a4bb4bf019923f4f
+      line   420  [hash_func]  Full MD5 of midriff: 2379ded4561cf277e910c6f08516201a
+      line   443  [hash_func]  Full MD5 of midriff: 2006303f453eb5ea42e49a6b189a3031
+      line   462  [hash_func]  Full MD5 of midriff: 82ce0ae8ebe37b7a41071ffe947c4f51
+      line   493  [hash_func]  Full MD5 of midriff: 7cb5b22f350b34f57fa02fe7c3fa0e96
+      line   512  [hash_func]  Full MD5 of midriff: 056034ae9f3487c7e16e4939a5381228
+      line   527  [hash_func]  Full MD5 of midriff: a3ed2159da834d8a2a8df1ec24b54d64
+      line   542  [hash_func]  Full MD5 of midriff: 94004eea12c20912bfaee1ff3d680cca
+      line   565  [hash_func]  Full MD5 of midriff: 73b5de15e75471cf047c59009f0c7de0
+      line   580  [hash_func]  Full MD5 of midriff: a1e54af87cb452581c3ce364015b8c99
+      line   603  [hash_func]  Full MD5 of midriff: c38fb9c0bbfe1cbf725b48d08def965f
+      line   618  [hash_func]  Full MD5 of midriff: 33a091992ff3bbe95618be5980c9e14f
+      line   637  [hash_func]  Full MD5 of midriff: 8f865e4a9e943028257c1865fd0074c9
+      line   664  [hash_func]  Full MD5 of midriff: acc91aba359c8f843404d1fe7d0f305d
+      line   683  [hash_func]  Full MD5 of midriff: d1fbbeb938c779bf061b6a112788db9f
+      line   706  [hash_func]  Full MD5 of midriff: a27be38734180e5e39a2ffafaee62636
+      line   717  [hash_func]  Full MD5 of midriff: a07679aa63bd6e925e440118d547b745
+      line   728  [hash_func]  Full MD5 of midriff: 3080704ba7417e19d5827cf33a6fff2b
+      line   751  [hash_func]  Full MD5 of midriff: ec6ab10bf51da7e45bba8985a2fe1385
+      line   778  [hash_func]  Full MD5 of midriff: f2bfb91ecdd09aaacda997bab887033d
+      line   809  [hash_func]  Full MD5 of midriff: c279771df399227fc42dc9608897aa6b
+      line   824  [hash_func]  Full MD5 of midriff: 2cd1804cda28ce212c9fd63225fff1d3
+      line   847  [hash_func]  Full MD5 of midriff: ff9d06fcf72a9aa40c19ae4351bc2d99
+      line   874  [hash_func]  Full MD5 of midriff: 922fc09626b212b3c48e223023be5067
+      line   901  [hash_func]  Full MD5 of midriff: 1bb6ebc186b9ec008866a71b2393b683
+      line   916  [hash_func]  Full MD5 of midriff: 0999365eb913b985518e6fa04783fdbe
+      line   939  [hash_func]  Full MD5 of midriff: b2570a236cff90e2c53ca0ce46da42d5
+      line   958  [hash_func]  Full MD5 of midriff: 779d15635907a2a2969bad17c80eddc3
+      line   981  [hash_func]  Full MD5 of midriff: 4409f852481f0ab10cc31461957eb02f
+      line  1004  [hash_func]  Full MD5 of midriff: fe3d29950243b88124c6689eb87a84de
+      line  1015  [hash_func]  Full MD5 of midriff: b960ddc5bac2641e24fdb6195493edc4
+      line  1030  [hash_func]  Full MD5 of midriff: a902376b8d26eff7d2211172926de245
+      line  1049  [hash_func]  Full MD5 of midriff: e0fec97fa144bc07856d90e36bf9d95e
+      line  1064  [hash_func]  Full MD5 of midriff: d3e1d159b5bf44b9d29cc33e859ef2a8
+      line  1079  [hash_func]  Full MD5 of midriff: 008d2892d80578a58b13f51b6fa664c7
+      line  1090  [hash_func]  Full MD5 of midriff: 1eb8af5539490f375c74e2e19b13b78c
+      line  1105  [hash_func]  Full MD5 of midriff: 6af6c43627e2124ee3c5bef68539628d
+      line  1120  [hash_func]  Full MD5 of midriff: 42682f511887d88866a69c4c94d5630e
+      line  1139  [hash_func]  Full MD5 of midriff: f31af8febce80187d87e2a39d4fa81ca
+      line  1154  [hash_func]  Full MD5 of midriff: bb36fc25eaf1fec8425be916e75021b5
+      line  1173  [hash_func]  Full MD5 of midriff: 41d8d5d9cefddf5069ed74e61ad2d545
+      line  1192  [hash_func]  Full MD5 of midriff: 9882c0093e06fbaf536b4c19e94e6029
+      line  1207  [hash_func]  Full MD5 of midriff: 0b5896c698956eec8415b7787b1ff2fc
+      line  1222  [hash_func]  Full MD5 of midriff: 3edef00cb832d4ec00023e8656d2ea41
+      line  1233  [hash_func]  Full MD5 of midriff: 2e205cc789edb7d44232517df463a1c0
+      line  1268  [hash_func]  Full MD5 of midriff: b48b15993b1609d0443d61cc7b935a82
+      line  1287  [hash_func]  Full MD5 of midriff: a5e75500beba3f803966ec19f84710f4
+      line  1298  [hash_func]  Full MD5 of midriff: 84014a311a9dd2976a7cf8b7e5438dc5
+      line  1313  [hash_func]  Full MD5 of midriff: ca7bcdc182c48b6a632b735d37ba5a44
+      line  1328  [hash_func]  Full MD5 of midriff: de573b158bbb448b0bfe309f484a9ad5
+      line  1339  [hash_func]  Full MD5 of midriff: 78ea1f54d91be6dcfa5c5e13e43f0c52
+      line  1354  [hash_func]  Full MD5 of midriff: 4a4f0cd04257bed108795f960f9bc2d1
+      line  1361  [hash_func]  Full MD5 of midriff: f4e2e0470e2c9541a273678715373028
+      line  1380  [hash_func]  Full MD5 of midriff: 53affebce1dc7aa8a345ebb8fe51d0b2
+      line  1399  [hash_func]  Full MD5 of midriff: 6565988529686d2a2b8e06ef1cbcc919
+      line  1414  [hash_func]  Full MD5 of midriff: 5c8c4df838bb5087835f5a71faedd2de
+      line  1433  [hash_func]  Full MD5 of midriff: 15116f6a85b417d465defa02d8efc18e
+      line  1448  [hash_func]  Full MD5 of midriff: bf4a137a4316e784eb2acbe1029c26c1
+      line  1467  [hash_func]  Full MD5 of midriff: 9bb9e26f9901e57bd2f7868a3ecba8b1
+      line  1474  [hash_func]  Full MD5 of midriff: 18a4bfc8a7ce48739fb14b4f8fa103f7
+      line  1485  [hash_func]  Full MD5 of midriff: 4f444bd4663f80db7c76c93a915d994a
+      line  1492  [hash_func]  Full MD5 of midriff: 760534bb5c44230f3e63a6eea53f9e50
+      line  1519  [hash_func]  Full MD5 of midriff: 629c41dc31bcc14e1fa9b8ee96d0d2aa
+      line  1546  [hash_func]  Full MD5 of midriff: 91dce975c4e75ed1245e16967f18385a
+      line  1569  [hash_func]  Full MD5 of midriff: e6db3bb5fd2cedb023a7a33230154731
+      line  1584  [hash_func]  Full MD5 of midriff: 04208159a72134e3f97cf255e3ef769b
+      line  1603  [hash_func]  Full MD5 of midriff: 8c08623aa959e88917b9e703e3293664
+      line  1614  [hash_func]  Full MD5 of midriff: 6ef53f2de392a18baae4c7b61576b5b1
+      line  1645  [hash_func]  Full MD5 of midriff: fd7bd9cd8c459af8b3f590b56fe8fd1e
+      line  1672  [hash_func]  Full MD5 of midriff: aa6619cf29fca97929068427f1a3f13e
+      line  1691  [hash_func]  Full MD5 of midriff: aef34eacbc9d9c2835e9d2e347bbffe4
+      line  1718  [hash_func]  Full MD5 of midriff: bc63501218b668130b9b1c27d4388dd1
+      line  1733  [hash_func]  Full MD5 of midriff: 0171cd6a3bee9f94cd99c7dfec7c5268
+      line  1740  [hash_func]  Full MD5 of midriff: 996189720997c81919c0a7c7d49f8159
+      line  1755  [hash_func]  Full MD5 of midriff: 3a2f185a5a2b91d12b41ef439e99bc4d
+      line  1770  [hash_func]  Full MD5 of midriff: 12c89aef1466a4132b48f7e432cb2e79
+      line  1785  [hash_func]  Full MD5 of midriff: adb9916464fabedd5a0847b376cc6d60
+      line  1800  [hash_func]  Full MD5 of midriff: d4b82a44f595b3d1affef659366b4e35
+      line  1819  [hash_func]  Full MD5 of midriff: 4ef5483f37a9ecedaf7b446eb5693f71
+      line  1838  [hash_func]  Full MD5 of midriff: 8ae614fdc6b549aa690d959a1f974e17
+      line  1849  [hash_func]  Full MD5 of midriff: 812343d1d50dcbdc77eba6a079f04021
+      line  1868  [hash_func]  Full MD5 of midriff: 1cc7196c4120866d895018c514a1a2ee
+      line  1899  [hash_func]  Full MD5 of midriff: 47d6088841767158ab92a72c5d39494b
+      line  1922  [hash_func]  Full MD5 of midriff: 903b056d43f47455c94f6a24439107d7
+      line  1937  [hash_func]  Full MD5 of midriff: 26b9ac2411c0833d10bcd2b94dccdc9f
+      line  1960  [hash_func]  Full MD5 of midriff: 0818693808861b54a52573684015c724
+      line  1975  [hash_func]  Full MD5 of midriff: 5b57c95a600a2181facef84434e0141e
+      line  1994  [hash_func]  Full MD5 of midriff: cc1624cf5806a9287b2d54a28349b802
+      line  2013  [hash_func]  Full MD5 of midriff: 6f01aaabb020fba9dd64b9ae7c0c96af
+      line  2044  [hash_func]  Full MD5 of midriff: 93cb8aa875905f1d1611950c44712d12
+      line  2067  [hash_func]  Full MD5 of midriff: 139dcd7eb9b7bcfe6940248897be0c49
+      line  2086  [hash_func]  Full MD5 of midriff: 529d2a3f94429921cc9d7a2aa14666da
+      line  2101  [hash_func]  Full MD5 of midriff: 7fff82578217bc74210f8ef10c933f43
+      line  2120  [hash_func]  Full MD5 of midriff: 742067798c7140bc2ea278903934abca
+      line  2131  [hash_func]  Full MD5 of midriff: 3ce97484c25fcae7e82043441d931d90
+      line  2158  [hash_func]  Full MD5 of midriff: 5e817122f36d0ea4b27586c9f5423e1e
+      line  2173  [hash_func]  Full MD5 of midriff: 646fb75d468118b9534c8498f1e1fd94
+      line  2188  [hash_func]  Full MD5 of midriff: b372492f3cbb4b479bdccb469e0b2847
+      line  2211  [hash_func]  Full MD5 of midriff: 2ff4bd779b4aa85ed7d8cc2fdf8d761c
+      line  2226  [hash_func]  Full MD5 of midriff: 800eba1acce95760ec63d44f7d930a6d
+      line  2233  [hash_func]  Full MD5 of midriff: 9cd47c029546533a5737d15c4846d25f
+      line  2252  [hash_func]  Full MD5 of midriff: edfae429340a37dde6384df6779a913c
+      line  2263  [hash_func]  Full MD5 of midriff: d7a69d27eb95f534158b29c56a181be1
+      line  2278  [hash_func]  Full MD5 of midriff: ddfe88358c4b02fe642e76814908b75d
+      line  2301  [hash_func]  Full MD5 of midriff: 2a516771ec3d7d514858c1150bfab49f
+      line  2316  [hash_func]  Full MD5 of midriff: 5d55700c671a83508069831e919dbf99
+      line  2331  [hash_func]  Full MD5 of midriff: 85d576f75f2e44d23f592ffc61c236c6
+      line  2346  [hash_func]  Full MD5 of midriff: 118b7144c50f924a96bd0756bd9c362f
+      line  2361  [hash_func]  Full MD5 of midriff: 89ee006344c97e17a8bd321bca2ca995
+      line  2372  [hash_func]  Full MD5 of midriff: ee422e8e30cd0157f2936364046445e6
+      line  2383  [hash_func]  Full MD5 of midriff: cd1d79764c5666cd405dcce84609514c
+      line  2402  [hash_func]  Full MD5 of midriff: 97cf16a9d67706fe9628bfd344e2ee57
+      line  2417  [hash_func]  Full MD5 of midriff: c140e1d415acd31b940fda6ca6441a37
+      line  2440  [hash_func]  Full MD5 of midriff: ba443ed90701a2faec430b6baa96e99f
+      line  2459  [hash_func]  Full MD5 of midriff: d50466a2918be0ecb2789745eb387340
+      line  2470  [hash_func]  Full MD5 of midriff: 35bb4b0214b93f03f1cd494364fd3da7
+      line  2477  [hash_func]  Full MD5 of midriff: da201019476cbd8fad8a869e400fe304
+      line  2500  [hash_func]  Full MD5 of midriff: 4053a70feeeb427fa319dfcf1218adfb
+      line  2511  [hash_func]  Full MD5 of midriff: beb15f793b8abddb0e40f59767118746
+      line  2526  [hash_func]  Full MD5 of midriff: 575a5bd3bd1550b7bbbd1804ee7476c1
+      line  2537  [hash_func]  Full MD5 of midriff: dc292df6ec4c0f1f6ed1d9e3768c7e7f
+      line  2548  [hash_func]  Full MD5 of midriff: 3b2b47e74d048c4c1136d61f354308f6
+      line  2555  [hash_func]  Full MD5 of midriff: d6f2a95938e66c298a6a492807c42462
+      line  2570  [hash_func]  Full MD5 of midriff: 6dd59000d6db6263a33fcfda35f515a4
+      line  2581  [hash_func]  Full MD5 of midriff: 3d889d9690b648827a69280158502174
+      line  2608  [hash_func]  Full MD5 of midriff: 4d9b9262c212c8648759d70ccf5b8d6e
+      line  2627  [hash_func]  Full MD5 of midriff: 968d0dc6fd1737309e47309db29cf088
+      line  2650  [hash_func]  Full MD5 of midriff: 95dec98ff7fa96514cad05cd75389244
+      line  2665  [hash_func]  Full MD5 of midriff: 294a5f981008073e7c2b954b6eb2baec
+      line  2680  [hash_func]  Full MD5 of midriff: 0657be7e3b827cdf6e10b699270a238a
+      line  2691  [hash_func]  Full MD5 of midriff: 8b0c07a726744502d05168079dd98181
+      line  2710  [hash_func]  Full MD5 of midriff: 87a9de05ce054b3a0995f27c79d7a18f
+      line  2725  [hash_func]  Full MD5 of midriff: f10c600b9d61c0b33480e800fc0254de
+      line  2744  [hash_func]  Full MD5 of midriff: 8ddeb493c4201fc99d29d2784341cbba
+      line  2759  [hash_func]  Full MD5 of midriff: 4518dc548a4835069f0f10be83a59fba
+      line  2766  [hash_func]  Full MD5 of midriff: f5f711d19e04260371b51aebda5121b5
+      line  2781  [hash_func]  Full MD5 of midriff: 7073e4df427844c68082181ff6c9c614
+      line  2792  [hash_func]  Full MD5 of midriff: 34bb88a8f33efc684408ef485b9515c0
+      line  2803  [hash_func]  Full MD5 of midriff: 1a8c3bdc4062306495df06f2736fa7dc
+      line  2818  [hash_func]  Full MD5 of midriff: d05d5bfb0d6db1c745011911ac21b5f6
+      line  2841  [hash_func]  Full MD5 of midriff: c5409e828556b0080fe5a4c95385a531
+      line  2860  [hash_func]  Full MD5 of midriff: c45b6575ec98371b3f7bc30f6f3a6611
+      line  2875  [hash_func]  Full MD5 of midriff: 7b64b7e39ef900702c59a7abf04a1c11
+      line  2890  [hash_func]  Full MD5 of midriff: 7e13f115b814173ec95921914dcf6b70
+      line  2913  [hash_func]  Full MD5 of midriff: f0ed8c106126555617d416c5fdcd1438
+      line  2924  [hash_func]  Full MD5 of midriff: 367013da74e451f71e92f29261bd9559
+      line  2939  [hash_func]  Full MD5 of midriff: 32e3b21bc66430172c1dfab60d110b35
+      line  2950  [hash_func]  Full MD5 of midriff: 0fddbdaac38f71cc123ae2145dc772c1
+      line  2965  [hash_func]  Full MD5 of midriff: 6c22fe5f6b6361814fd3817eea25b75e
+      line  2984  [hash_func]  Full MD5 of midriff: 034e241f58f45cc45e0c229d9ca5dcad
+      line  3003  [hash_func]  Full MD5 of midriff: 5418320917bc891e0331329de58186df
+      line  3030  [hash_func]  Full MD5 of midriff: 25bb360b353e957c7960c7df577f2c5d
+      line  3045  [hash_func]  Full MD5 of midriff: e81c9c8ab978c6a14506a9b667dda38b
+      line  3056  [hash_func]  Full MD5 of midriff: e25e70266bef92feeef9b98ede022a70
+      line  3075  [hash_func]  Full MD5 of midriff: c9b73d507e2841ea354834f41ab17af3
+      line  3090  [hash_func]  Full MD5 of midriff: 1db4d8c8d5262f7b6bb8c2511ba82cf6
+      line  3097  [hash_func]  Full MD5 of midriff: 465d7bef516a19e8c26317abbd4f6aec
+      line  3116  [hash_func]  Full MD5 of midriff: 2410dccb51de5cdc83a0dacd357bebb3
+      line  3135  [hash_func]  Full MD5 of midriff: 6355c467178ec830c832d901e0c4c4d4
+      line  3142  [hash_func]  Full MD5 of midriff: b8064583be15573af1c3e40c0c838b41
+      line  3157  [hash_func]  Full MD5 of midriff: 07c3a86ef8ad6842a8c6c72bc0494890
+      line  3168  [hash_func]  Full MD5 of midriff: f92157cfbe89bab3b7ed892c90fdf09d
+      line  3183  [hash_func]  Full MD5 of midriff: 1721969ce0202a333c659611021b59e9
+      line  3190  [hash_func]  Full MD5 of midriff: ea04182300135e3b9c9a152de2a2f66e
+      line  3197  [hash_func]  Full MD5 of midriff: 4cd5905955197b4840b3426f0068d695
+      line  3220  [hash_func]  Full MD5 of midriff: 6108fe36e9d595f8e218f6388a44a96d
+      line  3227  [hash_func]  Full MD5 of midriff: e5b801bb8f4380c8b22aed2632664b59
+      line  3234  [hash_func]  Full MD5 of midriff: 486e81b20a74a2258cdd09a810c84db3
+      line  3257  [hash_func]  Full MD5 of midriff: 7ab689b20a794ecce7fd817019422e18
+      line  3272  [hash_func]  Full MD5 of midriff: e34e5368016f632eff8dcf3b1550a124
+      line  3291  [hash_func]  Full MD5 of midriff: 5ab0e3d60a108111009d13d1f415c78b
+      line  3306  [hash_func]  Full MD5 of midriff: c630e9d67d0fe0715eecd4cb9b889851
+      line  3313  [hash_func]  Full MD5 of midriff: 16ad11db16ca5e08dca3cab43b8e64d1
+      line  3332  [hash_func]  Full MD5 of midriff: 31fb599adc6459ce3c519b4b1d8e0680
+      line  3355  [hash_func]  Full MD5 of midriff: 9a593fa8275b6136340054fa0f31662c
+      line  3374  [hash_func]  Full MD5 of midriff: cb097d1ac98308bdf208becf34c12bf5
+      line  3389  [hash_func]  Full MD5 of midriff: 28eaf4c02b99c21c6e30c491183a6737
+      line  3408  [hash_func]  Full MD5 of midriff: e72b04808b4d30259b58f3e79e3420f9
+      line  3419  [hash_func]  Full MD5 of midriff: 7536becd5d2ce64dd166c3bc7add4cb0
+      line  3430  [hash_func]  Full MD5 of midriff: 51b271917e1d306dfebc392b15a1097f
+      line  3445  [hash_func]  Full MD5 of midriff: f851804b6ae99927dca9cd5a3ca0f51d
+      line  3456  [hash_func]  Full MD5 of midriff: 0ce78c43a7d572abd7a2ec5eb3030886
+      line  3471  [hash_func]  Full MD5 of midriff: cfd4bead2445359cd7619360f4f1d485
+      line  3482  [hash_func]  Full MD5 of midriff: e48742949d19fe59969ab570233fdfe6
+      line  3493  [hash_func]  Full MD5 of midriff: 9fb19879b4a6a1210edcd27f070ab500
+      line  3500  [hash_func]  Full MD5 of midriff: 86b72f0ba33897c4c4128fe924c2310b
+      line  3511  [hash_func]  Full MD5 of midriff: 55207a1e7340c4c4d889c02834e0b28d
+      line  3522  [hash_func]  Full MD5 of midriff: 4bd783e76742329a2b894b57cc62e8bf
+      line  3533  [hash_func]  Full MD5 of midriff: b1408dc52c2d9ed1dfa6020ea45b6639
+      line  3544  [hash_func]  Full MD5 of midriff: ef74d04a8d4372883ff5cf5a9ff2dea3
+      line  3559  [hash_func]  Full MD5 of midriff: fa1306ef758ae57e24e8174ea0686a2e
+      line  3574  [hash_func]  Full MD5 of midriff: d29031d0c10fd7a0de36d2c3cfa9cb57
+      line  3585  [hash_func]  Full MD5 of midriff: b7e571b580dbe7a9bf8e6144cfec3d1c
+      line  3600  [hash_func]  Full MD5 of midriff: 67280853ebf091bc3d20718a82bfac52
+      line  3607  [hash_func]  Full MD5 of midriff: ce7e680bc6ad7a94a1c7f50df624f8db
+      line  3618  [hash_func]  Full MD5 of midriff: 1f8f7df3d4ae356a27e6f2f51bb5cf71
+      line  3625  [hash_func]  Full MD5 of midriff: 21dd61a9c7122cdbd7a67db0af1f58a5
+      line  3636  [hash_func]  Full MD5 of midriff: 560d49e9e47abd1d83ed71330c4467c4
+      line  3643  [hash_func]  Full MD5 of midriff: 5f07b4b278c88dab676f88859bf0780a
+      line  3654  [hash_func]  Full MD5 of midriff: c0144d1980a70dcca18f5861672aee4d
+      line  3661  [hash_func]  Full MD5 of midriff: 50997e06ff1e723817ccf0deba6c5dbf
+      line  3676  [hash_func]  Full MD5 of midriff: 607fd3cd0c6d767e575fcd25c8b24878
+      line  3687  [hash_func]  Full MD5 of midriff: c7fbb4459899901cb5e8a5646bc625f7
+      line  3702  [hash_func]  Full MD5 of midriff: 69646d75579998c43d596e0f58742ecc
+      line  3713  [hash_func]  Full MD5 of midriff: b6868ee1c23c1c65d660f158f431fdd4
+      line  3728  [hash_func]  Full MD5 of midriff: 9db276735bb06f67cf7e3bbfaa7af1a3
+      line  3751  [hash_func]  Full MD5 of midriff: db6c5891c21bfc0d05c2274ecd13fe9c
+      line  3770  [hash_func]  Full MD5 of midriff: a70287a52d7e53078aab4469467c4737
+      line  3785  [hash_func]  Full MD5 of midriff: bd43eb7ea9c8cb7161aa51ec28b5d298
+      line  3796  [hash_func]  Full MD5 of midriff: 1082fd63bc964cd5164256c88884122b
+      line  3803  [hash_func]  Full MD5 of midriff: 0da4ab199b50ee49eeb1e7a25ecc4f06
+      line  3810  [hash_func]  Full MD5 of midriff: 375f3fdad37051926e3f72f9e247d867
+      line  3817  [hash_func]  Full MD5 of midriff: a490b1d399960393ef1eec90c1ad1705
+      line  3824  [hash_func]  Full MD5 of midriff: 9e151ceae9cd0cdd53bac1c103cee24b
+      line  3843  [hash_func]  Full MD5 of midriff: a85e5982970fffd6d6ad690b8dbde4b3
+      line  3850  [hash_func]  Full MD5 of midriff: af27fac364a147766d994fe688719c3d
+      line  3869  [hash_func]  Full MD5 of midriff: e9c0605600518ad8b81fc343b300f409
+      line  3880  [hash_func]  Full MD5 of midriff: b0886cdce91635b40ead075af50a1bdf
+      line  3887  [hash_func]  Full MD5 of midriff: e102a4fe46ed439b61c0c90aa92addd2
+      line  3898  [hash_func]  Full MD5 of midriff: c8eab9351b48980eb4028911d41e23db
+      line  3905  [hash_func]  Full MD5 of midriff: 0ac303aeb2d51c1ac562d728442285d4
+      line  3916  [hash_func]  Full MD5 of midriff: d8143b6c1af12dfe9d3ccb99a9966612
+      line  3923  [hash_func]  Full MD5 of midriff: 140a4e02fa159e707d81099ba4065dae
+      line  3934  [hash_func]  Full MD5 of midriff: ebef995e5a27fbae38121bb9a8166647
+      line  3945  [hash_func]  Full MD5 of midriff: df35e6bd1ad078c8f6d5eff86b507540
+      line  3952  [hash_func]  Full MD5 of midriff: f7fe146c4b759e45601e3b14fe7bb350
+      line  3959  [hash_func]  Full MD5 of midriff: 5880f9c872c5c713c0693781e17fe95c
+      line  3966  [hash_func]  Full MD5 of midriff: 7d6dfeafe03c39f0745bdb235cfadcb6
+      line  3977  [hash_func]  Full MD5 of midriff: 2b53deff455858db723ed0e68368c2fb
+      line  3984  [hash_func]  Full MD5 of midriff: fc925f457ff1802a5bf4bd87ced9e372
+      line  3991  [hash_func]  Full MD5 of midriff: 270c6f007a9d9c7318792b3705fb14b8
+      line  3998  [hash_func]  Full MD5 of midriff: 72c8e4a466145d4963aed13622975df1
+      line  4033  [hash_func]  Full MD5 of midriff: 968491afabed5b2dc02a13fdaa2603a6
+      line  4040  [hash_func]  Full MD5 of midriff: 11f0104d6062fe2c4f104a70da9c0e84
+      line  4047  [hash_func]  Full MD5 of midriff: 6bc5dc72b965b9a47be0b3c9a95d8534
+      line  4054  [hash_func]  Full MD5 of midriff: 24c1b4e4cd23b046bd3ef10a99007d74
+      line  4065  [hash_func]  Full MD5 of midriff: 68587b8edc14f40e3659db1522fc0e27
+      line  4072  [hash_func]  Full MD5 of midriff: b4e37de48aaa4a28538384904b75b4df
+      line  4079  [hash_func]  Full MD5 of midriff: 37fd12d0bf53337b800259b27994d600
+      line  4086  [hash_func]  Full MD5 of midriff: edc2f50a5bf41ed7f6660f727bd69f01
+      line  4093  [hash_func]  Full MD5 of midriff: 2f2da70d013e24e6ac4d59fa09534d8a
+      line  4104  [hash_func]  Full MD5 of midriff: 1a021d0d2084797a1e52b92567a3d970
+      line  4111  [hash_func]  Full MD5 of midriff: b216f762324de97706127af6958bb506
+      line  4118  [hash_func]  Full MD5 of midriff: b9524f9c23316590ef9d73bddad5879b
+      line  4125  [hash_func]  Full MD5 of midriff: d3d4fb82baa887b3f836e6529c5e974f
+      line  4132  [hash_func]  Full MD5 of midriff: 74775fbd5b90d186dc2f80262f5a17c3
+      line  4143  [hash_func]  Full MD5 of midriff: 825ca0b6b168c9affa35ec1f831f3764
+      line  4154  [hash_func]  Full MD5 of midriff: fbce157af25a1d55f399ac193516e2b6
+      line  4161  [hash_func]  Full MD5 of midriff: 3c7ff385eec56be717160ea65cc3fb4f
+      line  4168  [hash_func]  Full MD5 of midriff: e566be74ec7ff9264c43b175261a3eed
+      line  4179  [hash_func]  Full MD5 of midriff: 65871e2811527fff4487905c07d5b1de
+      line  4186  [hash_func]  Full MD5 of midriff: d410862db3863612f70b8efe618ca080
+      line  4193  [hash_func]  Full MD5 of midriff: ce0b08abbe355d7cb793d0296dc8e4ce
+      line  4200  [hash_func]  Full MD5 of midriff: c75dddab24bce28f7b61a734697fa2f5
+      line  4207  [hash_func]  Full MD5 of midriff: 8b8aa272fa78a5efe8fe9310be40d628
+      line  4214  [hash_func]  Full MD5 of midriff: 3d7485e2b748147d8ddda22d69b51876
+      line  4225  [hash_func]  Full MD5 of midriff: d0f4fab7bae7aef08d1578066de233ca
+      line  4232  [hash_func]  Full MD5 of midriff: e28c1e5a569468738c542cb154a7f67e
+      line  4239  [hash_func]  Full MD5 of midriff: ddc019edb1b67c5f3d334752211310d3
+      line  4246  [hash_func]  Full MD5 of midriff: ad7fee131eabb2ca1c52302f92ef88e0
+      line  4253  [hash_func]  Full MD5 of midriff: 45cc171db69d04e63ded431c56978c66
+      line  4260  [hash_func]  Full MD5 of midriff: 9a3f926805cb4f0a0e648de2a06c64ec
+      line  4267  [hash_func]  Full MD5 of midriff: 352da3fea054777ec9ce9077681b73f9
+      line  4274  [hash_func]  Full MD5 of midriff: 85ae85a865bd56ac5ab75c32b5cadad4
+      line  4281  [hash_func]  Full MD5 of midriff: 049f98018e3b54ce1cbf7d4e9c508407
+      line  4288  [hash_func]  Full MD5 of midriff: 9906d025facdd20c831531f2a099231a
+      line  4295  [hash_func]  Full MD5 of midriff: 178f7a5257bb1680d2a02d8f54d70ad7
+      line  4302  [hash_func]  Full MD5 of midriff: 7de4195dd17c15dd8a7f981186f14fc7
+      line  4309  [hash_func]  Full MD5 of midriff: a30733df4f246dd1c0d175fd1fddf48a
+      line  4316  [hash_func]  Full MD5 of midriff: 32a99ed74394ff620456b57862edd8a2
+      line  4323  [hash_func]  Full MD5 of midriff: 12f3cb07484dc83ee67a8e20d089a803
+      line  4330  [hash_func]  Full MD5 of midriff: 7f69db81a4fff3615622d9f90802e2c2
+      line  4337  [hash_func]  Full MD5 of midriff: db07bc65319e6eb8d89c9071d602ae42
+      line  4344  [hash_func]  Full MD5 of midriff: 0e2740748d2254d8f79960b2911b4a03
+      line  4351  [hash_func]  Full MD5 of midriff: 975dbfdcdd4ba7ae00ff35b23d68fa2b
+      line  4362  [hash_func]  Full MD5 of midriff: bc5317ef523310342d81e798af412d53
+      line  4369  [hash_func]  Full MD5 of midriff: 05e5611d6bc10037f46321d478bf638b
+      line  4376  [hash_func]  Full MD5 of midriff: 478afcc7ae435df83bca8c364ebde476
+      line  4383  [hash_func]  Full MD5 of midriff: 09af7bdcac7bd31ef6326c49610cb817
+      line  4390  [hash_func]  Full MD5 of midriff: 80f41da65ea10c8c1d0759733279be61
+      line  4397  [hash_func]  Full MD5 of midriff: 7dcea701468afec51be813b2928718f3
+      line  4404  [hash_func]  Full MD5 of midriff: 17bce6366bea0b3ace4455b5d2a0d5b7
+      line  4411  [hash_func]  Full MD5 of midriff: ff2de1748afa6b3b8a1a77fa86817371
+      line  4422  [hash_func]  Full MD5 of midriff: e5e440b33b4ebd3ddc8618018bebb7af
+      line  4429  [hash_func]  Full MD5 of midriff: e8568394a149a94d79650a2f038c44cd
+      line  4436  [hash_func]  Full MD5 of midriff: 6b2f0dadf9724e65fb9b2caa7f4c6a68
+      line  4443  [hash_func]  Full MD5 of midriff: aed9a2e35c1a6e12ed42cf5eb8b9bdf5
+      line  4450  [hash_func]  Full MD5 of midriff: a46a1017f475ecd285930b9dac855c0a
+      line  4457  [hash_func]  Full MD5 of midriff: 2ff635b47dba444cd43bcc8c54e9ea44
+      line  4464  [hash_func]  Full MD5 of midriff: cdf6a8bdbb73e4b9379893cde8d41100
+      line  4471  [hash_func]  Full MD5 of midriff: e50b3ffe163ad3b00ce5669c8f55d10b
+      line  4482  [hash_func]  Full MD5 of midriff: ede46731d76bfbbccf30f3abce4a6673
+      line  4489  [hash_func]  Full MD5 of midriff: 1fc9719777492d1f037bcf7745b93e72
+      line  4496  [hash_func]  Full MD5 of midriff: ed9bae9f130d61d267f3cbcbd1e78b6d
+      line  4503  [hash_func]  Full MD5 of midriff: cd63a265af5fb02aa75fbc728e12022d
+      line  4510  [hash_func]  Full MD5 of midriff: ae0e26abafce8c7f1f4a37f05a3b25f0
+      line  4517  [hash_func]  Full MD5 of midriff: bf5c02fd7379b9e7c63bcc71d06afdd3
+      line  4524  [hash_func]  Full MD5 of midriff: d8bbe0caaf1b52a5e68300039afc51d7
+      line  4531  [hash_func]  Full MD5 of midriff: 6904439157556a78b33238ea0236171b
+      line  4538  [hash_func]  Full MD5 of midriff: 09c3ee95f6bacd2338192d1d1793661e
+      line  4545  [hash_func]  Full MD5 of midriff: 29afcd737556812a9ee9125f6b0b7c1c
+      line  4552  [hash_func]  Full MD5 of midriff: 54fd0f4abc5e74859954f30f4c49e067
+      line  4559  [hash_func]  Full MD5 of midriff: ba53ad7f4c7bee330c4b1b3cd5f4fa3f
+      line  4566  [hash_func]  Full MD5 of midriff: fc3183694cb131af559cfe8b15dc09b6
+      line  4573  [hash_func]  Full MD5 of midriff: 9f72e1dc5f734361f737a25aa3634918
+      line  4580  [hash_func]  Full MD5 of midriff: 386dfa14d3b25320bce084f8bcc62a67
+      line  4587  [hash_func]  Full MD5 of midriff: acc0891f1f029cc6f71414620af0b354
+      line  4594  [hash_func]  Full MD5 of midriff: 1ce2132dde805d295207889c8b97490f
+      line  4601  [hash_func]  Full MD5 of midriff: e23e145daac6f38b12b95ea2d246bb06
+      line  4608  [hash_func]  Full MD5 of midriff: 23b5ba7c276aba7cfb693c0111c85455
+      line  4615  [hash_func]  Full MD5 of midriff: ee76ea46f27113c403989833ada72d12
+      line  4622  [hash_func]  Full MD5 of midriff: 683d2b3b3790335ab4ba37d94800eae6
+      line  4629  [hash_func]  Full MD5 of midriff: 228557de77ae83710bd81eae4b6ebc37
+      line  4636  [hash_func]  Full MD5 of midriff: 227243691734d169c3c7ce8aa62ae863
+      line  4643  [hash_func]  Full MD5 of midriff: 9080e22aa92157ec13f5038e8f626279
+      line  4654  [hash_func]  Full MD5 of midriff: bba6b9ba37b560b542cb87e72c9d881a
+      line  4661  [hash_func]  Full MD5 of midriff: 5b7bf244c0bbd6e7be36b4a5a414d956
+      line  4668  [hash_func]  Full MD5 of midriff: 9d35e3c2e9918554ca284c2ff3c1d7e9
+      line  4675  [hash_func]  Full MD5 of midriff: ec91e08af64638c317485d90a1ac4b99
+      line  4682  [hash_func]  Full MD5 of midriff: 370fcb2939693b36f45957971c0f0bd8
+      line  4689  [hash_func]  Full MD5 of midriff: 94e8d11a71a1f4415fc1cf7b1048a566
+      line  4696  [hash_func]  Full MD5 of midriff: 9f168cac8fd208dba99f9cfa32689eb6
+      line  4703  [hash_func]  Full MD5 of midriff: 3cbb1bbf27177691b030239d2e538586
+      line  4710  [hash_func]  Full MD5 of midriff: a1eb43e7b67e6d8af38f844f0288dc60
+      line  4717  [hash_func]  Full MD5 of midriff: 8898553388d49eb38e0ad35322d63c01
+      line  4724  [hash_func]  Full MD5 of midriff: f5e860acef2e2493386bae834d987c2f
+      line  4731  [hash_func]  Full MD5 of midriff: a49b79eddcd89d1d95f97d058c512aa0
+      line  4738  [hash_func]  Full MD5 of midriff: 7c41f6287ae3f3826c841ed9556a51bd
+      line  4745  [hash_func]  Full MD5 of midriff: 7bf04c8387488ad130ee483fb1db7515
+      line  4752  [hash_func]  Full MD5 of midriff: fbf7494ea38424b1b80b8a703396c919
+      line  4763  [hash_func]  Full MD5 of midriff: 55b5aeed43133f57473bb44264929fca
+      line  4770  [hash_func]  Full MD5 of midriff: 22eafe583e920b53abe10bd054937cd0
+      line  4777  [hash_func]  Full MD5 of midriff: e33c358ef8dc6b4839bda007b09348a6
+      line  4784  [hash_func]  Full MD5 of midriff: c6bb1f2e4456712cb6d57e6a135c59b8
+      line  4791  [hash_func]  Full MD5 of midriff: 26d18d7a6513cc27aa95abda818055de
+      line  4798  [hash_func]  Full MD5 of midriff: 27127528dc9e4b6f76d31baef314601b
+      line  4805  [hash_func]  Full MD5 of midriff: 2aa8dac566caa2d51b41d3ed7155dc1f
+      line  4812  [hash_func]  Full MD5 of midriff: a219259cbc617c3306319d5e99bea987
+      line  4819  [hash_func]  Full MD5 of midriff: 7b3f02e1796546e4cd3a962c3a4c36df
+      line  4826  [hash_func]  Full MD5 of midriff: a48a238493f8da9dc3496152cd8d206b
+      line  4833  [hash_func]  Full MD5 of midriff: d9a3d08e16bef642ac7e2994eedb05c5
+      line  4868  [hash_func]  Full MD5 of midriff: eced162225a96f372ba11c7156155ad7
+      line  4875  [hash_func]  Full MD5 of midriff: a5555c11ac8c9572d7ca28ba5eb241ed
+      line  4882  [hash_func]  Full MD5 of midriff: 2f2727289fc4b2ac6bf03b01c61b23d9
+      line  4889  [hash_func]  Full MD5 of midriff: 506efa56f147fb8c6fd0ebb6e0c13e4f
+      line  4896  [hash_func]  Full MD5 of midriff: 3c77b9358a5b87b75f6d762900b5f730
+      line  4903  [hash_func]  Full MD5 of midriff: 746e5713f0c59cd7261717cb82c68526
+      line  4910  [hash_func]  Full MD5 of midriff: d3d328ac564e5b025417b79e5dec1c6a
+      line  4917  [hash_func]  Full MD5 of midriff: a11b7c237cfbc2586917a7dbb9d464f2
+      line  4973  [fpe_token]  MIDRIFF VS FULL CARD TOKENIZATION
+      line  4976  [fpe_token]  Tokenization Examples (N=4 bits):
+      line  4982  [hash_func]  Full MD5: 0c3751e531ceba9aeaff8689d672fa1f
+      line  4983  [hash_func]  Midriff MD5: 24913464de6c12f871b85b32db3ed1d5
+      line  4990  [hash_func]  Full MD5: 59bf6bc8389934d49047334134666681
+      line  4991  [hash_func]  Midriff MD5: 7ad065211d01c31f6c484cb4ed23d9e2
+      line  4998  [hash_func]  Full MD5: 66cb4c4f32f285d69e5bc192ec4b6ecc
+      line  4999  [hash_func]  Midriff MD5: d6b02b428359381cdcf886d83e638c6e
+
+  ▸ collisions/not_collision_but_duplication_detect.py
+      line     1  [py_import]  import hashlib
+      line     2  [py_import]  import hmac
+      line     2  [kdf]  import hmac
+      line     3  [py_import]  import secrets
+      line   158  [fpe_token]  class TokenizationSystem:
+      line   167  [kdf]  """Generate primary token using HMAC-SHA512"""
+      line   168  [kdf]  hmac_obj = hmac.new(
+      line   176  [kdf]  """Generate HMAC pointer token"""
+      line   178  [kdf]  hmac_obj = hmac.new(
+      line   185  [fpe_token]  def tokenize(self, card_number: str) -> Dict:
+      line   186  [fpe_token]  """Tokenize a credit card number"""
+      line   210  [kdf]  collision_resolved = True  # In HMAC-SHA512, collisions are resolved by design
+      line   231  [fpe_token]  def detokenize(self, token: str) -> Optional[Dict]:
+      line   232  [fpe_token]  """Detokenize a token back to original card data"""
+      line   237  [kdf]  # Check if it's an HMAC pointer
+      line   252  [symmetric]  print("   HMAC-SHA512 provides excellent collision resistance")
+      line   252  [kdf]  print("   HMAC-SHA512 provides excellent collision resistance")
+      line   267  [fpe_token]  # Initialize tokenization system
+      line   268  [fpe_token]  token_system = TokenizationSystem()
+      line   280  [fpe_token]  print("TOKENIZATION PROCESS")
+      line   283  [fpe_token]  # Tokenize all test cards
+      line   286  [fpe_token]  print(f"\n{i}. Tokenizing: {card}")
+      line   287  [fpe_token]  result = token_system.tokenize(card)
+      line   291  [kdf]  print(f"   ✓ HMAC Pointer:  {result['hmac_pointer'][:32]}...")
+      line   299  [kdf]  'hmac': result['hmac_pointer'],
+      line   308  [fpe_token]  # Demonstrate detokenization
+      line   309  [fpe_token]  print("\n\nDETOKENIZATION DEMONSTRATION")
+      line   313  [fpe_token]  print(f"\nDetokenizing {token_info['network']} card:")
+      line   316  [fpe_token]  result1 = token_system.detokenize(token_info['primary'])
+      line   320  [kdf]  # Using HMAC pointer
+      line   321  [kdf]  result2 = token_system.detokenize(token_info['hmac'])
+      line   321  [fpe_token]  result2 = token_system.detokenize(token_info['hmac'])
+      line   323  [kdf]  print(f"  HMAC Pointer → Original: {result2['original_number']}")
+      line   325  [kdf]  # Demonstrate HMAC-SHA512 collision resistance
+      line   340  [fpe_token]  TOKENIZATION PROCESS
+      line   343  [fpe_token]  1. Tokenizing: 4111-1111-1111-1111
+      line   345  [kdf]  ✓ HMAC Pointer:  3dafc6732248f84bbdd81625c8db12ac...
+      line   349  [fpe_token]  2. Tokenizing: 5500-0000-0000-0004
+      line   351  [kdf]  ✓ HMAC Pointer:  cd78871a0c2e8d1e012a863c1893967e...
+      line   355  [fpe_token]  3. Tokenizing: 3400-0000-0000-009
+      line   357  [kdf]  ✓ HMAC Pointer:  1af80c51817b9c67b3d48f671aa8ed16...
+      line   361  [fpe_token]  4. Tokenizing: 6011-0000-0000-0004
+      line   363  [kdf]  ✓ HMAC Pointer:  644fa8697a0ffab168d9d536eaef0c12...
+      line   367  [fpe_token]  5. Tokenizing: 4111-1111-1111-1111
+      line   369  [kdf]  ✓ HMAC Pointer:  3dafc6732248f84bbdd81625c8db12ac...
+      line   374  [fpe_token]  6. Tokenizing: 5111-1111-1111-1118
+      line   376  [kdf]  ✓ HMAC Pointer:  1fe3a094ae0f12761778b95c74757830...
+      line   394  [fpe_token]  DETOKENIZATION DEMONSTRATION
+      line   397  [fpe_token]  Detokenizing visa card:
+      line   399  [kdf]  HMAC Pointer → Original: 4111111111111111
+      line   401  [fpe_token]  Detokenizing mastercard card:
+      line   403  [kdf]  HMAC Pointer → Original: 5500000000000004
+      line   406  [kdf]  HMAC-SHA512 COLLISION RESISTANCE
+      line   417  [kdf]  """Analyze collision probability and HMAC protection"""
+      line   422  [kdf]  # HMAC-SHA512 properties
+      line   427  [kdf]  print(f"HMAC-SHA512 Properties:")
+      line   439  [kdf]  print(f"• Primary token: HMAC-SHA512(card_number)")
+      line   440  [kdf]  print(f"• HMAC pointer: HMAC-SHA512(primary_token + hue)")
+      line   441  [kdf]  print(f"• Double HMAC protection")
+      line   449  [fpe_token]  TOKENIZATION PROCESS
+      line   452  [fpe_token]  1. Tokenizing: 4111-1111-1111-1111
+      line   454  [kdf]  ✓ HMAC Pointer:  f06f0f6e5ee97501ab69a30db55da40e...
+      line   458  [fpe_token]  2. Tokenizing: 5500-0000-0000-0004
+      line   460  [kdf]  ✓ HMAC Pointer:  6f1d43e83cff2b25381b981ef4dab45f...
+      line   464  [fpe_token]  3. Tokenizing: 3400-0000-0000-009
+      line   466  [kdf]  ✓ HMAC Pointer:  d2fc8539a7a36b9e166822a27aa8749a...
+      line   470  [fpe_token]  4. Tokenizing: 6011-0000-0000-0004
+      line   472  [kdf]  ✓ HMAC Pointer:  9bb11b8b28d38aa84fefc89eaaf53dbc...
+      line   476  [fpe_token]  5. Tokenizing: 4111-1111-1111-1111
+      line   478  [kdf]  ✓ HMAC Pointer:  f06f0f6e5ee97501ab69a30db55da40e...
+      line   483  [fpe_token]  6. Tokenizing: 5111-1111-1111-1118
+      line   485  [kdf]  ✓ HMAC Pointer:  4a6b8535625b0c45cf96e4a3265e22f7...
+      line   503  [fpe_token]  DETOKENIZATION DEMONSTRATION
+      line   506  [fpe_token]  Detokenizing visa card:
+      line   508  [kdf]  HMAC Pointer → Original: 4111111111111111
+      line   510  [fpe_token]  Detokenizing mastercard card:
+      line   512  [kdf]  HMAC Pointer → Original: 5500000000000004
+      line   515  [kdf]  HMAC-SHA512 COLLISION RESISTANCE
+      line   527  [kdf]  HMAC-SHA512 Properties:
+      line   539  [kdf]  • Primary token: HMAC-SHA512(card_number)
+      line   540  [kdf]  • HMAC pointer: HMAC-SHA512(primary_token + hue)
+      line   541  [kdf]  • Double HMAC protection
+
+  ▸ collisions/quick_collision_demo.py
+      line    65  [fpe_token]  class WeakTokenizationSystem:
+      line    66  [fpe_token]  """A weak tokenization system to demonstrate collisions"""
+      line    74  [hash_func]  # Use only first N_char of MD5 to force collisions
+      line    75  [hash_func]  return hashlib.md5(data.encode()).hexdigest()[:N_char]
+      line    77  [fpe_token]  def tokenize_weak(self, card_number: str) -> str:
+      line    78  [fpe_token]  """Tokenize using weak hash to demonstrate collisions"""
+      line    86  [fpe_token]  weak_system = WeakTokenizationSystem()
+      line   105  [fpe_token]  token = weak_system.tokenize_weak(card)
+      line   130  [fpe_token]  print("Try using the SuperWeakTokenizationSystem with fewer bits instead")
+      line   160  [fpe_token]  class SuperWeakTokenizationSystem:
+      line   161  [fpe_token]  """An extremely weak tokenization system to guarantee collisions"""
+      line   171  [hash_func]  full_hash = hashlib.md5(data.encode()).hexdigest()
+      line   176  [fpe_token]  def tokenize_weak(self, card_number: str) -> str:
+      line   177  [fpe_token]  """Tokenize using extremely weak hash to guarantee collisions"""
+      line   180  [fpe_token]  class SecureTokenizationSystem:
+      line   189  [kdf]  """Generate primary token using HMAC-SHA512"""
+      line   190  [kdf]  hmac_obj = hmac.new(
+      line   198  [kdf]  """Generate HMAC pointer token"""
+      line   200  [kdf]  hmac_obj = hmac.new(
+      line   207  [fpe_token]  def tokenize(self, card_number: str) -> Dict:
+      line   208  [fpe_token]  """Tokenize a credit card number"""
+      line   258  [symmetric]  print("   HMAC-SHA512 provides excellent collision resistance")
+      line   258  [kdf]  print("   HMAC-SHA512 provides excellent collision resistance")
+      line   278  [fpe_token]  weak_system = SuperWeakTokenizationSystem(bits=4)
+      line   288  [fpe_token]  token = weak_system.tokenize_weak(card)
+      line   310  [fpe_token]  secure_system = SecureTokenizationSystem()
+      line   313  [fpe_token]  result1 = secure_system.tokenize(card1)
+      line   314  [fpe_token]  result2 = secure_system.tokenize(card2)
+      line   375  [fpe_token]  class SuperWeakTokenizationSystem:
+      line   376  [fpe_token]  """An extremely weak tokenization system to guarantee collisions"""
+      line   386  [hash_func]  full_hash = hashlib.md5(data.encode()).hexdigest()
+      line   391  [fpe_token]  def tokenize_weak(self, card_number: str) -> str:
+      line   392  [fpe_token]  """Tokenize using extremely weak hash to guarantee collisions"""
+      line   401  [fpe_token]  weak_system = SuperWeakTokenizationSystem(bits=4)
+      line   411  [fpe_token]  token = weak_system.tokenize_weak(card)
+      line   433  [fpe_token]  secure_system = SecureTokenizationSystem()
+      line   436  [fpe_token]  result1 = secure_system.tokenize(card1)
+      line   437  [fpe_token]  result2 = secure_system.tokenize(card2)
+
+  ▸ collisions/readme.md
+      line     1  [fpe_token]  In credit card tokenization, a collision is a rare but possible security risk where two different credit card numbers are assigned the same token.
+      line     3  [fpe_token]  Since credit card tokenization is midriff 6-chars, the collision is still there limited to the 6-chars.
+      line    29  [fpe_token]  Automatic re-tokenization

@@ -1,0 +1,349 @@
+================================================================================
+  REPO       : bolting_and_molting_with_golang_an_anarchist_coding_cook_book
+  FULL NAME  : ursa-mikail/bolting_and_molting_with_golang_an_anarchist_coding_cook_book
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Go
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/bolting_and_molting_with_golang_an_anarchist_coding_cook_book
+  MATCHES    : 242
+================================================================================
+
+  ▸ chapter_02/examples/test-app/libs/p0/p0.go
+      line    19  [symmetric]  // ExplainVariables provides a witty description of variable types.
+
+  ▸ chapter_02/sections/readme.md
+      line   389  [symmetric]  ## Extended setup that includes:
+
+  ▸ chapter_03/sections/readme.md
+      line    53  [symmetric]  Usage: Includes a dice-based mini-game, slot machine spins, and bonus events.
+      line    60  [symmetric]  The lottery is a tax on poor people and on people who can’t do math. Rich people and smart people would be in the line if the lottery were a real wealth-building tool, but the truth is that the lottery is a rip-off instituted by our government. This is not a moral position; it is a mathematical, sta
+
+  ▸ chapter_04/sections/readme.md
+      line    61  [symmetric]  They centralize complexity. And if you're not careful, they'll bury every bug you didn't know you had—until the day it explodes in prod.
+
+  ▸ chapter_05/sections/readme.md
+      line    48  [symmetric]  Returning nil silently and praying nothing explodes
+      line   114  [symmetric]  In other words: the crime scene is scrubbed clean before you arrive ... and some murders are meant to look like - staged suicides.
+
+  ▸ chapter_06/examples/01/project_pack/logging/logger.go
+      line     5  [symmetric]  // Logger provides basic logging functionality
+
+  ▸ chapter_06/sections/readme.md
+      line    43  [symmetric]  Now your package has a package that has its own subpackage. Who are you vouching for again? Who signed off on what, and where? When the call stack explodes and the bugs dance through the layers, you're in a maze with no map. And some setups?
+      line    48  [symmetric]  Every imported function is unvetted surface area. Every update is a potential regression. Every convenience hides a contract you didn’t read. You pretend it’s modularity. What it really is: offloading risk and pretending you’re still in control.
+
+  ▸ chapter_07/sections/readme.md
+      line    19  [symmetric]  The utils/util_00.go file provides a utility function LogExecutionTime, which logs the start time, end time, and duration of each task.
+
+  ▸ chapter_08/examples/03/memory_addressing/mmap_allocate_memory_and_randomly_modify_bytes_with_multiple_memory_regions_protected.go
+      line   133  [symmetric]  It provides debug information showing where each region is mapped in memory
+
+  ▸ chapter_10/examples/01/test-app/images_export.csv
+      line     1  [kdf]  id,name,contents,sha256,hmac,team,team_owner,status,status_signature,status_url
+
+  ▸ chapter_10/examples/01/test-app/libs/db/db.go
+      line    23  [kdf]  hmac TEXT NOT NULL,
+
+  ▸ chapter_10/examples/01/test-app/main.go
+      line     7  [kdf]  "crypto/hmac"
+      line    27  [kdf]  hmac TEXT NOT NULL,
+      line    48  [kdf]  h := hmac.New(sha256.New, []byte(secretKey))
+      line    60  [kdf]  INSERT INTO image (name, contents, sha256, hmac, team, team_owner, status, status_signature, status_url)
+      line    87  [kdf]  "hmac":            hmacHash,
+      line   105  [kdf]  SET contents = ?, sha256 = ?, hmac = ?, team = ?, team_owner = ?, status = ?, status_signature = ?, status_url = ?
+
+  ▸ chapter_10/examples/01/test-app/utils/crypto.go
+      line     4  [kdf]  "crypto/hmac"
+      line    15  [kdf]  // GenerateHMAC creates an HMAC using SHA256 and a secret key.
+      line    17  [kdf]  h := hmac.New(sha256.New, []byte(secretKey))
+
+  ▸ chapter_10/examples/02/test-app/images_export.csv
+      line     1  [kdf]  id,name,contents,sha256,hmac,team,team_owner,status,status_signature,status_url
+
+  ▸ chapter_10/examples/02/test-app/libs/db/db.go
+      line    23  [kdf]  hmac TEXT NOT NULL,
+
+  ▸ chapter_10/examples/02/test-app/main.go
+      line    21  [kdf]  INSERT INTO image (name, contents, sha256, hmac, team, team_owner, status, status_signature, status_url)
+      line    48  [kdf]  "hmac":             hmacHash,
+
+  ▸ chapter_10/examples/02/test-app/utils/crypto.go
+      line     4  [kdf]  "crypto/hmac"
+      line    15  [kdf]  // GenerateHMAC creates an HMAC using the provided secret key and data.
+      line    17  [kdf]  h := hmac.New(sha256.New, []byte(secretKey))
+
+  ▸ chapter_10/examples/03/test-nist/libs/nist.go
+      line     4  [symmetric]  "crypto/aes"
+      line    97  [cipher_mode]  // Create a custom GCM with the specified tag length
+      line   157  [symmetric]  block, err := aes.NewCipher(key)
+      line   165  [cipher_mode]  gcm, err := cipher.NewGCMWithNonceSize(block, len(nonce))
+      line   167  [cipher_mode]  return nil, nil, fmt.Errorf("failed to create GCM: %w", err)
+      line   171  [cipher_mode]  sealed := gcm.Seal(nil, nonce, plaintext, aad)
+      line   172  [cipher_mode]  ciphertext := sealed[:len(sealed)-16] // GCM always produces a 16-byte tag
+      line   190  [symmetric]  block, err := aes.NewCipher(key)
+      line   198  [cipher_mode]  // Create a GCM cipher, ensure the nonce size matches the length of iv
+      line   199  [cipher_mode]  gcm, err := cipher.NewGCMWithNonceSize(block, len(nonce))
+      line   201  [cipher_mode]  return nil, fmt.Errorf("failed to create GCM: %w", err)
+      line   204  [cipher_mode]  // Ensure tag length matches the expected size for GCM
+      line   213  [cipher_mode]  plaintext, err := gcm.Open(nil, nonce, ciphertextAndTag, aad)
+
+  ▸ chapter_10/examples/03/test-nist/main.go
+      line     9  [symmetric]  url := "https://raw.githubusercontent.com/usnistgov/ACVP-Server/master/gen-val/json-files/ACVP-AES-GCM-1.0/internalProjection.json"
+      line     9  [cipher_mode]  url := "https://raw.githubusercontent.com/usnistgov/ACVP-Server/master/gen-val/json-files/ACVP-AES-GCM-1.0/internalProjection.json"
+      line    30  [symmetric]  Running tests for Algorithm: AES
+      line    31  [cipher_mode]  Mode: GCM
+
+  ▸ chapter_10/examples/04/ascii_string_to_byte_stream.go
+      line    10  [symmetric]  // CustomSerDe provides serialization and deserialization
+
+  ▸ chapter_10/examples/04/file_to_byte_stream_with_gzip_and_base64.go
+      line     3  [symmetric]  Encodes the compressed data using Base64,
+      line     6  [symmetric]  Decodes the Base64,
+      line    24  [symmetric]  // CompressAndEncode compresses the input using GZIP and encodes it in Base64
+      line    38  [symmetric]  // DecodeAndDecompress decodes Base64 and decompresses GZIP to recover original string
+      line    70  [symmetric]  // DeserializeFromFile reads, decodes and decompresses to recover original string
+
+  ▸ chapter_10/examples/04/readme.md
+      line     2  [symmetric]  A SerDe (Serializer/Deserializer) refers to a user-defined way to convert data to and from bytes—a necessary step for transmitting data over systems like Kafka. While SerDes are commonly associated with Apache Kafka, custom SerDes can be used outside of Kafka in any system that needs to serialize an
+      line    10  [symmetric]  Default SerDes in Kafka (for String, JSON, Avro, Protobuf, etc.) are prebuilt and tied to Kafka’s message processing system. However, if your data doesn’t conform to those formats or has unique requirements (e.g., custom encryption, schema evolution, compression), you need a custom SerDe.
+      line    40  [symmetric]  Encodes the compressed data using Base64,
+      line    43  [symmetric]  Decodes the Base64,
+
+  ▸ chapter_10/examples/06/generate_keys_and_certs_RSA.go
+      line     5  [asymmetric]  "crypto/rsa"
+      line    18  [asymmetric]  // Generate RSA Private Key
+      line    19  [asymmetric]  privateKey, err := rsa.GenerateKey(rand.Reader, 2048)
+      line    38  [signature]  KeyUsage:              x509.KeyUsageKeyEncipherment | x509.KeyUsageDigitalSignature,
+      line    65  [asymmetric]  pem.Encode(keyFile, &pem.Block{Type: "RSA PRIVATE KEY", Bytes: privateKeyDER})
+      line   112  [asymmetric]  Signature Algorithm: SHA256-RSA
+      line   113  [asymmetric]  Public Key Algorithm: RSA
+      line   116  [key_mgmt]  -----BEGIN CERTIFICATE-----
+
+  ▸ chapter_10/sections/readme.md
+      line    63  [kdf]  Image Record: map[contents:example_data hmac:42558374b30a8eec6e7e5220a5a3bf4ee6921ed19bb2304dd4ce1604fd16ebbf id:1 name:example_image sha256:d7f2db9e66297f3ac43a9ddcad1c9ec43c1becbba3b87dd1689ace47b9afed7c status:active status_signature:b9c69ada4404dba178f64ce0bae66602567df9e826790a41abf2d7454e06954
+
+  ▸ chapter_11/examples/02/server_client/certs/ca.crt
+      line     1  [key_mgmt]  -----BEGIN CERTIFICATE-----
+
+  ▸ chapter_11/examples/02/server_client/certs/client.crt
+      line     1  [key_mgmt]  -----BEGIN CERTIFICATE-----
+
+  ▸ chapter_11/examples/02/server_client/certs/client.csr
+      line     1  [key_mgmt]  -----BEGIN CERTIFICATE REQUEST-----
+
+  ▸ chapter_11/examples/02/server_client/certs/client.ext
+      line     3  [signature]  keyUsage = digitalSignature, keyEncipherment
+
+  ▸ chapter_11/examples/02/server_client/certs/server.crt
+      line     1  [key_mgmt]  -----BEGIN CERTIFICATE-----
+
+  ▸ chapter_11/examples/02/server_client/certs/server.csr
+      line     1  [key_mgmt]  -----BEGIN CERTIFICATE REQUEST-----
+
+  ▸ chapter_11/examples/02/server_client/certs/server.ext
+      line     3  [signature]  keyUsage = digitalSignature, keyEncipherment
+
+  ▸ chapter_11/examples/02/server_client/client.go
+      line     4  [symmetric]  "crypto/aes"
+      line    67  [symmetric]  block, _ := aes.NewCipher(sharedKey[:])
+
+  ▸ chapter_11/examples/02/server_client/generate_certs.sh
+      line    12  [symmetric]  openssl req -x509 -new -nodes -key ca.key -sha256 -days 3650 -out ca.crt -subj "/CN=MyCA"
+      line    22  [signature]  keyUsage = digitalSignature, keyEncipherment
+      line    41  [signature]  keyUsage = digitalSignature, keyEncipherment
+
+  ▸ chapter_11/examples/02/server_client/server.go
+      line     4  [symmetric]  "crypto/aes"
+      line    83  [symmetric]  block, _ := aes.NewCipher(sharedKey[:])
+
+  ▸ chapter_11/examples/05/gen_certs.py
+      line     5  [py_import]  from cryptography import x509
+      line     6  [py_import]  from cryptography.x509.oid import NameOID
+      line     7  [py_import]  from cryptography.hazmat.primitives.asymmetric import rsa
+      line     7  [asymmetric]  from cryptography.hazmat.primitives.asymmetric import rsa
+      line     8  [py_import]  from cryptography.hazmat.primitives import hashes, serialization
+      line    12  [asymmetric]  key = rsa.generate_private_key(public_exponent=65537, key_size=2048)
+      line    12  [key_mgmt]  key = rsa.generate_private_key(public_exponent=65537, key_size=2048)
+      line    26  [signature]  .sign(key, hashes.SHA256())
+      line    33  [key_mgmt]  f.write(key.private_bytes(
+      line    39  [key_mgmt]  f.write(cert.public_bytes(serialization.Encoding.PEM))
+
+  ▸ chapter_11/examples/06/trial_rpc/README.md
+      line    39  [symmetric]  Protobuf makes the communication efficient and ensures that both sides use the same data schema.
+
+  ▸ chapter_11/examples/07/a/basic/crypto/crypto.go
+      line     4  [symmetric]  "crypto/aes"
+      line    21  [symmetric]  block, err := aes.NewCipher(c.key)
+      line    26  [cipher_mode]  // Create a GCM mode
+      line    27  [cipher_mode]  gcm, err := cipher.NewGCM(block)
+      line    33  [cipher_mode]  nonce := make([]byte, gcm.NonceSize())
+      line    39  [cipher_mode]  ciphertext := gcm.Seal(nonce, nonce, []byte(plaintext), nil)
+      line    52  [symmetric]  block, err := aes.NewCipher(c.key)
+      line    57  [cipher_mode]  gcm, err := cipher.NewGCM(block)
+      line    62  [cipher_mode]  nonceSize := gcm.NonceSize()
+      line    68  [cipher_mode]  plaintext, err := gcm.Open(nil, nonce, ciphertext, nil)
+
+  ▸ chapter_11/examples/07/a/basic/server/main.go
+      line    45  [symmetric]  // Use a 32-byte key for AES-256
+
+  ▸ chapter_11/examples/07/a/parallel/crypto/crypto.go
+      line     4  [symmetric]  "crypto/aes"
+      line    24  [symmetric]  block, err := aes.NewCipher(c.key)
+      line    29  [cipher_mode]  // Create a GCM mode
+      line    30  [cipher_mode]  gcm, err := cipher.NewGCM(block)
+      line    36  [cipher_mode]  nonce := make([]byte, gcm.NonceSize())
+      line    42  [cipher_mode]  ciphertext := gcm.Seal(nonce, nonce, []byte(plaintext), nil)
+      line    55  [symmetric]  block, err := aes.NewCipher(c.key)
+      line    60  [cipher_mode]  gcm, err := cipher.NewGCM(block)
+      line    65  [cipher_mode]  nonceSize := gcm.NonceSize()
+      line    71  [cipher_mode]  plaintext, err := gcm.Open(nil, nonce, ciphertext, nil)
+
+  ▸ chapter_11/examples/07/parallelism/crypto/crypto.go
+      line     4  [symmetric]  "crypto/aes"
+      line    18  [symmetric]  // Ensure key is proper length for AES-256 (32 bytes)
+      line    32  [symmetric]  block, err := aes.NewCipher(c.key)
+      line    37  [cipher_mode]  gcm, err := cipher.NewGCM(block)
+      line    42  [cipher_mode]  nonce := make([]byte, gcm.NonceSize())
+      line    47  [cipher_mode]  ciphertext := gcm.Seal(nonce, nonce, data, nil)
+      line    52  [symmetric]  block, err := aes.NewCipher(c.key)
+      line    57  [cipher_mode]  gcm, err := cipher.NewGCM(block)
+      line    62  [cipher_mode]  nonceSize := gcm.NonceSize()
+      line    68  [cipher_mode]  plaintext, err := gcm.Open(nil, nonce, ciphertext, nil)
+
+  ▸ chapter_11/examples/07/parallelism/main.go
+      line    12  [symmetric]  // 32-byte key for AES-256
+
+  ▸ chapter_11/examples/07/parallelism/parallelism
+      line 17937  [symmetric]  (scan  MB in pacer: % CPU ( zombie, j0 = head = panic:  nmsys= locks= dying= allocsGODEBUGsignal Signal  m->g0= pad1=  pad2=  text= minpc= 	value= (scan)	types : type 19531259765625invaliduintptrChanDir Value>atomicsos/execfips140runtimetls3desArmv8.0AES-CBCArmv8.2ThursdaySaturdayFebruaryNovemberDec
+      line 17963  [symmetric]  runtime: casgstatus: oldval=gcstopm: negative nmspinningfindrunnable: netpoll with psave on system g not allowednewproc1: newg missing stacknewproc1: new g is not GdeadFixedStack is not power-of-2missing stack in shrinkstack args stack map entries for invalid runtime symbol tableruntime: no module d
+      line 17964  [symmetric]  Failed to create test zip: %v  🚀 Total Speed: %.2f MB/s  📉 Time Reduction: %.2f%%  📈 Speed Increase: %.2f%%Time.UnmarshalBinary: no dataStarting SERIAL processing...Chunk %d: Encrypting %d bytesSIGPIPE: write to broken pipeexecuting on Go runtime stacknotesleep - waitm out of sync/cpu/classes/idle:c
+      line 17967  [symmetric]  unsafe.String: len out of rangeshared library version mismatch11368683772161602973937988281255684341886080801486968994140625reflect: Len of non-array type invalid return from write: got hash/crc32: tables do not matchwriteBytes with unfinished bitscrypto/aes: len(dst) < len(src)=== FILE PROCESSOR BE
+      line 17968  [symmetric]  slice bounds out of range [:%x:%y]slice bounds out of range [%x:%y:]SIGURG: urgent condition on socketruntime: standard file descriptor out of memory allocating allArenas/memory/classes/heap/objects:bytesruntime.SetFinalizer: cannot pass too many pages allocated in chunk?mspan.ensureSwept: m is not 
+      line 17972  [cipher_mode]  startTheWorld: inconsistent mp->nextpruntime: unexpected SPWRITE function all goroutines are asleep - deadlock!godebug: unexpected IncNonDefault of 2220446049250313080847263336181640625reflect: funcLayout of non-func type reflect.Value.Bytes of non-byte slicereflect.Value.Bytes of non-byte arraymeth
+      line 17980  [cipher_mode]  ============================================================    - Mutex: Protects shared counters (success/failure counts)Chunk %d: Integrity check failed (original: %d, decrypted: %d)found bad pointer in Go heap (incorrect use of unsafe or cgo?)limiterEvent.stop: found wrong event in p's limiter ev
+      line 17980  [kdf]  ============================================================    - Mutex: Protects shared counters (success/failure counts)Chunk %d: Integrity check failed (original: %d, decrypted: %d)found bad pointer in Go heap (incorrect use of unsafe or cgo?)limiterEvent.stop: found wrong event in p's limiter ev
+      line 17982  [symmetric]  crypto/aes: internal error: using generic implementation despite hardware supportexpected all size classes up to min size for malloc header to fit in one-page spanscrypto/cipher: use of GCM with non-AES ciphers is not allowed in FIPS 140-only modereflect.Value.Interface: cannot return value obtained
+      line 17982  [cipher_mode]  crypto/aes: internal error: using generic implementation despite hardware supportexpected all size classes up to min size for malloc header to fit in one-page spanscrypto/cipher: use of GCM with non-AES ciphers is not allowed in FIPS 140-only modereflect.Value.Interface: cannot return value obtained
+      line 19781  [symmetric]  e��b��˝����	j'^�"^z�                                                                                                                                                                                                                                                                                        
+      line 19807  [symmetric]      FatallnPaniclnPrintln *func()MinutesSecondsAddDateCompareISOWeekWeekdayYearDay setMono unixSecSuccess pending consume *fmt.pp badVerb doPrint fmt0x64 fmtBool reflectWriteToWriteAtTryLock modTimeModTime dirinfoReadDirReaddir readdir wrapErr write
+      line 19807  [cipher_mode]      FatallnPaniclnPrintln *func()MinutesSecondsAddDateCompareISOWeekWeekdayYearDay setMono unixSecSuccess pending consume *fmt.pp badVerb doPrint fmt0x64 fmtBool reflectWriteToWriteAtTryLock modTimeModTime dirinfoReadDirReaddir readdir wrapErr write
+      line 19807  [cipher_mode]      FatallnPaniclnPrintln *func()MinutesSecondsAddDateCompareISOWeekWeekdayYearDay setMono unixSecSuccess pending consume *fmt.pp badVerb doPrint fmt0x64 fmtBool reflectWriteToWriteAtTryLock modTimeModTime dirinfoReadDirReaddir readdir wrapErr write
+      line 19970  [symmetric]  crypto/aes 
+      line 19972  [symmetric]  *aes.Block 
+      line 19973  [symmetric]  *aes.block 
+      line 19976  [kdf]  *hmac.HMAC 
+      line 20311  [symmetric]  defaultReader{p  *fmtsort.KeyValue stackCallArgsSize*abi.UncommonType installTableSplit internal/godebugs*reflectlite.Type *flate.dictWriter *flate.compressor writeBlockDynamic writeStoredHeader *flate.tableEntry *func() hash.Hash*aes.KeySizeError *hmac.marshalable *[0]*godebug.va
+      line 20311  [cipher_mode]  defaultReader{p  *fmtsort.KeyValue stackCallArgsSize*abi.UncommonType installTableSplit internal/godebugs*reflectlite.Type *flate.dictWriter *flate.compressor writeBlockDynamic writeStoredHeader *flate.tableEntry *func() hash.Hash*aes.KeySizeError *hmac.marshalable *[0]*godebug.va
+      line 20311  [kdf]  defaultReader{p  *fmtsort.KeyValue stackCallArgsSize*abi.UncommonType installTableSplit internal/godebugs*reflectlite.Type *flate.dictWriter *flate.compressor writeBlockDynamic writeStoredHeader *flate.tableEntry *func() hash.Hash*aes.KeySizeError *hmac.marshalable *[0]*godebug.va
+      line 20317  [kdf]  crypto/internal/fips140/hmac 
+      line 20327  [symmetric]  crypto/internal/fips140/sha512 *func(io.Writer) (int64, error)*atomic.Pointer[runtime._defer] *runtime.metricFloat64Histogram *func(uintptr) (uintptr, int64) *map.group[int32]unsafe.Pointer *map.group[unsafe.Pointer]int32 *interface { Unwrap() []error } *func(io.Reader, []uint8) error *map
+      line 20327  [cipher_mode]  crypto/internal/fips140/sha512 *func(io.Writer) (int64, error)*atomic.Pointer[runtime._defer] *runtime.metricFloat64Histogram *func(uintptr) (uintptr, int64) *map.group[int32]unsafe.Pointer *map.group[unsafe.Pointer]int32 *interface { Unwrap() []error } *func(io.Reader, []uint8) error *map
+      line 21963  [symmetric]           �    8�    X�    x�    ��    ��    ��    ��    ��    ��    ��    �    �    �    8�    ��    X�    x�    ��    ��    (�    ��    ��    �    8�    0�    X�    ��    X�    P�    x�    ��     �     �    ��    ��    @�
+      line 21963  [cipher_mode]           �    8�    X�    x�    ��    ��    ��    ��    ��    ��    ��    �    �    �    8�    ��    X�    x�    ��    ��    (�    ��    ��    �    8�    0�    X�    ��    X�    P�    x�    ��     �     �    ��    ��    @�
+      line 21963  [cipher_mode]           �    8�    X�    x�    ��    ��    ��    ��    ��    ��    ��    �    �    �    8�    ��    X�    x�    ��    ��    (�    ��    ��    �    8�    0�    X�    ��    X�    P�    x�    ��     �     �    ��    ��    @�
+      line 21963  [kdf]           �    8�    X�    x�    ��    ��    ��    ��    ��    ��    ��    �    �    �    8�    ��    X�    x�    ��    ��    (�    ��    ��    �    8�    0�    X�    ��    X�    P�    x�    ��     �     �    ��    ��    @�
+      line 21963  [kdf]           �    8�    X�    x�    ��    ��    ��    ��    ��    ��    ��    �    �    �    8�    ��    X�    x�    ��    ��    (�    ��    ��    �    8�    0�    X�    ��    X�    P�    x�    ��     �     �    ��    ��    @�
+      line 22025  [symmetric]  G  �O  j  j]                  /opt/homebrew/Cellar/go/1.24.2/libexec/src/internal/abi/escape.go /opt/homebrew/Cellar/go/1.24.2/libexec/src/internal/abi/type.go <autogenerated> /opt/homebrew/Cellar/go/1.24.2/libexec/src/internal/cpu/cpu.go /opt/homebrew/Cellar/go/1.24.2/libexec/src/internal/cpu/cpu_
+      line 22025  [cipher_mode]  G  �O  j  j]                  /opt/homebrew/Cellar/go/1.24.2/libexec/src/internal/abi/escape.go /opt/homebrew/Cellar/go/1.24.2/libexec/src/internal/abi/type.go <autogenerated> /opt/homebrew/Cellar/go/1.24.2/libexec/src/internal/cpu/cpu.go /opt/homebrew/Cellar/go/1.24.2/libexec/src/internal/cpu/cpu_
+      line 22025  [cipher_mode]  G  �O  j  j]                  /opt/homebrew/Cellar/go/1.24.2/libexec/src/internal/abi/escape.go /opt/homebrew/Cellar/go/1.24.2/libexec/src/internal/abi/type.go <autogenerated> /opt/homebrew/Cellar/go/1.24.2/libexec/src/internal/cpu/cpu.go /opt/homebrew/Cellar/go/1.24.2/libexec/src/internal/cpu/cpu_
+      line 22025  [cipher_mode]  G  �O  j  j]                  /opt/homebrew/Cellar/go/1.24.2/libexec/src/internal/abi/escape.go /opt/homebrew/Cellar/go/1.24.2/libexec/src/internal/abi/type.go <autogenerated> /opt/homebrew/Cellar/go/1.24.2/libexec/src/internal/cpu/cpu.go /opt/homebrew/Cellar/go/1.24.2/libexec/src/internal/cpu/cpu_
+      line 22025  [kdf]  G  �O  j  j]                  /opt/homebrew/Cellar/go/1.24.2/libexec/src/internal/abi/escape.go /opt/homebrew/Cellar/go/1.24.2/libexec/src/internal/abi/type.go <autogenerated> /opt/homebrew/Cellar/go/1.24.2/libexec/src/internal/cpu/cpu.go /opt/homebrew/Cellar/go/1.24.2/libexec/src/internal/cpu/cpu_
+      line 22025  [kdf]  G  �O  j  j]                  /opt/homebrew/Cellar/go/1.24.2/libexec/src/internal/abi/escape.go /opt/homebrew/Cellar/go/1.24.2/libexec/src/internal/abi/type.go <autogenerated> /opt/homebrew/Cellar/go/1.24.2/libexec/src/internal/cpu/cpu.go /opt/homebrew/Cellar/go/1.24.2/libexec/src/internal/cpu/cpu_
+      line 44149  [symmetric]  �|�7�ɬ">Dk�ԃ+-�o%DEs!gRh�N%�������B
+      line 47734  [cipher_mode]  �ctrӼa�ￃU���R�c�zЂ�Pm��N<x
+      line 50176  [cipher_mode]  x�z��u�کt��!�5�=�N����!d��KH���.(�����t�(sIV��������$� ���D��ta��w9
+      line 62847  [cipher_mode]  ��fT0|*�Od�_�$�+�1��ocB�~�
+      line 69190  [symmetric]      _$f64.3eb0000000000000 _$f64.3f50624dd2f1a9fc _$f64.3f847ae147ae147b _$f64.3fd3333333333333 _$f64.3fee666666666666 _$f64.3ff199999999999a _$f64.3ff3333333333333 _$f64.3ffb333333333333 _$f64.4059000000000000 _$f64.40c3880000000000 _$f64.40f0000000000000 _$f64.41012e0be826d695 _$f64.412e8480000000
+      line 69190  [symmetric]      _$f64.3eb0000000000000 _$f64.3f50624dd2f1a9fc _$f64.3f847ae147ae147b _$f64.3fd3333333333333 _$f64.3fee666666666666 _$f64.3ff199999999999a _$f64.3ff3333333333333 _$f64.3ffb333333333333 _$f64.4059000000000000 _$f64.40c3880000000000 _$f64.40f0000000000000 _$f64.41012e0be826d695 _$f64.412e8480000000
+      line 69190  [cipher_mode]      _$f64.3eb0000000000000 _$f64.3f50624dd2f1a9fc _$f64.3f847ae147ae147b _$f64.3fd3333333333333 _$f64.3fee666666666666 _$f64.3ff199999999999a _$f64.3ff3333333333333 _$f64.3ffb333333333333 _$f64.4059000000000000 _$f64.40c3880000000000 _$f64.40f0000000000000 _$f64.41012e0be826d695 _$f64.412e8480000000
+      line 69190  [cipher_mode]      _$f64.3eb0000000000000 _$f64.3f50624dd2f1a9fc _$f64.3f847ae147ae147b _$f64.3fd3333333333333 _$f64.3fee666666666666 _$f64.3ff199999999999a _$f64.3ff3333333333333 _$f64.3ffb333333333333 _$f64.4059000000000000 _$f64.40c3880000000000 _$f64.40f0000000000000 _$f64.41012e0be826d695 _$f64.412e8480000000
+      line 69190  [kdf]      _$f64.3eb0000000000000 _$f64.3f50624dd2f1a9fc _$f64.3f847ae147ae147b _$f64.3fd3333333333333 _$f64.3fee666666666666 _$f64.3ff199999999999a _$f64.3ff3333333333333 _$f64.3ffb333333333333 _$f64.4059000000000000 _$f64.40c3880000000000 _$f64.40f0000000000000 _$f64.41012e0be826d695 _$f64.412e8480000000
+      line 69190  [kdf]      _$f64.3eb0000000000000 _$f64.3f50624dd2f1a9fc _$f64.3f847ae147ae147b _$f64.3fd3333333333333 _$f64.3fee666666666666 _$f64.3ff199999999999a _$f64.3ff3333333333333 _$f64.3ffb333333333333 _$f64.4059000000000000 _$f64.40c3880000000000 _$f64.40f0000000000000 _$f64.41012e0be826d695 _$f64.412e8480000000
+
+  ▸ chapter_11/examples/07/parallelism/readme.md
+      line    88  [symmetric]  2025/10/21 19:25:31 Error in goroutine: chunk 50: crypto/aes: invalid key size 35
+      line    89  [symmetric]  2025/10/21 19:25:31 Error in goroutine: chunk 25: crypto/aes: invalid key size 35
+      line    90  [symmetric]  2025/10/21 19:25:31 Error in goroutine: chunk 26: crypto/aes: invalid key size 35
+      line    91  [symmetric]  2025/10/21 19:25:31 Error in goroutine: chunk 27: crypto/aes: invalid key size 35
+      line    92  [symmetric]  2025/10/21 19:25:31 Error in goroutine: chunk 28: crypto/aes: invalid key size 35
+      line    93  [symmetric]  2025/10/21 19:25:31 Error in goroutine: chunk 29: crypto/aes: invalid key size 35
+      line    94  [symmetric]  2025/10/21 19:25:31 Error in goroutine: chunk 30: crypto/aes: invalid key size 35
+      line    95  [symmetric]  2025/10/21 19:25:31 Error in goroutine: chunk 31: crypto/aes: invalid key size 35
+      line    96  [symmetric]  2025/10/21 19:25:31 Error in goroutine: chunk 32: crypto/aes: invalid key size 35
+      line    97  [symmetric]  2025/10/21 19:25:31 Error in goroutine: chunk 33: crypto/aes: invalid key size 35
+      line    98  [symmetric]  2025/10/21 19:25:31 Error in goroutine: chunk 34: crypto/aes: invalid key size 35
+      line    99  [symmetric]  2025/10/21 19:25:31 Error in goroutine: chunk 35: crypto/aes: invalid key size 35
+      line   100  [symmetric]  2025/10/21 19:25:31 Error in goroutine: chunk 36: crypto/aes: invalid key size 35
+      line   101  [symmetric]  2025/10/21 19:25:31 Error in goroutine: chunk 37: crypto/aes: invalid key size 35
+      line   102  [symmetric]  2025/10/21 19:25:31 Error in goroutine: chunk 38: crypto/aes: invalid key size 35
+      line   103  [symmetric]  2025/10/21 19:25:31 Error in goroutine: chunk 39: crypto/aes: invalid key size 35
+      line   104  [symmetric]  2025/10/21 19:25:31 Error in goroutine: chunk 40: crypto/aes: invalid key size 35
+      line   105  [symmetric]  2025/10/21 19:25:31 Error in goroutine: chunk 41: crypto/aes: invalid key size 35
+      line   106  [symmetric]  2025/10/21 19:25:31 Error in goroutine: chunk 42: crypto/aes: invalid key size 35
+      line   107  [symmetric]  2025/10/21 19:25:31 Error in goroutine: chunk 43: crypto/aes: invalid key size 35
+      line   108  [symmetric]  2025/10/21 19:25:31 Error in goroutine: chunk 44: crypto/aes: invalid key size 35
+      line   109  [symmetric]  2025/10/21 19:25:31 Error in goroutine: chunk 45: crypto/aes: invalid key size 35
+      line   110  [symmetric]  2025/10/21 19:25:31 Error in goroutine: chunk 46: crypto/aes: invalid key size 35
+      line   111  [symmetric]  2025/10/21 19:25:31 Error in goroutine: chunk 24: crypto/aes: invalid key size 35
+      line   112  [symmetric]  2025/10/21 19:25:31 Error in goroutine: chunk 47: crypto/aes: invalid key size 35
+      line   113  [symmetric]  2025/10/21 19:25:31 Error in goroutine: chunk 11: crypto/aes: invalid key size 35
+      line   114  [symmetric]  2025/10/21 19:25:31 Error in goroutine: chunk 48: crypto/aes: invalid key size 35
+      line   115  [symmetric]  2025/10/21 19:25:31 Error in goroutine: chunk 49: crypto/aes: invalid key size 35
+      line   116  [symmetric]  2025/10/21 19:25:31 Error in goroutine: chunk 12: crypto/aes: invalid key size 35
+      line   117  [symmetric]  2025/10/21 19:25:31 Error in goroutine: chunk 5: crypto/aes: invalid key size 35
+      line   118  [symmetric]  2025/10/21 19:25:31 Error in goroutine: chunk 0: crypto/aes: invalid key size 35
+      line   119  [symmetric]  2025/10/21 19:25:31 Error in goroutine: chunk 13: crypto/aes: invalid key size 35
+      line   120  [symmetric]  2025/10/21 19:25:31 Error in goroutine: chunk 1: crypto/aes: invalid key size 35
+      line   121  [symmetric]  2025/10/21 19:25:31 Error in goroutine: chunk 14: crypto/aes: invalid key size 35
+      line   122  [symmetric]  2025/10/21 19:25:31 Error in goroutine: chunk 6: crypto/aes: invalid key size 35
+      line   123  [symmetric]  2025/10/21 19:25:31 Error in goroutine: chunk 2: crypto/aes: invalid key size 35
+      line   124  [symmetric]  2025/10/21 19:25:31 Error in goroutine: chunk 15: crypto/aes: invalid key size 35
+      line   125  [symmetric]  2025/10/21 19:25:31 Error in goroutine: chunk 3: crypto/aes: invalid key size 35
+      line   126  [symmetric]  2025/10/21 19:25:31 Error in goroutine: chunk 7: crypto/aes: invalid key size 35
+      line   127  [symmetric]  2025/10/21 19:25:31 Error in goroutine: chunk 16: crypto/aes: invalid key size 35
+      line   128  [symmetric]  2025/10/21 19:25:31 Error in goroutine: chunk 4: crypto/aes: invalid key size 35
+      line   129  [symmetric]  2025/10/21 19:25:31 Error in goroutine: chunk 17: crypto/aes: invalid key size 35
+      line   130  [symmetric]  2025/10/21 19:25:31 Error in goroutine: chunk 8: crypto/aes: invalid key size 35
+      line   131  [symmetric]  2025/10/21 19:25:31 Error in goroutine: chunk 18: crypto/aes: invalid key size 35
+      line   132  [symmetric]  2025/10/21 19:25:31 Error in goroutine: chunk 9: crypto/aes: invalid key size 35
+      line   133  [symmetric]  2025/10/21 19:25:31 Error in goroutine: chunk 10: crypto/aes: invalid key size 35
+      line   134  [symmetric]  2025/10/21 19:25:31 Error in goroutine: chunk 19: crypto/aes: invalid key size 35
+      line   135  [symmetric]  2025/10/21 19:25:31 Error in goroutine: chunk 21: crypto/aes: invalid key size 35
+      line   136  [symmetric]  2025/10/21 19:25:31 Error in goroutine: chunk 22: crypto/aes: invalid key size 35
+      line   137  [symmetric]  2025/10/21 19:25:31 Error in goroutine: chunk 20: crypto/aes: invalid key size 35
+      line   138  [symmetric]  2025/10/21 19:25:31 Error in goroutine: chunk 23: crypto/aes: invalid key size 35
+
+  ▸ chapter_11/examples/08/client/main.go
+      line     6  [asymmetric]  "crypto/rsa"
+      line    80  [asymmetric]  rsaPub, ok := pub.(*rsa.PublicKey)
+      line    82  [asymmetric]  return fmt.Errorf("expected RSA public key")
+      line    89  [asymmetric]  return rsa.VerifyPKCS1v15(rsaPub, crypto.SHA256, hashed[:], signature)
+
+  ▸ chapter_11/examples/08/readme.md
+      line     3  [asymmetric]  A secure gRPC service that demonstrates TLS encryption and file signing with RSA signatures.
+      line     8  [asymmetric]  - **File Signing**: Sign files using RSA-SHA256
+      line    76  [asymmetric]  2025/09/30 19:17:41 Algorithm: SHA256-RSA-PKCS1v15
+      line   102  [asymmetric]  2025/09/30 19:19:22 Algorithm: SHA256-RSA-PKCS1v15
+
+  ▸ chapter_11/examples/08/server/main.go
+      line     7  [asymmetric]  "crypto/rsa"
+      line    28  [asymmetric]  privateKey *rsa.PrivateKey
+      line    43  [asymmetric]  signature, err := rsa.SignPKCS1v15(rand.Reader, s.privateKey, crypto.SHA256, hashed[:])
+      line    55  [asymmetric]  Type:  "RSA PUBLIC KEY",
+      line    64  [asymmetric]  Algorithm: "SHA256-RSA-PKCS1v15",
+      line    92  [asymmetric]  func generateKeyPair() (*rsa.PrivateKey, error) {
+      line    93  [asymmetric]  return rsa.GenerateKey(rand.Reader, 2048)
+
+  ▸ chapter_12/examples/01/trial_test/lib/target.go
+      line     5  [kdf]  "crypto/hmac"
+      line     9  [kdf]  // ComputeHMAC generates an HMAC-SHA256 hash for a given input
+      line    12  [kdf]  h := hmac.New(sha256.New, key)
+
+  ▸ chapter_12/examples/01/trial_test/main.go
+      line    13  [kdf]  // Compute HMAC for both secrets
+
+  ▸ chapter_12/examples/01/trial_test/tests/target_test.go
+      line     5  [kdf]  "crypto/hmac"
+      line    11  [kdf]  // TestDefensePass checks if two identical byte slices produce the same HMAC
+      line    52  [kdf]  // computeHMAC generates an HMAC-SHA256 hash for a given input
+      line    59  [kdf]  h := hmac.New(sha256.New, key)

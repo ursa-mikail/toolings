@@ -1,0 +1,30 @@
+================================================================================
+  REPO       : lamport_hash_signature
+  FULL NAME  : ursa-mikail/lamport_hash_signature
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Python
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/lamport_hash_signature
+  MATCHES    : 13
+================================================================================
+
+  ▸ lamport_hash_signature.py
+      line     1  [py_import]  import hashlib
+
+  ▸ lamport_hash_signature_with_merkle_tree.py
+      line    11  [py_import]  import hashlib
+      line   129  [symmetric]  level_nodes = levels[level]
+      line   130  [symmetric]  # if duplicated last was used, it's already in level_nodes
+      line   140  [symmetric]  sibling_hash = level_nodes[sibling_idx]
+
+  ▸ lamport_hash_signature_with_merkle_tree_compressed.py
+      line     2  [py_import]  import hashlib
+      line    20  [random]  return os.urandom(n)
+      line   139  [symmetric]  Compressed Lamport signature that includes auxiliary data for Merkle verification.
+
+  ▸ readme.md
+      line     5  [asymmetric]  Current methods like RSA and Elliptic Curve Cryptography (ECC) rely on problems like factoring large numbers or solving discrete logs.
+      line     7  [asymmetric]  Quantum computers can solve these problems quickly using Shor’s algorithm, which would break RSA and ECC.
+      line    41  [asymmetric]  Quantum computers can break RSA/ECC because they can solve factoring and discrete log problems efficiently.
+      line    53  [post_quantum]  - SPHINCS+
+      line    98  [post_quantum]  👉 You now have a post-quantum signature scheme that works for many messages (thanks to the Merkle tree).

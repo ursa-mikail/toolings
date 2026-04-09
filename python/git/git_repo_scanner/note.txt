@@ -1,0 +1,7 @@
+python repo_scanner.py \
+  --user    ursa-mikail \
+  --config  crypto_patterns.txt \
+  --workers 6 \
+  --verbose
+
+  

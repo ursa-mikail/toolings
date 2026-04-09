@@ -1,0 +1,16 @@
+================================================================================
+  REPO       : environment_compatibility_checker
+  FULL NAME  : ursa-mikail/environment_compatibility_checker
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Python
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/environment_compatibility_checker
+  MATCHES    : 5
+================================================================================
+
+  ▸ compatibility_report.json
+      line    82  [kdf]  "argon2-cffi-bindings": "25.1.0",
+      line   159  [fpe_token]  "tokenizers": "0.22.2",
+      line   171  [kdf]  "argon2-cffi": "25.1.0",
+      line   339  [asymmetric]  "rsa": "4.9.1",
+      line   597  [symmetric]  "overrides": "7.7.0",

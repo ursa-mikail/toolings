@@ -1,0 +1,45 @@
+================================================================================
+  REPO       : terraform_architecture_diagram_draw
+  FULL NAME  : ursa-mikail/terraform_architecture_diagram_draw
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Python
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/terraform_architecture_diagram_draw
+  MATCHES    : 34
+================================================================================
+
+  ▸ terraform_architecture_diagram_draw_02.py
+      line   238  [symmetric]  location_nodes = []
+      line   256  [symmetric]  # Create location nodes (limit to prevent clutter)
+      line   258  [symmetric]  location_nodes.append(Subnet(f"{location}\nMonitoring"))
+      line   261  [symmetric]  check_group_nodes = []
+      line   268  [symmetric]  check_group_nodes.append(Rack(group_label))
+      line   297  [symmetric]  # Create summary nodes if too many checks
+      line   304  [symmetric]  alert_channel_nodes = []
+      line   313  [symmetric]  # Create nodes for each channel type
+      line   317  [symmetric]  alert_channel_nodes.append(Slack(label))
+      line   320  [symmetric]  alert_channel_nodes.append(Pagerduty(label))
+      line   323  [symmetric]  alert_channel_nodes.append(User(label))
+      line   326  [symmetric]  alert_channel_nodes.append(Router(label))
+      line   329  [symmetric]  alert_channel_nodes.append(User(label))
+      line   331  [symmetric]  alert_channel_nodes.append(General(f"Alert Channel\n({channel_type})"))
+      line   334  [symmetric]  dashboard_nodes = []
+      line   346  [symmetric]  dashboard_nodes.append(Grafana(label))
+      line   349  [symmetric]  maintenance_nodes = []
+      line   355  [symmetric]  maintenance_nodes.append(General(label))
+      line   358  [symmetric]  maintenance_nodes.append(General(f"Triggers\n({len(resources['triggers'])})"))
+      line   368  [symmetric]  if location_nodes and target_services:
+      line   369  [symmetric]  for location in location_nodes:
+      line   374  [symmetric]  if check_group_nodes and all_checks:
+      line   375  [symmetric]  for group in check_group_nodes:
+      line   380  [symmetric]  if location_nodes and all_checks:
+      line   381  [symmetric]  for location in location_nodes[:2]:  # Connect first few locations
+      line   386  [symmetric]  if all_checks and alert_channel_nodes:
+      line   388  [symmetric]  for alert in alert_channel_nodes:
+      line   392  [symmetric]  if all_checks and dashboard_nodes:
+      line   394  [symmetric]  for dashboard in dashboard_nodes:
+      line   398  [symmetric]  if maintenance_nodes and all_checks:
+      line   399  [symmetric]  for mw in maintenance_nodes:
+      line   406  [symmetric]  snippet_node >> Edge(label="provides code", style="dotted") >> check
+      line   475  [symmetric]  print(f"\n🎯 Diagram includes:")
+      line   536  [symmetric]  🎯 Diagram includes:

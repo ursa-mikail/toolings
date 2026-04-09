@@ -1,0 +1,13 @@
+================================================================================
+  REPO       : text_diff_utilities
+  FULL NAME  : ursa-mikail/text_diff_utilities
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Python
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/text_diff_utilities
+  MATCHES    : 2
+================================================================================
+
+  ▸ text_diff_color_utilities.py
+      line    14  [symmetric]  codes = difflib.SequenceMatcher(a=old, b=new).get_opcodes()
+      line    15  [symmetric]  for code in codes:

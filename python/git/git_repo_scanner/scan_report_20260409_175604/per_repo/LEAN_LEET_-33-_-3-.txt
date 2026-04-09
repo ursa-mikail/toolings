@@ -1,0 +1,37 @@
+================================================================================
+  REPO       : LEAN_LEET_-33-_-3-
+  FULL NAME  : ursa-mikail/LEAN_LEET_-33-_-3-
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Python
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/LEAN_LEET_-33-_-3-
+  MATCHES    : 16
+================================================================================
+
+  ▸ leetcode/arrays/1_d/two_pointers/has_cycle.py
+      line    35  [symmetric]  nodes = [head]
+      line    40  [symmetric]  nodes.append(current)
+      line    42  [symmetric]  if pos != -1 and pos < len(nodes):
+      line    43  [symmetric]  current.next = nodes[pos]
+
+  ▸ leetcode/trees/binary_tree/dfs/check_tree_structure.py
+      line    10  [symmetric]  Maximum depth = number of nodes along the longest path from root to farthest leaf.
+
+  ▸ leetcode/trees/binary_tree/dfs/right_side_view.py
+      line     9  [symmetric]  Return the values of nodes you can see from the right side (top to bottom).
+      line    92  [symmetric]  # Because in BFS, nodes are added left-to-right, so the
+      line   137  [symmetric]  Level 1: Nodes 2 and 3 → 3 (rightmost)
+      line   138  [symmetric]  Level 2: Nodes 5 and 4 → 4 (rightmost)
+      line   149  [symmetric]  Level 1: Nodes 2 and 3 → 3 (rightmost)
+
+  ▸ leetcode_topics.txt
+      line    16  [symmetric]  │   │   │   ├── merge_nodes
+      line    17  [symmetric]  │   │   │   └── reverse_nodes
+
+  ▸ leetcode_topics.yaml
+      line    16  [symmetric]  merge_nodes: null
+      line    17  [symmetric]  reverse_nodes: null
+
+  ▸ make_dirs.py
+      line    41  [symmetric]  Created: leetcode/pointers/1_d/linked_list/merge_nodes
+      line    42  [symmetric]  Created: leetcode/pointers/1_d/linked_list/reverse_nodes

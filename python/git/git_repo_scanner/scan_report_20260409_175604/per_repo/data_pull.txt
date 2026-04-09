@@ -1,0 +1,25 @@
+================================================================================
+  REPO       : data_pull
+  FULL NAME  : ursa-mikail/data_pull
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Shell
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/data_pull
+  MATCHES    : 12
+================================================================================
+
+  ▸ 01/curl_list.txt
+      line     4  [asymmetric]  https://github.com/usnistgov/ACVP-Server/tree/master/gen-val/json-files/ML-DSA-keyGen-FIPS204
+      line     5  [asymmetric]  https://github.com/usnistgov/ACVP-Server/tree/master/gen-val/json-files/ML-DSA-sigGen-FIPS204
+      line     6  [asymmetric]  https://github.com/usnistgov/ACVP-Server/tree/master/gen-val/json-files/ML-DSA-sigVer-FIPS204
+      line     8  [asymmetric]  https://github.com/usnistgov/ACVP-Server/tree/master/gen-val/json-files/SLH-DSA-keyGen-FIPS205
+      line     9  [asymmetric]  https://github.com/usnistgov/ACVP-Server/tree/master/gen-val/json-files/SLH-DSA-sigGen-FIPS205
+      line    10  [asymmetric]  https://github.com/usnistgov/ACVP-Server/tree/master/gen-val/json-files/SLH-DSA-sigVer-FIPS205
+      line    12  [symmetric]  https://github.com/usnistgov/ACVP-Server/tree/master/gen-val/json-files/ACVP-AES-XTS-1.0
+      line    12  [cipher_mode]  https://github.com/usnistgov/ACVP-Server/tree/master/gen-val/json-files/ACVP-AES-XTS-1.0
+      line    13  [symmetric]  https://github.com/usnistgov/ACVP-Server/tree/master/gen-val/json-files/ACVP-AES-XTS-2.0
+      line    13  [cipher_mode]  https://github.com/usnistgov/ACVP-Server/tree/master/gen-val/json-files/ACVP-AES-XTS-2.0
+
+  ▸ 01/readme.md
+      line     3  [symmetric]  This project provides a Bash script to **download all JSON files** from specific GitHub directories listed in `curl_list.txt`. The links current comes from e.g. ![list](https://github.com/usnistgov/ACVP-Server/tree/master/gen-val/json-files/ML-DSA-keyGen-FIPS204)
+      line     3  [asymmetric]  This project provides a Bash script to **download all JSON files** from specific GitHub directories listed in `curl_list.txt`. The links current comes from e.g. ![list](https://github.com/usnistgov/ACVP-Server/tree/master/gen-val/json-files/ML-DSA-keyGen-FIPS204)

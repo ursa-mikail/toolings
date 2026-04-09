@@ -1,0 +1,585 @@
+================================================================================
+  REPO       : site_announcement
+  FULL NAME  : ursa-mikail/site_announcement
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : HTML
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/site_announcement
+  MATCHES    : 500
+================================================================================
+
+  ▸ announcement/a03.html
+      line    67  [symmetric]  const encrypted = CryptoJS.AES.encrypt(textToEncrypt, key).toString();
+      line    75  [symmetric]  const decrypted = CryptoJS.AES.decrypt(textToDecrypt, key).toString(CryptoJS.enc.Utf8);
+
+  ▸ announcement/a05.html
+      line    82  [symmetric]  if (line.includes(':')) {
+
+  ▸ announcement/a06.html
+      line    67  [symmetric]  const encrypted = CryptoJS.AES.encrypt(textToEncrypt, key, { iv: iv }).toString();
+      line    96  [symmetric]  const decrypted = CryptoJS.AES.decrypt({ ciphertext: encrypted }, key, { iv: iv });
+
+  ▸ announcement/a08.html
+      line   125  [symmetric]  var words = ["aardvark", "aba", "aback", "abacus", "abalone", "abandon", "abandoned", "abandonment", "abate", "abatement", "abattoir", "abb", "abbas", "abbey", "abbot", "abbreviate", "abbreviation", "abdicate", "abdication", "abdomen", "abdominal", "abduct", "abduction", "abed", "aberrant", "aberrat
+      line   127  [symmetric]  "baal", "baar", "baba", "babble", "babbler", "babbling", "babe", "baboon", "babu", "baby", "bac", "baccalaureate", "baccarat", "bach", "bache", "bachelor", "bacilli", "bacillus", "back", "backache", "backboard", "backbone", "backcourt", "backdoor", "backdrop", "backed", "backer", "backfield", "backf
+      line   127  [symmetric]  "baal", "baar", "baba", "babble", "babbler", "babbling", "babe", "baboon", "babu", "baby", "bac", "baccalaureate", "baccarat", "bach", "bache", "bachelor", "bacilli", "bacillus", "back", "backache", "backboard", "backbone", "backcourt", "backdoor", "backdrop", "backed", "backer", "backfield", "backf
+      line   127  [zkp]  "baal", "baar", "baba", "babble", "babbler", "babbling", "babe", "baboon", "babu", "baby", "bac", "baccalaureate", "baccarat", "bach", "bache", "bachelor", "bacilli", "bacillus", "back", "backache", "backboard", "backbone", "backcourt", "backdoor", "backdrop", "backed", "backer", "backfield", "backf
+      line   133  [symmetric]  "ea", "each", "eager", "eagerly", "eagerness", "eagle", "ean", "ear", "earache", "eardrum", "eared", "earl", "early", "earmark", "earn", "earner", "earnest", "earnestly", "earnestness", "earning", "earnings", "earphone", "earpiece", "earring", "earshot", "earth", "earthen", "earthenware", "earthly",
+      line   135  [post_quantum]  "fa", "fable", "fabled", "fabric", "fabricant", "fabricate", "fabrication", "fabricator", "fabulous", "fabulously", "facade", "face", "faced", "faceless", "faceplate", "facet", "faceted", "facia", "facial", "facies", "facile", "facilitate", "facilitation", "facilitator", "facility", "facing", "fack"
+      line   139  [symmetric]  "iambic", "iao", "iba", "ibex", "ibid", "ibis", "ice", "iceberg", "icebox", "icebreaker", "iced", "icehouse", "iceland", "iceman", "ich", "icicle", "icing", "icon", "iconic", "iconoclast", "iconography", "icy", "id", "ide", "idea", "ideal", "idealism", "idealist", "idealistic", "ideally", "ideation"
+      line   152  [symmetric]  "sab", "sabbat", "sabbath", "sabbatical", "sabe", "saber", "sabertooth", "sabina", "sabine", "sabino", "sable", "sabot", "sabotage", "saboteur", "sabra", "sac", "saccharin", "saccharomyces", "sachet", "sack", "sacked", "sacking", "saco", "sacra", "sacral", "sacrament", "sacramental", "sacred", "sacr
+      line   156  [hash_func]  "waar", "wab", "wack", "wacker", "wacky", "wad", "wade", "wader", "wadi", "wading", "wafer", "waffle", "wag", "wage", "waged", "wager", "wagering", "wages", "wagon", "wagoner", "wagtail", "wah", "wahine", "wahoo", "wail", "wain", "wainwright", "waist", "waistband", "waistcoat", "waisted", "waistline
+
+  ▸ announcement/a12.html
+      line     6  [symmetric]  <title>AES File Cipher/Decipher</title>
+      line    29  [symmetric]  <h1>AES File Cipher/Decipher Tool</h1>
+      line    35  [symmetric]  <button id="generate-key-button">Generate Random AES Key</button>
+      line    37  [symmetric]  <textarea id="aes-key" rows="4" cols="50" placeholder="Enter AES key here..."></textarea>
+      line    45  [symmetric]  <textarea id="decipher-key" rows="4" cols="50" placeholder="Enter AES key to decipher..."></textarea>
+      line    55  [symmetric]  document.getElementById('aes-key').value = Array.from(randomKey).map(b => b.toString(16).padStart(2, '0')).join('');
+      line    60  [symmetric]  const aesKey = document.getElementById('aes-key').value;
+      line    63  [symmetric]  document.getElementById('upload-notification').textContent = 'Please provide a file and an AES key.';
+      line    71  [symmetric]  encryptAES(fileContent, aesKey).then(cipherText => {
+      line    83  [symmetric]  document.getElementById('decipher-notification').textContent = 'Please provide an AES key.';
+      line    90  [symmetric]  decryptAES(cipherText, aesKey)
+      line   106  [symmetric]  async function encryptAES(text, key) {
+      line   110  [symmetric]  const importedKey = await window.crypto.subtle.importKey('raw', keyBytes, 'AES-CBC', false, ['encrypt']);
+      line   110  [cipher_mode]  const importedKey = await window.crypto.subtle.importKey('raw', keyBytes, 'AES-CBC', false, ['encrypt']);
+      line   111  [symmetric]  const encryptedBuffer = await window.crypto.subtle.encrypt({ name: 'AES-CBC', iv: iv }, importedKey, encodedText);
+      line   111  [cipher_mode]  const encryptedBuffer = await window.crypto.subtle.encrypt({ name: 'AES-CBC', iv: iv }, importedKey, encodedText);
+      line   117  [symmetric]  async function decryptAES(cipherText, key) {
+      line   122  [symmetric]  const importedKey = await window.crypto.subtle.importKey('raw', keyBytes, 'AES-CBC', false, ['decrypt']);
+      line   122  [cipher_mode]  const importedKey = await window.crypto.subtle.importKey('raw', keyBytes, 'AES-CBC', false, ['decrypt']);
+      line   123  [symmetric]  const decryptedBuffer = await window.crypto.subtle.decrypt({ name: 'AES-CBC', iv: iv }, importedKey, encryptedText);
+      line   123  [cipher_mode]  const decryptedBuffer = await window.crypto.subtle.decrypt({ name: 'AES-CBC', iv: iv }, importedKey, encryptedText);
+
+  ▸ announcement/a14.html
+      line    59  [kdf]  // Derive the key using PBKDF2 with SHA-256
+      line    87  [kdf]  // Derive key using PBKDF2 with SHA-256
+      line   101  [kdf]  { name: "PBKDF2" },
+      line   108  [kdf]  { name: "PBKDF2", salt: salt, iterations: iterations, hash: "SHA-256" },
+      line   152  [kdf]  # Derive the key using PBKDF2
+
+  ▸ announcement/a15.html
+      line    14  [asymmetric]  <option value="rsa">RSA</option>
+      line   124  [asymmetric]  case "rsa":
+      line   126  [asymmetric]  name: "RSA-PSS",
+      line   215  [asymmetric]  name: "RSA-PSS",
+      line   239  [asymmetric]  name: "RSA-PSS",
+
+  ▸ announcement/a16.html
+      line     6  [asymmetric]  <title>RSA/ECDSA Key Management and Signing</title>
+      line    76  [asymmetric]  <h2>RSA/ECDSA Key Management and Signing</h2>
+      line    88  [symmetric]  <button onclick="encryptPrivateKey()">Generate AES Key and Encrypt</button>
+      line    90  [symmetric]  <h4>Generated AES Key (save this securely):</h4>
+      line    91  [symmetric]  <input type="text" id="aes-key-display" readonly>
+      line    92  [symmetric]  <button onclick="copyToClipboard('aes-key-display')">Copy AES Key</button>
+      line   112  [symmetric]  <label for="aes-key">Enter AES Key:</label>
+      line   113  [symmetric]  <input type="text" id="aes-key" placeholder="Enter your AES key">
+      line   201  [symmetric]  // Generate random AES key and IV
+      line   204  [symmetric]  debugLog('Generated new AES key and IV');
+      line   207  [symmetric]  const encrypted = CryptoJS.AES.encrypt(currentPrivateKey, aesKey, {
+      line   209  [cipher_mode]  mode: CryptoJS.mode.CBC,
+      line   218  [symmetric]  document.getElementById('aes-key-display').value = aesKey.toString(CryptoJS.enc.Base64);
+      line   270  [symmetric]  const aesKeyB64 = document.getElementById('aes-key').value;
+      line   273  [symmetric]  throw new Error('Please provide both encrypted key and AES key');
+      line   288  [symmetric]  const decrypted = CryptoJS.AES.decrypt(
+      line   293  [cipher_mode]  mode: CryptoJS.mode.CBC,
+      line   300  [symmetric]  if (!decryptedPrivateKey.includes('PRIVATE KEY')) {
+
+  ▸ announcement/a16.html.v1.txt
+      line     6  [asymmetric]  <title>RSA/ECDSA Key Management and Signing</title>
+      line    76  [asymmetric]  <h2>RSA/ECDSA Key Management and Signing</h2>
+      line    88  [symmetric]  <button onclick="encryptPrivateKey()">Generate AES Key and Encrypt</button>
+      line    90  [symmetric]  <h4>Generated AES Key (save this securely):</h4>
+      line    91  [symmetric]  <input type="text" id="aes-key-display" readonly>
+      line    92  [symmetric]  <button onclick="copyToClipboard('aes-key-display')">Copy AES Key</button>
+      line   112  [symmetric]  <label for="aes-key">Enter AES Key:</label>
+      line   113  [symmetric]  <input type="text" id="aes-key" placeholder="Enter your AES key">
+      line   201  [symmetric]  // Generate random AES key and IV
+      line   204  [symmetric]  debugLog('Generated new AES key and IV');
+      line   207  [symmetric]  const encrypted = CryptoJS.AES.encrypt(currentPrivateKey, aesKey, {
+      line   209  [cipher_mode]  mode: CryptoJS.mode.CBC,
+      line   218  [symmetric]  document.getElementById('aes-key-display').value = aesKey.toString(CryptoJS.enc.Base64);
+      line   270  [symmetric]  const aesKeyB64 = document.getElementById('aes-key').value;
+      line   273  [symmetric]  throw new Error('Please provide both encrypted key and AES key');
+      line   288  [symmetric]  const decrypted = CryptoJS.AES.decrypt(
+      line   293  [cipher_mode]  mode: CryptoJS.mode.CBC,
+      line   300  [symmetric]  if (!decryptedPrivateKey.includes('PRIVATE KEY')) {
+
+  ▸ announcement/a17.html
+      line    52  [kdf]  // Derive the key using PBKDF2
+      line    72  [kdf]  { name: 'PBKDF2' },
+      line    79  [kdf]  name: 'PBKDF2',
+      line   106  [key_mgmt]  def generate_key(initial_hex_key, key_length_bytes, iterations=2048):
+      line   113  [kdf]  # Derive the key using PBKDF2
+      line   130  [key_mgmt]  derived_key = generate_key(initial_hex_key, key_length_bytes)
+
+  ▸ announcement/a21.html
+      line    62  [symmetric]  const url = 'https://gist.githubusercontent.com/mikail-eliyah-00/48d6f7fc2f25bd03110e15affcd27679/raw/3ac926683112b9f70a8d7d6006d8eaf4e97cea9c/HTTP%2520response%2520status%2520codes.csv';
+
+  ▸ announcement/a28.html
+      line    32  [symmetric]  data: graph.nodes,
+
+  ▸ announcement/a39.html
+      line   102  [symmetric]  item.category.toLowerCase().includes(query) ||
+      line   103  [symmetric]  item.code.toLowerCase().includes(query) ||
+      line   104  [symmetric]  item.description.toLowerCase().includes(query)
+      line   134  [symmetric]  // Function to display full list of codes
+      line   202  [symmetric]  0f: algorithm, modes, etc
+
+  ▸ announcement/a47.html
+      line    84  [symmetric]  const suggestions = csvData.filter(row => row.description.toLowerCase().includes(descriptionInput));
+      line   108  [symmetric]  const result = csvData.find(row => row.description.toLowerCase().includes(descriptionInput));
+
+  ▸ announcement/a48.html
+      line    36  [symmetric]  const nodes = [];
+      line    42  [symmetric]  nodes.push({
+      line    78  [symmetric]  return { nodes, links };
+      line    85  [symmetric]  const { nodes, links } = processYamlData(emotionsData);
+      line    87  [symmetric]  const categories = Array.from(new Set(nodes.map(n => n.category)))
+      line   103  [symmetric]  data: nodes,
+      line   130  [symmetric]  source: nodes.map(n => n.name),
+      line   132  [symmetric]  const node = nodes.find(n => n.name === ui.item.value);
+      line   137  [symmetric]  dataIndex: nodes.indexOf(node)
+
+  ▸ announcement/a49.html
+      line   172  [hash_func]  *  md5.jvs 1.0b 27/06/96
+      line   174  [asymmetric]  * Javascript implementation of the RSA Data Security, Inc. MD5
+      line   174  [hash_func]  * Javascript implementation of the RSA Data Security, Inc. MD5
+      line   531  [hash_func]  /* End of the MD5 algorithm */
+      line   552  [symmetric]  charcodes = " " +
+      line   836  [hash_func]  /*  If requested, calculate the MD5 signature for this key and
+      line   844  [symmetric]  update(32 + charcodes.indexOf(password.charAt(m)));
+      line   870  [hash_func]  v += "\n----------  MD5 Signatures  ----------\n" + md5v;
+      line  1007  [symmetric]  option provides the greatest security for a given key length,
+      line  1047  [hash_func]  a line beginning with ten dashes &#8220;<tt>-</tt>&#8221;, the 128 bit MD5 signature of
+      line  1053  [hash_func]  with the same MD5 algorithm used to generate it initially, and the key
+      line  1209  [hash_func]  <a href="http://www.ietf.org/rfc/rfc1321.txt"><b>MD5 message-digest algorithm</b></a>
+      line  1212  [hash_func]  conditions of use.  The MD5 algorithm was developed by Ron Rivest.
+
+  ▸ announcement/a50.html
+      line   305  [symmetric]  option provides the greatest security for a given key length,
+
+  ▸ announcement/a53.html
+      line    31  [symmetric]  <input id="genkey" class="btn btn-large btn-primary"  type="button" value="Gen AES GCM Key" />
+      line    31  [cipher_mode]  <input id="genkey" class="btn btn-large btn-primary"  type="button" value="Gen AES GCM Key" />
+      line    37  [symmetric]  <h2>AES GCM Encryption</h2>
+      line    37  [cipher_mode]  <h2>AES GCM Encryption</h2>
+      line    93  [symmetric]  name: "AES-GCM",
+      line    93  [cipher_mode]  name: "AES-GCM",
+      line   108  [symmetric]  name: "AES-GCM",
+      line   108  [cipher_mode]  name: "AES-GCM",
+      line   130  [symmetric]  name: "AES-GCM",
+      line   130  [cipher_mode]  name: "AES-GCM",
+
+  ▸ announcement/a55.html
+      line    37  [hash_func]  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/hmac-md5.min.js"></script>
+      line    37  [kdf]  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/hmac-md5.min.js"></script>
+      line    38  [kdf]  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/hmac-ripemd160.min.js"></script>
+      line    39  [kdf]  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/hmac-sha1.min.js"></script>
+      line    40  [kdf]  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/hmac-sha224.min.js"></script>
+      line    41  [kdf]  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/hmac-sha256.min.js"></script>
+      line    42  [kdf]  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/hmac-sha3.min.js"></script>
+      line    43  [kdf]  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/hmac-sha384.min.js"></script>
+      line    44  [kdf]  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/hmac-sha512.min.js"></script>
+      line    54  [kdf]  <input id="genkey" class="btn btn-large btn-primary" type="button" value="Gen New HMAC Key" />
+      line    77  [kdf]  <option value="MD-5">HMAC MD-5</option>
+      line    78  [hash_func]  <option value="RIPEMD-160">HMAC RIPEMD-160</option>
+      line    78  [kdf]  <option value="RIPEMD-160">HMAC RIPEMD-160</option>
+      line    79  [kdf]  <option value="SHA-1">HMAC SHA-1</option>
+      line    80  [kdf]  <option value="SHA-224">HMAC SHA-224</option>
+      line    82  [kdf]  <option value="SHA-256">HMAC SHA-256</option>
+      line    83  [kdf]  <option value="SHA-3">HMAC SHA-3</option>
+      line    84  [kdf]  <option value="SHA-384">HMAC SHA-384</option>
+      line    85  [kdf]  <option value="SHA-512">HMAC SHA-512</option>
+      line   110  [kdf]  <h2>HMAC</h2>
+
+  ▸ announcement/ax_summary.xml
+      line    17  [symmetric]  This section provides various utilities including generating random hexadecimal values and random text. Users can specify the number of characters for both text and hex generation. Additionally, there are options for encrypting and decrypting text by entering the corresponding keys, as well as a cle
+      line    23  [symmetric]  In this part, users can embed a YouTube video and generate a link that includes the current playback time. Users can input a YouTube video URL, load the video, and copy a link that directs to the specific time. This section also includes a ciphered link feature with a tool to decipher Base64 encoded
+      line    77  [symmetric]  This tool allows users to upload a file, cipher it with a provided or randomly generated AES key, and download the ciphered file as a12.ciphered.html. In another section, users can input an AES key to decipher the a12.ciphered.html file. If the key is correct, the decrypted announcement is displayed
+      line    91  [kdf]  The online mnemonic key generator allows users to create and derive cryptographic keys based on a mnemonic phrase, which is a series of words commonly used for securely storing private keys. Users can input their own mnemonic words or generate a random set of words, and they are prompted to enter a 
+      line    98  [symmetric]  Key pair generator with options for RSA, ECDSA, and EdDSA algorithms. It includes functionality for generating and exporting cryptographic key pairs, as well as generating test vectors with random bytes and signatures. The unit test section allows users to generate random bytes, create signatures us
+      line    98  [asymmetric]  Key pair generator with options for RSA, ECDSA, and EdDSA algorithms. It includes functionality for generating and exporting cryptographic key pairs, as well as generating test vectors with random bytes and signatures. The unit test section allows users to generate random bytes, create signatures us
+      line   103  [asymmetric]  <title>16. RSA/ECDSA Key Management and Signing</title>
+      line   105  [symmetric]  Outlines a comprehensive tool for handling AES encryption and signing using ECDSA keys. Users can input their ECDSA private key in hexadecimal format, which is then encrypted using a randomly generated AES key. This AES key and the encrypted private key are displayed to the user, with options to cop
+      line   112  [symmetric]  This web-based tool allows users to input an initial hex key and specify a desired key length to generate a derived key using the PBKDF2 key derivation function with HMAC-SHA256. The tool provides an intuitive interface with input fields for the hex key and key length, a button to generate the deriv
+      line   112  [kdf]  This web-based tool allows users to input an initial hex key and specify a desired key length to generate a derived key using the PBKDF2 key derivation function with HMAC-SHA256. The tool provides an intuitive interface with input fields for the hex key and key length, a button to generate the deriv
+      line   112  [kdf]  This web-based tool allows users to input an initial hex key and specify a desired key length to generate a derived key using the PBKDF2 key derivation function with HMAC-SHA256. The tool provides an intuitive interface with input fields for the hex key and key length, a button to generate the deriv
+      line   119  [symmetric]  The Periodic Table Word Generator is an interactive web tool that converts a given input text into images of elements from the periodic table. Each letter in the word or phrase is mapped to the corresponding element's symbol (e.g., "H" for Hydrogen). For two-letter element symbols (e.g., "He" for He
+      line   133  [symmetric]  The Hyperlink Maker allows users to upload a text file with URLs and optional descriptions in the format `[url][description]`. The tool generates HTML hyperlinks from the file's contents, displays them in an enumerated list, and provides a copy-to-clipboard functionality for easy copying of all gene
+      line   140  [symmetric]  The feature allows users to load a CSV file containing HTTP status codes, types, and meanings. It enables searching for a specific status code to display its type and meaning. Additionally, users can view the full list of status codes in a well-organized table format. This solution uses JavaScript t
+      line   154  [symmetric]  This page creates a timeline section with animation effects using ScrollReveal.js. It includes several timeline items, each describing a significant event or milestone. The timeline items fade in from the left or right as the user scrolls, creating a dynamic and engaging visual experience. The desig
+      line   161  [symmetric]  This page creates a 403 Access Not Granted error page with a playful design featuring animations. It includes a keyhole and key SVG illustrations and a ghost animation that moves across the screen, revealing the message "You know you're supposed to leave, right?" The page is designed to provide a ti
+      line   168  [symmetric]  This page showcases an interactive SVG animation that generates colorful wave effects when the user clicks or touches anywhere on the screen. The page is designed to provide a seamless experience on both desktop and mobile devices, featuring a customizable SVG that animates based on user input. It i
+      line   189  [symmetric]  This section includes interactive animations from a28 to a38. Refer to a40 for a tool that allows users to generate a list of URLs based on specified inputs. Users can input the root URL, path segments, file prefix, start and end numbers, choose whether to zero-pad the numbers, and select a file ext
+      line   196  [symmetric]  This page allows users to search for error status codes based on **Category**, **Code**, or **Description** from a CSV file.
+      line   240  [symmetric]  This page allows users to interactively create and connect nodes on a canvas.
+      line   241  [symmetric]  Users can click to place nodes at random x, y coordinates and drag between nodes to establish connections.
+      line   249  [symmetric]  This page provides a dynamic lookup tool for ports and their descriptions. Users can enter a port number to see its corresponding description or type in a description to find matching port numbers. The page includes an autocomplete feature that suggests descriptions as users type, allowing for quick
+      line   256  [symmetric]  This page outlines various emotional states and reactions, categorizing them into clusters such as Surprise, Fear, and Joy/Happiness. It provides a detailed breakdown of emotions within each category, helping to understand the spectrum of human feelings and their nuances.
+      line   271  [symmetric]  This page presents an interactive Sankey diagram that illustrates the relationships between various forms of harmful activities, including opinion manipulation, civil unrest, harassment, fraud, and others. It aims to visualize how these crimes interconnect and the impact they have on society. The go
+      line   283  [symmetric]  <title>53. AES GCM Cipher Utility</title>
+      line   283  [cipher_mode]  <title>53. AES GCM Cipher Utility</title>
+      line   285  [symmetric]  Provide a tool for AES GCM message ciphering. This tool includes a feature to pull down a file (given url) and decipher.
+      line   285  [symmetric]  Provide a tool for AES GCM message ciphering. This tool includes a feature to pull down a file (given url) and decipher.
+      line   285  [cipher_mode]  Provide a tool for AES GCM message ciphering. This tool includes a feature to pull down a file (given url) and decipher.
+      line   297  [kdf]  <title>55. HMAC</title>
+      line   299  [kdf]  HMAC key generator.
+      line   320  [symmetric]  The ax_summary provides an overarching overview of all the sections (a1 to a4). It synthesizes the key points and functionalities from each part, ensuring that users have a clear understanding of the tools and resources available across the different functionalities.
+
+  ▸ announcement/config_a54.txt
+      line    25  [hash_func]  MD5=false
+
+  ▸ announcement/data/les-miserables.json
+      line     2  [symmetric]  "nodes": [
+
+  ▸ announcement/data/npmdep.json
+      line     1  [symmetric]  {"nodes":["mocha","chai","lodash","grunt","eslint","gulp","babel-preset-es2015","request","async","istanbul","should","express","babel-core","sinon","babel-cli","tape","grunt-contrib-jshint","underscore","coffee-script","webpack","babel-eslint","browserify","chalk","commander","react","babel-loader"
+      line     1  [symmetric]  {"nodes":["mocha","chai","lodash","grunt","eslint","gulp","babel-preset-es2015","request","async","istanbul","should","express","babel-core","sinon","babel-cli","tape","grunt-contrib-jshint","underscore","coffee-script","webpack","babel-eslint","browserify","chalk","commander","react","babel-loader"
+      line     1  [cipher_mode]  {"nodes":["mocha","chai","lodash","grunt","eslint","gulp","babel-preset-es2015","request","async","istanbul","should","express","babel-core","sinon","babel-cli","tape","grunt-contrib-jshint","underscore","coffee-script","webpack","babel-eslint","browserify","chalk","commander","react","babel-loader"
+      line     1  [asymmetric]  {"nodes":["mocha","chai","lodash","grunt","eslint","gulp","babel-preset-es2015","request","async","istanbul","should","express","babel-core","sinon","babel-cli","tape","grunt-contrib-jshint","underscore","coffee-script","webpack","babel-eslint","browserify","chalk","commander","react","babel-loader"
+      line     1  [hash_func]  {"nodes":["mocha","chai","lodash","grunt","eslint","gulp","babel-preset-es2015","request","async","istanbul","should","express","babel-core","sinon","babel-cli","tape","grunt-contrib-jshint","underscore","coffee-script","webpack","babel-eslint","browserify","chalk","commander","react","babel-loader"
+      line     1  [kdf]  {"nodes":["mocha","chai","lodash","grunt","eslint","gulp","babel-preset-es2015","request","async","istanbul","should","express","babel-core","sinon","babel-cli","tape","grunt-contrib-jshint","underscore","coffee-script","webpack","babel-eslint","browserify","chalk","commander","react","babel-loader"
+      line     1  [kdf]  {"nodes":["mocha","chai","lodash","grunt","eslint","gulp","babel-preset-es2015","request","async","istanbul","should","express","babel-core","sinon","babel-cli","tape","grunt-contrib-jshint","underscore","coffee-script","webpack","babel-eslint","browserify","chalk","commander","react","babel-loader"
+      line     1  [kdf]  {"nodes":["mocha","chai","lodash","grunt","eslint","gulp","babel-preset-es2015","request","async","istanbul","should","express","babel-core","sinon","babel-cli","tape","grunt-contrib-jshint","underscore","coffee-script","webpack","babel-eslint","browserify","chalk","commander","react","babel-loader"
+      line     1  [kdf]  {"nodes":["mocha","chai","lodash","grunt","eslint","gulp","babel-preset-es2015","request","async","istanbul","should","express","babel-core","sinon","babel-cli","tape","grunt-contrib-jshint","underscore","coffee-script","webpack","babel-eslint","browserify","chalk","commander","react","babel-loader"
+      line     1  [fpe_token]  {"nodes":["mocha","chai","lodash","grunt","eslint","gulp","babel-preset-es2015","request","async","istanbul","should","express","babel-core","sinon","babel-cli","tape","grunt-contrib-jshint","underscore","coffee-script","webpack","babel-eslint","browserify","chalk","commander","react","babel-loader"
+
+  ▸ announcement/key_pair_gen.sh
+      line     3  [asymmetric]  # Function to generate RSA key pair
+      line     6  [asymmetric]  openssl genpkey -algorithm RSA -out private_key.pem -pkeyopt rsa_keygen_bits:$key_length
+      line     7  [asymmetric]  openssl rsa -pubout -in private_key.pem -out public_key.pem
+      line     8  [asymmetric]  echo "RSA key pair generated with key length $key_length"
+      line    27  [random]  head -c 32 /dev/urandom | xxd -p | tr -d '\n'
+      line    37  [signature]  verify_signature() {
+      line    46  [asymmetric]  if [ "$key_type" == "rsa" ]; then
+      line    47  [asymmetric]  echo "Private Key (RSA) in Hex:"
+      line    49  [asymmetric]  openssl rsa -in private_key.pem -outform DER | xxd -p | tr -d '\n'
+      line    51  [asymmetric]  echo "Public Key (RSA) in Hex:"
+      line    53  [asymmetric]  openssl rsa -pubin -in public_key.pem -outform DER | xxd -p | tr -d '\n'
+      line    79  [asymmetric]  echo "1. RSA"
+      line    86  [asymmetric]  read -p "Enter RSA Key Length (e.g., 2048, 4096): " key_length
+      line    88  [asymmetric]  key_type="rsa"
+      line   111  [signature]  verify_signature
+
+  ▸ announcement/kismet_interactive_plot.html
+      line    63  [symmetric]  mpld3.draw_figure("fig_el5205fa26dcc5-1a8c-4a6e-a7a2-561f26cc682d3143213529", {"width": 1200.0, "height": 600.0, "axes": [{"bbox": [0.05491898148148149, 0.19139033926160265, 0.9325810185185186, 0.7447207718495085], "xlim": [20347.05, 20367.95], "ylim": [-2.3, 92.3], "xdomain": [[2025, 8, 16, 1, 12, 
+      line   113  [symmetric]  mpld3.draw_figure("fig_el5205fa26dcc5-1a8c-4a6e-a7a2-561f26cc682d3143213529", {"width": 1200.0, "height": 600.0, "axes": [{"bbox": [0.05491898148148149, 0.19139033926160265, 0.9325810185185186, 0.7447207718495085], "xlim": [20347.05, 20367.95], "ylim": [-2.3, 92.3], "xdomain": [[2025, 8, 16, 1, 12, 
+      line   162  [symmetric]  mpld3.draw_figure("fig_el5205fa26dcc5-1a8c-4a6e-a7a2-561f26cc682d3143213529", {"width": 1200.0, "height": 600.0, "axes": [{"bbox": [0.05491898148148149, 0.19139033926160265, 0.9325810185185186, 0.7447207718495085], "xlim": [20347.05, 20367.95], "ylim": [-2.3, 92.3], "xdomain": [[2025, 8, 16, 1, 12, 
+
+  ▸ announcement/opus_interactive_plot.html
+      line    63  [symmetric]  mpld3.draw_figure("fig_el520533be4b0c-c763-4516-9a25-a9c2804a1e0d4724820548", {"width": 1200.0, "height": 600.0, "axes": [{"bbox": [0.05491898148148149, 0.19139033926160265, 0.9325810185185186, 0.7447207718495085], "xlim": [20347.05, 20367.95], "ylim": [-4.65, 97.65], "xdomain": [[2025, 8, 16, 1, 12
+      line   113  [symmetric]  mpld3.draw_figure("fig_el520533be4b0c-c763-4516-9a25-a9c2804a1e0d4724820548", {"width": 1200.0, "height": 600.0, "axes": [{"bbox": [0.05491898148148149, 0.19139033926160265, 0.9325810185185186, 0.7447207718495085], "xlim": [20347.05, 20367.95], "ylim": [-4.65, 97.65], "xdomain": [[2025, 8, 16, 1, 12
+      line   162  [symmetric]  mpld3.draw_figure("fig_el520533be4b0c-c763-4516-9a25-a9c2804a1e0d4724820548", {"width": 1200.0, "height": 600.0, "axes": [{"bbox": [0.05491898148148149, 0.19139033926160265, 0.9325810185185186, 0.7447207718495085], "xlim": [20347.05, 20367.95], "ylim": [-4.65, 97.65], "xdomain": [[2025, 8, 16, 1, 12
+
+  ▸ announcement/pneuma_interactive_plot.html
+      line    63  [symmetric]  mpld3.draw_figure("fig_el52052b760840-07cb-45fd-bfb8-9bfc04ee48744291380931", {"width": 1200.0, "height": 600.0, "axes": [{"bbox": [0.05491898148148149, 0.19139033926160265, 0.9325810185185186, 0.7447207718495085], "xlim": [20347.05, 20367.95], "ylim": [-1.6000000000000005, 99.6], "xdomain": [[2025,
+      line   113  [symmetric]  mpld3.draw_figure("fig_el52052b760840-07cb-45fd-bfb8-9bfc04ee48744291380931", {"width": 1200.0, "height": 600.0, "axes": [{"bbox": [0.05491898148148149, 0.19139033926160265, 0.9325810185185186, 0.7447207718495085], "xlim": [20347.05, 20367.95], "ylim": [-1.6000000000000005, 99.6], "xdomain": [[2025,
+      line   162  [symmetric]  mpld3.draw_figure("fig_el52052b760840-07cb-45fd-bfb8-9bfc04ee48744291380931", {"width": 1200.0, "height": 600.0, "axes": [{"bbox": [0.05491898148148149, 0.19139033926160265, 0.9325810185185186, 0.7447207718495085], "xlim": [20347.05, 20367.95], "ylim": [-1.6000000000000005, 99.6], "xdomain": [[2025,
+
+  ▸ announcement/psyche_interactive_plot.html
+      line    63  [symmetric]  mpld3.draw_figure("fig_el5205d070b0c5-c73e-452b-aaa0-67aea66397cd7806308383", {"width": 1200.0, "height": 600.0, "axes": [{"bbox": [0.06221064814814816, 0.19139033926160265, 0.9252893518518519, 0.7447207718495085], "xlim": [20347.05, 20367.95], "ylim": [-2.8500000000000005, 103.85], "xdomain": [[202
+      line   113  [symmetric]  mpld3.draw_figure("fig_el5205d070b0c5-c73e-452b-aaa0-67aea66397cd7806308383", {"width": 1200.0, "height": 600.0, "axes": [{"bbox": [0.06221064814814816, 0.19139033926160265, 0.9252893518518519, 0.7447207718495085], "xlim": [20347.05, 20367.95], "ylim": [-2.8500000000000005, 103.85], "xdomain": [[202
+      line   162  [symmetric]  mpld3.draw_figure("fig_el5205d070b0c5-c73e-452b-aaa0-67aea66397cd7806308383", {"width": 1200.0, "height": 600.0, "axes": [{"bbox": [0.06221064814814816, 0.19139033926160265, 0.9252893518518519, 0.7447207718495085], "xlim": [20347.05, 20367.95], "ylim": [-2.8500000000000005, 103.85], "xdomain": [[202
+
+  ▸ announcement/public_key.pem
+      line     1  [key_mgmt]  -----BEGIN PUBLIC KEY-----
+
+  ▸ announcement/soma_interactive_plot.html
+      line    63  [symmetric]  mpld3.draw_figure("fig_el52059f048c34-fc4c-442a-b9df-be6028d7557e7501393394", {"width": 1200.0, "height": 600.0, "axes": [{"bbox": [0.05491898148148149, 0.19139033926160265, 0.9325810185185186, 0.7447207718495085], "xlim": [20347.05, 20367.95], "ylim": [-3.85, 80.85], "xdomain": [[2025, 8, 16, 1, 12
+      line   113  [symmetric]  mpld3.draw_figure("fig_el52059f048c34-fc4c-442a-b9df-be6028d7557e7501393394", {"width": 1200.0, "height": 600.0, "axes": [{"bbox": [0.05491898148148149, 0.19139033926160265, 0.9325810185185186, 0.7447207718495085], "xlim": [20347.05, 20367.95], "ylim": [-3.85, 80.85], "xdomain": [[2025, 8, 16, 1, 12
+      line   162  [symmetric]  mpld3.draw_figure("fig_el52059f048c34-fc4c-442a-b9df-be6028d7557e7501393394", {"width": 1200.0, "height": 600.0, "axes": [{"bbox": [0.05491898148148149, 0.19139033926160265, 0.9325810185185186, 0.7447207718495085], "xlim": [20347.05, 20367.95], "ylim": [-3.85, 80.85], "xdomain": [[2025, 8, 16, 1, 12
+
+  ▸ announcement/summary_all_pages.txt
+      line    10  [symmetric]  - This section provides various utilities including generating random hexadecimal values and random text. Users can specify the number of characters for both text and hex generation. Additionally, there are options for encrypting and decrypting text by entering the corresponding keys, as well as a c
+      line    13  [symmetric]  - In this part, users can embed a YouTube video and generate a link that includes the current playback time. Users can input a YouTube video URL, load the video, and copy a link that directs to the specific time. This section also includes a ciphered link feature with a tool to decipher Base64 encod
+      line    37  [symmetric]  - This tool allows users to upload a file, cipher it with a provided or randomly generated AES key, and download the ciphered file as a12.ciphered.html. In another section, users can input an AES key to decipher the a12.ciphered.html file. If the key is correct, the decrypted announcement is display
+      line    43  [kdf]  - The online mnemonic key generator allows users to create and derive cryptographic keys based on a mnemonic phrase, which is a series of words commonly used for securely storing private keys. Users can input their own mnemonic words or generate a random set of words, and they are prompted to enter 
+      line    46  [symmetric]  - Key pair generator with options for RSA, ECDSA, and EdDSA algorithms. It includes functionality for generating and exporting cryptographic key pairs, as well as generating test vectors with random bytes and signatures. The unit test section allows users to generate random bytes, create signatures 
+      line    46  [asymmetric]  - Key pair generator with options for RSA, ECDSA, and EdDSA algorithms. It includes functionality for generating and exporting cryptographic key pairs, as well as generating test vectors with random bytes and signatures. The unit test section allows users to generate random bytes, create signatures 
+      line    48  [asymmetric]  16. **a16: RSA/ECDSA Key Management and Signing**
+      line    49  [symmetric]  - Outlines a comprehensive tool for handling AES encryption and signing using ECDSA keys. Users can input their ECDSA private key in hexadecimal format, which is then encrypted using a randomly generated AES key. This AES key and the encrypted private key are displayed to the user, with options to c
+      line    52  [symmetric]  - This web-based tool allows users to input an initial hex key and specify a desired key length to generate a derived key using the PBKDF2 key derivation function with HMAC-SHA256. The tool provides an intuitive interface with input fields for the hex key and key length, a button to generate the der
+      line    52  [kdf]  - This web-based tool allows users to input an initial hex key and specify a desired key length to generate a derived key using the PBKDF2 key derivation function with HMAC-SHA256. The tool provides an intuitive interface with input fields for the hex key and key length, a button to generate the der
+      line    52  [kdf]  - This web-based tool allows users to input an initial hex key and specify a desired key length to generate a derived key using the PBKDF2 key derivation function with HMAC-SHA256. The tool provides an intuitive interface with input fields for the hex key and key length, a button to generate the der
+      line    55  [symmetric]  - The Periodic Table Word Generator is a web-based tool that converts a given word or statement into images of periodic table elements. Each letter of the input is mapped to its corresponding element symbol (e.g., "H" for Hydrogen, "O" for Oxygen). The tool handles multi-character element symbols by
+      line    61  [symmetric]  - The Hyperlink Maker allows users to upload a text file with URLs and optional descriptions in the format `[url][description]`. The tool generates HTML hyperlinks from the file's contents, displays them in an enumerated list, and provides a copy-to-clipboard functionality for easy copying of all ge
+      line    64  [symmetric]  - The feature allows users to load a CSV file containing HTTP status codes, types, and meanings. It enables searching for a specific status code to display its type and meaning. Additionally, users can view the full list of status codes in a well-organized table format. This solution uses JavaScript
+      line    70  [symmetric]  - This page creates a timeline section with animation effects using ScrollReveal.js. It includes several timeline items, each describing a significant event or milestone. The timeline items fade in from the left or right as the user scrolls, creating a dynamic and engaging visual experience. The des
+      line    73  [symmetric]  - This page creates a 403 Access Not Granted error page with a playful design featuring animations. It includes a keyhole and key SVG illustrations and a ghost animation that moves across the screen, revealing the message "You know you're supposed to leave, right?" The page is designed to provide a 
+      line    76  [symmetric]  - This page showcases an interactive SVG animation that generates colorful wave effects when the user clicks or touches anywhere on the screen. The page is designed to provide a seamless experience on both desktop and mobile devices, featuring a customizable SVG that animates based on user input. It
+      line    85  [symmetric]  - Includes interactive animations from a28 to a38. Refer to a40 for a tool that allows users to generate a list of URLs based on specified inputs. Users can input the root URL, path segments, file prefix, start and end numbers, choose whether to zero-pad the numbers, and select a file extension to c
+      line    88  [symmetric]  - This page allows users to search for error status codes based on **Category**, **Code**, or **Description** from a CSV file.
+      line   111  [symmetric]  - This page allows users to interactively create and connect nodes on a canvas.
+      line   112  [symmetric]  Users can click to place nodes at random x, y coordinates and drag between nodes to establish connections.
+      line   116  [symmetric]  - This page provides a dynamic lookup tool for ports and their descriptions. Users can enter a port number to see its corresponding description or type in a description to find matching port numbers. The page includes an autocomplete feature that suggests descriptions as users type, allowing for qui
+      line   119  [symmetric]  - This page outlines various emotional states and reactions, categorizing them into clusters such as Surprise, Fear, and Joy/Happiness. It provides a detailed breakdown of emotions within each category, helping to understand the spectrum of human feelings and their nuances.
+      line   125  [symmetric]  - This page presents an interactive Sankey diagram that illustrates the relationships between various forms of harmful activities, including opinion manipulation, civil unrest, harassment, fraud, and others. It aims to visualize how these crimes interconnect and the impact they have on society. The 
+      line   130  [symmetric]  53. **AES GCM Cipher Utility**
+      line   130  [cipher_mode]  53. **AES GCM Cipher Utility**
+      line   131  [symmetric]  - Provide a tool for AES GCM message ciphering. This tool includes a feature to pull down a file (given url) and decipher.
+      line   131  [symmetric]  - Provide a tool for AES GCM message ciphering. This tool includes a feature to pull down a file (given url) and decipher.
+      line   131  [cipher_mode]  - Provide a tool for AES GCM message ciphering. This tool includes a feature to pull down a file (given url) and decipher.
+      line   136  [kdf]  55. **HMAC**
+      line   137  [kdf]  - HMAC key generator
+      line   146  [symmetric]  - The ax_summary provides an overarching overview of all the sections (a1 to a4). It synthesizes the key points and functionalities from each part, ensuring that users have a clear understanding of the tools and resources available across the different functionalities.
+
+  ▸ data/codes_status.csv
+      line    17  [symmetric]  Object,0f,algorithm, modes, etc
+
+  ▸ data/wordlist.100000.txt
+      line   155  [symmetric]  abides
+      line   453  [symmetric]  accolades
+      line   777  [symmetric]  actividades
+      line   987  [symmetric]  ades
+      line  1321  [symmetric]  aedes
+      line  1385  [symmetric]  aes
+      line  1799  [symmetric]  aides
+      line  2182  [symmetric]  aldehydes
+      line  2558  [symmetric]  alludes
+      line  2729  [symmetric]  altitudes
+      line  3005  [symmetric]  amides
+      line  3117  [symmetric]  amplitudes
+      line  3339  [symmetric]  andes
+      line  3669  [symmetric]  anodes
+      line  4320  [symmetric]  aptitudes
+      line  4456  [symmetric]  arcades
+      line  4501  [symmetric]  archimedes
+      line  5150  [symmetric]  asides
+      line  5718  [symmetric]  attitudes
+      line  6703  [symmetric]  bacteroides
+      line  7207  [symmetric]  barcodes
+      line  7325  [symmetric]  barricades
+      line  7870  [symmetric]  beatitudes
+      line  8308  [symmetric]  benavides
+      line  8588  [symmetric]  besides
+      line  9009  [symmetric]  bildes
+      line  9125  [symmetric]  biocides
+      line  9500  [symmetric]  blacksonblondes
+      line  9519  [symmetric]  blades
+      line  9733  [symmetric]  blockades
+      line  9809  [symmetric]  blondes
+      line  9866  [symmetric]  blowfish
+      line 10081  [symmetric]  bodes
+      line 10986  [symmetric]  brandes
+      line 11269  [symmetric]  brides
+      line 11317  [symmetric]  brigades
+      line 11458  [symmetric]  broadsides
+      line 11994  [zkp]  bulletproof
+      line 12608  [symmetric]  caes
+      line 12901  [symmetric]  camellia
+      line 13715  [symmetric]  cascades
+      line 13982  [symmetric]  cathodes
+      line 14117  [cipher_mode]  cbc
+      line 14176  [cipher_mode]  ccm
+      line 15087  [symmetric]  cheatscodesguides
+      line 15507  [symmetric]  chlorides
+      line 16041  [symmetric]  cityguides
+      line 16056  [symmetric]  ciudades
+      line 16105  [symmetric]  clades
+      line 16106  [symmetric]  claes
+      line 16635  [symmetric]  cludes
+      line 16912  [symmetric]  codes
+      line 17036  [symmetric]  coincides
+      line 17192  [symmetric]  collides
+      line 17869  [symmetric]  comrades
+      line 17883  [symmetric]  comunidades
+      line 17908  [symmetric]  concedes
+      line 17969  [symmetric]  concludes
+      line 19039  [symmetric]  cordes
+      line 20301  [symmetric]  crusades
+      line 20455  [cipher_mode]  ctr
+      line 20941  [symmetric]  cyclades
+      line 21897  [symmetric]  decades
+      line 21949  [symmetric]  decides
+      line 22000  [symmetric]  decodes
+      line 22281  [symmetric]  degrades
+      line 22866  [symmetric]  des
+      line 23880  [symmetric]  diodes
+      line 24617  [symmetric]  divides
+      line 25326  [symmetric]  downgrades
+      line 25362  [symmetric]  downsides
+      line 25786  [asymmetric]  dsa
+      line 25931  [symmetric]  dudes
+      line 26201  [symmetric]  dvdupgrades
+      line 26345  [symmetric]  eades
+      line 26586  [cipher_mode]  ecb
+      line 27339  [symmetric]  electrodes
+      line 27608  [symmetric]  eludes
+      line 28021  [symmetric]  encodes
+      line 28643  [symmetric]  ephemerides
+      line 28688  [symmetric]  episodes
+      line 28946  [symmetric]  erodes
+      line 29066  [symmetric]  escapades
+      line 29427  [symmetric]  etudes
+      line 29495  [symmetric]  euripides
+      line 29645  [symmetric]  everglades
+      line 29883  [symmetric]  excludes
+      line 30149  [symmetric]  explodes
+      line 30367  [symmetric]  exudes
+      line 30471  [symmetric]  facades
+      line 30552  [symmetric]  fades
+      line 30664  [post_quantum]  falcon
+      line 31423  [symmetric]  fernandes
+      line 31687  [symmetric]  fides
+      line 32647  [symmetric]  fluorides
+      line 33378  [fpe_token]  fpe
+      line 34227  [symmetric]  fungicides
+      line 35052  [cipher_mode]  gcm
+      line 35113  [symmetric]  geddes
+      line 35959  [symmetric]  glades
+      line 36080  [symmetric]  glides
+      line 36229  [symmetric]  glycosides
+      line 36830  [symmetric]  grades
+      line 36911  [symmetric]  grandes
+      line 37232  [symmetric]  grenades
+      line 37735  [symmetric]  guides
+      line 38105  [symmetric]  hades
+      line 38264  [symmetric]  halides
+      line 39261  [symmetric]  healthgrades
+      line 39367  [symmetric]  hebrides
+      line 39745  [symmetric]  herbicides
+      line 40031  [symmetric]  hides
+      line 40158  [symmetric]  hillsides
+      line 40414  [kdf]  hmac
+      line 40779  [symmetric]  homicides
+      line 40964  [symmetric]  hordes
+      line 42232  [symmetric]  ides
+      line 42826  [symmetric]  impedes
+      line 43146  [symmetric]  includes
+      line 43942  [symmetric]  inodes
+      line 44001  [symmetric]  insecticides
+      line 44030  [symmetric]  insides
+      line 44433  [symmetric]  interludes
+      line 44743  [symmetric]  invades
+      line 47424  [kdf]  kdf
+      line 49270  [symmetric]  lampshades
+      line 49306  [symmetric]  landes
+      line 49350  [symmetric]  landslides
+      line 49613  [symmetric]  latitudes
+      line 51234  [symmetric]  lipopolysaccharides
+      line 51900  [symmetric]  longitudes
+      line 52115  [symmetric]  lourdes
+      line 52193  [symmetric]  lowndes
+      line 52998  [symmetric]  maes
+      line 53102  [symmetric]  magnitudes
+      line 53201  [symmetric]  maimonides
+      line 53939  [symmetric]  marinades
+      line 55482  [symmetric]  mendes
+      line 55584  [symmetric]  mercedes
+      line 57245  [symmetric]  modes
+      line 57771  [symmetric]  moraes
+      line 58643  [symmetric]  multitudes
+      line 59970  [symmetric]  nematodes
+      line 60249  [symmetric]  neuropeptides
+      line 61060  [symmetric]  nodes
+      line 61558  [symmetric]  novedades
+      line 61582  [symmetric]  novidades
+      line 61615  [symmetric]  npdes
+      line 61781  [symmetric]  nucleosides
+      line 61784  [symmetric]  nucleotides
+      line 61787  [symmetric]  nuclides
+      line 61792  [symmetric]  nudes
+      line 62457  [symmetric]  odes
+      line 62612  [symmetric]  offsides
+      line 62855  [symmetric]  oligonucleotides
+      line 62857  [symmetric]  oligosaccharides
+      line 63182  [symmetric]  opcodes
+      line 63313  [symmetric]  oportunidades
+      line 64284  [symmetric]  overrides
+      line 64419  [symmetric]  oxides
+      line 64574  [symmetric]  paes
+      line 64738  [symmetric]  palisades
+      line 64994  [symmetric]  parades
+      line 65112  [symmetric]  paredes
+      line 65778  [symmetric]  pdes
+      line 66200  [symmetric]  peptides
+      line 66415  [symmetric]  peroxides
+      line 66529  [symmetric]  persuades
+      line 66558  [symmetric]  pervades
+      line 66595  [symmetric]  pesticides
+      line 67878  [symmetric]  platitudes
+      line 68000  [symmetric]  pleiades
+      line 68510  [symmetric]  polypeptides
+      line 68525  [symmetric]  polysaccharides
+      line 68887  [symmetric]  postcodes
+      line 69304  [symmetric]  precedes
+      line 69334  [symmetric]  precludes
+      line 69474  [symmetric]  preludes
+      line 69640  [symmetric]  presides
+      line 69790  [symmetric]  prides
+      line 70610  [symmetric]  provides
+      line 70937  [symmetric]  puedes
+      line 71948  [symmetric]  radionuclides
+      line 72305  [symmetric]  rapides
+      line 73199  [symmetric]  redes
+      line 74060  [symmetric]  renegades
+      line 74482  [symmetric]  resides
+      line 75122  [symmetric]  rhoades
+      line 75126  [symmetric]  rhodes
+      line 75267  [symmetric]  rides
+      line 75671  [symmetric]  roadsides
+      line 76391  [asymmetric]  rsa
+      line 79665  [symmetric]  shades
+      line 80594  [symmetric]  sides
+      line 81143  [cipher_mode]  siv
+      line 81524  [symmetric]  slides
+      line 82791  [symmetric]  spades
+      line 84935  [symmetric]  strides
+      line 85406  [symmetric]  subsides
+      line 85653  [symmetric]  suicides
+      line 85696  [symmetric]  sulfides
+      line 85916  [symmetric]  supercedes
+      line 85991  [symmetric]  supersedes
+      line 86420  [symmetric]  swedes
+      line 88903  [symmetric]  thucydides
+      line 89066  [symmetric]  tides
+      line 89635  [fpe_token]  tokenizer
+      line 90266  [symmetric]  trades
+      line 90889  [symmetric]  triglycerides
+      line 92808  [symmetric]  universidades
+      line 93225  [symmetric]  upgrades
+      line 93776  [symmetric]  valdes
+      line 94358  [symmetric]  verdes
+      line 94638  [symmetric]  vicissitudes
+      line 94711  [symmetric]  vides
+      line 96145  [symmetric]  waveguides
+      line 96960  [hash_func]  whirlpool
+      line 99784  [symmetric]  zipcodes
+
+  ▸ js/aes.js
+      line    12  [kdf]  a._data=this._data.clone();return a},_minBufferSize:0});l.Hasher=q.extend({cfg:t.extend(),init:function(a){this.cfg=this.cfg.extend(a);this.reset()},reset:function(){q.reset.call(this);this._doReset()},update:function(a){this._append(a);this._process();return this},finalize:function(a){a&&this._appe
+      line    16  [hash_func]  (function(u){function p(b,n,a,c,e,j,k){b=b+(n&a|~n&c)+e+k;return(b<<j|b>>>32-j)+n}function d(b,n,a,c,e,j,k){b=b+(n&c|a&~c)+e+k;return(b<<j|b>>>32-j)+n}function l(b,n,a,c,e,j,k){b=b+(n^a^c)+e+k;return(b<<j|b>>>32-j)+n}function s(b,n,a,c,e,j,k){b=b+(a^(n|~c))+e+k;return(b<<j|b>>>32-j)+n}for(var t=Cryp
+      line    21  [hash_func]  4294967296);n[(c+64>>>9<<4)+15]=(e<<8|e>>>24)&16711935|(e<<24|e>>>8)&4278255360;n[(c+64>>>9<<4)+14]=(a<<8|a>>>24)&16711935|(a<<24|a>>>8)&4278255360;b.sigBytes=4*(n.length+1);this._process();b=this._hash;n=b.words;for(a=0;4>a;a++)c=n[a],n[a]=(c<<8|c>>>24)&16711935|(c<<24|c>>>8)&4278255360;return b},c
+      line    22  [hash_func]  (function(){var u=CryptoJS,p=u.lib,d=p.Base,l=p.WordArray,p=u.algo,s=p.EvpKDF=d.extend({cfg:d.extend({keySize:4,hasher:p.MD5,iterations:1}),init:function(d){this.cfg=this.cfg.extend(d)},compute:function(d,r){for(var p=this.cfg,s=p.hasher.create(),b=l.create(),u=b.words,q=p.keySize,p=p.iterations;u.l
+      line    27  [cipher_mode]  e,a,c);this._prevBlock=d}});b=b.CBC=q;q=(p.pad={}).Pkcs7={pad:function(a,b){for(var c=4*b,c=c-a.sigBytes%c,d=c<<24|c<<16|c<<8|c,l=[],n=0;n<c;n+=4)l.push(d);c=s.create(l,c);a.concat(c)},unpad:function(a){a.sigBytes-=a.words[a.sigBytes-1>>>2]&255}};d.BlockCipher=v.extend({cfg:v.cfg.extend({mode:b,padd
+      line    30  [kdf]  decrypt:function(a,b,c,d){d=this.cfg.extend(d);b=this._parse(b,d.format);return a.createDecryptor(c,d).finalize(b.ciphertext)},_parse:function(a,b){return"string"==typeof a?b.parse(a,this):a}}),p=(p.kdf={}).OpenSSL={execute:function(a,b,c,d){d||(d=s.random(8));a=w.create({keySize:b+c}).compute(a,d);
+      line    31  [kdf]  b.keySize,b.ivSize);l.iv=d.iv;b=a.encrypt.call(this,b,c,d.key,l);b.mixIn(d);return b},decrypt:function(b,c,d,l){l=this.cfg.extend(l);c=this._parse(c,l.format);d=l.kdf.execute(d,b.keySize,b.ivSize,c.salt);l.iv=d.iv;return a.decrypt.call(this,b,c,d.key,l)}})}();
+      line    33  [symmetric]  16,32,64,128,27,54],d=d.AES=p.extend({_doReset:function(){for(var a=this._key,c=a.words,d=a.sigBytes/4,a=4*((this._nRounds=d+6)+1),e=this._keySchedule=[],j=0;j<a;j++)if(j<d)e[j]=c[j];else{var k=e[j-1];j%d?6<d&&4==j%d&&(k=l[k>>>24]<<24|l[k>>>16&255]<<16|l[k>>>8&255]<<8|l[k&255]):(k=k<<8|k>>>24,k=l[k>
+      line    35  [symmetric]  d[k>>>24]^e[n>>>16&255]^j[g>>>8&255]^l[h&255]^c[p++],n=d[n>>>24]^e[g>>>16&255]^j[h>>>8&255]^l[k&255]^c[p++],g=q,h=s,k=t;q=(f[g>>>24]<<24|f[h>>>16&255]<<16|f[k>>>8&255]<<8|f[n&255])^c[p++];s=(f[h>>>24]<<24|f[k>>>16&255]<<16|f[n>>>8&255]<<8|f[g&255])^c[p++];t=(f[k>>>24]<<24|f[n>>>16&255]<<16|f[g>>>8&2
+
+  ▸ js/echarts.min.js
+      line    22  [symmetric]  !function(t,e){"object"==typeof exports&&"undefined"!=typeof module?e(exports):"function"==typeof define&&define.amd?define(["exports"],e):e((t=t||self).echarts={})}(this,function(t){"use strict";var i=function(t,e){return(i=Object.setPrototypeOf||{__proto__:[]}instanceof Array&&function(t,e){t.__pr
+
+  ▸ js/node_connect_yaml.js
+      line     3  [symmetric]  let nodes = [];
+      line    12  [symmetric]  nodes.push({ x, y });
+      line    58  [symmetric]  return nodes.find(node => Math.hypot(node.x - x, node.y - y) < 10);
+      line    63  [symmetric]  nodes.forEach(node => {
+
+  ▸ js/words_load_static.js
+      line     3  [symmetric]  var words = ["aardvark", "aba", "aback", "abacus", "abalone", "abandon", "abandoned", "abandonment", "abate", "abatement", "abattoir", "abb", "abbas", "abbey", "abbot", "abbreviate", "abbreviation", "abdicate", "abdication", "abdomen", "abdominal", "abduct", "abduction", "abed", "aberrant", "aberrat
+      line     5  [symmetric]  "baal", "baar", "baba", "babble", "babbler", "babbling", "babe", "baboon", "babu", "baby", "bac", "baccalaureate", "baccarat", "bach", "bache", "bachelor", "bacilli", "bacillus", "back", "backache", "backboard", "backbone", "backcourt", "backdoor", "backdrop", "backed", "backer", "backfield", "backf
+      line     5  [symmetric]  "baal", "baar", "baba", "babble", "babbler", "babbling", "babe", "baboon", "babu", "baby", "bac", "baccalaureate", "baccarat", "bach", "bache", "bachelor", "bacilli", "bacillus", "back", "backache", "backboard", "backbone", "backcourt", "backdoor", "backdrop", "backed", "backer", "backfield", "backf
+      line     5  [zkp]  "baal", "baar", "baba", "babble", "babbler", "babbling", "babe", "baboon", "babu", "baby", "bac", "baccalaureate", "baccarat", "bach", "bache", "bachelor", "bacilli", "bacillus", "back", "backache", "backboard", "backbone", "backcourt", "backdoor", "backdrop", "backed", "backer", "backfield", "backf
+      line    11  [symmetric]  "ea", "each", "eager", "eagerly", "eagerness", "eagle", "ean", "ear", "earache", "eardrum", "eared", "earl", "early", "earmark", "earn", "earner", "earnest", "earnestly", "earnestness", "earning", "earnings", "earphone", "earpiece", "earring", "earshot", "earth", "earthen", "earthenware", "earthly",
+      line    13  [post_quantum]  "fa", "fable", "fabled", "fabric", "fabricant", "fabricate", "fabrication", "fabricator", "fabulous", "fabulously", "facade", "face", "faced", "faceless", "faceplate", "facet", "faceted", "facia", "facial", "facies", "facile", "facilitate", "facilitation", "facilitator", "facility", "facing", "fack"
+      line    17  [symmetric]  "iambic", "iao", "iba", "ibex", "ibid", "ibis", "ice", "iceberg", "icebox", "icebreaker", "iced", "icehouse", "iceland", "iceman", "ich", "icicle", "icing", "icon", "iconic", "iconoclast", "iconography", "icy", "id", "ide", "idea", "ideal", "idealism", "idealist", "idealistic", "ideally", "ideation"
+      line    30  [symmetric]  "sab", "sabbat", "sabbath", "sabbatical", "sabe", "saber", "sabertooth", "sabina", "sabine", "sabino", "sable", "sabot", "sabotage", "saboteur", "sabra", "sac", "saccharin", "saccharomyces", "sachet", "sack", "sacked", "sacking", "saco", "sacra", "sacral", "sacrament", "sacramental", "sacred", "sacr
+      line    34  [hash_func]  "waar", "wab", "wack", "wacker", "wacky", "wad", "wade", "wader", "wadi", "wading", "wafer", "waffle", "wag", "wage", "waged", "wager", "wagering", "wages", "wagon", "wagoner", "wagtail", "wah", "wahine", "wahoo", "wail", "wain", "wainwright", "waist", "waistband", "waistcoat", "waisted", "waistline
+      line    60  [symmetric]  response.raise_for_status()  # Ensure we raise an error for bad status codes
+
+  ▸ readme.md
+      line     3  [symmetric]  This repository contains a simple web-based project template for announcing site updates. It includes HTML, JavaScript, and CSS files for creating and styling the announcement page, as well as an `<code>images</code>` folder for any graphics used.

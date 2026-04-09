@@ -1,0 +1,18 @@
+================================================================================
+  REPO       : qr_code_json_encoder_decoder_for_contact_share
+  FULL NAME  : ursa-mikail/qr_code_json_encoder_decoder_for_contact_share
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Python
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/qr_code_json_encoder_decoder_for_contact_share
+  MATCHES    : 5
+================================================================================
+
+  ▸ qr_message_encoding_demo.py
+      line    16  [random]  random_bytes = os.urandom(length_of_base64_data)
+      line    76  [symmetric]  from pyzbar.pyzbar import decode  # This library is used to decode barcodes and QR codes
+
+  ▸ readme.md
+      line     4  [symmetric]  Generate a QR code containing contact information in JSON format and decode it back into a JSON object. The contact data includes details like ID, email, contact number, LinkedIn/GitHub URLs, organization, serial number, and SHA256 hash.
+      line     9  [symmetric]  - **JSON Encoding/Decoding**: Encodes the contact data into a JSON string and decodes it from the QR code.
+      line    11  [symmetric]  - **QR Code Scanning**: Reads the QR code and decodes the JSON back into a dictionary.

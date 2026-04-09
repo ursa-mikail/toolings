@@ -1,0 +1,24 @@
+================================================================================
+  REPO       : file_embedded_with_file_with_LSB_encoding
+  FULL NAME  : ursa-mikail/file_embedded_with_file_with_LSB_encoding
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Python
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/file_embedded_with_file_with_LSB_encoding
+  MATCHES    : 11
+================================================================================
+
+  ▸ files/file_to_be_embedded.txt
+      line     9  [hash_func]  contrary to his own intention, into the whirlpool of political passions and
+      line    88  [symmetric]  Then followed a weary search for work, two brief interludes of teaching, and
+      line   114  [symmetric]  The World As I See It, in its original form, includes essays by Einstein on
+      line   610  [symmetric]  actually reading it. Besides, one always cuts a poor figure if one
+      line  1511  [symmetric]  mind. Not only does the machinery depend on traditional modes of feeling
+      line  1513  [symmetric]  exercises a powerful influence on national modes of feeling.
+      line  1518  [symmetric]  nationalistic spirit in them, which provides the psychological foundation of
+      line  1755  [symmetric]  infinite confusion, and besides--why should not such heroic feelings on the
+      line  2748  [symmetric]  psychological than real, and that they can be got over if both sides bring
+      line  2753  [symmetric]  media on which both sides agree.
+
+  ▸ readme.md
+      line     3  [symmetric]  Demonstrates a method for hiding a binary file within an image by embedding its bits into the least significant bits (LSBs) of the image's pixel values. The process involves reading the target image and the file to be embedded, converting the file into a bit stream, and embedding these bits into the

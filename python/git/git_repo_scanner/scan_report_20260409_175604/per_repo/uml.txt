@@ -1,0 +1,18 @@
+================================================================================
+  REPO       : uml
+  FULL NAME  : ursa-mikail/uml
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : —
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/uml
+  MATCHES    : 7
+================================================================================
+
+  ▸ payment/payment.uml.txt
+      line     7  [kdf]  User -> Service: 1. Sign ID (details: {ID, account_ID / card_ID}) with HMAC
+      line     8  [kdf]  Service -> User: 2. Signed ID (details given in [1] + serice details, e.g. bank ID) with HMAC
+      line     9  [kdf]  User -> Merchant: 3. Order details {json with order details, i.e. item, price, location, token session ID, token provider (tokenization service), etc}, \n Signed ID, CVV, and HMAC
+      line     9  [fpe_token]  User -> Merchant: 3. Order details {json with order details, i.e. item, price, location, token session ID, token provider (tokenization service), etc}, \n Signed ID, CVV, and HMAC
+      line    21  [kdf]  1. user will offer a signed hmac of ID to a service (ID service)
+      line    22  [kdf]  2. service will sign the ID and add back id and CVV, and signed with hmac
+      line    23  [kdf]  3. user will replay that to an added detail of order to purchase item X for Y usd, and verifier ID (hmac sign)

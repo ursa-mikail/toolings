@@ -1,0 +1,33 @@
+================================================================================
+  REPO       : threat_modeling_framework_and_sop
+  FULL NAME  : ursa-mikail/threat_modeling_framework_and_sop
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : —
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/threat_modeling_framework_and_sop
+  MATCHES    : 22
+================================================================================
+
+  ▸ readme.md
+      line    58  [symmetric]  Step 2 of the threat modeling process involves identifying the strata(s) involved of the solution, encompassing the 7-strata domain, which includes Infrastructure (Network), Service (including Applications), System, Platform (Computing Language), Protocol, Algorithm, and Hardware.
+      line   131  [symmetric]  This stratum includes Network (network infrastructure, including routers, switches, firewalls, and other network devices). It involves measures to prevent unauthorized access, network attacks, and data interception, i.e. ingress and outgress of the network security boundary (perimeter). The network 
+      line   133  [symmetric]  This domain covers how the nodes are connected, and how they can be disconnected, which can pose MitM denial or attacks, e.g. network partitioning or division. Many enterprise environments are multi-cloud and multi-network connectivity. The complexity of configuration management, granular monitoring
+      line   148  [symmetric]  The domain covers user protection such as Application Security Threats to users. This includes:
+      line   211  [symmetric]  This domain provides Intelligence and protects enterprise workloads with threat prevention enabled by machine learning, world-class research, CVE watch and provides automatic remediation for configuration drift.
+      line   212  [symmetric]  Intelligence also includes to ingest log and event data, delivering contextualized visualization of entire infrastructure and security analytics, helping to enhance real-time intrusion detection and policy violation alerts based on user-defined criteria. This is part of comprehensive investigation o
+      line   213  [symmetric]  It provides Multi-tenancy context segregation assurance, Data loss prevention (DLP), log and alert management as well as visualizations of security information across network system to coordinate to improve overall observability. It includes monitoring and responding to storage events, stream data p
+      line   272  [symmetric]  f. How are the secrets (keys, passcodes, etc) protected?
+      line   280  [symmetric]  This includes any risk introduced for the exception to be filed. Which rule is the exception transgressing according to a developed Guide to Cryptography and Deployment Guidelines and/or Cryptographic Controls? State the reasons for the exception or omission. * All the mentioned criteria above are c
+      line   337  [symmetric]  Always check for the environmental conditions, which may be side-channel or external. This includes hostile testing which goes beyond scaling or load or stress testing. Hostile testing may be proactive and deliberated by human means or it would be because of hostile environment and external factors.
+      line   345  [symmetric]  Having multiple diagrams to describe the architecture of a system provides a comprehensive and nuanced understanding of various aspects, helping different stakeholders to grasp different facets of the system. It is recommended to have 6 diagrams to describe the architecture:
+      line   354  [symmetric]  Purpose: Provides a detailed step-by-step representation of processes and decision-making within the system. Useful for understanding the logical flow of actions, conditions, and decisions, aiding in the analysis of system behavior.
+      line   368  [symmetric]  Dependencies, whether originating internally or externally, encompass elements that could potentially pose risks to its security where a flaw or malware resides. When addressing dependencies, materials such as the Software Bill of Materials (SBoMs) can provide insights.
+      line   463  [symmetric]  | System / Service Misuse | Moderate to serious. This includes both abuse and misuse. Bypass protection mechanisms, hide activities and/or processes. |
+      line   464  [symmetric]  | Invasion of Privacy    | Moderate to serious. Includes message forging. Able to execute or write to some files to corrupt (or spoof or counterfeit), not just read. Gain privileges / assume identity (on entity: human), which can lead to devices, services, or systems being compromised. |
+      line   487  [symmetric]  - this includes business damage (e.g. business reputation, market confidence (Customer Trust Erosion), financial fraud, litigation, loss of competitive edge, etc) and technical damages (e.g. data loss, IP theft, service downtime or disruption, system takeovers, etc)
+      line   543  [signature]  2.4. Digital signatures
+      line   551  [signature]  3.1. Digital signatures
+      line   622  [symmetric]  <b>PASTA</b> (structured approach, `Process for Attack Simulation and Threat Analysis`): PASTA involves a structured approach to threat modeling that includes asset identification, attacker profiling, threat analysis, and risk estimation.
+      line   830  [symmetric]  - Brute force (includes dictionary attacks)
+      line   894  [signature]  The STRIDE model categorizes threats into 6 main types: Spoofing Identity, Tampering with data, Repudiation, Information Disclosure, Denial of Service, and Elevation of privilege. For each threat type, corresponding mitigation techniques are prescribed, ranging from implementing digital signatures t
+      line   895  [symmetric]  On the other hand, the National Institute of Standards and Technology (NIST) Cybersecurity Framework provides a comprehensive approach to managing cybersecurity risk. It identifies various risk types and recommends specific mitigations to address each one. These include measures such as inventory co

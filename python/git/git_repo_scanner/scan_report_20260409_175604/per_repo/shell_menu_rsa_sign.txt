@@ -1,0 +1,36 @@
+================================================================================
+  REPO       : shell_menu_rsa_sign
+  FULL NAME  : ursa-mikail/shell_menu_rsa_sign
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Shell
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/shell_menu_rsa_sign
+  MATCHES    : 19
+================================================================================
+
+  ▸ main.sh
+      line    12  [asymmetric]  echo "7. Show Full RSA Signature Generation Steps"
+      line    30  [signature]  6) verify_signature ;;
+
+  ▸ main_functions.sh
+      line    25  [asymmetric]  openssl rsa -in "$private_key_file" -text -noout
+      line    32  [asymmetric]  openssl rsa -in myprivate.pem -pubout > mypublic.pem
+      line    52  [signature]  function verify_signature() {
+      line    58  [asymmetric]  # Show full RSA signature generation steps
+      line    73  [asymmetric]  PRKEY_INFO=$(openssl rsa -in myprivate.pem -text -noout)
+
+  ▸ mypublic.pem
+      line     1  [key_mgmt]  -----BEGIN PUBLIC KEY-----
+
+  ▸ readme.md
+      line    13  [asymmetric]  7. Show Full RSA Signature Generation Steps
+      line    29  [asymmetric]  7. Show Full RSA Signature Generation Steps
+      line    44  [asymmetric]  7. Show Full RSA Signature Generation Steps
+      line    50  [asymmetric]  writing RSA key
+      line    60  [asymmetric]  7. Show Full RSA Signature Generation Steps
+      line   132  [asymmetric]  7. Show Full RSA Signature Generation Steps
+      line   153  [asymmetric]  7. Show Full RSA Signature Generation Steps
+      line   169  [asymmetric]  7. Show Full RSA Signature Generation Steps
+      line   187  [asymmetric]  - Hash value (20 bytes in case of SHA1) is extended to RSA key size by prefixing padding.
+      line   207  [asymmetric]  7. Show Full RSA Signature Generation Steps
+      line   230  [asymmetric]  7. Show Full RSA Signature Generation Steps

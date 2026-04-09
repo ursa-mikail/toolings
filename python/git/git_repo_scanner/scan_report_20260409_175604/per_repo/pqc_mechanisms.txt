@@ -1,0 +1,252 @@
+================================================================================
+  REPO       : pqc_mechanisms
+  FULL NAME  : ursa-mikail/pqc_mechanisms
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Python
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/pqc_mechanisms
+  MATCHES    : 203
+================================================================================
+
+  ▸ code_based/hamming_code_err_correction/readme.md
+      line     7  [symmetric]  The Hamming (7,4) code is a forward error correction (FEC) scheme that encodes 4 bits of data into 7 bits, adding 3 parity bits that allow for both error detection and single-bit error correction.
+      line    61  [symmetric]  - Provides clear pass/fail status
+      line   146  [symmetric]  Product codes for two-dimensional protectio
+
+  ▸ code_based/mceliece/Rust/Cargo.toml
+      line     7  [post_quantum]  classic-mceliece-rust = "3.0"
+
+  ▸ code_based/mceliece/Rust/Makefile
+      line     1  [post_quantum]  # McEliece Cryptosystem Project Makefile
+      line    91  [symmetric]  # Build for production (includes optimization and stripping)
+      line   108  [post_quantum]  @echo "McEliece Cryptosystem Project Makefile"
+
+  ▸ code_based/mceliece/Rust/src/main.rs
+      line     9  [post_quantum]  println!("=== McEliece Cryptosystem - Key Encapsulation ===");
+      line    83  [post_quantum]  === McEliece Cryptosystem - Key Encapsulation ===
+
+  ▸ code_based/mceliece/mceliece_cryptosystem_demo.py
+      line     7  [post_quantum]  Enhanced McEliece Cryptosystem using (7,4) Hamming Code
+      line   100  [post_quantum]  Encrypt a message using McEliece cryptosystem
+      line   221  [post_quantum]  """Complete demonstration of the McEliece workflow"""
+      line   223  [post_quantum]  print("         MCELIECE CRYPTOSYSTEM DEMONSTRATION")
+      line   439  [post_quantum]  MCELIECE CRYPTOSYSTEM DEMONSTRATION
+
+  ▸ code_based/mceliece/readme.md
+      line     1  [post_quantum]  # McEliece Cryptosystem Implementation
+      line     3  [symmetric]  The McEliece cryptosystem is a public-key encryption scheme based on error-correcting codes. This implementation uses a (7,4) Hamming code that can correct one error in 7-bit codewords.
+      line     3  [post_quantum]  The McEliece cryptosystem is a public-key encryption scheme based on error-correcting codes. This implementation uses a (7,4) Hamming code that can correct one error in 7-bit codewords.
+      line   108  [symmetric]  NP-hard Problem: Security relies on the difficulty of decoding random linear codes
+      line   128  [symmetric]  This implementation demonstrates the core concepts of the McEliece cryptosystem using a simple (7,4) Hamming code. Real-world implementations use much larger codes like Goppa codes for enhanced security.
+      line   128  [post_quantum]  This implementation demonstrates the core concepts of the McEliece cryptosystem using a simple (7,4) Hamming code. Real-world implementations use much larger codes like Goppa codes for enhanced security.
+      line   131  [post_quantum]  A code-based scheme was not chosen as the primary winner. Code-based cryptography, whose most prominent candidate was Classic McEliece, was not selected as the primary standard, but it was not rejected either. It was placed into a special category.
+      line   135  [post_quantum]  Classic McEliece (Code-based)
+      line   140  [post_quantum]  # Why Code-Based Cryptography Wasn't Chosen as NIST's Primary Post-Quantum Standard
+      line   146  [post_quantum]  | Characteristic | **Lattice-Based (Kyber)** | **Code-Based (Classic McEliece)** |
+      line   146  [post_quantum]  | Characteristic | **Lattice-Based (Kyber)** | **Code-Based (Classic McEliece)** |
+      line   159  [asymmetric]  **Practicality and Adoption:** The massive public key size of Classic McEliece (often exceeding 1MB) posed significant barriers for widespread protocol adoption, particularly in TLS handshakes where certificate chains would become impractically large. Kyber's compact key sizes enable easier "drop-in
+      line   159  [post_quantum]  **Practicality and Adoption:** The massive public key size of Classic McEliece (often exceeding 1MB) posed significant barriers for widespread protocol adoption, particularly in TLS handshakes where certificate chains would become impractically large. Kyber's compact key sizes enable easier "drop-in
+      line   159  [post_quantum]  **Practicality and Adoption:** The massive public key size of Classic McEliece (often exceeding 1MB) posed significant barriers for widespread protocol adoption, particularly in TLS handshakes where certificate chains would become impractically large. Kyber's compact key sizes enable easier "drop-in
+      line   161  [post_quantum]  **Balanced Compromise:** NIST selected the candidate offering the optimal balance of security, performance, and size for mainstream use cases. While McEliece excels in proven security, Kyber provided the better overall profile for general-purpose adoption.
+      line   161  [post_quantum]  **Balanced Compromise:** NIST selected the candidate offering the optimal balance of security, performance, and size for mainstream use cases. While McEliece excels in proven security, Kyber provided the better overall profile for general-purpose adoption.
+      line   165  [post_quantum]  **Standardization Still Likely:** NIST has explicitly committed to standardizing at least one additional KEM from the fourth-round finalists, with Classic McEliece as the strong frontrunner due to its unparalleled security confidence.
+      line   171  [symmetric]  **Algorithmic Diversity:** Code-based cryptography provides crucial backup security. If devastating attacks emerge against lattice-based systems, the cryptographic ecosystem will have a mature, well-studied alternative ready for deployment.
+      line   175  [post_quantum]  While code-based cryptography wasn't selected as the primary standard, it was not rejected. NIST made a pragmatic choice favoring widespread adoption (Kyber) while continuing to mature and likely standardize a code-based alternative (Classic McEliece) for long-term security needs.
+      line   175  [post_quantum]  While code-based cryptography wasn't selected as the primary standard, it was not rejected. NIST made a pragmatic choice favoring widespread adoption (Kyber) while continuing to mature and likely standardize a code-based alternative (Classic McEliece) for long-term security needs.
+
+  ▸ hash_based_signatures/LamportSignature.py
+      line     1  [py_import]  import hashlib
+      line   133  [signature]  signature = lamport.sign(message)
+      line   141  [signature]  is_valid = lamport.verify(message, signature, public_key)
+      line   147  [signature]  is_valid_wrong = lamport.verify(wrong_message, signature, public_key)
+
+  ▸ hash_based_signatures/readme.md
+      line     1  [asymmetric]  # 1. SPHINCS+ (SLH-DSA) - The Fort Knox of Signatures
+      line     1  [post_quantum]  # 1. SPHINCS+ (SLH-DSA) - The Fort Knox of Signatures
+      line     4  [post_quantum]  As with SPHINCS+, LMS (Leighton-Micali Hash-Based Signature) uses the WOTS one-time signature scheme.
+      line    78  [post_quantum]  [2] Bernstein, D. J., Hülsing, A., Kölbl, S., Niederhagen, R., Rijneveld, J., & Schwabe, P. (2019, November). The SPHINCS+ signature framework. In Proceedings of the 2019 ACM SIGSAC Conference on Computer and Communications Security (pp. 2129–2146).
+      line    79  [signature]  [3] Lamport, L. (1979). Constructing digital signatures from a one-way function (Vol. 238). Technical Report CSL-98, SRI International.
+      line   115  [post_quantum]  Step 3: The Many-Time Signature - "SPHINCS+"
+      line   116  [post_quantum]  SPHINCS+ solves the "one-time" problem by creating a massive tree of WOTS+ keys.
+      line   125  [symmetric]  4. The signature includes:
+      line   196  [post_quantum]  This makes SPHINCS+ a stateless scheme—you don't need to remember which keys you've used.
+      line   205  [post_quantum]  ### SPHINCS+ Summary
+      line   216  [post_quantum]  | SPHINCS+-SHA-128s     | 32 bytes        | 64 bytes         | 17,088 bytes   | 128-bit        |
+      line   217  [post_quantum]  | SPHINCS+-SHA-192s     | 48 bytes        | 96 bytes         | 35,664 bytes   | 192-bit        |
+      line   218  [post_quantum]  | SPHINCS+-SHA-256s     | 64 bytes        | 128 bytes        | 49,856 bytes   | 256-bit        |
+
+  ▸ lattice_based/learning_with_errors/lattice_nearest_point.py
+      line   199  [symmetric]  print("   • Provides SECURITY against attacks")
+      line   264  [symmetric]  • Provides SECURITY against attacks
+
+  ▸ lattice_based/learning_with_errors/lattice_nearest_point.readme.md
+      line   174  [post_quantum]  1. **Micciancio, D., & Regev, O.** (2009). *Lattice-based Cryptography*. Post-Quantum Cryptography.
+      line   524  [post_quantum]  **Impact:** Foundation for modern lattice cryptography (NTRU, GGH, etc.)
+      line   536  [symmetric]  4. **Regev, O.** (2009). *On lattices, learning with errors, random linear codes, and cryptography.* JACM, 56(6), 1-40.
+
+  ▸ lattice_based/learning_with_errors/lwe_with_without_err.py
+      line     2  [py_import]  import hashlib
+      line   101  [symmetric]  # Compute both sides of verification equation
+      line   184  [signature]  z, v, c = sig_scheme_no_error.sign(message)
+      line   185  [signature]  is_valid = sig_scheme_no_error.verify(message, (z, v, c), A, u)
+      line   195  [signature]  is_valid_tampered = sig_scheme_no_error.verify(wrong_msg, (z, v, c), A, u)
+      line   208  [signature]  z2, v2, c2 = sig_scheme_with_error.sign(message)
+      line   211  [signature]  is_valid2 = sig_scheme_with_error.verify(message, (z2, v2, c2), A2, u2)
+      line   224  [signature]  is_valid_tampered2 = sig_scheme_with_error.verify(wrong_msg, (z2, v2, c2), A2, u2)
+
+  ▸ lattice_based/learning_with_errors/lwe_with_without_err.readme.md
+      line     1  [signature]  # Lattice-Based Digital Signature Scheme
+      line     3  [signature]  A Python implementation of a lattice-based digital signature scheme inspired by Schnorr signatures and using the Fiat-Shamir transform. This implementation demonstrates both idealized (error-free) and realistic (Learning With Errors) versions.
+      line     7  [asymmetric]  This project implements a post-quantum secure digital signature scheme based on lattice cryptography. Unlike traditional schemes (RSA, ECDSA) that are vulnerable to quantum computers, lattice-based signatures rely on the hardness of lattice problems like Learning With Errors (LWE), which are believe
+      line     7  [signature]  This project implements a post-quantum secure digital signature scheme based on lattice cryptography. Unlike traditional schemes (RSA, ECDSA) that are vulnerable to quantum computers, lattice-based signatures rely on the hardness of lattice problems like Learning With Errors (LWE), which are believe
+      line     7  [post_quantum]  This project implements a post-quantum secure digital signature scheme based on lattice cryptography. Unlike traditional schemes (RSA, ECDSA) that are vulnerable to quantum computers, lattice-based signatures rely on the hardness of lattice problems like Learning With Errors (LWE), which are believe
+      line    12  [post_quantum]  - ✅ **Post-Quantum Security**: Based on hard lattice problems
+      line   166  [symmetric]  - No known quantum algorithm provides exponential speedup
+      line   167  [post_quantum]  - Part of NIST post-quantum cryptography standardization
+      line   178  [post_quantum]  - Implement full BLISS, Dilithium, or Falcon signature schemes
+      line   178  [post_quantum]  - Implement full BLISS, Dilithium, or Falcon signature schemes
+      line   188  [post_quantum]  - **Dilithium**: NIST PQC finalist (selected for standardization)
+      line   189  [post_quantum]  - **Falcon**: NIST PQC finalist (selected for standardization)
+      line   196  [signature]  2. Ducas, L. et al. (2018). "CRYSTALS-Dilithium: A Lattice-Based Digital Signature Scheme"
+      line   196  [post_quantum]  2. Ducas, L. et al. (2018). "CRYSTALS-Dilithium: A Lattice-Based Digital Signature Scheme"
+      line   197  [post_quantum]  3. Fouque, P.A. et al. (2017). "Falcon: Fast-Fourier Lattice-based Compact Signatures over NTRU"
+      line   197  [post_quantum]  3. Fouque, P.A. et al. (2017). "Falcon: Fast-Fourier Lattice-based Compact Signatures over NTRU"
+      line   198  [symmetric]  4. Regev, O. (2005). "On Lattices, Learning with Errors, Random Linear Codes, and Cryptography"
+
+  ▸ lattice_based/learning_with_errors/ntru_demo.py
+      line   173  [post_quantum]  # ==================== NTRU ENCRYPTION CLASS ====================
+      line   175  [post_quantum]  class NTRU:
+      line   240  [post_quantum]  """Validate NTRU parameters"""
+      line   268  [post_quantum]  print("=== NTRU Encryption Demo ===\n")
+      line   278  [post_quantum]  bob = NTRU(N, p, q)
+      line   293  [post_quantum]  alice = NTRU(N, p, q)
+      line   321  [post_quantum]  === NTRU Encryption Demo ===
+
+  ▸ lattice_based/learning_with_errors/readme.md
+      line     7  [post_quantum]  LWE (Learning With Errors) and Ring-LWE are considered potential replacements for Diffie-Hellman (DH) in a post-quantum cryptography world. Here's why:
+      line    15  [post_quantum]  Status: LWE is a leading candidate for NIST's post-quantum cryptography standardization
+      line    29  [post_quantum]  # Ring-LWE (Post-Quantum)
+      line    65  [post_quantum]  - **Current Status**: NIST post-quantum standardization candidate
+      line    71  [post_quantum]  - **Long-term**: Full transition to post-quantum cryptography like LWE
+      line   108  [symmetric]  The error term e provides security through noise
+      line   115  [post_quantum]  Learning With Errors (LWE) and its polynomial version, Ring Learning With Errors (RLWE), form the basis of several post-quantum cryptographic systems.
+      line   280  [post_quantum]  - Noise polynomials make inversion hard, ensuring post-quantum security.
+      line   282  [symmetric]  Refer: [url](https://summerschool-croatia.cs.ru.nl/2018/slides/Introduction%20to%20post-quantum%20cryptography%20and%20learning%20with%20errors.pdf)
+      line   282  [post_quantum]  Refer: [url](https://summerschool-croatia.cs.ru.nl/2018/slides/Introduction%20to%20post-quantum%20cryptography%20and%20learning%20with%20errors.pdf)
+      line   426  [post_quantum]  # NTRU Encryption: Lattice Encryption (NTRU - Nth degree TRUncated polynomial ring)
+      line   428  [asymmetric]  NTRU is a quantum-resistant encryption method that's faster than RSA and based on lattice mathematics. Think of it as using polynomial equations instead of large prime numbers.
+      line   428  [post_quantum]  NTRU is a quantum-resistant encryption method that's faster than RSA and based on lattice mathematics. Think of it as using polynomial equations instead of large prime numbers.
+      line   475  [asymmetric]  Quantum Computers can't break it (unlike RSA)
+      line   477  [asymmetric]  Fast - 2-3x faster than RSA
+      line   482  [asymmetric]  Moderate: N=167 (like 512-bit RSA)
+      line   484  [asymmetric]  Standard: N=251 (like 1024-bit RSA)
+      line   486  [asymmetric]  High: N=503 (like 2048-bit RSA)
+      line   489  [post_quantum]  Think of NTRU like a special mathematical blender:
+      line   504  [post_quantum]  NTRU Encryption Step-by-Step
+      line   604  [asymmetric]  Fast: Much faster than RSA
+      line   606  [post_quantum]  Small Keys: Compared to other post-quantum systems
+      line   611  [asymmetric]  N=167 → Moderate security (like 512-bit RSA)
+      line   613  [asymmetric]  N=251 → Standard security (like 1024-bit RSA)
+      line   615  [asymmetric]  N=503 → High security (like 2048-bit RSA)
+
+  ▸ multivariate/readme.md
+      line    39  [post_quantum]  - **Rainbow**: NIST post-quantum signature finalist
+      line    47  [symmetric]  [Reference](https://www.di.ens.fr/brice.minaud/slides/Qhub-2018.pdf)
+      line   149  [post_quantum]  - **Rainbow**: NIST post-quantum finalist (builds on UOV)
+      line   150  [signature]  - **Digital Signatures**: Create signatures easy with secret, hard to forge without
+
+  ▸ multivariate/vinegar_and_oil.py
+      line   107  [post_quantum]  print("• Used in post-quantum signatures like Rainbow")
+      line   165  [post_quantum]  • Used in post-quantum signatures like Rainbow
+
+  ▸ readme.md
+      line     1  [post_quantum]  # Post-Quantum Cryptography: Main Categories
+      line     4  [post_quantum]  Post-quantum cryptography (PQC) aims to develop cryptographic systems secure against quantum computer attacks. NIST has standardized several approaches across four main categories.
+      line    14  [post_quantum]  - **CRYSTALS-KYBER**: Uses LWE with lattice methods
+      line    19  [post_quantum]  - **NTRU**: Traditional structured lattice approach
+      line    29  [signature]  #### ✍️ Digital Signatures
+      line    30  [asymmetric]  - **CRYSTALS-DILITHIUM (ML-DSA)**: Lattice-based Fiat-Shamir
+      line    30  [post_quantum]  - **CRYSTALS-DILITHIUM (ML-DSA)**: Lattice-based Fiat-Shamir
+      line    35  [post_quantum]  - **FALCON**: Based on NTRU with GPV framework
+      line    35  [post_quantum]  - **FALCON**: Based on NTRU with GPV framework
+      line    52  [signature]  #### ✍️ Digital Signatures
+      line    53  [asymmetric]  - **SPHINCS+ (SLH-DSA)**: Stateless hash-based signatures
+      line    53  [post_quantum]  - **SPHINCS+ (SLH-DSA)**: Stateless hash-based signatures
+      line    76  [symmetric]  - **Classic McEliece**: Based on Goppa codes
+      line    76  [post_quantum]  - **Classic McEliece**: Based on Goppa codes
+      line    82  [symmetric]  - **Decoding Problem**: Hard to decode random linear codes
+      line    84  [symmetric]  - **Mature**: Decades of cryptanalysis
+      line    93  [signature]  #### ✍️ Digital Signatures
+      line   109  [post_quantum]  1. **CRYSTALS-KYBER** (Lattice-based)
+      line   110  [post_quantum]  2. **Classic McEliece** (Code-based)
+      line   111  [post_quantum]  3. **NTRU** (Lattice-based)
+      line   114  [signature]  #### Digital Signatures
+      line   115  [post_quantum]  1. **CRYSTALS-DILITHIUM** (Lattice-based)
+      line   116  [post_quantum]  2. **FALCON** (Lattice-based)
+      line   117  [post_quantum]  3. **SPHINCS+** (Hash-based)
+      line   131  [post_quantum]  - **KEM**: CRYSTALS-KYBER (balance of security/performance)
+      line   132  [post_quantum]  - **Signatures**: CRYSTALS-DILITHIUM (efficient, well-studied)
+      line   135  [post_quantum]  - **KEM**: Classic McEliece (conservative choice)
+      line   136  [post_quantum]  - **Signatures**: SPHINCS+ (minimal assumptions)
+      line   139  [post_quantum]  - **KEM**: SABER or NTRU
+      line   140  [post_quantum]  - **Signatures**: FALCON (smallest signatures)
+      line   155  [post_quantum]  - **CRYSTALS-KYBER** (Lattice-based) - **FIPS 203** (ML-KEM)
+      line   158  [post_quantum]  - **Classic McEliece** (Code-based)
+      line   159  [post_quantum]  - **NTRU** (Lattice-based)
+      line   163  [signature]  #### Digital Signatures
+      line   165  [asymmetric]  - **CRYSTALS-DILITHIUM** (Lattice-based) - **FIPS 204** (ML-DSA)
+      line   165  [post_quantum]  - **CRYSTALS-DILITHIUM** (Lattice-based) - **FIPS 204** (ML-DSA)
+      line   166  [post_quantum]  - **FALCON** (Lattice-based) - **FIPS 205**
+      line   169  [post_quantum]  - **SPHINCS+** (Hash-based) - **FIPS 205**
+      line   175  [post_quantum]  | **CRYSTALS-KYBER** | KEM | FIPS 203 | **Final Standard** |
+      line   176  [post_quantum]  | **CRYSTALS-DILITHIUM** | Signature | FIPS 204 | **Final Standard** |
+      line   177  [post_quantum]  | **FALCON** | Signature | FIPS 205 | **Final Standard** |
+      line   178  [post_quantum]  | **SPHINCS+** | Signature | FIPS 205 | **Final Standard** |
+      line   179  [post_quantum]  | **Classic McEliece** | KEM | - | Alternate |
+      line   180  [post_quantum]  | **NTRU** | KEM | - | Alternate |
+      line   186  [post_quantum]  - **KYBER** renamed to **ML-KEM** in FIPS 203
+      line   187  [asymmetric]  - **DILITHIUM** renamed to **ML-DSA** in FIPS 204
+      line   187  [post_quantum]  - **DILITHIUM** renamed to **ML-DSA** in FIPS 204
+      line   188  [asymmetric]  - **SPHINCS+** renamed to **SLH-DSA** in FIPS 205
+      line   188  [post_quantum]  - **SPHINCS+** renamed to **SLH-DSA** in FIPS 205
+      line   208  [post_quantum]  - CRYSTALS Suite (KYBER + DILITHIUM)
+      line   208  [post_quantum]  - CRYSTALS Suite (KYBER + DILITHIUM)
+      line   209  [post_quantum]  - SPHINCS+ Framework
+      line   210  [post_quantum]  - Classic McEliece Cryptosystem
+      line   213  [asymmetric]  The Old Way (Trapdoors): Methods like RSA rely on a mathematical "trapdoor." It's easy to compute in one direction (encryption) but very hard to reverse (decryption) unless you know a secret (the trapdoor). The risk is that someone might find a way to "pick the lock" (e.g., with a powerful quantum c
+      line   215  [post_quantum]  The New Way (Post-Quantum): New algorithms are based on mathematical problems believed to be hard even for quantum computers. They don't use trapdoors.
+
+  ▸ schnorr_fiat_shamir/LatticeSchnorr.py
+      line     2  [py_import]  import hashlib
+      line     6  [asymmetric]  """Simplified Lattice-based Schnorr Signature (ML-DSA concept)"""
+      line   126  [asymmetric]  print("=== LATTICE-BASED SCHNORR (ML-DSA Concept) ===\n")
+      line   132  [asymmetric]  message = "Hello ML-DSA!"
+      line   134  [signature]  signature, challenge = lattice.sign(message)
+      line   136  [signature]  valid = lattice.verify(message, signature, pub_lattice)
+      line   155  [signature]  signature_trad, challenge_trad = traditional.sign(message)
+      line   157  [signature]  valid_trad = traditional.verify(message, signature_trad, pub_trad)
+      line   173  [asymmetric]  print("5. ⚠️ In real ML-DSA, small errors (e1, e2) provide security but make verification approximate")
+      line   180  [asymmetric]  === LATTICE-BASED SCHNORR (ML-DSA Concept) ===
+      line   194  [asymmetric]  Message: Hello ML-DSA!
+      line   213  [asymmetric]  Message: Hello ML-DSA!
+      line   227  [asymmetric]  5. ⚠️ In real ML-DSA, small errors (e1, e2) provide security but make verification approximate
+
+  ▸ schnorr_fiat_shamir/fiat_shamir.py
+      line     3  [py_import]  import hashlib
+
+  ▸ schnorr_fiat_shamir/readme.md
+      line     6  [asymmetric]  **No trapdoors needed!** Modern lattice-based signatures (like ML-DSA) use **Zero Knowledge Proofs** to prove you know a secret without revealing it.
+      line    30  [asymmetric]  ![Lattice-based ML-DSA](Lattice-based_ML-DSA.png)
+      line    55  [symmetric]  1. **Commitment**: Prover sends `t = g^v mod P` (hides secret `x`)
+      line    83  [symmetric]  1. **Commitment**: Prover sends `t = g^v mod P` (hides secret `x`)
+      line   109  [asymmetric]  # Relating Schnorr Proofs to Lattice Signatures (ML-DSA)
+      line   128  [asymmetric]  ### Lattice Proof (ML-DSA - Lattice-based)
+      line   146  [asymmetric]  | Step | Schnorr (Your Code) | Lattice (ML-DSA) |
+      line   155  [asymmetric]  ## Lattice Version (ML-DSA Concept)
+      line   180  [asymmetric]  Both methods use identical Fiat-Shamir structure, proving that ML-DSA builds on the same proven zero-knowledge proof principles as traditional signatures, just with quantum-resistant lattice math instead of discrete logarithms.
+      line   183  [asymmetric]  ## Why This Matters for ML-DSA
+      line   185  [asymmetric]  **No Trapdoors Needed!** Unlike RSA that needs mathematical "backdoors," both methods:
+      line   188  [signature]  3. Create secure digital signatures from identification protocols
+      line   190  [asymmetric]  **Your code demonstrates the exact same cryptographic pattern used in post-quantum ML-DSA signatures**, just with different underlying mathematics (discrete log vs. lattice problems).
+      line   190  [post_quantum]  **Your code demonstrates the exact same cryptographic pattern used in post-quantum ML-DSA signatures**, just with different underlying mathematics (discrete log vs. lattice problems).
+      line   227  [symmetric]  **Both sides equal A·c·x + A·y!** Only someone who knows `x` can make this work.

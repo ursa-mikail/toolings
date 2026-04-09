@@ -1,0 +1,14 @@
+================================================================================
+  REPO       : multi_event_deterministic_uncertainty_scoring_analysis__medusa
+  FULL NAME  : ursa-mikail/multi_event_deterministic_uncertainty_scoring_analysis__medusa
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Python
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/multi_event_deterministic_uncertainty_scoring_analysis__medusa
+  MATCHES    : 3
+================================================================================
+
+  ▸ celestial_ball_demo.py
+      line   241  [symmetric]  altitudes = [np.linalg.norm(pos) - simulator.R_earth for pos in positions[:impact_idx+1]]
+      line   242  [symmetric]  ax2.plot(times[:impact_idx+1], altitudes, 'b-', linewidth=2)
+      line   285  [symmetric]  potential_energy = [simulator.g * alt for alt in altitudes]

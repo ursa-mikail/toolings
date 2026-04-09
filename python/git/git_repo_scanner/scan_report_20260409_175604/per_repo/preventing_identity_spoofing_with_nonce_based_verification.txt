@@ -1,0 +1,46 @@
+================================================================================
+  REPO       : preventing_identity_spoofing_with_nonce_based_verification
+  FULL NAME  : ursa-mikail/preventing_identity_spoofing_with_nonce_based_verification
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Python
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/preventing_identity_spoofing_with_nonce_based_verification
+  MATCHES    : 33
+================================================================================
+
+  ▸ preventing_identity_spoofing_with_nonce_based_verification.py
+      line    12  [py_import]  import hashlib
+      line    13  [py_import]  import hmac
+      line    13  [kdf]  import hmac
+      line    15  [py_import]  import secrets
+      line    32  [kdf]  masked_identity : str   — HMAC(nonce_bytes, identity_hash) as hex
+      line    35  [kdf]  signature       : str   — HMAC-SHA256 over (masked_identity + nonce + timestamp)
+      line   102  [kdf]  """HMAC-SHA256(key=nonce_bytes, msg=identity_hash) → hex string."""
+      line   104  [kdf]  return hmac.new(nonce_bytes, identity_hash, hashlib.sha256).hexdigest()
+      line   109  [kdf]  return hmac.new(self._secret_key, payload, hashlib.sha256).hexdigest()
+      line   154  [kdf]  if not hmac.compare_digest(expected_masked, claim.masked_identity):
+      line   160  [kdf]  if not hmac.compare_digest(expected_sig, claim.signature):
+      line   185  [kdf]  return hmac.new(nonce_bytes, identity_hash, hashlib.sha256).hexdigest()
+      line   189  [kdf]  return hmac.new(self._secret_key, payload, hashlib.sha256).hexdigest()
+      line   213  [signature]  ok = verifier.verify(claim, identity)
+      line   219  [signature]  _          = verifier.verify(old_claim, identity)   # accepted (nonce 4 > 3)
+      line   221  [signature]  replayed   = verifier.verify(old_claim, identity)   # replayed → rejected
+      line   233  [signature]  ok = verifier.verify(tampered, identity)
+      line   239  [signature]  ok = verifier.verify(claim, "eve@example.com")
+      line   246  [signature]  ok = verifier.verify(c, user)
+
+  ▸ readme.md
+      line    31  [kdf]  2. **Mixed into the identity hash** — `masked = HMAC(nonce_bytes, SHA256(identity))`.
+      line    34  [kdf]  HMAC-signed with a shared secret, preventing tampering.
+      line    38  [kdf]  masked = HMAC(key=7_as_bytes, msg=SHA256("alice@example.com"))
+      line    39  [kdf]  sig    = HMAC(key=SECRET,     msg=masked || nonce || timestamp)
+      line    62  [kdf]  │    masked         ← HMAC(nonce_bytes, identity_hash)             │
+      line    63  [kdf]  │    signature      ← HMAC(SECRET, masked||nonce||timestamp)       │
+      line    74  [kdf]  │    ① masked match?   HMAC(nonce_bytes, SHA256(identity))         │
+      line    75  [kdf]  │    ② sig valid?      HMAC(SECRET, masked||nonce||timestamp)      │
+      line    85  [kdf]  | `masked_identity` | `str`   | Hex-encoded HMAC(nonce_bytes, SHA256(identity))      |
+      line    88  [kdf]  | `signature`       | `str`   | Hex-encoded HMAC-SHA256 over the full payload        |
+      line   261  [kdf]  | Identity hiding           | HMAC(nonce_bytes, SHA256(identity))             |
+      line   263  [kdf]  | Tamper detection          | HMAC-SHA256 signature over full payload         |
+      line   264  [kdf]  | Timing-safe comparison    | `hmac.compare_digest` throughout                |
+      line   272  [kdf]  Python ≥ 3.10, standard library only (`hashlib`, `hmac`, `secrets`,

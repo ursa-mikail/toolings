@@ -1,0 +1,31 @@
+================================================================================
+  REPO       : trial_multiply_functions_benchmark
+  FULL NAME  : ursa-mikail/trial_multiply_functions_benchmark
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Go
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/trial_multiply_functions_benchmark
+  MATCHES    : 18
+================================================================================
+
+  ▸ main.go
+      line    52  [symmetric]  // Uses irreducible polynomial: 0x1b (x^8 + x^4 + x^3 + x + 1) - AES polynomial
+      line    68  [symmetric]  a ^= 0x1b // AES polynomial (DIFFERENT!)
+      line   105  [symmetric]  // Also uses 0x1b (AES polynomial)
+      line   144  [symmetric]  expected_0x1b  byte // For polynomial 0x1b (AES standard)
+      line   311  [zkp]  fmt.Println("  Lookup Table:  0x11d = x^8 + x^4 + x^3 + x + 1  (Shamir's Secret Sharing)")
+      line   312  [symmetric]  fmt.Println("  Galois Mult:   0x1b  = x^8 + x^4 + x^3 + x + 1  (AES/Rijndael)")
+      line   313  [symmetric]  fmt.Println("  Vault Mult:    0x1b  = x^8 + x^4 + x^3 + x + 1  (AES/Rijndael)")
+      line   321  [zkp]  fmt.Println("The 0x11d polynomial is used in Shamir's Secret Sharing")
+      line   322  [symmetric]  fmt.Println("The 0x1b polynomial is used in AES/Rijndael encryption")
+      line   347  [zkp]  fmt.Println("2. For Shamir's Secret Sharing: use 0x11d (standard)")
+      line   348  [symmetric]  fmt.Println("3. For AES operations: use 0x1b (standard)")
+
+  ▸ readme.md
+      line    61  [zkp]  Lookup Table:  0x11d = x^8 + x^4 + x^3 + x + 1  (Shamir's Secret Sharing)
+      line    62  [symmetric]  Galois Mult:   0x1b  = x^8 + x^4 + x^3 + x + 1  (AES/Rijndael)
+      line    63  [symmetric]  Vault Mult:    0x1b  = x^8 + x^4 + x^3 + x + 1  (AES/Rijndael)
+      line    71  [zkp]  The 0x11d polynomial is used in Shamir's Secret Sharing
+      line    72  [symmetric]  The 0x1b polynomial is used in AES/Rijndael encryption
+      line    82  [zkp]  2. For Shamir's Secret Sharing: use 0x11d (standard)
+      line    83  [symmetric]  3. For AES operations: use 0x1b (standard)

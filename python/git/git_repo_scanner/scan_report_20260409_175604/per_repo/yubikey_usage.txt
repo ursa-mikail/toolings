@@ -1,0 +1,84 @@
+================================================================================
+  REPO       : yubikey_usage
+  FULL NAME  : ursa-mikail/yubikey_usage
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Shell
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/yubikey_usage
+  MATCHES    : 35
+================================================================================
+
+  ▸ cert_9a.pem
+      line     1  [key_mgmt]  -----BEGIN CERTIFICATE-----
+
+  ▸ gen_output/domain_cert_00.pem
+      line     1  [key_mgmt]  -----BEGIN CERTIFICATE-----
+
+  ▸ gen_output/domain_cert_01.pem
+      line     1  [key_mgmt]  -----BEGIN CERTIFICATE-----
+
+  ▸ gen_output/domain_cert_02.pem
+      line     1  [key_mgmt]  -----BEGIN CERTIFICATE-----
+
+  ▸ generate_keys_and_certs.sh
+      line     5  [asymmetric]  #1. Generate RSA 2048 Private Key
+
+  ▸ generate_keyshares_and_domaincerts.sh
+      line    16  [random]  head -c 8 /dev/urandom | base64 | tr -dc 'A-Za-z0-9' | head -c 8
+      line    22  [random]  head -c "$KEYSIZE" /dev/urandom | base64 | jq -R '{ key: . }' > "$fname"
+      line    30  [symmetric]  openssl req -x509 -newkey rsa:2048 -nodes -keyout "$key" -out "$cert" -subj "/CN=Domain$(printf '%02d' "$id")/" -days 365
+      line    30  [asymmetric]  openssl req -x509 -newkey rsa:2048 -nodes -keyout "$key" -out "$cert" -subj "/CN=Domain$(printf '%02d' "$id")/" -days 365
+
+  ▸ generate_random.py
+      line     3  [py_import]  import secrets
+      line    14  [random]  raw = base64.b64encode(os.urandom(48)).decode('utf-8')
+
+  ▸ generate_random.sh
+      line    15  [random]  head -c "$num_bytes" /dev/urandom | od -An -tx1 | tr -d ' \n'
+
+  ▸ miscellany_02/yubikey_utils_miscellany_02_pre_set_up.sh
+      line    21  [random]  head -c "$size" /dev/urandom
+      line    25  [random]  head -c 8 /dev/urandom | base64 | tr -dc 'A-Za-z0-9' | head -c 8
+
+  ▸ out.pem
+      line     1  [key_mgmt]  -----BEGIN CERTIFICATE-----
+
+  ▸ public_key.pem
+      line     1  [key_mgmt]  -----BEGIN PUBLIC KEY-----
+
+  ▸ readme.md
+      line    37  [symmetric]  | **8)** Change PIN/PUK                   | Allows you to rotate your PIN and PUK codes for security.                               |
+      line   141  [signature]  | **9c**    | 0x9c   | Digital Signature                |
+
+  ▸ requirements.txt
+      line     3  [dependency]  cryptography>=42.0.0
+
+  ▸ selfsigned_cert.pem
+      line     1  [key_mgmt]  -----BEGIN CERTIFICATE-----
+
+  ▸ test.crt
+      line     1  [key_mgmt]  -----BEGIN CERTIFICATE-----
+
+  ▸ test.pem
+      line     1  [key_mgmt]  -----BEGIN CERTIFICATE-----
+
+  ▸ yubikey_utils.py
+      line    27  [py_import]  from cryptography.hazmat.primitives.serialization import load_pem_private_key
+      line    27  [key_mgmt]  from cryptography.hazmat.primitives.serialization import load_pem_private_key
+      line    28  [py_import]  from cryptography.hazmat.backends import default_backend
+      line    37  [key_mgmt]  private_key = load_pem_private_key(key_data, password=None, backend=default_backend())
+      line    55  [key_mgmt]  f.write(cert.public_bytes())
+      line    65  [key_mgmt]  public_key = piv_session.generate_key(
+      line    71  [key_mgmt]  print(f"Public key:\n{public_key.public_bytes().decode()}")
+
+  ▸ yubikey_utils.sh
+      line    77  [asymmetric]  echo "🔐 Private key not found. Generating a new 2048-bit RSA key..."
+      line    78  [asymmetric]  openssl genpkey -algorithm RSA -out "$key_path" -pkeyopt rsa_keygen_bits:2048
+
+  ▸ yubikey_utils_miscellany_00.sh
+      line     7  [random]  RANDOM_PIN=$(head -c 6 /dev/urandom | base64 | tr -dc 'A-Za-z0-9' | head -c 8)
+      line    43  [random]  head -c "$size_bytes" /dev/urandom > "$output_path"
+
+  ▸ yubikey_utils_miscellany_01_pre_set_up.sh
+      line    21  [random]  head -c "$size" /dev/urandom
+      line    25  [random]  head -c 8 /dev/urandom | base64 | tr -dc 'A-Za-z0-9' | head -c 8

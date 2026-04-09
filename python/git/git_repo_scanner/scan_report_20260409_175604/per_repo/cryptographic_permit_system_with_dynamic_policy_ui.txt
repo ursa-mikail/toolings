@@ -1,0 +1,77 @@
+================================================================================
+  REPO       : cryptographic_permit_system_with_dynamic_policy_ui
+  FULL NAME  : ursa-mikail/cryptographic_permit_system_with_dynamic_policy_ui
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : TypeScript
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/cryptographic_permit_system_with_dynamic_policy_ui
+  MATCHES    : 50
+================================================================================
+
+  ▸ README.md
+      line    45  [symmetric]  This system unifies **eight policy dimensions** drawn from the world's major access control frameworks. Every signed permit encodes all eight dimensions in a single cryptographically bound document.
+      line    52  [symmetric]  | Field | Encodes |
+      line    77  [symmetric]  | Field | Encodes |
+      line   106  [symmetric]  | Field | Encodes |
+      line   110  [symmetric]  | `where.nodes` | Node pools: `finance-nodes`, `control-plane`, `gpu-nodes`, `general-nodes` |
+      line   115  [symmetric]  **K8s RBAC mapping:** `where.namespaces` scopes a generated `RoleBinding`. `where.nodes` maps to a `NodeSelector` or `nodeAffinity` in a pod security policy.
+      line   140  [symmetric]  | Field | Encodes |
+      line   166  [symmetric]  | Field | Encodes |
+      line   187  [symmetric]  | Field | Encodes |
+      line   204  [symmetric]  | Field | Encodes |
+      line   226  [symmetric]  | Field | Encodes |
+
+  ▸ backend/internal/api/server.go
+      line    31  [signature]  signed, err := kp.Sign(gs, "template", 365*24*time.Hour)
+      line   141  [signature]  signed, err := s.keyPair.Sign(p, "permit", ttl)
+      line   173  [signature]  if err := cry.Verify(&req.SignedPermit, s.keyPair.PublicKey); err != nil {
+
+  ▸ backend/internal/crypto/crypto.go
+      line    84  [signature]  sig, err := kp.PrivateKey.Sign(rand.Reader, sigInput, crypto.Hash(0))
+      line   116  [signature]  if !ed25519.Verify(pub, sigInput, sigBytes) {
+
+  ▸ backend/internal/permit/permit.go
+      line    50  [symmetric]  Nodes        []string `json:"nodes"`
+
+  ▸ backend/internal/template/template.go
+      line    55  [symmetric]  Nodes        []Option `json:"nodes"`
+      line   180  [symmetric]  Nodes: []Option{
+      line   181  [symmetric]  {Value: "finance-nodes", Label: "Finance Node Pool", Description: "Dedicated finance workload nodes", Risk: "high"},
+      line   182  [symmetric]  {Value: "general-nodes", Label: "General Node Pool", Description: "Shared general-purpose compute nodes", Risk: "medium"},
+      line   183  [symmetric]  {Value: "gpu-nodes", Label: "GPU Node Pool", Description: "GPU compute nodes for ML workloads", Risk: "medium"},
+      line   184  [symmetric]  {Value: "control-plane", Label: "Control Plane Nodes", Description: "K8s control plane — highest privilege", Risk: "critical"},
+      line   185  [symmetric]  {Value: "all", Label: "All Nodes (*)", Risk: "critical"},
+
+  ▸ frontend/src/App.tsx
+      line   149  [symmetric]  patch({ [key]: arr.includes(val) ? arr.filter(x => x !== val) : [...arr, val] })
+      line   219  [symmetric]  where: { clusters: form.whereClusters, namespaces: form.whereNamespaces, nodes: form.whereNodes, ip_ranges: form.whereIPRanges, geo_regions: form.whereGeoRegions, environments: form.whereEnvironments },
+      line   274  [symmetric]  case 'where':     return form.whereClusters.length + form.whereNamespaces.length + form.whereNodes.length + form.whereIPRanges.length + form.whereEnvironments.length
+      line   376  [symmetric]  <OptCard key={o.value} opt={o} selected={form.whoGroups.includes(o.value)} onToggle={() => toggleMulti('whoGroups', o.value)} />
+      line   428  [symmetric]  <SectionHead glyph="◉" label="WHERE — Scope & Location" sub="Clusters, namespaces, nodes, network ranges, and geographic regions." />
+      line   432  [symmetric]  <OptCard key={o.value} opt={o} selected={form.whereClusters.includes(o.value)} onToggle={() => toggleMulti('whereClusters', o.value)} />
+      line   438  [symmetric]  <OptCard key={o.value} opt={o} selected={form.whereNamespaces.includes(o.value)} onToggle={() => toggleMulti('whereNamespaces', o.value)} />
+      line   443  [symmetric]  {d.where.nodes.map(o => (
+      line   444  [symmetric]  <OptCard key={o.value} opt={o} selected={form.whereNodes.includes(o.value)} onToggle={() => toggleMulti('whereNodes', o.value)} />
+      line   450  [symmetric]  <OptCard key={o.value} opt={o} selected={form.whereIPRanges.includes(o.value)} onToggle={() => toggleMulti('whereIPRanges', o.value)} />
+      line   458  [symmetric]  <OptCard key={o.value} opt={o} selected={form.whereGeoRegions.includes(o.value)} onToggle={() => toggleMulti('whereGeoRegions', o.value)} />
+      line   466  [symmetric]  <OptCard key={o.value} opt={o} selected={form.whereEnvironments.includes(o.value)} onToggle={() => toggleMulti('whereEnvironments', o.value)} />
+      line   481  [symmetric]  <OptCard key={o.value} opt={o} selected={form.whatResources.includes(o.value)} onToggle={() => toggleMulti('whatResources', o.value)} />
+      line   487  [symmetric]  <OptCard key={o.value} opt={o} selected={form.whatAPIs.includes(o.value)} onToggle={() => toggleMulti('whatAPIs', o.value)} />
+      line   499  [symmetric]  <OptCard key={o.value} opt={o} selected={form.whatNamespaces.includes(o.value)} onToggle={() => toggleMulti('whatNamespaces', o.value)} />
+      line   512  [symmetric]  <OptCard key={o.value} opt={o} selected={form.howVerbs.includes(o.value)} onToggle={() => toggleMulti('howVerbs', o.value)} />
+      line   547  [symmetric]  <Toggle label="REQUIRE WRITTEN JUSTIFICATION" desc="Enforce that submitter provides written justification text in the permit" value={form.whyRequireJustification} onChange={v => patch({ whyRequireJustification: v })} />
+      line   584  [symmetric]  <OptCard key={o.value} opt={o} selected={form.relations.includes(o.value)} onToggle={() => toggleMulti('relations', o.value)} />
+
+  ▸ frontend/src/api.ts
+      line   107  [signature]  sigOk = await crypto.subtle.verify('Ed25519', cryptoKey, sigBytes, sigInput)
+
+  ▸ frontend/src/risk.ts
+      line    56  [symmetric]  add(optRisk(d.where.nodes, form.whereNodes), 20)
+      line   125  [symmetric]  whereNodes:        [],
+      line   162  [symmetric]  if (!picked.includes(item)) picked.push(item)
+      line   198  [symmetric]  const whereNodes        = seededPickMulti(d.where.nodes.filter(o => o.value !== 'all'), s2, 1, 1).map(o => o.value)
+      line   255  [symmetric]  whereClusters, whereNamespaces, whereNodes, whereIPRanges, whereGeoRegions, whereEnvironments,
+
+  ▸ frontend/src/types.ts
+      line    29  [symmetric]  nodes:         Option[]
+      line   123  [symmetric]  whereNodes:       string[]

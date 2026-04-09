@@ -1,0 +1,481 @@
+================================================================================
+  REPO       : crypto_frails_and_fails
+  FULL NAME  : ursa-mikail/crypto_frails_and_fails
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Python
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/crypto_frails_and_fails
+  MATCHES    : 422
+================================================================================
+
+  ▸ CBC/cbc_tampered_no_integrity.py
+      line     1  [py_import]  from Crypto.Cipher import AES
+      line     1  [symmetric]  from Crypto.Cipher import AES
+      line     2  [py_import]  from Crypto.Util.Padding import pad, unpad
+      line     5  [symmetric]  # Encrypt message using AES-CBC without HMAC
+      line     5  [cipher_mode]  # Encrypt message using AES-CBC without HMAC
+      line     5  [kdf]  # Encrypt message using AES-CBC without HMAC
+      line     7  [random]  iv = os.urandom(16)
+      line     8  [symmetric]  cipher = AES.new(key, AES.MODE_CBC, iv)
+      line     9  [symmetric]  ciphertext = cipher.encrypt(pad(plaintext, AES.block_size))
+      line    16  [symmetric]  cipher = AES.new(key, AES.MODE_CBC, iv)
+      line    18  [symmetric]  plaintext = unpad(cipher.decrypt(ciphertext), AES.block_size)
+      line    30  [random]  key = os.urandom(16)
+      line    70  [symmetric]  AES-CBC decrypts block B_n as:
+      line    70  [cipher_mode]  AES-CBC decrypts block B_n as:
+      line    78  [symmetric]  Without HMAC or AES-GCM:
+      line    78  [cipher_mode]  Without HMAC or AES-GCM:
+      line    78  [kdf]  Without HMAC or AES-GCM:
+      line   107  [py_import]  from Crypto.Cipher import AES
+      line   107  [symmetric]  from Crypto.Cipher import AES
+      line   108  [py_import]  from Crypto.Util.Padding import pad, unpad
+      line   111  [symmetric]  # Step 1: AES CBC encryption/decryption
+      line   111  [cipher_mode]  # Step 1: AES CBC encryption/decryption
+      line   113  [random]  iv = os.urandom(16)
+      line   114  [symmetric]  cipher = AES.new(key, AES.MODE_CBC, iv)
+      line   120  [symmetric]  cipher = AES.new(key, AES.MODE_CBC, iv)
+      line   131  [random]  key = os.urandom(16)
+      line   163  [cipher_mode]  That output confirms the tampering — the "ACCESS=NO;" turned into "ACCESS=YES" in the decrypted plaintext, but the prefix bytes got corrupted and look like gibberish (because we flipped part of the previous block’s ciphertext). This is expected: CBC bit flipping flips bytes in the previous ciphertex
+      line   165  [cipher_mode]  CBC decryption:
+      line   177  [cipher_mode]  3. This illustrates how lack of authentication enables undetected tampering in CBC mode.
+      line   187  [random]  iv = os.urandom(16)
+      line   188  [symmetric]  cipher = AES.new(key, AES.MODE_CBC, iv)
+      line   194  [symmetric]  cipher = AES.new(key, AES.MODE_CBC, iv)
+      line   200  [random]  key = os.urandom(16)
+
+  ▸ CBC/poodle_on_cbc.py
+      line     2  [py_import]  from Crypto.Cipher import AES
+      line     2  [symmetric]  from Crypto.Cipher import AES
+      line     3  [py_import]  from Crypto.Random import get_random_bytes
+      line     3  [random]  from Crypto.Random import get_random_bytes
+      line     4  [py_import]  from Crypto.Util.Padding import pad, unpad
+      line    18  [symmetric]  cipher = AES.new(self.key, AES.MODE_CBC, self.iv)
+      line    22  [symmetric]  cipher = AES.new(self.key, AES.MODE_CBC, self.iv)
+      line    31  [random]  key = get_random_bytes(16)
+      line    32  [random]  iv = get_random_bytes(16)
+      line    43  [symmetric]  print(f"\n🔐 Simulating POODLE on AES-CBC (full message):")
+      line    43  [cipher_mode]  print(f"\n🔐 Simulating POODLE on AES-CBC (full message):")
+      line    58  [random]  prefix = bytearray(os.urandom(byte_index))
+      line    99  [symmetric]  🔐 Simulating POODLE on AES-CBC (full message):
+      line    99  [cipher_mode]  🔐 Simulating POODLE on AES-CBC (full message):
+
+  ▸ ECB/images_ecb_cbc_compare_and_repeated_patterns.py
+      line     1  [py_import]  from Crypto.Cipher import AES
+      line     1  [symmetric]  from Crypto.Cipher import AES
+      line     2  [py_import]  from Crypto.Util.Padding import pad
+      line    13  [symmetric]  padded_bytes = pad(raw_bytes, AES.block_size)
+      line    14  [symmetric]  cipher = AES.new(key, AES.MODE_ECB)
+      line    25  [symmetric]  padded_bytes = pad(raw_bytes, AES.block_size)
+      line    26  [symmetric]  cipher = AES.new(key, AES.MODE_CBC, iv)
+      line    35  [cipher_mode]  iv = b'InitializationVe'  # 16 bytes IV for CBC mode
+      line    44  [cipher_mode]  # Plot original, ECB, and CBC images side by side
+      line    44  [cipher_mode]  # Plot original, ECB, and CBC images side by side
+      line    52  [symmetric]  axs[1].set_title('Encrypted Image (AES-ECB)')
+      line    52  [cipher_mode]  axs[1].set_title('Encrypted Image (AES-ECB)')
+      line    56  [symmetric]  axs[2].set_title('Encrypted Image (AES-CBC)')
+      line    56  [cipher_mode]  axs[2].set_title('Encrypted Image (AES-CBC)')
+
+  ▸ ECB/readme.md
+      line     6  [cipher_mode]  Middle: ECB-encrypted image showing patterns
+      line     8  [cipher_mode]  Right: CBC-encrypted image — looks like noise, no visible pattern leak
+      line    10  [cipher_mode]  Clearly see why CBC is preferred over ECB for encrypting images or any data where structure matters.
+      line    10  [cipher_mode]  Clearly see why CBC is preferred over ECB for encrypting images or any data where structure matters.
+
+  ▸ GCM/forgery_via_tag_collision_simulate.py
+      line     1  [py_import]  from cryptography.hazmat.primitives.ciphers.aead import AESGCM
+      line     4  [key_mgmt]  KEY = AESGCM.generate_key(bit_length=128)
+      line     9  [random]  NONCE = os.urandom(12)
+      line    22  [cipher_mode]  """Simulates broken GCM implementation that verifies only the truncated tag."""
+      line    34  [symmetric]  print(f"🔐 AES-GCM Forgery Simulation (custom check) using {TAG_BITS}-bit tags")
+      line    34  [cipher_mode]  print(f"🔐 AES-GCM Forgery Simulation (custom check) using {TAG_BITS}-bit tags")
+      line    37  [random]  msg = os.urandom(32)
+      line    57  [cipher_mode]  print(f"\n🚨 FORGERY SUCCEEDED (but in real GCM, tag would pass)!")
+      line    69  [symmetric]  🔐 AES-GCM Forgery Simulation (custom check) using 32-bit tags
+      line    69  [cipher_mode]  🔐 AES-GCM Forgery Simulation (custom check) using 32-bit tags
+      line    80  [py_import]  from cryptography.hazmat.primitives.ciphers.aead import AESGCM
+      line    86  [random]  NONCE = os.urandom(12)
+      line    91  [key_mgmt]  KEY = AESGCM.generate_key(bit_length=128)
+      line   102  [cipher_mode]  """Simulates broken GCM implementation that verifies only the truncated tag."""
+      line   110  [random]  msg = os.urandom(32)
+      line   151  [symmetric]  🔓 Forgery was accepted under a broken implementation that only validates the first 4 bytes (32 bits) of the tag. This proves the Birthday-bound vulnerability of short authentication tags in AES-GCM.
+      line   151  [cipher_mode]  🔓 Forgery was accepted under a broken implementation that only validates the first 4 bytes (32 bits) of the tag. This proves the Birthday-bound vulnerability of short authentication tags in AES-GCM.
+      line   160  [py_import]  from cryptography.hazmat.primitives.ciphers.aead import AESGCM
+      line   163  [symmetric]  # Simulate an insecure AES-GCM implementation that only checks 32-bit truncated tags
+      line   163  [cipher_mode]  # Simulate an insecure AES-GCM implementation that only checks 32-bit truncated tags
+      line   166  [key_mgmt]  KEY = AESGCM.generate_key(bit_length=128)
+      line   195  [symmetric]  🚨 Simulates broken AES-GCM tag verification:
+      line   195  [cipher_mode]  🚨 Simulates broken AES-GCM tag verification:
+      line   246  [cipher_mode]  - This gets into authenticated forgery in GCM's MAC computation path.
+      line   248  [cipher_mode]  “Insecure GCM Implementation”
+      line   281  [cipher_mode]  - Truncate GCM tags, and
+
+  ▸ GCM/readme.md
+      line     1  [symmetric]  # 🔐 Why is the key exhaustion at ~64 GB limit for AES-GCM?
+      line     1  [cipher_mode]  # 🔐 Why is the key exhaustion at ~64 GB limit for AES-GCM?
+      line    10  [symmetric]  For 64 GB, this comes down to how AES-GCM handles its internal counters and maximum message size, especially during encryption under a single key and nonce.
+      line    10  [cipher_mode]  For 64 GB, this comes down to how AES-GCM handles its internal counters and maximum message size, especially during encryption under a single key and nonce.
+      line    12  [symmetric]  AES-GCM uses a 32-bit block counter when constructing its IV (Initialization Vector) for CTR (counter) mode encryption.
+      line    12  [cipher_mode]  AES-GCM uses a 32-bit block counter when constructing its IV (Initialization Vector) for CTR (counter) mode encryption.
+      line    12  [cipher_mode]  AES-GCM uses a 32-bit block counter when constructing its IV (Initialization Vector) for CTR (counter) mode encryption.
+      line    14  [symmetric]  - AES operates on 128-bit (16-byte) blocks.
+      line    15  [cipher_mode]  - The GCM mode uses a 32-bit (4-byte) counter as part of the 96-bit nonce+counter (in the IV).
+      line    30  [symmetric]  - Exceeding this causes counter reuse, which breaks the security of AES-CTR (and thus GCM).
+      line    30  [cipher_mode]  - Exceeding this causes counter reuse, which breaks the security of AES-CTR (and thus GCM).
+      line    30  [cipher_mode]  - Exceeding this causes counter reuse, which breaks the security of AES-CTR (and thus GCM).
+      line    37  [symmetric]  AES-GCM = AES in Counter (CTR) mode + Galois Hash (GHASH) for authentication.
+      line    37  [cipher_mode]  AES-GCM = AES in Counter (CTR) mode + Galois Hash (GHASH) for authentication.
+      line    37  [cipher_mode]  AES-GCM = AES in Counter (CTR) mode + Galois Hash (GHASH) for authentication.
+      line    41  [symmetric]  ## Where the 96 bits come into play in AES-GCM?
+      line    41  [cipher_mode]  ## Where the 96 bits come into play in AES-GCM?
+      line    45  [symmetric]  In AES-GCM, the IV (Initialization Vector) is typically 96 bits (i.e., 12 bytes). This is the recommended length because it allows the internal counter construction to be super efficient.
+      line    45  [cipher_mode]  In AES-GCM, the IV (Initialization Vector) is typically 96 bits (i.e., 12 bytes). This is the recommended length because it allows the internal counter construction to be super efficient.
+      line    50  [symmetric]  When using a 96-bit IV, AES-GCM builds the 128-bit counter block (J₀) like this:
+      line    50  [cipher_mode]  When using a 96-bit IV, AES-GCM builds the 128-bit counter block (J₀) like this:
+      line    57  [symmetric]  Then, for each 128-bit AES block, the counter value increments:
+      line    77  [cipher_mode]  | **Per-message/per-record/per-session identifier** | Ensures **uniqueness** in GCM encryption.                                                                                  |
+      line    80  [symmetric]  The 96-bit IV in AES-GCM can represent a session, message, or record ID, depending on how you're structuring the data. Its role is to guarantee uniqueness and ensure security of the encryption and authentication process.
+      line    80  [cipher_mode]  The 96-bit IV in AES-GCM can represent a session, message, or record ID, depending on how you're structuring the data. Its role is to guarantee uniqueness and ensure security of the encryption and authentication process.
+      line    88  [symmetric]  - The 96-bit IV often encodes a session ID, record number, or message counter.
+      line    93  [symmetric]  IV reuse in AES-GCM with the same key is catastrophic. So:
+      line    93  [cipher_mode]  IV reuse in AES-GCM with the same key is catastrophic. So:
+      line    96  [cipher_mode]  - The counter mechanism ensures non-repeating ciphertext blocks, preventing patterns that could otherwise mimic ECB-mode weaknesses.
+      line   119  [symmetric]  | **16-byte AES blocks** | Each counter encrypts 16 bytes                         |
+      line   123  [symmetric]  # Collision resistance aspect of AES-GCM, and the Birthday Paradox
+      line   123  [cipher_mode]  # Collision resistance aspect of AES-GCM, and the Birthday Paradox
+      line   126  [symmetric]  🔐 AES-GCM and the Birthday Bound
+      line   126  [cipher_mode]  🔐 AES-GCM and the Birthday Bound
+      line   127  [symmetric]  AES-GCM provides authenticated encryption, meaning it offers both:
+      line   127  [symmetric]  AES-GCM provides authenticated encryption, meaning it offers both:
+      line   127  [cipher_mode]  AES-GCM provides authenticated encryption, meaning it offers both:
+      line   128  [symmetric]  - Confidentiality (via AES in CTR mode), and
+      line   128  [cipher_mode]  - Confidentiality (via AES in CTR mode), and
+      line   132  [cipher_mode]  The Birthday Paradox applies to the authentication tag generation in GCM, not the encryption part.
+      line   133  [symmetric]  - AES-GCM uses a 128-bit tag (typical default, configurable).
+      line   133  [cipher_mode]  - AES-GCM uses a 128-bit tag (typical default, configurable).
+      line   142  [symmetric]  🎯 AES-GCM has a security limit of about 2⁶⁴ encryptions per key because of the birthday bound on 128-bit tags.
+      line   142  [cipher_mode]  🎯 AES-GCM has a security limit of about 2⁶⁴ encryptions per key because of the birthday bound on 128-bit tags.
+      line   151  [cipher_mode]  If you encrypt or verify more than 2⁶⁴ messages under the same key (regardless of nonce), the chance of two tags colliding becomes significant, breaking the integrity guarantees of GCM. An attacker might:
+      line   159  [symmetric]  - Consider alternatives like AES-SIV or XChaCha20-Poly1305 for better misuse resistance if random or repeated nonces are possible.
+      line   159  [symmetric]  - Consider alternatives like AES-SIV or XChaCha20-Poly1305 for better misuse resistance if random or repeated nonces are possible.
+      line   159  [cipher_mode]  - Consider alternatives like AES-SIV or XChaCha20-Poly1305 for better misuse resistance if random or repeated nonces are possible.
+      line   161  [symmetric]  This works the same for AES-256-GCM, which uses a 256-bit key instead of a 128-bit one.
+      line   161  [cipher_mode]  This works the same for AES-256-GCM, which uses a 256-bit key instead of a 128-bit one.
+      line   163  [symmetric]  ### What changes and what doesn’t when you switch from AES-128-GCM to AES-256-GCM?
+      line   163  [cipher_mode]  ### What changes and what doesn’t when you switch from AES-128-GCM to AES-256-GCM?
+      line   165  [symmetric]  | Feature        | AES-128-GCM           | AES-256-GCM           |
+      line   165  [cipher_mode]  | Feature        | AES-128-GCM           | AES-256-GCM           |
+      line   176  [symmetric]  AES-256-GCM still uses a 128-bit authentication tag, which means:
+      line   176  [cipher_mode]  AES-256-GCM still uses a 128-bit authentication tag, which means:
+      line   182  [symmetric]  🧠 What Does AES-256 Really Give You?
+      line   188  [symmetric]  | Concern                                   | AES-256-GCM                |
+      line   188  [cipher_mode]  | Concern                                   | AES-256-GCM                |
+      line   194  [symmetric]  | **Block size**                            | 128 bits (same as AES-128) |
+      line   198  [symmetric]  Simulate a birthday paradox attack that shows tag collisions in AES-GCM, but note:
+      line   198  [cipher_mode]  Simulate a birthday paradox attack that shows tag collisions in AES-GCM, but note:
+      line   200  [symmetric]  > Real forgery attacks on AES-GCM due to birthday collisions require deep control over message construction and access to many encryptions under the same key/IV setup — and that's computationally infeasible in practice unless the developer misuses the system (e.g., nonce reuse or extremely high traf
+      line   200  [cipher_mode]  > Real forgery attacks on AES-GCM due to birthday collisions require deep control over message construction and access to many encryptions under the same key/IV setup — and that's computationally infeasible in practice unless the developer misuses the system (e.g., nonce reuse or extremely high traf
+      line   206  [cipher_mode]  With 128-bit tags (real GCM), the bound is ∼ $2^{64}$ — far too large to simulate without a supercomputer.
+      line   211  [symmetric]  3. If you're reusing nonces, or hitting those limits, you're violating AES-GCM's security assumptions — and attacks like tag forgery become viable.
+      line   211  [cipher_mode]  3. If you're reusing nonces, or hitting those limits, you're violating AES-GCM's security assumptions — and attacks like tag forgery become viable.
+      line   217  [symmetric]  2. AES-GCM produces a ciphertext with a 128-bit authentication tag.
+      line   217  [cipher_mode]  2. AES-GCM produces a ciphertext with a 128-bit authentication tag.
+      line   224  [symmetric]  1. Forgery attack using AES-GCM when:
+      line   224  [cipher_mode]  1. Forgery attack using AES-GCM when:
+      line   235  [symmetric]  | Spec                     | AES-GCM         | ChaCha20-Poly1305 | XChaCha20-Poly1305 |
+      line   235  [symmetric]  | Spec                     | AES-GCM         | ChaCha20-Poly1305 | XChaCha20-Poly1305 |
+      line   235  [cipher_mode]  | Spec                     | AES-GCM         | ChaCha20-Poly1305 | XChaCha20-Poly1305 |
+      line   242  [symmetric]  ## ChaCha20-Poly1305
+      line   245  [symmetric]  - ChaCha20 uses a 32-bit block counter, starting from 1.
+      line   252  [symmetric]  But: RFC 8439 (IETF spec for ChaCha20-Poly1305) limits each encryption to 2³⁶ bytes = 64 GiB, to:
+      line   259  [symmetric]  ## XChaCha20-Poly1305
+      line   260  [symmetric]  ### 🔸 Difference from ChaCha20
+      line   262  [symmetric]  - Applies HChaCha20 to derive a subkey and nonce from the 24-byte nonce.
+      line   263  [symmetric]  - Then proceeds with regular ChaCha20-Poly1305 using derived subkey and 12-byte nonce.
+      line   267  [symmetric]  - Hence, XChaCha20-Poly1305 also respects the 2³⁶ byte (~64 GiB) per encryption limit, even though its nonce space is much larger (2¹⁹² vs 2⁹⁶).
+      line   271  [symmetric]  AES-GCM:Limit of 2³² blocks × 16 bytes = 2³⁶ bytes = 64 GiB before counter wraps.
+      line   271  [cipher_mode]  AES-GCM:Limit of 2³² blocks × 16 bytes = 2³⁶ bytes = 64 GiB before counter wraps.
+      line   273  [symmetric]  ChaCha20:
+      line   276  [symmetric]  - So the 64 GiB limit in both AES-GCM and ChaCha20 is due to the 32-bit counter
+      line   276  [symmetric]  - So the 64 GiB limit in both AES-GCM and ChaCha20 is due to the 32-bit counter
+      line   276  [cipher_mode]  - So the 64 GiB limit in both AES-GCM and ChaCha20 is due to the 32-bit counter
+      line   277  [symmetric]  - Although ChaCha20 could theoretically encrypt more, the authenticated encryption mode (Poly1305) caps it to 64 GiB per encryption to ensure safety.
+      line   279  [symmetric]  - ChaCha20-Poly1305 and XChaCha20-Poly1305 both use a 32-bit block counter and 64-byte blocks.
+      line   281  [symmetric]  - XChaCha20 just offers a bigger nonce space (192 bits) to avoid nonce reuse across sessions/messages — good for randomized IVs.
+      line   283  [symmetric]  Therein, all 3 (AES-GCM, ChaCha20-Poly1305, and XChaCha20-Poly1305) are intentionally limited to ~64 GiB per key/IV pair due to compliance cryptographic safety limits, **not because of their block size or counter range**.
+      line   283  [symmetric]  Therein, all 3 (AES-GCM, ChaCha20-Poly1305, and XChaCha20-Poly1305) are intentionally limited to ~64 GiB per key/IV pair due to compliance cryptographic safety limits, **not because of their block size or counter range**.
+      line   283  [cipher_mode]  Therein, all 3 (AES-GCM, ChaCha20-Poly1305, and XChaCha20-Poly1305) are intentionally limited to ~64 GiB per key/IV pair due to compliance cryptographic safety limits, **not because of their block size or counter range**.
+      line   286  [symmetric]  | Detail                 | AES-GCM         | ChaCha20-Poly1305                  |
+      line   286  [symmetric]  | Detail                 | AES-GCM         | ChaCha20-Poly1305                  |
+      line   286  [cipher_mode]  | Detail                 | AES-GCM         | ChaCha20-Poly1305                  |
+      line   291  [symmetric]  | IV Size                | 96 bits (fixed) | 96 bits (ChaCha20) / 192 (XChaCha) |
+      line   294  [symmetric]  | Property                        | AES-GCM             | ChaCha20-Poly1305    | XChaCha20-Poly1305 |
+      line   294  [symmetric]  | Property                        | AES-GCM             | ChaCha20-Poly1305    | XChaCha20-Poly1305 |
+      line   294  [cipher_mode]  | Property                        | AES-GCM             | ChaCha20-Poly1305    | XChaCha20-Poly1305 |
+      line   305  [symmetric]  - ChaCha20 could theoretically handle 256 GiB (2³² × 64 B) …
+      line   310  [symmetric]  ChaCha20 block size:     64 bytes
+      line   317  [symmetric]  All 3 modes (AES-GCM, ChaCha20-Poly1305, XChaCha20) must chunk large files into ≤64 GiB segments per key/nonce pair.
+      line   317  [symmetric]  All 3 modes (AES-GCM, ChaCha20-Poly1305, XChaCha20) must chunk large files into ≤64 GiB segments per key/nonce pair.
+      line   317  [symmetric]  All 3 modes (AES-GCM, ChaCha20-Poly1305, XChaCha20) must chunk large files into ≤64 GiB segments per key/nonce pair.
+      line   317  [cipher_mode]  All 3 modes (AES-GCM, ChaCha20-Poly1305, XChaCha20) must chunk large files into ≤64 GiB segments per key/nonce pair.
+      line   325  [symmetric]  It’s not about per-message size. The real advantage of XChaCha20-Poly1305 over AES-GCM lies in the enormous nonce space, resistance to IV reuse, and better performance on non-AES hardware.
+      line   325  [symmetric]  It’s not about per-message size. The real advantage of XChaCha20-Poly1305 over AES-GCM lies in the enormous nonce space, resistance to IV reuse, and better performance on non-AES hardware.
+      line   325  [cipher_mode]  It’s not about per-message size. The real advantage of XChaCha20-Poly1305 over AES-GCM lies in the enormous nonce space, resistance to IV reuse, and better performance on non-AES hardware.
+      line   330  [symmetric]  | 🔒 **Nonce Reuse Protection**  | XChaCha gives a **192-bit nonce**, which reduces the risk of accidental IV reuse drastically. AES-GCM’s 96-bit IV is easier to screw up. |
+      line   330  [cipher_mode]  | 🔒 **Nonce Reuse Protection**  | XChaCha gives a **192-bit nonce**, which reduces the risk of accidental IV reuse drastically. AES-GCM’s 96-bit IV is easier to screw up. |
+      line   331  [symmetric]  | 🚫 **No timing attacks**       | ChaCha20 is based on simple arithmetic and logic — **constant-time**, unlike AES which may leak through cache timing.                    |
+      line   331  [symmetric]  | 🚫 **No timing attacks**       | ChaCha20 is based on simple arithmetic and logic — **constant-time**, unlike AES which may leak through cache timing.                    |
+      line   333  [symmetric]  | ⚡ **Fast on non-AES hardware** | ChaCha20 is faster than AES on systems **without AES-NI**, like many mobile, embedded, or WebAssembly environments.                      |
+      line   333  [symmetric]  | ⚡ **Fast on non-AES hardware** | ChaCha20 is faster than AES on systems **without AES-NI**, like many mobile, embedded, or WebAssembly environments.                      |
+
+  ▸ GCM/requirements.txt
+      line     1  [dependency]  cryptography
+
+  ▸ GCM/weaken_tag.py
+      line     1  [py_import]  from cryptography.hazmat.primitives.ciphers.aead import AESGCM
+      line     5  [symmetric]  # Setup: AES-GCM with 32-bit tags (for collision simulation)
+      line     5  [cipher_mode]  # Setup: AES-GCM with 32-bit tags (for collision simulation)
+      line     6  [key_mgmt]  KEY = AESGCM.generate_key(bit_length=128)
+      line    13  [random]  NONCE = os.urandom(12)
+      line    21  [symmetric]  print(f"🔐 AES-GCM tag collision simulation with {TAG_BITS}-bit truncated tags")
+      line    21  [cipher_mode]  print(f"🔐 AES-GCM tag collision simulation with {TAG_BITS}-bit truncated tags")
+      line    24  [random]  msg = os.urandom(32)
+      line    53  [cipher_mode]  With 128-bit tags (real GCM), the bound is ∼2**64 — far too large to simulate without a supercomputer.
+      line    55  [symmetric]  1. The tag is what collides (used to authenticate the ciphertext).
+      line    57  [symmetric]  3. In real AES-GCM with 128-bit tags, this happens only after ≈2⁶⁴ encryptions per nonce.
+      line    57  [cipher_mode]  3. In real AES-GCM with 128-bit tags, this happens only after ≈2⁶⁴ encryptions per nonce.
+      line    60  [symmetric]  🔐 AES-GCM tag collision simulation with 32-bit truncated tags
+      line    60  [cipher_mode]  🔐 AES-GCM tag collision simulation with 32-bit truncated tags
+      line    77  [random]  msg = os.urandom(32)
+      line    82  [symmetric]  tag = ciphertext[-16:]  # AES-GCM default tag is 16 bytes
+      line    82  [cipher_mode]  tag = ciphertext[-16:]  # AES-GCM default tag is 16 bytes
+      line   107  [random]  NONCE = os.urandom(12)
+      line   110  [symmetric]  print(f"Running AES-GCM tag collision demo with {TAG_BITS}-bit tags and fixed nonce...")
+      line   110  [cipher_mode]  print(f"Running AES-GCM tag collision demo with {TAG_BITS}-bit tags and fixed nonce...")
+      line   113  [random]  msg = os.urandom(32)  # Random 32-byte message
+      line   141  [symmetric]  - In real-world AES-GCM, tag is 128-bit — you’d need ∼2**64  encryptions before seeing this naturally.
+      line   141  [cipher_mode]  - In real-world AES-GCM, tag is 128-bit — you’d need ∼2**64  encryptions before seeing this naturally.
+      line   144  [symmetric]  Running AES-GCM tag collision demo with 32-bit tags and fixed nonce...
+      line   144  [cipher_mode]  Running AES-GCM tag collision demo with 32-bit tags and fixed nonce...
+
+  ▸ GCM_CTR/nonce_reuse_2_timepad.py
+      line     1  [py_import]  from Crypto.Cipher import AES
+      line     1  [symmetric]  from Crypto.Cipher import AES
+      line     2  [py_import]  from Crypto.Random import get_random_bytes
+      line     2  [random]  from Crypto.Random import get_random_bytes
+      line     8  [symmetric]  cipher = AES.new(key, AES.MODE_CTR, nonce=iv)
+      line    12  [symmetric]  cipher = AES.new(key, AES.MODE_GCM, nonce=iv)
+      line    20  [random]  key = get_random_bytes(16)
+      line    21  [random]  iv = get_random_bytes(8)
+      line    26  [cipher_mode]  print("CTR Mode:")
+      line    27  [cipher_mode]  # Encrypt with reused nonce (CTR)
+      line    46  [cipher_mode]  print("GCM Mode:")
+      line    47  [cipher_mode]  # Encrypt with reused nonce (GCM)
+      line    69  [cipher_mode]  CTR Mode:
+      line    76  [cipher_mode]  GCM Mode:
+
+  ▸ GCM_CTR/nonce_reuse_2_timepad_basic.py
+      line     2  [py_import]  from Crypto.Cipher import AES
+      line     2  [symmetric]  from Crypto.Cipher import AES
+      line     3  [py_import]  from Crypto.Util.Padding import pad, unpad
+      line     4  [py_import]  from Crypto.Random import get_random_bytes
+      line     4  [random]  from Crypto.Random import get_random_bytes
+      line     8  [symmetric]  cipher = AES.new(key, AES.MODE_GCM, nonce=nonce)
+      line    13  [symmetric]  cipher = AES.new(key, AES.MODE_GCM, nonce=nonce)
+      line    18  [random]  key = get_random_bytes(32)
+      line    19  [random]  nonce = os.urandom(12)  # Incorrect randomness generation, should be unique per encryption
+      line    44  [cipher_mode]  Even with nonce reuse, GCM still detects tampering
+      line    60  [py_import]  from Crypto.Cipher import AES
+      line    60  [symmetric]  from Crypto.Cipher import AES
+      line    61  [py_import]  from Crypto.Random import get_random_bytes
+      line    61  [random]  from Crypto.Random import get_random_bytes
+      line    64  [symmetric]  """Demonstrate the real nonce reuse vulnerability in AES-GCM"""
+      line    64  [cipher_mode]  """Demonstrate the real nonce reuse vulnerability in AES-GCM"""
+      line    70  [random]  key = get_random_bytes(32)
+      line    81  [symmetric]  cipher1 = AES.new(key, AES.MODE_GCM, nonce=nonce)
+      line    84  [symmetric]  cipher2 = AES.new(key, AES.MODE_GCM, nonce=nonce)
+      line   116  [random]  key = get_random_bytes(32)
+      line   127  [symmetric]  cipher1 = AES.new(key, AES.MODE_GCM, nonce=nonce)
+      line   130  [symmetric]  cipher2 = AES.new(key, AES.MODE_GCM, nonce=nonce)
+      line   148  [random]  key = get_random_bytes(32)
+      line   160  [symmetric]  cipher1 = AES.new(key, AES.MODE_GCM, nonce=nonce)
+      line   163  [symmetric]  cipher2 = AES.new(key, AES.MODE_GCM, nonce=nonce)
+      line   187  [random]  key = get_random_bytes(32)
+      line   197  [symmetric]  cipher1 = AES.new(key, AES.MODE_GCM, nonce=nonce)
+      line   200  [symmetric]  cipher2 = AES.new(key, AES.MODE_GCM, nonce=nonce)
+      line   213  [symmetric]  """Show the CORRECT way to use AES-GCM"""
+      line   213  [cipher_mode]  """Show the CORRECT way to use AES-GCM"""
+      line   218  [random]  key = get_random_bytes(32)
+      line   224  [symmetric]  cipher1 = AES.new(key, AES.MODE_GCM)
+      line   227  [symmetric]  cipher2 = AES.new(key, AES.MODE_GCM)  # Auto-generates unique nonce
+
+  ▸ RNG/broken_RNG/bruteforce_secrets_PRNG.py
+      line     8  [py_import]  import hashlib
+
+  ▸ RNG/bruteforce_scan_on_RNG.py
+      line     3  [py_import]  from Crypto.Cipher import AES
+      line     3  [symmetric]  from Crypto.Cipher import AES
+      line     4  [py_import]  from Crypto.Util.Padding import pad, unpad
+      line    10  [symmetric]  return bytes([random.randint(0, 255) for _ in range(16)])  # 128-bit AES key
+      line    12  [symmetric]  # Encrypt with AES-CBC using predictable PRNG key and fixed IV
+      line    12  [cipher_mode]  # Encrypt with AES-CBC using predictable PRNG key and fixed IV
+      line    16  [symmetric]  cipher = AES.new(key, AES.MODE_CBC, iv)
+      line    17  [symmetric]  ciphertext = cipher.encrypt(pad(plaintext, AES.block_size))
+      line    25  [symmetric]  cipher = AES.new(key, AES.MODE_CBC, iv)
+      line    27  [symmetric]  decrypted = unpad(cipher.decrypt(ciphertext), AES.block_size)
+
+  ▸ RNG/key_recovery_from_weak_PRNG_known_IV.py
+      line     3  [symmetric]  A system uses rand() (weak PRNG) to generate both the AES key and IV.
+      line    11  [py_import]  from Crypto.Cipher import AES
+      line    11  [symmetric]  from Crypto.Cipher import AES
+      line    12  [py_import]  from Crypto.Util.Padding import pad, unpad
+      line    25  [symmetric]  # Encrypt using AES-CBC with key and IV from weak PRNG
+      line    25  [cipher_mode]  # Encrypt using AES-CBC with key and IV from weak PRNG
+      line    28  [symmetric]  cipher = AES.new(key, AES.MODE_CBC, iv)
+      line    29  [symmetric]  ciphertext = cipher.encrypt(pad(plaintext, AES.block_size))
+      line    38  [symmetric]  cipher = AES.new(key, AES.MODE_CBC, iv)
+      line    40  [symmetric]  decrypted = unpad(cipher.decrypt(ciphertext), AES.block_size)
+      line    82  [symmetric]  Once the seed is recovered, the full AES key is exposed.
+      line    85  [random]  Always use secrets.token_bytes() or os.urandom() for secure key/IV generation.
+      line    89  [cipher_mode]  CBC is malleable — combining that with weak RNGs opens the door to full plaintext/key recovery.
+
+  ▸ RNG/readme.md
+      line     9  [zkp]  ⚠️ Flaw in Polynomial Construction in Shamir's Secret Sharing
+      line    10  [zkp]  In Shamir’s Secret Sharing, a secret s is split among participants by constructing a random polynomial f(x) of degree t-1, where t is the reconstruction threshold:
+      line    78  [symmetric]  Simulate a weak PRNG-based AES encryption system:
+      line    94  [random]  Use a cryptographically secure RNG, e.g., os.urandom(), secrets, or /dev/urandom.
+      line    96  [cipher_mode]  Always ensure IVs are random and unique per encryption when using CBC mode.
+      line    99  [asymmetric]  1. On the client side, during RSA handshake. RNG is used to generate RSA pre-master secret and encryption padding. If the attacker can predict the output of this generator, she can subsequently decrypt the entire session. Ironically, a failure of the server RNG is less devastating to the RSA handsha
+      line   101  [asymmetric]  3. During long-term key generation, particularly of RSA keys. If this happens, it's over.
+
+  ▸ RSA/Common Factor Attack/Hastad_attack.py
+      line     2  [py_import]  import Crypto.Util.number as cun
+      line     6  [asymmetric]  # Step 1: Generate three RSA public keys (e=3)
+      line    35  [py_import]  import Crypto.Util.number as cun
+      line    39  [asymmetric]  # Step 1: Generate three RSA public keys (e = 3)
+
+  ▸ RSA/Common Factor Attack/common_factor_attack.py
+      line     2  [asymmetric]  Loads a list of RSA public moduli (as integers).
+      line    10  [asymmetric]  # Example RSA moduli (replace with real moduli loaded from PEMs)
+      line    12  [asymmetric]  # Replace with your real RSA n values, parsed as integers.
+      line    21  [asymmetric]  """Given a list of RSA moduli, find pairs sharing a prime factor."""
+
+  ▸ RSA/Common Factor Attack/generate_weak_rsa_certs_and_common_factor_attack.py
+      line    11  [py_import]  from Crypto.PublicKey import RSA
+      line    11  [asymmetric]  from Crypto.PublicKey import RSA
+      line    12  [py_import]  from Crypto.Cipher import PKCS1_OAEP
+      line    13  [py_import]  from Crypto.Util.number import getPrime
+      line    14  [py_import]  from Crypto.Random import get_random_bytes
+      line    14  [random]  from Crypto.Random import get_random_bytes
+      line    37  [asymmetric]  # RSA key 1: n1 = p * q1
+      line    38  [asymmetric]  key1 = RSA.construct((p*q1, e, pow(e, -1, (p-1)*(q1-1)), p, q1))
+      line    42  [asymmetric]  # RSA key 2: n2 = p * q2 (shared p)
+      line    43  [asymmetric]  key2 = RSA.construct((p*q2, e, pow(e, -1, (p-1)*(q2-1)), p, q2))
+      line    67  [asymmetric]  ✅ Reads .pem RSA public keys from a folder
+      line    90  [py_import]  from Crypto.PublicKey import RSA
+      line    90  [asymmetric]  from Crypto.PublicKey import RSA
+      line    91  [py_import]  from Crypto.Util.number import GCD, inverse
+      line   102  [asymmetric]  key = RSA.import_key(f.read())
+      line   109  [asymmetric]  """Reconstruct private RSA key from n and one shared prime p."""
+      line   121  [asymmetric]  key = RSA.construct((n, e, d, p, q))
+
+  ▸ RSA/Common Factor Attack/readme.md
+      line     1  [asymmetric]  # Håstad’s Broadcast Attack on RSA with a small exponent (e = 3).
+      line     5  [asymmetric]  The same plaintext `m` is encrypted with e = 3 under 3 different RSA public keys `(n1, e)`, `(n2, e)`, `(n3, e)`
+      line    35  [asymmetric]  Given a list of RSA public moduli $$\ 𝑛_𝑖 \$$, find pairs that share a prime factor by computing gcds. If gcd($$\ 𝑛_𝑖 \$$, $$\ 𝑛_j \$$) > 1, then that gcd is a shared prime factor, allowing factoring both keys and thus breaking their security.
+      line    43  [asymmetric]  from Crypto.PublicKey import RSA
+      line    47  [asymmetric]  key = RSA.import_key(f.read())
+      line    65  [asymmetric]  from Crypto.PublicKey import RSA
+      line    73  [asymmetric]  key = RSA.import_key(f.read())
+      line    89  [asymmetric]  from Crypto.PublicKey import RSA
+      line    91  [asymmetric]  from Crypto.PublicKey.RSA import construct
+      line    97  [asymmetric]  key = RSA.construct((n, e, d, p, q))
+      line   114  [asymmetric]  from Crypto.PublicKey import RSA
+      line   144  [asymmetric]  - The messages (.bin) are RSA-encrypted using PKCS1-OAEP.
+      line   151  [asymmetric]  This demonstrates a critical vulnerability in RSA key generation caused by poor randomness during prime number selection. Specifically, it shows how reused or insufficiently random primes can lead to shared factors among public keys — a weakness exploited using greatest common divisor (GCD) calculat
+      line   153  [asymmetric]  While factoring a single RSA modulus n=pq is computationally difficult, calculating the GCD of 2 moduli $$\ n_1, n_2 \$$ is fast. If gcd($$\ n_1, n_2 \$$) > 1, then 1 of the primes was reused, compromising both keys and allowing full factorization.
+      line   155  [asymmetric]  This vulnerability was studied in-depth by Lenstra et al. and Heninger et al., who found thousands of weak RSA keys in real-world devices (routers, VPNs, printers) due to poor random number generation.
+      line   157  [asymmetric]  # 🔓 RSA GCD Attack: Cracking Keys with Shared Primes
+      line   159  [asymmetric]  This project demonstrates a real-world RSA vulnerability: **shared prime factors** between public keys due to faulty random number generation. If two RSA public moduli share a prime factor, they can be cracked instantly using the **Greatest Common Divisor (GCD)**.
+      line   163  [asymmetric]  In RSA, the public key is a modulus \( n = p \times q \), where \( p \) and \( q \) are large random primes.
+      line   196  [asymmetric]  1. Accepts a list of RSA moduli (n values from public keys).
+      line   211  [asymmetric]  # 🔓 Cracking Weak RSA Keys with GCD
+      line   213  [asymmetric]  This project shows how weak RSA keys can be broken if **two keys share a prime factor** — a real vulnerability found in many devices due to **bad random number generators**.
+      line   217  [asymmetric]  In RSA encryption:
+      line   219  [symmetric]  - A public key includes a number `n = p × q`, where `p` and `q` are secret large prime numbers.
+      line   231  [asymmetric]  - Reads a list of RSA public keys (modulus `n`)
+      line   257  [asymmetric]  Factoring large numbers (like RSA moduli) is hard and slow.
+      line   261  [symmetric]  GCD is the largest number that divides both inputs.
+      line   271  [asymmetric]  If 2 RSA keys accidentally share a prime, then:
+      line   303  [asymmetric]  Once you find a shared prime, you factor the modulus and break the RSA key.
+      line   323  [asymmetric]  1. Efficient RSA decryption (on purpose):
+      line   325  [asymmetric]  Many RSA implementations (like OpenSSL) use CRT to speed up private key operations by computing mod p and q separately and recombining the result.
+      line   339  [asymmetric]  | Used for optimization? | ❌ No                        | ✅ Yes (in normal RSA decryption)  |
+      line   345  [asymmetric]  The 2 primes that go into a 1024-bit RSA key are generally both 512 bits long. (If multiply a j-digit number by a k-digit number, you can expect the answer to be around j+k digits long. Likewise with a j-bit and a k-bit number. This is based on the idea that $$\ b^j × b^k = b^{(j+k)} \$$.)
+      line   347  [symmetric]  How many different 512-bit primes are there? A theorem called the Prime Number Theorem can be used to make a good estimate. It indicates that the fraction of numbers around the size of $$\ 2^{512} \$$ that are prime is around 1/($$\ 512 \ln 2 \$$)=0.0028... or around 0.28%. We can also test this exp
+      line   355  [asymmetric]  RSA is only secure if keys are generated correctly. If devices use the same prime by accident (due to bad random number generators), millions of keys can be cracked in seconds. This project helps you detect and demonstrate that flaw.
+
+  ▸ RSA/Fermat Factorization RSA attack/readme.md
+      line     1  [asymmetric]  # Fermat Factorization Attack on RSA
+      line     3  [asymmetric]  This project demonstrates how **Fermat's Factorization Method** can be used to break RSA when the two prime factors of the modulus `n = p * q` are **too close to each other**.
+      line     7  [asymmetric]  Fermat's method is efficient when the difference between the primes `p` and `q` is small. If an RSA implementation mistakenly chooses `p` and `q` that are close in value, an attacker can factor `n` quickly, thus **breaking the RSA key**.
+      line    36  [asymmetric]  Do not use RSA with small differences between p and q. Always ensure:
+      line    42  [asymmetric]  RSA key generation uses secure libraries
+
+  ▸ RSA/estimate_number_of_primes/readme.md
+      line    10  [asymmetric]  and which is 1.5x10¹⁵¹. In fact, for RSA, we can use 2,048-bit prime numbers for 4096-bit RSA, and as an estimate, the total number of prime numbers is:
+
+  ▸ RSA/rabin_miller_probabilistic_primality_testing/rabin_miller_probabilistic_primality_testing.py
+      line     2  [py_import]  import secrets
+
+  ▸ RSA/rabin_miller_probabilistic_primality_testing/readme.md
+      line     2  [asymmetric]  This tool generates large probable prime numbers using the Rabin-Miller primality test, a widely-used algorithm in cryptography (e.g., RSA key generation).
+
+  ▸ cache_and_timing/readme.cache_timing.md
+      line   108  [symmetric]  - Once the timing signature reveals it's cached (indicating access/interest), we dump the file — which includes a hidden message: "you found me !".
+
+  ▸ hash_misuse/hash_collision_weakness_md5.py
+      line     2  [py_import]  import hashlib
+      line   125  [hash_func]  hash_a = hashlib.md5(data_a).hexdigest()
+      line   126  [hash_func]  hash_b = hashlib.md5(data_b).hexdigest()
+      line   128  [hash_func]  print("MD5(data_a):", hash_a)
+      line   129  [hash_func]  print("MD5(data_b):", hash_b)
+      line   137  [hash_func]  hash_combined_a = hashlib.md5(combined_a).hexdigest()
+      line   138  [hash_func]  hash_combined_b = hashlib.md5(combined_b).hexdigest()
+      line   141  [hash_func]  print("MD5(data_b || suffix):", hash_combined_b)
+      line   171  [hash_func]  MD5(data_a): 79054025255fb1a26e4bc422aef54eb4
+      line   172  [hash_func]  MD5(data_b): 79054025255fb1a26e4bc422aef54eb4
+      line   175  [hash_func]  MD5(data_a || suffix): 7ca1171ad9cbf8193227a171a46083f1
+      line   176  [hash_func]  MD5(data_b || suffix): 7ca1171ad9cbf8193227a171a46083f1
+
+  ▸ readme.md
+      line     4  [symmetric]  This repository is a curated collection of Python-based demonstrations simulating vulnerabilities and attacks across different cryptographic primitives, modes, and implementation scenarios.
+      line     6  [symmetric]  Each folder includes scripts and visualizations to help you understand where and how cryptographic schemes can fail—when used incorrectly, implemented poorly, or under specific threat models.
+      line    12  [cipher_mode]  | **CBC/**                | Attacks exploiting the malleability of Cipher Block Chaining (CBC) mode (e.g., POODLE, tampering without integrity). |
+      line    13  [cipher_mode]  | **ECB/**                | Visualization and demonstration of Electronic Codebook (ECB) mode weaknesses—especially pattern leakage.             |
+      line    14  [symmetric]  | **GCM/**                | Simulated attacks on AES-GCM, including tag forgery through collisions and weakened tags.                            |
+      line    14  [cipher_mode]  | **GCM/**                | Simulated attacks on AES-GCM, including tag forgery through collisions and weakened tags.                            |
+      line    15  [cipher_mode]  | **GCM\_CTR/**           | Dangers of nonce reuse in GCM and CTR, showing how it leads to 2-time pad vulnerabilities.                           |
+      line    15  [cipher_mode]  | **GCM\_CTR/**           | Dangers of nonce reuse in GCM and CTR, showing how it leads to 2-time pad vulnerabilities.                           |
+      line    17  [asymmetric]  | **RSA/**                | Cryptanalytic attacks on RSA, including Hastad’s broadcast attack.                                                   |
+      line    37  [cipher_mode]  ## 🔐 1. Truncated GCM Tag Demo
+      line    39  [symmetric]  Show AES-GCM with 32/64-bit auth tags instead of 128-bit.
+      line    39  [cipher_mode]  Show AES-GCM with 32/64-bit auth tags instead of 128-bit.
+      line    43  [cipher_mode]  ![GCM](GCM)
+      line    45  [symmetric]  ## 📦 2. Reused Nonce (IV) in AES-GCM or AES-CTR
+      line    45  [cipher_mode]  ## 📦 2. Reused Nonce (IV) in AES-GCM or AES-CTR
+      line    45  [cipher_mode]  ## 📦 2. Reused Nonce (IV) in AES-GCM or AES-CTR
+      line    53  [cipher_mode]  ## 🔁 3. ECB Mode
+      line    55  [symmetric]  Encrypt an image (e.g., Tux or Mona Lisa) with AES-ECB.
+      line    55  [cipher_mode]  Encrypt an image (e.g., Tux or Mona Lisa) with AES-ECB.
+      line    59  [cipher_mode]  ![ECB](ECB)
+      line    63  [asymmetric]  Show code with hardcoded symmetric keys or RSA private keys.
+      line    74  [asymmetric]  ## 🧱 6. RSA with Small Exponent (e = 3)
+      line    80  [asymmetric]  ![RSA](RSA)
+      line    84  [symmetric]  Use AES-CBC with PKCS#7 padding.
+      line    84  [cipher_mode]  Use AES-CBC with PKCS#7 padding.
+      line    88  [cipher_mode]  ![CBC](CBC)
+      line    92  [hash_func]  Use MD5/SHA1 for signing or file integrity.
+      line    97  [symmetric]  Use AES-CBC without HMAC.
+      line    97  [cipher_mode]  Use AES-CBC without HMAC.
+      line    97  [kdf]  Use AES-CBC without HMAC.
+      line   101  [cipher_mode]  ![CBC](CBC)

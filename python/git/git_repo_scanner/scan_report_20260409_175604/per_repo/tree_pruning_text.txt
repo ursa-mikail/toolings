@@ -1,0 +1,13 @@
+================================================================================
+  REPO       : tree_pruning_text
+  FULL NAME  : ursa-mikail/tree_pruning_text
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Python
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/tree_pruning_text
+  MATCHES    : 2
+================================================================================
+
+  ▸ readme.md
+      line    12  [symmetric]  Provides a function to remove a subtree starting from a given index. Removes a subtree starting from a specified line index, ensuring all children of that node are also deleted.
+      line    16  [symmetric]  Iterates through subsequent lines, deleting nodes until reaching a sibling or a parent node.

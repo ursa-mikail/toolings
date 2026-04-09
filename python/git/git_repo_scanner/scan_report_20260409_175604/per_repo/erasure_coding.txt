@@ -1,0 +1,20 @@
+================================================================================
+  REPO       : erasure_coding
+  FULL NAME  : ursa-mikail/erasure_coding
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Python
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/erasure_coding
+  MATCHES    : 5
+================================================================================
+
+  ▸ erasure_coding_demo/erasure_coding_demo.py
+      line     2  [py_import]  import hashlib
+      line    92  [random]  test_data = b"Critical data that must be protected across distributed storage: " + os.urandom(500)
+      line   186  [random]  test_data = os.urandom(1024*1024)
+
+  ▸ erasure_coding_file.py
+      line     5  [py_import]  import hashlib
+
+  ▸ readme.md
+      line     7  [symmetric]  This implementation splits files into multiple parts, applies erasure coding to each part, and can reconstruct the original file even when some fragments are lost. It includes JSON metadata for reliable reconstruction.

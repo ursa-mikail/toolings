@@ -1,0 +1,15 @@
+================================================================================
+  REPO       : Golang-Introspect-Utility
+  FULL NAME  : ursa-mikail/Golang-Introspect-Utility
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Go
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/Golang-Introspect-Utility
+  MATCHES    : 4
+================================================================================
+
+  ▸ readme.md
+      line     5  [symmetric]  This utility provides a way to add JSON-style comments in Golang files and introspect them similarly to how Javadoc works in Java. The idea is to insert metadata in JSON format within the Golang file and then use a Golang code inspect lib (./lib/code_inspect/code_introspect.go) to read and display t
+      line    24  [symmetric]  Provides a menu for the user to display all fields or select specific fields to view, making it easy to introspect the metadata.
+      line    62  [symmetric]  "description": "This module provides an example function."
+      line    80  [symmetric]  For customized and interactive needs, the code_introspect.go provides a flexible, tailored solution. It can be extended with:

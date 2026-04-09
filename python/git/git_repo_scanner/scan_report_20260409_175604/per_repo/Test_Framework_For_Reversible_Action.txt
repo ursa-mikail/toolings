@@ -1,0 +1,49 @@
+================================================================================
+  REPO       : Test_Framework_For_Reversible_Action
+  FULL NAME  : ursa-mikail/Test_Framework_For_Reversible_Action
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Python
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/Test_Framework_For_Reversible_Action
+  MATCHES    : 36
+================================================================================
+
+  ▸ test_calls_to_Test_Framework_For_Reversible_Action.py
+      line     1  [py_import]  from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+      line     1  [symmetric]  from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+      line     2  [py_import]  from cryptography.hazmat.backends import default_backend
+      line     3  [py_import]  from cryptography.hazmat.primitives import hashes, serialization
+      line     4  [py_import]  from cryptography.hazmat.primitives.asymmetric import padding, rsa
+      line     4  [asymmetric]  from cryptography.hazmat.primitives.asymmetric import padding, rsa
+      line    15  [symmetric]  # AES-GCM-256 Cipher and Decipher
+      line    15  [cipher_mode]  # AES-GCM-256 Cipher and Decipher
+      line    17  [random]  key = os.urandom(32)  # 256-bit key
+      line    18  [cipher_mode]  iv = os.urandom(12)  # 96-bit IV for GCM
+      line    18  [random]  iv = os.urandom(12)  # 96-bit IV for GCM
+      line    22  [symmetric]  algorithms.AES(key),
+      line    23  [symmetric]  modes.GCM(iv),
+      line    23  [cipher_mode]  modes.GCM(iv),
+      line    37  [symmetric]  algorithms.AES(key),
+      line    38  [symmetric]  modes.GCM(iv, tag),
+      line    38  [cipher_mode]  modes.GCM(iv, tag),
+      line    44  [asymmetric]  # RSA-OAEP Cipher and Decipher
+      line    46  [asymmetric]  private_key = rsa.generate_private_key(
+      line    48  [key_mgmt]  key_size=2048,
+      line    80  [asymmetric]  # Generate RSA keys
+      line    86  [symmetric]  # Add tests for AES-GCM-256 and RSA-OAEP functions
+      line    86  [cipher_mode]  # Add tests for AES-GCM-256 and RSA-OAEP functions
+      line    86  [asymmetric]  # Add tests for AES-GCM-256 and RSA-OAEP functions
+      line    88  [symmetric]  "AES-GCM-256",
+      line    88  [cipher_mode]  "AES-GCM-256",
+      line    94  [asymmetric]  "RSA-OAEP-2048",
+      line   112  [symmetric]  Running Test 1: AES-GCM-256
+      line   112  [cipher_mode]  Running Test 1: AES-GCM-256
+      line   115  [symmetric]  ===== Running Test 1: AES-GCM-256 [DONE] =====
+      line   115  [cipher_mode]  ===== Running Test 1: AES-GCM-256 [DONE] =====
+      line   116  [asymmetric]  Running Test 2: RSA-OAEP-2048
+      line   119  [asymmetric]  ===== Running Test 2: RSA-OAEP-2048 [DONE] =====
+
+  ▸ test_calls_with_timer.py
+      line     1  [py_import]  import hashlib
+      line    55  [hash_func]  "MD5": hashlib.md5,
+      line    94  [hash_func]  MD5 took 0.000010 seconds

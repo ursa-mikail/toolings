@@ -1,0 +1,17 @@
+================================================================================
+  REPO       : test_ground_observatory_zone_00
+  FULL NAME  : ursa-mikail/test_ground_observatory_zone_00
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : HTML
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/test_ground_observatory_zone_00
+  MATCHES    : 4
+================================================================================
+
+  ▸ summary/ax_summary.xml
+      line     5  [symmetric]  The page appears to contain interactive tools and resources, such as a demo involving iframe attacks. It includes sections offering summaries and descriptions of its various functionalities, such as tools for generating HTML content or exploring specific demonstrations. For an in-depth understanding
+      line    12  [symmetric]  The ax_summary provides an overarching overview of all the sections (a1 to a4). It synthesizes the key points and functionalities from each part, ensuring that users have a clear understanding of the tools and resources available across the different functionalities.
+
+  ▸ summary/summary_all_pages.txt
+      line     4  [symmetric]  - The page appears to contain interactive tools and resources, such as a demo involving iframe attacks. It includes sections offering summaries and descriptions of its various functionalities, such as tools for generating HTML content or exploring specific demonstrations. For an in-depth understandi
+      line     7  [symmetric]  - The ax_summary provides an overarching overview of all the sections (a1 to a4). It synthesizes the key points and functionalities from each part, ensuring that users have a clear understanding of the tools and resources available across the different functionalities.

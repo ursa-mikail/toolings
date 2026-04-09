@@ -1,0 +1,27 @@
+================================================================================
+  REPO       : yubi_util_demo
+  FULL NAME  : ursa-mikail/yubi_util_demo
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Shell
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/yubi_util_demo
+  MATCHES    : 14
+================================================================================
+
+  ▸ readme.md
+      line     5  [symmetric]  This script provides an interactive terminal interface for managing YubiKey PIV functionality, with special focus on using retired key slots (like 5FC108) for storing Shamir secret shares and other cryptographic objects.
+      line     5  [zkp]  This script provides an interactive terminal interface for managing YubiKey PIV functionality, with special focus on using retired key slots (like 5FC108) for storing Shamir secret shares and other cryptographic objects.
+      line    49  [signature]  9A          - PIV Authentication (Digital Signature)
+      line    70  [signature]  5FC121      - X.509 Certificate for Digital Signature (9C)
+      line    87  [symmetric]  Change Access Codes: Modify PIN, PUK, and management keys
+      line   101  [zkp]  The script supports storing Shamir secret shares in retired PIV slots:
+      line   118  [zkp]  -Shamir secret shares
+      line   156  [zkp]  Shamir Secret Sharing
+      line   156  [zkp]  Shamir Secret Sharing
+      line   221  [zkp]  With Shamir's Secret Sharing
+
+  ▸ yubi_util_demo.sh
+      line   141  [symmetric]  change_access_codes() {
+      line   143  [symmetric]  echo -e "${YELLOW}=== Change Access Codes ===${NC}"
+      line   152  [symmetric]  echo -e "${YELLOW}Access Codes for YubiKey: $selected_serial${NC}"
+      line   513  [symmetric]  change_access_codes

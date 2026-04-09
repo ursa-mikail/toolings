@@ -1,0 +1,59 @@
+================================================================================
+  REPO       : policy_as_code_automation_for_ai_agents_at_scale
+  FULL NAME  : ursa-mikail/policy_as_code_automation_for_ai_agents_at_scale
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Python
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/policy_as_code_automation_for_ai_agents_at_scale
+  MATCHES    : 44
+================================================================================
+
+  ▸ README.md
+      line     3  [cipher_mode]  Policies are defined by administrators. Automate this using the AI the platform protects. The operational challenge for CCM at scale is policy management. As enterprises run 1000s of AI agents, manually defining attestation policies for every workload won't work.
+      line     7  [cipher_mode]  The next frontier is attestation for federated AI—ensuring that when an AI agent calls a tool or another model running on a different TEE in a different cloud, the entire chain of execution is attested. CCM (Gated Key Release (The "Unlock"), Composite Attestation (CPU + GPU)) could become the 'trust
+      line     9  [cipher_mode]  A self-contained Python demo for **Confidential Compute Manager (CCM)** that shows 2 ideas running end-to-end:
+      line    12  [cipher_mode]  2. **Federated Trust Router** — CCM attests a multi-cloud, multi-TEE agent call graph and issues a single composite Verifiable Credential covering the entire chain.
+      line    56  [cipher_mode]  PART 2 — CCM Trust Router · Federated Attestation Graph
+      line    58  [symmetric]  Simulating multi-cloud agent call chain across 5 TEE nodes …
+      line    68  [symmetric]  Nodes attested : 5 PASS  0 FAIL
+      line    73  [symmetric]  Covers: 5 nodes across 4 clouds
+      line    76  [cipher_mode]  **What's happening:** CCM independently attests each TEE node against the AI-generated policies from Part 1, issues a per-node Verifiable Credential, then assembles them into a single composite credential covering the full execution graph. If any node fails, CCM blocks the entire chain and triggers 
+      line   109  [symmetric]  - Prevents **rollback attacks**, where an attacker downgrades a model to a known-vulnerable version.
+      line   141  [cipher_mode]  │  │   Policy Optimizer   │   │     CCM Trust Router    │ │
+      line   176  [symmetric]  global_trust = mean(node.trust_score for all nodes) × (passing_nodes / total_nodes)
+      line   179  [symmetric]  A graph where all nodes pass but have mediocre trust scores will score lower than a graph with fewer, high-confidence attestations — reflecting real-world risk.
+      line   206  [cipher_mode]  An attested LLM inference node is only as trustworthy as the tools it calls. If `llm-inference` on AWS calls `rag-pipeline` on GCP, and that pipeline runs in an unattested or compromised enclave, the chain is broken regardless of the root node's status. CCM as a trust router solves this by requiring
+
+  ▸ armet_demo_summary.json
+      line   114  [symmetric]  "nodes": 5,
+
+  ▸ policy_as_code_automation_for_ai_agents_at_scale.py
+      line    12  [py_import]  import hashlib
+      line    20  [symmetric]  # ─── ANSI color codes ─────────────────────────────────────────────────────────
+      line    82  [symmetric]  nodes: dict[str, TEENode] = field(default_factory=dict)
+      line   260  [symmetric]  nodes = {}
+      line   270  [symmetric]  nodes[nid] = n
+      line   278  [symmetric]  root = nodes["root"]
+      line   282  [symmetric]  edges=[(nodes[a].node_id, nodes[b].node_id) for a, b in edges],
+      line   283  [symmetric]  nodes={k: v for k, v in nodes.items()},
+      line   286  [symmetric]  ts_vals = [n.trust_score for n in nodes.values()]
+      line   287  [symmetric]  pass_ratio = sum(1 for n in nodes.values() if n.attestation_status == AttestationStatus.PASS) / len(nodes)
+      line   289  [symmetric]  graph.credential_chain = [n.credential for n in nodes.values() if n.credential]
+      line   303  [symmetric]  node_map = graph.nodes
+      line   346  [cipher_mode]  print(f"{BOLD}{C}  PART 2 — CCM Trust Router · Federated Attestation Graph{RST}")
+      line   348  [symmetric]  print(f"{DIM}  Simulating multi-cloud agent call chain across 5 TEE nodes …{RST}\n")
+      line   355  [symmetric]  n_pass = sum(1 for n in graph.nodes.values() if n.attestation_status == AttestationStatus.PASS)
+      line   356  [symmetric]  n_fail = sum(1 for n in graph.nodes.values() if n.attestation_status == AttestationStatus.FAIL)
+      line   361  [symmetric]  print(f"  Nodes attested : {G}{n_pass} PASS{RST}  {R}{n_fail} FAIL{RST}")
+      line   369  [cipher_mode]  print(f"\n  {G}{BOLD}✔  Full chain attested — CCM issues composite verifiable credential{RST}")
+      line   372  [cipher_mode]  print(f"  {Y}  CCM blocks execution and triggers AI policy re-evaluation{RST}")
+      line   379  [symmetric]  print(f"  {DIM}Covers: {len(graph.nodes)} nodes across {len(set(n.cloud for n in graph.nodes.values()))} clouds{RST}")
+      line   389  [cipher_mode]  print(f"{BOLD}{W}  Confidential Compute Manager (CCM) · Python Demo{RST}")
+      line   420  [symmetric]  "nodes": len(graph.nodes),
+      line   448  [cipher_mode]  Confidential Compute Manager (CCM) · Python Demo
+      line   506  [cipher_mode]  PART 2 — CCM Trust Router · Federated Attestation Graph
+      line   508  [symmetric]  Simulating multi-cloud agent call chain across 5 TEE nodes …
+      line   521  [symmetric]  Nodes attested : 5 PASS  0 FAIL
+      line   530  [cipher_mode]  ✔  Full chain attested — CCM issues composite verifiable credential
+      line   534  [symmetric]  Covers: 5 nodes across 4 clouds
+      line   538  [symmetric]  {'demo': 'Armet AI — Policy-as-Code at Scale', 'timestamp': '2026-04-04T23:46:05.250877', 'part1_policies_generated': 8, 'policies': [{'policy_id': 'ai-pol-cb4a2b', 'workload_type': 'fine-tuning-job', 'risk_level': 'CRITICAL', 'requirements': ['pcr_measurement_match', 'memory_encryption_enabled', 's

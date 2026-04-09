@@ -1,0 +1,40 @@
+================================================================================
+  REPO       : tokenized_data_encryption_and_decryption
+  FULL NAME  : ursa-mikail/tokenized_data_encryption_and_decryption
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Python
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/tokenized_data_encryption_and_decryption
+  MATCHES    : 23
+================================================================================
+
+  ▸ readme.md
+      line     1  [fpe_token]  # Tokenized Data Encryption and Decryption Script
+      line     4  [symmetric]  Generates random hex data, encrypts it using AES-256-CBC encryption with a specified key and iterations, and saves the encrypted data into files. It supports multiple label formats for storing the encrypted data, including the `key=value` format. The script reads the files, extracts the encrypted to
+      line     4  [cipher_mode]  Generates random hex data, encrypts it using AES-256-CBC encryption with a specified key and iterations, and saves the encrypted data into files. It supports multiple label formats for storing the encrypted data, including the `key=value` format. The script reads the files, extracts the encrypted to
+      line     8  [symmetric]  - **encrypt_data()**: Encrypts the given data using AES-256-CBC encryption and outputs the encrypted data.
+      line     8  [cipher_mode]  - **encrypt_data()**: Encrypts the given data using AES-256-CBC encryption and outputs the encrypted data.
+      line     9  [symmetric]  - **decrypt_data()**: Decrypts the encrypted data using AES-256-CBC and checks if it matches the original data.
+      line     9  [cipher_mode]  - **decrypt_data()**: Decrypts the encrypted data using AES-256-CBC and checks if it matches the original data.
+      line    73  [symmetric]  This README explains how the script works with different label formats, including `key=value`, and guides users on using the script while considering the differences in label formats.
+
+  ▸ tokenized_data_encryption_and_decryption_in_canonized_brackets.py
+      line    14  [symmetric]  command = f'echo "{hex_data}" | openssl enc -aes-256-cbc -pbkdf2 -iter {iterations} -a -k "{key}" | tr -d "\n"'
+      line    14  [cipher_mode]  command = f'echo "{hex_data}" | openssl enc -aes-256-cbc -pbkdf2 -iter {iterations} -a -k "{key}" | tr -d "\n"'
+      line    14  [kdf]  command = f'echo "{hex_data}" | openssl enc -aes-256-cbc -pbkdf2 -iter {iterations} -a -k "{key}" | tr -d "\n"'
+      line    24  [symmetric]  command = f'echo "{encrypted_data}" | openssl enc -aes-256-cbc -pbkdf2 -iter {iterations} -d -a -k "{key}"'
+      line    24  [cipher_mode]  command = f'echo "{encrypted_data}" | openssl enc -aes-256-cbc -pbkdf2 -iter {iterations} -d -a -k "{key}"'
+      line    24  [kdf]  command = f'echo "{encrypted_data}" | openssl enc -aes-256-cbc -pbkdf2 -iter {iterations} -d -a -k "{key}"'
+
+  ▸ tokenized_data_encryption_and_decryption_in_non_canonized_formats.py
+      line    18  [symmetric]  command = f'echo "{hex_data}" | openssl enc -aes-256-cbc -pbkdf2 -iter {iterations} -a -k "{key}" | tr -d "\n"'
+      line    18  [cipher_mode]  command = f'echo "{hex_data}" | openssl enc -aes-256-cbc -pbkdf2 -iter {iterations} -a -k "{key}" | tr -d "\n"'
+      line    18  [kdf]  command = f'echo "{hex_data}" | openssl enc -aes-256-cbc -pbkdf2 -iter {iterations} -a -k "{key}" | tr -d "\n"'
+      line    32  [symmetric]  command = f'echo "{encrypted_data}" | openssl enc -aes-256-cbc -pbkdf2 -iter {iterations} -d -a -k "{key}"'
+      line    32  [cipher_mode]  command = f'echo "{encrypted_data}" | openssl enc -aes-256-cbc -pbkdf2 -iter {iterations} -d -a -k "{key}"'
+      line    32  [kdf]  command = f'echo "{encrypted_data}" | openssl enc -aes-256-cbc -pbkdf2 -iter {iterations} -d -a -k "{key}"'
+
+  ▸ tokenized_data_encryption_and_decryption_key_value_pair.py
+      line    35  [symmetric]  command = f'echo "{encrypted_token}" | openssl enc -aes-256-cbc -pbkdf2 -iter {number_of_cipher_nonce_rounds} -d -a -k "{decryption_key}"'
+      line    35  [cipher_mode]  command = f'echo "{encrypted_token}" | openssl enc -aes-256-cbc -pbkdf2 -iter {number_of_cipher_nonce_rounds} -d -a -k "{decryption_key}"'
+      line    35  [kdf]  command = f'echo "{encrypted_token}" | openssl enc -aes-256-cbc -pbkdf2 -iter {number_of_cipher_nonce_rounds} -d -a -k "{decryption_key}"'

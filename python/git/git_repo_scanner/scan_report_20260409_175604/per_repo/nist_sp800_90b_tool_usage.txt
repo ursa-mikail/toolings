@@ -1,0 +1,20 @@
+================================================================================
+  REPO       : nist_sp800_90b_tool_usage
+  FULL NAME  : ursa-mikail/nist_sp800_90b_tool_usage
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Shell
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/nist_sp800_90b_tool_usage
+  MATCHES    : 7
+================================================================================
+
+  ▸ readme.md
+      line    30  [random]  # Generate 1MB of test data from /dev/urandom
+      line    31  [random]  dd if=/dev/urandom of=test_data.bin bs=1000 count=1000
+      line    34  [random]  dd if=/dev/urandom of=large_test.bin bs=10M count=1
+      line    44  [random]  dd if=/dev/urandom of=sample.bin bs=1M count=1
+      line   103  [random]  !sudo dd if=/dev/urandom of=/opt/entropy_check/SP800-90B_EntropyAssessment/cpp/selftest/test_data.bin bs=1000 count=1000
+      line   147  [random]  sudo dd if=/dev/urandom of=./selftest/test_data.bin bs=1000 count=1000
+
+  ▸ validate-nist-entropy.sh
+      line    10  [random]  sudo dd if=/dev/urandom of=./selftest/test_data.bin bs=1000 count=1000

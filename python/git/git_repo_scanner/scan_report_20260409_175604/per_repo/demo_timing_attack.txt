@@ -1,0 +1,29 @@
+================================================================================
+  REPO       : demo_timing_attack
+  FULL NAME  : ursa-mikail/demo_timing_attack
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Python
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/demo_timing_attack
+  MATCHES    : 16
+================================================================================
+
+  ▸ demo_simplified_timing_attack_on_key_xor_part.py
+      line     6  [symmetric]  # Simulate AES key and plaintexts
+      line     8  [symmetric]  key = np.random.randint(0, 256, size=16)  # 16-byte AES key
+
+  ▸ readme.md
+      line    82  [symmetric]  - [x] :zap: Demo on simplified illustration on timing attack on AES[^4][^5].
+      line    84  [symmetric]  Consider the variable-index array lookup T0[k[0]⊕n[0]] near the beginning of the AES computation. One might speculate that the time for this array lookup depends on the array index; that the time for the whole AES computation is well correlated with the time for this array lookup; that, consequently
+      line    88  [symmetric]  - totals the AES times for each possible n[13], and
+      line    89  [symmetric]  - observes that the overall AES time is maximum when n[13] is, say, 147.
+      line    91  [symmetric]  Assume that the attacker also observes, by carrying out experiments with known keys k on a computer with the same AES software and the same CPU, that the overall AES time is maximum when k[13]⊕n[13] is, say, 8. The attacker concludes that the victim’s k[13] is 147 ⊕ 8 = 155.
+      line    91  [symmetric]  Assume that the attacker also observes, by carrying out experiments with known keys k on a computer with the same AES software and the same CPU, that the overall AES time is maximum when k[13]⊕n[13] is, say, 8. The attacker concludes that the victim’s k[13] is 147 ⊕ 8 = 155.
+      line   103  [symmetric]  Demo on simplified illustration on timing attack on AES.
+      line   104  [symmetric]  [^5]: [Cache-timing attacks on AES](https://cr.yp.to/antiforgery/cachetiming-20050414.pdf)
+      line   105  [symmetric]  Cache-timing attacks on AES.
+      line   114  [symmetric]  The access time of a table element can vary with its index (depending for example on whether a cache-miss has occured). This has for example been exploited in a series of cache-timing attacks on AES.
+      line   118  [symmetric]  Replace table look-up with sequences of constant-time logical operations, for example by bitslicing look-ups (as used in [NaCl's](http://nacl.cr.yp.to/) [implementation](http://eprint.iacr.org/2009/129.pdf) of AES-CTR, or in [Serpent](https://www.ii.uib.no/~osvik/serpent/).
+      line   118  [cipher_mode]  Replace table look-up with sequences of constant-time logical operations, for example by bitslicing look-ups (as used in [NaCl's](http://nacl.cr.yp.to/) [implementation](http://eprint.iacr.org/2009/129.pdf) of AES-CTR, or in [Serpent](https://www.ii.uib.no/~osvik/serpent/).
+      line   120  [symmetric]  For AES, constant-time non-bitsliced implementations are also [possible](http://crypto.stackexchange.com/questions/55/known-methods-for-constant-time-table-free-aes-implementation-using-standard/92#92), but are much slower.
+      line   124  [symmetric]  There are workarounds for this AES vulnerability, but they either require hardware acceleration (AES-NI) or a technique called [bitslicing](https://github.com/jedisct1/libsodium/tree/1.0.14/src/libsodium/crypto_stream/aes128ctr/nacl).

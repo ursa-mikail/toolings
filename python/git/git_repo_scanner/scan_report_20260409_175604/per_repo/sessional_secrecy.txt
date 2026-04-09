@@ -1,0 +1,68 @@
+================================================================================
+  REPO       : sessional_secrecy
+  FULL NAME  : ursa-mikail/sessional_secrecy
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Jupyter Notebook
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/sessional_secrecy
+  MATCHES    : 57
+================================================================================
+
+  ▸ sessional_secrecy.ipynb
+      line    21  [symmetric]  "Use of RSA and AES encryption, including encryption and decryption of data, key generation, and key rotation for forward secrecy.\n",
+      line    21  [asymmetric]  "Use of RSA and AES encryption, including encryption and decryption of data, key generation, and key rotation for forward secrecy.\n",
+      line    24  [asymmetric]  "1. RSA Key Pair Generation: Generate RSA private and public key pairs.\n",
+      line    25  [symmetric]  "2. AES Key Generation: Generate AES keys for symmetric encryption.\n",
+      line    26  [symmetric]  "3. Data Encryption: Encrypt data using a combination of RSA and AES.\n",
+      line    26  [asymmetric]  "3. Data Encryption: Encrypt data using a combination of RSA and AES.\n",
+      line    27  [symmetric]  "4. Data Decryption: Decrypt data using the corresponding RSA private key and AES key.\n",
+      line    27  [asymmetric]  "4. Data Decryption: Decrypt data using the corresponding RSA private key and AES key.\n",
+      line    32  [symmetric]  "<b> [encrypted_key:N-bits][nonce:typically 12 bytes (96 bits) for AES-GCM][enc_data]\n",
+      line    32  [cipher_mode]  "<b> [encrypted_key:N-bits][nonce:typically 12 bytes (96 bits) for AES-GCM][enc_data]\n",
+      line    53  [symmetric]  "![image.png](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABM4AAAJYCAYAAACaZqoxAAAAAXNSR0IArs4c6QAAAGJlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAABJKGAAcAAAASAAAAUKABAAMAAAABAAEAAKACAAQAAAABAAAEzqADAAQAAAABAAACWAAAAABBU0NJSQAAAFNjcmVlbnNob3QAl83bAAAB12lUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPHg6eG1wbWV0YSB4
+      line    62  [asymmetric]  "<b>Forward secrecy</b> guards against the situation that when a key is lost, all data which the data was sniffed and collected by the attacker can be deciphered. Hence, session key is used so that contextually, only the ephermeral data is leaked, but it does not affect the data subjected to another
+      line   119  [asymmetric]  "from cryptography.hazmat.primitives.asymmetric import rsa, padding\n",
+      line   123  [asymmetric]  "    private_key = rsa.generate_private_key(public_exponent=65537, key_size=rsa_key_size)\n",
+      line   127  [key_mgmt]  "    return AESGCM.generate_key(bit_length=aes_key_size)\n",
+      line   133  [symmetric]  "    # Encrypt the AES key with RSA\n",
+      line   133  [asymmetric]  "    # Encrypt the AES key with RSA\n",
+      line   140  [symmetric]  "    # Encrypt data with AES key\n",
+      line   143  [symmetric]  "    # Format: RSA Encrypted AES Key | Nonce | Encrypted Data\n",
+      line   143  [asymmetric]  "    # Format: RSA Encrypted AES Key | Nonce | Encrypted Data\n",
+      line   147  [symmetric]  "# encrypted_data = [encrypted_key:N-bits][nonce:typically 12 bytes (96 bits) for AES-GCM][enc_data]\n",
+      line   147  [cipher_mode]  "# encrypted_data = [encrypted_key:N-bits][nonce:typically 12 bytes (96 bits) for AES-GCM][enc_data]\n",
+      line   153  [symmetric]  "    # Decrypt the AES key with RSA\n",
+      line   153  [asymmetric]  "    # Decrypt the AES key with RSA\n",
+      line   160  [symmetric]  "    # Decrypt data with the AES key\n",
+      line   226  [symmetric]  "# Initial AES key\n",
+      line   234  [symmetric]  "# Rotate AES key for next transmission (sub-sessional key)\n",
+      line   246  [symmetric]  "# Rotate AES key for next transmission (sub-sessional key)\n",
+      line   257  [asymmetric]  "Demonstrates the generation of RSA key pairs for 2 parties and the implementation of forward secrecy using ephemeral RSA keys for each session.\n",
+      line   268  [asymmetric]  "# Generating RSA key pairs for both parties (key exchange mechanism uses RSA rather than ECDH (Elliptic Curve Diffie-Hellman) for illustrative simplicity)\n",
+      line   321  [symmetric]  "Demonstrates the generation of elliptic curve keys and the key exchange mechanism using Elliptic Curve Diffie-Hellman (ECDH). It also shows how to derive a symmetric AES key from the shared secret using the PBKDF2 key derivation function as a mechanism which we can replace for RSA."
+      line   321  [asymmetric]  "Demonstrates the generation of elliptic curve keys and the key exchange mechanism using Elliptic Curve Diffie-Hellman (ECDH). It also shows how to derive a symmetric AES key from the shared secret using the PBKDF2 key derivation function as a mechanism which we can replace for RSA."
+      line   321  [kdf]  "Demonstrates the generation of elliptic curve keys and the key exchange mechanism using Elliptic Curve Diffie-Hellman (ECDH). It also shows how to derive a symmetric AES key from the shared secret using the PBKDF2 key derivation function as a mechanism which we can replace for RSA."
+      line   332  [kdf]  "from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC\n",
+      line   332  [kdf]  "from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC\n",
+      line   348  [symmetric]  "# Deriving a symmetric key (AES) from the shared secret\n",
+      line   351  [kdf]  "kdf = PBKDF2HMAC(\n",
+      line   357  [symmetric]  "aes_key = kdf.derive(shared_secret_A)  # Generate AES key from shared secret\n",
+      line   357  [kdf]  "aes_key = kdf.derive(shared_secret_A)  # Generate AES key from shared secret\n",
+      line   381  [asymmetric]  "Demonstrates the generation of RSA key pairs for 2 parties and the implementation of secrecy by rotating session keys after each data transmission without ephermeral key arrangement."
+      line   390  [asymmetric]  "# Generate RSA key pairs for both parties A and B\n",
+      line   459  [symmetric]  "![image.png](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABIUAAAJACAYAAAATudaQAAAAAXNSR0IArs4c6QAAAGJlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAABJKGAAcAAAASAAAAUKABAAMAAAABAAEAAKACAAQAAAABAAAEhaADAAQAAAABAAACQAAAAABBU0NJSQAAAFNjcmVlbnNob3SkUoDAAAAB12lUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPHg6eG1wbWV0YSB4
+      line   465  [symmetric]  "The new member is only given the latest epic key, and hence, would not be able to access the context of the previous epics. Hence, the root key does not change, unless someone's key down the nodes is compromised, and needs to refresh all the way up to the root.\n",
+      line   467  [symmetric]  "The KDF up the root is also by racheting. The person updating the nodes from his/her node upwards just have to broadcast the node deltas. The same if someone leaves the tree, the node and all the way up is deleted, and the delta updates is broadcast."
+      line   467  [kdf]  "The KDF up the root is also by racheting. The person updating the nodes from his/her node upwards just have to broadcast the node deltas. The same if someone leaves the tree, the node and all the way up is deleted, and the delta updates is broadcast."
+      line   476  [symmetric]  "A tree without the intermediary nodes is a star, and would not be as efficient as a tree.\n",
+      line   491  [kdf]  "from cryptography.hazmat.primitives.kdf.hkdf import HKDF\n",
+      line   491  [kdf]  "from cryptography.hazmat.primitives.kdf.hkdf import HKDF\n",
+      line   494  [symmetric]  "from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes\n",
+      line   511  [kdf]  "    derived_key = HKDF(\n",
+      line   526  [symmetric]  "    cipher = Cipher(algorithms.AES(key), modes.GCM(iv))\n",
+      line   526  [symmetric]  "    cipher = Cipher(algorithms.AES(key), modes.GCM(iv))\n",
+      line   526  [cipher_mode]  "    cipher = Cipher(algorithms.AES(key), modes.GCM(iv))\n",
+      line   533  [symmetric]  "    cipher = Cipher(algorithms.AES(key), modes.GCM(iv, tag))\n",
+      line   533  [symmetric]  "    cipher = Cipher(algorithms.AES(key), modes.GCM(iv, tag))\n",
+      line   533  [cipher_mode]  "    cipher = Cipher(algorithms.AES(key), modes.GCM(iv, tag))\n",
+      line   598  [symmetric]  "Besides increasing security, having 2 separate machines helps sort out messages which arrive out of order, perhaps with a significant delay. Each message is sent with some extra information — it numbers the messages since the last time the machine changed color or number, the inscribed number.\n",

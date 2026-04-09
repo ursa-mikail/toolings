@@ -1,0 +1,18 @@
+================================================================================
+  REPO       : extracting_specific_frames_from_video_with_pytorch
+  FULL NAME  : ursa-mikail/extracting_specific_frames_from_video_with_pytorch
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : HTML
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/extracting_specific_frames_from_video_with_pytorch
+  MATCHES    : 7
+================================================================================
+
+  ▸ frame_viewer.html
+      line    46  [symmetric]  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABQAAAALQCAIAAABAH0oBAAEAAElEQVR4nOz9y5IsOY8wiAH0ONXTY2Mj+7camyfWTu+hd9JCZiPZLGQj6/m7vzpBQAuAIEiCdHpkRGbkqYRV5fFw5/0C4k78f/zf/28QQUppfImIhICIiNi9Z2Z5qCmjonyC7gGQxpdhM7iULfV2jdkEaTAA5JzrW+IwjT10kCB1iQkoTBk2EhGlBCoJuhGw7tt7AsYCi2K7h3EKrEdd4quDmTlI
+      line    51  [symmetric]  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABQAAAALQCAIAAABAH0oBAAEAAElEQVR4nOz9S5MlOa4mCH4AVY+ZR0bfyqq+NTVSIrWZfYv0T+l/M391ZHazaJkpubdyKjMywt2OKoFegARBqup52MvNPQwS4qGmh8o3QbxB/8//439HD6rqD6pkDyKiPYgIgJQSMxMRTWmapun0ME1TSul0OlFKRKSqy7I8rYuIMDMzI8uyLH/58sUryTmv66qq8zyfTici+vbtW0ppollV13W1
+      line    51  [symmetric]  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABQAAAALQCAIAAABAH0oBAAEAAElEQVR4nOz9S5MlOa4mCH4AVY+ZR0bfyqq+NTVSIrWZfYv0T+l/M391ZHazaJkpubdyKjMywt2OKoFegARBqup52MvNPQwS4qGmh8o3QbxB/8//439HD6rqD6pkDyKiPYgIgJQSMxMRTWmapun0ME1TSul0OlFKRKSqy7I8rYuIMDMzI8uyLH/58sUryTmv66qq8zyfTici+vbtW0ppollV13W1
+      line    51  [cipher_mode]  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABQAAAALQCAIAAABAH0oBAAEAAElEQVR4nOz9S5MlOa4mCH4AVY+ZR0bfyqq+NTVSIrWZfYv0T+l/M391ZHazaJkpubdyKjMywt2OKoFegARBqup52MvNPQwS4qGmh8o3QbxB/8//439HD6rqD6pkDyKiPYgIgJQSMxMRTWmapun0ME1TSul0OlFKRKSqy7I8rYuIMDMzI8uyLH/58sUryTmv66qq8zyfTici+vbtW0ppollV13W1
+      line    56  [symmetric]  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABQAAAALQCAIAAABAH0oBAAEAAElEQVR4nOz9W68lSXImin1m7hFr752Z1VXdTXKGQ855oDADgRAwf02/Rf9DP0SA5kHSwdEDAc3gsMkessnq6qzMvVaEu5kezN3C4rb23lmX7pk5jkJW7FgRHn4xt/uF/u//t/8rXmqqCoCZAUDU/rRGRAkkIqQEQAAisp8YUFW7Y00o9EaZma1PZbGuVNX+FTCAJFBVVqjqLDWlRET2iogUnXPO
+      line    61  [symmetric]  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABQAAAALQCAIAAABAH0oBAAEAAElEQVR4nOz9WbfsuJEmCpoZSLrv8UwxSApJWXmrbt3V/dD90N2rX/v/P1c9ZN1bVcospTIVIUXEGfbgTsKsHwwAQZCgk3v7Hg++pRXah06CIEb7bAL+//6//084BEQ8eCV3cfI6ES18V+ZFZvIexvTK3V7q7hdARDt6aOFn5m4jIoBsTeZLyJW5sISJx4X6n5ABgJfVLWCmVQ/WZxXu8+wRS5MF
+      line    61  [fpe_token]  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABQAAAALQCAIAAABAH0oBAAEAAElEQVR4nOz9WbfsuJEmCpoZSLrv8UwxSApJWXmrbt3V/dD90N2rX/v/P1c9ZN1bVcospTIVIUXEGfbgTsKsHwwAQZCgk3v7Hg++pRXah06CIEb7bAL+//6//084BEQ8eCV3cfI6ES18V+ZFZvIexvTK3V7q7hdARDt6aOFn5m4jIoBsTeZLyJW5sISJx4X6n5ABgJfVLWCmVQ/WZxXu8+wRS5MF

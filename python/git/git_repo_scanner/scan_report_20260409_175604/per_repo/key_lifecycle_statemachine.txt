@@ -1,0 +1,48 @@
+================================================================================
+  REPO       : key_lifecycle_statemachine
+  FULL NAME  : ursa-mikail/key_lifecycle_statemachine
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Go
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/key_lifecycle_statemachine
+  MATCHES    : 21
+================================================================================
+
+  ▸ README.md
+      line     4  [asymmetric]  EdDSA (Ed25519), and RSA signing keys, with a JSON-driven state machine and
+      line    22  [asymmetric]  | `keygen.go` | Key generation for ECDSA-P256, Ed25519, RSA-2048 |
+      line   117  [asymmetric]  rsa-signing-01      type=RSA-2048     state=generated  fp=SHA256:c5e01fa7...
+
+  ▸ keygen.go
+      line     8  [asymmetric]  "crypto/rsa"
+      line    50  [signature]  if err := master.Sign(rec); err != nil {
+      line    57  [asymmetric]  // (for ECDSA / RSA) or base64url (for Ed25519, which has no standard PEM type
+      line    81  [asymmetric]  priv, err := rsa.GenerateKey(rand.Reader, 2048)
+
+  ▸ keys/ecdsa-signing-01.json
+      line     4  [key_mgmt]  "public_key": "-----BEGIN PUBLIC KEY-----\nMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE6+hnZZzFKYo3xj521XpTh9EW60Pn\nzcKiTjhq7MclTUoBk2o+EA41P7vuiZ8WETNRa7TXpunuedry9l3C996QAQ==\n-----END PUBLIC KEY-----\n",
+
+  ▸ keys/rsa-signing-01.json
+      line     2  [asymmetric]  "key_id": "rsa-signing-01",
+      line     3  [asymmetric]  "key_type": "RSA-2048",
+      line     4  [key_mgmt]  "public_key": "-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA7S5dKmAfeU5vqyn04Niu\nFXn+g9HJtoqBZ3103mLaAXJZy1syjpOeQa8HPuTA526Vi2ehPontmwUS5MKa/QIx\nY7rfvtRd8wMvshc+bDNm1K6ubhoFYN969FcK2bj8Ndicd9K/uy1RVxN5Idw6ZlNP\n6VMEqS6onF7DIAmT9ylCBy/7sQS95e2hcjcgMREPdFUpvOvX2yR2UeVYPKs
+      line    10  [asymmetric]  "description": "Managed RSA-2048 signing key",
+
+  ▸ lifecycle.go
+      line    35  [signature]  if err := lm.master.Verify(*rec); err != nil {
+      line    60  [signature]  if err := lm.master.Sign(rec); err != nil {
+
+  ▸ main.go
+      line    38  [asymmetric]  {"rsa-signing-01", KeyTypeRSA, 730 * 24 * time.Hour},
+      line    49  [signature]  must(master.Verify(*rec))
+      line   147  [signature]  if err := master.Verify(*loaded); err != nil {
+
+  ▸ master.go
+      line    58  [signature]  sig := ed25519.Sign(m.privateKey, digest[:])
+      line    75  [signature]  if !ed25519.Verify(m.publicKey, digest[:], sigBytes) {
+
+  ▸ statemachine.go
+      line     9  [symmetric]  // StateMachine wraps a loaded definition and provides transition logic
+
+  ▸ types.go
+      line    38  [asymmetric]  KeyTypeRSA   KeyType = "RSA-2048"

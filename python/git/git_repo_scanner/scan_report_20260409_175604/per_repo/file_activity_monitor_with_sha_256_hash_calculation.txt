@@ -1,0 +1,12 @@
+================================================================================
+  REPO       : file_activity_monitor_with_sha_256_hash_calculation
+  FULL NAME  : ursa-mikail/file_activity_monitor_with_sha_256_hash_calculation
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Python
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/file_activity_monitor_with_sha_256_hash_calculation
+  MATCHES    : 1
+================================================================================
+
+  ▸ file_activity_monitor_with_sha_256_hash_calculation.py
+      line     4  [py_import]  import hashlib

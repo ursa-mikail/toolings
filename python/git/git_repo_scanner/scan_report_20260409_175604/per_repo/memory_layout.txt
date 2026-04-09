@@ -1,0 +1,12 @@
+================================================================================
+  REPO       : memory_layout
+  FULL NAME  : ursa-mikail/memory_layout
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Python
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/memory_layout
+  MATCHES    : 1
+================================================================================
+
+  ▸ memory_allocation_with_magic_numbers/memory_allocation_with_magic_numbers_01.py
+      line     2  [py_import]  import secrets

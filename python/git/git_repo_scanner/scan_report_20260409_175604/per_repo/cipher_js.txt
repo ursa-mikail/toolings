@@ -1,0 +1,271 @@
+================================================================================
+  REPO       : cipher_js
+  FULL NAME  : ursa-mikail/cipher_js
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : JavaScript
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/cipher_js
+  MATCHES    : 212
+================================================================================
+
+  ▸ index.html
+      line   100  [hash_func]  <script type="text/javascript" src="./index_files/md5.js"></script>
+      line   105  [symmetric]  <script type="text/javascript" src="./index_files/aes.js"></script>
+      line   107  [hash_func]  <script type="text/javascript" src="./index_files/hmac-md5.js"></script>
+      line   107  [kdf]  <script type="text/javascript" src="./index_files/hmac-md5.js"></script>
+      line   108  [kdf]  <script type="text/javascript" src="./index_files/hmac-sha1.js"></script>
+      line   109  [kdf]  <script type="text/javascript" src="./index_files/hmac-sha3.js"></script>
+      line   110  [kdf]  <script type="text/javascript" src="./index_files/hmac-sha256.js"></script>
+      line   111  [kdf]  <script type="text/javascript" src="./index_files/pbkdf2.js"></script>
+      line   112  [symmetric]  <script type="text/javascript" src="./index_files/rc4.js"></script>
+      line   114  [symmetric]  <script type="text/javascript" src="./index_files/tripledes.js"></script>
+      line   116  [symmetric]  <script type="text/javascript" src="./index_files/chacha20.js"></script>
+      line   150  [hash_func]  Hashing: <input type="button" class="btn btn-medium btn-warning" onclick="t1(document.getElementById(&#39;input&#39;).value)" value="MD5">
+      line   158  [kdf]  <input type="button" class="btn btn-medium btn-warning" onclick="t10(document.getElementById(&#39;input&#39;).value, document.getElementById(&#39;password&#39;).value)" value="PBKDF2">
+      line   163  [symmetric]  Block encryption:  <input type="button" class="btn btn-medium btn-danger" onclick="t4(document.getElementById(&#39;input&#39;).value, document.getElementById(&#39;password&#39;).value)" value="AES (CBC)">
+      line   163  [cipher_mode]  Block encryption:  <input type="button" class="btn btn-medium btn-danger" onclick="t4(document.getElementById(&#39;input&#39;).value, document.getElementById(&#39;password&#39;).value)" value="AES (CBC)">
+      line   164  [symmetric]  <input type="button" class="btn btn-medium btn-danger" onclick="t4a(document.getElementById(&#39;input&#39;).value, document.getElementById(&#39;password&#39;).value)" value="AES (ECB)">
+      line   164  [cipher_mode]  <input type="button" class="btn btn-medium btn-danger" onclick="t4a(document.getElementById(&#39;input&#39;).value, document.getElementById(&#39;password&#39;).value)" value="AES (ECB)">
+      line   165  [symmetric]  <input type="button" class="btn btn-medium btn-danger" onclick="t4b(document.getElementById(&#39;input&#39;).value, document.getElementById(&#39;password&#39;).value)" value="AES (CFB)">
+      line   166  [symmetric]  <input type="button" class="btn btn-medium btn-danger" onclick="t4c(document.getElementById(&#39;input&#39;).value, document.getElementById(&#39;password&#39;).value)" value="AES (CTR)">
+      line   166  [cipher_mode]  <input type="button" class="btn btn-medium btn-danger" onclick="t4c(document.getElementById(&#39;input&#39;).value, document.getElementById(&#39;password&#39;).value)" value="AES (CTR)">
+      line   167  [symmetric]  <input type="button" class="btn btn-medium btn-danger" onclick="t4d(document.getElementById(&#39;input&#39;).value, document.getElementById(&#39;password&#39;).value)" value="AES (OFB)">
+      line   167  [cipher_mode]  <input type="button" class="btn btn-medium btn-danger" onclick="t4d(document.getElementById(&#39;input&#39;).value, document.getElementById(&#39;password&#39;).value)" value="AES (OFB)">
+      line   169  [symmetric]  <input type="button" class="btn btn-medium btn-danger" onclick="t6b(document.getElementById(&#39;input&#39;).value, document.getElementById(&#39;password&#39;).value)" value="DES">
+      line   170  [symmetric]  <input type="button" class="btn btn-medium btn-danger" onclick="t6b_2(document.getElementById(&#39;input&#39;).value, document.getElementById(&#39;password&#39;).value)" value="3DES">
+      line   175  [symmetric]  <input type="button" class="btn btn-medium btn-primary" onclick="t6(document.getElementById(&#39;input&#39;).value, document.getElementById(&#39;password&#39;).value)" value="RC4">
+      line   176  [symmetric]  <input type="button" class="btn btn-medium btn-primary" onclick="t11(document.getElementById(&#39;input&#39;).value, document.getElementById(&#39;password&#39;).value)" value="ChaCha20">
+      line   181  [hash_func]  HMAC:   <input type="button" class="btn btn-medium btn-success" onclick="t7(document.getElementById(&#39;input&#39;).value, document.getElementById(&#39;password&#39;).value)" value="HMAC (MD5)">
+      line   181  [kdf]  HMAC:   <input type="button" class="btn btn-medium btn-success" onclick="t7(document.getElementById(&#39;input&#39;).value, document.getElementById(&#39;password&#39;).value)" value="HMAC (MD5)">
+      line   182  [kdf]  <input type="button" class="btn btn-medium btn-success" onclick="t8(document.getElementById(&#39;input&#39;).value, document.getElementById(&#39;password&#39;).value)" value="HMAC (SHA1)">
+      line   183  [kdf]  <input type="button" class="btn btn-medium btn-success" onclick="t9c(document.getElementById(&#39;input&#39;).value, document.getElementById(&#39;password&#39;).value)" value="HMAC (SHA256)">
+      line   185  [kdf]  <input type="button" class="btn btn-medium btn-success" onclick="t9(document.getElementById(&#39;input&#39;).value, document.getElementById(&#39;password&#39;).value)" value="HMAC (SHA512)">
+      line   186  [kdf]  <input type="button" class="btn btn-medium btn-success" onclick="t9a(document.getElementById(&#39;input&#39;).value, document.getElementById(&#39;password&#39;).value)" value="HMAC (SHA3)">
+      line   187  [kdf]  <input type="button" class="btn btn-medium btn-success" onclick="t9b(document.getElementById(&#39;input&#39;).value, document.getElementById(&#39;password&#39;).value)" value="HMAC (RIPEMD160)">
+      line   194  [asymmetric]  Public key:   <input type="button" class="btn btn-medium default" onclick="trsa(document.getElementById(&#39;input&#39;).value,1024)" value="RSA Encryption (1024 bit)">
+      line   195  [asymmetric]  <input type="button" class="btn btn-medium default" onclick="trsa(document.getElementById(&#39;input&#39;).value,2048)" value="RSA Encryption (2048 bit)">
+      line   228  [kdf]  <p>Note: Hashing takes Input, but Encryption and HMAC takes Input and Password.</p>
+
+  ▸ index_files/MathJax.js
+      line    19  [symmetric]  if(document.getElementById&&document.childNodes&&document.createElement){if(!(window.MathJax&&MathJax.Hub)){if(window.MathJax){window.MathJax={AuthorConfig:window.MathJax}}else{window.MathJax={}}MathJax.isPacked=true;MathJax.version="2.7.1";MathJax.fileversion="2.7.1";MathJax.cdnVersion="2.7.1";Math
+
+  ▸ index_files/MicrosoftAjax.debug.js
+      line  4241  [symmetric]  var childNodes = element.childNodes;
+      line  4242  [symmetric]  for (var i = 0; i < childNodes.length; i++) {
+      line  4243  [symmetric]  var node = childNodes[i];
+      line  4253  [symmetric]  childNodes = node.childNodes;
+      line  4254  [symmetric]  for (i = 0; i < childNodes.length; i++) {
+      line  4255  [symmetric]  node = childNodes[i];
+
+  ▸ index_files/aes.js
+      line    12  [kdf]  a._data=this._data.clone();return a},_minBufferSize:0});l.Hasher=q.extend({cfg:t.extend(),init:function(a){this.cfg=this.cfg.extend(a);this.reset()},reset:function(){q.reset.call(this);this._doReset()},update:function(a){this._append(a);this._process();return this},finalize:function(a){a&&this._appe
+      line    16  [hash_func]  (function(u){function p(b,n,a,c,e,j,k){b=b+(n&a|~n&c)+e+k;return(b<<j|b>>>32-j)+n}function d(b,n,a,c,e,j,k){b=b+(n&c|a&~c)+e+k;return(b<<j|b>>>32-j)+n}function l(b,n,a,c,e,j,k){b=b+(n^a^c)+e+k;return(b<<j|b>>>32-j)+n}function s(b,n,a,c,e,j,k){b=b+(a^(n|~c))+e+k;return(b<<j|b>>>32-j)+n}for(var t=Cryp
+      line    21  [hash_func]  4294967296);n[(c+64>>>9<<4)+15]=(e<<8|e>>>24)&16711935|(e<<24|e>>>8)&4278255360;n[(c+64>>>9<<4)+14]=(a<<8|a>>>24)&16711935|(a<<24|a>>>8)&4278255360;b.sigBytes=4*(n.length+1);this._process();b=this._hash;n=b.words;for(a=0;4>a;a++)c=n[a],n[a]=(c<<8|c>>>24)&16711935|(c<<24|c>>>8)&4278255360;return b},c
+      line    22  [hash_func]  (function(){var u=CryptoJS,p=u.lib,d=p.Base,l=p.WordArray,p=u.algo,s=p.EvpKDF=d.extend({cfg:d.extend({keySize:4,hasher:p.MD5,iterations:1}),init:function(d){this.cfg=this.cfg.extend(d)},compute:function(d,r){for(var p=this.cfg,s=p.hasher.create(),b=l.create(),u=b.words,q=p.keySize,p=p.iterations;u.l
+      line    27  [cipher_mode]  e,a,c);this._prevBlock=d}});b=b.CBC=q;q=(p.pad={}).Pkcs7={pad:function(a,b){for(var c=4*b,c=c-a.sigBytes%c,d=c<<24|c<<16|c<<8|c,l=[],n=0;n<c;n+=4)l.push(d);c=s.create(l,c);a.concat(c)},unpad:function(a){a.sigBytes-=a.words[a.sigBytes-1>>>2]&255}};d.BlockCipher=v.extend({cfg:v.cfg.extend({mode:b,padd
+      line    30  [kdf]  decrypt:function(a,b,c,d){d=this.cfg.extend(d);b=this._parse(b,d.format);return a.createDecryptor(c,d).finalize(b.ciphertext)},_parse:function(a,b){return"string"==typeof a?b.parse(a,this):a}}),p=(p.kdf={}).OpenSSL={execute:function(a,b,c,d){d||(d=s.random(8));a=w.create({keySize:b+c}).compute(a,d);
+      line    31  [kdf]  b.keySize,b.ivSize);l.iv=d.iv;b=a.encrypt.call(this,b,c,d.key,l);b.mixIn(d);return b},decrypt:function(b,c,d,l){l=this.cfg.extend(l);c=this._parse(c,l.format);d=l.kdf.execute(d,b.keySize,b.ivSize,c.salt);l.iv=d.iv;return a.decrypt.call(this,b,c,d.key,l)}})}();
+      line    33  [symmetric]  16,32,64,128,27,54],d=d.AES=p.extend({_doReset:function(){for(var a=this._key,c=a.words,d=a.sigBytes/4,a=4*((this._nRounds=d+6)+1),e=this._keySchedule=[],j=0;j<a;j++)if(j<d)e[j]=c[j];else{var k=e[j-1];j%d?6<d&&4==j%d&&(k=l[k>>>24]<<24|l[k>>>16&255]<<16|l[k>>>8&255]<<8|l[k&255]):(k=k<<8|k>>>24,k=l[k>
+      line    35  [symmetric]  d[k>>>24]^e[n>>>16&255]^j[g>>>8&255]^l[h&255]^c[p++],n=d[n>>>24]^e[g>>>16&255]^j[h>>>8&255]^l[k&255]^c[p++],g=q,h=s,k=t;q=(f[g>>>24]<<24|f[h>>>16&255]<<16|f[k>>>8&255]<<8|f[n&255])^c[p++];s=(f[h>>>24]<<24|f[k>>>16&255]<<16|f[n>>>8&255]<<8|f[g&255])^c[p++];t=(f[k>>>24]<<24|f[n>>>16&255]<<16|f[g>>>8&2
+
+  ▸ index_files/content_text.html
+      line    17  [hash_func]  <p>For MD5, we can test for "Hello":</p>
+      line    18  [hash_func]  <pre>Type:       MD5
+      line    24  [hash_func]  <pre>echo -n Hello | openssl md5
+      line    58  [symmetric]  <p>A sample run for AES CBC gives:</p>
+      line    58  [cipher_mode]  <p>A sample run for AES CBC gives:</p>
+      line    59  [symmetric]  <pre>Type:      AES (CBC)
+      line    59  [cipher_mode]  <pre>Type:      AES (CBC)
+      line    69  [symmetric]  <pre>echo -n Hello | openssl enc -aes-256-cbc  -pass pass:"qwerty" -e -base64 -S 241fa86763b85341
+      line    69  [cipher_mode]  <pre>echo -n Hello | openssl enc -aes-256-cbc  -pass pass:"qwerty" -e -base64 -S 241fa86763b85341
+      line    73  [symmetric]  <pre>openssl enc -aes-256-cbc  -pass pass:"qwerty" -d -base64 -S 241fa86763b85341 -in enc.txt -out out.txt
+      line    73  [cipher_mode]  <pre>openssl enc -aes-256-cbc  -pass pass:"qwerty" -d -base64 -S 241fa86763b85341 -in enc.txt -out out.txt
+      line    75  [symmetric]  <p>For DES we get:</p>
+      line    76  [symmetric]  <pre>Type:       DES
+      line    85  [symmetric]  <pre>echo -n Hello | openssl enc -des  -pass pass:"qwerty" -e -base64 -S b99d7b9a5fc533d2
+      line    88  [kdf]  <h3>HMAC</h3>
+      line    89  [hash_func]  <p>For HMAC-MD5 we get:</p>
+      line    89  [kdf]  <p>For HMAC-MD5 we get:</p>
+      line    90  [hash_func]  <pre>Type:       HMAC-MD5
+      line    90  [kdf]  <pre>Type:       HMAC-MD5
+      line    97  [hash_func]  <pre>echo -n Hello | openssl md5 -hmac qwerty
+      line    97  [kdf]  <pre>echo -n Hello | openssl md5 -hmac qwerty
+      line   100  [kdf]  <p>For HMAC-SHA1:</p>
+      line   101  [kdf]  <pre>Type:       HMAC-SHA1
+      line   109  [kdf]  <pre>echo -n Hello | openssl sha1 -hmac qwerty
+      line   112  [kdf]  <p>For HMAC, we can test with Node.js:</p>
+      line   118  [hash_func]  var hash = crypto.createHmac('md5', key).update(message);
+      line   131  [symmetric]  <p>And for ChaCha20:</p>
+      line   132  [symmetric]  <pre>Type:      ChaCha20
+      line   149  [asymmetric]  <p>And for RSA we get a key pair of:</p>
+      line   152  [asymmetric]  -----BEGIN RSA PRIVATE KEY-----
+      line   154  [asymmetric]  -----END RSA PRIVATE KEY-----
+      line   156  [key_mgmt]  -----BEGIN PUBLIC KEY-----
+
+  ▸ index_files/hmac-md5.js
+      line    12  [kdf]  b._data=this._data.clone();return b},_minBufferSize:0});g.Hasher=h.extend({cfg:t.extend(),init:function(b){this.cfg=this.cfg.extend(b);this.reset()},reset:function(){h.reset.call(this);this._doReset()},update:function(b){this._append(b);this._process();return this},finalize:function(b){b&&this._appe
+      line    14  [hash_func]  (function(q){function r(a,m,b,j,g,l,k){a=a+(m&b|~m&j)+g+k;return(a<<l|a>>>32-l)+m}function k(a,m,b,j,g,l,k){a=a+(m&j|b&~j)+g+k;return(a<<l|a>>>32-l)+m}function g(a,m,b,j,g,l,k){a=a+(m^b^j)+g+k;return(a<<l|a>>>32-l)+m}function p(a,g,b,j,k,l,p){a=a+(b^(g|~j))+k+p;return(a<<l|a>>>32-l)+g}for(var t=Cryp
+      line    19  [hash_func]  4294967296);g[(j+64>>>9<<4)+15]=(k<<8|k>>>24)&16711935|(k<<24|k>>>8)&4278255360;g[(j+64>>>9<<4)+14]=(b<<8|b>>>24)&16711935|(b<<24|b>>>8)&4278255360;a.sigBytes=4*(g.length+1);this._process();a=this._hash;g=a.words;for(b=0;4>b;b++)j=g[b],g[b]=(j<<8|j>>>24)&16711935|(j<<24|j>>>8)&4278255360;return a},c
+      line    20  [kdf]  (function(){var q=CryptoJS,r=q.enc.Utf8;q.algo.HMAC=q.lib.Base.extend({init:function(k,g){k=this._hasher=new k.init;"string"==typeof g&&(g=r.parse(g));var p=k.blockSize,q=4*p;g.sigBytes>q&&(g=k.finalize(g));g.clamp();for(var n=this._oKey=g.clone(),v=this._iKey=g.clone(),u=n.words,a=v.words,s=0;s<p;s
+
+  ▸ index_files/hmac-sha1.js
+      line    12  [kdf]  a._data=this._data.clone();return a},_minBufferSize:0});d.Hasher=r.extend({cfg:k.extend(),init:function(a){this.cfg=this.cfg.extend(a);this.reset()},reset:function(){r.reset.call(this);this._doReset()},update:function(a){this._append(a);this._process();return this},finalize:function(a){a&&this._appe
+      line    16  [kdf]  (function(){var g=CryptoJS,l=g.enc.Utf8;g.algo.HMAC=g.lib.Base.extend({init:function(e,d){e=this._hasher=new e.init;"string"==typeof d&&(d=l.parse(d));var g=e.blockSize,k=4*g;d.sigBytes>k&&(d=e.finalize(d));d.clamp();for(var p=this._oKey=d.clone(),b=this._iKey=d.clone(),n=p.words,j=b.words,h=0;h<g;h
+
+  ▸ index_files/hmac-sha256.js
+      line    12  [kdf]  a._data=this._data.clone();return a},_minBufferSize:0});g.Hasher=u.extend({cfg:m.extend(),init:function(a){this.cfg=this.cfg.extend(a);this.reset()},reset:function(){u.reset.call(this);this._doReset()},update:function(a){this._append(a);this._process();return this},finalize:function(a){a&&this._appe
+      line    17  [kdf]  (function(){var h=CryptoJS,s=h.enc.Utf8;h.algo.HMAC=h.lib.Base.extend({init:function(f,g){f=this._hasher=new f.init;"string"==typeof g&&(g=s.parse(g));var h=f.blockSize,m=4*h;g.sigBytes>m&&(g=f.finalize(g));g.clamp();for(var r=this._oKey=g.clone(),l=this._iKey=g.clone(),k=r.words,n=l.words,j=0;j<h;j
+
+  ▸ index_files/hmac-sha3.js
+      line    12  [kdf]  a._data=this._data.clone();return a},_minBufferSize:0});d.Hasher=u.extend({cfg:s.extend(),init:function(a){this.cfg=this.cfg.extend(a);this.reset()},reset:function(){u.reset.call(this);this._doReset()},update:function(a){this._append(a);this._process();return this},finalize:function(a){a&&this._appe
+      line    20  [kdf]  (function(){var q=CryptoJS,f=q.enc.Utf8;q.algo.HMAC=q.lib.Base.extend({init:function(c,d){c=this._hasher=new c.init;"string"==typeof d&&(d=f.parse(d));var q=c.blockSize,s=4*q;d.sigBytes>s&&(d=c.finalize(d));d.clamp();for(var t=this._oKey=d.clone(),w=this._iKey=d.clone(),r=t.words,g=w.words,n=0;n<q;n
+
+  ▸ index_files/input_interfaces.js
+      line     5  [hash_func]  var digest = CryptoJS.MD5(message);
+      line    76  [symmetric]  document.getElementById("hash").innerHTML = "Type:\t\tAES (CBC)";
+      line    76  [cipher_mode]  document.getElementById("hash").innerHTML = "Type:\t\tAES (CBC)";
+      line    80  [symmetric]  var crypted = CryptoJS.AES.encrypt(message, password,"{ mode: CryptoJS.mode.CBC, padding: CryptoJS.pad.Pkcs7 }");
+      line    80  [cipher_mode]  var crypted = CryptoJS.AES.encrypt(message, password,"{ mode: CryptoJS.mode.CBC, padding: CryptoJS.pad.Pkcs7 }");
+      line    81  [symmetric]  var plain = CryptoJS.AES.decrypt(crypted, password,"{ mode: CryptoJS.mode.CBC, padding: CryptoJS.pad.Pkcs7 }");
+      line    81  [cipher_mode]  var plain = CryptoJS.AES.decrypt(crypted, password,"{ mode: CryptoJS.mode.CBC, padding: CryptoJS.pad.Pkcs7 }");
+      line    98  [symmetric]  document.getElementById("hash").innerHTML = "Type:\t\tAES (ECB)";
+      line    98  [cipher_mode]  document.getElementById("hash").innerHTML = "Type:\t\tAES (ECB)";
+      line   102  [symmetric]  var crypted = CryptoJS.AES.encrypt(message, password, "{ mode: CryptoJS.mode.ECB, padding: CryptoJS.pad.Pkcs7 }");
+      line   102  [cipher_mode]  var crypted = CryptoJS.AES.encrypt(message, password, "{ mode: CryptoJS.mode.ECB, padding: CryptoJS.pad.Pkcs7 }");
+      line   103  [symmetric]  var plain = CryptoJS.AES.decrypt(crypted, password, "{ mode: CryptoJS.mode.ECB, padding: CryptoJS.pad.Pkcs7 }");
+      line   103  [cipher_mode]  var plain = CryptoJS.AES.decrypt(crypted, password, "{ mode: CryptoJS.mode.ECB, padding: CryptoJS.pad.Pkcs7 }");
+      line   121  [symmetric]  document.getElementById("hash").innerHTML = "Type:\t\tAES (CFB)";
+      line   125  [symmetric]  var crypted = CryptoJS.AES.encrypt(message, password, "{ mode: CryptoJS.mode.CFB, padding: CryptoJS.pad.AnsiX923 }");
+      line   127  [symmetric]  var plain = CryptoJS.AES.decrypt(crypted, password, "{ mode: CryptoJS.mode.CFB, padding: CryptoJS.pad.AnsiX923 }");
+      line   145  [symmetric]  document.getElementById("hash").innerHTML = "Type:\t\tAES (CRT)";
+      line   149  [symmetric]  var crypted = CryptoJS.AES.encrypt(message, password, "{ mode: CryptoJS.mode.CRT, padding: CryptoJS.pad.AnsiX923 }");
+      line   151  [symmetric]  var plain = CryptoJS.AES.decrypt(crypted, password, "{ mode: CryptoJS.mode.CRT, padding: CryptoJS.pad.AnsiX923 }");
+      line   166  [symmetric]  document.getElementById("hash").innerHTML = "Type:\t\tAES (OFB)";
+      line   166  [cipher_mode]  document.getElementById("hash").innerHTML = "Type:\t\tAES (OFB)";
+      line   170  [symmetric]  var crypted = CryptoJS.AES.encrypt(message, password, "{ mode: CryptoJS.mode.OFB, padding: CryptoJS.pad.AnsiX923 }");
+      line   170  [cipher_mode]  var crypted = CryptoJS.AES.encrypt(message, password, "{ mode: CryptoJS.mode.OFB, padding: CryptoJS.pad.AnsiX923 }");
+      line   172  [symmetric]  var plain = CryptoJS.AES.decrypt(crypted, password, "{ mode: CryptoJS.mode.OFB, padding: CryptoJS.pad.AnsiX923 }");
+      line   172  [cipher_mode]  var plain = CryptoJS.AES.decrypt(crypted, password, "{ mode: CryptoJS.mode.OFB, padding: CryptoJS.pad.AnsiX923 }");
+      line   209  [symmetric]  var crypted = CryptoJS.RC4.encrypt(message, password);
+      line   211  [symmetric]  var plain = CryptoJS.RC4.decrypt(crypted, password);
+      line   212  [symmetric]  document.getElementById("hash").innerHTML = "Type:\t\tRC4";
+      line   229  [symmetric]  var crypted = CryptoJS.DES.encrypt(message, password);
+      line   231  [symmetric]  var plain = CryptoJS.DES.decrypt(crypted, password);
+      line   232  [symmetric]  document.getElementById("hash").innerHTML = "Type:\t\tDES";
+      line   249  [symmetric]  var crypted = CryptoJS.TripleDES.encrypt(message, password);
+      line   251  [symmetric]  var plain = CryptoJS.TripleDES.decrypt(crypted, password);
+      line   252  [symmetric]  document.getElementById("hash").innerHTML = "Type:\t\t3DES";
+      line   272  [hash_func]  document.getElementById("hash").innerHTML = "Type:\t\tHMAC-MD5";
+      line   353  [kdf]  var key128Bits = CryptoJS.PBKDF2(message, salt, { keySize: 128 / 32 });
+      line   355  [kdf]  var key256Bits = CryptoJS.PBKDF2(message, salt, { keySize: 256 / 32 });
+      line   356  [kdf]  var key512Bits = CryptoJS.PBKDF2(message, salt, { keySize: 512 / 32 });
+      line   358  [kdf]  //       var key512bit1000 = CryptoJS.PBKDF2(message, salt, 64, { iterations: 1000 });
+      line   403  [symmetric]  document.getElementById("hash").innerHTML = "Type:\t\tChaCha20";
+
+  ▸ index_files/jquery.min.js
+      line     5  [symmetric]  var n, r, i = typeof t, o = e.location, a = e.document, s = a.documentElement, l = e.jQuery, u = e.$, c = {}, p = [], f = "1.10.2", d = p.concat, h = p.push, g = p.slice, m = p.indexOf, y = c.toString, v = c.hasOwnProperty, b = f.trim, x = function (e, t) { return new x.fn.init(e, t, r) }, w = /[+-]
+      line     7  [symmetric]  }({}); var B = /(?:\{[\s\S]*\}|\[[\s\S]*\])$/, P = /([A-Z])/g; function R(e, n, r, i) { if (x.acceptData(e)) { var o, a, s = x.expando, l = e.nodeType, u = l ? x.cache : e, c = l ? e[s] : e[s] && s; if (c && u[c] && (i || u[c].data) || r !== t || "string" != typeof n) return c || (c = l ? e[s] = p.p
+      line     8  [symmetric]  clone: function (e, t, n) { var r, i, o, a, s, l = x.contains(e.ownerDocument, e); if (x.support.html5Clone || x.isXMLDoc(e) || !mt.test("<" + e.nodeName + ">") ? o = e.cloneNode(!0) : (Dt.innerHTML = e.outerHTML, Dt.removeChild(o = Dt.firstChild)), !(x.support.noCloneEvent && x.support.noCloneCheck
+      line    14  [symmetric]  }), x.fn.extend({ wrapAll: function (e) { if (x.isFunction(e)) return this.each(function (t) { x(this).wrapAll(e.call(this, t)) }); if (this[0]) { var t = x(e, this[0].ownerDocument).eq(0).clone(!0); this[0].parentNode && t.insertBefore(this[0]), t.map(function () { var e = this; while (e.firstChild
+
+  ▸ index_files/jsbn.js
+      line     5  [asymmetric]  // Basic JavaScript BN library - subset useful for RSA encryption.
+
+  ▸ index_files/jsbn2.js
+      line     5  [asymmetric]  // Extended JavaScript BN functions, required for RSA private ops.
+
+  ▸ index_files/jsencrypt.js
+      line    29  [asymmetric]  eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"JSEncrypt\": () => (/* binding */ JSEncrypt)\n/* harmony export */ });\n/* harmony import */ var _lib_jsbn_base64__WEBPACK_IMPORTED_MODULE_0__ = __webpack_re
+      line    29  [signature]  eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"JSEncrypt\": () => (/* binding */ JSEncrypt)\n/* harmony export */ });\n/* harmony import */ var _lib_jsbn_base64__WEBPACK_IMPORTED_MODULE_0__ = __webpack_re
+      line    29  [signature]  eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"JSEncrypt\": () => (/* binding */ JSEncrypt)\n/* harmony export */ });\n/* harmony import */ var _lib_jsbn_base64__WEBPACK_IMPORTED_MODULE_0__ = __webpack_re
+      line    29  [key_mgmt]  eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"JSEncrypt\": () => (/* binding */ JSEncrypt)\n/* harmony export */ });\n/* harmony import */ var _lib_jsbn_base64__WEBPACK_IMPORTED_MODULE_0__ = __webpack_re
+      line    39  [asymmetric]  eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"JSEncryptRSAKey\": () => (/* binding */ JSEncryptRSAKey)\n/* harmony export */ });\n/* harmony import */ var _lib_jsbn_base64__WEBPACK_IMPORTED_MODULE_0__ = 
+      line    39  [key_mgmt]  eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"JSEncryptRSAKey\": () => (/* binding */ JSEncryptRSAKey)\n/* harmony export */ });\n/* harmony import */ var _lib_jsbn_base64__WEBPACK_IMPORTED_MODULE_0__ = 
+      line   109  [asymmetric]  eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"BigInteger\": () => (/* binding */ BigInteger),\n/* harmony export */   \"intAt\": () => (/* binding */ intAt),\n/* harmony export */   \"nbi\": () => (/* bi
+      line   133  [asymmetric]  /***/ "./lib/lib/jsbn/rsa.js":
+      line   135  [asymmetric]  !*** ./lib/lib/jsbn/rsa.js ***!
+      line   139  [asymmetric]  eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"RSAKey\": () => (/* binding */ RSAKey)\n/* harmony export */ });\n/* harmony import */ var _jsbn__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./jsb
+      line   139  [hash_func]  eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"RSAKey\": () => (/* binding */ RSAKey)\n/* harmony export */ });\n/* harmony import */ var _jsbn__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./jsb
+      line   159  [symmetric]  eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"KJUR\": () => (/* binding */ KJUR)\n/* harmony export */ });\n/* harmony import */ var _jsbn_jsbn__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../j
+      line   159  [asymmetric]  eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"KJUR\": () => (/* binding */ KJUR)\n/* harmony export */ });\n/* harmony import */ var _jsbn_jsbn__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../j
+      line   169  [symmetric]  eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"YAHOO\": () => (/* binding */ YAHOO)\n/* harmony export */ });\n/*!\nCopyright (c) 2011, Yahoo! Inc. All rights reserved.\nCode licensed under the BSD Licens
+
+  ▸ index_files/md5.js
+      line    12  [kdf]  b._data=this._data.clone();return b},_minBufferSize:0});l.Hasher=g.extend({cfg:r.extend(),init:function(b){this.cfg=this.cfg.extend(b);this.reset()},reset:function(){g.reset.call(this);this._doReset()},update:function(b){this._append(b);this._process();return this},finalize:function(b){b&&this._appe
+      line    14  [hash_func]  (function(s){function p(a,k,b,h,l,j,m){a=a+(k&b|~k&h)+l+m;return(a<<j|a>>>32-j)+k}function m(a,k,b,h,l,j,m){a=a+(k&h|b&~h)+l+m;return(a<<j|a>>>32-j)+k}function l(a,k,b,h,l,j,m){a=a+(k^b^h)+l+m;return(a<<j|a>>>32-j)+k}function n(a,k,b,h,l,j,m){a=a+(b^(k|~h))+l+m;return(a<<j|a>>>32-j)+k}for(var r=Cryp
+      line    19  [hash_func]  4294967296);k[(h+64>>>9<<4)+15]=(l<<8|l>>>24)&16711935|(l<<24|l>>>8)&4278255360;k[(h+64>>>9<<4)+14]=(b<<8|b>>>24)&16711935|(b<<24|b>>>8)&4278255360;a.sigBytes=4*(k.length+1);this._process();a=this._hash;k=a.words;for(b=0;4>b;b++)h=k[b],k[b]=(h<<8|h>>>24)&16711935|(h<<24|h>>>8)&4278255360;return a},c
+
+  ▸ index_files/nacl-fast.js
+      line    56  [symmetric]  function core_salsa20(o, p, k, c) {
+      line   249  [symmetric]  function core_hsalsa20(o,p,k,c) {
+      line   386  [symmetric]  function crypto_core_salsa20(out,inp,k,c) {
+      line   387  [symmetric]  core_salsa20(out,inp,k,c);
+      line   390  [symmetric]  function crypto_core_hsalsa20(out,inp,k,c) {
+      line   391  [symmetric]  core_hsalsa20(out,inp,k,c);
+      line   403  [symmetric]  crypto_core_salsa20(x,z,k,sigma);
+      line   416  [symmetric]  crypto_core_salsa20(x,z,k,sigma);
+      line   422  [symmetric]  function crypto_stream_salsa20(c,cpos,b,n,k) {
+      line   428  [symmetric]  crypto_core_salsa20(x,z,k,sigma);
+      line   440  [symmetric]  crypto_core_salsa20(x,z,k,sigma);
+      line   448  [symmetric]  crypto_core_hsalsa20(s,n,k,sigma);
+      line   451  [symmetric]  return crypto_stream_salsa20(c,cpos,d,sn,s);
+      line   456  [symmetric]  crypto_core_hsalsa20(s,n,k,sigma);
+      line  1389  [symmetric]  return crypto_core_hsalsa20(k, _0, s, sigma);
+      line  2094  [symmetric]  crypto_core_hsalsa20: crypto_core_hsalsa20,
+      line  2098  [symmetric]  crypto_stream_salsa20: crypto_stream_salsa20,
+      line  2276  [signature]  var signedMsg = nacl.sign(msg, secretKey);
+      line  2350  [symmetric]  // Initialize PRNG if environment provides CSPRNG.
+
+  ▸ index_files/pbkdf2.js
+      line    12  [kdf]  a._data=this._data.clone();return a},_minBufferSize:0});d.Hasher=u.extend({cfg:n.extend(),init:function(a){this.cfg=this.cfg.extend(a);this.reset()},reset:function(){u.reset.call(this);this._doReset()},update:function(a){this._append(a);this._process();return this},finalize:function(a){a&&this._appe
+      line    16  [kdf]  (function(){var g=CryptoJS,j=g.enc.Utf8;g.algo.HMAC=g.lib.Base.extend({init:function(e,d){e=this._hasher=new e.init;"string"==typeof d&&(d=j.parse(d));var g=e.blockSize,n=4*g;d.sigBytes>n&&(d=e.finalize(d));d.clamp();for(var q=this._oKey=d.clone(),b=this._iKey=d.clone(),l=q.words,k=b.words,h=0;h<g;h
+      line    18  [kdf]  (function(){var g=CryptoJS,j=g.lib,e=j.Base,d=j.WordArray,j=g.algo,m=j.HMAC,n=j.PBKDF2=e.extend({cfg:e.extend({keySize:4,hasher:j.SHA1,iterations:1}),init:function(d){this.cfg=this.cfg.extend(d)},compute:function(e,b){for(var g=this.cfg,k=m.create(g.hasher,e),h=d.create(),j=d.create([1]),n=h.words,a
+      line    18  [kdf]  (function(){var g=CryptoJS,j=g.lib,e=j.Base,d=j.WordArray,j=g.algo,m=j.HMAC,n=j.PBKDF2=e.extend({cfg:e.extend({keySize:4,hasher:j.SHA1,iterations:1}),init:function(d){this.cfg=this.cfg.extend(d)},compute:function(e,b){for(var g=this.cfg,k=m.create(g.hasher,e),h=d.create(),j=d.create([1]),n=h.words,a
+      line    19  [kdf]  a[0]++}h.sigBytes=4*c;return h}});g.PBKDF2=function(d,b,e){return n.create(e).compute(d,b)}})();
+
+  ▸ index_files/rabbit.js
+      line    12  [kdf]  a._data=this._data.clone();return a},_minBufferSize:0});l.Hasher=t.extend({cfg:c.extend(),init:function(a){this.cfg=this.cfg.extend(a);this.reset()},reset:function(){t.reset.call(this);this._doReset()},update:function(a){this._append(a);this._process();return this},finalize:function(a){a&&this._appe
+      line    16  [hash_func]  (function(q){function k(a,b,c,d,m,n,r){a=a+(b&c|~b&d)+m+r;return(a<<n|a>>>32-n)+b}function e(a,b,c,d,m,n,r){a=a+(b&d|c&~d)+m+r;return(a<<n|a>>>32-n)+b}function l(a,b,c,d,m,n,r){a=a+(b^c^d)+m+r;return(a<<n|a>>>32-n)+b}function p(a,b,c,d,m,n,r){a=a+(c^(b|~d))+m+r;return(a<<n|a>>>32-n)+b}for(var c=Cryp
+      line    21  [hash_func]  4294967296);b[(d+64>>>9<<4)+15]=(m<<8|m>>>24)&16711935|(m<<24|m>>>8)&4278255360;b[(d+64>>>9<<4)+14]=(c<<8|c>>>24)&16711935|(c<<24|c>>>8)&4278255360;a.sigBytes=4*(b.length+1);this._process();a=this._hash;b=a.words;for(c=0;4>c;c++)d=b[c],b[c]=(d<<8|d>>>24)&16711935|(d<<24|d>>>8)&4278255360;return a},c
+      line    22  [hash_func]  (function(){var q=CryptoJS,k=q.lib,e=k.Base,l=k.WordArray,k=q.algo,p=k.EvpKDF=e.extend({cfg:e.extend({keySize:4,hasher:k.MD5,iterations:1}),init:function(c){this.cfg=this.cfg.extend(c)},compute:function(c,e){for(var b=this.cfg,d=b.hasher.create(),a=l.create(),k=a.words,p=b.keySize,b=b.iterations;k.l
+      line    27  [cipher_mode]  a,b,d);this._prevBlock=e}});a=a.CBC=t;t=(k.pad={}).Pkcs7={pad:function(a,b){for(var c=4*b,c=c-a.sigBytes%c,d=c<<24|c<<16|c<<8|c,e=[],k=0;k<c;k+=4)e.push(d);c=p.create(e,c);a.concat(c)},unpad:function(a){a.sigBytes-=a.words[a.sigBytes-1>>>2]&255}};e.BlockCipher=d.extend({cfg:d.cfg.extend({mode:a,padd
+      line    30  [kdf]  decrypt:function(a,b,c,d){d=this.cfg.extend(d);b=this._parse(b,d.format);return a.createDecryptor(c,d).finalize(b.ciphertext)},_parse:function(a,b){return"string"==typeof a?b.parse(a,this):a}}),k=(k.kdf={}).OpenSSL={execute:function(a,c,d,e){e||(e=p.random(8));a=b.create({keySize:c+d}).compute(a,e);
+      line    31  [kdf]  a.keySize,a.ivSize);d.iv=c.iv;a=v.encrypt.call(this,a,b,c.key,d);a.mixIn(c);return a},decrypt:function(a,b,c,d){d=this.cfg.extend(d);b=this._parse(b,d.format);c=d.kdf.execute(c,a.keySize,a.ivSize,b.salt);d.iv=c.iv;return v.decrypt.call(this,a,b,c.key,d)}})}();
+
+  ▸ index_files/rc4.js
+      line    12  [kdf]  a._data=this._data.clone();return a},_minBufferSize:0});n.Hasher=u.extend({cfg:b.extend(),init:function(a){this.cfg=this.cfg.extend(a);this.reset()},reset:function(){u.reset.call(this);this._doReset()},update:function(a){this._append(a);this._process();return this},finalize:function(a){a&&this._appe
+      line    16  [hash_func]  (function(s){function l(a,b,c,e,m,f,r){a=a+(b&c|~b&e)+m+r;return(a<<f|a>>>32-f)+b}function e(a,b,c,e,m,f,r){a=a+(b&e|c&~e)+m+r;return(a<<f|a>>>32-f)+b}function n(a,b,c,e,m,f,r){a=a+(b^c^e)+m+r;return(a<<f|a>>>32-f)+b}function p(a,b,c,e,m,f,r){a=a+(c^(b|~e))+m+r;return(a<<f|a>>>32-f)+b}for(var b=Cryp
+      line    21  [hash_func]  4294967296);b[(d+64>>>9<<4)+15]=(m<<8|m>>>24)&16711935|(m<<24|m>>>8)&4278255360;b[(d+64>>>9<<4)+14]=(c<<8|c>>>24)&16711935|(c<<24|c>>>8)&4278255360;a.sigBytes=4*(b.length+1);this._process();a=this._hash;b=a.words;for(c=0;4>c;c++)d=b[c],b[c]=(d<<8|d>>>24)&16711935|(d<<24|d>>>8)&4278255360;return a},c
+      line    22  [hash_func]  (function(){var s=CryptoJS,l=s.lib,e=l.Base,n=l.WordArray,l=s.algo,p=l.EvpKDF=e.extend({cfg:e.extend({keySize:4,hasher:l.MD5,iterations:1}),init:function(b){this.cfg=this.cfg.extend(b)},compute:function(b,d){for(var e=this.cfg,q=e.hasher.create(),a=n.create(),l=a.words,p=e.keySize,e=e.iterations;l.l
+      line    27  [cipher_mode]  a,f,c);this._prevBlock=d}});a=a.CBC=u;u=(l.pad={}).Pkcs7={pad:function(a,f){for(var b=4*f,b=b-a.sigBytes%b,c=b<<24|b<<16|b<<8|b,d=[],e=0;e<b;e+=4)d.push(c);b=p.create(d,b);a.concat(b)},unpad:function(a){a.sigBytes-=a.words[a.sigBytes-1>>>2]&255}};e.BlockCipher=q.extend({cfg:q.cfg.extend({mode:a,padd
+      line    30  [kdf]  decrypt:function(a,b,c,d){d=this.cfg.extend(d);b=this._parse(b,d.format);return a.createDecryptor(c,d).finalize(b.ciphertext)},_parse:function(a,b){return"string"==typeof a?b.parse(a,this):a}}),l=(l.kdf={}).OpenSSL={execute:function(a,b,c,d){d||(d=p.random(8));a=t.create({keySize:b+c}).compute(a,d);
+      line    31  [kdf]  a.keySize,a.ivSize);e.iv=d.iv;a=c.encrypt.call(this,a,b,d.key,e);a.mixIn(d);return a},decrypt:function(a,b,d,e){e=this.cfg.extend(e);b=this._parse(b,e.format);d=e.kdf.execute(d,a.keySize,a.ivSize,b.salt);e.iv=d.iv;return c.decrypt.call(this,a,b,d.key,e)}})}();
+      line    32  [symmetric]  (function(){function s(){for(var b=this._S,d=this._i,e=this._j,q=0,a=0;4>a;a++){var d=(d+1)%256,e=(e+b[d])%256,l=b[d];b[d]=b[e];b[e]=l;q|=b[(b[d]+b[e])%256]<<24-8*a}this._i=d;this._j=e;return q}var l=CryptoJS,e=l.lib.StreamCipher,n=l.algo,p=n.RC4=e.extend({_doReset:function(){for(var b=this._key,d=b
+      line    33  [symmetric]  d){b[d]^=s.call(this)},keySize:8,ivSize:0});l.RC4=e._createHelper(p);n=n.RC4Drop=p.extend({cfg:p.cfg.extend({drop:192}),_doReset:function(){p._doReset.call(this);for(var b=this.cfg.drop;0<b;b--)s.call(this)}});l.RC4Drop=e._createHelper(n)})();
+
+  ▸ index_files/ripemd160.js
+      line    23  [kdf]  a._data=this._data.clone();return a},_minBufferSize:0});l.Hasher=v.extend({cfg:t.extend(),init:function(a){this.cfg=this.cfg.extend(a);this.reset()},reset:function(){v.reset.call(this);this._doReset()},update:function(a){this._append(a);this._process();return this},finalize:function(a){a&&this._appe
+
+  ▸ index_files/sha1.js
+      line    12  [kdf]  a._data=this._data.clone();return a},_minBufferSize:0});j.Hasher=k.extend({cfg:f.extend(),init:function(a){this.cfg=this.cfg.extend(a);this.reset()},reset:function(){k.reset.call(this);this._doReset()},update:function(a){this._append(a);this._process();return this},finalize:function(a){a&&this._appe
+
+  ▸ index_files/sha256.js
+      line    12  [kdf]  a._data=this._data.clone();return a},_minBufferSize:0});t.Hasher=x.extend({cfg:j.extend(),init:function(a){this.cfg=this.cfg.extend(a);this.reset()},reset:function(){x.reset.call(this);this._doReset()},update:function(a){this._append(a);this._process();return this},finalize:function(a){a&&this._appe
+
+  ▸ index_files/sha3.js
+      line    12  [kdf]  a._data=this._data.clone();return a},_minBufferSize:0});u.Hasher=t.extend({cfg:f.extend(),init:function(a){this.cfg=this.cfg.extend(a);this.reset()},reset:function(){t.reset.call(this);this._doReset()},update:function(a){this._append(a);this._process();return this},finalize:function(a){a&&this._appe
+
+  ▸ index_files/sha512.js
+      line    12  [kdf]  a._data=this._data.clone();return a},_minBufferSize:0});f.Hasher=h.extend({cfg:l.extend(),init:function(a){this.cfg=this.cfg.extend(a);this.reset()},reset:function(){h.reset.call(this);this._doReset()},update:function(a){this._append(a);this._process();return this},finalize:function(a){a&&this._appe
+
+  ▸ index_files/tripledes.js
+      line    12  [kdf]  a._data=this._data.clone();return a},_minBufferSize:0});n.Hasher=r.extend({cfg:s.extend(),init:function(a){this.cfg=this.cfg.extend(a);this.reset()},reset:function(){r.reset.call(this);this._doReset()},update:function(a){this._append(a);this._process();return this},finalize:function(a){a&&this._appe
+      line    16  [hash_func]  (function(u){function l(b,e,a,c,m,f,t){b=b+(e&a|~e&c)+m+t;return(b<<f|b>>>32-f)+e}function d(b,e,a,c,m,f,t){b=b+(e&c|a&~c)+m+t;return(b<<f|b>>>32-f)+e}function n(b,e,a,c,m,f,t){b=b+(e^a^c)+m+t;return(b<<f|b>>>32-f)+e}function p(b,e,a,c,m,f,t){b=b+(a^(e|~c))+m+t;return(b<<f|b>>>32-f)+e}for(var s=Cryp
+      line    21  [hash_func]  4294967296);e[(c+64>>>9<<4)+15]=(m<<8|m>>>24)&16711935|(m<<24|m>>>8)&4278255360;e[(c+64>>>9<<4)+14]=(a<<8|a>>>24)&16711935|(a<<24|a>>>8)&4278255360;b.sigBytes=4*(e.length+1);this._process();b=this._hash;e=b.words;for(a=0;4>a;a++)c=e[a],e[a]=(c<<8|c>>>24)&16711935|(c<<24|c>>>8)&4278255360;return b},c
+      line    22  [hash_func]  (function(){var u=CryptoJS,l=u.lib,d=l.Base,n=l.WordArray,l=u.algo,p=l.EvpKDF=d.extend({cfg:d.extend({keySize:4,hasher:l.MD5,iterations:1}),init:function(d){this.cfg=this.cfg.extend(d)},compute:function(d,l){for(var p=this.cfg,v=p.hasher.create(),b=n.create(),u=b.words,r=p.keySize,p=p.iterations;u.l
+      line    27  [cipher_mode]  a,b,e);this._prevBlock=d}});b=b.CBC=r;r=(l.pad={}).Pkcs7={pad:function(a,b){for(var c=4*b,c=c-a.sigBytes%c,e=c<<24|c<<16|c<<8|c,d=[],l=0;l<c;l+=4)d.push(e);c=p.create(d,c);a.concat(c)},unpad:function(a){a.sigBytes-=a.words[a.sigBytes-1>>>2]&255}};d.BlockCipher=v.extend({cfg:v.cfg.extend({mode:b,padd
+      line    30  [kdf]  decrypt:function(a,c,b,e){e=this.cfg.extend(e);c=this._parse(c,e.format);return a.createDecryptor(b,e).finalize(c.ciphertext)},_parse:function(a,c){return"string"==typeof a?c.parse(a,this):a}}),l=(l.kdf={}).OpenSSL={execute:function(a,c,b,d){d||(d=p.random(8));a=w.create({keySize:c+b}).compute(a,d);
+      line    31  [kdf]  c.keySize,c.ivSize);d.iv=e.iv;c=a.encrypt.call(this,c,b,e.key,d);c.mixIn(e);return c},decrypt:function(c,b,e,d){d=this.cfg.extend(d);b=this._parse(b,d.format);e=d.kdf.execute(e,c.keySize,c.ivSize,b.salt);d.iv=e.iv;return a.decrypt.call(this,c,b,e.key,d)}})}();
+      line    48  [symmetric]  2147483674:134219776,2147483675:0,2147483676:133120,2147483677:2080,2147483678:131104,2147483679:134350848}],x=[4160749569,528482304,33030144,2064384,129024,8064,504,2147483679],r=s.DES=n.extend({_doReset:function(){for(var b=this._key.words,a=[],c=0;56>c;c++){var d=q[c]-1;a[c]=b[d>>>5]>>>31-d%32&1}
+      line    50  [symmetric]  f[r])&x[r])>>>0];this._lBlock=p;this._rBlock=n^q}c=this._lBlock;this._lBlock=this._rBlock;this._rBlock=c;u.call(this,1,1431655765);l.call(this,8,16711935);l.call(this,2,858993459);u.call(this,16,65535);u.call(this,4,252645135);e[a]=this._lBlock;e[a+1]=this._rBlock},keySize:2,ivSize:2,blockSize:2});d
+      line    51  [symmetric]  r.createEncryptor(p.create(b.slice(4,6)))},encryptBlock:function(b,a){this._des1.encryptBlock(b,a);this._des2.decryptBlock(b,a);this._des3.encryptBlock(b,a)},decryptBlock:function(b,a){this._des3.decryptBlock(b,a);this._des2.encryptBlock(b,a);this._des1.decryptBlock(b,a)},keySize:6,ivSize:2,blockSiz

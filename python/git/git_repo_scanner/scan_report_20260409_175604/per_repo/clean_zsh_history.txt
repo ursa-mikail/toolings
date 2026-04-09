@@ -1,0 +1,13 @@
+================================================================================
+  REPO       : clean_zsh_history
+  FULL NAME  : ursa-mikail/clean_zsh_history
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Python
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/clean_zsh_history
+  MATCHES    : 2
+================================================================================
+
+  ▸ readme.md
+      line     3  [symmetric]  While many may forget that the applications taking in passcodes should ensure that the history, trace, logs and monitors do not log the passcodes :
+      line     7  [symmetric]  🔒 read -s hides the PIN as it is typed.

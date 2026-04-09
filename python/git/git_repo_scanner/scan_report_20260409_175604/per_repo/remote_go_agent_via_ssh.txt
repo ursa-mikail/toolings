@@ -1,0 +1,24 @@
+================================================================================
+  REPO       : remote_go_agent_via_ssh
+  FULL NAME  : ursa-mikail/remote_go_agent_via_ssh
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Go
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/remote_go_agent_via_ssh
+  MATCHES    : 7
+================================================================================
+
+  ▸ basic/readme.md
+      line     3  [symmetric]  {remote_agent_upload.go, remoteprog.go} provides a simple tool to upload a Go program to a remote server over SSH and execute it, allowing developers to test or run Go code on remote machines without manually logging in.
+      line     7  [symmetric]  {remote_agent_upload_and_run_shamir_split.go, remote_shamir.go}: provides a secure, portable way to split and recombine secrets using Shamir’s Secret Sharing, and allows you to run the program remotely over SSH without requiring Go or internet access on the remote server.
+      line     7  [zkp]  {remote_agent_upload_and_run_shamir_split.go, remote_shamir.go}: provides a secure, portable way to split and recombine secrets using Shamir’s Secret Sharing, and allows you to run the program remotely over SSH without requiring Go or internet access on the remote server.
+
+  ▸ readme.md
+      line    37  [symmetric]  It provides a more organized structure for automation, monitoring, and remote task execution.
+      line    42  [symmetric]  - Provides modular libraries for logging, monitoring, execution, and file upload
+
+  ▸ structured/readme.md
+      line    19  [zkp]  task shamir SECRET="mysecret" N=5 K=3
+
+  ▸ structured/ssh-demo/Taskfile.yml
+      line    15  [zkp]  desc: Create Shamir secret shares on remote

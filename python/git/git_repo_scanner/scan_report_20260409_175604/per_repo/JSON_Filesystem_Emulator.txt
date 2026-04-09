@@ -1,0 +1,12 @@
+================================================================================
+  REPO       : JSON_Filesystem_Emulator
+  FULL NAME  : ursa-mikail/JSON_Filesystem_Emulator
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Python
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/JSON_Filesystem_Emulator
+  MATCHES    : 1
+================================================================================
+
+  ▸ readme.md
+      line     3  [symmetric]  This project provides a simple emulator for a filesystem represented as a JSON object. It includes functions for various filesystem operations such as listing directories, walking directories, changing directories, and more. Additionally, it includes search functionality to find files or directories

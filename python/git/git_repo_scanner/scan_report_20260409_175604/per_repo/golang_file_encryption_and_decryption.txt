@@ -1,0 +1,58 @@
+================================================================================
+  REPO       : golang_file_encryption_and_decryption
+  FULL NAME  : ursa-mikail/golang_file_encryption_and_decryption
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Go
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/golang_file_encryption_and_decryption
+  MATCHES    : 37
+================================================================================
+
+  ▸ key_based/Makefile
+      line   105  [key_mgmt]  @echo "  http://localhost:5000/generate_key - Key generation endpoint"
+
+  ▸ key_based/main.go
+      line     4  [symmetric]  "crypto/aes"
+      line    23  [cipher_mode]  nonceSize      = 12       // 96 bits for GCM
+      line    64  [key_mgmt]  http.HandleFunc("/generate_key", generateKeyHandler)
+      line   162  [symmetric]  block, err := aes.NewCipher(key)
+      line   170  [cipher_mode]  respondError(w, fmt.Sprintf("Failed to create GCM: %v", err), http.StatusInternalServerError)
+      line   331  [symmetric]  block, err := aes.NewCipher(key)
+      line   339  [cipher_mode]  respondError(w, fmt.Sprintf("Failed to create GCM: %v", err), http.StatusInternalServerError)
+
+  ▸ key_based/readme.md
+      line     3  [symmetric]  A secure web-based file encryption/decryption tool using AES-GCM with randomly generated 256-bit keys, built with Go.
+      line     3  [cipher_mode]  A secure web-based file encryption/decryption tool using AES-GCM with randomly generated 256-bit keys, built with Go.
+      line     6  [key_mgmt]  http://localhost:5000/generate_key
+      line    50  [symmetric]  ✅ **Strong Encryption**: AES-GCM (256-bit keys)
+      line    50  [cipher_mode]  ✅ **Strong Encryption**: AES-GCM (256-bit keys)
+      line   137  [symmetric]  1. **Key Generation**: Random 256-bit (32-byte) AES key using `crypto/rand`
+      line   138  [symmetric]  2. **Nonce Generation**: Random 12-byte nonce for AES-GCM
+      line   138  [cipher_mode]  2. **Nonce Generation**: Random 12-byte nonce for AES-GCM
+      line   139  [symmetric]  3. **Encryption**: AES-GCM mode (provides authentication + confidentiality)
+      line   139  [symmetric]  3. **Encryption**: AES-GCM mode (provides authentication + confidentiality)
+      line   139  [cipher_mode]  3. **Encryption**: AES-GCM mode (provides authentication + confidentiality)
+      line   158  [symmetric]  - **AES-GCM**: Provides both encryption and authentication
+      line   158  [symmetric]  - **AES-GCM**: Provides both encryption and authentication
+      line   158  [cipher_mode]  - **AES-GCM**: Provides both encryption and authentication
+      line   226  [key_mgmt]  ### `GET /generate_key`
+
+  ▸ key_based/static/js/app.js
+      line    67  [key_mgmt]  const response = await fetch('/generate_key');
+
+  ▸ key_based/templates/index.html
+      line    12  [symmetric]  <p>Encrypt and decrypt files using AES-GCM encryption with 256-bit keys.</p>
+      line    12  [cipher_mode]  <p>Encrypt and decrypt files using AES-GCM encryption with 256-bit keys.</p>
+
+  ▸ key_based/uploads/Comic-Strip-The-life-of-Francis-Ahelia-Chan.pdf.enc
+      line 14480  [cipher_mode]  ;N����5[��Ϝ�ȝBSˆ�TzЍ�;�:��,SIV�����[
+      line 16965  [cipher_mode]  \�`�iĈ�Og�φ ��ߞ�T��#�G������xts D
+      line 20364  [cipher_mode]  �W�oCB��ϐ����ǜ�k��0�y��}��S)ćW	�i4�����+�Y�ϰ���'�����Y|��򝐩:�8�l���X��X
+      line 21150  [kdf]  ^kDf�̾��.������v�c�FQ��FGC2�FqF��P��ř��0d���~�7�E�ᅴ���$\|*��o�
+      line 25626  [fpe_token]  `�⾪�4�?v��FPe�XR����W�:R�=�`4�q�%��O���7
+      line 41004  [symmetric]  I�4-G���]`�}�RC4��[��ȼ�
+      line 43020  [cipher_mode]  B=D��siv��?�$[r
+      line 45649  [kdf]  �6���<o�x�ˉ%�@6�\�:�t��KDfn�B���i�5������q�
+      line 50120  [kdf]  ���q�^ ��1ޠ�3����f�,�o'�0�/X���kdF��ȡ`J
+      line 52861  [cipher_mode]  �}/HE���G�=E�ctR�3&--�s:�٘E���x���$�s�Լ�p��BYSP�j
+      line 58303  [cipher_mode]  ��{�,0�k�|RM���1��oCby@�����^0)�gD@� �ȘU�H7��gN�}qE��

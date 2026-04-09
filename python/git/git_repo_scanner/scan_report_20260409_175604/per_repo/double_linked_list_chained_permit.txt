@@ -1,0 +1,43 @@
+================================================================================
+  REPO       : double_linked_list_chained_permit
+  FULL NAME  : ursa-mikail/double_linked_list_chained_permit
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Go
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/double_linked_list_chained_permit
+  MATCHES    : 30
+================================================================================
+
+  ▸ go/main.go
+      line   226  [symmetric]  nodes := make([]*PermitNode, count)
+      line   230  [symmetric]  nodes[i] = pll.CreatePermit(randomDomains)
+      line   232  [symmetric]  return nodes
+      line   237  [symmetric]  nodes := make([]*PermitNode, count)
+      line   245  [symmetric]  nodes[i] = pll.CreatePermit(domainSet)
+      line   247  [symmetric]  return nodes
+      line   509  [symmetric]  randomNodes := permitList.CreateRandomPermits(2)
+      line   510  [symmetric]  fmt.Printf("Created %d total permits\n", 3+len(randomNodes))
+      line   570  [symmetric]  if len(randomNodes) > 0 {
+      line   571  [symmetric]  permitList.RevokePermit(randomNodes[0].ID)
+      line   604  [symmetric]  if len(randomNodes) > 0 && randomNodes[0] != nil {
+      line   606  [symmetric]  permitList.RestorePermit(randomNodes[0].ID)
+
+  ▸ python/double_linked_list_chained_permit_demo.py
+      line     2  [py_import]  import secrets
+      line    89  [key_mgmt]  def generate_key(self) -> bytes:
+      line    97  [key_mgmt]  key=self.generate_key(),
+      line   123  [key_mgmt]  key=self.generate_key(),
+      line   163  [symmetric]  nodes = []
+      line   168  [symmetric]  nodes.append(node)
+      line   169  [symmetric]  return nodes
+      line   173  [symmetric]  nodes = []
+      line   178  [symmetric]  nodes.append(node)
+      line   179  [symmetric]  return nodes
+      line   240  [key_mgmt]  node.permit.key = self.generate_key()
+      line   273  [key_mgmt]  current.permit.key = self.generate_key()
+      line   401  [symmetric]  random_nodes = permit_list.create_random_permits(2)
+      line   402  [symmetric]  print(f"Created {3 + len(random_nodes)} total permits")
+      line   450  [symmetric]  if random_nodes:
+      line   451  [symmetric]  permit_list.revoke_permit(random_nodes[0].id)
+      line   482  [symmetric]  if random_nodes and random_nodes[0]:
+      line   484  [symmetric]  permit_list.restore_permit(random_nodes[0].id)

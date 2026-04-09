@@ -1,0 +1,58 @@
+================================================================================
+  REPO       : ursa_bbs_python
+  FULL NAME  : ursa-mikail/ursa_bbs_python
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Rust
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/ursa_bbs_python
+  MATCHES    : 37
+================================================================================
+
+  ▸ README.md
+      line     5  [asymmetric]  The method uses a group signature approach with bi-linear maps. This produces a signature that is around the same size of the RSA signature (around 200 bytes).
+      line    37  [signature]  Can we produce a **digital signature** for a group of members such that it is **not possible to know who signed** within the group?
+
+  ▸ bench.py
+      line    35  [random]  message = os.urandom(msg_len)
+
+  ▸ golang/ursa_bbs.go
+      line    63  [signature]  sig, err := member.Sign(rand.Reader, hashedMsgs[0], sha256.New())
+      line    70  [signature]  if group.Verify(hashedMsgs[0], sha256.New(), sig) {
+      line    78  [signature]  if !group.Verify(hashedMsgs[0], sha256.New(), sig) {
+      line    99  [signature]  sig, err = member.Sign(rand.Reader, hashmsg, h)
+      line   105  [signature]  if group.Verify(hashmsg, h, sig) {
+      line   110  [signature]  if !group.Verify(hashmsg, h, sig) {
+
+  ▸ src/buffer.rs
+      line     7  [symmetric]  use pyo3::ffi::{PyBUF_FORMAT, PyBUF_ND, PyBUF_STRIDES, PyBUF_WRITABLE, Py_INCREF, Py_buffer};
+      line    79  [symmetric]  (*view).strides = ptr::null_mut();
+      line    80  [symmetric]  if (flags & PyBUF_STRIDES) == PyBUF_STRIDES {
+      line    81  [symmetric]  (*view).strides = &((*view).itemsize) as *const _ as *mut _;
+
+  ▸ src/signature.rs
+      line     2  [zkp]  BlindSignature, BlindSignatureContext, HashElem, Issuer, ProofNonce, Prover, Signature,
+      line    24  [zkp]  #[pyclass(name=BlindSignature)]
+      line    25  [zkp]  pub struct PyBlindSignature {
+      line    26  [zkp]  inner: BlindSignature,
+      line    29  [zkp]  py_compressed_bytes_wrapper!(PyBlindSignature, BlindSignature);
+      line   103  [zkp]  /// Generate a new nonce for use in creating a blind signature
+      line   154  [zkp]  ) -> PyResult<PyBlindSignature> {
+      line   162  [zkp]  let blind_signature = py
+      line   165  [zkp]  Ok(PyBlindSignature::new(blind_signature))
+      line   169  [zkp]  /// unblind_signature(signature, blinding)
+      line   173  [zkp]  fn unblind_signature<'py>(
+      line   175  [zkp]  signature: ExtractArg<PyBlindSignature>,
+      line   184  [signature]  /// verify_signature(messages, signature, pk, pre_hashed=False)
+      line   188  [signature]  fn verify_signature<'py>(
+      line   196  [signature]  signature.verify(messages.as_slice(), &pk).map_py_err()
+      line   205  [zkp]  m.add_wrapped(wrap_pyfunction!(unblind_signature))?;
+      line   206  [signature]  m.add_wrapped(wrap_pyfunction!(verify_signature))?;
+      line   207  [zkp]  m.add_class::<PyBlindSignature>()?;
+
+  ▸ test.py
+      line    34  [signature]  "Verify:", bbs.verify_signature(hashed_messages, signature, pk, pre_hashed=True)
+      line    48  [signature]  log("Verify:", bbs.verify_signature(messages, signature, pk))
+      line    69  [zkp]  blind_signature = bbs.sign_messages_blinded_context(
+      line    72  [zkp]  log("Blind signature:", bytes(blind_signature).hex())
+      line    74  [zkp]  signature = bbs.unblind_signature(blind_signature, signature_blinding)
+      line    78  [signature]  log("Verify:", bbs.verify_signature(all_messages, signature, pk))

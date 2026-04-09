@@ -1,0 +1,44 @@
+================================================================================
+  REPO       : trial_high_availability_stress_testing_for_aes_gcm_key_rotation
+  FULL NAME  : ursa-mikail/trial_high_availability_stress_testing_for_aes_gcm_key_rotation
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Go
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/trial_high_availability_stress_testing_for_aes_gcm_key_rotation
+  MATCHES    : 31
+================================================================================
+
+  ▸ key_rotation_stress_test.go
+      line     5  [symmetric]  "crypto/aes"
+      line    39  [symmetric]  // KeyVersion holds a versioned AES-256 key.
+      line    42  [symmetric]  Key []byte // 32 bytes for AES-256
+      line   119  [symmetric]  // AES-GCM CRYPTO HELPERS
+      line   119  [cipher_mode]  // AES-GCM CRYPTO HELPERS
+      line   122  [symmetric]  // Encrypt encrypts plaintext with the given AES-GCM key.
+      line   122  [cipher_mode]  // Encrypt encrypts plaintext with the given AES-GCM key.
+      line   125  [symmetric]  block, err := aes.NewCipher(key)
+      line   129  [cipher_mode]  gcm, err := cipher.NewGCM(block)
+      line   133  [cipher_mode]  nonce := make([]byte, gcm.NonceSize())
+      line   137  [cipher_mode]  ciphertext := gcm.Seal(nonce, nonce, plaintext, nil)
+      line   147  [symmetric]  block, err := aes.NewCipher(key)
+      line   151  [cipher_mode]  gcm, err := cipher.NewGCM(block)
+      line   155  [cipher_mode]  ns := gcm.NonceSize()
+      line   160  [cipher_mode]  return gcm.Open(nil, nonce, ciphertext, nil)
+      line   459  [symmetric]  plaintext := []byte("hello, AES-GCM world!")
+      line   459  [cipher_mode]  plaintext := []byte("hello, AES-GCM world!")
+
+  ▸ readme.md
+      line     1  [symmetric]  # AES-GCM Key Rotation — High Availability Stress Test
+      line     1  [cipher_mode]  # AES-GCM Key Rotation — High Availability Stress Test
+      line     5  [symmetric]  This document explains the assurance model behind `key_rotation_stress_test.go`: what properties it verifies, how it verifies them, what failure modes it deliberately surfaces, and what confidence you can take from a clean run.
+      line    21  [cipher_mode]  2. Component-level guarantees — each piece of the implementation is mapped to the property it upholds. KeyManager's RWMutex strategy, why old keys survive in the archive until after re-encryption completes, and how GCM's authentication tag turns decryption into a cryptographic correctness proof rath
+      line    47  [symmetric]  │  Insert new AES-GCM encrypted rows as fast as possible  │
+      line    47  [cipher_mode]  │  Insert new AES-GCM encrypted rows as fast as possible  │
+      line    85  [symmetric]  ### AES-256-GCM — cryptographic integrity
+      line    85  [cipher_mode]  ### AES-256-GCM — cryptographic integrity
+      line    87  [cipher_mode]  Each call to `Encrypt` generates a 12-byte random nonce via `crypto/rand`. The nonce is prepended to the ciphertext and base64-encoded as a single opaque blob. On `Decrypt`, the nonce is extracted and used to open the GCM tag. If a single bit of the stored ciphertext has been altered — or if the wro
+      line   103  [symmetric]  ## Failure modes the test detects
+      line   109  [cipher_mode]  | Ciphertext corruption during re-encryption | GCM authentication tag fails on `Decrypt`; surface as `readErrors` or `rotateErrors` |
+      line   110  [cipher_mode]  | Wrong key used for a given row | `key_ver` column mismatch caught by `readAndVerify`; GCM rejection catches bit-level corruption |
+      line   122  [cipher_mode]  | `TestDecryptFailsWithWrongKey` | GCM authentication correctly rejects decryption under any key other than the one used for encryption |
+      line   203  [symmetric]  - **Distributed consensus** — the test runs in a single process. In a multi-node deployment, key rotation must be coordinated so all nodes stop using the old key before it is purged.

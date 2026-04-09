@@ -1,0 +1,28 @@
+================================================================================
+  REPO       : templates
+  FULL NAME  : ursa-mikail/templates
+  OWNER      : ursa-mikail  (User)
+  LANGUAGE   : Go
+  VISIBILITY : public
+  URL        : https://github.com/ursa-mikail/templates
+  MATCHES    : 11
+================================================================================
+
+  ▸ README.md
+      line     1  [fpe_token]  # FPE Tweak Steganography
+      line     3  [symmetric]  Hides `keyID` and `version` inside a random tweak used for FF1 format-preserving encryption. The tweak carries metadata invisibly — no separate storage, no plaintext fields, no envelope.
+      line     3  [fpe_token]  Hides `keyID` and `version` inside a random tweak used for FF1 format-preserving encryption. The tweak carries metadata invisibly — no separate storage, no plaintext fields, no envelope.
+
+  ▸ main.go
+      line     8  [fpe_token]  "github.com/capitalone/fpe/ff1"
+      line    33  [symmetric]  // encodeByte hides n (0-15) into the high nibble of random byte r.
+      line    82  [symmetric]  // extractTweak decodes keyID and version from the tweak without mutating it.
+      line    91  [symmetric]  // lookupKey derives a deterministic 32-byte AES-256 key from keyID + version.
+      line   102  [fpe_token]  // ── FPE ───────────────────────────────────────────────────────────────────────
+
+  ▸ notes.txt.md
+      line   165  [symmetric]  GCD(P, K) = largest number that divides both P and K
+
+  ▸ t.md
+      line     1  [symmetric]  | Feature | ARIA | Camellia | AES (Rijndael) |
+      line     1  [symmetric]  | Feature | ARIA | Camellia | AES (Rijndael) |
